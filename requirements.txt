@@ -1,0 +1,11 @@
+deepchem
+rdkit
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+qiskit
+tensorflow
+torch
+scipy
