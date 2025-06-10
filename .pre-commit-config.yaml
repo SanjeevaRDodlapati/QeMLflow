@@ -1,0 +1,77 @@
+# Pre-commit hooks for ChemML
+# Install with: pre-commit install
+# Run manually with: pre-commit run --all-files
+
+repos:
+  # Python code formatting
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3.11
+        args: [--line-length=88]
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+
+  # Python import sorting
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=88]
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+
+  # Python linting
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies: [
+          flake8-docstrings,
+          flake8-comprehensions,
+          flake8-builtins,
+          flake8-bugbear,
+        ]
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+
+  # General code quality (built-in hooks that don't require external downloads)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^(\.md$|\.rst$)
+      - id: end-of-file-fixer
+        exclude: ^(chemml_env/|\.venv/|venv/)
+      - id: check-yaml
+        exclude: ^(chemml_env/|\.venv/|venv/)
+      - id: check-json
+        exclude: ^(chemml_env/|\.venv/|venv/)
+      - id: check-toml
+        exclude: ^(chemml_env/|\.venv/|venv/)
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: debug-statements
+        exclude: ^(chemml_env/|\.venv/|venv/)
+      - id: name-tests-test
+        args: [--pytest-test-first]
+        exclude: ^(chemml_env/|\.venv/|venv/)
+
+  # Notebook cleaning (removes outputs for version control)
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.6.1
+    hooks:
+      - id: nbstripout
+        exclude: ^(chemml_env/|\.venv/|venv/)
+
+# Configuration for specific tools
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: []  # Run all hooks in CI
+  submodules: false

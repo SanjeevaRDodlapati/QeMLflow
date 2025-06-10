@@ -1,0 +1,72 @@
+[flake8]
+# Configuration for flake8 linting
+
+# Maximum line length
+max-line-length = 88
+
+# Exclude directories and files
+exclude =
+    .git,
+    __pycache__,
+    .venv,
+    chemml_env,
+    .tox,
+    .eggs,
+    *.egg,
+    build,
+    dist,
+    docs/_build,
+    .pytest_cache,
+    .coverage,
+    htmlcov,
+    notebooks/quickstart_bootcamp/days/*/checkpoints
+
+# Error codes to ignore
+ignore =
+    E203,
+    E501,
+    W503,
+    W504,
+    E402,
+    F401
+
+# Error codes to always check
+select =
+    E,
+    W,
+    F,
+    C,
+    B,
+    N
+
+# Maximum complexity for functions
+max-complexity = 15
+
+# Per-file ignores for specific patterns
+per-file-ignores =
+    __init__.py:F401
+    tests/*:D,S101,S311,PLR2004
+    docs/*:D
+    notebooks/*:D,E402,F401,F841,W391,C901
+    examples/*:D,E402,F401
+    scripts/*:E402
+
+# Enable specific plugins
+enable-extensions =
+    B,
+    N
+
+# Naming conventions
+classmethod-decorators = classmethod
+staticmethod-decorators = staticmethod
+
+# Document string conventions
+docstring-convention = numpy
+
+# Import order style
+import-order-style = google
+
+# Additional checks
+show-source = True
+statistics = True
+count = True
