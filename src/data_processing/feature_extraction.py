@@ -223,9 +223,9 @@ def _estimate_property(smiles: str, prop_name: str) -> float:
     return estimates.get(prop_name, 0.0)
 
 
-def extract_molecular_descriptors(molecular_data):
+def extract_basic_molecular_descriptors(molecular_data):
     """
-    Extract molecular descriptors from the provided molecular data.
+    Extract basic molecular descriptors from the provided molecular data.
 
     Parameters:
     molecular_data (list): A list of molecular structures.
@@ -272,7 +272,6 @@ def _extract_rdkit_fingerprints(
     molecules: List[str], fp_type: str, n_bits: int
 ) -> pd.DataFrame:
     """Extract fingerprints using RDKit."""
-    from rdkit.Chem import rdMolDescriptors
 
     fingerprints = []
     for smiles in molecules:
@@ -400,8 +399,6 @@ def _calculate_single_fingerprint(
             return np.zeros(n_bits)
 
     if fp_type == "morgan":
-        from rdkit.Chem import rdMolDescriptors
-
         fp = rdMolDescriptors.GetMorganFingerprintAsBitVect(mol, radius, nBits=n_bits)
         return np.array(fp)
     elif fp_type == "maccs":
@@ -450,7 +447,7 @@ def extract_structural_features(
         except Exception as e:
             logging.warning(f"Error extracting structural features for {smiles}: {e}")
             # Return default features for failed molecules
-            features = {ft: 0 for ft in feature_types}
+            features = dict.fromkeys(feature_types, 0)
             features["SMILES"] = smiles
             results.append(features)
 
@@ -466,7 +463,7 @@ def _extract_single_structural_features(
 
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
-        return {ft: 0.0 for ft in feature_types}
+        return dict.fromkeys(feature_types, 0.0)
 
     features = {}
 
@@ -559,7 +556,9 @@ def calculate_molecular_weight(molecule):
     """Calculate molecular weight for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
-        return props["molecular_weight"][0] if props["molecular_weight"] else 0.0
+        return (
+            props["molecular_weight"][0] if not props["molecular_weight"].empty else 0.0
+        )
     return 0.0
 
 
@@ -567,7 +566,7 @@ def calculate_logP(molecule):
     """Calculate logP for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
-        return props["logp"][0] if props["logp"] else 0.0
+        return props["logp"][0] if not props["logp"].empty else 0.0
     return 0.0
 
 
@@ -576,7 +575,9 @@ def calculate_num_rotatable_bonds(molecule):
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
         return (
-            int(props["num_rotatable_bonds"][0]) if props["num_rotatable_bonds"] else 0
+            int(props["num_rotatable_bonds"][0])
+            if not props["num_rotatable_bonds"].empty
+            else 0
         )
     return 0
 

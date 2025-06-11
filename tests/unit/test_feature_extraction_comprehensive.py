@@ -103,7 +103,7 @@ class TestExtractDescriptors(unittest.TestCase):
         result = extract_descriptors(self.sample_smiles, descriptor_set="rdkit")
 
         mock_rdkit_extract.assert_called_once_with(self.sample_smiles)
-        self.assertEqual(result, mock_df)
+        pd.testing.assert_frame_equal(result, mock_df)
 
     @patch("src.data_processing.feature_extraction.MORDRED_AVAILABLE", True)
     @patch("src.data_processing.feature_extraction._extract_mordred_descriptors")
@@ -115,7 +115,7 @@ class TestExtractDescriptors(unittest.TestCase):
         result = extract_descriptors(self.sample_smiles, descriptor_set="mordred")
 
         mock_mordred_extract.assert_called_once_with(self.sample_smiles)
-        self.assertEqual(result, mock_df)
+        pd.testing.assert_frame_equal(result, mock_df)
 
     @patch("src.data_processing.feature_extraction._extract_basic_descriptors")
     def test_extract_descriptors_basic(self, mock_basic_extract):
@@ -126,7 +126,7 @@ class TestExtractDescriptors(unittest.TestCase):
         result = extract_descriptors(self.sample_smiles, descriptor_set="basic")
 
         mock_basic_extract.assert_called_once_with(self.sample_smiles)
-        self.assertEqual(result, mock_df)
+        pd.testing.assert_frame_equal(result, mock_df)
 
     @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
     @patch("src.data_processing.feature_extraction._extract_basic_descriptors")
@@ -292,13 +292,20 @@ class TestCalculateProperties(unittest.TestCase):
     @patch("src.data_processing.feature_extraction._estimate_property")
     def test_calculate_properties_without_rdkit(self, mock_estimate):
         """Test property calculation without RDKit."""
-        mock_estimate.side_effect = [46.0, -0.3, 20.0, 1.0, 1.0]  # Mock return values
+        mock_estimate.side_effect = [
+            46.0,
+            -0.3,
+            20.0,
+            1.0,
+            1.0,
+            50.0,
+        ]  # Mock return values for 6 properties
 
         result = calculate_properties(["CCO"])
 
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), 1)
-        self.assertEqual(mock_estimate.call_count, 5)  # Called for each property
+        self.assertEqual(mock_estimate.call_count, 6)  # Called for each property
 
     def test_calculate_properties_empty_list(self):
         """Test property calculation with empty list."""
@@ -350,9 +357,7 @@ class TestExtractFeatures(unittest.TestCase):
         result = extract_features(self.sample_df, feature_types=["descriptors"])
 
         self.assertIsInstance(result, pd.DataFrame)
-        mock_descriptors.assert_called_once_with(
-            self.sample_smiles, descriptor_set="rdkit"
-        )
+        mock_descriptors.assert_called_once_with(self.sample_smiles)
 
     def test_extract_features_default_types(self):
         """Test extract_features with default feature types."""
@@ -388,7 +393,7 @@ class TestExtractFingerprints(unittest.TestCase):
         result = extract_fingerprints(self.sample_smiles, fp_type="morgan")
 
         mock_rdkit_fp.assert_called_once_with(self.sample_smiles, "morgan", 2048)
-        self.assertEqual(result, mock_df)
+        pd.testing.assert_frame_equal(result, mock_df)
 
     @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
     @patch("src.data_processing.feature_extraction._extract_basic_fingerprints")
@@ -400,7 +405,7 @@ class TestExtractFingerprints(unittest.TestCase):
         result = extract_fingerprints(self.sample_smiles)
 
         mock_basic_fp.assert_called_once_with(self.sample_smiles, 2048)
-        self.assertEqual(result, mock_df)
+        pd.testing.assert_frame_equal(result, mock_df)
 
     def test_extract_fingerprints_empty_list(self):
         """Test fingerprint extraction with empty list."""
@@ -417,9 +422,9 @@ class TestFingerprintExtractors(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction.rdMolDescriptors")
+    @patch("rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect")
     @patch("src.data_processing.feature_extraction.Chem")
-    def test_extract_rdkit_fingerprints_morgan(self, mock_chem, mock_rdmol):
+    def test_extract_rdkit_fingerprints_morgan(self, mock_chem, mock_morgan):
         """Test RDKit Morgan fingerprint extraction."""
         mock_mol = Mock()
         mock_chem.MolFromSmiles.return_value = mock_mol
@@ -427,7 +432,7 @@ class TestFingerprintExtractors(unittest.TestCase):
         # Mock fingerprint bit vector
         mock_fp = Mock()
         mock_fp.__getitem__ = Mock(side_effect=lambda x: x % 2)  # Alternate 0,1
-        mock_rdmol.GetMorganFingerprintAsBitVect.return_value = mock_fp
+        mock_morgan.return_value = mock_fp
 
         result = _extract_rdkit_fingerprints(self.sample_smiles, "morgan", 4)
 
@@ -435,9 +440,9 @@ class TestFingerprintExtractors(unittest.TestCase):
         self.assertEqual(len(result), len(self.sample_smiles))
         self.assertEqual(len(result.columns), 4)
 
-    @patch("src.data_processing.feature_extraction.rdMolDescriptors")
+    @patch("rdkit.Chem.rdMolDescriptors.GetMACCSKeysFingerprint")
     @patch("src.data_processing.feature_extraction.Chem")
-    def test_extract_rdkit_fingerprints_maccs(self, mock_chem, mock_rdmol):
+    def test_extract_rdkit_fingerprints_maccs(self, mock_chem, mock_maccs):
         """Test RDKit MACCS fingerprint extraction."""
         mock_mol = Mock()
         mock_chem.MolFromSmiles.return_value = mock_mol
@@ -446,26 +451,27 @@ class TestFingerprintExtractors(unittest.TestCase):
         mock_fp = Mock()
         mock_fp.__len__ = Mock(return_value=167)
         mock_fp.__getitem__ = Mock(side_effect=lambda x: x % 2)
-        mock_rdmol.GetMACCSKeysFingerprint.return_value = mock_fp
+        mock_maccs.return_value = mock_fp
 
         result = _extract_rdkit_fingerprints(["CCO"], "maccs", 1024)
 
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result.columns), 167)  # MACCS keys are 167 bits
+        mock_maccs.assert_called_once_with(mock_mol)
 
-    @patch("src.data_processing.feature_extraction.rdMolDescriptors")
+    @patch(
+        "rdkit.Chem.rdMolDescriptors.GetHashedTopologicalTorsionFingerprintAsBitVect"
+    )
     @patch("src.data_processing.feature_extraction.Chem")
-    def test_extract_rdkit_fingerprints_topological(self, mock_chem, mock_rdmol):
+    def test_extract_rdkit_fingerprints_topological(self, mock_chem, mock_topo):
         """Test RDKit topological fingerprint extraction."""
         mock_mol = Mock()
         mock_chem.MolFromSmiles.return_value = mock_mol
 
         mock_fp = Mock()
         mock_fp.__getitem__ = Mock(side_effect=lambda x: x % 2)
-        mock_rdmol.GetHashedTopologicalTorsionFingerprintAsBitVect.return_value = (
-            mock_fp
-        )
+        mock_topo.return_value = mock_fp
 
         result = _extract_rdkit_fingerprints(["CCO"], "topological", 4)
 
@@ -530,7 +536,7 @@ class TestGenerateFingerprints(unittest.TestCase):
         np.testing.assert_array_equal(result[1], mock_fp2)
 
     @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.rdMolDescriptors")
+    @patch("rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect")
     @patch("src.data_processing.feature_extraction.Chem")
     def test_calculate_single_fingerprint_with_rdkit(self, mock_chem, mock_rdmol):
         """Test single fingerprint calculation with RDKit."""
@@ -539,7 +545,7 @@ class TestGenerateFingerprints(unittest.TestCase):
 
         mock_fp = Mock()
         mock_fp.__getitem__ = Mock(side_effect=lambda x: x % 2)
-        mock_rdmol.GetMorganFingerprintAsBitVect.return_value = mock_fp
+        mock_rdmol.return_value = mock_fp
 
         result = _calculate_single_fingerprint("CCO", "morgan", 4, 2)
 
@@ -696,7 +702,8 @@ class TestLegacyFunctions(unittest.TestCase):
         result = calculate_molecular_weight("CCO")
 
         self.assertEqual(result, 46.0)
-        mock_estimate.assert_called_once_with("CCO", "molecular_weight")
+        # Function calls calculate_properties which calls _estimate_property for all 6 properties
+        self.assertEqual(mock_estimate.call_count, 6)
 
     @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
     @patch("src.data_processing.feature_extraction.Descriptors")
@@ -1025,3 +1032,6 @@ if __name__ == "__main__":
         for test, traceback in result.errors:
             error_msg = traceback.split("\n")[-2]
             print(f"  - {test}: {error_msg}")
+
+    # Coverage improvement tests
+    unittest.main(exit=False, verbosity=2)

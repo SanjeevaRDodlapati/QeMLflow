@@ -448,6 +448,38 @@ class TestCrossValidator:
         assert cv.scoring == "f1"
         assert cv.random_state == 123
 
+    def test_cross_validator_regression_task_detection(self):
+        """Test that CrossValidator correctly identifies regression tasks (line 299)."""
+        cv = CrossValidator(cv_folds=3, scoring="r2")
+
+        # Create continuous target values for regression
+        y_regression = np.random.uniform(0.1, 100.5, 50)  # Continuous values
+
+        # This should hit the return False line (299)
+        is_classification = cv._is_classification_task(y_regression)
+
+        assert is_classification is False
+
+        # Additional test with more spread out continuous values
+        y_continuous = np.array([1.1, 2.7, 3.3, 4.9, 5.2, 6.8, 7.1, 8.4, 9.6, 10.1])
+        is_classification_continuous = cv._is_classification_task(y_continuous)
+
+        assert is_classification_continuous is False
+
+    def test_cross_validator_numeric_regression_task_detection(self):
+        """Test numeric regression task detection for line 299."""
+        # Test with continuous numeric values (should hit line 299: return False)
+        y_continuous = np.array([1.23, 4.56, 7.89, 0.12])
+        is_classification = self.cv._is_classification_task(y_continuous)
+        assert is_classification is False  # This should execute line 299
+
+    def test_cross_validator_categorical_string_task_detection(self):
+        """Test categorical string task detection for line 299."""
+        # Test with string/categorical labels (line 299)
+        y_categorical = np.array(["class_a", "class_b", "class_a", "class_b"])
+        is_classification = self.cv._is_classification_task(y_categorical)
+        assert is_classification is True
+
 
 class TestModelPersistence:
     """Test cases for ModelPersistence class."""
@@ -560,10 +592,11 @@ class TestStandaloneFunctions:
 
     def test_calculate_feature_importance_with_coefficients(self):
         """Test feature importance calculation for linear models."""
-        # Create a proper mock with __len__ method
-        coef_array = np.array([0.5, -0.3, 0.8, -0.1, 0.2])
+        # Create a mock model with coefficients - using actual array
         mock_model = Mock()
-        mock_model.coef_ = coef_array
+        mock_model.coef_ = np.array([0.5, -0.3, 0.8, -0.1, 0.2])
+        # Remove feature_importances_ to force use of coef_
+        del mock_model.feature_importances_
 
         result = calculate_feature_importance(mock_model)
 
@@ -571,10 +604,27 @@ class TestStandaloneFunctions:
         assert len(result) == 5
 
         # Should use absolute values of coefficients
-        expected_importances = np.abs(coef_array)
+        expected_importances = np.abs(mock_model.coef_)
         assert np.allclose(
             result["importance"].values, np.sort(expected_importances)[::-1]
         )
+
+    def test_calculate_feature_importance_return_statement(self):
+        """Test the return statement in calculate_feature_importance function."""
+        mock_model = Mock()
+        mock_model.feature_importances_ = np.array([0.3, 0.7, 0.1, 0.5, 0.2])
+
+        result = calculate_feature_importance(mock_model)
+
+        # Verify that we get a properly formatted DataFrame back
+        assert isinstance(result, pd.DataFrame)
+        assert "feature" in result.columns
+        assert "importance" in result.columns
+        assert len(result) == 5
+
+        # Verify the return statement is executed
+        assert result is not None
+        assert not result.empty
 
     def test_calculate_feature_importance_no_importance(self):
         """Test feature importance with model that has no importance info."""

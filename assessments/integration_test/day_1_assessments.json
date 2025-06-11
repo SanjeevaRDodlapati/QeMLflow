@@ -2,8 +2,8 @@
   "student_id": "integration_test",
   "day": 1,
   "track": "standard",
-  "start_time": "2025-06-10T17:42:48.913226",
-  "last_updated": "2025-06-10T17:42:48.913806",
+  "start_time": "2025-06-10T20:29:37.282957",
+  "last_updated": "2025-06-10T20:29:37.283254",
   "assessments": [],
   "session_data": {
     "activities": [
@@ -256,6 +256,253 @@
       },
       {
         "timestamp": "2025-06-10T17:42:48.913793",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:34:57.790255",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:35:39.262746",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:48:31.302591",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:50:06.524503",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:51:38.197478",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T18:55:18.907422",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:01:06.254017",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:03:25.009070",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:10:00.244316",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:12:57.343225",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:15:22.260947",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:20:00.261539",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:24:01.663809",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T19:55:57.636797",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T20:01:00.699520",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T20:21:24.193645",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T20:22:38.851935",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T20:25:31.056817",
+        "activity_name": "basic_ml",
+        "data": {
+          "task_type": "model_training",
+          "model_type": "linear_regression",
+          "performance": {
+            "mse": 0.15,
+            "r2": 0.85
+          },
+          "completion_time": 120
+        }
+      },
+      {
+        "timestamp": "2025-06-10T20:29:37.283241",
         "activity_name": "basic_ml",
         "data": {
           "task_type": "model_training",

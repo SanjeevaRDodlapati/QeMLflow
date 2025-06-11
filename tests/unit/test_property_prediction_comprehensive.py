@@ -711,6 +711,21 @@ class TestTrainedPropertyModel:
         mock_scaler.transform.assert_called_once()
         mock_sklearn_model.predict.assert_called_once()
 
+    def test_trained_model_get_metrics(self):
+        """Test TrainedPropertyModel.get_metrics method"""
+        model_dict = {
+            "model": Mock(),
+            "scaler": None,
+            "metrics": {"r2_score": 0.85, "rmse": 0.1, "mae": 0.05},
+        }
+
+        trained_model = TrainedPropertyModel(model_dict)
+
+        metrics = trained_model.get_metrics()
+
+        assert isinstance(metrics, dict)
+        assert metrics == {"r2_score": 0.85, "rmse": 0.1, "mae": 0.05}
+
 
 class TestTrainPropertyModelFunction:
     """Test train_property_model standalone function"""
@@ -935,6 +950,79 @@ class TestPerformance:
             assert len(predictions) == 50
             assert all(isinstance(p, (int, float, type(np.nan))) for p in predictions)
 
+    def test_import_errors_coverage(self):
+        """Test coverage of import error handling lines 24-26."""
+        # These lines (24-26) are import statements that are covered when RDKit is not available
+        # Since we can't easily test import failures, we test the RDKIT_AVAILABLE flag
 
-if __name__ == "__main__":
-    pytest.main([__file__])
+        with patch("drug_design.property_prediction.RDKIT_AVAILABLE", False):
+            predictor = MolecularPropertyPredictor()
+
+            # This should trigger the code path that uses the fallback when RDKit is not available
+            properties = predictor.predict_physicochemical_properties("CCO")
+
+            assert isinstance(properties, dict)
+            # When RDKit is not available, properties should use default/estimated values
+            expected_keys = [
+                "solubility",
+                "permeability",
+                "stability",
+                "bioavailability",
+            ]
+            for key in expected_keys:
+                assert key in properties
+
+    def test_predict_properties_exception_in_mol_creation(self):
+        """Test property prediction with exception during molecule creation (line 349)."""
+        predictor = MolecularPropertyPredictor()
+
+        with patch("drug_design.property_prediction.RDKIT_AVAILABLE", True):
+            with patch(
+                "drug_design.property_prediction.Chem.MolFromSmiles"
+            ) as mock_mol_from_smiles:
+                # This tests line 349: when mol_from_smiles raises an exception
+                mock_mol_from_smiles.side_effect = Exception("Molecule creation failed")
+
+                properties = predictor.predict_physicochemical_properties("CCO")
+
+                assert isinstance(properties, dict)
+                expected_keys = [
+                    "solubility",
+                    "permeability",
+                    "stability",
+                    "bioavailability",
+                ]
+                for key in expected_keys:
+                    assert key in properties
+                    assert (
+                        properties[key] == 0.0
+                    )  # Should return default values on exception
+
+    def test_predict_properties_type_error_line_349(self):
+        """Test line 349: TypeError for invalid molecular_data type."""
+        from src.drug_design.property_prediction import predict_properties
+
+        # Create a mock model
+        mock_model = Mock()
+        mock_model.predict_multiple_properties.return_value = {"property": [1.0]}
+
+        # Test with invalid data type (not DataFrame or list) - should hit line 349
+        with self.assertRaises(TypeError):
+            predict_properties(mock_model, "invalid_string_type")
+
+    def test_rdkit_import_warning_lines_24_26(self):
+        """Test lines 24-26: RDKit import warning."""
+        # Test that the import warning is properly structured
+        with patch("builtins.__import__", side_effect=ImportError("RDKit not found")):
+            with patch(
+                "src.drug_design.property_prediction.logging.warning"
+            ) as mock_warning:
+                # Force re-import to trigger the warning
+                import importlib
+
+                import src.drug_design.property_prediction
+
+                importlib.reload(src.drug_design.property_prediction)
+
+                # Should have called the warning
+                mock_warning.assert_called()
