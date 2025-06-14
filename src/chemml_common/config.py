@@ -31,6 +31,21 @@ except ImportError:
 
 
 @dataclass
+class WandBConfig:
+    """Configuration for Weights & Biases experiment tracking."""
+
+    enabled: bool = True
+    project_name: str = "chemml-experiments"
+    entity: Optional[str] = None
+    api_key: Optional[str] = "b4f102d87161194b68baa7395d5862aa3f93b2b7"
+    auto_login: bool = True
+    log_artifacts: bool = True
+    log_models: bool = True
+    log_code: bool = True
+    save_checkpoints: bool = True
+
+
+@dataclass
 class ChemMLPaths:
     """Standard paths for ChemML data and outputs."""
 
@@ -86,6 +101,17 @@ class ChemMLConfig(BaseSettings):
     # Model settings
     random_seed: int = Field(42, env="CHEMML_RANDOM_SEED")
     default_cv_folds: int = Field(5, env="CHEMML_CV_FOLDS")
+
+    # WandB settings
+    wandb_enabled: bool = Field(True, env="CHEMML_WANDB_ENABLED")
+    wandb_project_name: str = Field("chemml-experiments", env="CHEMML_WANDB_PROJECT")
+    wandb_entity: Optional[str] = Field(None, env="CHEMML_WANDB_ENTITY")
+    wandb_api_key: Optional[str] = Field(None, env="CHEMML_WANDB_API_KEY")
+    wandb_auto_login: bool = Field(True, env="CHEMML_WANDB_AUTO_LOGIN")
+    wandb_log_artifacts: bool = Field(True, env="CHEMML_WANDB_LOG_ARTIFACTS")
+    wandb_log_models: bool = Field(True, env="CHEMML_WANDB_LOG_MODELS")
+    wandb_log_code: bool = Field(True, env="CHEMML_WANDB_LOG_CODE")
+    wandb_save_checkpoints: bool = Field(True, env="CHEMML_WANDB_SAVE_CHECKPOINTS")
 
     if PYDANTIC_AVAILABLE:
 

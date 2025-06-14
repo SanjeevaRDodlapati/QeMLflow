@@ -12,27 +12,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-import wandb
-
-
-# Wandb experiment tracking setup
-def setup_wandb_tracking(experiment_name, config=None):
-    """Setup wandb experiment tracking."""
-    try:
-        wandb.login(key="b4f102d87161194b68baa7395d5862aa3f93b2b7", relogin=True)
-        run = wandb.init(
-            project="chemml-experiments",
-            name=experiment_name,
-            config=config or {},
-            tags=["chemml"],
-        )
-        print(f"✅ Wandb tracking started: {run.url}")
-        return run
-    except Exception as e:
-        print(f"⚠️ Wandb setup failed: {e}")
-        return None
-
-
 # ANSI color codes for better output
 GREEN = "\033[92m"
 BLUE = "\033[94m"

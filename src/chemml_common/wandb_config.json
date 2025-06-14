@@ -1,0 +1,11 @@
+{
+  "project_name": "chemml-experiments",
+  "api_key": "b4f102d87161194b68baa7395d5862aa3f93b2b7",
+  "default_tags": [
+    "chemml"
+  ],
+  "auto_login": true,
+  "log_code": true,
+  "log_artifacts": true,
+  "save_checkpoints": true
+}

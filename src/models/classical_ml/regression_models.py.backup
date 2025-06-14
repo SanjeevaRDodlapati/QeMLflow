@@ -1,27 +1,8 @@
 import pandas as pd
-import wandb
 from sklearn.exceptions import NotFittedError
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
-
-
-# Wandb experiment tracking setup
-def setup_wandb_tracking(experiment_name, config=None):
-    """Setup wandb experiment tracking."""
-    try:
-        wandb.login(key="b4f102d87161194b68baa7395d5862aa3f93b2b7", relogin=True)
-        run = wandb.init(
-            project="chemml-experiments",
-            name=experiment_name,
-            config=config or {},
-            tags=["chemml"],
-        )
-        print(f"✅ Wandb tracking started: {run.url}")
-        return run
-    except Exception as e:
-        print(f"⚠️ Wandb setup failed: {e}")
-        return None
 
 
 class RegressionModels:
