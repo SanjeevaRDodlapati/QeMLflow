@@ -249,8 +249,8 @@ def normalize_data(data):
 filter_by_properties = filter_by_molecular_properties
 
 
-# Alias for clean_data
-clean_data = clean_molecular_data
+# Note: clean_data function is defined above at line 23
+# No alias needed to avoid redefinition warning
 
 
 def standardize_molecules(smiles_list: List[str]) -> List[str]:

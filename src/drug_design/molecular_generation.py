@@ -122,7 +122,8 @@ class MolecularGenerator:
                             and Descriptors.HeavyAtomCount(modified_mol) <= max_atoms
                         ):
                             mol = modified_mol
-                    except:
+                    except (ValueError, AttributeError, TypeError):
+                        # Skip invalid molecular modifications
                         continue
 
                 final_smiles = Chem.MolToSmiles(mol)
@@ -169,7 +170,7 @@ class MolecularGenerator:
 
             return mw <= 500 and logp <= 5 and hbd <= 5 and hba <= 10
 
-        except:
+        except (ValueError, AttributeError, TypeError):
             return False
 
     def generate_similar_molecules(
@@ -260,7 +261,7 @@ class MolecularGenerator:
             else:
                 return smiles
 
-        except:
+        except (ValueError, AttributeError, TypeError):
             return smiles
 
     def _add_methyl_group(self, mol: "Chem.Mol") -> Optional["Chem.Mol"]:
@@ -354,7 +355,7 @@ class FragmentBasedGenerator:
                         generated_molecules.append(canonical_smiles)
                     else:
                         generated_molecules.append(combined_smiles)
-                except:
+                except (ValueError, AttributeError, TypeError):
                     generated_molecules.append(combined_smiles)
             else:
                 generated_molecules.append(combined_smiles)

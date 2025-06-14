@@ -10,8 +10,30 @@ Modules:
     protein_preparation: Protein structure download and preparation for docking
 """
 
-from .feature_extraction import *
-from .molecular_preprocessing import *
+# Explicit imports from feature_extraction
+from .feature_extraction import (
+    calculate_properties,
+    extract_basic_molecular_descriptors,
+    extract_descriptors,
+    extract_features,
+    extract_fingerprints,
+)
+
+# Explicit imports from molecular_preprocessing
+from .molecular_preprocessing import (
+    clean_data,
+    clean_molecular_data,
+    filter_by_molecular_properties,
+    handle_missing_values,
+    normalize_data,
+    preprocess_molecular_data,
+    remove_invalid_molecules,
+    standardize_molecules,
+    standardize_smiles,
+    validate_smiles_column,
+)
+
+# Protein preparation imports (already explicit)
 from .protein_preparation import (
     ProteinPreparationPipeline,
     convert_to_pdbqt,
@@ -21,10 +43,23 @@ from .protein_preparation import (
 )
 
 __all__ = [
-    # Molecular preprocessing
-    "molecular_preprocessing",
     # Feature extraction
-    "feature_extraction",
+    "calculate_properties",
+    "extract_basic_molecular_descriptors",
+    "extract_descriptors",
+    "extract_features",
+    "extract_fingerprints",
+    # Molecular preprocessing
+    "clean_data",
+    "clean_molecular_data",
+    "filter_by_molecular_properties",
+    "handle_missing_values",
+    "normalize_data",
+    "preprocess_molecular_data",
+    "remove_invalid_molecules",
+    "standardize_molecules",
+    "standardize_smiles",
+    "validate_smiles_column",
     # Protein preparation
     "ProteinPreparationPipeline",
     "download_pdb_file",

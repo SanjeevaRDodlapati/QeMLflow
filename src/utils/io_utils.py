@@ -87,7 +87,7 @@ class DataLoader:
 
         # Get target information
         target = new_client.target
-        target_info = target.get(target_id)
+        _ = target.get(target_id)  # Validate target exists
 
         # Get activities
         activity = new_client.activity

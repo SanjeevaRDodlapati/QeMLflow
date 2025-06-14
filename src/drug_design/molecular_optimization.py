@@ -512,7 +512,7 @@ class GeneticAlgorithmOptimizer(MolecularOptimizer):
                 char_list[idx] = replacements[char_list[idx]]
                 return "".join(char_list)
             return smiles
-        except:
+        except (IndexError, KeyError, ValueError):
             return smiles
 
 

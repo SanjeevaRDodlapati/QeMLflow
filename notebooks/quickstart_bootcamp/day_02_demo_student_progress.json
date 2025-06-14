@@ -1,0 +1,112 @@
+{
+  "student": "demo_student",
+  "day": "Day 2",
+  "activities": [
+    {
+      "activity": "day2_start",
+      "data": {
+        "day": "Day 2: Deep Learning for Molecules",
+        "start_time": "2025-06-13T18:57:52.671720",
+        "target_duration_hours": 6,
+        "sections": 5
+      },
+      "timestamp": "2025-06-13 18:57:52.671724"
+    },
+    {
+      "activity": "section1_start",
+      "data": {
+        "section": "GNN Mastery",
+        "start_time": "2025-06-13T18:57:52.727486",
+        "prerequisites_checked": true,
+        "target_time_minutes": 90
+      },
+      "timestamp": "2025-06-13 18:57:52.727493"
+    },
+    {
+      "activity": "section1_end",
+      "data": {
+        "section": "GNN Mastery",
+        "end_time": "2025-06-13T18:57:52.727660",
+        "duration_minutes": 2.9e-06
+      },
+      "timestamp": "2025-06-13 18:57:52.727671"
+    },
+    {
+      "activity": "section2_start",
+      "data": {
+        "section": "GAT Implementation",
+        "start_time": "2025-06-13T18:57:52.728177",
+        "target_time_minutes": 90
+      },
+      "timestamp": "2025-06-13 18:57:52.728183"
+    },
+    {
+      "activity": "section2_end",
+      "data": {
+        "section": "GAT Implementation",
+        "end_time": "2025-06-13T18:57:52.728291",
+        "duration_minutes": 1.9e-06
+      },
+      "timestamp": "2025-06-13 18:57:52.728296"
+    },
+    {
+      "activity": "section3_start",
+      "data": {
+        "section": "Transformers",
+        "start_time": "2025-06-13T18:57:52.728697",
+        "target_time_minutes": 90
+      },
+      "timestamp": "2025-06-13 18:57:52.728701"
+    },
+    {
+      "activity": "section3_end",
+      "data": {
+        "section": "Transformers",
+        "end_time": "2025-06-13T18:57:52.728826",
+        "duration_minutes": 2.1499999999999997e-06
+      },
+      "timestamp": "2025-06-13 18:57:52.728831"
+    },
+    {
+      "activity": "section4_start",
+      "data": {
+        "section": "Generative Models",
+        "start_time": "2025-06-13T18:57:52.729159",
+        "target_time_minutes": 60
+      },
+      "timestamp": "2025-06-13 18:57:52.729164"
+    },
+    {
+      "activity": "section4_end",
+      "data": {
+        "section": "Generative Models",
+        "end_time": "2025-06-13T18:57:52.729259",
+        "duration_minutes": 1.6666666666666667e-06
+      },
+      "timestamp": "2025-06-13 18:57:52.729264"
+    },
+    {
+      "activity": "section5_start",
+      "data": {
+        "section": "Benchmarking",
+        "start_time": "2025-06-13T18:57:52.729531",
+        "target_time_minutes": 30
+      },
+      "timestamp": "2025-06-13 18:57:52.729535"
+    },
+    {
+      "activity": "section5_end",
+      "data": {
+        "section": "Benchmarking",
+        "end_time": "2025-06-13T18:57:52.739461",
+        "duration_minutes": 0.00016549999999999998
+      },
+      "timestamp": "2025-06-13 18:57:52.739469"
+    }
+  ],
+  "summary": {
+    "overall_score": 0.75,
+    "section_scores": {},
+    "time_spent_minutes": 0.0011351166666666668
+  }
+}

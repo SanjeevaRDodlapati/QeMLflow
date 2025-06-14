@@ -324,14 +324,7 @@ class DrugLikenessAssessor:
         try:
             mol = Chem.MolFromSmiles(smiles)
             if mol is None:
-                return {
-                    "lipinski_violations": 4,
-                    "ghose_violations": 4,
-                    "veber_violations": 2,
-                    "egan_violations": 2,
-                    "muegge_violations": 4,
-                    "overall_score": 0.0,
-                }
+                return self._get_default_drug_likeness_result(failed=True)
 
             # Calculate descriptors
             mw = Descriptors.MolWt(mol)
@@ -341,50 +334,14 @@ class DrugLikenessAssessor:
             tpsa = Descriptors.TPSA(mol)
             rotatable_bonds = Descriptors.NumRotatableBonds(mol)
 
-            # Lipinski's Rule of Five
-            lipinski_violations = 0
-            if mw > 500:
-                lipinski_violations += 1
-            if logp > 5:
-                lipinski_violations += 1
-            if hbd > 5:
-                lipinski_violations += 1
-            if hba > 10:
-                lipinski_violations += 1
-
-            # Ghose filter
-            ghose_violations = 0
-            if mw < 160 or mw > 480:
-                ghose_violations += 1
-            if logp < -0.4 or logp > 5.6:
-                ghose_violations += 1
-            if tpsa > 140:
-                ghose_violations += 1
-
-            # Veber filter
-            veber_violations = 0
-            if rotatable_bonds > 10:
-                veber_violations += 1
-            if tpsa > 140:
-                veber_violations += 1
-
-            # Egan filter
-            egan_violations = 0
-            if logp < -1 or logp > 6:
-                egan_violations += 1
-            if tpsa > 150:
-                egan_violations += 1
-
-            # Muegge filter
-            muegge_violations = 0
-            if mw < 200 or mw > 600:
-                muegge_violations += 1
-            if logp < -2 or logp > 5:
-                muegge_violations += 1
-            if tpsa > 150:
-                muegge_violations += 1
-            if rotatable_bonds > 15:
-                muegge_violations += 1
+            # Apply filters
+            lipinski_violations = self._assess_lipinski_filter(mw, logp, hbd, hba)
+            ghose_violations = self._assess_ghose_filter(mw, logp, tpsa)
+            veber_violations = self._assess_veber_filter(rotatable_bonds, tpsa)
+            egan_violations = self._assess_egan_filter(logp, tpsa)
+            muegge_violations = self._assess_muegge_filter(
+                mw, logp, tpsa, rotatable_bonds
+            )
 
             # Calculate overall score
             total_violations = (
@@ -408,6 +365,72 @@ class DrugLikenessAssessor:
 
         except Exception as e:
             logging.warning(f"Error assessing drug-likeness for SMILES {smiles}: {e}")
+            return self._get_default_drug_likeness_result(failed=True)
+
+    def _assess_lipinski_filter(
+        self, mw: float, logp: float, hbd: int, hba: int
+    ) -> int:
+        """Assess Lipinski's Rule of Five violations."""
+        violations = 0
+        if mw > 500:
+            violations += 1
+        if logp > 5:
+            violations += 1
+        if hbd > 5:
+            violations += 1
+        if hba > 10:
+            violations += 1
+        return violations
+
+    def _assess_ghose_filter(self, mw: float, logp: float, tpsa: float) -> int:
+        """Assess Ghose filter violations."""
+        violations = 0
+        if mw < 160 or mw > 480:
+            violations += 1
+        if logp < -0.4 or logp > 5.6:
+            violations += 1
+        if tpsa > 140:
+            violations += 1
+        return violations
+
+    def _assess_veber_filter(self, rotatable_bonds: int, tpsa: float) -> int:
+        """Assess Veber filter violations."""
+        violations = 0
+        if rotatable_bonds > 10:
+            violations += 1
+        if tpsa > 140:
+            violations += 1
+        return violations
+
+    def _assess_egan_filter(self, logp: float, tpsa: float) -> int:
+        """Assess Egan filter violations."""
+        violations = 0
+        if logp < -1 or logp > 6:
+            violations += 1
+        if tpsa > 150:
+            violations += 1
+        return violations
+
+    def _assess_muegge_filter(
+        self, mw: float, logp: float, tpsa: float, rotatable_bonds: int
+    ) -> int:
+        """Assess Muegge filter violations."""
+        violations = 0
+        if mw < 200 or mw > 600:
+            violations += 1
+        if logp < -2 or logp > 5:
+            violations += 1
+        if tpsa > 150:
+            violations += 1
+        if rotatable_bonds > 15:
+            violations += 1
+        return violations
+
+    def _get_default_drug_likeness_result(
+        self, failed: bool = False
+    ) -> Dict[str, Union[bool, float]]:
+        """Get default drug-likeness result for error cases."""
+        if failed:
             return {
                 "lipinski_violations": 4,
                 "ghose_violations": 4,
@@ -415,6 +438,15 @@ class DrugLikenessAssessor:
                 "egan_violations": 2,
                 "muegge_violations": 4,
                 "overall_score": 0.0,
+            }
+        else:
+            return {
+                "lipinski_violations": 0,
+                "ghose_violations": 0,
+                "veber_violations": 0,
+                "egan_violations": 0,
+                "muegge_violations": 0,
+                "overall_score": 0.5,
             }
 
 

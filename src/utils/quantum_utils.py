@@ -507,5 +507,5 @@ def measure_quantum_state(circuit: QuantumCircuit, qubits: List[int] = None) -> 
         else:
             # Mock simulation results
             return {"counts": {"00": 512, "11": 512}}
-    except:
+    except (ImportError, AttributeError, RuntimeError):
         return {"counts": {"00": 512, "11": 512}}

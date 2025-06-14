@@ -149,7 +149,7 @@ class SMILESProcessor:
         try:
             mol = Chem.MolFromSmiles(smiles)
             return mol is not None
-        except:
+        except (ValueError, AttributeError, TypeError):
             return False
 
     @staticmethod

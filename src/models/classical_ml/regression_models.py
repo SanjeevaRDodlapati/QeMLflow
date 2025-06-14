@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.exceptions import NotFittedError
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
@@ -31,7 +32,7 @@ class RegressionModels:
         """Make predictions using the trained model."""
         try:
             return self.model.predict(X)
-        except:
+        except (AttributeError, ValueError, NotFittedError):
             # If model not fitted, return zeros (mock predictions)
             # This handles backward compatibility with older sklearn behavior
             import numpy as np

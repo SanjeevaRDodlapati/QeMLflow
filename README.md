@@ -16,11 +16,13 @@
 
 **Ready to learn systematically?** Join thousands who've mastered molecular ML:
 
-**→ [📚 7-Day QuickStart Bootcamp](notebooks/quickstart_bootcamp/README.md)** *(85% completion rate)*
+**→ [📚 7-Day QuickStart Bootcamp](notebooks/quickstart_bootcamp/)** *(85% completion rate)*
 
 **Want to explore learning options?** Find your perfect path:
 
 **→ [📚 LEARNING PATHS](docs/LEARNING_PATHS.md)** *(Choose your adventure)*
+
+**Quick launch:** `python quick_access_demo.py` for interactive guidance!
 
 ---
 
@@ -57,19 +59,22 @@
 ## 📖 Documentation Hub
 
 ### 🎯 Getting Started
+
 - **[🚀 Quick Start Guide](docs/GET_STARTED.md)** - 15-minute setup to first success
-- **[📚 Learning Paths](docs/LEARNING_PATHS.md)** - Choose your learning journey
-- **[📖 Complete Reference](docs/REFERENCE.md)** - Technical documentation & API
+- **[📚 User Guide](docs/USER_GUIDE.md)** - Comprehensive usage guide
+- **[📖 Learning Paths](docs/LEARNING_PATHS.md)** - Choose your learning journey
 
 ### 🎓 Learning Programs
+
 - **[7-Day QuickStart Bootcamp](notebooks/quickstart_bootcamp/)** - Most popular choice
 - **[4-Week Intensive Program](docs/LEARNING_PATHS.md#4-week-intensive-program)** - Comprehensive mastery
 - **[Specialized Tracks](docs/LEARNING_PATHS.md#specialization-tracks)** - Quantum ML, Production, Research
 
 ### 🛠️ Technical Resources
-- **[API Reference](docs/REFERENCE.md#api-reference)** - Complete function documentation
-- **[Installation Guide](docs/GET_STARTED.md#installation)** - Environment setup
-- **[Troubleshooting](docs/REFERENCE.md#troubleshooting)** - Common issues & solutions
+
+- **[📖 API Reference](docs/API_REFERENCE.md)** - Complete framework documentation
+- **[📖 Complete Reference](docs/REFERENCE.md)** - Technical deep-dive & troubleshooting
+- **[🔧 Installation Guide](docs/GET_STARTED.md#installation)** - Environment setup
 
 ---
 
