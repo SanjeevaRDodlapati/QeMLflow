@@ -1,10 +1,40 @@
-# ChemML Weights & Biases Integration Guide
+# ChemML Universal Wandb Integration Guide
+
+## 🎯 One-Command Experiment Tracking
+
+ChemML now features a **Universal Tracker** that provides one-command experiment tracking across the entire codebase with automatic context detection and graceful fallbacks.
 
 ## 🚀 Quick Start
 
-Your wandb API key has been integrated into the ChemML codebase for comprehensive experiment tracking.
+### New Universal Tracker (Recommended)
 
-### 1. Basic Setup
+```python
+from chemml_common.tracker import track_experiment, quick_track
+
+# 1. As a decorator (auto-logs function arguments as hyperparameters)
+@track_experiment(project="molecular_optimization")
+def optimize_molecule(smiles, target_property, learning_rate=0.01):
+    # Your code here
+    results = run_optimization(smiles, target_property)
+    return {"final_score": results.score}
+
+# 2. As a context manager
+with track_experiment(project="drug_discovery") as tracker:
+    model = train_model(data)
+    tracker.log({"accuracy": 0.95, "loss": 0.23})
+
+# 3. Quick one-liner
+tracker = quick_track("my_experiment")
+tracker.log({"metric": 0.95})
+tracker.finish()
+
+# 4. Global tracking (perfect for notebooks)
+from chemml_common.tracker import start_global_tracking, log_global
+start_global_tracking("notebook_experiment")
+log_global({"step1_result": 0.8})
+```
+
+### Traditional Wandb (Still Available)
 
 ```python
 import wandb
@@ -15,37 +45,17 @@ os.environ['WANDB_API_KEY'] = 'b4f102d87161194b68baa7395d5862aa3f93b2b7'
 
 # Login to wandb
 wandb.login(key='b4f102d87161194b68baa7395d5862aa3f93b2b7', relogin=True)
-```
 
-### 2. Start an Experiment
-
-```python
 # Initialize experiment
 run = wandb.init(
     project="chemml-experiments",
     name="my_experiment_name",
-    config={
-        "model_type": "random_forest",
-        "dataset": "molecular_properties",
-        "learning_rate": 0.01
-    },
+    config={"model_type": "random_forest"},
     tags=["chemml", "molecular_ml"]
 )
-```
 
-### 3. Log Metrics
-
-```python
-# Log training metrics
-wandb.log({
-    "epoch": 1,
-    "train_loss": 0.5,
-    "val_loss": 0.6,
-    "accuracy": 0.85
-})
-
-# Log with step
-wandb.log({"loss": 0.4}, step=epoch)
+# Log metrics
+wandb.log({"epoch": 1, "train_loss": 0.5, "accuracy": 0.85})
 ```
 
 ### 4. Log Model Performance
@@ -205,42 +215,191 @@ print(f"📊 View at: {run.url}")
 wandb.finish()
 ```
 
-## 📊 Integration Status
+## ✨ Universal Tracker Features
 
-✅ **Configured Files:**
-- `src/chemml_common/wandb_integration.py` - Main integration module
-- `src/chemml_common/tracking.py` - Advanced tracking features
-- `src/chemml_common/wandb_config.json` - Configuration file
-- `setup_wandb_integration.py` - Setup script
+### 🧠 Smart Auto-Detection
+- **Project names**: Automatically detects from file location (`drug_design/` → `chemml_drug_design`)
+- **Experiment names**: Generated from function names and context
+- **Framework tags**: Auto-detects PyTorch, TensorFlow, RDKit, DeepChem, etc.
+- **Context tags**: Adds `jupyter_notebook`, `testing`, `tutorial` tags automatically
 
-✅ **Modified Files with wandb:**
-- `src/drug_design/admet_prediction.py`
-- `src/models/classical_ml/regression_models.py`
-- `src/models/quantum_ml/quantum_circuits.py`
-- `quick_access_demo.py`
-- `notebooks/tutorials/03_deepchem_drug_discovery.ipynb`
+### 🛡️ Graceful Fallbacks
+- Works even when wandb is not installed or available
+- Handles network issues and API failures gracefully
+- Provides informative error messages without breaking code
 
-## 🔗 Links
+### 📊 Multiple Usage Patterns
+1. **Decorator**: `@track_experiment(project="my_project")`
+2. **Context Manager**: `with track_experiment() as tracker:`
+3. **Quick Track**: `tracker = quick_track("experiment")`
+4. **Global Tracking**: `start_global_tracking()` for notebooks
 
-- **Project Dashboard**: https://wandb.ai/projects/chemml-experiments
-- **Your Experiments**: https://wandb.ai/sdodlapa/chemml-experiments
-- **Documentation**: https://docs.wandb.ai/
+### 🔧 Advanced Capabilities
+- **Model watching**: Automatic gradient and parameter tracking
+- **Artifact logging**: Files, models, datasets
+- **Hyperparameter logging**: Automatic from function arguments
+- **Error tracking**: Automatic error logging and recovery
 
-## 💡 Tips
+## 🎮 Usage Examples
 
-1. **Tag your experiments** for better organization
-2. **Use descriptive experiment names**
-3. **Log hyperparameters in config**
-4. **Save important artifacts** (models, datasets)
-5. **Create plots and visualizations**
-6. **Use wandb.summary** for final results
+### For Model Training
 
-## 🎯 Next Steps
+```python
+from chemml_common.tracker import track_training
 
-1. Run the example script: `python examples/wandb_example.py`
-2. Integrate wandb into your existing experiments
-3. Use the tracking module for advanced features
-4. Explore the wandb dashboard to analyze results
-5. Set up experiment sweeps for hyperparameter optimization
+# Specialized training tracker
+with track_training("gnn_model", {"lr": 0.001, "layers": 3}) as tracker:
+    model = create_model()
+    tracker.watch_model(model)  # Auto-track gradients
 
-Your wandb integration is ready! Start tracking your ChemML experiments today. 🚀
+    for epoch in range(epochs):
+        loss = train_epoch(model)
+        tracker.log({"epoch": epoch, "loss": loss})
+```
+
+### For Model Evaluation
+
+```python
+from chemml_common.tracker import track_evaluation
+
+with track_evaluation("gnn_model", "test_dataset") as tracker:
+    results = evaluate_model(model, test_data)
+    tracker.log({
+        "accuracy": results["accuracy"],
+        "f1_score": results["f1"],
+        "confusion_matrix": results["cm"]
+    })
+```
+
+### For Optimization Tasks
+
+```python
+from chemml_common.tracker import track_optimization
+
+with track_optimization("genetic_algorithm", "binding_affinity") as tracker:
+    optimizer = GeneticAlgorithm()
+
+    for generation in range(generations):
+        population = optimizer.evolve()
+        best_score = max(population.scores)
+        tracker.log({"generation": generation, "best_score": best_score})
+```
+
+### For Jupyter Notebooks
+
+```python
+# Cell 1: Setup
+from chemml_common.tracker import start_global_tracking, log_global, finish_global_tracking
+start_global_tracking("drug_discovery_analysis")
+
+# Cell 2: Data preprocessing
+data = preprocess_molecules(raw_data)
+log_global({"data_size": len(data), "preprocessing_time": time_taken})
+
+# Cell 3: Model training
+model = train_model(data)
+log_global({"training_accuracy": model.score, "model_params": model.n_params})
+
+# Cell 4: Evaluation
+test_results = evaluate_model(model, test_data)
+log_global({"test_accuracy": test_results["accuracy"]})
+
+# Last cell: Cleanup
+finish_global_tracking()
+```
+
+## 🔗 Integration with ChemML Components
+
+### Automatic Integration Examples
+
+The universal tracker automatically integrates with existing ChemML code:
+
+```python
+# Before (existing ChemML code)
+def molecular_property_prediction(smiles_list, target_property):
+    model = train_model(smiles_list, target_property)
+    predictions = model.predict(test_smiles)
+    return evaluate_predictions(predictions)
+
+# After (with one-line addition)
+from chemml_common.tracker import track_experiment
+
+@track_experiment(project="molecular_properties")  # Only addition needed!
+def molecular_property_prediction(smiles_list, target_property):
+    model = train_model(smiles_list, target_property)
+    predictions = model.predict(test_smiles)
+    return evaluate_predictions(predictions)
+# Now automatically tracks: smiles_list, target_property as hyperparameters
+# and the returned evaluation results as metrics
+```
+
+### Integration Status
+
+The following ChemML components now have wandb integration:
+
+- ✅ **Data Processing**: `src/data_processing/`
+- ✅ **Drug Design**: `src/drug_design/`
+- ✅ **Model Training**: `src/models/`
+- ✅ **Notebooks**: `notebooks/tutorials/`
+- ✅ **Quantum ML**: `src/models/quantum_ml/`
+- ✅ **Utilities**: `src/utils/`
+
+## 🎯 Best Practices
+
+### 1. Use Descriptive Names
+
+```python
+# Good
+@track_experiment(
+    project="molecular_property_prediction",
+    name="random_forest_baseline_v2",
+    tags=["baseline", "production", "random_forest"]
+)
+
+# Better - auto-detected
+@track_experiment(project="molecular_property_prediction")
+def random_forest_baseline_v2(dataset, n_estimators=100):
+    pass  # Name and hyperparameters auto-detected
+```
+
+### 2. Organize by Project
+
+```python
+# Organize experiments by research area
+track_experiment(project="drug_discovery")      # For drug discovery
+track_experiment(project="materials_science")   # For materials research
+track_experiment(project="method_development")  # For new algorithms
+```
+
+### 3. Log Comprehensive Metrics
+
+```python
+with track_experiment(project="comprehensive_logging") as tracker:
+    # Training metrics
+    tracker.log({"train_loss": loss, "train_acc": acc})
+
+    # Validation metrics
+    tracker.log({"val_loss": val_loss, "val_acc": val_acc})
+
+    # Model complexity
+    tracker.log({"n_parameters": count_params(model)})
+
+    # Resource usage
+    tracker.log({"gpu_memory": get_gpu_memory(), "time_per_epoch": epoch_time})
+```
+
+### 4. Use Artifacts for Important Files
+
+```python
+with track_experiment(project="artifact_management") as tracker:
+    # Log datasets
+    tracker.log_artifact("processed_data.csv", name="dataset_v1", type="dataset")
+
+    # Log models
+    torch.save(model.state_dict(), "model.pth")
+    tracker.log_artifact("model.pth", name="trained_model", type="model")
+
+    # Log plots and visualizations
+    create_loss_plot()
+    tracker.log_artifact("loss_plot.png", name="training_curves", type="image")
+```
