@@ -11,7 +11,7 @@
 ## 🚀 **Getting Started**
 
 1. **Complete `fundamentals/` first** - These cover essential concepts
-2. **Progress to `bootcamp/`** - Hands-on projects building real skills  
+2. **Progress to `bootcamp/`** - Hands-on projects building real skills
 3. **Explore `advanced/`** - Specialized applications and research topics
 
 Each notebook is self-contained with clear instructions and learning objectives.

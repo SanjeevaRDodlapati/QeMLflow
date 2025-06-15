@@ -5,7 +5,7 @@
 ## 📋 **Assessment Schedule**
 
 - **Week 1-3:** Fundamentals and basic concepts
-- **Week 4-6:** Intermediate ML and quantum concepts  
+- **Week 4-6:** Intermediate ML and quantum concepts
 - **Week 7-9:** Advanced applications and projects
 - **Week 10-12:** Integration and specialization
 

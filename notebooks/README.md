@@ -8,7 +8,7 @@
 
 **New to ChemML?** Start here:
 1. **[Fundamentals](learning/fundamentals/)** - Core concepts and basic tutorials
-2. **[Bootcamp](learning/bootcamp/)** - 7-day intensive learning program  
+2. **[Bootcamp](learning/bootcamp/)** - 7-day intensive learning program
 3. **[Examples](examples/)** - Quick reference and specific use cases
 
 **Tracking Progress?** Use **[Assessments](assessments/)** for weekly checkpoints.
@@ -59,7 +59,7 @@
 fundamentals/ → bootcamp/01-03 → assessments/week_01-03
 ```
 
-### **⚡ Intermediate Path (4-6 weeks)**  
+### **⚡ Intermediate Path (4-6 weeks)**
 ```
 fundamentals/ → bootcamp/01-07 → advanced/ → assessments/week_01-06
 ```
