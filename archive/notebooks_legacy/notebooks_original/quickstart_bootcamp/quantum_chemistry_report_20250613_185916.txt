@@ -1,0 +1,207 @@
+================================================================================
+QUANTUM CHEMISTRY CALCULATION REPORT
+================================================================================
+Generated: 2025-06-13 18:59:16
+Backend: pyscf
+Number of calculations: 16
+
+SUMMARY OF CALCULATIONS
+--------------------------------------------------------------------------------
+#    Molecule       Method    Basis     Energy         Success
+--------------------------------------------------------------------------------
+0    Water          scf       sto-3g    -74.961171     ✓
+1    Water          scf       sto-3g    -74.961171     ✓
+2    Water          scf       6-31g     -75.969701     ✓
+3    Water          mp2       sto-3g    -75.003085     ✓
+4    Water          mp2       6-31g     -76.104036     ✓
+5    Water          dft:b3lyp sto-3g    -75.318672     ✓
+6    Water          dft:b3lyp 6-31g     -76.377184     ✓
+7    Methane        scf       sto-3g    -39.723131     ✓
+8    Methane        mp2       sto-3g    -39.780725     ✓
+9    Methane        dft:b3lyp sto-3g    -40.036262     ✓
+10   Ethanol        dft:b3lyp 6-31g     -154.974062    ✓
+11   Benzene        dft:b3lyp sto-3g    -229.406051    ✓
+12   Benzene        dft:b3lyp 6-31g     -232.198631    ✓
+13   Benzene        dft:b3lyp sto-3g    -229.406051    ✓
+14   Benzene        dft:b3lyp 6-31g     -232.198631    ✓
+15   Benzene        dft:b3lyp 6-311g    -232.248107    ✓
+
+DETAILED RESULTS
+================================================================================
+
+Calculation #0 - Water
+----------------------------------------
+Method: scf
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -74.96117113786767
+  dipole: None
+  charges: None
+
+Calculation #1 - Water
+----------------------------------------
+Method: scf
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -74.96117113786767
+  dipole: None
+  charges: None
+
+Calculation #2 - Water
+----------------------------------------
+Method: scf
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -75.96970096260367
+  dipole: None
+  charges: None
+
+Calculation #3 - Water
+----------------------------------------
+Method: mp2
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -75.00308450473338
+  dipole: None
+  charges: None
+
+Calculation #4 - Water
+----------------------------------------
+Method: mp2
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -76.10403565198428
+  dipole: None
+  charges: None
+
+Calculation #5 - Water
+----------------------------------------
+Method: dft:b3lyp
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -75.31867216472413
+  dipole: None
+  charges: None
+
+Calculation #6 - Water
+----------------------------------------
+Method: dft:b3lyp
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -76.37718371372986
+  dipole: None
+  charges: None
+
+Calculation #7 - Methane
+----------------------------------------
+Method: scf
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -39.72313136445273
+  dipole: None
+  charges: None
+
+Calculation #8 - Methane
+----------------------------------------
+Method: mp2
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -39.78072540527637
+  dipole: None
+  charges: None
+
+Calculation #9 - Methane
+----------------------------------------
+Method: dft:b3lyp
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -40.03626213660933
+  dipole: None
+  charges: None
+
+Calculation #10 - Ethanol
+----------------------------------------
+Method: dft:b3lyp
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -154.9740617913353
+  dipole: [-1.43743420e+00 -9.48546504e-01 -2.64960386e-14]
+  charges: [-0.39530606  0.01353469 -0.62698955  0.10701408  0.10701408  0.36743547
+  0.13712059  0.14508835  0.14508835]
+
+Calculation #11 - Benzene
+----------------------------------------
+Method: dft:b3lyp
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -229.40605141336098
+  dipole: None
+  charges: None
+
+Calculation #12 - Benzene
+----------------------------------------
+Method: dft:b3lyp
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -232.19863053083
+  dipole: None
+  charges: None
+
+Calculation #13 - Benzene
+----------------------------------------
+Method: dft:b3lyp
+Basis: sto-3g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -229.40605141336098
+  dipole: None
+  charges: None
+
+Calculation #14 - Benzene
+----------------------------------------
+Method: dft:b3lyp
+Basis: 6-31g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -232.19863053083
+  dipole: None
+  charges: None
+
+Calculation #15 - Benzene
+----------------------------------------
+Method: dft:b3lyp
+Basis: 6-311g
+Backend: pyscf
+Success: Yes
+Properties:
+  energy: -232.24810724512807
+  dipole: None
+  charges: None
