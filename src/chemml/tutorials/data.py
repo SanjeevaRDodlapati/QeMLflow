@@ -7,7 +7,12 @@ designed for educational purposes in computational chemistry and machine learnin
 
 Key Features:
 - Pre-loaded molecular datasets for tutorials
-- Synthetic data generation for demonstrations
+- Synthetic data generation for ddef load_quantum_molecules(
+    molecules: Optional[List[str]] = None,
+    basis_set: str = 'STO-3G',
+    include_hamiltonians: bool = True,
+    difficulty_level: str = 'beginner'
+) -> Any:rations
 - Educational molecule collections
 - Data validation and preprocessing for learning
 """
@@ -356,3 +361,47 @@ def get_molecule_properties(smiles_list: List[str]) -> pd.DataFrame:
             continue
 
     return pd.DataFrame(data)
+
+
+def load_quantum_molecules(
+    molecules: List[str] = None,
+    basis_set: str = "STO-3G",
+    include_hamiltonians: bool = True,
+    difficulty_level: str = "beginner",
+) -> Any:
+    """
+    Load quantum molecular systems for tutorials.
+
+    Args:
+        molecules: List of molecule names
+        basis_set: Quantum chemistry basis set
+        include_hamiltonians: Whether to include molecular Hamiltonians
+        difficulty_level: Tutorial difficulty level
+
+    Returns:
+        Quantum molecular dataset object
+    """
+    if molecules is None:
+        molecules = ["H2", "LiH"]
+
+    class QuantumMolecularDataset:
+        def __init__(self, mols, metadata):
+            self.molecules = mols
+            self.metadata = metadata
+
+    # Create mock quantum molecular data
+    mock_molecules = {mol: f"Quantum_system_{mol}" for mol in molecules}
+
+    metadata = {
+        "learning_focus": "Molecular Hamiltonians and VQE",
+        "basis_set": basis_set,
+        "difficulty": difficulty_level,
+        "include_hamiltonians": include_hamiltonians,
+    }
+
+    print(f"🧬 Quantum molecular dataset loaded:")
+    print(f"   • Molecules: {', '.join(molecules)}")
+    print(f"   • Basis set: {basis_set}")
+    print(f"   • Difficulty: {difficulty_level}")
+
+    return QuantumMolecularDataset(mock_molecules, metadata)
