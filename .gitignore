@@ -95,3 +95,13 @@ qiskit_*.log
 mlruns/
 .mlflow/
 wandb/
+
+# Coverage reports
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/
+
+# Backup files
+*_backup.*
+*.backup
