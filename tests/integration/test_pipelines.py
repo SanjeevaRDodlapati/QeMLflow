@@ -14,15 +14,15 @@ import pytest
 
 # Import all modules for integration testing
 try:
+    from chemml.research.drug_discovery.properties import (
+        predict_properties,
+        train_property_model,
+    )
     from src.data_processing.feature_extraction import (
         extract_descriptors,
         generate_fingerprints,
     )
     from src.data_processing.molecular_preprocessing import clean_data, normalize_data
-    from src.drug_design.property_prediction import (
-        predict_properties,
-        train_property_model,
-    )
     from src.models.classical_ml.regression_models import RegressionModels
     from src.utils.io_utils import load_molecular_data, save_molecular_data
     from src.utils.ml_utils import evaluate_model, normalize_features, split_data
@@ -137,7 +137,10 @@ class TestEndToEndPipelines:
             y_train = sample_molecular_data["activity"].values
 
             # Step 2: Train QSAR model
-            from src.drug_design.qsar_modeling import build_qsar_model, predict_activity
+            from chemml.research.drug_discovery.qsar import (
+                build_qsar_model,
+                predict_activity,
+            )
 
             qsar_model = build_qsar_model(X_train, y_train, model_type="random_forest")
 

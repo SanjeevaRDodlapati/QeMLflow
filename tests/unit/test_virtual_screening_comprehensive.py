@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.drug_design.virtual_screening import (
+from chemml.research.drug_discovery.screening import (
     PharmacophoreScreener,
     SimilarityScreener,
     VirtualScreener,

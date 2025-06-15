@@ -1000,7 +1000,7 @@ class TestPerformance:
 
     def test_predict_properties_type_error_line_349(self):
         """Test line 349: TypeError for invalid molecular_data type."""
-        from src.drug_design.property_prediction import predict_properties
+        from chemml.research.drug_discovery.properties import predict_properties
 
         # Create a mock model
         mock_model = Mock()
@@ -1015,14 +1015,14 @@ class TestPerformance:
         # Test that the import warning is properly structured
         with patch("builtins.__import__", side_effect=ImportError("RDKit not found")):
             with patch(
-                "src.drug_design.property_prediction.logging.warning"
+                "chemml.research.drug_discovery.properties.logging.warning"
             ) as mock_warning:
                 # Force re-import to trigger the warning
                 import importlib
 
-                import src.drug_design.property_prediction
+                import chemml.research.drug_discovery.properties
 
-                importlib.reload(src.drug_design.property_prediction)
+                importlib.reload(chemml.research.drug_discovery.properties)
 
                 # Should have called the warning
                 mock_warning.assert_called()

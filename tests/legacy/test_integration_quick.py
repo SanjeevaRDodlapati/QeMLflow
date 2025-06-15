@@ -8,7 +8,7 @@ import pandas as pd
 
 def test_integration():
     # Test virtual screening
-    from src.drug_design.virtual_screening import perform_virtual_screening
+    from chemml.research.drug_discovery.screening import perform_virtual_screening
 
     reference_smiles = ["CCO", "CCC", "CCCO"]
     library_smiles = ["CCCC", "CCCCC", "CC(C)O", "CCO", "invalid"]
@@ -31,7 +31,7 @@ def test_integration():
         return False
 
     # Test property prediction
-    from src.drug_design.property_prediction import (
+    from chemml.research.drug_discovery.properties import (
         predict_properties,
         train_property_model,
     )
@@ -60,7 +60,7 @@ def test_integration():
         return False
 
     # Test QSAR modeling
-    from src.drug_design.qsar_modeling import build_qsar_model, predict_activity
+    from chemml.research.drug_discovery.qsar import build_qsar_model, predict_activity
 
     try:
         # Build QSAR model

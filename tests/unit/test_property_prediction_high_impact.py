@@ -12,7 +12,9 @@ class TestPropertyPredictionHighImpact(unittest.TestCase):
 
     def test_predict_properties_type_error_line_349(self):
         """Test line 349: TypeError for invalid molecular_data type."""
-        from src.drug_design.property_prediction import predict_properties
+        from chemml.research.drug_discovery.property_prediction import (
+            predict_properties,
+        )
 
         # Create a mock model
         mock_model = Mock()

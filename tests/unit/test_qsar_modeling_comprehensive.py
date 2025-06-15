@@ -39,37 +39,37 @@ class TestDescriptorCalculator(unittest.TestCase):
     def setUp(self):
         self.sample_smiles = ["CCO", "CC(=O)O", "c1ccccc1"]
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Chem")
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Chem")
     def test_descriptor_calculator_rdkit_init(self, mock_chem):
         """Test DescriptorCalculator initialization with RDKit"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         calculator = DescriptorCalculator("rdkit")
         self.assertEqual(calculator.descriptor_set, "rdkit")
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", False)
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", False)
     def test_descriptor_calculator_rdkit_unavailable(self):
         """Test DescriptorCalculator when RDKit is unavailable"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         with self.assertRaises(ImportError):
             DescriptorCalculator("rdkit")
 
-    @patch("src.drug_design.qsar_modeling.MORDRED_AVAILABLE", False)
+    @patch("chemml.research.drug_discovery.qsar.MORDRED_AVAILABLE", False)
     def test_descriptor_calculator_mordred_unavailable(self):
         """Test DescriptorCalculator when Mordred is unavailable"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         with self.assertRaises(ImportError):
             DescriptorCalculator("mordred")
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Descriptors")
-    @patch("src.drug_design.qsar_modeling.Chem")
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Descriptors")
+    @patch("chemml.research.drug_discovery.qsar.Chem")
     def test_calculate_rdkit_descriptors(self, mock_chem, mock_descriptors):
         """Test RDKit descriptor calculation"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         # Mock RDKit descriptors
         mock_descriptors._descList = [
@@ -86,12 +86,12 @@ class TestDescriptorCalculator(unittest.TestCase):
         expected = {"MolWt": 46.069, "LogP": -0.1, "TPSA": 20.23}
         self.assertEqual(result, expected)
 
-    @patch("src.drug_design.qsar_modeling.MORDRED_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Calculator")
-    @patch("src.drug_design.qsar_modeling.descriptors")
+    @patch("chemml.research.drug_discovery.qsar.MORDRED_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Calculator")
+    @patch("chemml.research.drug_discovery.qsar.descriptors")
     def test_calculate_mordred_descriptors(self, mock_descriptors, mock_calculator):
         """Test Mordred descriptor calculation"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         # Mock Mordred calculator
         mock_calc_instance = Mock()
@@ -115,10 +115,10 @@ class TestDescriptorCalculator(unittest.TestCase):
         expected = {"ABC": 2.5, "JKL": 1.2}
         self.assertEqual(result, expected)
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
     def test_calculate_fingerprint_descriptors_morgan(self):
         """Test Morgan fingerprint calculation - FIXED"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         calculator = DescriptorCalculator("rdkit")
         mock_mol = Mock()
@@ -134,10 +134,10 @@ class TestDescriptorCalculator(unittest.TestCase):
             np.testing.assert_array_equal(result, np.array([1, 0, 1, 0, 1]))
             mock_fp_gen.GetMorganGenerator.assert_called_once_with(radius=2, fpSize=5)
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
     def test_calculate_fingerprint_descriptors_maccs(self):
         """Test MACCS fingerprint calculation - FIXED"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         calculator = DescriptorCalculator("rdkit")
         mock_mol = Mock()
@@ -150,10 +150,10 @@ class TestDescriptorCalculator(unittest.TestCase):
 
             np.testing.assert_array_equal(result, np.array([0, 1, 1, 0]))
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
     def test_calculate_fingerprint_descriptors_unsupported(self):
         """Test unsupported fingerprint type"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         calculator = DescriptorCalculator("rdkit")
         mock_mol = Mock()
@@ -161,11 +161,11 @@ class TestDescriptorCalculator(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculator.calculate_fingerprint_descriptors(mock_mol, "unsupported")
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Chem")
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Chem")
     def test_calculate_descriptors_from_smiles_valid(self, mock_chem):
         """Test descriptor calculation from SMILES"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         # Mock valid molecules
         mock_mol1 = Mock()
@@ -188,11 +188,11 @@ class TestDescriptorCalculator(unittest.TestCase):
             self.assertIn("MolWt", result.columns)
             self.assertIn("LogP", result.columns)
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Chem")
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Chem")
     def test_calculate_descriptors_from_smiles_invalid(self, mock_chem):
         """Test descriptor calculation with invalid SMILES"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         # Mock invalid molecule
         mock_chem.MolFromSmiles.return_value = None
@@ -203,11 +203,11 @@ class TestDescriptorCalculator(unittest.TestCase):
 
         self.assertEqual(len(result), 0)
 
-    @patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True)
-    @patch("src.drug_design.qsar_modeling.Chem")
+    @patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
+    @patch("chemml.research.drug_discovery.qsar.Chem")
     def test_calculate_descriptors_from_smiles_exception(self, mock_chem):
         """Test descriptor calculation with exceptions"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
         mock_mol = Mock()
         mock_chem.MolFromSmiles.return_value = mock_mol
@@ -243,7 +243,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_qsar_model_init_regression(self):
         """Test QSARModel initialization for regression"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -253,7 +253,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_qsar_model_init_classification(self):
         """Test QSARModel initialization for classification"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("linear", "classification")
 
@@ -263,21 +263,21 @@ class TestQSARModel(unittest.TestCase):
 
     def test_qsar_model_unsupported_model_type(self):
         """Test QSARModel with unsupported model type"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         with self.assertRaises(ValueError):
             QSARModel("unsupported", "regression")
 
     def test_qsar_model_unsupported_task_type(self):
         """Test QSARModel with unsupported task type"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         with self.assertRaises(ValueError):
             QSARModel("random_forest", "unsupported")
 
     def test_prepare_data_basic(self):
         """Test data preparation"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -290,7 +290,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_prepare_data_with_missing_values(self):
         """Test data preparation with missing values"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         data_with_nan = self.sample_data.copy()
         data_with_nan.iloc[0, 1] = np.nan
@@ -306,7 +306,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_prepare_data_with_constant_features(self):
         """Test data preparation with constant features"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         data_with_constant = self.sample_data.copy()
         data_with_constant["constant_feature"] = 5.0  # Constant value
@@ -322,7 +322,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_prepare_data_with_scaling(self):
         """Test data preparation with feature scaling"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("svm", "regression")
 
@@ -334,7 +334,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_train_regression_model(self):
         """Test training regression model"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -348,7 +348,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_train_classification_model(self):
         """Test training classification model - FIXED CV"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "classification")
 
@@ -362,7 +362,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_predict_before_training(self):
         """Test prediction before training"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -371,7 +371,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_predict_after_training(self):
         """Test prediction after training"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
         model.train(self.sample_data, self.sample_y_regression, validation_split=0.2)
@@ -382,7 +382,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_predict_with_missing_features(self):
         """Test prediction with missing features - FIXED"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
         model.train(self.sample_data, self.sample_y_regression, validation_split=0.2)
@@ -397,7 +397,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_get_feature_importance(self):
         """Test feature importance extraction"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
         model.train(self.sample_data, self.sample_y_regression, validation_split=0.2)
@@ -410,7 +410,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_get_feature_importance_unsupported(self):
         """Test feature importance with unsupported model"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("linear", "regression")
         model.train(self.sample_data, self.sample_y_regression, validation_split=0.2)
@@ -420,7 +420,7 @@ class TestQSARModel(unittest.TestCase):
 
     def test_save_and_load_model(self):
         """Test model saving and loading"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
         model.train(self.sample_data, self.sample_y_regression, validation_split=0.2)
@@ -447,10 +447,10 @@ class TestActivityPredictor(unittest.TestCase):
     def setUp(self):
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_activity_predictor_init(self, mock_calc_class):
         """Test ActivityPredictor initialization"""
-        from src.drug_design.qsar_modeling import ActivityPredictor
+        from chemml.research.drug_discovery.qsar import ActivityPredictor
 
         predictor = ActivityPredictor()
 
@@ -459,7 +459,7 @@ class TestActivityPredictor(unittest.TestCase):
 
     def test_add_model(self):
         """Test adding model to predictor"""
-        from src.drug_design.qsar_modeling import ActivityPredictor, QSARModel
+        from chemml.research.drug_discovery.qsar import ActivityPredictor, QSARModel
 
         predictor = ActivityPredictor()
         mock_model = Mock(spec=QSARModel)
@@ -469,10 +469,10 @@ class TestActivityPredictor(unittest.TestCase):
         self.assertIn("toxicity", predictor.models)
         self.assertEqual(predictor.models["toxicity"], mock_model)
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_predict_activity_valid(self, mock_calc_class):
         """Test activity prediction"""
-        from src.drug_design.qsar_modeling import ActivityPredictor
+        from chemml.research.drug_discovery.qsar import ActivityPredictor
 
         # Mock descriptor calculator
         mock_calc = Mock()
@@ -495,17 +495,17 @@ class TestActivityPredictor(unittest.TestCase):
 
     def test_predict_activity_missing_model(self):
         """Test activity prediction with missing model"""
-        from src.drug_design.qsar_modeling import ActivityPredictor
+        from chemml.research.drug_discovery.qsar import ActivityPredictor
 
         predictor = ActivityPredictor()
 
         with self.assertRaises(ValueError):
             predictor.predict_activity(self.sample_smiles, "nonexistent")
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_predict_multiple_activities(self, mock_calc_class):
         """Test prediction of multiple activities"""
-        from src.drug_design.qsar_modeling import ActivityPredictor
+        from chemml.research.drug_discovery.qsar import ActivityPredictor
 
         # Mock descriptor calculator
         mock_calc = Mock()
@@ -530,10 +530,10 @@ class TestActivityPredictor(unittest.TestCase):
         self.assertIn("predicted_solubility", result.columns)
         self.assertEqual(len(result), 2)
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_predict_multiple_activities_with_error(self, mock_calc_class):
         """Test prediction with model error"""
-        from src.drug_design.qsar_modeling import ActivityPredictor
+        from chemml.research.drug_discovery.qsar import ActivityPredictor
 
         # Mock descriptor calculator
         mock_calc = Mock()
@@ -565,10 +565,10 @@ class TestStandaloneFunctions(unittest.TestCase):
         self.sample_y_regression = np.random.rand(20)
         self.sample_y_classification = np.array([0, 1] * 10)  # Balanced
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_build_qsar_dataset(self, mock_calc_class):
         """Test building QSAR dataset"""
-        from src.drug_design.qsar_modeling import build_qsar_dataset
+        from chemml.research.drug_discovery.qsar import build_qsar_dataset
 
         # Mock descriptor calculator
         mock_calc = Mock()
@@ -591,10 +591,10 @@ class TestStandaloneFunctions(unittest.TestCase):
         self.assertIn("desc2", X.columns)
         np.testing.assert_array_equal(y, self.sample_smiles_data["Activity"].values)
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_build_qsar_dataset_custom_columns(self, mock_calc_class):
         """Test building QSAR dataset with custom column names - FIXED"""
-        from src.drug_design.qsar_modeling import build_qsar_dataset
+        from chemml.research.drug_discovery.qsar import build_qsar_dataset
 
         # Custom data with different column names
         custom_data = pd.DataFrame(
@@ -621,7 +621,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_evaluate_qsar_model_regression(self):
         """Test QSAR model evaluation for regression"""
-        from src.drug_design.qsar_modeling import QSARModel, evaluate_qsar_model
+        from chemml.research.drug_discovery.qsar import QSARModel, evaluate_qsar_model
 
         # Create and train a simple model
         model = QSARModel("linear", "regression")
@@ -645,7 +645,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_evaluate_qsar_model_classification(self):
         """Test QSAR model evaluation for classification - FIXED CV"""
-        from src.drug_design.qsar_modeling import QSARModel, evaluate_qsar_model
+        from chemml.research.drug_discovery.qsar import QSARModel, evaluate_qsar_model
 
         # Create and train a simple model with larger dataset
         model = QSARModel("linear", "classification")
@@ -669,7 +669,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_build_qsar_model_regression(self):
         """Test build_qsar_model function for regression"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         trained_model = build_qsar_model(
             self.sample_X,
@@ -687,7 +687,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_build_qsar_model_classification(self):
         """Test build_qsar_model function for classification"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         trained_model = build_qsar_model(
             self.sample_X,
@@ -705,7 +705,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_build_qsar_model_different_types(self):
         """Test build_qsar_model with different model types"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         model_types = ["random_forest", "linear", "svm", "neural_network"]
 
@@ -724,7 +724,7 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_build_qsar_model_unknown_type(self):
         """Test build_qsar_model with unknown model type"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         with self.assertRaises(ValueError):
             build_qsar_model(
@@ -736,7 +736,10 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_predict_activity_function(self):
         """Test predict_activity standalone function"""
-        from src.drug_design.qsar_modeling import build_qsar_model, predict_activity
+        from chemml.research.drug_discovery.qsar import (
+            build_qsar_model,
+            predict_activity,
+        )
 
         # Build a model first
         trained_model = build_qsar_model(
@@ -755,7 +758,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         from sklearn.linear_model import LinearRegression
         from sklearn.preprocessing import StandardScaler
 
-        from src.drug_design.qsar_modeling import predict_activity
+        from chemml.research.drug_discovery.qsar import predict_activity
 
         # Create legacy model format
         model = LinearRegression()
@@ -772,7 +775,10 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_validate_qsar_model_regression(self):
         """Test validate_qsar_model for regression - FIXED"""
-        from src.drug_design.qsar_modeling import build_qsar_model, validate_qsar_model
+        from chemml.research.drug_discovery.qsar import (
+            build_qsar_model,
+            validate_qsar_model,
+        )
 
         # Build a model
         trained_model = build_qsar_model(
@@ -794,7 +800,10 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_validate_qsar_model_classification(self):
         """Test validate_qsar_model for classification - FIXED"""
-        from src.drug_design.qsar_modeling import build_qsar_model, validate_qsar_model
+        from chemml.research.drug_discovery.qsar import (
+            build_qsar_model,
+            validate_qsar_model,
+        )
 
         # Build a model
         trained_model = build_qsar_model(
@@ -818,7 +827,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         """Test validate_qsar_model with legacy format - FIXED"""
         from sklearn.linear_model import LinearRegression
 
-        from src.drug_design.qsar_modeling import validate_qsar_model
+        from chemml.research.drug_discovery.qsar import validate_qsar_model
 
         # Create legacy model format
         model = LinearRegression()
@@ -845,7 +854,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         """Test TrainedQSARModel initialization"""
         from sklearn.linear_model import LinearRegression
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         model = LinearRegression()
         model.fit(self.sample_X, self.sample_y)
@@ -867,7 +876,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         """Test TrainedQSARModel with feature importances"""
         from sklearn.ensemble import RandomForestRegressor
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         model = RandomForestRegressor(n_estimators=10, random_state=42)
         model.fit(self.sample_X, self.sample_y)
@@ -893,7 +902,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         """Test TrainedQSARModel with zero feature importances"""
         from sklearn.linear_model import LinearRegression
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         model = LinearRegression()
         model.fit(self.sample_X, self.sample_y)
@@ -921,7 +930,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         """Test TrainedQSARModel prediction"""
         from sklearn.linear_model import LinearRegression
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         model = LinearRegression()
         model.fit(self.sample_X, self.sample_y)
@@ -944,7 +953,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         from sklearn.linear_model import LinearRegression
         from sklearn.preprocessing import StandardScaler
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         # Train with scaling
         scaler = StandardScaler()
@@ -970,7 +979,7 @@ class TestTrainedQSARModel(unittest.TestCase):
         """Test TrainedQSARModel get_metrics"""
         from sklearn.linear_model import LinearRegression
 
-        from src.drug_design.qsar_modeling import TrainedQSARModel
+        from chemml.research.drug_discovery.qsar import TrainedQSARModel
 
         model = LinearRegression()
         model.fit(self.sample_X, self.sample_y)
@@ -1002,10 +1011,10 @@ class TestIntegrationScenarios(unittest.TestCase):
             }
         )
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_complete_qsar_workflow(self, mock_calc_class):
         """Test complete QSAR modeling workflow - FIXED"""
-        from src.drug_design.qsar_modeling import (
+        from chemml.research.drug_discovery.qsar import (
             build_qsar_dataset,
             build_qsar_model,
             predict_activity,
@@ -1044,10 +1053,13 @@ class TestIntegrationScenarios(unittest.TestCase):
         self.assertIn("r2_score", metrics)
         self.assertIn("cv_scores", metrics)
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_activity_predictor_workflow(self, mock_calc_class):
         """Test ActivityPredictor workflow"""
-        from src.drug_design.qsar_modeling import ActivityPredictor, build_qsar_model
+        from chemml.research.drug_discovery.qsar import (
+            ActivityPredictor,
+            build_qsar_model,
+        )
 
         # Mock descriptor calculator for both ActivityPredictor and build_qsar_model
         mock_calc = Mock()
@@ -1095,9 +1107,9 @@ class TestErrorHandling(unittest.TestCase):
 
     def test_descriptor_calculator_empty_smiles(self):
         """Test DescriptorCalculator with empty SMILES list"""
-        from src.drug_design.qsar_modeling import DescriptorCalculator
+        from chemml.research.drug_discovery.qsar import DescriptorCalculator
 
-        with patch("src.drug_design.qsar_modeling.RDKIT_AVAILABLE", True):
+        with patch("chemml.research.drug_discovery.qsar.RDKIT_AVAILABLE", True):
             calculator = DescriptorCalculator("rdkit")
 
             result = calculator.calculate_descriptors_from_smiles([])
@@ -1106,7 +1118,7 @@ class TestErrorHandling(unittest.TestCase):
 
     def test_qsar_model_empty_data(self):
         """Test QSARModel with empty data"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -1118,7 +1130,7 @@ class TestErrorHandling(unittest.TestCase):
 
     def test_qsar_model_single_sample(self):
         """Test QSARModel with single sample"""
-        from src.drug_design.qsar_modeling import QSARModel
+        from chemml.research.drug_discovery.qsar import QSARModel
 
         model = QSARModel("random_forest", "regression")
 
@@ -1135,7 +1147,7 @@ class TestErrorHandling(unittest.TestCase):
 
     def test_predict_activity_invalid_model(self):
         """Test predict_activity with invalid model format - FIXED"""
-        from src.drug_design.qsar_modeling import predict_activity
+        from chemml.research.drug_discovery.qsar import predict_activity
 
         invalid_model = "not_a_model"
         X = np.random.rand(3, 5)
@@ -1145,7 +1157,7 @@ class TestErrorHandling(unittest.TestCase):
 
     def test_build_qsar_dataset_missing_columns(self):
         """Test build_qsar_dataset with missing columns"""
-        from src.drug_design.qsar_modeling import build_qsar_dataset
+        from chemml.research.drug_discovery.qsar import build_qsar_dataset
 
         incomplete_data = pd.DataFrame({"SMILES": ["CCO"]})  # Missing Activity column
 
@@ -1158,7 +1170,7 @@ class TestPerformance(unittest.TestCase):
 
     def test_large_dataset_qsar_modeling(self):
         """Test QSAR modeling with larger dataset"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         # Create larger dataset
         large_X = np.random.rand(100, 10)
@@ -1173,10 +1185,13 @@ class TestPerformance(unittest.TestCase):
 
         self.assertEqual(len(predictions), 20)
 
-    @patch("src.drug_design.qsar_modeling.DescriptorCalculator")
+    @patch("chemml.research.drug_discovery.qsar.DescriptorCalculator")
     def test_batch_activity_prediction(self, mock_calc_class):
         """Test batch activity prediction performance - FIXED"""
-        from src.drug_design.qsar_modeling import ActivityPredictor, build_qsar_model
+        from chemml.research.drug_discovery.qsar import (
+            ActivityPredictor,
+            build_qsar_model,
+        )
 
         # Mock descriptor calculator
         mock_calc = Mock()
@@ -1219,7 +1234,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
     def test_qsar_modeling_imports(self):
         """Test that all QSAR modeling imports work"""
         try:
-            from src.drug_design.qsar_modeling import (
+            from chemml.research.drug_discovery.qsar import (
                 ActivityPredictor,
                 DescriptorCalculator,
                 QSARModel,
@@ -1245,7 +1260,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
 
     def test_numpy_pandas_integration(self):
         """Test integration with numpy and pandas"""
-        from src.drug_design.qsar_modeling import build_qsar_model
+        from chemml.research.drug_discovery.qsar import build_qsar_model
 
         # Test with different input types
         X_numpy = np.random.rand(10, 5)
