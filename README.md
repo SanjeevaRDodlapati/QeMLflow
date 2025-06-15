@@ -22,6 +22,10 @@
 
 **→ [📚 LEARNING PATHS](docs/LEARNING_PATHS.md)** *(Choose your adventure)*
 
+**Contributing or exploring code?** Understand the architecture:
+
+**→ [🏗️ CODEBASE STRUCTURE](docs/CODEBASE_STRUCTURE.md)** *(Developer's guide to the modular architecture)*
+
 **Quick launch:** `python quick_access_demo.py` for interactive guidance!
 
 ---
