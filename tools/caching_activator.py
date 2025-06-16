@@ -18,6 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from chemml.config.unified_config import UnifiedConfig
 from chemml.utils.config_cache import ConfigurationCache
 
+
 class CachingActivator:
     """Activates and configures advanced caching features"""
 
@@ -289,6 +290,7 @@ class CachingActivator:
 
         return results
 
+
 def main():
     """Run caching activation"""
     activator = CachingActivator()
@@ -317,6 +319,7 @@ def main():
         print("   • Memory-efficient operations")
     else:
         print("🔄 PARTIAL: Some features activated, continuing optimization...")
+
 
 if __name__ == "__main__":
     main()

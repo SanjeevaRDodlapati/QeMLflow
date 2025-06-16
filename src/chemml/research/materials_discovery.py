@@ -5,15 +5,11 @@ This module provides comprehensive tools for AI-driven materials design,
 property prediction, and synthesis planning.
 """
 
-import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from sklearn.cluster import KMeans
 from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score, train_test_split

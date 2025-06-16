@@ -1,4 +1,3 @@
-"""
 ChemML Enhanced Features Example
 ===============================
 
@@ -6,7 +5,6 @@ Complete demonstration of ChemML's enhanced capabilities:
 1. Advanced data processing and feature engineering
 2. Ensemble and AutoML models
 3. Robust cross-validation and error handling
-4. Production-ready pipelines
 5. Experiment tracking and model persistence
 
 This example showcases all the improvements and fixes.

@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
 """
 ChemML Targeted Quick Wins
 
 Implements specific, safe improvements:
 1. Fix unused imports in specific files
-2. Improve documentation consistency  
+2. Improve documentation consistency
 3. Add type hints to key functions
 4. Fix simple linting issues
 5. Optimize specific performance bottlenecks
@@ -14,38 +13,38 @@ Usage:
 """
 
 import argparse
+import json
+import os
+import re
 import subprocess
 import sys
-import os
 from pathlib import Path
-import re
-import json
-from typing import List, Dict
+from typing import Dict, List
 
 
 class TargetedQuickWins:
     """Implements specific, safe improvements."""
-    
+
     def __init__(self, base_dir: Path):
         self.base_dir = base_dir
         self.improvements = {}
-        
+
     def implement_documentation_improvements(self):
         """Add missing docstrings and improve existing ones."""
         print("📚 Improving documentation...")
-        
+
         # Add comprehensive project overview
         self._create_enhanced_readme()
         self._improve_getting_started_docs()
         self._add_performance_guide()
-        
+
         return 3
-    
+
     def _create_enhanced_readme(self):
         """Create an enhanced README with better structure."""
         readme_path = self.base_dir / "README.md"
-        
-        enhanced_content = '''# ChemML: Advanced Machine Learning for Chemistry
+
+        enhanced_content = """# ChemML: Advanced Machine Learning for Chemistry
 
 [![CI Status](https://github.com/hachmannlab/chemml/workflows/CI/badge.svg)](https://github.com/hachmannlab/chemml/actions)
 [![Coverage](https://codecov.io/gh/hachmannlab/chemml/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/chemml)
@@ -233,24 +232,24 @@ ChemML is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for de
 ---
 
 **Built with ❤️ by the [Hachmann Lab](https://hachmannlab.github.io/)**
-'''
-        
+"""
+
         # Backup existing README and create enhanced version
         if readme_path.exists():
             backup_path = self.base_dir / "README_backup.md"
             readme_path.rename(backup_path)
-        
-        with open(readme_path, 'w') as f:
+
+        with open(readme_path, "w") as f:
             f.write(enhanced_content)
-        
+
         print("   ✅ Enhanced README.md created")
-    
+
     def _improve_getting_started_docs(self):
         """Improve getting started documentation."""
         docs_dir = self.base_dir / "docs" / "getting_started"
         docs_dir.mkdir(parents=True, exist_ok=True)
-        
-        quick_start_content = '''# Quick Start Guide
+
+        quick_start_content = """# Quick Start Guide
 
 Welcome to ChemML! This guide will get you up and running in minutes.
 
@@ -411,18 +410,18 @@ chemml.config.set_n_jobs(-1)  # use all CPU cores
 - Join our community discussions for help and best practices
 
 Ready to dive deeper? Check out our [comprehensive tutorials](../tutorials/) or explore the [examples](../../examples/) directory!
-'''
-        
-        with open(docs_dir / "quick_start.md", 'w') as f:
+"""
+
+        with open(docs_dir / "quick_start.md", "w") as f:
             f.write(quick_start_content)
-        
+
         print("   ✅ Enhanced Quick Start guide created")
-    
+
     def _add_performance_guide(self):
         """Add a performance optimization guide."""
         docs_dir = self.base_dir / "docs"
-        
-        performance_content = '''# Performance Optimization Guide
+
+        performance_content = """# Performance Optimization Guide
 
 This guide helps you get the best performance from ChemML for production workloads.
 
@@ -618,22 +617,22 @@ spec:
 ```
 
 For more optimization strategies, see our [Enterprise Deployment Guide](enterprise_deployment.md).
-'''
-        
-        with open(docs_dir / "performance_guide.md", 'w') as f:
+"""
+
+        with open(docs_dir / "performance_guide.md", "w") as f:
             f.write(performance_content)
-        
+
         print("   ✅ Performance optimization guide created")
-    
+
     def improve_validation_scripts(self):
         """Enhance validation scripts with better error handling."""
         print("🔧 Improving validation scripts...")
-        
+
         # Enhance quick validation script
         quick_validate_path = self.base_dir / "scripts" / "quick_validate.sh"
-        
+
         if quick_validate_path.exists():
-            enhanced_script = '''#!/bin/bash
+            enhanced_script = """#!/bin/bash
 
 # ChemML Enhanced Quick Validation
 # Comprehensive health check with improved error handling and reporting
@@ -781,25 +780,25 @@ validation_time=$(($(date +%s) - $(date -r "$LOG_FILE" +%s)))
 echo -e "${BLUE}⏱️  Total validation time: ${validation_time}s${NC}"
 
 log "Enhanced quick validation completed successfully"
-'''
-            
-            with open(quick_validate_path, 'w') as f:
+"""
+
+            with open(quick_validate_path, "w") as f:
                 f.write(enhanced_script)
-            
+
             # Make executable
             os.chmod(quick_validate_path, 0o755)
-            
+
             print("   ✅ Enhanced quick_validate.sh")
-        
+
         return 1
-    
+
     def create_development_tools(self):
         """Create useful development tools."""
         print("🛠️ Creating development tools...")
-        
+
         tools_dir = self.base_dir / "tools" / "development"
         tools_dir.mkdir(parents=True, exist_ok=True)
-        
+
         # Create a simple code formatter
         formatter_content = '''#!/usr/bin/env python3
 """
@@ -874,27 +873,27 @@ def main():
 if __name__ == "__main__":
     main()
 '''
-        
-        with open(tools_dir / "safe_formatter.py", 'w') as f:
+
+        with open(tools_dir / "safe_formatter.py", "w") as f:
             f.write(formatter_content)
-        
+
         print("   ✅ Created safe_formatter.py")
-        
+
         return 1
-    
+
     def run_targeted_improvements(self):
         """Run all targeted improvements."""
         print("🎯 Running Targeted Quick Wins")
         print("=" * 40)
-        
+
         improvements = [
             ("Documentation improvements", self.implement_documentation_improvements),
             ("Validation script enhancements", self.improve_validation_scripts),
             ("Development tools", self.create_development_tools),
         ]
-        
+
         total_improvements = 0
-        
+
         for description, improvement_func in improvements:
             print(f"\n📋 {description}...")
             try:
@@ -905,51 +904,57 @@ if __name__ == "__main__":
             except Exception as e:
                 print(f"   ❌ Error: {e}")
                 self.improvements[description] = 0
-        
+
         self.generate_summary(total_improvements)
-    
+
     def generate_summary(self, total_improvements: int):
         """Generate improvement summary."""
         print(f"\n🎉 Targeted Quick Wins Summary")
         print("=" * 40)
         print(f"   ✅ Total improvements: {total_improvements}")
-        
+
         for improvement, count in self.improvements.items():
             print(f"   • {improvement}: {count}")
-        
+
         # Save report
         report_path = self.base_dir / "reports" / "targeted_quick_wins_report.json"
         report_path.parent.mkdir(parents=True, exist_ok=True)
-        
+
         report = {
-            "timestamp": str(subprocess.run(["date"], capture_output=True, text=True).stdout.strip()),
+            "timestamp": str(
+                subprocess.run(["date"], capture_output=True, text=True).stdout.strip()
+            ),
             "total_improvements": total_improvements,
-            "improvements": self.improvements
+            "improvements": self.improvements,
         }
-        
-        with open(report_path, 'w') as f:
+
+        with open(report_path, "w") as f:
             json.dump(report, f, indent=2)
-        
+
         print(f"   📄 Report saved to: {report_path}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description='ChemML Targeted Quick Wins')
-    parser.add_argument('--fix', choices=['docs', 'validation', 'tools', 'all'], 
-                       default='all', help='Type of improvements to apply')
-    
+    parser = argparse.ArgumentParser(description="ChemML Targeted Quick Wins")
+    parser.add_argument(
+        "--fix",
+        choices=["docs", "validation", "tools", "all"],
+        default="all",
+        help="Type of improvements to apply",
+    )
+
     args = parser.parse_args()
-    
+
     base_dir = Path(__file__).parent.parent.parent
     improver = TargetedQuickWins(base_dir)
-    
-    if args.fix == 'all':
+
+    if args.fix == "all":
         improver.run_targeted_improvements()
-    elif args.fix == 'docs':
+    elif args.fix == "docs":
         improver.implement_documentation_improvements()
-    elif args.fix == 'validation':
+    elif args.fix == "validation":
         improver.improve_validation_scripts()
-    elif args.fix == 'tools':
+    elif args.fix == "tools":
         improver.create_development_tools()
 
 

@@ -10,7 +10,6 @@ Usage:
     python launch_bootcamp.py
     python launch_bootcamp.py --fix-quantum
     python launch_bootcamp.py --quick-test
-"""
 
 import argparse
 import subprocess

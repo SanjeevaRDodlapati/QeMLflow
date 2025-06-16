@@ -119,13 +119,17 @@ try:
     )
 
     # Import help as chemml_help to avoid conflict with built-in help
-    from .utils.enhanced_ui import chemml_interface, functions
     from .utils.enhanced_ui import help as chemml_help
-    from .utils.enhanced_ui import quick_start, set_level
-
     print("✅ Phase 2: Enhanced UX features loaded")
 except ImportError as e:
     print(f"⚠️ Phase 2 features not available: {e}")
+    # Set to None if not available
+    ChemMLError = None
+    debug_context = None
+    enhance_function_errors = None
+    global_performance_monitor = None
+    setup_enhanced_logging = None
+    chemml_help = None
 
 # Phase 3: Advanced ML and Enterprise Features
 try:
@@ -143,6 +147,34 @@ try:
     print("✅ Phase 3: Advanced ML and Enterprise features loaded")
 except ImportError as e:
     print(f"⚠️ Phase 3 features not available: {e}")
+    # Set to None if not available
+    AutoMLOptimizer = None
+    IntelligentFeatureSelector = None
+    ModelAnalytics = None
+    AnalyticsDashboard = None
+    MetricsCollector = None
+    MonitoringDashboard = None
+
+# Export all available features
+__all__ = [
+    "__version__",
+    "clear_cache",
+    "enable_fast_mode",
+    # Phase 2 features
+    "ChemMLError",
+    "debug_context",
+    "enhance_function_errors",
+    "global_performance_monitor",
+    "setup_enhanced_logging",
+    "chemml_help",
+    # Phase 3 features
+    "AutoMLOptimizer",
+    "IntelligentFeatureSelector",
+    "ModelAnalytics",
+    "AnalyticsDashboard",
+    "MetricsCollector",
+    "MonitoringDashboard",
+]
 
 # Enhanced initialization message
 print("🚀 ChemML Enhanced Framework Loaded")

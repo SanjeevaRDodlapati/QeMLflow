@@ -7,11 +7,8 @@ Analyzes data patterns and suggests optimal processing pipelines.
 """
 
 import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score
 
 from .common.performance import PerformanceMonitor, performance_context
@@ -163,7 +160,7 @@ class WorkflowOptimizer:
         }
         try:
             if isinstance(molecules, (list, np.ndarray)):
-                _molecular_data = np.array(molecules)
+#_molecular_data = np.array(molecules)
                 characteristics["size"] = len(molecules)
                 if len(molecules) > 0:
                     if isinstance(molecules[0], str):

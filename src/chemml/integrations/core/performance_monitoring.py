@@ -12,11 +12,9 @@ import time
 import warnings
 from collections import defaultdict, deque
 from contextlib import contextmanager
-from dataclasses import asdict, dataclass, field
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
-
 import psutil
 
 
@@ -270,7 +268,7 @@ class IntegrationMetrics:
             operation: Type of operation (integration, prediction, training)
             input_size: Size of input data
         """
-        _operation_id = f"{model_name}_{operation}_{int(time.time())}"
+#_operation_id = f"{model_name}_{operation}_{int(time.time())}"
 
         # Record start metrics
         start_time = time.time()
@@ -391,7 +389,8 @@ class IntegrationMetrics:
         ]
 
         if len(recent_metrics) < 10:
-            return "stable"
+
+                return "stable"
 
         # Split into two halves and compare average performance
         mid = len(recent_metrics) // 2
@@ -633,14 +632,14 @@ class IntegrationMetrics:
 
 
 # Global instance
-_metrics_instance = None
+#_metrics_instance = None
 
 
 def get_metrics() -> IntegrationMetrics:
     """Get the global metrics instance."""
     global _metrics_instance
     if _metrics_instance is None:
-        _metrics_instance = IntegrationMetrics()
+#_metrics_instance = IntegrationMetrics()
     return _metrics_instance
 
 

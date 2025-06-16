@@ -1,4 +1,3 @@
-"""
 Standalone Boltz Integration Test
 ================================
 
@@ -6,7 +5,6 @@ Test Boltz integration without ChemML package dependencies.
 """
 
 import os
-import sys
 import tempfile
 from pathlib import Path
 

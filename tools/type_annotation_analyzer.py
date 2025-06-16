@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Type Annotation Enhancement Tool
 Adds missing type annotations to ChemML functions.
@@ -9,6 +8,7 @@ import ast
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Set
+
 
 class TypeAnnotationAnalyzer(ast.NodeVisitor):
     """Analyzes and suggests type annotations for functions."""
@@ -178,6 +178,7 @@ class TypeAnnotationAnalyzer(ast.NodeVisitor):
         else:
             return "Any"
 
+
 def analyze_type_annotations(filepath: str) -> Dict:
     """Analyze type annotations in a file."""
     try:
@@ -199,6 +200,7 @@ def analyze_type_annotations(filepath: str) -> Dict:
 
     except Exception as e:
         return {"filepath": filepath, "error": str(e)}
+
 
 def calculate_annotation_coverage(function_info: List[Dict]) -> Dict:
     """Calculate type annotation coverage statistics."""
@@ -235,6 +237,7 @@ def calculate_annotation_coverage(function_info: List[Dict]) -> Dict:
         "total_parameters": total_params,
     }
 
+
 def generate_type_annotation_suggestions(analysis: Dict) -> List[str]:
     """Generate code suggestions for adding type annotations."""
     suggestions = []
@@ -269,6 +272,7 @@ def generate_type_annotation_suggestions(analysis: Dict) -> List[str]:
         suggestions.append(suggestion)
 
     return suggestions
+
 
 def create_type_annotation_report(src_dir: str) -> Dict:
     """Create a comprehensive type annotation report."""
@@ -327,6 +331,7 @@ def create_type_annotation_report(src_dir: str) -> Dict:
         "detailed_analyses": all_analyses,
     }
 
+
 def print_type_annotation_report(report: Dict):
     """Print a formatted type annotation report."""
     if "error" in report:
@@ -361,6 +366,7 @@ def print_type_annotation_report(report: Dict):
             coverage = analysis["annotation_coverage"]["overall_coverage"]
             print(f"  • {filepath}: {coverage}%")
 
+
 def main():
     """Main function."""
     parser = argparse.ArgumentParser(description="Type Annotation Analysis")
@@ -387,6 +393,7 @@ def main():
         with open("type_annotation_report.json", "w") as f:
             json.dump(report, f, indent=2)
         print("\n💾 Detailed report saved to type_annotation_report.json")
+
 
 if __name__ == "__main__":
     main()

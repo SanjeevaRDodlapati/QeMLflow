@@ -6,7 +6,6 @@ This script validates that all import pattern migrations are complete and functi
 """
 
 import sys
-import traceback
 from typing import List, Tuple
 
 

@@ -2,7 +2,6 @@
 Molecular Optimization Module
 ============================
 
-Advanced molecular optimization algorithms for drug design.
 Provides tools for optimizing molecular structures using various approaches
 including Bayesian optimization, genetic algorithms, and gradient-based methods
 to improve desired properties.
@@ -21,7 +20,7 @@ Functions:
 
 import logging
 import random
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+from typing import Callable, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced Type Annotation Enhancement Tool
 Automatically adds type annotations to ChemML functions based on context analysis.

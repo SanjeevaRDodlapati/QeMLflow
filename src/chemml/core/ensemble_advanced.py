@@ -1,5 +1,3 @@
-from typing_extensions import Self
-
 """
 ChemML Advanced Ensemble Methods
 ===============================
@@ -12,11 +10,13 @@ import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
-import pandas as pd
-from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
-from sklearn.ensemble import VotingClassifier, VotingRegressor
-from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
+from sklearn.base import BaseEstimator
 from sklearn.model_selection import cross_val_score
+
+try:
+    from typing import Self
+except ImportError:
+    from typing_extensions import Self
 
 from .common.performance import performance_context
 
@@ -211,7 +211,7 @@ class AdaptiveEnsemble(BaseEstimator):
     ) -> np.ndarray:
         """Make adaptive predictions based on input characteristics."""
         if self.molecular_clusters_ is not None:
-            _cluster_assignments = np.random.randint(
+#_cluster_assignments = np.random.randint(
                 0, max(self.molecular_clusters_) + 1, len(X)
             )
             weighted_predictions = np.average(
@@ -226,7 +226,10 @@ class AdaptiveEnsemble(BaseEstimator):
     def _calculate_uncertainties(self, model_predictions: np.ndarray) -> np.ndarray:
         """Calculate prediction uncertainties."""
         uncertainties = np.var(model_predictions, axis=1)
-        weighted_uncertainty = uncertainties * (1.0 + np.std(self.model_weights_))
+        if self.model_weights_ is not None:
+            weighted_uncertainty = uncertainties * (1.0 + np.std(self.model_weights_))
+        else:
+            weighted_uncertainty = uncertainties
         return weighted_uncertainty
 
 
@@ -352,7 +355,7 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
     def __init__(
         self,
         base_models: List[Any],
-        uncertainty_methods: List[str] = None,
+        uncertainty_methods: Optional[List[str]] = None,
         bootstrap_samples: int = 100,
     ):
         self.base_models = base_models
@@ -517,7 +520,7 @@ def create_multimodal_ensemble(
 
 
 def create_uncertainty_ensemble(
-    base_models: List[Any], uncertainty_methods: List[str] = None
+    base_models: List[Any], uncertainty_methods: Optional[List[str]] = None
 ) -> UncertaintyQuantifiedEnsemble:
     """
     Create an uncertainty quantified ensemble.

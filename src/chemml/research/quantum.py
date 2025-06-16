@@ -2,7 +2,6 @@
 ChemML Quantum Computing Module
 ==============================
 
-Quantum computing and quantum chemistry ML implementations.
 Provides quantum circuits, quantum ML algorithms, and quantum chemistry simulations.
 
 Key Features:
@@ -13,19 +12,18 @@ Key Features:
 """
 
 import warnings
-from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
-
+import pandas as pd
 try:
-    from qiskit import QuantumCircuit, transpile
-    from qiskit.circuit import Parameter, ParameterVector
+    from qiskit import QuantumCircuit, ParameterVector
     from qiskit.providers.aer import AerSimulator
-    from qiskit.utils import QuantumInstance
 
     HAS_QISKIT = True
 except ImportError:
     HAS_QISKIT = False
+    QuantumCircuit = None
+    ParameterVector = None
 try:
     import cirq
 

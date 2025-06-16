@@ -8,6 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 class FinalPolish:
     """Apply final polishing fixes to maximize code quality."""
 
@@ -139,10 +140,12 @@ class FinalPolish:
         print("✨ Final polish completed!")
         print("=" * 60)
 
+
 def main():
     """Main function."""
     polish = FinalPolish()
     polish.run_final_polish()
+
 
 if __name__ == "__main__":
     main()

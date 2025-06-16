@@ -1,4 +1,3 @@
-"""
 ChemML API Consistency Analysis
 ==============================
 

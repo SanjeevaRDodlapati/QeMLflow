@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Enhanced Error Handling and User Experience
 ==========================================
@@ -28,8 +27,7 @@ import time
 import traceback
 import warnings
 from contextlib import contextmanager
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, Iterator, List, Optional, Union
 
 
 class ChemMLError(Exception):

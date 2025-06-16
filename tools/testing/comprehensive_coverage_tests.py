@@ -1,8 +1,6 @@
-"""
 Additional integration tests to improve coverage for ChemML modules.
 These tests exercise more code paths to increase coverage percentage.
 """
-
 import os
 import tempfile
 

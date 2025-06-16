@@ -2,7 +2,6 @@
 ChemML Core Evaluation
 =====================
 
-Comprehensive evaluation metrics and tools for chemistry ML models.
 Provides domain-specific metrics and visualization tools.
 
 Key Features:
@@ -13,11 +12,8 @@ Key Features:
 """
 
 import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-
 try:
     from sklearn.metrics import (
         accuracy_score,

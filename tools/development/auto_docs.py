@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Auto-Documentation Generator
 =================================
@@ -14,6 +13,7 @@ import json
 import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+
 
 class APIDocGenerator:
     """Automatically generate comprehensive API documentation."""
@@ -728,6 +728,7 @@ class APIDocGenerator:
 
         with open(self.output_dir / "search.js", "w", encoding="utf-8") as f:
             f.write(js_content)
+
 
 # Command-line interface
 if __name__ == "__main__":

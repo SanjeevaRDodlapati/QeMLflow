@@ -8,11 +8,10 @@ This module standardizes how learning progress is measured and tracked across al
 
 import json
 import logging
-import time
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+from typing import Dict, Any, List, Optional
 
 import numpy as np
 import pandas as pd

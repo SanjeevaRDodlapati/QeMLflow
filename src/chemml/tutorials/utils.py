@@ -2,23 +2,20 @@
 Utility Functions for ChemML Tutorials
 =====================================
 
-This module provides utility functions and helper tools for creating effective
-educational experiences in computational chemistry and machine learning tutorials.
+Utility functions and helpers to enhance educational experiences in computational chemistry and machine learning tutorials.
 
 Key Features:
 - Molecular visualization utilities
 - Interactive parameter tuning interfaces
 - Progress dashboard creation
 - Logging and debugging tools
-- Educational plotting functions
 """
 
 import json
 import logging
 import warnings
 from datetime import datetime
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -36,8 +33,6 @@ except ImportError:
 
 try:
     import plotly.express as px
-    import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
 
     PLOTLY_AVAILABLE = True
 except ImportError:
@@ -219,14 +214,14 @@ def create_progress_dashboard(
     # Extract data for visualization
     sessions = list(range(1, len(session_data) + 1))
     scores = [session.get("score", 0) for session in session_data]
-    _durations = [
+#_durations = [
         session.get("duration_seconds", 0) / 60 for session in session_data
     ]  # Convert to minutes
     concepts = []
     for session in session_data:
         concepts.extend(session.get("concepts", []))
 
-    _unique_concepts = list(set(concepts))
+#_unique_concepts = list(set(concepts))
 
     if PLOTLY_AVAILABLE:
         print(f"📊 Progress Dashboard for {student_id}")
@@ -330,15 +325,15 @@ def create_learning_assessment_summary(assessment_results: List[Dict[str, Any]])
         return None
 
     # Extract data
-    _sections = [
+#_sections = [
         result.get("section", f"Assessment {i+1}")
         for i, result in enumerate(assessment_results)
     ]
-    _scores = [result.get("score", 0) for result in assessment_results]
-    _durations = [
+#_scores = [result.get("score", 0) for result in assessment_results]
+#_durations = [
         result.get("duration_seconds", 0) / 60 for result in assessment_results
     ]
-    _completion_rates = [
+#_completion_rates = [
         result.get("completion_rate", 0) for result in assessment_results
     ]
 
@@ -662,6 +657,3 @@ def demonstrate_integration(
             }
 
     return integration_status
-
-
-# ...existing code...

@@ -6,13 +6,11 @@ Comprehensive validation and testing system for external model integrations
 to ensure quality, reliability, and consistency across all adapters.
 """
 
-import json
 import shutil
 import tempfile
 import time
 import traceback
 import unittest
-import warnings
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Type
@@ -161,7 +159,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
                         adapter.fit(X_train, y_train)
 
                 # Make predictions
-                _predictions = adapter.predict(X_test)
+#_predictions = adapter.predict(X_test)
 
                 # Measure memory after
                 memory_after = process.memory_info().rss / 1024 / 1024  # MB
@@ -198,7 +196,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
 
                 # Time prediction
                 start_time = time.time()
-                _predictions = adapter.predict(X_test)
+#_predictions = adapter.predict(X_test)
                 prediction_time = time.time() - start_time
 
                 # Calculate throughput
@@ -238,6 +236,7 @@ class MockAdapterTestCase(AdapterTestCase):
         model_file.write_text(
             """
 import numpy as np
+
 
 class MockModel:
     def __init__(self):
@@ -324,7 +323,7 @@ class AdapterTestSuite:
                             repo_url="https://github.com/example/repo.git",
                             model_class_name="ExampleModel",
                         )
-                    except:
+                    except Exception:
                         raise e
 
             def generate_test_data(self):

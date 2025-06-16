@@ -6,7 +6,6 @@ Direct test of the Boltz integration without full ChemML dependencies.
 """
 
 import os
-import sys
 from pathlib import Path
 
 # Add the source directory to Python path

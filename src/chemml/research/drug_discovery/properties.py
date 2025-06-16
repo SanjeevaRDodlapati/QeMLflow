@@ -12,11 +12,8 @@ This module provides:
 """
 
 import logging
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-
 try:
     from rdkit import Chem
     from rdkit.Chem import Crippen, Descriptors

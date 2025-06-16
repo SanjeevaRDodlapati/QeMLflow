@@ -2,7 +2,6 @@
 ChemML Advanced Models
 =====================
 
-Advanced and experimental machine learning models for chemistry applications.
 Provides cutting-edge architectures and novel approaches for molecular ML.
 
 Key Features:
@@ -14,11 +13,8 @@ Key Features:
 """
 
 import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-
 try:
     import torch
     import torch.nn as nn
@@ -467,7 +463,7 @@ if HAS_TORCH:
 
         def forward(self, x, return_attention=False):
             """Forward pass with optional attention weights."""
-            _batch_size = x.shape[0]
+#_batch_size = x.shape[0]
             features = self.feature_projection(x)
             features = features.unsqueeze(1)
             attended_features, attention_weights = self.attention(

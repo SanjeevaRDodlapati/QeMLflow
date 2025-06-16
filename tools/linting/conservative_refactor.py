@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Conservative Incremental Refactor Tool
 
@@ -11,6 +10,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
+
 
 class ConservativeRefactor:
     """Conservative code refactoring with safety checks."""
@@ -190,6 +190,7 @@ class ConservativeRefactor:
 
         return success_count
 
+
 def main():
     """Main function to run conservative refactoring."""
     parser = argparse.ArgumentParser(description="Conservative incremental refactoring")
@@ -207,6 +208,7 @@ def main():
 
     print(f"\nConservative refactoring completed. Modified {success_count} files.")
     return success_count
+
 
 if __name__ == "__main__":
     main()

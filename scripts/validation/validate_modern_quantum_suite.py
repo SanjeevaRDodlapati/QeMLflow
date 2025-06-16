@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Modern Quantum Suite Validation for ChemML Bootcamp
 ==================================================
@@ -6,7 +5,6 @@ Modern Quantum Suite Validation for ChemML Bootcamp
 Validates that all Day 6/7 bootcamp notebooks work with the modern quantum suite.
 Tests import compatibility, basic functionality, and integration workflows.
 
-Author: ChemML Development Team
 Version: 2.0.0
 """
 

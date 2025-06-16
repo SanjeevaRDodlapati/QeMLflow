@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Health Check and Assessment Tool
 ======================================
@@ -10,7 +9,6 @@ assessment scripts.
 Features:
 - Installation verification
 - Integration system health check
-- Performance assessment
 - Configuration validation
 - Dependency verification
 
@@ -31,6 +29,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+
 class HealthChecker:
     """Comprehensive health check for ChemML installation."""
 
@@ -39,6 +38,12 @@ class HealthChecker:
         self.issues = []
         self.recommendations = []
         self.fixes_available = []
+        
+        # Add src directory to Python path for development version
+        self.repo_root = Path(__file__).parent.parent.parent
+        src_path = self.repo_root / "src"
+        if src_path.exists() and str(src_path) not in sys.path:
+            sys.path.insert(0, str(src_path))
 
     def run_full_assessment(self) -> Dict[str, Any]:
         """Run complete health assessment."""
@@ -805,6 +810,7 @@ class HealthChecker:
 
     # ...existing code...
 
+
 def main():
     """Main CLI interface."""
     parser = argparse.ArgumentParser(description="ChemML Health Check Tool")
@@ -842,6 +848,7 @@ def main():
         print("\n❌ ChemML installation has significant issues")
 
     print(f"\nOverall Health Score: {health_score:.1f}/100")
+
 
 if __name__ == "__main__":
     main()

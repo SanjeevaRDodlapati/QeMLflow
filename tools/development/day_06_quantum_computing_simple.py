@@ -22,6 +22,7 @@ print("=" * 70)
 # SECTION 1: SIMPLE MOCK CLASSES (NO EXTERNAL DEPENDENCIES)
 # ============================================================================
 
+
 class QuantumCircuit:
     """Simple quantum circuit implementation"""
 
@@ -58,6 +59,7 @@ class QuantumCircuit:
     def draw(self):
         return f"Quantum Circuit: {len(self.gates)} gates on {self.num_qubits} qubits"
 
+
 class Parameter:
     """Simple parameter class"""
 
@@ -66,6 +68,7 @@ class Parameter:
 
     def __repr__(self):
         return f"Parameter({self.name})"
+
 
 class ParameterVector:
     """Simple parameter vector"""
@@ -83,6 +86,7 @@ class ParameterVector:
 
     def __iter__(self):
         return iter(self._params)
+
 
 class QubitOperator:
     """Simple qubit operator for Hamiltonians"""
@@ -105,9 +109,11 @@ class QubitOperator:
             self.terms = terms
         self.n_qubits = 4
 
+
 # ============================================================================
 # SECTION 2: MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
+
 
 class MolecularHamiltonianBuilder:
     """Build molecular Hamiltonians for quantum simulation"""
@@ -138,9 +144,11 @@ class MolecularHamiltonianBuilder:
         print(f"✅ Hamiltonian generated with {len(hamiltonian.terms)} terms")
         return hamiltonian
 
+
 # ============================================================================
 # SECTION 3: QUANTUM CIRCUIT DESIGNER
 # ============================================================================
+
 
 class QuantumCircuitDesigner:
     """Design quantum circuits for molecular simulations"""
@@ -192,9 +200,11 @@ class QuantumCircuitDesigner:
 
         return qc, params
 
+
 # ============================================================================
 # SECTION 4: VQE SOLVER
 # ============================================================================
+
 
 class VQESolver:
     """Variational Quantum Eigensolver"""
@@ -321,9 +331,11 @@ class VQESolver:
         print(f"  Energy improvement: {energies[0] - self.best_energy:.6f} Ha")
         print(f"  Total iterations: {len(self.optimization_history)}")
 
+
 # ============================================================================
 # SECTION 5: MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Main execution function"""
@@ -415,6 +427,7 @@ def main():
         "ucc_result": result_ucc,
         "classical_energy": h2_builder.mf_energy,
     }
+
 
 # ============================================================================
 # EXECUTION

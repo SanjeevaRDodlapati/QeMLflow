@@ -20,29 +20,35 @@ RED = "\033[91m"
 BOLD = "\033[1m"
 ENDC = "\033[0m"  # End color
 
+
 def print_header(text):
     """Print a styled header"""
     print(f"\n{BLUE}{BOLD}{'='*60}{ENDC}")
     print(f"{BLUE}{BOLD}{text:^60}{ENDC}")
     print(f"{BLUE}{BOLD}{'='*60}{ENDC}\n")
 
+
 def print_info(text):
     """Print info text"""
     print(f"{GREEN}ℹ️  {text}{ENDC}")
+
 
 def print_warning(text):
     """Print warning text"""
     print(f"{YELLOW}⚠️  {text}{ENDC}")
 
+
 def print_error(text):
     """Print error text"""
     print(f"{RED}❌ {text}{ENDC}")
+
 
 def get_script_directory():
     """Get the path to the organized scripts directory"""
     current_dir = Path(__file__).parent
     scripts_dir = current_dir / "notebooks" / "quickstart_bootcamp" / "days"
     return scripts_dir
+
 
 def list_available_days():
     """List all available day directories"""
@@ -59,6 +65,7 @@ def list_available_days():
 
     return days
 
+
 def list_scripts_in_day(day_dir):
     """List all Python scripts in a day directory"""
     scripts = []
@@ -66,6 +73,7 @@ def list_scripts_in_day(day_dir):
         if script_file.is_file() and script_file.suffix == ".py":
             scripts.append(script_file)
     return sorted(scripts)
+
 
 def display_script_info(script_path):
     """Display information about a script"""
@@ -107,6 +115,7 @@ def display_script_info(script_path):
     except Exception as e:
         print(f"    📄 {script_path.name} (Error reading: {e})")
 
+
 def run_script(script_path):
     """Run a selected script"""
     print_info(f"Running script: {script_path.name}")
@@ -128,6 +137,7 @@ def run_script(script_path):
 
     except Exception as e:
         print_error(f"Error running script: {e}")
+
 
 def main():
     """Main function"""
@@ -233,6 +243,7 @@ def main():
             break
         except Exception as e:
             print_error(f"An error occurred: {e}")
+
 
 if __name__ == "__main__":
     main()

@@ -2,8 +2,7 @@
 Quantum Computing Integration for ChemML Tutorials
 =================================================
 
-This module provides quantum computing educational components and integration
-with quantum chemistry libraries for ChemML tutorials.
+Educational quantum computing modules for chemistry applications.
 
 Key Features:
 - Quantum circuit visualization for chemistry
@@ -15,9 +14,12 @@ Key Features:
 
 import logging
 import warnings
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
+if TYPE_CHECKING:
+    try:
+        from qiskit import QuantumCircuit
+    except ImportError:
+        pass
 
 # Core dependencies
 try:
@@ -30,16 +32,23 @@ except ImportError:
 # Quantum computing dependencies
 try:
     import qiskit
-    from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-    from qiskit.circuit import Parameter
-    from qiskit.primitives import Estimator
     from qiskit.quantum_info import SparsePauliOp
-    from qiskit.visualization import circuit_drawer, plot_histogram
+    from qiskit.visualization import circuit_drawer
+    from qiskit.algorithms import VQE
+    from qiskit.algorithms.optimizers import SPSA
+    from qiskit.primitives import Estimator
 
     QISKIT_AVAILABLE = True
 except ImportError:
     QISKIT_AVAILABLE = False
     warnings.warn("Qiskit not available. Quantum features will be limited.")
+    # Define dummy classes/functions to prevent undefined name errors
+    QuantumCircuit = None
+    Parameter = None
+    circuit_drawer = None
+    VQE = None
+    SPSA = None
+    Estimator = None
 
 # Quantum chemistry dependencies
 try:
@@ -60,8 +69,6 @@ except ImportError:
 # Optional visualization
 try:
     import ipywidgets as widgets
-    from IPython.display import HTML, display
-
     WIDGETS_AVAILABLE = True
 except ImportError:
     WIDGETS_AVAILABLE = False
@@ -279,6 +286,7 @@ class QuantumChemistryTutorial:
 
                 # Create parametric circuit
                 circuit = self._create_parametric_vqe_circuit(theta, phi)
+                print(f"Created circuit with {circuit.num_qubits} qubits")
 
                 # Calculate expected energy (mock calculation)
                 energy = self._calculate_mock_energy(theta, phi)
@@ -290,7 +298,7 @@ class QuantumChemistryTutorial:
                 # Display circuit
                 if MATPLOTLIB_AVAILABLE:
                     try:
-                        _fig = circuit_drawer(circuit, output="mpl", style="clifford")
+#_fig = circuit_drawer(circuit, output="mpl", style="clifford")
                         plt.show()
                     except Exception:
                         print("Circuit visualization not available")

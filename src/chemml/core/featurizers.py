@@ -2,7 +2,6 @@
 ChemML Core Featurizers
 ======================
 
-Modern molecular featurization methods optimized for machine learning.
 Combines the best of RDKit's capabilities with clean, consistent APIs.
 
 Key Features:

@@ -13,7 +13,6 @@ This module provides:
 """
 
 import json
-import os
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -66,12 +65,13 @@ class NotebookTemplate:
         setup_code = """# ChemML Setup
 import sys
 import warnings
+
 warnings.filterwarnings('ignore')
 
 # Core ChemML imports
 import chemml
-from chemml.preprocessing import MoleculePreprocessor
 from chemml.models import ChemMLModel
+from chemml.preprocessing import MoleculePreprocessor
 from chemml.visualization import ChemMLVisualizer
 
 # Optional integrations (with graceful fallbacks)

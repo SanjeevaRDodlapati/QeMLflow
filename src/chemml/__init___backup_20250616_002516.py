@@ -29,8 +29,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
-__version__ = "0.2.0"
-__author__ = "ChemML Team"
+#__version__ = "0.2.0"
+#__author__ = "ChemML Team"
 
 # Core imports - these are fast and always needed
 from .core import data, evaluation, featurizers, models, utils
@@ -64,13 +64,13 @@ research = lazy_import("chemml.research")
 integrations = lazy_import("chemml.integrations")
 
 # Lazy imports for enhanced features (conditional)
-_enhanced_features = lazy_import("chemml.core.ensemble_advanced")
-_monitoring = lazy_import("chemml.core.monitoring")
-_recommendations = lazy_import("chemml.core.recommendations")
-_workflow_optimizer = lazy_import("chemml.core.workflow_optimizer")
+#_enhanced_features = lazy_import("chemml.core.ensemble_advanced")
+#_monitoring = lazy_import("chemml.core.monitoring")
+#_recommendations = lazy_import("chemml.core.recommendations")
+#_workflow_optimizer = lazy_import("chemml.core.workflow_optimizer")
 
 # Check what's available
-_available_deps = check_dependencies()
+#_available_deps = check_dependencies()
 HAS_ENHANCED_FEATURES = True  # Will be checked dynamically
 
 
@@ -114,7 +114,7 @@ def _setup_chemml() -> None:
 # Initialize ChemML
 _setup_chemml()
 
-__all__ = [
+#__all__ = [
     # Core modules
     "featurizers",
     "models",

@@ -10,8 +10,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
-__version__ = "0.2.0"
-__author__ = "ChemML Team"
+#__version__ = "0.2.0"
+#__author__ = "ChemML Team"
 
 # Core fast imports only - essential functions
 from .core.data import load_sample_data, quick_clean, quick_split
@@ -26,9 +26,9 @@ research = lazy_import("chemml.research")
 integrations = lazy_import("chemml.integrations")
 
 # Lazy-loaded specific modules
-_featurizers = lazy_import("chemml.core.featurizers")
-_models = lazy_import("chemml.core.models")
-_utils = lazy_import("chemml.core.utils")
+#_featurizers = lazy_import("chemml.core.featurizers")
+#_models = lazy_import("chemml.core.models")
+#_utils = lazy_import("chemml.core.utils")
 
 
 # Provide direct access to most commonly used functions via lazy loading
@@ -87,7 +87,7 @@ def _setup_chemml() -> None:
 # Initialize
 _setup_chemml()
 
-__all__ = [
+#__all__ = [
     # Fast-loaded functions
     "load_sample_data",
     "quick_clean",

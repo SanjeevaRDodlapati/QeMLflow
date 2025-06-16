@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Direct Module Test - Bypassing Package Imports
 ==============================================

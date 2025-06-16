@@ -1,4 +1,3 @@
-"""
 ChemML System Diagnostics
 ========================
 

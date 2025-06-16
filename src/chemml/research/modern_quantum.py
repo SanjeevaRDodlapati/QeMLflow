@@ -1,8 +1,6 @@
-#!/usr/bin/env python3
 """
 Modern Quantum Computing Suite for ChemML
 =========================================
-
 Native Qiskit 2.0+ implementation for quantum machine learning and quantum chemistry.
 This module provides modern, future-proof quantum algorithms without legacy dependencies.
 
@@ -20,22 +18,24 @@ Compatible: Qiskit 2.0+
 
 import warnings
 from abc import ABC, abstractmethod
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-
 import numpy as np
-
+import pandas as pd
 try:
     import matplotlib.pyplot as plt
     from qiskit import QuantumCircuit
-    from qiskit.circuit import Parameter, ParameterVector
+    from qiskit.quantum_info import SparsePauliOp
     from qiskit.primitives import StatevectorEstimator, StatevectorSampler
-    from qiskit.quantum_info import Pauli, SparsePauliOp
     from scipy.optimize import minimize
+    from typing import Callable
 
     HAS_QISKIT = True
 except ImportError as e:
     warnings.warn(f"Qiskit components not available: {e}")
     HAS_QISKIT = False
+    StatevectorEstimator = None
+    StatevectorSampler = None
+    SparsePauliOp = None
+    Callable = None
 
 try:
     from pyscf import gto, scf

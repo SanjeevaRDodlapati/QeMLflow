@@ -1,8 +1,6 @@
-#!/usr/bin/env python3
 """
 Day 6: Quantum Computing for Chemistry - Complete Implementation
 ================================================================
-
 A comprehensive quantum computing platform for chemistry with:
 - Molecular Hamiltonian generation
 - VQE implementation
@@ -140,6 +138,7 @@ except ImportError as e:
                 },
             )()
 
+
 # Chemistry libraries with fallbacks
 try:
     from pyscf import ao2mo, gto, scf
@@ -270,6 +269,7 @@ print()
 # SECTION 2: MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
 
+
 class MolecularHamiltonianBuilder:
     """
     Build molecular Hamiltonians for quantum simulation
@@ -356,9 +356,11 @@ class MolecularHamiltonianBuilder:
 
         return hamiltonian
 
+
 # ============================================================================
 # SECTION 3: QUANTUM CIRCUIT DESIGNER
 # ============================================================================
+
 
 class QuantumCircuitDesigner:
     """Design quantum circuits for molecular simulations"""
@@ -416,9 +418,11 @@ class QuantumCircuitDesigner:
 
         return qc, params
 
+
 # ============================================================================
 # SECTION 4: VQE SOLVER
 # ============================================================================
+
 
 class VQESolver:
     """Variational Quantum Eigensolver implementation"""
@@ -584,9 +588,11 @@ class VQESolver:
         print(f"  Best energy: {self.best_energy:.6f} Ha")
         print(f"  Total iterations: {len(self.optimization_history)}")
 
+
 # ============================================================================
 # SECTION 5: MAIN EXECUTION
 # ============================================================================
+
 
 def main():
     """Main execution function"""
@@ -660,6 +666,7 @@ def main():
             "quantum_improvement": quantum_improvement,
         },
     }
+
 
 # ============================================================================
 # EXECUTION

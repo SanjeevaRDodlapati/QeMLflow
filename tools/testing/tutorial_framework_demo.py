@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Tutorial Framework Demonstration
 ======================================
@@ -28,6 +27,7 @@ from src.chemml.tutorials import (
     setup_learning_environment,
     visualize_molecules,
 )
+
 
 def main():
     """Demonstrate the ChemML tutorial framework."""
@@ -186,6 +186,7 @@ def main():
     print("   • Explore notebooks/learning/fundamentals/ for tutorial examples")
     print("   • Use the tutorial framework in your own educational content")
     print("   • Check UPDATED_NOTEBOOKS_INTEGRATION_PLAN.md for the full roadmap")
+
 
 if __name__ == "__main__":
     # Suppress some warnings for cleaner demo output

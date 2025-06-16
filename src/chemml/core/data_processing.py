@@ -4,17 +4,13 @@ Comprehensive data loaders for chemistry and drug discovery datasets.
 """
 
 import gzip
-import json
-import os
-import tarfile
-import zipfile
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
-from urllib.parse import urlparse
 
 import numpy as np
 import pandas as pd
 import requests
+from sklearn.model_selection import train_test_split
 
 try:
     from rdkit import Chem, RDLogger
@@ -513,7 +509,10 @@ class IntelligentDataSplitter:
         Returns:
             Dictionary with train/val/test splits
         """
-        _n_samples = len(X)
+        # Get number of samples for splitting
+        n_samples = len(X)
+        if n_samples < 10:
+            print(f"Warning: Small dataset with only {n_samples} samples")
 
         if split_method == "random":
             return self._random_split(X, y, test_size, val_size, random_state)
@@ -663,8 +662,9 @@ class IntelligentDataSplitter:
     def _stratified_split(self, X, y, test_size, val_size, random_state):
         """Stratified splitting for classification tasks."""
 
-        # Use first target column for stratification
-        _target_col = y.columns[0] if hasattr(y, "columns") else 0
+        # Use first target column for stratification (track column info)
+        target_col = y.columns[0] if hasattr(y, "columns") else 0
+        print(f"Using column {target_col} for stratification")
         stratify_target = y.iloc[:, 0] if hasattr(y, "iloc") else y
 
         # Handle continuous targets by binning

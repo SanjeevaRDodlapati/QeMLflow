@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Scripts Comparison Analysis
 =================================
@@ -11,6 +10,7 @@ import os
 import subprocess
 from pathlib import Path
 
+
 def count_lines_in_file(file_path: Path) -> int:
     """Count lines in a file."""
     try:
@@ -18,6 +18,7 @@ def count_lines_in_file(file_path: Path) -> int:
             return len(f.readlines())
     except Exception:
         return 0
+
 
 def count_functions_in_file(file_path: Path) -> int:
     """Count function definitions in a file."""
@@ -28,6 +29,7 @@ def count_functions_in_file(file_path: Path) -> int:
     except Exception:
         return 0
 
+
 def count_classes_in_file(file_path: Path) -> int:
     """Count class definitions in a file."""
     try:
@@ -36,6 +38,7 @@ def count_classes_in_file(file_path: Path) -> int:
             return content.count("class ")
     except Exception:
         return 0
+
 
 def analyze_scripts():
     """Analyze and compare original vs enhanced scripts."""
@@ -211,6 +214,7 @@ def analyze_scripts():
     print("• Better adherence to Python best practices")
     print("• Easier onboarding for new developers")
     print("• Production-ready, scalable architecture")
+
 
 if __name__ == "__main__":
     analyze_scripts()

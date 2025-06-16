@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 from typing import Dict, List
 
+
 class TargetedFixer:
     """Fix high-impact issues that improve code quality most."""
 
@@ -181,6 +182,7 @@ class TargetedFixer:
         print(f"\nTotal fixes applied: {total_fixes}")
         return total_fixes
 
+
 def main():
     """Main function."""
     fixer = TargetedFixer()
@@ -191,6 +193,7 @@ def main():
         print("Run the comprehensive linter to see the updated status.")
     else:
         print("No fixes were applied.")
+
 
 if __name__ == "__main__":
     main()

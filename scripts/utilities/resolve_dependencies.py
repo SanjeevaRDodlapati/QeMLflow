@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Dependency Resolution and Warning Suppression
 ===================================================

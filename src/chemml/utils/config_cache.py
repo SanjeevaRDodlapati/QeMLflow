@@ -4,13 +4,12 @@ Provides smart caching for configuration files and settings to improve startup p
 """
 
 import hashlib
-import os
 import pickle
 import threading
 import time
-from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Dict, Optional, Union
+from dataclasses import dataclass
+from typing import Dict, Any, Optional
 
 import yaml
 
@@ -277,8 +276,8 @@ class ConfigurationCache:
 
 
 # Global cache instance
-_global_cache = None
-_cache_lock = threading.Lock()
+#_global_cache = None
+#_cache_lock = threading.Lock()
 
 
 def get_config_cache(

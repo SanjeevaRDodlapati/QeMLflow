@@ -2,11 +2,9 @@
 ChemML Enhanced Framework Demo
 =============================
 
-Demonstration of the enhanced ChemML capabilities including:
 - Comprehensive data processing pipeline
 - Extended model suite with ensemble and boosting methods
 - Automated ML pipelines with hyperparameter optimization
-- Production-ready workflows
 
 This demo showcases the new core framework features.
 """

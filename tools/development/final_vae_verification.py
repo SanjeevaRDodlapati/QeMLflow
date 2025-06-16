@@ -6,6 +6,7 @@ Final comprehensive test to verify all VAE fixes are working correctly
 import subprocess
 import sys
 
+
 def run_test(test_file, description):
     """Run a test file and return the result"""
     print(f"\n🧪 Running: {description}")
@@ -27,6 +28,7 @@ def run_test(test_file, description):
     except Exception as e:
         print(f"❌ {description} - ERROR: {e}")
         return False
+
 
 def main():
     """Run all VAE-related tests"""
@@ -70,6 +72,7 @@ def main():
     print("=" * 60)
 
     return passed == len(results)
+
 
 if __name__ == "__main__":
     success = main()

@@ -2,11 +2,9 @@
 Comprehensive metrics utilities for ChemML evaluations.
 
 This module provides evaluation metrics for various machine learning tasks
-including classification, regression, ranking, and molecular similarity.
 """
 
 import logging
-from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd

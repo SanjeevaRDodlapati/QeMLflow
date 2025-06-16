@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
 """
 ChemML CI/CD Pipeline Status Monitor
 ====================================
 
 Monitors the status of GitHub Actions workflows and provides real-time feedback.
 """
+
 import json
 import subprocess
 import time

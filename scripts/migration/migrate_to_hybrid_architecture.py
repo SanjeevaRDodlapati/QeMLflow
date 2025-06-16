@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Hybrid Architecture Migration Script
 ==========================================

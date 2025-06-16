@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Unified Development Tools
 ===============================
@@ -30,6 +29,7 @@ import time
 from functools import wraps
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
+
 
 class PerformanceProfiler:
     """Profile and optimize performance bottlenecks."""
@@ -112,6 +112,7 @@ class PerformanceProfiler:
             )
 
         return recommendations
+
 
 class ImportOptimizer:
     """Optimize import patterns and reduce startup time."""
@@ -257,6 +258,7 @@ class ImportOptimizer:
             else:
                 return f"from {imp['module']} import {imp['name']}"
 
+
 class CodeStandardizer:
     """Standardize code formatting and style."""
 
@@ -320,6 +322,7 @@ class CodeStandardizer:
             recommendations.append(f"Address {len(todos)} TODO/FIXME comments")
 
         return recommendations
+
 
 class UnifiedOptimizer:
     """Main optimizer combining all development tools."""
@@ -409,6 +412,7 @@ class UnifiedOptimizer:
 
         return (time_score + failure_score) / 2
 
+
 def main():
     """Main CLI interface."""
     parser = argparse.ArgumentParser(description="ChemML Unified Development Tools")
@@ -489,6 +493,7 @@ def main():
             print(f"   Total issues in sample: {total_issues}")
 
     print("\n✅ Analysis complete!")
+
 
 if __name__ == "__main__":
     main()

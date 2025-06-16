@@ -1,4 +1,3 @@
-"""
 ChemML Development Configuration
 ===============================
 
@@ -6,7 +5,6 @@ Quick setup configuration for development features.
 """
 
 import os
-from pathlib import Path
 
 # Development settings
 DEVELOPMENT_MODE = True

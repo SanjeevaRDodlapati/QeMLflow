@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Incremental Code Refactoring Tool for ChemML
 
@@ -16,6 +15,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
+
 
 class IncrementalRefactor:
     """Incremental code refactoring tool for systematic quality improvements."""
@@ -406,6 +406,7 @@ class IncrementalRefactor:
 
         print("=" * 80)
 
+
 def main():
     parser = argparse.ArgumentParser(description="Incremental Code Refactoring Tool")
     parser.add_argument(
@@ -442,6 +443,7 @@ def main():
     refactor.generate_report(fix_stats)
 
     return 0 if refactor.fixes_applied > 0 else 1
+
 
 if __name__ == "__main__":
     sys.exit(main())

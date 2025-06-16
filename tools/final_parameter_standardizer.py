@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Final Parameter Standardization Tool
 Complete parameter consistency across the entire codebase
@@ -11,6 +10,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
+
 
 class FinalParameterStandardizer:
     """Complete parameter standardization with intelligent patterns"""
@@ -350,6 +350,7 @@ class FinalParameterStandardizer:
 
         return results
 
+
 def main():
     """Run final parameter standardization"""
     standardizer = FinalParameterStandardizer()
@@ -387,6 +388,7 @@ def main():
             print(f"   • {change}")
         if len(results["detailed_changes"]) > 10:
             print(f"   ... and {len(results['detailed_changes']) - 10} more")
+
 
 if __name__ == "__main__":
     main()

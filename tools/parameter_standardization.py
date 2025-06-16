@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Parameter Naming Standardization Script
 Identifies and suggests fixes for inconsistent parameter naming patterns.
@@ -10,6 +9,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
+
 
 class ParameterAnalyzer(ast.NodeVisitor):
     """Analyzes parameter naming patterns in Python files."""
@@ -73,6 +73,7 @@ class ParameterAnalyzer(ast.NodeVisitor):
         type_patterns = ["type", "kind", "method", "algorithm"]
         return any(pattern in name.lower() for pattern in type_patterns)
 
+
 def analyze_parameter_consistency(filepath: str) -> Dict:
     """Analyze parameter naming consistency in a file."""
     try:
@@ -94,6 +95,7 @@ def analyze_parameter_consistency(filepath: str) -> Dict:
 
     except Exception as e:
         return {"filepath": filepath, "error": str(e)}
+
 
 def generate_standardization_suggestions(analysis: Dict) -> List[Dict]:
     """Generate suggestions for parameter standardization."""
@@ -151,6 +153,7 @@ def generate_standardization_suggestions(analysis: Dict) -> List[Dict]:
 
     return suggestions
 
+
 def create_standardization_report(src_dir: str) -> Dict:
     """Create a comprehensive standardization report."""
     src_path = Path(src_dir)
@@ -188,6 +191,7 @@ def create_standardization_report(src_dir: str) -> Dict:
         "detailed_analyses": all_analyses,
     }
 
+
 def print_standardization_report(report: Dict):
     """Print a formatted standardization report."""
     if "error" in report:
@@ -222,6 +226,7 @@ def print_standardization_report(report: Dict):
     if summary["total_suggestions"] > 10:
         print("   (Showing first few suggestions per category)")
 
+
 def main():
     """Main function."""
     parser = argparse.ArgumentParser(description="Parameter Naming Standardization")
@@ -243,6 +248,7 @@ def main():
         with open("parameter_standardization_report.json", "w") as f:
             json.dump(report, f, indent=2)
         print("\n💾 Detailed report saved to parameter_standardization_report.json")
+
 
 if __name__ == "__main__":
     main()

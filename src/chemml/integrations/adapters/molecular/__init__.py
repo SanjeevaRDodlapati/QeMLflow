@@ -11,5 +11,5 @@ from .deepchem_integration import *
 
 __all__ = [
     "BoltzAdapter",
-    "BoltzModel",
+"BoltzModel",
 ]

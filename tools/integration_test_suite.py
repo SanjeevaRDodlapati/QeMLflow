@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Integration Testing Suite
 Comprehensive testing for Phase 5 enhancements.
@@ -10,8 +9,8 @@ import subprocess
 import sys
 import time
 import warnings
-from pathlib import Path
 from typing import Any, Dict, List, Optional
+
 
 class ChemMLTestSuite:
     """Comprehensive test suite for ChemML enhancements."""
@@ -357,6 +356,7 @@ class ChemMLTestSuite:
         print("  • Implement advanced caching features")
         print("  • Add comprehensive documentation")
 
+
 def main():
     """Main testing function."""
     import argparse
@@ -391,6 +391,7 @@ def main():
         with open("phase5_integration_test_report.json", "w") as f:
             json.dump(results, f, indent=2)
         print("\n💾 Detailed report saved to phase5_integration_test_report.json")
+
 
 if __name__ == "__main__":
     main()

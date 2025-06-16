@@ -1,4 +1,3 @@
-"""
 Progress Tracking Dashboard for ChemML Learning Journey
 
 This module provides interactive widgets and visualizations for tracking

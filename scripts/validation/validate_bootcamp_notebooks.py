@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Comprehensive Bootcamp Notebook Validation
 ==========================================
@@ -10,7 +9,6 @@ without requiring notebook execution. It tests:
 2. ChemML module availability
 3. Dataset loading capabilities
 4. Model training workflows
-5. Quantum computing features
 
 Usage:
     python validate_bootcamp_notebooks.py

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced Import Performance Optimizer for ChemML
 Implements sophisticated import optimization strategies
@@ -10,7 +9,6 @@ import re
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
 
 
 class AdvancedImportOptimizer:

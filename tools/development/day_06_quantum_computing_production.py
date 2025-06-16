@@ -2,7 +2,6 @@
 """
 Day 6: Quantum Computing for Chemistry Project - Production Version
 ==================================================================
-
 A comprehensive, error-free implementation of quantum chemistry algorithms
 including VQE, molecular simulation, and hybrid quantum-classical workflows.
 
@@ -120,6 +119,7 @@ except ImportError as e:
         def get_counts(self):
             return {"0000": 500, "1111": 524}
 
+
 # Chemistry libraries with comprehensive fallbacks
 try:
     from pyscf import ao2mo, gto, scf
@@ -234,12 +234,14 @@ except ImportError:
     def bravyi_kitaev(fermion_op):
         return jordan_wigner(fermion_op)  # Simplified
 
+
 print("✅ All dependencies loaded successfully with fallbacks")
 print()
 
 # ============================================================================
 # MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
+
 
 class MolecularHamiltonianBuilder:
     """
@@ -360,9 +362,11 @@ class MolecularHamiltonianBuilder:
         hamiltonian.n_qubits = 4
         return hamiltonian
 
+
 # ============================================================================
 # QUANTUM CIRCUIT DESIGNER
 # ============================================================================
+
 
 class QuantumCircuitDesigner:
     """
@@ -476,9 +480,11 @@ class QuantumCircuitDesigner:
         print("✅ Created adiabatic state preparation circuit")
         return circuit, list(params)
 
+
 # ============================================================================
 # VQE SOLVER
 # ============================================================================
+
 
 class VQESolver:
     """
@@ -723,9 +729,11 @@ class VQESolver:
             "convergence_history": self.optimization_history,
         }
 
+
 # ============================================================================
 # QUANTUM ALGORITHM BENCHMARKER
 # ============================================================================
+
 
 class QuantumAlgorithmBenchmarker:
     """
@@ -941,9 +949,11 @@ class QuantumAlgorithmBenchmarker:
 
         return df
 
+
 # ============================================================================
 # MAIN QUANTUM CHEMISTRY WORKFLOW
 # ============================================================================
+
 
 def run_quantum_chemistry_pipeline():
     """
@@ -1037,6 +1047,7 @@ def run_quantum_chemistry_pipeline():
         "analysis_df": analysis_df,
         "builder": h2_builder,
     }
+
 
 # ============================================================================
 # EXECUTION

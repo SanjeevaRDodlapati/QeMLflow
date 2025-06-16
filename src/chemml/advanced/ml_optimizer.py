@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced ML Optimization and Analytics
 =====================================
@@ -21,15 +20,10 @@ Usage:
     best_model = optimizer.optimize(X, y)
 """
 
-import json
 import time
-import warnings
 from abc import ABC, abstractmethod
-from collections import defaultdict
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-
+from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 
 
@@ -157,7 +151,7 @@ class EnsembleOptimizer(BaseOptimizer):
     """Advanced ensemble optimization."""
 
     def __init__(
-        self, base_models: List[str] = None, ensemble_method: str = "stacking"
+        self, base_models: Optional[List[str]] = None, ensemble_method: str = "stacking"
     ):
         self.base_models = base_models or ["random_forest", "gradient_boosting", "svm"]
         self.ensemble_method = ensemble_method
@@ -203,7 +197,7 @@ class IntelligentFeatureSelector:
         self.feature_scores = {}
 
     def select_features(
-        self, X: np.ndarray, y: np.ndarray, feature_names: List[str] = None
+        self, X: np.ndarray, y: np.ndarray, feature_names: Optional[List[str]] = None
     ) -> Tuple[np.ndarray, List[str]]:
         """Select optimal features using intelligent strategies."""
         if feature_names is None:
@@ -376,7 +370,7 @@ class ModelAnalytics:
 
         self.performance_alerts.extend(alerts)
 
-    def generate_performance_report(self, model_name: str = None) -> str:
+    def generate_performance_report(self, model_name: Optional[str] = None) -> str:
         """Generate comprehensive performance report."""
         lines = [
             "📊 ChemML Model Performance Report",
@@ -472,7 +466,7 @@ class AutoMLOptimizer:
             raise ValueError(f"Unknown optimization strategy: {optimization_strategy}")
 
     def optimize(
-        self, X: np.ndarray, y: np.ndarray, feature_names: List[str] = None, **kwargs
+        self, X: np.ndarray, y: np.ndarray, feature_names: Optional[List[str]] = None, **kwargs
     ) -> OptimizationResult:
         """Complete AutoML optimization pipeline."""
         print("🤖 Starting AutoML Optimization Pipeline")

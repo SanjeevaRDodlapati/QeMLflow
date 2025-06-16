@@ -1,0 +1,14 @@
+Molecular Modeling Adapters
+===========================
+
+Specialized adapters for molecular modeling and computational biology tools.
+Includes protein structure prediction, molecular dynamics, and related models.
+"""
+
+from .boltz_adapter import BoltzAdapter, BoltzModel
+from .deepchem_integration import *
+
+__all__ = [
+    "BoltzAdapter",
+    "BoltzModel",
+]

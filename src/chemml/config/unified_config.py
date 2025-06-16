@@ -14,9 +14,6 @@ from typing import Any, Dict, List, Optional
 
 import yaml
 
-# Import caching system
-from ..utils.config_cache import cache_config, cached_yaml_load, get_cached_config
-
 
 @dataclass
 class ExperimentTrackingConfig:
@@ -255,7 +252,7 @@ def get_config() -> ChemMLConfig:
 def set_config(config: ChemMLConfig):
     """Set the global ChemML configuration."""
     global _global_config
-    _global_config = config
+#_global_config = config
 
 
 def load_config() -> ChemMLConfig:

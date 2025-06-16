@@ -6,10 +6,9 @@ Provides standardized import utilities and patterns for consistent ChemML usage.
 This module helps ensure consistent imports across examples, tutorials, and user code.
 """
 
-import sys
 import warnings
 from importlib import import_module
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 
 class ImportManager:
@@ -111,7 +110,7 @@ class ImportManager:
 
 
 # Global import manager instance
-_import_manager = ImportManager()
+#_import_manager = ImportManager()
 
 
 def setup_chemml_imports() -> ImportManager:
@@ -213,10 +212,12 @@ def create_import_cell_code() -> str:
     """Generate code for a standard import cell."""
     return """# ChemML Standard Imports
 import warnings
+
 warnings.filterwarnings('ignore')
 
 # Get standardized imports
 from chemml.utils.imports import get_standard_imports
+
 imports = get_standard_imports()
 
 # Extract common imports

@@ -80,7 +80,7 @@ class ImportCache:
 
 
 # Global cache instance
-_import_cache = ImportCache()
+#_import_cache = ImportCache()
 
 
 def cached_import(module_name: str) -> Any:

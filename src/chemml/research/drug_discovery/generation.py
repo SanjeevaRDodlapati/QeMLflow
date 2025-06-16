@@ -2,7 +2,6 @@
 Molecular Generation Module
 ==========================
 
-Advanced molecular generation utilities for drug design.
 Provides tools for generating novel molecular structures using various approaches
 including SMILES manipulation, fragment-based generation, and optimization-guided design.
 
@@ -19,11 +18,8 @@ Functions:
 
 import logging
 import random
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-
 try:
     from rdkit import Chem
     from rdkit.Chem import AllChem, Descriptors, rdMolDescriptors

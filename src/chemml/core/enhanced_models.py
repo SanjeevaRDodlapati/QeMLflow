@@ -2,7 +2,6 @@
 Enhanced ML Models for ChemML
 ============================
 
-Extended machine learning models including ensemble methods, boosting algorithms,
 and specialized architectures for chemistry and drug discovery applications.
 
 Key Features:
@@ -14,11 +13,6 @@ Key Features:
 """
 
 import warnings
-from abc import ABC, abstractmethod
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-
-import numpy as np
-import pandas as pd
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.ensemble import (
     BaggingClassifier,
@@ -33,14 +27,14 @@ from sklearn.metrics import (
     r2_score,
     roc_auc_score,
 )
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_val_score
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_val_score, train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Import base model from core
 try:
-    from .models import BaseModel
+    from .models import BaseModel, LinearModel, RandomForestModel, SVMModel
 except ImportError:
-    from chemml.core.models import BaseModel
+    from chemml.core.models import BaseModel, LinearModel, RandomForestModel, SVMModel
 
 # Optional imports with graceful fallbacks
 try:
@@ -58,7 +52,6 @@ except ImportError:
     HAS_LIGHTGBM = False
 
 try:
-    import catboost as cb
 
     HAS_CATBOOST = True
 except ImportError:

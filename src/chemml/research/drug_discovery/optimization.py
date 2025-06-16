@@ -2,16 +2,14 @@
 ChemML Drug Discovery - Molecular Optimization
 ==============================================
 
-Molecular optimization utilities for drug design.
-
-This module provides tools for optimizing molecular structures using various
+Advanced molecular structure optimization algorithms for drug discovery.
 approaches including Bayesian optimization, genetic algorithms, and gradient-based
 methods to improve desired properties.
 """
 
 import logging
 import random
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+from typing import Callable, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd

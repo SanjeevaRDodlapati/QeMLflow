@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Quick Fix for Notebook Issues"""
 
+
 # Fix 1: VQE Solver bind_parameters issue
 def fix_vqe_expectation():
     """Fix VQE expectation value calculation"""
@@ -29,6 +30,7 @@ if 'vqe_solver' in globals():
         globals(),
     )
 
+
 # Fix 2: Assessment object
 def create_assessment():
     exec(
@@ -43,6 +45,7 @@ print("✅ Assessment object created")
 """,
         globals(),
     )
+
 
 # Fix 3: Missing variables
 def create_missing_vars():
@@ -59,6 +62,7 @@ print("✅ Missing variables created")
 """,
         globals(),
     )
+
 
 # Apply all fixes
 print("🔧 Applying quick fixes...")

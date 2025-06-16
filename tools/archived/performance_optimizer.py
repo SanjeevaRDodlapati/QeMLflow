@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Performance Optimization Tool
 Analyzes and optimizes import patterns, configuration loading, and other performance bottlenecks.

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Syntax Error Fixer - Targeted fixes for critical syntax errors
 """
@@ -8,6 +7,7 @@ import os
 import re
 import sys
 from pathlib import Path
+
 
 class SyntaxErrorFixer:
     """Fix critical syntax errors that prevent parsing."""
@@ -163,6 +163,7 @@ class SyntaxErrorFixer:
         print(f"\nFixed {fixed_count} files with syntax errors")
         return fixed_count
 
+
 def main():
     """Main function to run syntax error fixes."""
     import argparse
@@ -180,6 +181,7 @@ def main():
 
     print(f"\nSyntax Error Fixer completed. Fixed {fixed_count} files.")
     return fixed_count
+
 
 if __name__ == "__main__":
     main()

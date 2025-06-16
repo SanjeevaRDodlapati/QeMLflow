@@ -1,4 +1,3 @@
-"""
 Boltz Integration Example Predictions
 =====================================
 

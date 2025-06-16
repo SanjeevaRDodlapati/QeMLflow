@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced Code Quality Improvement Tool for ChemML
 ================================================
@@ -28,6 +27,7 @@ try:
 except ImportError:
     yaml = None
 
+
 @dataclass
 class QualityIssue:
     """Represents a code quality issue."""
@@ -42,6 +42,7 @@ class QualityIssue:
     suggestion: Optional[str] = None
     auto_fixable: bool = False
 
+
 @dataclass
 class ComplexityAnalysis:
     """Analysis of function complexity."""
@@ -53,6 +54,7 @@ class ComplexityAnalysis:
     cognitive_complexity: int
     lines_of_code: int
     suggestions: List[str] = field(default_factory=list)
+
 
 class CodeQualityEnhancer:
     """Advanced code quality improvement tool."""
@@ -435,6 +437,7 @@ class CodeQualityEnhancer:
 
         print("=" * 80)
 
+
 def main():
     """Main entry point."""
     import argparse
@@ -488,6 +491,7 @@ def main():
         if args.dead_code:
             issues = enhancer.analyze_dead_code()
             print(f"Found {len(issues)} dead code issues")
+
 
 if __name__ == "__main__":
     main()

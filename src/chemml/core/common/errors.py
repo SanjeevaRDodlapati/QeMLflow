@@ -6,7 +6,7 @@ import functools
 import logging
 import traceback
 from contextlib import contextmanager
-from typing import Any, Callable, Optional, Type, TypeVar, Union, cast
+from typing import Any, Callable, Iterator, Optional, TypeVar, Union, cast
 
 # Type variables for generic functions
 F = TypeVar("F", bound=Callable[..., Any])
@@ -145,7 +145,7 @@ def validate_numeric_range(
 
 
 @contextmanager
-def error_context(operation: str) -> None:
+def error_context(operation: str) -> Iterator[None]:
     """
     Context manager for consistent error handling and logging.
 

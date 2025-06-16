@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Example: Using WandB in ChemML Experiments
 ==========================================

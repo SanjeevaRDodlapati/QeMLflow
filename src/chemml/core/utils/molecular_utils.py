@@ -2,7 +2,6 @@ from typing import Any
 
 """
 Molecular utilities for ChemML
-
 This module provides utilities for molecular processing, descriptor calculation,
 and cheminformatics operations using RDKit.
 """

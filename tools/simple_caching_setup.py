@@ -9,6 +9,7 @@ import os
 import time
 from pathlib import Path
 
+
 def setup_caching_infrastructure():
     """Set up ChemML caching infrastructure"""
     print("🔧 Setting up ChemML caching infrastructure...")
@@ -114,6 +115,7 @@ def setup_caching_infrastructure():
 
     return cache_dir
 
+
 def create_cache_usage_guide():
     """Create a guide for using the caching system"""
     cache_dir = Path.home() / ".chemml" / "cache"
@@ -188,6 +190,7 @@ rm -rf ~/.chemml/cache/config/*
 
     print(f"✅ Usage guide created: {guide_file}")
 
+
 def main():
     """Set up caching infrastructure"""
     print("🚀 ChemML Advanced Caching Setup")
@@ -214,6 +217,7 @@ def main():
     except Exception as e:
         print(f"❌ Setup failed: {e}")
         return False
+
 
 if __name__ == "__main__":
     main()

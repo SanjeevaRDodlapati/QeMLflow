@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 🔍 Comprehensive Codebase Reality Check
 Analyze if we've truly built a complete core framework or just optimized infrastructure.
@@ -10,6 +9,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List
+
 
 class CodebaseRealityCheck:
     """Comprehensive analysis of ChemML's actual core framework completion."""
@@ -370,6 +370,7 @@ class CodebaseRealityCheck:
         else:
             return "✨ VALIDATION & POLISH (low priority - framework is solid)"
 
+
 def main():
     """Run comprehensive codebase reality check."""
     checker = CodebaseRealityCheck()
@@ -403,6 +404,7 @@ def main():
     print(f"\n🎯 Next Priority: {next_priority}")
 
     return analysis
+
 
 if __name__ == "__main__":
     main()

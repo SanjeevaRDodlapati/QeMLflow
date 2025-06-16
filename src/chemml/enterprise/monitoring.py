@@ -1,5 +1,3 @@
-import numpy as np
-
 # !/usr/bin/env python3
 """
 Enterprise Monitoring and Dashboard System
@@ -24,15 +22,14 @@ Usage:
     dashboard.start_server()
 """
 
-import json
 import threading
 import time
-import warnings
 from collections import defaultdict, deque
-from dataclasses import dataclass, field
-from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Union
+from dataclasses import dataclass
+from typing import Dict, Any, List, Optional, Union, Callable
+from datetime import datetime
+import numpy as np
 
 
 @dataclass

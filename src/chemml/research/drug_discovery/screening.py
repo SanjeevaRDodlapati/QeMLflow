@@ -2,23 +2,20 @@
 ChemML Drug Discovery - Virtual Screening
 ========================================
 
-Virtual screening tools for compound library filtering and ranking.
-
-This module provides comprehensive virtual screening capabilities including:
+Comprehensive virtual screening capabilities for drug discovery pipelines.
 - Similarity-based screening using molecular fingerprints
 - Pharmacophore-based screening
 - Screening performance metrics and validation
 """
 
 import logging
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Union
 
-import numpy as np
 import pandas as pd
 
 try:
     from rdkit import Chem
-    from rdkit.Chem import Descriptors, rdMolDescriptors
+    from rdkit.Chem import rdMolDescriptors
     from rdkit.Chem.rdmolops import RDKFingerprint
     from rdkit.DataStructs import TanimotoSimilarity
 
@@ -28,15 +25,6 @@ except ImportError:
         "RDKit not available. Virtual screening will use fallback implementations."
     )
     RDKIT_AVAILABLE = False
-
-try:
-    from sklearn.metrics.pairwise import cosine_similarity
-    from sklearn.preprocessing import StandardScaler
-
-    SKLEARN_AVAILABLE = True
-except ImportError:
-    logging.warning("Scikit-learn not available. Some features may be limited.")
-    SKLEARN_AVAILABLE = False
 
 
 class VirtualScreener:

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Phase 6 Completion Tool for ChemML
 Final push to achieve production readiness goals
@@ -11,6 +10,7 @@ import sys
 import time
 from pathlib import Path
 from typing import Any, Dict, List
+
 
 class Phase6Completion:
     """Complete Phase 6 enhancements for production readiness"""
@@ -384,6 +384,7 @@ Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}
             "metrics": self.metrics,
         }
 
+
 def main():
     """Run Phase 6 completion"""
     completion = Phase6Completion()
@@ -414,6 +415,7 @@ def main():
         print("\n🏆 ALL GOALS ACHIEVED! Ready for production! 🎉")
 
     print(f"\n📄 Detailed results: {results['results_file']}")
+
 
 if __name__ == "__main__":
     main()

@@ -7,14 +7,10 @@ and intelligent model recommendations for users.
 """
 
 import json
-import re
 import warnings
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Set, Tuple
-
-from .external_models import ExternalModelWrapper, PublicationModelRegistry
 
 
 class ModelCategory(Enum):
@@ -597,12 +593,12 @@ class AdvancedModelRegistry:
 
 
 # Global instance
-_advanced_registry = None
+#_advanced_registry = None
 
 
 def get_advanced_registry() -> AdvancedModelRegistry:
     """Get the global advanced registry instance."""
     global _advanced_registry
     if _advanced_registry is None:
-        _advanced_registry = AdvancedModelRegistry()
+#_advanced_registry = AdvancedModelRegistry()
     return _advanced_registry

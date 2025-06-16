@@ -1,4 +1,3 @@
-# ChemML Utils Package
 """
 ChemML Core Utils package providing utility functions for chemistry applications.
 """
@@ -7,7 +6,6 @@ import importlib.util
 import os
 
 # Import from the original utils.py file
-import sys
 
 # Get the path to the utils.py file
 utils_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "utils.py")
@@ -55,8 +53,8 @@ except ImportError:
 
 __all__ = [
     "setup_logging",
-    "check_environment",
-    "get_sample_data",
-    "ensure_reproducibility",
-    "configure_warnings",
+"check_environment",
+"get_sample_data",
+"ensure_reproducibility",
+"configure_warnings",
 ]

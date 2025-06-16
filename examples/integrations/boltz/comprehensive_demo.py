@@ -1,4 +1,3 @@
-"""
 Boltz Integration Examples for ChemML
 =====================================
 
@@ -6,7 +5,6 @@ Comprehensive examples showing how to use the Boltz biomolecular interaction
 model within the ChemML framework. This consolidates functionality from
 multiple demo files into a single, well-organized example.
 
-Features demonstrated:
 1. Basic integration and setup
 2. Protein structure prediction
 3. Protein-ligand complex prediction

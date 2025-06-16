@@ -1,4 +1,3 @@
-"""
 Standalone Boltz Integration for ChemML
 =======================================
 

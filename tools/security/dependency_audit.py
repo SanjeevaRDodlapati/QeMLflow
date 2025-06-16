@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Enhanced Dependency Management for ChemML
 =========================================
@@ -28,6 +27,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
 
 class DependencyAuditor:
     """Comprehensive dependency security and conflict auditor."""
@@ -393,6 +393,7 @@ class DependencyAuditor:
         if not fixes_applied:
             print("   ℹ️  No automatic fixes available")
 
+
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description="ChemML Dependency Security Auditor")
@@ -447,6 +448,7 @@ def main():
     else:
         print("\n✅ Security audit passed")
         sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

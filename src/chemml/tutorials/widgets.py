@@ -2,8 +2,7 @@
 Interactive Widgets for ChemML Tutorials
 =======================================
 
-This module provides interactive widgets and components for creating engaging
-educational experiences in computational chemistry and machine learning tutorials.
+Interactive widgets and educational tools to enhance learning experiences in computational chemistry and machine learning tutorials.
 
 Key Features:
 - Interactive assessments and quizzes
@@ -13,12 +12,8 @@ Key Features:
 - Real-time feedback systems
 """
 
-import json
 import warnings
 from datetime import datetime
-from typing import Any, Callable, Dict, List, Optional, Union
-
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -32,7 +27,6 @@ except ImportError:
     warnings.warn("ipywidgets not available. Interactive features will be limited.")
 
 try:
-    import plotly.express as px
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
 

@@ -21,6 +21,7 @@ import sys
 from pathlib import Path
 from typing import List
 
+
 class QuickWinsFixer:
  """Implements quick wins to improve codebase health."""
 

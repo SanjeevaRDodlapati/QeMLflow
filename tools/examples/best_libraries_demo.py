@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Best-in-Class Libraries Demo
 ==================================
@@ -6,7 +5,6 @@ ChemML Best-in-Class Libraries Demo
 This script demonstrates how ChemML leverages the best available libraries
 for distributed ML training, hyperparameter search, and performance monitoring.
 
-Run with: python tools/examples/best_libraries_demo.py
 """
 
 import logging
@@ -21,6 +19,7 @@ import yaml
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 def demo_distributed_training():
     """Demonstrate Ray-based distributed training."""
@@ -82,6 +81,7 @@ def demo_distributed_training():
     except ImportError:
         logger.warning("⚠️  Ray not installed. Install with: pip install ray[default]")
 
+
 def demo_hyperparameter_optimization():
     """Demonstrate Optuna-based hyperparameter optimization."""
     logger.info("🎯 Demonstrating Optuna hyperparameter optimization...")
@@ -134,6 +134,7 @@ def demo_hyperparameter_optimization():
 
     except ImportError:
         logger.warning("⚠️  Optuna not installed. Install with: pip install optuna")
+
 
 def demo_performance_monitoring():
     """Demonstrate MLflow + W&B performance monitoring."""
@@ -219,6 +220,7 @@ def demo_performance_monitoring():
     except ImportError:
         logger.warning("⚠️  W&B not installed. Install with: pip install wandb")
 
+
 def demo_quantum_integration():
     """Demonstrate PennyLane quantum computing integration."""
     logger.info("⚛️  Demonstrating PennyLane quantum computing...")
@@ -269,6 +271,7 @@ def demo_quantum_integration():
         logger.warning(
             "⚠️  PennyLane not installed. Install with: pip install pennylane"
         )
+
 
 def demo_uncertainty_quantification():
     """Demonstrate advanced uncertainty quantification."""
@@ -333,6 +336,7 @@ def demo_uncertainty_quantification():
     except Exception as e:
         logger.warning(f"⚠️  Uncertainty quantification demo failed: {e}")
 
+
 def demo_automl():
     """Demonstrate AutoML capabilities."""
     logger.info("🤖 Demonstrating AutoML with FLAML...")
@@ -379,6 +383,7 @@ def demo_automl():
     except ImportError:
         logger.warning("⚠️  FLAML not installed. Install with: pip install flaml")
 
+
 def main():
     """Run all demonstrations."""
     print("🧬 ChemML Best-in-Class Libraries Demonstration")
@@ -409,6 +414,7 @@ def main():
     print(
         "   3. Start implementing long-term enhancements following the implementation guide"
     )
+
 
 if __name__ == "__main__":
     main()

@@ -2,7 +2,6 @@
 ChemML Core Data Processing
 ==========================
 
-Comprehensive data processing utilities for chemistry and drug discovery.
 Handles molecular datasets, preprocessing, and data quality assurance.
 
 Key Features:

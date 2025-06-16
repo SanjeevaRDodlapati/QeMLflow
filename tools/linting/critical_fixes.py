@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Critical Linting Issues Fixer
 =============================
@@ -19,6 +18,7 @@ import re
 import subprocess
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
+
 
 class CriticalLintingFixer:
     """Fixes critical linting issues that affect code functionality."""
@@ -276,6 +276,7 @@ class CriticalLintingFixer:
 
         print("=" * 60)
 
+
 def main():
     """Main entry point."""
     fixer = CriticalLintingFixer()
@@ -296,6 +297,7 @@ def main():
 
     print("\n🎉 Critical linting fixes completed!")
     print("💡 Run the comprehensive linter again to see improvements")
+
 
 if __name__ == "__main__":
     main()

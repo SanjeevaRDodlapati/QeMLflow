@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Simple and Robust Notebook Validator
 ====================================
@@ -20,6 +19,7 @@ import sys
 import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
+
 
 class SimpleNotebookValidator:
     def __init__(self):
@@ -315,6 +315,7 @@ class SimpleNotebookValidator:
 
         return "\\n".join(lines)
 
+
 def main():
     import argparse
 
@@ -337,6 +338,7 @@ def main():
 
     # Exit with appropriate code
     sys.exit(0 if results["failed"] == 0 else 1)
+
 
 if __name__ == "__main__":
     main()

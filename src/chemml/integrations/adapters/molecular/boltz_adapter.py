@@ -14,12 +14,10 @@ Papers:
 
 import json
 import os
-import shutil
 import subprocess
 import tempfile
 import warnings
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -328,7 +326,7 @@ class BoltzAdapter(ExternalModelWrapper):
         try:
             # Run Boltz prediction
             print(f"Running Boltz prediction: {' '.join(cmd)}")
-            _result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+#_result = subprocess.run(cmd, capture_output=True, text=True, check=True)
 
             # Parse results
             results = self._parse_results(output_dir, task)

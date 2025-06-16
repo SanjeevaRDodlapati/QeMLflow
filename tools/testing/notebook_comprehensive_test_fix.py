@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Comprehensive Notebook Testing Framework
 ========================================
@@ -26,6 +25,7 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+
 
 class NotebookCellTester:
     """
@@ -291,6 +291,7 @@ NEXT STEPS:
 
         return fixed_cells
 
+
 def run_comprehensive_test():
     """
     Run comprehensive test on all notebook cells
@@ -353,6 +354,7 @@ print("✅ Plotting test successful")
     print(report)
 
     return tester
+
 
 if __name__ == "__main__":
     tester = run_comprehensive_test()

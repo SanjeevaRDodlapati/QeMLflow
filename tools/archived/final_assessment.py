@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Final Phase 6 Assessment Tool
 Comprehensive evaluation of all achievements

@@ -2,15 +2,15 @@
 Comprehensive visualization utilities for ChemML.
 
 This module provides plotting and visualization functions for molecular data,
-model performance, feature analysis, and scientific results.
+machine learning models, and chemical analysis results.
 """
 
 import logging
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
+from typing import Dict, List, Optional, Tuple
 
 try:
     import matplotlib.pyplot as plt
@@ -35,9 +35,6 @@ except ImportError:
     RDKIT_AVAILABLE = False
 
 try:
-    import plotly.express as px
-    import plotly.graph_objects as go
-    from plotly.subplots import make_subplots
 
     PLOTLY_AVAILABLE = True
 except ImportError:

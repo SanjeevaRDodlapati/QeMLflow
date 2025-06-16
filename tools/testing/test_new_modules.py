@@ -6,7 +6,6 @@ environmental chemistry, and materials discovery.
 
 def test_clinical_research():
     """Test clinical research module functionality."""
-    try:
         from chemml.research.clinical_research import (
             ClinicalTrialOptimizer,
             PatientStratificationEngine,

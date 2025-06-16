@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 🔬 Phase 8: Internal Validation Suite
 Comprehensive testing and validation before any community engagement.
@@ -10,7 +9,6 @@ This tool provides thorough internal validation of:
 - API stability
 - Memory usage patterns
 - Cross-platform compatibility
-"""
 
 import importlib
 import json
@@ -18,7 +16,6 @@ import platform
 import subprocess
 import sys
 import time
-import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 

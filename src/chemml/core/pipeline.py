@@ -2,7 +2,6 @@
 ChemML Model Pipeline Framework
 ==============================
 
-Automated machine learning pipelines for chemistry and drug discovery.
 Provides end-to-end workflows from data loading to model evaluation.
 
 Key Features:
@@ -10,23 +9,19 @@ Key Features:
 - Model selection and hyperparameter optimization
 - Cross-validation and performance evaluation
 - Pipeline persistence and reproducibility
-- Integration with experiment tracking
 """
 
 import json
-import os
 import pickle
-import warnings
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, roc_auc_score
 from sklearn.model_selection import KFold, StratifiedKFold, cross_val_score
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-
 # Import ChemML components
 try:
     from .data_processing import (
@@ -78,7 +73,6 @@ except ImportError:
     HAS_WANDB = False
 
 try:
-    import mlflow
 
     HAS_MLFLOW = True
 except ImportError:
@@ -357,14 +351,12 @@ class ChemMLPipeline:
 
         # Add advanced models if available
         try:
-            from .enhanced_models import XGBoostModel
 
             default_models.append(("xgboost", "xgb", {}))
         except ImportError:
             pass
 
         try:
-            from .enhanced_models import AutoMLModel
 
             default_models.append(("automl", "automl", {"n_trials": 20}))
         except ImportError:
@@ -840,4 +832,4 @@ def quick_pipeline(
 
 
 # Export main classes and functions
-__all__ = ["ChemMLPipeline", "create_pipeline", "quick_pipeline"]
+#__all__ = ["ChemMLPipeline", "create_pipeline", "quick_pipeline"]

@@ -10,7 +10,6 @@ Key Features:
 - Dependency validation and installation
 - Fallback mechanisms for missing libraries
 - Environment configuration for tutorials
-- Resource availability checking
 - Error handling and user guidance
 """
 
@@ -19,8 +18,7 @@ import logging
 import subprocess
 import sys
 import warnings
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple
 
 # Configure logging for environment management
 logger = logging.getLogger(__name__)

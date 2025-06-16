@@ -180,7 +180,7 @@ def monitor_performance(
 
                 return result
 
-            except Exception as e:
+            except Exception:
                 # Record failed execution
                 end_time = time.time()
                 execution_time = end_time - start_time

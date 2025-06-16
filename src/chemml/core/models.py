@@ -13,11 +13,8 @@ Key Features:
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, List, Optional, Tuple, Union
-
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, roc_auc_score
 from sklearn.model_selection import cross_val_score, train_test_split
@@ -334,7 +331,7 @@ if HAS_TORCH:
             X_train_tensor = torch.FloatTensor(X_train)
             y_train_tensor = torch.FloatTensor(y_train.reshape(-1, 1))
             X_val_tensor = torch.FloatTensor(X_val)
-            _y_val_tensor = torch.FloatTensor(y_val.reshape(-1, 1))
+#_y_val_tensor = torch.FloatTensor(y_val.reshape(-1, 1))
             optimizer = torch.optim.Adam(self.parameters(), lr=learning_rate)
             criterion = (
                 nn.MSELoss()
@@ -449,7 +446,7 @@ if HAS_TORCH:
 # Alias for backward compatibility and generic usage
 Model = BaseModel
 
-__all__ = [
+#__all__ = [
     "BaseModel",
     "Model",  # Add the alias to exports
     "LinearModel",

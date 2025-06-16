@@ -2,19 +2,16 @@
 ChemML Tutorial Framework - Core Module
 =======================================
 
-Core functionality for the ChemML tutorial system.
 Provides environment setup, data loading, and basic tutorial infrastructure.
 """
 
-import logging
-import os
 import sys
 import warnings
-from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
-
+import logging
 import numpy as np
 import pandas as pd
+from typing import Dict, Any, Optional, Union
+from pathlib import Path
 
 # Import ChemML core modules
 from chemml.core.utils import check_environment as core_check_environment
@@ -197,7 +194,6 @@ def _check_jupyter_environment() -> bool:
 def _check_interactive_support() -> bool:
     """Check if interactive widgets are supported."""
     try:
-        import ipywidgets
 
         return True
     except ImportError:

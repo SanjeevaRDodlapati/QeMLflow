@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 🔧 Phase 8: Production Polish Tool
 Focused improvements to reach 90+ production readiness score.
@@ -16,6 +15,7 @@ import time
 import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
 
 class ProductionPolishTool:
     """Tool to polish ChemML for production readiness."""
@@ -813,10 +813,12 @@ With 92/100 score, ChemML is ready for:
 
         print(f"\n📊 Polish report generated: {report_path}")
 
+
 def main():
     """Run production polish improvements."""
     polisher = ProductionPolishTool()
     polisher.run_production_polish()
+
 
 if __name__ == "__main__":
     main()

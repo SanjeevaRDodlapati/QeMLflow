@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Advanced Type Annotation Completion Tool
 Push type coverage to 90%+ with smart inference and automation
@@ -11,6 +10,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
+
 
 class AdvancedTypeAnnotator:
     """Advanced type annotation system with smart inference"""
@@ -459,6 +459,7 @@ class AdvancedTypeAnnotator:
 
         return results
 
+
 def main():
     """Run advanced type annotation completion"""
     annotator = AdvancedTypeAnnotator()
@@ -489,6 +490,7 @@ def main():
 
     if results["files_with_errors"]:
         print(f"\n⚠️  Files with errors: {len(results['files_with_errors'])}")
+
 
 if __name__ == "__main__":
     main()

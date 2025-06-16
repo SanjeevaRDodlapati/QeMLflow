@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 ChemML Import Optimization Tool
 Identifies and fixes import performance bottlenecks.
@@ -10,6 +9,7 @@ import importlib
 import time
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
+
 
 class ImportProfiler:
     """Profiles and optimizes import patterns."""
@@ -82,6 +82,7 @@ class ImportProfiler:
 
         return suggestions
 
+
 def optimize_core_imports():
     """Optimize imports in core ChemML modules."""
     print("🚀 Optimizing Core Module Imports")
@@ -117,6 +118,7 @@ def optimize_core_imports():
 
     print(f"\n📊 Total potential optimization: {total_optimization_time:.2f}s")
     return profiler.slow_imports
+
 
 def create_optimized_init_file():
     """Create an optimized version of ChemML's main __init__.py."""
@@ -185,6 +187,7 @@ __all__ = [
     print(f"✅ Created optimized init file: {optimized_path}")
     return optimized_path
 
+
 def main():
     """Main optimization function."""
     parser = argparse.ArgumentParser(description="ChemML Import Optimization")
@@ -212,6 +215,7 @@ def main():
         print("2. If performance is good, replace the original __init__.py")
 
     print(f"\n📈 Optimization potential: {len(slow_imports)} slow imports identified")
+
 
 if __name__ == "__main__":
     main()

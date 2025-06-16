@@ -16,9 +16,11 @@ Features:
 import json
 import warnings
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Type, Union
+from typing import Any, Dict, List, Optional, Type
 
 # Lazy import to break circular dependency
+
+
 def _get_model_adapters():
     from ..adapters.base.model_adapters import (
         HuggingFaceModelAdapter,
@@ -35,11 +37,12 @@ def _get_model_adapters():
         "TorchModelAdapter": TorchModelAdapter,
     }
 
+
 # Import new advanced features
-from .advanced_registry import AdvancedModelRegistry, get_advanced_registry
+from .advanced_registry import get_advanced_registry
 from .automated_testing import create_adapter_test_suite, quick_adapter_test
 from .external_models import ExternalModelWrapper, PublicationModelRegistry
-from .performance_monitoring import get_metrics, track_integration, track_prediction
+from .performance_monitoring import get_metrics, track_integration
 
 try:
     from ..adapters.molecular.boltz_adapter import BoltzAdapter, BoltzModel
@@ -101,7 +104,7 @@ class ExternalModelManager:
             try:
                 with open(cache_info_file) as f:
                     self.cache_info = json.load(f)
-            except:
+            except Exception:
                 self.cache_info = {}
         else:
             self.cache_info = {}
@@ -578,14 +581,14 @@ class ExternalModelManager:
 
 
 # Global manager instance
-_global_manager = None
+#_global_manager = None
 
 
 def get_manager() -> ExternalModelManager:
     """Get the global external model manager."""
     global _global_manager
     if _global_manager is None:
-        _global_manager = ExternalModelManager()
+#_global_manager = ExternalModelManager()
     return _global_manager
 
 

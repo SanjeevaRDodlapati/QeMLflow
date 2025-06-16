@@ -1,20 +1,12 @@
-from typing import Any
-
 """
 Quantum computing utilities for molecular systems
-
 This module provides utilities for quantum computing applications in
 molecular modeling and drug discovery.
 """
 
 import logging
-from typing import Dict, List, Optional, Tuple, Union
-
 import numpy as np
-
 try:
-    from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
-    from qiskit.algorithms import VQE
     from qiskit.algorithms.optimizers import COBYLA, SPSA
     from qiskit.primitives import Estimator
     from qiskit.quantum_info import SparsePauliOp
