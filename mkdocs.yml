@@ -32,11 +32,6 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          options:
-            docstring_style: google
 
 markdown_extensions:
   - admonition
@@ -59,23 +54,8 @@ nav:
     - Basic Tutorial: getting-started/basic-tutorial.md
   - User Guide:
     - Overview: user-guide/overview.md
-    - Data Processing: user-guide/data-processing.md
-    - Model Training: user-guide/model-training.md
-    - AutoML: user-guide/automl.md
-    - Ensemble Methods: user-guide/ensemble-methods.md
-  - API Reference:
-    - Core: api/core.md
-    - Models: api/models.md
-    - Data Processing: api/data-processing.md
-    - Integrations: api/integrations.md
-  - Examples:
-    - Basic Examples: examples/basic.md
-    - Advanced Examples: examples/advanced.md
-    - Notebooks: examples/notebooks.md
   - Development:
-    - Contributing: development/contributing.md
-    - Architecture: development/architecture.md
-    - Release Notes: development/releases.md
+    - Contributing: CONTRIBUTING.md
 
 extra:
   social:

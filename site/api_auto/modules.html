@@ -1,0 +1,1762 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules - ChemML API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a> > <span>Modules</span>
+            </nav>
+            <h1>📦 Modules</h1>
+        </header>
+
+        <div class="content">
+
+            <div class="api-item">
+                <h3 class="api-name">📦 </h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML: Machine Learning for Chemistry and Drug Discovery
+
+A comprehensive library providing machine learning tools specifically designed
+for chemistry and drug discovery applications.
+
+Main Modules:
+- core: Essential functionality (featurization, modeling, data processing)
+- research: Advanced research modules (drug discovery, clinical research, environmental chemistry, materials discovery)
+- integrations: Third-party library integrations (DeepChem, RDKit, pipeline systems)
+
+Quick Start:
+    >>> import chemml
+    >>> from chemml.core import featurizers, models, data
+    >>>
+    >>> # Create molecular fingerprints
+    >>> smiles = ['CCO', 'CC(=O)O', 'c1ccccc1']
+    >>> fp = featurizers.morgan_fingerprints(smiles)
+    >>>
+    >>> # Train a model
+    >>> model = models.create_rf_model()
+    >>> # ... continue with your workflow
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (1)</h4>
+                        <ul>
+                            <li><a href='functions.html#_setup_chemml'>_setup_chemml</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    Core ChemML functionality - essential modules for chemistry ML workflows.
+
+This module contains the fundamental building blocks:
+- featurizers: Molecular feature extraction
+- models: Machine learning models for chemistry
+- data: Data processing and handling utilities
+- evaluation: Model evaluation and metrics
+- utils: Common utilities and helpers
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.common</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/common/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    No description available.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.common.config</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/common/config.py</span>
+                </div>
+                <div class="api-description">
+                    Configuration management for ChemML using Pydantic for type safety.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (13)</h4>
+                        <ul>
+                            <li><a href='functions.html#get_config'>get_config</a></li><li><a href='functions.html#update_config'>update_config</a></li><li><a href='functions.html#reset_config'>reset_config</a></li><li><a href='functions.html#ensure_exists'>ensure_exists</a></li><li><a href='functions.html#get_paths'>get_paths</a></li><li><a href='functions.html#ensure_directories'>ensure_directories</a></li><li><a href='functions.html#Field'>Field</a></li><li><a href='functions.html#validator'>validator</a></li><li><a href='functions.html#path_validator'>path_validator</a></li><li><a href='functions.html#memory_limit_validator'>memory_limit_validator</a></li><li><a href='functions.html#max_workers_validator'>max_workers_validator</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#decorator'>decorator</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (5)</h4>
+                        <ul>
+                            <li><a href='classes.html#WandBConfig'>WandBConfig</a></li><li><a href='classes.html#ChemMLPaths'>ChemMLPaths</a></li><li><a href='classes.html#ChemMLConfig'>ChemMLConfig</a></li><li><a href='classes.html#BaseSettings'>BaseSettings</a></li><li><a href='classes.html#Config'>Config</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.common.errors</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/common/errors.py</span>
+                </div>
+                <div class="api-description">
+                    Enhanced error handling and validation utilities for ChemML.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (10)</h4>
+                        <ul>
+                            <li><a href='functions.html#handle_exceptions'>handle_exceptions</a></li><li><a href='functions.html#validate_smiles'>validate_smiles</a></li><li><a href='functions.html#validate_numeric_range'>validate_numeric_range</a></li><li><a href='functions.html#error_context'>error_context</a></li><li><a href='functions.html#safe_divide'>safe_divide</a></li><li><a href='functions.html#retry_on_failure'>retry_on_failure</a></li><li><a href='functions.html#decorator'>decorator</a></li><li><a href='functions.html#decorator'>decorator</a></li><li><a href='functions.html#wrapper'>wrapper</a></li><li><a href='functions.html#wrapper'>wrapper</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (6)</h4>
+                        <ul>
+                            <li><a href='classes.html#ChemMLError'>ChemMLError</a></li><li><a href='classes.html#MolecularValidationError'>MolecularValidationError</a></li><li><a href='classes.html#ModelError'>ModelError</a></li><li><a href='classes.html#DataProcessingError'>DataProcessingError</a></li><li><a href='classes.html#ConfigurationError'>ConfigurationError</a></li><li><a href='classes.html#RetryableError'>RetryableError</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.common.performance</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/common/performance.py</span>
+                </div>
+                <div class="api-description">
+                    Performance monitoring and profiling utilities for ChemML.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (14)</h4>
+                        <ul>
+                            <li><a href='functions.html#monitor_performance'>monitor_performance</a></li><li><a href='functions.html#performance_context'>performance_context</a></li><li><a href='functions.html#get_system_info'>get_system_info</a></li><li><a href='functions.html#log_performance_summary'>log_performance_summary</a></li><li><a href='functions.html#get_performance_monitor'>get_performance_monitor</a></li><li><a href='functions.html#to_dict'>to_dict</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#get_instance'>get_instance</a></li><li><a href='functions.html#record_metrics'>record_metrics</a></li><li><a href='functions.html#get_function_stats'>get_function_stats</a></li><li><a href='functions.html#get_summary'>get_summary</a></li><li><a href='functions.html#clear_history'>clear_history</a></li><li><a href='functions.html#decorator'>decorator</a></li><li><a href='functions.html#wrapper'>wrapper</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#PerformanceMetrics'>PerformanceMetrics</a></li><li><a href='classes.html#PerformanceMonitor'>PerformanceMonitor</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.data</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/data.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Core Data Processing
+==========================
+
+Comprehensive data processing utilities for chemistry and drug discovery.
+Handles molecular datasets, preprocessing, and data quality assurance.
+
+Key Features:
+- Molecular data cleaning and validation
+- SMILES processing and standardization
+- Dataset splitting and sampling strategies
+- Data quality metrics and reporting
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (23)</h4>
+                        <ul>
+                            <li><a href='functions.html#load_sample_data'>load_sample_data</a></li><li><a href='functions.html#calculate_data_quality_metrics'>calculate_data_quality_metrics</a></li><li><a href='functions.html#quick_clean'>quick_clean</a></li><li><a href='functions.html#quick_split'>quick_split</a></li><li><a href='functions.html#legacy_molecular_cleaning'>legacy_molecular_cleaning</a></li><li><a href='functions.html#enhanced_property_prediction'>enhanced_property_prediction</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#clean_smiles'>clean_smiles</a></li><li><a href='functions.html#process_dataset'>process_dataset</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#random_split'>random_split</a></li><li><a href='functions.html#stratified_split'>stratified_split</a></li><li><a href='functions.html#scaffold_split'>scaffold_split</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit_transform'>fit_transform</a></li><li><a href='functions.html#transform'>transform</a></li><li><a href='functions.html#inverse_transform'>inverse_transform</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#normalize_features'>normalize_features</a></li><li><a href='functions.html#split_data'>split_data</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#wrap_function'>wrap_function</a></li><li><a href='functions.html#create_compatibility_layer'>create_compatibility_layer</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (5)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularDataProcessor'>MolecularDataProcessor</a></li><li><a href='classes.html#DataSplitter'>DataSplitter</a></li><li><a href='classes.html#FeatureScaler'>FeatureScaler</a></li><li><a href='classes.html#DataProcessor'>DataProcessor</a></li><li><a href='classes.html#LegacyModuleWrapper'>LegacyModuleWrapper</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.evaluation</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/evaluation.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Core Evaluation
+=====================
+
+Comprehensive evaluation metrics and tools for chemistry ML models.
+Provides domain-specific metrics and visualization tools.
+
+Key Features:
+- Standard ML metrics (regression, classification)
+- Chemistry-specific evaluation metrics
+- Model interpretation and visualization tools
+- Cross-validation and statistical testing
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (14)</h4>
+                        <ul>
+                            <li><a href='functions.html#calculate_chemical_space_coverage'>calculate_chemical_space_coverage</a></li><li><a href='functions.html#applicability_domain_analysis'>applicability_domain_analysis</a></li><li><a href='functions.html#quick_regression_eval'>quick_regression_eval</a></li><li><a href='functions.html#quick_classification_eval'>quick_classification_eval</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#plot_predictions'>plot_predictions</a></li><li><a href='functions.html#plot_residuals'>plot_residuals</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#plot_confusion_matrix'>plot_confusion_matrix</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#compare_models'>compare_models</a></li><li><a href='functions.html#plot_model_comparison'>plot_model_comparison</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#RegressionEvaluator'>RegressionEvaluator</a></li><li><a href='classes.html#ClassificationEvaluator'>ClassificationEvaluator</a></li><li><a href='classes.html#ModelComparator'>ModelComparator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.featurizers</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/featurizers.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Core Featurizers
+======================
+
+Modern molecular featurization methods optimized for machine learning.
+Combines the best of RDKit's capabilities with clean, consistent APIs.
+
+Key Features:
+- Modern RDKit APIs (no deprecation warnings)
+- Consistent interface across all featurizers
+- Robust error handling
+- Easy combination of multiple feature types
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (22)</h4>
+                        <ul>
+                            <li><a href='functions.html#morgan_fingerprints'>morgan_fingerprints</a></li><li><a href='functions.html#molecular_descriptors'>molecular_descriptors</a></li><li><a href='functions.html#comprehensive_features'>comprehensive_features</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#_smiles_to_mol'>_smiles_to_mol</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#get_feature_names'>get_feature_names</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#get_feature_names'>get_feature_names</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li><li><a href='functions.html#get_feature_names'>get_feature_names</a></li><li><a href='functions.html#get_feature_info'>get_feature_info</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (7)</h4>
+                        <ul>
+                            <li><a href='classes.html#BaseFeaturizer'>BaseFeaturizer</a></li><li><a href='classes.html#MorganFingerprint'>MorganFingerprint</a></li><li><a href='classes.html#DescriptorCalculator'>DescriptorCalculator</a></li><li><a href='classes.html#ECFPFingerprint'>ECFPFingerprint</a></li><li><a href='classes.html#CombinedFeaturizer'>CombinedFeaturizer</a></li><li><a href='classes.html#CustomRDKitFeaturizer'>CustomRDKitFeaturizer</a></li><li><a href='classes.html#HybridMolecularFeaturizer'>HybridMolecularFeaturizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.models</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/models.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Core Models
+=================
+
+Machine learning models optimized for chemistry and drug discovery applications.
+Provides both classical ML and deep learning approaches with consistent APIs.
+
+Key Features:
+- Unified interface for all model types
+- Built-in evaluation metrics for chemistry tasks
+- Integration with popular ML libraries
+- Experiment tracking and reproducibility
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (25)</h4>
+                        <ul>
+                            <li><a href='functions.html#setup_experiment_tracking'>setup_experiment_tracking</a></li><li><a href='functions.html#log_metrics'>log_metrics</a></li><li><a href='functions.html#compare_models'>compare_models</a></li><li><a href='functions.html#create_linear_model'>create_linear_model</a></li><li><a href='functions.html#create_rf_model'>create_rf_model</a></li><li><a href='functions.html#create_svm_model'>create_svm_model</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#get_feature_importance'>get_feature_importance</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#create_neural_network'>create_neural_network</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (5)</h4>
+                        <ul>
+                            <li><a href='classes.html#BaseModel'>BaseModel</a></li><li><a href='classes.html#LinearModel'>LinearModel</a></li><li><a href='classes.html#RandomForestModel'>RandomForestModel</a></li><li><a href='classes.html#SVMModel'>SVMModel</a></li><li><a href='classes.html#NeuralNetwork'>NeuralNetwork</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.monitoring</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/monitoring/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Monitoring Module
+=======================
+
+Performance monitoring, analytics, and optimization tools for ChemML.
+
+Key Components:
+- PerformanceDashboard: Real-time performance visualization
+- System health monitoring
+- Optimization suggestions
+- Resource usage analytics
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.monitoring.dashboard</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/monitoring/dashboard.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Smart Performance Dashboard
+=================================
+
+Real-time performance monitoring and visualization for ChemML operations.
+Builds on the existing PerformanceMonitor to provide actionable insights.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (14)</h4>
+                        <ul>
+                            <li><a href='functions.html#create_performance_dashboard'>create_performance_dashboard</a></li><li><a href='functions.html#show_performance_dashboard'>show_performance_dashboard</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#generate_real_time_report'>generate_real_time_report</a></li><li><a href='functions.html#_get_system_metrics'>_get_system_metrics</a></li><li><a href='functions.html#_get_slowest_functions'>_get_slowest_functions</a></li><li><a href='functions.html#_get_memory_intensive_ops'>_get_memory_intensive_ops</a></li><li><a href='functions.html#_suggest_optimizations'>_suggest_optimizations</a></li><li><a href='functions.html#_calculate_efficiency_score'>_calculate_efficiency_score</a></li><li><a href='functions.html#_calculate_memory_efficiency'>_calculate_memory_efficiency</a></li><li><a href='functions.html#_calculate_health_score'>_calculate_health_score</a></li><li><a href='functions.html#generate_html_dashboard'>generate_html_dashboard</a></li><li><a href='functions.html#save_report'>save_report</a></li><li><a href='functions.html#start_monitoring'>start_monitoring</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (1)</h4>
+                        <ul>
+                            <li><a href='classes.html#PerformanceDashboard'>PerformanceDashboard</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.preprocessing</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/preprocessing/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    Data Processing Module for ChemML
+
+This module provides utilities for molecular data preprocessing, feature extraction,
+and protein structure preparation for machine learning applications.
+
+Modules:
+    molecular_preprocessing: Molecular data cleaning and standardization
+    feature_extraction: Molecular descriptor and fingerprint generation
+    protein_preparation: Protein structure download and preparation for docking
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.preprocessing.feature_extraction</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/preprocessing/feature_extraction.py</span>
+                </div>
+                <div class="api-description">
+                    Feature extraction utilities for molecular data processing.
+
+This module provides functions for extracting molecular descriptors,
+fingerprints, and other features from molecular structures.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (20)</h4>
+                        <ul>
+                            <li><a href='functions.html#extract_descriptors'>extract_descriptors</a></li><li><a href='functions.html#calculate_properties'>calculate_properties</a></li><li><a href='functions.html#extract_features'>extract_features</a></li><li><a href='functions.html#_extract_rdkit_descriptors'>_extract_rdkit_descriptors</a></li><li><a href='functions.html#_extract_mordred_descriptors'>_extract_mordred_descriptors</a></li><li><a href='functions.html#_extract_basic_descriptors'>_extract_basic_descriptors</a></li><li><a href='functions.html#_estimate_property'>_estimate_property</a></li><li><a href='functions.html#extract_basic_molecular_descriptors'>extract_basic_molecular_descriptors</a></li><li><a href='functions.html#extract_fingerprints'>extract_fingerprints</a></li><li><a href='functions.html#_extract_rdkit_fingerprints'>_extract_rdkit_fingerprints</a></li><li><a href='functions.html#_extract_basic_fingerprints'>_extract_basic_fingerprints</a></li><li><a href='functions.html#generate_fingerprints'>generate_fingerprints</a></li><li><a href='functions.html#_calculate_single_fingerprint'>_calculate_single_fingerprint</a></li><li><a href='functions.html#extract_structural_features'>extract_structural_features</a></li><li><a href='functions.html#_extract_single_structural_features'>_extract_single_structural_features</a></li><li><a href='functions.html#extract_molecular_descriptors'>extract_molecular_descriptors</a></li><li><a href='functions.html#calculate_molecular_weight'>calculate_molecular_weight</a></li><li><a href='functions.html#calculate_logP'>calculate_logP</a></li><li><a href='functions.html#calculate_num_rotatable_bonds'>calculate_num_rotatable_bonds</a></li><li><a href='functions.html#generate_fingerprint'>generate_fingerprint</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.preprocessing.molecular_preprocessing</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/preprocessing/molecular_preprocessing.py</span>
+                </div>
+                <div class="api-description">
+                    Molecular data preprocessing utilities.
+
+This module provides functions for cleaning, normalizing, and preprocessing
+molecular datasets for machine learning applications.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (10)</h4>
+                        <ul>
+                            <li><a href='functions.html#clean_data'>clean_data</a></li><li><a href='functions.html#validate_smiles_column'>validate_smiles_column</a></li><li><a href='functions.html#standardize_smiles'>standardize_smiles</a></li><li><a href='functions.html#filter_by_molecular_properties'>filter_by_molecular_properties</a></li><li><a href='functions.html#clean_molecular_data'>clean_molecular_data</a></li><li><a href='functions.html#preprocess_molecular_data'>preprocess_molecular_data</a></li><li><a href='functions.html#handle_missing_values'>handle_missing_values</a></li><li><a href='functions.html#normalize_data'>normalize_data</a></li><li><a href='functions.html#standardize_molecules'>standardize_molecules</a></li><li><a href='functions.html#remove_invalid_molecules'>remove_invalid_molecules</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.preprocessing.protein_preparation</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/preprocessing/protein_preparation.py</span>
+                </div>
+                <div class="api-description">
+                    Protein Structure Preparation Pipeline for Molecular Docking
+
+This module provides utilities for downloading, converting, and preparing
+protein structures from the Protein Data Bank (PDB) for molecular docking experiments.
+
+Classes:
+    ProteinPreparationPipeline: Main pipeline for protein structure preparation
+
+Functions:
+    download_pdb_file: Download PDB files using BioPython
+    convert_to_pdbqt: Convert PDB to PDBQT format using OpenBabel or AutoDockTools
+    fetch_metadata: Retrieve protein metadata from RCSB PDB API
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (10)</h4>
+                        <ul>
+                            <li><a href='functions.html#download_pdb_file'>download_pdb_file</a></li><li><a href='functions.html#convert_to_pdbqt'>convert_to_pdbqt</a></li><li><a href='functions.html#fetch_metadata'>fetch_metadata</a></li><li><a href='functions.html#prepare_proteins_simple'>prepare_proteins_simple</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#download_pdb_file'>download_pdb_file</a></li><li><a href='functions.html#convert_to_pdbqt'>convert_to_pdbqt</a></li><li><a href='functions.html#fetch_metadata'>fetch_metadata</a></li><li><a href='functions.html#prepare_proteins'>prepare_proteins</a></li><li><a href='functions.html#get_summary'>get_summary</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (1)</h4>
+                        <ul>
+                            <li><a href='classes.html#ProteinPreparationPipeline'>ProteinPreparationPipeline</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.recommendations</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/recommendations.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Intelligent Model Recommendation System
+=============================================
+
+AI-powered system that recommends optimal models based on data characteristics,
+task requirements, and computational constraints.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (19)</h4>
+                        <ul>
+                            <li><a href='functions.html#recommend_model'>recommend_model</a></li><li><a href='functions.html#compare_models'>compare_models</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#recommend_best_model'>recommend_best_model</a></li><li><a href='functions.html#_analyze_data_characteristics'>_analyze_data_characteristics</a></li><li><a href='functions.html#_categorize_property'>_categorize_property</a></li><li><a href='functions.html#_assess_molecular_complexity'>_assess_molecular_complexity</a></li><li><a href='functions.html#_detect_task_type'>_detect_task_type</a></li><li><a href='functions.html#_build_model_database'>_build_model_database</a></li><li><a href='functions.html#_get_model_candidates'>_get_model_candidates</a></li><li><a href='functions.html#_score_models'>_score_models</a></li><li><a href='functions.html#_generate_model_config'>_generate_model_config</a></li><li><a href='functions.html#_generate_rationale'>_generate_rationale</a></li><li><a href='functions.html#_estimate_performance'>_estimate_performance</a></li><li><a href='functions.html#_estimate_memory_requirements'>_estimate_memory_requirements</a></li><li><a href='functions.html#get_recommendation_history'>get_recommendation_history</a></li><li><a href='functions.html#compare_models'>compare_models</a></li><li><a href='functions.html#_get_model_pros'>_get_model_pros</a></li><li><a href='functions.html#_get_model_cons'>_get_model_cons</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (1)</h4>
+                        <ul>
+                            <li><a href='classes.html#ModelRecommendationEngine'>ModelRecommendationEngine</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Core Utilities
+====================
+
+Common utilities and helper functions for ChemML.
+Provides logging, environment setup, and convenience functions.
+
+Key Features:
+- Logging configuration
+- Environment checking and setup
+- Sample data generation
+- Common helper functions
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (13)</h4>
+                        <ul>
+                            <li><a href='functions.html#setup_logging'>setup_logging</a></li><li><a href='functions.html#check_environment'>check_environment</a></li><li><a href='functions.html#print_environment_report'>print_environment_report</a></li><li><a href='functions.html#get_sample_data'>get_sample_data</a></li><li><a href='functions.html#validate_smiles'>validate_smiles</a></li><li><a href='functions.html#download_sample_datasets'>download_sample_datasets</a></li><li><a href='functions.html#memory_usage_mb'>memory_usage_mb</a></li><li><a href='functions.html#configure_warnings'>configure_warnings</a></li><li><a href='functions.html#ensure_reproducibility'>ensure_reproducibility</a></li><li><a href='functions.html#create_directory_structure'>create_directory_structure</a></li><li><a href='functions.html#format_large_number'>format_large_number</a></li><li><a href='functions.html#time_function'>time_function</a></li><li><a href='functions.html#wrapper'>wrapper</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.io_utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/io_utils.py</span>
+                </div>
+                <div class="api-description">
+                    Input/Output utilities for ChemML
+
+This module provides utilities for data loading, saving results,
+and configuration management.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (31)</h4>
+                        <ul>
+                            <li><a href='functions.html#load_molecular_data'>load_molecular_data</a></li><li><a href='functions.html#save_molecular_data'>save_molecular_data</a></li><li><a href='functions.html#setup_logging'>setup_logging</a></li><li><a href='functions.html#validate_data_integrity'>validate_data_integrity</a></li><li><a href='functions.html#export_results'>export_results</a></li><li><a href='functions.html#save_model_results'>save_model_results</a></li><li><a href='functions.html#load_experiment_results'>load_experiment_results</a></li><li><a href='functions.html#_json_serializer'>_json_serializer</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#load_csv'>load_csv</a></li><li><a href='functions.html#load_sdf'>load_sdf</a></li><li><a href='functions.html#load_smiles_file'>load_smiles_file</a></li><li><a href='functions.html#load_protein_fasta'>load_protein_fasta</a></li><li><a href='functions.html#load_chembl_data'>load_chembl_data</a></li><li><a href='functions.html#load_json'>load_json</a></li><li><a href='functions.html#load_pickle'>load_pickle</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#save_dataframe'>save_dataframe</a></li><li><a href='functions.html#save_model_results'>save_model_results</a></li><li><a href='functions.html#save_plot'>save_plot</a></li><li><a href='functions.html#export_smiles_list'>export_smiles_list</a></li><li><a href='functions.html#save_molecular_descriptors'>save_molecular_descriptors</a></li><li><a href='functions.html#_make_json_serializable'>_make_json_serializable</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#load_config'>load_config</a></li><li><a href='functions.html#save_config'>save_config</a></li><li><a href='functions.html#create_experiment_config'>create_experiment_config</a></li><li><a href='functions.html#create_directory_structure'>create_directory_structure</a></li><li><a href='functions.html#list_files'>list_files</a></li><li><a href='functions.html#get_file_info'>get_file_info</a></li><li><a href='functions.html#backup_file'>backup_file</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (4)</h4>
+                        <ul>
+                            <li><a href='classes.html#DataLoader'>DataLoader</a></li><li><a href='classes.html#ResultsExporter'>ResultsExporter</a></li><li><a href='classes.html#ConfigManager'>ConfigManager</a></li><li><a href='classes.html#FileManager'>FileManager</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.metrics</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/metrics.py</span>
+                </div>
+                <div class="api-description">
+                    Comprehensive metrics utilities for ChemML evaluations.
+
+This module provides evaluation metrics for various machine learning tasks
+including classification, regression, ranking, and molecular similarity.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (16)</h4>
+                        <ul>
+                            <li><a href='functions.html#accuracy'>accuracy</a></li><li><a href='functions.html#precision'>precision</a></li><li><a href='functions.html#recall'>recall</a></li><li><a href='functions.html#f1_score_manual'>f1_score_manual</a></li><li><a href='functions.html#mean_squared_error_manual'>mean_squared_error_manual</a></li><li><a href='functions.html#mean_absolute_error_manual'>mean_absolute_error_manual</a></li><li><a href='functions.html#r_squared'>r_squared</a></li><li><a href='functions.html#mean_absolute_percentage_error'>mean_absolute_percentage_error</a></li><li><a href='functions.html#explained_variance_score'>explained_variance_score</a></li><li><a href='functions.html#evaluate_model_performance'>evaluate_model_performance</a></li><li><a href='functions.html#calculate_enrichment_factor'>calculate_enrichment_factor</a></li><li><a href='functions.html#calculate_all_metrics'>calculate_all_metrics</a></li><li><a href='functions.html#confusion_matrix_metrics'>confusion_matrix_metrics</a></li><li><a href='functions.html#calculate_all_metrics'>calculate_all_metrics</a></li><li><a href='functions.html#tanimoto_similarity'>tanimoto_similarity</a></li><li><a href='functions.html#diversity_metrics'>diversity_metrics</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#ClassificationMetrics'>ClassificationMetrics</a></li><li><a href='classes.html#RegressionMetrics'>RegressionMetrics</a></li><li><a href='classes.html#MolecularMetrics'>MolecularMetrics</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.ml_utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/ml_utils.py</span>
+                </div>
+                <div class="api-description">
+                    Machine Learning utilities for ChemML
+
+This module provides utilities for ML workflows in computational chemistry
+and drug discovery applications.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (23)</h4>
+                        <ul>
+                            <li><a href='functions.html#calculate_feature_importance'>calculate_feature_importance</a></li><li><a href='functions.html#optimize_hyperparameters'>optimize_hyperparameters</a></li><li><a href='functions.html#evaluate_model'>evaluate_model</a></li><li><a href='functions.html#split_data'>split_data</a></li><li><a href='functions.html#normalize_features'>normalize_features</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#split_data'>split_data</a></li><li><a href='functions.html#temporal_split'>temporal_split</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit_transform'>fit_transform</a></li><li><a href='functions.html#transform'>transform</a></li><li><a href='functions.html#inverse_transform'>inverse_transform</a></li><li><a href='functions.html#save'>save</a></li><li><a href='functions.html#load'>load</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#evaluate_classification'>evaluate_classification</a></li><li><a href='functions.html#evaluate_regression'>evaluate_regression</a></li><li><a href='functions.html#confusion_matrix_analysis'>confusion_matrix_analysis</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#cross_validate_model'>cross_validate_model</a></li><li><a href='functions.html#_is_classification_task'>_is_classification_task</a></li><li><a href='functions.html#save_model'>save_model</a></li><li><a href='functions.html#load_model'>load_model</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (5)</h4>
+                        <ul>
+                            <li><a href='classes.html#DatasetSplitter'>DatasetSplitter</a></li><li><a href='classes.html#FeatureScaler'>FeatureScaler</a></li><li><a href='classes.html#ModelEvaluator'>ModelEvaluator</a></li><li><a href='classes.html#CrossValidator'>CrossValidator</a></li><li><a href='classes.html#ModelPersistence'>ModelPersistence</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.molecular_utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/molecular_utils.py</span>
+                </div>
+                <div class="api-description">
+                    Molecular utilities for ChemML
+
+This module provides utilities for molecular processing, descriptor calculation,
+and cheminformatics operations using RDKit.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (41)</h4>
+                        <ul>
+                            <li><a href='functions.html#calculate_drug_likeness_score'>calculate_drug_likeness_score</a></li><li><a href='functions.html#batch_process_molecules'>batch_process_molecules</a></li><li><a href='functions.html#smiles_to_mol'>smiles_to_mol</a></li><li><a href='functions.html#mol_to_smiles'>mol_to_smiles</a></li><li><a href='functions.html#validate_smiles'>validate_smiles</a></li><li><a href='functions.html#calculate_molecular_weight'>calculate_molecular_weight</a></li><li><a href='functions.html#calculate_logp'>calculate_logp</a></li><li><a href='functions.html#get_molecular_formula'>get_molecular_formula</a></li><li><a href='functions.html#standardize_molecule'>standardize_molecule</a></li><li><a href='functions.html#remove_salts'>remove_salts</a></li><li><a href='functions.html#neutralize_molecule'>neutralize_molecule</a></li><li><a href='functions.html#calculate_similarity'>calculate_similarity</a></li><li><a href='functions.html#filter_molecules_by_properties'>filter_molecules_by_properties</a></li><li><a href='functions.html#standardize_smiles'>standardize_smiles</a></li><li><a href='functions.html#calculate_molecular_properties'>calculate_molecular_properties</a></li><li><a href='functions.html#generate_conformers'>generate_conformers</a></li><li><a href='functions.html#validate_molecule'>validate_molecule</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#calculate_basic_descriptors'>calculate_basic_descriptors</a></li><li><a href='functions.html#calculate_lipinski_descriptors'>calculate_lipinski_descriptors</a></li><li><a href='functions.html#calculate_morgan_fingerprint'>calculate_morgan_fingerprint</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#passes_lipinski'>passes_lipinski</a></li><li><a href='functions.html#filter_molecules'>filter_molecules</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#canonicalize_smiles'>canonicalize_smiles</a></li><li><a href='functions.html#is_valid_smiles'>is_valid_smiles</a></li><li><a href='functions.html#smiles_to_mol'>smiles_to_mol</a></li><li><a href='functions.html#process_smiles_list'>process_smiles_list</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#view_2d'>view_2d</a></li><li><a href='functions.html#view_3d'>view_3d</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#check_pains_alerts'>check_pains_alerts</a></li><li><a href='functions.html#check_brenk_alerts'>check_brenk_alerts</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#tanimoto_similarity'>tanimoto_similarity</a></li><li><a href='functions.html#dice_similarity'>dice_similarity</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#draw_molecule_2d'>draw_molecule_2d</a></li><li><a href='functions.html#draw_molecule_3d'>draw_molecule_3d</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (7)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularDescriptors'>MolecularDescriptors</a></li><li><a href='classes.html#LipinskiFilter'>LipinskiFilter</a></li><li><a href='classes.html#SMILESProcessor'>SMILESProcessor</a></li><li><a href='classes.html#MoleculeVisualizer'>MoleculeVisualizer</a></li><li><a href='classes.html#StructuralAlerts'>StructuralAlerts</a></li><li><a href='classes.html#SimilarityCalculator'>SimilarityCalculator</a></li><li><a href='classes.html#MolecularVisualization'>MolecularVisualization</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.quantum_utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/quantum_utils.py</span>
+                </div>
+                <div class="api-description">
+                    Quantum computing utilities for molecular systems
+
+This module provides utilities for quantum computing applications in
+molecular modeling and drug discovery.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (25)</h4>
+                        <ul>
+                            <li><a href='functions.html#quantum_distance'>quantum_distance</a></li><li><a href='functions.html#create_quantum_feature_map'>create_quantum_feature_map</a></li><li><a href='functions.html#create_quantum_circuit'>create_quantum_circuit</a></li><li><a href='functions.html#apply_quantum_gate'>apply_quantum_gate</a></li><li><a href='functions.html#measure_quantum_state'>measure_quantum_state</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_h2_hamiltonian'>create_h2_hamiltonian</a></li><li><a href='functions.html#create_ansatz_circuit'>create_ansatz_circuit</a></li><li><a href='functions.html#create_hea_circuit'>create_hea_circuit</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize_h2'>optimize_h2</a></li><li><a href='functions.html#scan_bond_distances'>scan_bond_distances</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#h2_hamiltonian_parametric'>h2_hamiltonian_parametric</a></li><li><a href='functions.html#create_ising_hamiltonian'>create_ising_hamiltonian</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_variational_classifier'>create_variational_classifier</a></li><li><a href='functions.html#create_quantum_embedding'>create_quantum_embedding</a></li><li><a href='functions.html#circuit'>circuit</a></li><li><a href='functions.html#embedding'>embedding</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#measure'>measure</a></li><li><a href='functions.html#h'>h</a></li><li><a href='functions.html#x'>x</a></li><li><a href='functions.html#cx'>cx</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (5)</h4>
+                        <ul>
+                            <li><a href='classes.html#QuantumCircuitBuilder'>QuantumCircuitBuilder</a></li><li><a href='classes.html#VQEOptimizer'>VQEOptimizer</a></li><li><a href='classes.html#MolecularHamiltonian'>MolecularHamiltonian</a></li><li><a href='classes.html#QuantumMachineLearning'>QuantumMachineLearning</a></li><li><a href='classes.html#MockQuantumCircuit'>MockQuantumCircuit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 core.utils.visualization</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/core/utils/visualization.py</span>
+                </div>
+                <div class="api-description">
+                    Comprehensive visualization utilities for ChemML.
+
+This module provides plotting and visualization functions for molecular data,
+model performance, feature analysis, and scientific results.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (12)</h4>
+                        <ul>
+                            <li><a href='functions.html#plot_molecular_structure'>plot_molecular_structure</a></li><li><a href='functions.html#plot_feature_importance'>plot_feature_importance</a></li><li><a href='functions.html#plot_model_performance'>plot_model_performance</a></li><li><a href='functions.html#create_dashboard_plots'>create_dashboard_plots</a></li><li><a href='functions.html#plot_molecular_structure'>plot_molecular_structure</a></li><li><a href='functions.html#plot_multiple_molecules'>plot_multiple_molecules</a></li><li><a href='functions.html#plot_molecular_properties_distribution'>plot_molecular_properties_distribution</a></li><li><a href='functions.html#plot_feature_importance'>plot_feature_importance</a></li><li><a href='functions.html#plot_model_performance'>plot_model_performance</a></li><li><a href='functions.html#plot_predictions_vs_actual'>plot_predictions_vs_actual</a></li><li><a href='functions.html#plot_confusion_matrix'>plot_confusion_matrix</a></li><li><a href='functions.html#plot_chemical_space_pca'>plot_chemical_space_pca</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularVisualizer'>MolecularVisualizer</a></li><li><a href='classes.html#ModelVisualizer'>ModelVisualizer</a></li><li><a href='classes.html#ChemicalSpaceVisualizer'>ChemicalSpaceVisualizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 integrations</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/integrations/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Integrations
+==================
+
+Integration modules for third-party libraries and external tools.
+Provides seamless interfaces to popular chemistry and ML libraries.
+
+Modules:
+- deepchem: DeepChem integration and wrappers
+- rdkit: Advanced RDKit utilities
+- huggingface: Hugging Face transformers for chemistry
+- wandb: Weights & Biases experiment tracking
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 integrations.deepchem_integration</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/integrations/deepchem_integration.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML DeepChem Integration
+==========================
+
+Seamless integration with DeepChem library.
+Provides wrappers and utilities for using DeepChem models with ChemML.
+
+Key Features:
+- DeepChem model wrappers with consistent APIs
+- Data format conversions between ChemML and DeepChem
+- Hybrid workflows combining custom and DeepChem featurizers
+- Model ensemble capabilities
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (12)</h4>
+                        <ul>
+                            <li><a href='functions.html#create_deepchem_dataset'>create_deepchem_dataset</a></li><li><a href='functions.html#deepchem_to_chemml_format'>deepchem_to_chemml_format</a></li><li><a href='functions.html#create_deepchem_model_ensemble'>create_deepchem_model_ensemble</a></li><li><a href='functions.html#benchmark_deepchem_featurizers'>benchmark_deepchem_featurizers</a></li><li><a href='functions.html#quick_deepchem_model'>quick_deepchem_model</a></li><li><a href='functions.html#deepchem_molecular_transformer'>deepchem_molecular_transformer</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#DeepChemModelWrapper'>DeepChemModelWrapper</a></li><li><a href='classes.html#HybridFeaturizer'>HybridFeaturizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 integrations.experiment_tracking</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/integrations/experiment_tracking.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Experiment Tracking Integration
+=====================================
+
+Weights & Biases integration for experiment tracking.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (3)</h4>
+                        <ul>
+                            <li><a href='functions.html#setup_wandb_tracking'>setup_wandb_tracking</a></li><li><a href='functions.html#log_metrics'>log_metrics</a></li><li><a href='functions.html#finish_run'>finish_run</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 integrations.pipeline</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/integrations/pipeline.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Integration Pipelines
+===========================
+
+Complete, production-ready pipelines for drug discovery workflows.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (8)</h4>
+                        <ul>
+                            <li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#configure'>configure</a></li><li><a href='functions.html#virtual_screening'>virtual_screening</a></li><li><a href='functions.html#molecular_docking'>molecular_docking</a></li><li><a href='functions.html#admet_prediction'>admet_prediction</a></li><li><a href='functions.html#lead_optimization'>lead_optimization</a></li><li><a href='functions.html#generate_final_report'>generate_final_report</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#PipelineResults'>PipelineResults</a></li><li><a href='classes.html#ScreeningResults'>ScreeningResults</a></li><li><a href='classes.html#DrugDiscoveryPipeline'>DrugDiscoveryPipeline</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Research Modules
+======================
+
+Advanced research modules for cutting-edge chemistry ML applications.
+These modules contain experimental and specialized functionality.
+
+Modules:
+- quantum: Quantum computing and quantum chemistry ML
+- generative: Generative models for molecular design
+- advanced_models: Novel ML architectures for chemistry
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.advanced_models</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/advanced_models.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Advanced Models
+=====================
+
+Advanced and experimental machine learning models for chemistry applications.
+Provides cutting-edge architectures and novel approaches for molecular ML.
+
+Key Features:
+- Graph Neural Networks for molecular representation
+- Transformer models for SMILES and molecular sequences
+- Meta-learning approaches for few-shot property prediction
+- Multi-task learning architectures
+- Attention mechanisms for molecular interpretation
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (17)</h4>
+                        <ul>
+                            <li><a href='functions.html#smiles_to_graph'>smiles_to_graph</a></li><li><a href='functions.html#create_molecular_graph_dataset'>create_molecular_graph_dataset</a></li><li><a href='functions.html#analyze_attention_weights'>analyze_attention_weights</a></li><li><a href='functions.html#ensemble_predictions'>ensemble_predictions</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#adapt'>adapt</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (6)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularGCN'>MolecularGCN</a></li><li><a href='classes.html#MolecularGAT'>MolecularGAT</a></li><li><a href='classes.html#MolecularTransformer'>MolecularTransformer</a></li><li><a href='classes.html#MultiTaskMolecularModel'>MultiTaskMolecularModel</a></li><li><a href='classes.html#MetaLearningModel'>MetaLearningModel</a></li><li><a href='classes.html#AttentionMolecularModel'>AttentionMolecularModel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.clinical_research</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/clinical_research.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Clinical Research Module
+============================
+
+Clinical trial optimization, patient stratification, and regulatory compliance
+tools for pharmaceutical development and medical research.
+
+Key Features:
+- Patient stratification algorithms
+- Clinical trial optimization
+- Regulatory compliance frameworks
+- Biomarker discovery and validation
+- Adverse event prediction
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (28)</h4>
+                        <ul>
+                            <li><a href='functions.html#stratify_trial_patients'>stratify_trial_patients</a></li><li><a href='functions.html#optimize_clinical_trial'>optimize_clinical_trial</a></li><li><a href='functions.html#validate_clinical_ai_model'>validate_clinical_ai_model</a></li><li><a href='functions.html#quick_clinical_analysis'>quick_clinical_analysis</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#stratify_patients'>stratify_patients</a></li><li><a href='functions.html#_supervised_stratification'>_supervised_stratification</a></li><li><a href='functions.html#_unsupervised_stratification'>_unsupervised_stratification</a></li><li><a href='functions.html#_assign_patients_to_strata'>_assign_patients_to_strata</a></li><li><a href='functions.html#_characterize_strata'>_characterize_strata</a></li><li><a href='functions.html#_get_demographic_profile'>_get_demographic_profile</a></li><li><a href='functions.html#_simple_stratification'>_simple_stratification</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize_trial_design'>optimize_trial_design</a></li><li><a href='functions.html#_calculate_sample_size'>_calculate_sample_size</a></li><li><a href='functions.html#_recommend_adaptive_features'>_recommend_adaptive_features</a></li><li><a href='functions.html#_optimize_endpoints'>_optimize_endpoints</a></li><li><a href='functions.html#_calculate_design_quality'>_calculate_design_quality</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#validate_ai_model'>validate_ai_model</a></li><li><a href='functions.html#_perform_compliance_checks'>_perform_compliance_checks</a></li><li><a href='functions.html#_check_model_performance'>_check_model_performance</a></li><li><a href='functions.html#_check_bias_fairness'>_check_bias_fairness</a></li><li><a href='functions.html#_check_interpretability'>_check_interpretability</a></li><li><a href='functions.html#_check_data_quality'>_check_data_quality</a></li><li><a href='functions.html#_check_robustness'>_check_robustness</a></li><li><a href='functions.html#_generate_compliance_recommendations'>_generate_compliance_recommendations</a></li><li><a href='functions.html#_calculate_compliance_score'>_calculate_compliance_score</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#PatientStratificationEngine'>PatientStratificationEngine</a></li><li><a href='classes.html#ClinicalTrialOptimizer'>ClinicalTrialOptimizer</a></li><li><a href='classes.html#RegulatoryComplianceFramework'>RegulatoryComplianceFramework</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery.py</span>
+                </div>
+                <div class="api-description">
+                    No description available.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.admet</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/admet.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery - ADMET Prediction
+=======================================
+
+ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) prediction tools
+for drug discovery workflows.
+
+This module provides comprehensive tools for:
+- ADMET property prediction
+- Drug-likeness assessment
+- Toxicity prediction
+- Rule-based filtering
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (25)</h4>
+                        <ul>
+                            <li><a href='functions.html#predict_admet_profile'>predict_admet_profile</a></li><li><a href='functions.html#evaluate_admet_predictions'>evaluate_admet_predictions</a></li><li><a href='functions.html#apply_admet_filters'>apply_admet_filters</a></li><li><a href='functions.html#predict_admet_properties'>predict_admet_properties</a></li><li><a href='functions.html#assess_drug_likeness'>assess_drug_likeness</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#predict_admet_properties'>predict_admet_properties</a></li><li><a href='functions.html#predict_absorption'>predict_absorption</a></li><li><a href='functions.html#predict_bioavailability'>predict_bioavailability</a></li><li><a href='functions.html#predict_bbb_permeability'>predict_bbb_permeability</a></li><li><a href='functions.html#predict_cyp_inhibition'>predict_cyp_inhibition</a></li><li><a href='functions.html#predict_hepatotoxicity'>predict_hepatotoxicity</a></li><li><a href='functions.html#predict_mutagenicity'>predict_mutagenicity</a></li><li><a href='functions.html#calculate_drug_likeness_score'>calculate_drug_likeness_score</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#assess_drug_likeness'>assess_drug_likeness</a></li><li><a href='functions.html#_assess_lipinski_filter'>_assess_lipinski_filter</a></li><li><a href='functions.html#_assess_ghose_filter'>_assess_ghose_filter</a></li><li><a href='functions.html#_assess_veber_filter'>_assess_veber_filter</a></li><li><a href='functions.html#_assess_egan_filter'>_assess_egan_filter</a></li><li><a href='functions.html#_assess_muegge_filter'>_assess_muegge_filter</a></li><li><a href='functions.html#_get_default_drug_likeness_result'>_get_default_drug_likeness_result</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#predict_toxicity'>predict_toxicity</a></li><li><a href='functions.html#_predict_single_toxicity'>_predict_single_toxicity</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#ADMETPredictor'>ADMETPredictor</a></li><li><a href='classes.html#DrugLikenessAssessor'>DrugLikenessAssessor</a></li><li><a href='classes.html#ToxicityPredictor'>ToxicityPredictor</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.docking</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/docking.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery - Molecular Docking Module
+===============================================
+
+Professional molecular docking and structure-based drug design tools.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (15)</h4>
+                        <ul>
+                            <li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#analyze_structure'>analyze_structure</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#top_hits'>top_hits</a></li><li><a href='functions.html#filter_by_affinity'>filter_by_affinity</a></li><li><a href='functions.html#average_affinity'>average_affinity</a></li><li><a href='functions.html#strong_binders'>strong_binders</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#dock_ligands'>dock_ligands</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#predict_sites'>predict_sites</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#best_improvement'>best_improvement</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize_lead'>optimize_lead</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (9)</h4>
+                        <ul>
+                            <li><a href='classes.html#DockingResult'>DockingResult</a></li><li><a href='classes.html#TargetAnalysis'>TargetAnalysis</a></li><li><a href='classes.html#ProteinAnalyzer'>ProteinAnalyzer</a></li><li><a href='classes.html#DockingResults'>DockingResults</a></li><li><a href='classes.html#MolecularDocker'>MolecularDocker</a></li><li><a href='classes.html#BindingSitePredictor'>BindingSitePredictor</a></li><li><a href='classes.html#OptimizedCompound'>OptimizedCompound</a></li><li><a href='classes.html#OptimizationResults'>OptimizationResults</a></li><li><a href='classes.html#SBDDOptimizer'>SBDDOptimizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.generation</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/generation.py</span>
+                </div>
+                <div class="api-description">
+                    Molecular Generation Module
+==========================
+
+Advanced molecular generation utilities for drug design.
+Provides tools for generating novel molecular structures using various approaches
+including SMILES manipulation, fragment-based generation, and optimization-guided design.
+
+Classes:
+    - MolecularGenerator: Generate novel molecular structures using various strategies
+    - FragmentBasedGenerator: Generate molecules using fragment-based approaches
+
+Functions:
+    - generate_molecular_structures: Generate new molecular structures using various approaches
+    - optimize_structure: Optimize a molecular structure for specific properties
+    - save_generated_structures: Save generated molecular structures to a file
+    - generate_diverse_library: Generate a diverse molecular library based on seed molecules
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (18)</h4>
+                        <ul>
+                            <li><a href='functions.html#generate_molecular_structures'>generate_molecular_structures</a></li><li><a href='functions.html#optimize_structure'>optimize_structure</a></li><li><a href='functions.html#save_generated_structures'>save_generated_structures</a></li><li><a href='functions.html#generate_diverse_library'>generate_diverse_library</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#generate_random_smiles'>generate_random_smiles</a></li><li><a href='functions.html#_modify_molecule'>_modify_molecule</a></li><li><a href='functions.html#_is_valid_drug_like'>_is_valid_drug_like</a></li><li><a href='functions.html#generate_similar_molecules'>generate_similar_molecules</a></li><li><a href='functions.html#_generate_variation'>_generate_variation</a></li><li><a href='functions.html#_add_methyl_group'>_add_methyl_group</a></li><li><a href='functions.html#_add_fluorine'>_add_fluorine</a></li><li><a href='functions.html#_change_ring_size'>_change_ring_size</a></li><li><a href='functions.html#_add_hydroxyl_group'>_add_hydroxyl_group</a></li><li><a href='functions.html#_calculate_tanimoto_similarity'>_calculate_tanimoto_similarity</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_get_default_fragments'>_get_default_fragments</a></li><li><a href='functions.html#generate_from_fragments'>generate_from_fragments</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularGenerator'>MolecularGenerator</a></li><li><a href='classes.html#FragmentBasedGenerator'>FragmentBasedGenerator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.molecular_optimization</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/molecular_optimization.py</span>
+                </div>
+                <div class="api-description">
+                    Molecular Optimization Module
+============================
+
+Advanced molecular optimization algorithms for drug design.
+Provides tools for optimizing molecular structures using various approaches
+including Bayesian optimization, genetic algorithms, and gradient-based methods
+to improve desired properties.
+
+Classes:
+    - MolecularOptimizer: Base class for molecular optimization strategies
+    - BayesianOptimizer: Bayesian optimization for molecular design
+    - GeneticAlgorithmOptimizer: Genetic algorithm optimization
+
+Functions:
+    - optimize_molecule: Optimize a single molecule using specified method
+    - batch_optimize: Optimize a batch of molecules
+    - compare_optimization_methods: Compare different optimization methods
+    - create_optimization_report: Generate comprehensive optimization reports
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (28)</h4>
+                        <ul>
+                            <li><a href='functions.html#optimize_molecule'>optimize_molecule</a></li><li><a href='functions.html#_random_optimize_single'>_random_optimize_single</a></li><li><a href='functions.html#batch_optimize'>batch_optimize</a></li><li><a href='functions.html#_generate_similar_molecule'>_generate_similar_molecule</a></li><li><a href='functions.html#create_optimization_report'>create_optimization_report</a></li><li><a href='functions.html#calculate_optimization_metrics'>calculate_optimization_metrics</a></li><li><a href='functions.html#compare_optimization_methods'>compare_optimization_methods</a></li><li><a href='functions.html#validate_optimization_results'>validate_optimization_results</a></li><li><a href='functions.html#extract_optimization_insights'>extract_optimization_insights</a></li><li><a href='functions.html#save_optimization_checkpoint'>save_optimization_checkpoint</a></li><li><a href='functions.html#load_optimization_checkpoint'>load_optimization_checkpoint</a></li><li><a href='functions.html#generate_optimization_summary'>generate_optimization_summary</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_default_objective'>_default_objective</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_molecular_to_features'>_molecular_to_features</a></li><li><a href='functions.html#_acquisition_function'>_acquisition_function</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#_random_optimization'>_random_optimization</a></li><li><a href='functions.html#_generate_candidates'>_generate_candidates</a></li><li><a href='functions.html#_simple_mutation'>_simple_mutation</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#_tournament_selection'>_tournament_selection</a></li><li><a href='functions.html#_crossover'>_crossover</a></li><li><a href='functions.html#_mutate'>_mutate</a></li><li><a href='functions.html#_simple_mutation'>_simple_mutation</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularOptimizer'>MolecularOptimizer</a></li><li><a href='classes.html#BayesianOptimizer'>BayesianOptimizer</a></li><li><a href='classes.html#GeneticAlgorithmOptimizer'>GeneticAlgorithmOptimizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.optimization</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/optimization.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery - Molecular Optimization
+==============================================
+
+Molecular optimization utilities for drug design.
+
+This module provides tools for optimizing molecular structures using various
+approaches including Bayesian optimization, genetic algorithms, and gradient-based
+methods to improve desired properties.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (20)</h4>
+                        <ul>
+                            <li><a href='functions.html#optimize_molecule'>optimize_molecule</a></li><li><a href='functions.html#_random_optimize_single'>_random_optimize_single</a></li><li><a href='functions.html#_generate_similar_molecule'>_generate_similar_molecule</a></li><li><a href='functions.html#batch_optimize'>batch_optimize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_default_objective'>_default_objective</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_molecular_to_features'>_molecular_to_features</a></li><li><a href='functions.html#_acquisition_function'>_acquisition_function</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#_random_optimization'>_random_optimization</a></li><li><a href='functions.html#_generate_candidates'>_generate_candidates</a></li><li><a href='functions.html#_simple_mutation'>_simple_mutation</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#_tournament_selection'>_tournament_selection</a></li><li><a href='functions.html#_crossover'>_crossover</a></li><li><a href='functions.html#_mutate'>_mutate</a></li><li><a href='functions.html#_simple_mutation'>_simple_mutation</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularOptimizer'>MolecularOptimizer</a></li><li><a href='classes.html#BayesianOptimizer'>BayesianOptimizer</a></li><li><a href='classes.html#GeneticAlgorithmOptimizer'>GeneticAlgorithmOptimizer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.properties</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/properties.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery - Property Prediction
+==========================================
+
+Comprehensive molecular property prediction tools for drug discovery.
+
+This module provides:
+- Molecular descriptor calculation
+- Physicochemical property prediction
+- Custom property model training
+- Property prediction pipelines
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (17)</h4>
+                        <ul>
+                            <li><a href='functions.html#predict_properties'>predict_properties</a></li><li><a href='functions.html#preprocess_data'>preprocess_data</a></li><li><a href='functions.html#handle_missing_values'>handle_missing_values</a></li><li><a href='functions.html#normalize_data'>normalize_data</a></li><li><a href='functions.html#evaluate_model'>evaluate_model</a></li><li><a href='functions.html#calculate_metrics'>calculate_metrics</a></li><li><a href='functions.html#train_property_model'>train_property_model</a></li><li><a href='functions.html#evaluate_property_predictions'>evaluate_property_predictions</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#calculate_molecular_descriptors'>calculate_molecular_descriptors</a></li><li><a href='functions.html#predict_physicochemical_properties'>predict_physicochemical_properties</a></li><li><a href='functions.html#train_property_model'>train_property_model</a></li><li><a href='functions.html#predict_property'>predict_property</a></li><li><a href='functions.html#predict_multiple_properties'>predict_multiple_properties</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#get_metrics'>get_metrics</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularPropertyPredictor'>MolecularPropertyPredictor</a></li><li><a href='classes.html#TrainedPropertyModel'>TrainedPropertyModel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.qsar</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/qsar.py</span>
+                </div>
+                <div class="api-description">
+                    QSAR Modeling Module
+===================
+
+QSAR (Quantitative Structure-Activity Relationship) modeling utilities for drug discovery.
+Provides tools for building and evaluating QSAR models for drug discovery applications.
+
+Classes:
+    - DescriptorCalculator: Calculate molecular descriptors for QSAR modeling
+    - QSARModel: QSAR model builder and evaluator
+    - ActivityPredictor: Predict biological activity using QSAR models
+    - TrainedQSARModel: Wrapper class for trained QSAR models
+
+Functions:
+    - build_qsar_dataset: Build QSAR dataset from SMILES and activity data
+    - evaluate_qsar_model: Comprehensive evaluation of QSAR model
+    - build_qsar_model: Build a QSAR model from feature matrix and target values
+    - predict_activity: Predict activity using a trained QSAR model
+    - validate_qsar_model: Validate a QSAR model on validation data
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (25)</h4>
+                        <ul>
+                            <li><a href='functions.html#build_qsar_dataset'>build_qsar_dataset</a></li><li><a href='functions.html#evaluate_qsar_model'>evaluate_qsar_model</a></li><li><a href='functions.html#build_qsar_model'>build_qsar_model</a></li><li><a href='functions.html#predict_activity'>predict_activity</a></li><li><a href='functions.html#validate_qsar_model'>validate_qsar_model</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#calculate_rdkit_descriptors'>calculate_rdkit_descriptors</a></li><li><a href='functions.html#calculate_mordred_descriptors'>calculate_mordred_descriptors</a></li><li><a href='functions.html#calculate_fingerprint_descriptors'>calculate_fingerprint_descriptors</a></li><li><a href='functions.html#calculate_descriptors_from_smiles'>calculate_descriptors_from_smiles</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_initialize_model'>_initialize_model</a></li><li><a href='functions.html#prepare_data'>prepare_data</a></li><li><a href='functions.html#train'>train</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#get_feature_importance'>get_feature_importance</a></li><li><a href='functions.html#save_model'>save_model</a></li><li><a href='functions.html#load_model'>load_model</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#add_model'>add_model</a></li><li><a href='functions.html#predict_activity'>predict_activity</a></li><li><a href='functions.html#predict_multiple_activities'>predict_multiple_activities</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#get_metrics'>get_metrics</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (4)</h4>
+                        <ul>
+                            <li><a href='classes.html#DescriptorCalculator'>DescriptorCalculator</a></li><li><a href='classes.html#QSARModel'>QSARModel</a></li><li><a href='classes.html#ActivityPredictor'>ActivityPredictor</a></li><li><a href='classes.html#TrainedQSARModel'>TrainedQSARModel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery.screening</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery/screening.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery - Virtual Screening
+========================================
+
+Virtual screening tools for compound library filtering and ranking.
+
+This module provides comprehensive virtual screening capabilities including:
+- Similarity-based screening using molecular fingerprints
+- Pharmacophore-based screening
+- Screening performance metrics and validation
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (16)</h4>
+                        <ul>
+                            <li><a href='functions.html#perform_virtual_screening'>perform_virtual_screening</a></li><li><a href='functions.html#calculate_screening_metrics'>calculate_screening_metrics</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#set_reference_compounds'>set_reference_compounds</a></li><li><a href='functions.html#screen_library'>screen_library</a></li><li><a href='functions.html#get_top_hits'>get_top_hits</a></li><li><a href='functions.html#calculate_enrichment_factor'>calculate_enrichment_factor</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#set_reference_compounds'>set_reference_compounds</a></li><li><a href='functions.html#screen_library'>screen_library</a></li><li><a href='functions.html#_calculate_fingerprint'>_calculate_fingerprint</a></li><li><a href='functions.html#_calculate_similarity'>_calculate_similarity</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#set_reference_compounds'>set_reference_compounds</a></li><li><a href='functions.html#screen_library'>screen_library</a></li><li><a href='functions.html#_calculate_pharmacophore_score'>_calculate_pharmacophore_score</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#VirtualScreener'>VirtualScreener</a></li><li><a href='classes.html#SimilarityScreener'>SimilarityScreener</a></li><li><a href='classes.html#PharmacophoreScreener'>PharmacophoreScreener</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.drug_discovery_legacy</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/drug_discovery_legacy.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Drug Discovery Research Module
+====================================
+
+Advanced drug discovery algorithms and workflows.
+This module serves as a compatibility layer for the legacy monolithic implementation.
+
+The actual implementation has been modularized into separate files:
+- molecular_optimization.py: Molecular optimization strategies
+- admet.py: ADMET property prediction
+- screening.py: Virtual screening workflows
+- properties.py: Property prediction models
+- generation.py: Molecular generation and design
+- qsar.py: QSAR modeling tools
+
+For new code, import directly from the submodules.
+For backward compatibility, all classes and functions are available at the module level.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (1)</h4>
+                        <ul>
+                            <li><a href='functions.html#_show_deprecation_warning'>_show_deprecation_warning</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.environmental_chemistry</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/environmental_chemistry.py</span>
+                </div>
+                <div class="api-description">
+                    Environmental Chemistry AI Module
+
+This module provides comprehensive tools for environmental monitoring,
+pollution prediction, and green chemistry optimization.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (15)</h4>
+                        <ul>
+                            <li><a href='functions.html#quick_environmental_analysis'>quick_environmental_analysis</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_get_default_parameters'>_get_default_parameters</a></li><li><a href='functions.html#generate_sample_data'>generate_sample_data</a></li><li><a href='functions.html#train_pollution_predictor'>train_pollution_predictor</a></li><li><a href='functions.html#predict_pollution'>predict_pollution</a></li><li><a href='functions.html#get_feature_importance'>get_feature_importance</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#generate_reaction_data'>generate_reaction_data</a></li><li><a href='functions.html#optimize_reaction_conditions'>optimize_reaction_conditions</a></li><li><a href='functions.html#predict_green_metrics'>predict_green_metrics</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#generate_atmospheric_data'>generate_atmospheric_data</a></li><li><a href='functions.html#analyze_atmospheric_trends'>analyze_atmospheric_trends</a></li><li><a href='functions.html#forecast_air_quality'>forecast_air_quality</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#EnvironmentalMonitoringSystem'>EnvironmentalMonitoringSystem</a></li><li><a href='classes.html#GreenChemistryOptimizer'>GreenChemistryOptimizer</a></li><li><a href='classes.html#AtmosphericChemistryAnalyzer'>AtmosphericChemistryAnalyzer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.generative</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/generative.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Generative Models
+=======================
+
+Generative models for molecular design and drug discovery.
+Provides VAEs, GANs, and other generative approaches for chemistry.
+
+Key Features:
+- Variational Autoencoders (VAEs) for molecular generation
+- Generative Adversarial Networks (GANs) for drug design
+- Autoregressive models for SMILES generation
+- Property-guided molecular optimization
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (31)</h4>
+                        <ul>
+                            <li><a href='functions.html#calculate_molecular_properties'>calculate_molecular_properties</a></li><li><a href='functions.html#validate_generated_molecules'>validate_generated_molecules</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#optimize'>optimize</a></li><li><a href='functions.html#_decode_molecules'>_decode_molecules</a></li><li><a href='functions.html#_evaluate_molecules'>_evaluate_molecules</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_build_vocabulary'>_build_vocabulary</a></li><li><a href='functions.html#encode_smiles'>encode_smiles</a></li><li><a href='functions.html#decode_tokens'>decode_tokens</a></li><li><a href='functions.html#__len__'>__len__</a></li><li><a href='functions.html#__getitem__'>__getitem__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#encode'>encode</a></li><li><a href='functions.html#reparameterize'>reparameterize</a></li><li><a href='functions.html#decode'>decode</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#generate'>generate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#encode'>encode</a></li><li><a href='functions.html#decode'>decode</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#generate_with_properties'>generate_with_properties</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_build_generator'>_build_generator</a></li><li><a href='functions.html#_build_discriminator'>_build_discriminator</a></li><li><a href='functions.html#generate'>generate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (7)</h4>
+                        <ul>
+                            <li><a href='classes.html#MolecularOptimizer'>MolecularOptimizer</a></li><li><a href='classes.html#MolecularDataset'>MolecularDataset</a></li><li><a href='classes.html#MolecularVAE'>MolecularVAE</a></li><li><a href='classes.html#ConditionalVAE'>ConditionalVAE</a></li><li><a href='classes.html#MolecularGAN'>MolecularGAN</a></li><li><a href='classes.html#Generator'>Generator</a></li><li><a href='classes.html#Discriminator'>Discriminator</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.materials_discovery</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/materials_discovery.py</span>
+                </div>
+                <div class="api-description">
+                    Advanced Materials Discovery Module
+
+This module provides comprehensive tools for AI-driven materials design,
+property prediction, and synthesis planning.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (23)</h4>
+                        <ul>
+                            <li><a href='functions.html#comprehensive_materials_discovery'>comprehensive_materials_discovery</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_get_feature_names'>_get_feature_names</a></li><li><a href='functions.html#_get_target_properties'>_get_target_properties</a></li><li><a href='functions.html#generate_materials_data'>generate_materials_data</a></li><li><a href='functions.html#train_property_models'>train_property_models</a></li><li><a href='functions.html#predict_properties'>predict_properties</a></li><li><a href='functions.html#get_feature_importance'>get_feature_importance</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#_define_design_space'>_define_design_space</a></li><li><a href='functions.html#generate_candidate_materials'>generate_candidate_materials</a></li><li><a href='functions.html#evaluate_candidates'>evaluate_candidates</a></li><li><a href='functions.html#optimize_design'>optimize_design</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#encode'>encode</a></li><li><a href='functions.html#reparameterize'>reparameterize</a></li><li><a href='functions.html#decode'>decode</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#generate_materials'>generate_materials</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#analyze_materials_clusters'>analyze_materials_clusters</a></li><li><a href='functions.html#_calculate_silhouette_score'>_calculate_silhouette_score</a></li><li><a href='functions.html#predict_cluster'>predict_cluster</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (4)</h4>
+                        <ul>
+                            <li><a href='classes.html#MaterialsPropertyPredictor'>MaterialsPropertyPredictor</a></li><li><a href='classes.html#InverseMaterialsDesigner'>InverseMaterialsDesigner</a></li><li><a href='classes.html#GenerativeMaterialsModel'>GenerativeMaterialsModel</a></li><li><a href='classes.html#MaterialsClusterAnalyzer'>MaterialsClusterAnalyzer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.modern_quantum</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/modern_quantum.py</span>
+                </div>
+                <div class="api-description">
+                    Modern Quantum Computing Suite for ChemML
+=========================================
+
+Native Qiskit 2.0+ implementation for quantum machine learning and quantum chemistry.
+This module provides modern, future-proof quantum algorithms without legacy dependencies.
+
+Features:
+- VQE (Variational Quantum Eigensolver) for molecular ground states
+- QAOA (Quantum Approximate Optimization Algorithm)
+- Quantum feature mapping for ML
+- Quantum chemistry utilities
+- Hardware-efficient ansätze
+
+Author: ChemML Development Team
+Version: 1.0.0
+Compatible: Qiskit 2.0+
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (21)</h4>
+                        <ul>
+                            <li><a href='functions.html#test_modern_quantum_suite'>test_modern_quantum_suite</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#run'>run</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#cost_function'>cost_function</a></li><li><a href='functions.html#run'>run</a></li><li><a href='functions.html#plot_convergence'>plot_convergence</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_qaoa_circuit'>create_qaoa_circuit</a></li><li><a href='functions.html#run'>run</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_feature_map'>create_feature_map</a></li><li><a href='functions.html#transform'>transform</a></li><li><a href='functions.html#_extract_quantum_features'>_extract_quantum_features</a></li><li><a href='functions.html#h2_hamiltonian'>h2_hamiltonian</a></li><li><a href='functions.html#lih_hamiltonian'>lih_hamiltonian</a></li><li><a href='functions.html#two_qubit_ansatz'>two_qubit_ansatz</a></li><li><a href='functions.html#four_qubit_ansatz'>four_qubit_ansatz</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#run_h2_analysis'>run_h2_analysis</a></li><li><a href='functions.html#plot_potential_energy_surface'>plot_potential_energy_surface</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (7)</h4>
+                        <ul>
+                            <li><a href='classes.html#QuantumAlgorithmBase'>QuantumAlgorithmBase</a></li><li><a href='classes.html#ModernVQE'>ModernVQE</a></li><li><a href='classes.html#ModernQAOA'>ModernQAOA</a></li><li><a href='classes.html#QuantumFeatureMap'>QuantumFeatureMap</a></li><li><a href='classes.html#MolecularHamiltonianBuilder'>MolecularHamiltonianBuilder</a></li><li><a href='classes.html#HardwareEfficientAnsatz'>HardwareEfficientAnsatz</a></li><li><a href='classes.html#QuantumChemistryWorkflow'>QuantumChemistryWorkflow</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 research.quantum</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/research/quantum.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Quantum Computing Module
+==============================
+
+Quantum computing and quantum chemistry ML implementations.
+Provides quantum circuits, quantum ML algorithms, and quantum chemistry simulations.
+
+Key Features:
+- Quantum circuits for molecular representation
+- Quantum machine learning algorithms
+- Quantum chemistry simulation tools
+- Hybrid classical-quantum models
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (22)</h4>
+                        <ul>
+                            <li><a href='functions.html#estimate_quantum_advantage'>estimate_quantum_advantage</a></li><li><a href='functions.html#check_quantum_dependencies'>check_quantum_dependencies</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#encode_features'>encode_features</a></li><li><a href='functions.html#_normalize_for_amplitude_encoding'>_normalize_for_amplitude_encoding</a></li><li><a href='functions.html#_amplitude_encode'>_amplitude_encode</a></li><li><a href='functions.html#_angle_encode'>_angle_encode</a></li><li><a href='functions.html#_basis_encode'>_basis_encode</a></li><li><a href='functions.html#_mock_encode_features'>_mock_encode_features</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_variational_circuit'>create_variational_circuit</a></li><li><a href='functions.html#_mock_create_circuit'>_mock_create_circuit</a></li><li><a href='functions.html#forward'>forward</a></li><li><a href='functions.html#_mock_forward'>_mock_forward</a></li><li><a href='functions.html#_calculate_expectation'>_calculate_expectation</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#simulate_molecule'>simulate_molecule</a></li><li><a href='functions.html#_variational_quantum_eigensolver'>_variational_quantum_eigensolver</a></li><li><a href='functions.html#_quantum_approximate_optimization'>_quantum_approximate_optimization</a></li><li><a href='functions.html#_classical_approximation'>_classical_approximation</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#forward'>forward</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (4)</h4>
+                        <ul>
+                            <li><a href='classes.html#QuantumMolecularEncoder'>QuantumMolecularEncoder</a></li><li><a href='classes.html#QuantumNeuralNetwork'>QuantumNeuralNetwork</a></li><li><a href='classes.html#QuantumChemistrySimulator'>QuantumChemistrySimulator</a></li><li><a href='classes.html#HybridQuantumClassical'>HybridQuantumClassical</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/__init__.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Tutorial Framework
+========================
+
+A comprehensive framework for creating interactive and progressive learning experiences
+in computational chemistry and machine learning.
+
+This module provides the foundation for all ChemML tutorials, including:
+- Learning assessment and progress tracking
+- Interactive components and widgets
+- Educational data management
+- Environment setup and validation
+- Visualization and demonstration tools
+
+Key Components:
+- LearningAssessment: Track student progress and understanding
+- ProgressTracker: Monitor learning activities and time spent
+- EnvironmentManager: Setup and validate tutorial environments
+- EducationalDatasets: Curated datasets for learning
+- InteractiveComponents: Widgets and visual demonstrations
+
+Usage:
+    from chemml.tutorials import (
+        setup_learning_environment,
+        LearningAssessment,
+        ProgressTracker,
+        load_tutorial_data
+    )
+
+    # Setup learning environment
+    env = setup_learning_environment()
+
+    # Initialize assessment
+    assessment = LearningAssessment(student_id="demo", section="fundamentals")
+
+    # Track progress
+    tracker = ProgressTracker(assessment)
+
+    # Load educational data
+    data = load_tutorial_data("molecular_properties")
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.assessment</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/assessment.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Tutorial Framework - Assessment Module
+=============================================
+
+Provides learning assessment, progress tracking, and educational evaluation tools.
+This module standardizes how learning progress is measured and tracked across all tutorials.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (13)</h4>
+                        <ul>
+                            <li><a href='functions.html#duration'>duration</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#start_section'>start_section</a></li><li><a href='functions.html#end_section'>end_section</a></li><li><a href='functions.html#record_activity'>record_activity</a></li><li><a href='functions.html#add_concept_checkpoint'>add_concept_checkpoint</a></li><li><a href='functions.html#end_current_activity'>end_current_activity</a></li><li><a href='functions.html#get_progress_summary'>get_progress_summary</a></li><li><a href='functions.html#save_progress'>save_progress</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#log_progress'>log_progress</a></li><li><a href='functions.html#get_session_summary'>get_session_summary</a></li><li><a href='functions.html#print_summary'>print_summary</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (4)</h4>
+                        <ul>
+                            <li><a href='classes.html#LearningActivity'>LearningActivity</a></li><li><a href='classes.html#ConceptCheckpoint'>ConceptCheckpoint</a></li><li><a href='classes.html#LearningAssessment'>LearningAssessment</a></li><li><a href='classes.html#ProgressTracker'>ProgressTracker</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.core</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/core.py</span>
+                </div>
+                <div class="api-description">
+                    ChemML Tutorial Framework - Core Module
+=======================================
+
+Core functionality for the ChemML tutorial system.
+Provides environment setup, data loading, and basic tutorial infrastructure.
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (9)</h4>
+                        <ul>
+                            <li><a href='functions.html#setup_learning_environment'>setup_learning_environment</a></li><li><a href='functions.html#load_tutorial_data'>load_tutorial_data</a></li><li><a href='functions.html#create_interactive_demo'>create_interactive_demo</a></li><li><a href='functions.html#_check_tutorial_environment'>_check_tutorial_environment</a></li><li><a href='functions.html#_check_jupyter_environment'>_check_jupyter_environment</a></li><li><a href='functions.html#_check_interactive_support'>_check_interactive_support</a></li><li><a href='functions.html#_setup_tutorial_directories'>_setup_tutorial_directories</a></li><li><a href='functions.html#_get_tutorial_directories'>_get_tutorial_directories</a></li><li><a href='functions.html#initialize_tutorial_environment'>initialize_tutorial_environment</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (0)</h4>
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.data</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/data.py</span>
+                </div>
+                <div class="api-description">
+                    Educational Data Management for ChemML Tutorials
+===============================================
+
+This module provides curated datasets and data generation utilities specifically
+designed for educational purposes in computational chemistry and machine learning.
+
+Key Features:
+- Pre-loaded molecular datasets for tutorials
+- Synthetic data generation for ddef load_quantum_molecules(
+    molecules: Optional[List[str]] = None,
+    basis_set: str = 'STO-3G',
+    include_hamiltonians: bool = True,
+    difficulty_level: str = 'beginner'
+) -> Any:rations
+- Educational molecule collections
+- Data validation and preprocessing for learning
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (18)</h4>
+                        <ul>
+                            <li><a href='functions.html#get_sample_datasets'>get_sample_datasets</a></li><li><a href='functions.html#load_educational_molecules'>load_educational_molecules</a></li><li><a href='functions.html#create_synthetic_examples'>create_synthetic_examples</a></li><li><a href='functions.html#load_tutorial_molecules'>load_tutorial_molecules</a></li><li><a href='functions.html#get_molecule_properties'>get_molecule_properties</a></li><li><a href='functions.html#load_quantum_molecules'>load_quantum_molecules</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#load_drug_molecules'>load_drug_molecules</a></li><li><a href='functions.html#load_simple_organics'>load_simple_organics</a></li><li><a href='functions.html#load_functional_groups'>load_functional_groups</a></li><li><a href='functions.html#get_molecule_dataset'>get_molecule_dataset</a></li><li><a href='functions.html#create_synthetic_examples'>create_synthetic_examples</a></li><li><a href='functions.html#get_property_ranges'>get_property_ranges</a></li><li><a href='functions.html#_calculate_properties'>_calculate_properties</a></li><li><a href='functions.html#_generate_simple_molecules'>_generate_simple_molecules</a></li><li><a href='functions.html#_generate_medium_molecules'>_generate_medium_molecules</a></li><li><a href='functions.html#_generate_complex_molecules'>_generate_complex_molecules</a></li><li><a href='functions.html#__init__'>__init__</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#EducationalDatasets'>EducationalDatasets</a></li><li><a href='classes.html#QuantumMolecularDataset'>QuantumMolecularDataset</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.environment</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/environment.py</span>
+                </div>
+                <div class="api-description">
+                    Environment Management for ChemML Tutorials
+==========================================
+
+This module provides robust environment setup, dependency checking, and fallback
+mechanisms for ChemML tutorials to ensure smooth learning experiences across
+different computational environments.
+
+Key Features:
+- Dependency validation and installation
+- Fallback mechanisms for missing libraries
+- Environment configuration for tutorials
+- Resource availability checking
+- Error handling and user guidance
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (34)</h4>
+                        <ul>
+                            <li><a href='functions.html#check_dependencies'>check_dependencies</a></li><li><a href='functions.html#setup_fallbacks'>setup_fallbacks</a></li><li><a href='functions.html#validate_environment'>validate_environment</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#check_environment'>check_environment</a></li><li><a href='functions.html#setup_tutorial_environment'>setup_tutorial_environment</a></li><li><a href='functions.html#setup_fallbacks'>setup_fallbacks</a></li><li><a href='functions.html#validate_tutorial_requirements'>validate_tutorial_requirements</a></li><li><a href='functions.html#_check_dependency'>_check_dependency</a></li><li><a href='functions.html#_version_check'>_version_check</a></li><li><a href='functions.html#_get_tutorial_dependencies'>_get_tutorial_dependencies</a></li><li><a href='functions.html#_install_dependencies'>_install_dependencies</a></li><li><a href='functions.html#_create_fallback'>_create_fallback</a></li><li><a href='functions.html#_create_rdkit_fallback'>_create_rdkit_fallback</a></li><li><a href='functions.html#_create_deepchem_fallback'>_create_deepchem_fallback</a></li><li><a href='functions.html#_create_torch_fallback'>_create_torch_fallback</a></li><li><a href='functions.html#_create_quantum_fallback'>_create_quantum_fallback</a></li><li><a href='functions.html#_create_visualization_fallback'>_create_visualization_fallback</a></li><li><a href='functions.html#_check_capability'>_check_capability</a></li><li><a href='functions.html#_check_gpu_availability'>_check_gpu_availability</a></li><li><a href='functions.html#_check_jupyter_availability'>_check_jupyter_availability</a></li><li><a href='functions.html#_check_visualization_capability'>_check_visualization_capability</a></li><li><a href='functions.html#_check_quantum_capability'>_check_quantum_capability</a></li><li><a href='functions.html#_check_md_capability'>_check_md_capability</a></li><li><a href='functions.html#_suggest_installation'>_suggest_installation</a></li><li><a href='functions.html#_generate_recommendations'>_generate_recommendations</a></li><li><a href='functions.html#_print_status_report'>_print_status_report</a></li><li><a href='functions.html#fallback_function'>fallback_function</a></li><li><a href='functions.html#fallback_function'>fallback_function</a></li><li><a href='functions.html#fallback_function'>fallback_function</a></li><li><a href='functions.html#fallback_function'>fallback_function</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#MolFromSmiles'>MolFromSmiles</a></li><li><a href='functions.html#MolToSmiles'>MolToSmiles</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#EnvironmentManager'>EnvironmentManager</a></li><li><a href='classes.html#RDKitFallback'>RDKitFallback</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.quantum</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/quantum.py</span>
+                </div>
+                <div class="api-description">
+                    Quantum Computing Integration for ChemML Tutorials
+=================================================
+
+This module provides quantum computing educational components and integration
+with quantum chemistry libraries for ChemML tutorials.
+
+Key Features:
+- Quantum circuit visualization for chemistry
+- VQE (Variational Quantum Eigensolver) tutorials
+- Quantum molecular simulation examples
+- Quantum machine learning demonstrations
+- Integration with Qiskit and quantum chemistry packages
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (68)</h4>
+                        <ul>
+                            <li><a href='functions.html#create_h2_vqe_tutorial'>create_h2_vqe_tutorial</a></li><li><a href='functions.html#create_quantum_ml_demo'>create_quantum_ml_demo</a></li><li><a href='functions.html#check_quantum_requirements'>check_quantum_requirements</a></li><li><a href='functions.html#get_quantum_tutorial_overview'>get_quantum_tutorial_overview</a></li><li><a href='functions.html#create_quantum_circuit_widget'>create_quantum_circuit_widget</a></li><li><a href='functions.html#vqe_optimization_tracker'>vqe_optimization_tracker</a></li><li><a href='functions.html#molecular_hamiltonian_visualizer'>molecular_hamiltonian_visualizer</a></li><li><a href='functions.html#quantum_state_analyzer'>quantum_state_analyzer</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_h2_tutorial'>create_h2_tutorial</a></li><li><a href='functions.html#create_quantum_feature_mapping'>create_quantum_feature_mapping</a></li><li><a href='functions.html#create_quantum_molecular_simulation'>create_quantum_molecular_simulation</a></li><li><a href='functions.html#create_interactive_vqe_demo'>create_interactive_vqe_demo</a></li><li><a href='functions.html#_create_h2_hamiltonian'>_create_h2_hamiltonian</a></li><li><a href='functions.html#_create_vqe_ansatz'>_create_vqe_ansatz</a></li><li><a href='functions.html#_create_feature_map'>_create_feature_map</a></li><li><a href='functions.html#_encode_classical_data'>_encode_classical_data</a></li><li><a href='functions.html#_create_molecular_simulation_circuit'>_create_molecular_simulation_circuit</a></li><li><a href='functions.html#_create_educational_hamiltonian'>_create_educational_hamiltonian</a></li><li><a href='functions.html#_visualize_circuit'>_visualize_circuit</a></li><li><a href='functions.html#_visualize_feature_mapping'>_visualize_feature_mapping</a></li><li><a href='functions.html#_extract_molecule_info'>_extract_molecule_info</a></li><li><a href='functions.html#_create_parametric_vqe_circuit'>_create_parametric_vqe_circuit</a></li><li><a href='functions.html#_calculate_mock_energy'>_calculate_mock_energy</a></li><li><a href='functions.html#_create_h2_explanation'>_create_h2_explanation</a></li><li><a href='functions.html#_create_fallback_vqe_demo'>_create_fallback_vqe_demo</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#create_qsvm_tutorial'>create_qsvm_tutorial</a></li><li><a href='functions.html#create_vqc_tutorial'>create_vqc_tutorial</a></li><li><a href='functions.html#_create_qml_feature_map'>_create_qml_feature_map</a></li><li><a href='functions.html#_mock_qsvm_training'>_mock_qsvm_training</a></li><li><a href='functions.html#_create_vqc_ansatz'>_create_vqc_ansatz</a></li><li><a href='functions.html#_create_measurement_circuit'>_create_measurement_circuit</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#check_quantum_environment'>check_quantum_environment</a></li><li><a href='functions.html#create_bell_state_tutorial'>create_bell_state_tutorial</a></li><li><a href='functions.html#create_multi_molecule_vqe'>create_multi_molecule_vqe</a></li><li><a href='functions.html#create_qml_demo'>create_qml_demo</a></li><li><a href='functions.html#create_comprehensive_assessment'>create_comprehensive_assessment</a></li><li><a href='functions.html#generate_learning_recommendations'>generate_learning_recommendations</a></li><li><a href='functions.html#create_ansatz_designer'>create_ansatz_designer</a></li><li><a href='functions.html#create_error_analysis_tool'>create_error_analysis_tool</a></li><li><a href='functions.html#create_advantage_explorer'>create_advantage_explorer</a></li><li><a href='functions.html#create_qml_workshop'>create_qml_workshop</a></li><li><a href='functions.html#create_exercise_launcher'>create_exercise_launcher</a></li><li><a href='functions.html#display_interactive'>display_interactive</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#run_comparison'>run_comparison</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#run_demonstration'>run_demonstration</a></li><li><a href='functions.html#run'>run</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#display'>display</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#evaluate_energy'>evaluate_energy</a></li><li><a href='functions.html#run_optimization'>run_optimization</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#analyze_molecule'>analyze_molecule</a></li><li><a href='functions.html#display_dashboard'>display_dashboard</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#analyze_final_state'>analyze_final_state</a></li><li><a href='functions.html#display_interactive_visualization'>display_interactive_visualization</a></li><li><a href='functions.html#update_vqe_demo'>update_vqe_demo</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (16)</h4>
+                        <ul>
+                            <li><a href='classes.html#QuantumChemistryTutorial'>QuantumChemistryTutorial</a></li><li><a href='classes.html#QuantumMachineLearning'>QuantumMachineLearning</a></li><li><a href='classes.html#QuantumTutorialManager'>QuantumTutorialManager</a></li><li><a href='classes.html#BellStateTutorial'>BellStateTutorial</a></li><li><a href='classes.html#MultiMoleculeVQE'>MultiMoleculeVQE</a></li><li><a href='classes.html#QuantumMLDemo'>QuantumMLDemo</a></li><li><a href='classes.html#QuantumAssessment'>QuantumAssessment</a></li><li><a href='classes.html#AnsatzDesigner'>AnsatzDesigner</a></li><li><a href='classes.html#ErrorAnalysisTool'>ErrorAnalysisTool</a></li><li><a href='classes.html#QuantumAdvantageExplorer'>QuantumAdvantageExplorer</a></li><li><a href='classes.html#QuantumMLWorkshop'>QuantumMLWorkshop</a></li><li><a href='classes.html#ExerciseLauncher'>ExerciseLauncher</a></li><li><a href='classes.html#QuantumCircuitWidget'>QuantumCircuitWidget</a></li><li><a href='classes.html#VQEOptimizationTracker'>VQEOptimizationTracker</a></li><li><a href='classes.html#MolecularHamiltonianVisualizer'>MolecularHamiltonianVisualizer</a></li><li><a href='classes.html#QuantumStateAnalyzer'>QuantumStateAnalyzer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.utils</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/utils.py</span>
+                </div>
+                <div class="api-description">
+                    Utility Functions for ChemML Tutorials
+=====================================
+
+This module provides utility functions and helper tools for creating effective
+educational experiences in computational chemistry and machine learning tutorials.
+
+Key Features:
+- Molecular visualization utilities
+- Interactive parameter tuning interfaces
+- Progress dashboard creation
+- Logging and debugging tools
+- Educational plotting functions
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (18)</h4>
+                        <ul>
+                            <li><a href='functions.html#visualize_molecules'>visualize_molecules</a></li><li><a href='functions.html#interactive_parameter_tuning'>interactive_parameter_tuning</a></li><li><a href='functions.html#create_progress_dashboard'>create_progress_dashboard</a></li><li><a href='functions.html#setup_logging'>setup_logging</a></li><li><a href='functions.html#create_molecular_property_plot'>create_molecular_property_plot</a></li><li><a href='functions.html#create_learning_assessment_summary'>create_learning_assessment_summary</a></li><li><a href='functions.html#create_concept_mastery_heatmap'>create_concept_mastery_heatmap</a></li><li><a href='functions.html#export_session_data'>export_session_data</a></li><li><a href='functions.html#load_session_data'>load_session_data</a></li><li><a href='functions.html#lipinski_analysis'>lipinski_analysis</a></li><li><a href='functions.html#create_rule_dashboard'>create_rule_dashboard</a></li><li><a href='functions.html#similarity_explorer'>similarity_explorer</a></li><li><a href='functions.html#demonstrate_integration'>demonstrate_integration</a></li><li><a href='functions.html#update_visualization'>update_visualization</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#display'>display</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#display'>display</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (2)</h4>
+                        <ul>
+                            <li><a href='classes.html#RuleDashboard'>RuleDashboard</a></li><li><a href='classes.html#SimilarityExplorer'>SimilarityExplorer</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-item">
+                <h3 class="api-name">📦 tutorials.widgets</h3>
+                <div class="api-meta">
+                    <span class="path">src/chemml/tutorials/widgets.py</span>
+                </div>
+                <div class="api-description">
+                    Interactive Widgets for ChemML Tutorials
+=======================================
+
+This module provides interactive widgets and components for creating engaging
+educational experiences in computational chemistry and machine learning tutorials.
+
+Key Features:
+- Interactive assessments and quizzes
+- Progress tracking dashboards
+- Molecular visualization widgets
+- Parameter tuning interfaces
+- Real-time feedback systems
+                </div>
+                <div class="module-contents">
+                    <div class="content-section">
+                        <h4>Functions (40)</h4>
+                        <ul>
+                            <li><a href='functions.html#create_assessment'>create_assessment</a></li><li><a href='functions.html#create_progress_dashboard'>create_progress_dashboard</a></li><li><a href='functions.html#create_molecule_viewer'>create_molecule_viewer</a></li><li><a href='functions.html#check_widget_requirements'>check_widget_requirements</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#display'>display</a></li><li><a href='functions.html#collect_feedback'>collect_feedback</a></li><li><a href='functions.html#_create_activity_widget'>_create_activity_widget</a></li><li><a href='functions.html#_create_multiple_choice'>_create_multiple_choice</a></li><li><a href='functions.html#_create_true_false'>_create_true_false</a></li><li><a href='functions.html#_create_text_input'>_create_text_input</a></li><li><a href='functions.html#_create_slider'>_create_slider</a></li><li><a href='functions.html#_update_progress'>_update_progress</a></li><li><a href='functions.html#_on_submit'>_on_submit</a></li><li><a href='functions.html#_display_fallback'>_display_fallback</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#add_session_data'>add_session_data</a></li><li><a href='functions.html#create_time_tracking_plot'>create_time_tracking_plot</a></li><li><a href='functions.html#create_concept_mastery_radar'>create_concept_mastery_radar</a></li><li><a href='functions.html#create_daily_comparison'>create_daily_comparison</a></li><li><a href='functions.html#display_summary_stats'>display_summary_stats</a></li><li><a href='functions.html#_create_plotly_time_plot'>_create_plotly_time_plot</a></li><li><a href='functions.html#_create_matplotlib_time_plot'>_create_matplotlib_time_plot</a></li><li><a href='functions.html#_create_plotly_radar'>_create_plotly_radar</a></li><li><a href='functions.html#_create_matplotlib_radar'>_create_matplotlib_radar</a></li><li><a href='functions.html#_create_plotly_comparison'>_create_plotly_comparison</a></li><li><a href='functions.html#_create_matplotlib_comparison'>_create_matplotlib_comparison</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#add_molecule'>add_molecule</a></li><li><a href='functions.html#create_molecule_selector'>create_molecule_selector</a></li><li><a href='functions.html#visualize_molecule'>visualize_molecule</a></li><li><a href='functions.html#create_property_comparison'>create_property_comparison</a></li><li><a href='functions.html#_display_molecule_list'>_display_molecule_list</a></li><li><a href='functions.html#_create_plotly_property_comparison'>_create_plotly_property_comparison</a></li><li><a href='functions.html#_create_matplotlib_property_comparison'>_create_matplotlib_property_comparison</a></li><li><a href='functions.html#on_change'>on_change</a></li><li><a href='functions.html#on_change'>on_change</a></li><li><a href='functions.html#on_change'>on_change</a></li><li><a href='functions.html#on_change'>on_change</a></li><li><a href='functions.html#on_molecule_change'>on_molecule_change</a></li>
+                        </ul>
+                    </div>
+                    <div class="content-section">
+                        <h4>Classes (3)</h4>
+                        <ul>
+                            <li><a href='classes.html#InteractiveAssessment'>InteractiveAssessment</a></li><li><a href='classes.html#ProgressDashboard'>ProgressDashboard</a></li><li><a href='classes.html#MolecularVisualizationWidget'>MolecularVisualizationWidget</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
