@@ -155,7 +155,7 @@ def demo_compatibility_checking(registry):
         print("\n🔍 Checking model compatibility...")
 
         # Example compatibility checks
-_compatibility_tests = [
+        compatibility_tests = [
             ("boltz", "alphafold"),
             ("deepchem", "rdkit"),
             ("pytorch", "sklearn"),
@@ -173,8 +173,8 @@ _compatibility_tests = [
         print("\n🔄 Checking pipeline compatibility...")
         pipeline_models = ["preprocessing", "boltz", "analysis"]
         try:
-_pipeline_valid = registry.validate_pipeline(pipeline_models)
-_status = "✅ Valid" if pipeline_valid else "❌ Invalid"
+            pipeline_valid = registry.validate_pipeline(pipeline_models)
+            status = "✅ Valid" if pipeline_valid else "❌ Invalid"
             print(f"   Pipeline {' → '.join(pipeline_models)}: {status}")
         except Exception:
             print("   Pipeline validation: ℹ️  Feature not available")

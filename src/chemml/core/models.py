@@ -446,8 +446,12 @@ if HAS_TORCH:
         return NeuralNetwork(input_dim=input_dim, **kwargs)
 
 
+# Alias for backward compatibility and generic usage
+Model = BaseModel
+
 __all__ = [
     "BaseModel",
+    "Model",  # Add the alias to exports
     "LinearModel",
     "RandomForestModel",
     "SVMModel",

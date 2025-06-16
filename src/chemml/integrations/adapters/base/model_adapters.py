@@ -14,7 +14,7 @@ import pandas as pd
 import torch
 import torch.nn as nn
 
-from ...core.external_models import ExternalModelWrapper
+from ....integrations.core.external_models import ExternalModelWrapper
 
 
 class TorchModelAdapter(ExternalModelWrapper):

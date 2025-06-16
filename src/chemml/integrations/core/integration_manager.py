@@ -18,13 +18,22 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Type, Union
 
-from ..adapters.base.model_adapters import (
-    HuggingFaceModelAdapter,
-    ModelZooAdapter,
-    PaperReproductionAdapter,
-    SklearnModelAdapter,
-    TorchModelAdapter,
-)
+# Lazy import to break circular dependency
+def _get_model_adapters():
+    from ..adapters.base.model_adapters import (
+        HuggingFaceModelAdapter,
+        ModelZooAdapter,
+        PaperReproductionAdapter,
+        SklearnModelAdapter,
+        TorchModelAdapter,
+    )
+    return {
+        "HuggingFaceModelAdapter": HuggingFaceModelAdapter,
+        "ModelZooAdapter": ModelZooAdapter,
+        "PaperReproductionAdapter": PaperReproductionAdapter,
+        "SklearnModelAdapter": SklearnModelAdapter,
+        "TorchModelAdapter": TorchModelAdapter,
+    }
 
 # Import new advanced features
 from .advanced_registry import AdvancedModelRegistry, get_advanced_registry
@@ -69,14 +78,15 @@ class ExternalModelManager:
         # Load cached model information
         self._load_cache_info()
 
-        # Registry of specialized adapters
+        # Registry of specialized adapters (lazy loaded)
+        adapters = _get_model_adapters()
         self.specialized_adapters = {
             "boltz": BoltzAdapter if HAS_BOLTZ_ADAPTER else None,
-            "pytorch": TorchModelAdapter,
-            "scikit-learn": SklearnModelAdapter,
-            "huggingface": HuggingFaceModelAdapter,
-            "paper_reproduction": PaperReproductionAdapter,
-            "model_zoo": ModelZooAdapter,
+            "pytorch": adapters["TorchModelAdapter"],
+            "scikit-learn": adapters["SklearnModelAdapter"],
+            "huggingface": adapters["HuggingFaceModelAdapter"],
+            "paper_reproduction": adapters["PaperReproductionAdapter"],
+            "model_zoo": adapters["ModelZooAdapter"],
         }
 
         # Advanced features
@@ -136,10 +146,11 @@ class ExternalModelManager:
         if adapter_type == "auto":
             adapter_class = self._auto_select_adapter(repo_url, model_class)
         else:
+            adapters = _get_model_adapters()
             adapter_map = {
-                "torch": TorchModelAdapter,
-                "sklearn": SklearnModelAdapter,
-                "paper": PaperReproductionAdapter,
+                "torch": adapters["TorchModelAdapter"],
+                "sklearn": adapters["SklearnModelAdapter"],
+                "paper": adapters["PaperReproductionAdapter"],
                 "basic": ExternalModelWrapper,
             }
             adapter_class = adapter_map.get(adapter_type, ExternalModelWrapper)
@@ -172,7 +183,7 @@ class ExternalModelManager:
 
     def integrate_from_huggingface(
         self, model_name: str, **kwargs
-    ) -> HuggingFaceModelAdapter:
+    ) -> Any:
         """
         Integrate a model from Hugging Face.
 
@@ -183,7 +194,8 @@ class ExternalModelManager:
         Returns:
             Hugging Face model adapter
         """
-        model = HuggingFaceModelAdapter(model_name=model_name, **kwargs)
+        adapters = _get_model_adapters()
+        model = adapters["HuggingFaceModelAdapter"](model_name=model_name, **kwargs)
 
         # Register the model
         self.integrated_models[model_name] = model
@@ -199,7 +211,7 @@ class ExternalModelManager:
         authors: List[str],
         model_name: Optional[str] = None,
         **kwargs,
-    ) -> PaperReproductionAdapter:
+    ) -> Any:
         """
         Integrate a model from a research paper repository.
 
@@ -219,7 +231,8 @@ class ExternalModelManager:
 
         repo_path = self._get_cached_repo_path(repo_url)
 
-        model = PaperReproductionAdapter(
+        adapters = _get_model_adapters()
+        model = adapters["PaperReproductionAdapter"](
             repo_url=repo_url,
             model_class_name=model_class,
             paper_title=paper_title,
@@ -354,12 +367,14 @@ class ExternalModelManager:
             "gnn",
         ]
         if any(indicator in repo_url.lower() for indicator in pytorch_indicators):
-            return TorchModelAdapter
+            adapters = _get_model_adapters()
+            return adapters["TorchModelAdapter"]
 
         # Check for sklearn indicators
         sklearn_indicators = ["sklearn", "scikit", "ensemble", "forest", "svm"]
         if any(indicator in repo_url.lower() for indicator in sklearn_indicators):
-            return SklearnModelAdapter
+            adapters = _get_model_adapters()
+            return adapters["SklearnModelAdapter"]
 
         # Check for research paper indicators
         paper_indicators = [
@@ -371,7 +386,8 @@ class ExternalModelManager:
             "iclr",
         ]
         if any(indicator in repo_url.lower() for indicator in paper_indicators):
-            return PaperReproductionAdapter
+            adapters = _get_model_adapters()
+            return adapters["PaperReproductionAdapter"]
 
         # Default to basic wrapper
         return ExternalModelWrapper
