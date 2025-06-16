@@ -19,6 +19,14 @@ from .data import (
     quick_clean,
     quick_split,
 )
+from .ensemble_advanced import (
+    AdaptiveEnsemble,
+    MultiModalEnsemble,
+    UncertaintyQuantifiedEnsemble,
+    create_adaptive_ensemble,
+    create_multimodal_ensemble,
+    create_uncertainty_ensemble,
+)
 from .evaluation import (
     ClassificationEvaluator,
     ModelComparator,
@@ -47,6 +55,7 @@ from .models import (
     create_svm_model,
     setup_experiment_tracking,
 )
+from .recommendations import ModelRecommendationEngine
 from .utils import (
     check_environment,
     configure_warnings,
@@ -54,6 +63,19 @@ from .utils import (
     get_sample_data,
     setup_logging,
 )
+from .workflow_optimizer import (
+    WorkflowOptimizer,
+    compare_model_workflows,
+    optimize_workflow,
+)
+
+# Performance monitoring and recommendations
+try:
+    from . import monitoring, recommendations
+
+    HAS_ENHANCED_FEATURES = True
+except ImportError:
+    HAS_ENHANCED_FEATURES = False
 
 __all__ = [
     "featurizers",
@@ -97,4 +119,17 @@ __all__ = [
     "get_sample_data",
     "ensure_reproducibility",
     "configure_warnings",
+    # Workflow Optimizer
+    "WorkflowOptimizer",
+    "optimize_workflow",
+    "compare_model_workflows",
+    # Recommendations
+    "ModelRecommendationEngine",
+    # Advanced Ensembles
+    "AdaptiveEnsemble",
+    "MultiModalEnsemble",
+    "UncertaintyQuantifiedEnsemble",
+    "create_adaptive_ensemble",
+    "create_multimodal_ensemble",
+    "create_uncertainty_ensemble",
 ]

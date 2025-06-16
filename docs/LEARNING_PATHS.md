@@ -1,32 +1,34 @@
 # 📚 ChemML Learning Paths
 
-**Choose your journey through computational molecular modeling and quantum machine learning**
+**🚨 FRAMEWORK INTEGRATION UPDATE**: New framework-integrated bootcamps available! Use `*_INTEGRATED.ipynb` versions for professional learning.
 
 ---
 
 ## 🎯 Find Your Perfect Learning Path
 
-### 🚀 Quick Assessment (30 seconds)
+### � **Framework-Integrated Learning** (RECOMMENDED)
 
-**I am a...**
-- 👨‍🎓 **Beginner to ML/Chemistry** → [7-Day QuickStart Bootcamp](#7-day-quickstart-bootcamp)
-- 🔬 **ML Engineer** → [4-Week Intensive Program](#4-week-intensive-program)
-- ⚛️ **Quantum Developer** → [Quantum ML Specialist Track](#quantum-ml-specialist-track)
-- 🏭 **Industry Professional** → [Production-Ready Program](#production-ready-program)
-- 📚 **Academic Researcher** → [Research & Development Track](#research--development-track)
+**Professional development using ChemML framework APIs - Industry Standard**
 
-**I want to...**
-- Get started quickly → [7-Day Bootcamp](#7-day-quickstart-bootcamp)
-- Master the fundamentals → [4-Week Intensive](#4-week-intensive-program)
-- Specialize in quantum → [Quantum Track](#quantum-ml-specialist-track)
-- Build production systems → [Production Track](#production-ready-program)
-- Conduct research → [Research Track](#research--development-track)
+- 👨‍🎓 **Beginner to ML/Chemistry** → [Framework-Integrated Bootcamp](../notebooks/learning/bootcamp/README.md)
+- 🔬 **ML Engineer** → [Professional Track with Framework](#framework-professional-track)
+- ⚛️ **Quantum Developer** → [Framework Quantum Track](#framework-quantum-track)
+- 🏭 **Industry Professional** → [Framework Production Program](#framework-production-program)
+- 📚 **Academic Researcher** → [Framework Research Track](#framework-research-track)
+
+### 🔴 **Legacy Learning** (NOT RECOMMENDED)
+
+**Contains massive code redundancy - use only for comparison purposes**
+
+- ⚠️ **54,739 lines** of unnecessary custom code
+- ⚠️ **176 custom classes** reinventing framework functionality
+- ⚠️ **Poor industry relevance** and maintenance issues
 
 ---
 
-## 🚀 7-Day QuickStart Bootcamp
+## � **Framework-Integrated 3-Day QuickStart**
 
-**⭐ Most Popular Choice - 85% completion rate**
+**⭐ NEW: Professional learning with 98% code reduction**
 
 ### 📖 Program Overview
 Perfect for beginners and busy professionals who want practical molecular ML skills quickly.

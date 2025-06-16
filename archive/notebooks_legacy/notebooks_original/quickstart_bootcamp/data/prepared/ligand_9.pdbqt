@@ -1,5 +1,0 @@
-REMARK  Dummy ligand from SMILES: c1ccc(CC(O)CN2CCOCC2)cc1
-ATOM      1  C   UNL     1       0.000   0.000   0.000  1.00  0.00    +0.000 C
-ATOM      2  C   UNL     1       1.540   0.000   0.000  1.00  0.00    +0.000 C
-ATOM      3  O   UNL     1       2.100  -1.300   0.000  1.00  0.00    +0.000 OA
-END

@@ -7,7 +7,7 @@ name = "chemml"
 version = "0.2.0"
 description = "Quantum-Enhanced Molecular Machine Learning Framework"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 authors = [
     {name = "ChemML Contributors", email = "chemml@example.com"}
 ]
@@ -24,7 +24,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -160,8 +159,10 @@ chemml-predict = "chemml.cli:predict"
 chemml-bootcamp = "chemml.bootcamp:main"
 
 [tool.setuptools]
-packages = ["src"]
 package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yml", "*.yaml", "*.json", "*.csv", "*.txt"]

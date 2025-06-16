@@ -12,24 +12,82 @@ tensorflow>=2.16.0,<2.17.0  # Avoid experimental warnings
 torch>=2.0.0
 torchvision>=0.15.0
 
+# DISTRIBUTED ML TRAINING - Best-in-Class Libraries
+# ==================================================
+ray[default]>=2.5.0          # Primary distributed ML platform
+ray[tune]>=2.5.0             # Hyperparameter optimization
+ray[train]>=2.5.0            # Distributed training
+horovod>=0.28.0              # Multi-GPU/multi-node training
+dask[distributed]>=2023.5.0  # Alternative distributed computing
+pytorch-lightning>=2.1.0     # High-level PyTorch training
+tensorflow-probability>=0.22.0  # Probabilistic programming
+
+# HYPERPARAMETER OPTIMIZATION - Advanced Algorithms
+# ==================================================
+optuna>=3.4.0                # State-of-the-art Bayesian optimization
+hyperopt>=0.2.7              # Tree Parzen Estimator optimization
+ax-platform>=0.3.4           # Facebook's Adaptive Experimentation
+scikit-optimize>=0.9.0       # Gaussian process optimization
+nni>=3.0                     # Microsoft Neural Network Intelligence
+flaml>=2.1.0                 # Microsoft's fast AutoML
+
+# PERFORMANCE MONITORING - Production-Grade Observability
+# =======================================================
+mlflow>=2.8.0                # Model lifecycle management
+wandb>=0.15.0                # Real-time experiment tracking
+tensorboard>=2.14.0          # TensorFlow visualization
+prometheus-client>=0.18.0    # Metrics collection
+grafana-api>=1.0.3          # Dashboard creation
+psutil>=5.9.0                # System resource monitoring
+gpustat>=1.1.0               # GPU monitoring
+neptune-client>=1.7.0        # Alternative experiment tracking
+
+# AUTO-ML AND MODEL SELECTION
+# ============================
+auto-sklearn>=0.15.0         # Automated machine learning
+pycaret>=3.1.0               # Low-code ML platform
+h2o>=3.42.0                  # Enterprise AutoML
+tpot>=0.12.0                 # Genetic programming AutoML
+
 # Cheminformatics and Drug Discovery
 rdkit>=2023.3.1
 deepchem>=2.8.0
 biopython>=1.81
 
-# Quantum Computing (Modern versions)
-qiskit>=1.0.0  # Use stable 1.0+ instead of 2.0 prereleases
-qiskit-aer>=0.13.0
-pennylane>=0.32.0
-cirq>=1.2.0
+# QUANTUM COMPUTING - Multi-Backend Flexibility
+# ==============================================
+pennylane>=0.32.0            # Best quantum ML library
+qiskit>=1.0.0                # IBM's quantum framework
+qiskit-aer>=0.13.0          # High-performance simulators
+cirq>=1.2.0                 # Google's quantum framework
+qulacs>=0.6.0               # Ultra-fast quantum simulator
+pytket>=1.20.0              # Cambridge Quantum Computing
+
+# KNOWLEDGE INTEGRATION - Enterprise NLP
+# ======================================
+transformers>=4.35.0         # State-of-the-art language models
+datasets>=2.14.0             # Hugging Face datasets
+neo4j>=5.13.0                # Graph database for knowledge graphs
+spacy>=3.7.0                 # Industrial-strength NLP
+py2neo>=2021.2.3            # Python Neo4j client
+networkx>=3.2.0             # Graph analysis
+sentence-transformers>=2.2.2 # Semantic text embeddings
+langchain>=0.0.340          # LLM application framework
 
 # DeepChem Optional Dependencies (to reduce warnings)
 dgl>=1.1.0  # Deep Graph Library
-transformers>=4.21.0  # Hugging Face Transformers
 lightning>=2.0.0  # PyTorch Lightning (renamed from pytorch-lightning)
 jax>=0.4.0  # JAX for advanced ML
 jaxlib>=0.4.0  # JAX backend
 torch-geometric>=2.3.0  # PyTorch Geometric
+
+# UNCERTAINTY QUANTIFICATION - Advanced Methods
+# =============================================
+pyro-ppl>=1.8.6              # Probabilistic programming
+gpytorch>=1.11.0             # Gaussian processes
+botorch>=0.9.4               # Bayesian optimization
+uncertainty-toolbox>=0.1.1   # Uncertainty metrics
+conformal-prediction>=0.1.9  # Distribution-free uncertainty
 
 # Molecular Dynamics and Simulation
 openmm>=8.0.0
@@ -52,11 +110,6 @@ jupyter>=1.0.0
 ipywidgets>=8.0.0
 tqdm>=4.64.0
 
-# Model Development and MLOps
-mlflow>=2.5.0
-wandb>=0.15.0
-optuna>=3.2.0
-
 # Classical Quantum Chemistry (for comparison)
 pyscf>=2.3.0
 
@@ -71,10 +124,4 @@ pytest-cov>=4.1.0
 black>=23.0.0
 isort>=5.12.0
 joblib>=1.1.0
-
-# Development and Testing
-pytest>=6.2.0
-pytest-cov>=3.0.0
-black>=21.9.0
-flake8>=4.0.0
-mypy>=0.910
+mypy>=1.6.0

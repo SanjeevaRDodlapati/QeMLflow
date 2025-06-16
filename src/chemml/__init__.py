@@ -6,8 +6,8 @@ for chemistry and drug discovery applications.
 
 Main Modules:
 - core: Essential functionality (featurization, modeling, data processing)
-- research: Advanced research modules (quantum computing, novel architectures)
-- integrations: Third-party library integrations (DeepChem, RDKit, etc.)
+- research: Advanced research modules (drug discovery, clinical research, environmental chemistry, materials discovery)
+- integrations: Third-party library integrations (DeepChem, RDKit, pipeline systems)
 
 Quick Start:
     >>> import chemml
@@ -22,7 +22,14 @@ Quick Start:
     >>> # ... continue with your workflow
 """
 
-__version__ = "1.0.0"
+# Suppress common warnings for cleaner import experience
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
+
+__version__ = "0.2.0"
 __author__ = "ChemML Team"
 
 # Core imports for easy access
@@ -42,7 +49,12 @@ from .core.models import (
     create_rf_model,
     create_svm_model,
 )
-from .core.utils import check_environment, ensure_reproducibility, setup_logging
+from .core.utils import ensure_reproducibility, setup_logging
+
+try:
+    from .core.utils import check_environment
+except ImportError:
+    check_environment = None
 
 # Research modules (optional import)
 try:
@@ -63,6 +75,36 @@ except ImportError:
     integrations = None
     _has_integrations = False
 
+# Enhanced development features (if available)
+try:
+    from .core.ensemble_advanced import (
+        AdaptiveEnsemble,
+        MultiModalEnsemble,
+        UncertaintyQuantifiedEnsemble,
+        create_adaptive_ensemble,
+        create_multimodal_ensemble,
+        create_uncertainty_ensemble,
+    )
+    from .core.monitoring import (
+        PerformanceDashboard,
+        create_performance_dashboard,
+        show_performance_dashboard,
+    )
+    from .core.recommendations import ModelRecommendationEngine
+    from .core.recommendations import compare_models as compare_ml_models
+    from .core.recommendations import recommend_model
+
+    # Medium-term enhancements
+    from .core.workflow_optimizer import (
+        WorkflowOptimizer,
+        compare_model_workflows,
+        optimize_workflow,
+    )
+
+    HAS_ENHANCED_FEATURES = True
+except ImportError:
+    HAS_ENHANCED_FEATURES = False
+
 
 # Setup basic configuration
 def _setup_chemml():
@@ -78,15 +120,20 @@ def _setup_chemml():
     print(f"Version: {__version__}")
 
     # Check environment
-    env_info = check_environment()
-    missing_core = [
-        pkg
-        for pkg in ["numpy", "pandas", "sklearn"]
-        if pkg in env_info["missing_packages"]
-    ]
+    if check_environment is not None:
+        try:
+            env_info = check_environment()
+            missing_core = [
+                pkg
+                for pkg in ["numpy", "pandas", "sklearn"]
+                if pkg in env_info["missing_packages"]
+            ]
 
-    if missing_core:
-        warnings.warn(f"Missing core packages: {missing_core}")
+            if missing_core:
+                warnings.warn(f"Missing core packages: {missing_core}")
+        except Exception:
+            # Environment check failed, continue gracefully
+            pass
 
     if not _has_research:
         print("Note: Research modules not available (install optional dependencies)")
@@ -125,3 +172,16 @@ __all__ = [
     "research",
     "integrations",
 ]
+
+# Add enhanced features to __all__ if available
+if HAS_ENHANCED_FEATURES:
+    __all__.extend(
+        [
+            "show_performance_dashboard",
+            "create_performance_dashboard",
+            "recommend_model",
+            "compare_ml_models",
+            "PerformanceDashboard",
+            "ModelRecommendationEngine",
+        ]
+    )
