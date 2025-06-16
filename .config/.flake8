@@ -1,1 +1,9 @@
-.config/.flake8
+[flake8]
+max-line-length = 88
+exclude = .git,__pycache__,.venv,chemml_env,build,dist,*.egg-info,.archive,.artifacts,.temp
+ignore = E203,W503,E501
+select = E,W,F,C
+max-complexity = 10
+show-source = True
+statistics = True
+count = True
