@@ -34,15 +34,12 @@ class RootFolderCleaner:
             "setup.py",
             "requirements.txt",
             "requirements-core.txt",
-            "pytest.ini",
             "Makefile",
             "Dockerfile",
             "docker-compose.yml",
-            "mkdocs.yml",
             # Configuration files
             ".gitignore",
-            ".flake8",
-            ".pre-commit-config.yaml",
+            ".config/",
             # Essential directories
             "src/",
             "tests/",
@@ -195,7 +192,7 @@ class RootFolderCleaner:
 - `requirements.txt` - Python dependencies
 - `Makefile` - Build automation
 - `Dockerfile` - Container configuration
-- `mkdocs.yml` - Documentation configuration
+- `.config/mkdocs.yml` - Documentation configuration
 
 ### Core Directories
 - `src/` - Source code

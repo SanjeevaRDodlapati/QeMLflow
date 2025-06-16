@@ -38,7 +38,7 @@ jobs:
         if [ -f "README.md" ]; then
           echo "✅ README.md found"
         fi
-        if [ -f "mkdocs.yml" ]; then
+        if [ -f ".config/mkdocs.yml" ]; then
           echo "✅ mkdocs.yml found"
         fi
         if [ -d "docs" ]; then

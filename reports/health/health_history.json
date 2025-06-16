@@ -169,5 +169,43 @@
     "security_score": 100,
     "coverage_percentage": 67.0,
     "technical_debt_minutes": 6335
+  },
+  {
+    "timestamp": "2025-06-16T10:26:08.358035",
+    "health_score": 80.5,
+    "total_issues": 473,
+    "issues_by_severity": {
+      "error": 397,
+      "warning": 76
+    },
+    "issues_by_tool": {
+      "flake8": 424,
+      "black": 49
+    },
+    "files_checked": 223,
+    "auto_fixable_count": 205,
+    "complexity_score": 0,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 6335
+  },
+  {
+    "timestamp": "2025-06-16T10:44:09.766041",
+    "health_score": 0,
+    "total_issues": 3738,
+    "issues_by_severity": {
+      "error": 3689,
+      "warning": 49
+    },
+    "issues_by_tool": {
+      "flake8": 3689,
+      "black": 49
+    },
+    "files_checked": 223,
+    "auto_fixable_count": 948,
+    "complexity_score": 0,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 55580
   }
 ]

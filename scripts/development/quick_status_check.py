@@ -39,7 +39,7 @@ def check_documentation_setup():
     issues = []
 
     # Check mkdocs.yml
-    if Path("mkdocs.yml").exists():
+    if Path(".config/mkdocs.yml").exists():
         issues.append("✅ mkdocs.yml configuration found")
     else:
         issues.append("❌ mkdocs.yml not found")

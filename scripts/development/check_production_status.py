@@ -61,7 +61,7 @@ def check_package_structure():
         ".github/workflows/ci-cd.yml",
         ".github/workflows/release.yml",
         ".github/workflows/docs.yml",
-        "mkdocs.yml",
+        ".config/mkdocs.yml",
         "CONTRIBUTING.md",
         "docs/index.md",
     ]

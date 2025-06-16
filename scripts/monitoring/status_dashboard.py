@@ -49,7 +49,7 @@ def print_quick_status():
     # Check if key files exist
     checks = [
         ("GitHub Workflows", Path(".github/workflows").exists()),
-        ("Documentation Config", Path("mkdocs.yml").exists()),
+        ("Documentation Config", Path(".config/mkdocs.yml").exists()),
         ("Source Code", Path("src").exists()),
         ("Documentation", Path("docs").exists()),
         ("Tests", Path("tests").exists()),

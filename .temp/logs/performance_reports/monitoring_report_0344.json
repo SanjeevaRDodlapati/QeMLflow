@@ -1,0 +1,119 @@
+{
+  "timestamp": "2025-06-15T21:45:20.444637",
+  "system_info": {
+    "cpu_percent": 18.2,
+    "memory_percent": 60.4,
+    "disk_percent": 19.1,
+    "active_processes": 809,
+    "available_memory_gb": 9.50516128540039
+  },
+  "performance_summary": {
+    "workflow_analysis": {
+      "call_count": 3,
+      "avg_time": 0.00014956792195638022,
+      "max_time": 0.00026917457580566406,
+      "min_time": 3.790855407714844e-05,
+      "avg_memory": 0.0026041666666666665,
+      "max_memory": 0.00390625,
+      "total_time": 0.0004487037658691406
+    },
+    "adaptive_ensemble_fit": {
+      "call_count": 1,
+      "avg_time": 0.06622886657714844,
+      "max_time": 0.06622886657714844,
+      "min_time": 0.06622886657714844,
+      "avg_memory": 0.796875,
+      "max_memory": 0.796875,
+      "total_time": 0.06622886657714844
+    },
+    "multimodal_ensemble_fit": {
+      "call_count": 1,
+      "avg_time": 0.05812978744506836,
+      "max_time": 0.05812978744506836,
+      "min_time": 0.05812978744506836,
+      "avg_memory": 0.1875,
+      "max_memory": 0.1875,
+      "total_time": 0.05812978744506836
+    },
+    "uncertainty_ensemble_fit": {
+      "call_count": 1,
+      "avg_time": 0.14380335807800293,
+      "max_time": 0.14380335807800293,
+      "min_time": 0.14380335807800293,
+      "avg_memory": 0.74609375,
+      "max_memory": 0.74609375,
+      "total_time": 0.14380335807800293
+    }
+  },
+  "top_functions_by_time": [
+    {
+      "function": "uncertainty_ensemble_fit",
+      "total_time": 0.14380335807800293,
+      "avg_time": 0.14380335807800293,
+      "call_count": 1,
+      "efficiency_score": 69.63940529382994
+    },
+    {
+      "function": "adaptive_ensemble_fit",
+      "total_time": 0.06622886657714844,
+      "avg_time": 0.06622886657714844,
+      "call_count": 1,
+      "efficiency_score": 100.0
+    },
+    {
+      "function": "multimodal_ensemble_fit",
+      "total_time": 0.05812978744506836,
+      "avg_time": 0.05812978744506836,
+      "call_count": 1,
+      "efficiency_score": 100.0
+    },
+    {
+      "function": "workflow_analysis",
+      "total_time": 0.0004487037658691406,
+      "avg_time": 0.00014956792195638022,
+      "call_count": 3,
+      "efficiency_score": 100.0
+    }
+  ],
+  "memory_hotspots": [
+    {
+      "function": "adaptive_ensemble_fit",
+      "max_memory_mb": 0.796875,
+      "avg_memory_mb": 0.796875,
+      "call_count": 1,
+      "memory_efficiency": 99.96015625
+    },
+    {
+      "function": "uncertainty_ensemble_fit",
+      "max_memory_mb": 0.74609375,
+      "avg_memory_mb": 0.74609375,
+      "call_count": 1,
+      "memory_efficiency": 99.9626953125
+    },
+    {
+      "function": "multimodal_ensemble_fit",
+      "max_memory_mb": 0.1875,
+      "avg_memory_mb": 0.1875,
+      "call_count": 1,
+      "memory_efficiency": 99.990625
+    },
+    {
+      "function": "workflow_analysis",
+      "max_memory_mb": 0.00390625,
+      "avg_memory_mb": 0.0026041666666666665,
+      "call_count": 3,
+      "memory_efficiency": 99.99915364583333
+    }
+  ],
+  "optimization_suggestions": [
+    {
+      "type": "success",
+      "message": "Performance looks good! All operations running efficiently."
+    }
+  ],
+  "health_score": {
+    "score": 100.0,
+    "status": "Excellent",
+    "details": "Analyzed 4 functions. 0 slow, 0 memory-intensive."
+  }
+}
