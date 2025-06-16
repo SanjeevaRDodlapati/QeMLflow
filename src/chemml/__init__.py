@@ -107,3 +107,46 @@ def clear_cache() -> None:
     global _cached_modules
     _cached_modules.clear()
     print("🧹 Module cache cleared")
+
+
+# Phase 2: Enhanced User Experience
+try:
+    from .utils.enhanced_error_handling import (
+        ChemMLError,
+        debug_context,
+        enhance_function_errors,
+        global_performance_monitor,
+        setup_enhanced_logging,
+    )
+
+    # Import help as chemml_help to avoid conflict with built-in help
+    from .utils.enhanced_ui import chemml_interface, functions
+    from .utils.enhanced_ui import help as chemml_help
+    from .utils.enhanced_ui import quick_start, set_level
+
+    print("✅ Phase 2: Enhanced UX features loaded")
+except ImportError as e:
+    print(f"⚠️ Phase 2 features not available: {e}")
+
+# Phase 3: Advanced ML and Enterprise Features
+try:
+    from .advanced.ml_optimizer import (
+        AutoMLOptimizer,
+        IntelligentFeatureSelector,
+        ModelAnalytics,
+    )
+    from .enterprise.monitoring import (
+        AnalyticsDashboard,
+        MetricsCollector,
+        MonitoringDashboard,
+    )
+
+    print("✅ Phase 3: Advanced ML and Enterprise features loaded")
+except ImportError as e:
+    print(f"⚠️ Phase 3 features not available: {e}")
+
+# Enhanced initialization message
+print("🚀 ChemML Enhanced Framework Loaded")
+print("   • Phase 1: Critical Infrastructure ✅")
+print("   • Phase 2: Enhanced User Experience ✅")
+print("   • Phase 3: Advanced ML & Enterprise ✅")

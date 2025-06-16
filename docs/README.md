@@ -6,9 +6,9 @@
 
 ## 🚀 **Getting Started**
 
-- **[GET_STARTED.md](GET_STARTED.md)** - Quick setup and first success
+- **[QUICK_START.md](QUICK_START.md)** - Comprehensive quick start guide (15-minute setup)
 - **[LEARNING_PATHS.md](LEARNING_PATHS.md)** - Structured learning tracks
-- **[getting_started/](getting_started/)** - Step-by-step tutorials
+- **[integrations/](integrations/)** - Integration guides and model-specific documentation
 
 ---
 
@@ -26,6 +26,7 @@
 - **[USER_GUIDE.md](USER_GUIDE.md)** - User manual and workflows
 - **[reference/](reference/)** - Detailed reference materials
 - **[assets/](assets/)** - Supporting files and examples
+- **[Examples](../examples/)** - Working demonstrations and tutorials
 
 ---
 

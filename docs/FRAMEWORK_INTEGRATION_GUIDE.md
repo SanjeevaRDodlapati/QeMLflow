@@ -1,8 +1,23 @@
 # ChemML Framework Integration Guide
 
-**Migration from Custom Code to Professional Framework Usage**
+**Updated for New Categorical Organization (June 2025)**
 
 ---
+
+## 📁 **New Framework Structure**
+
+### **Organized by Scientific Domain**
+```
+chemml.integrations/
+├── core/                    # Framework infrastructure
+├── adapters/
+│   ├── molecular/          # Protein/molecular models
+│   ├── drug_discovery/     # QSAR, ADMET, optimization
+│   ├── materials/          # Materials science (future)
+│   └── quantum_chemistry/  # QM calculations (future)
+├── utils/                  # Shared utilities
+└── workflows/              # Pre-built pipelines
+```
 
 ## 🎯 **Why Migrate to Framework Integration?**
 

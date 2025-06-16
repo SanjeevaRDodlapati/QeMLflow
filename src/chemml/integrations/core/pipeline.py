@@ -6,14 +6,14 @@ Complete, production-ready pipelines for drug discovery workflows.
 """
 import warnings
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 import pandas as pd
 
 try:
-    from ..core import featurizers, models
-    from ..research.drug_discovery import admet, docking
+    from ...core import featurizers, models
+    from ...research.drug_discovery import admet, docking
 except ImportError:
     pass
 

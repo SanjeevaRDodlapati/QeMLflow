@@ -134,11 +134,11 @@ tracker = ExperimentTracker(project="tutorial-project")
 with tracker.track_experiment("automl_model"):
     model.fit(X_train, y_train)
     score = model.score(X_test, y_test)
-    
+
     # Log metrics
     tracker.log_metric("r2_score", score)
     tracker.log_metric("mse", mse)
-    
+
     # Log model
     tracker.log_model(model, "tutorial_model")
 ```
