@@ -46,7 +46,7 @@ print('✅ Core functionality verified')
 
 # Step 4: Integration example validation
 echo "🎯 Testing integration examples..."
-timeout 300 python examples/integrations/framework/comprehensive_enhanced_demo.py > /dev/null 2>&1 || (echo "⚠️  Integration demo issues (non-blocking)" && true)
+python examples/integrations/framework/comprehensive_enhanced_demo.py > /dev/null 2>&1 || (echo "⚠️  Integration demo issues (non-blocking)" && true)
 
 # Step 5: Health and security check
 echo "🛡️  Security and health assessment..."

@@ -28,7 +28,7 @@ class HealthMonitor:
         
         try:
             result = subprocess.run(
-                ["python", "tools/linting/health_tracker.py", "--report"],
+                ["python", str(self.base_dir / "tools/linting/health_tracker.py"), "--report"],
                 capture_output=True,
                 text=True,
                 cwd=self.base_dir

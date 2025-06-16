@@ -46,10 +46,10 @@ fi
 # Step 5: Example scripts validation
 echo "🎯 Validating example scripts..."
 echo "Testing quickstart examples..."
-timeout 300 python examples/quickstart/basic_integration.py > /dev/null 2>&1 || (echo "⚠️  Basic integration example failed" && true)
+python examples/quickstart/basic_integration.py > /dev/null 2>&1 || (echo "⚠️  Basic integration example failed" && true)
 
 echo "Testing comprehensive demo..."
-timeout 600 python examples/integrations/framework/comprehensive_enhanced_demo.py > /dev/null 2>&1 || (echo "⚠️  Comprehensive demo failed" && true)
+python examples/integrations/framework/comprehensive_enhanced_demo.py > /dev/null 2>&1 || (echo "⚠️  Comprehensive demo failed" && true)
 
 echo "✅ Example validation completed"
 
