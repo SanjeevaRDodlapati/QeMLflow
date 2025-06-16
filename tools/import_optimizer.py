@@ -11,7 +11,6 @@ import time
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
-
 class ImportProfiler:
     """Profiles and optimizes import patterns."""
 
@@ -83,7 +82,6 @@ class ImportProfiler:
 
         return suggestions
 
-
 def optimize_core_imports():
     """Optimize imports in core ChemML modules."""
     print("🚀 Optimizing Core Module Imports")
@@ -119,7 +117,6 @@ def optimize_core_imports():
 
     print(f"\n📊 Total potential optimization: {total_optimization_time:.2f}s")
     return profiler.slow_imports
-
 
 def create_optimized_init_file():
     """Create an optimized version of ChemML's main __init__.py."""
@@ -188,7 +185,6 @@ __all__ = [
     print(f"✅ Created optimized init file: {optimized_path}")
     return optimized_path
 
-
 def main():
     """Main optimization function."""
     parser = argparse.ArgumentParser(description="ChemML Import Optimization")
@@ -209,14 +205,13 @@ def main():
 
     if args.create_optimized:
         optimized_path = create_optimized_init_file()
-        print(f"\n🚀 Next steps:")
+        print("\n🚀 Next steps:")
         print(
             f'1. Test: python -c \'import sys; sys.path.insert(0, "."); exec(open("{optimized_path}").read())\''
         )
         print("2. If performance is good, replace the original __init__.py")
 
     print(f"\n📈 Optimization potential: {len(slow_imports)} slow imports identified")
-
 
 if __name__ == "__main__":
     main()

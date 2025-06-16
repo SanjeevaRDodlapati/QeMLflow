@@ -21,7 +21,6 @@ import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-
 class SimpleNotebookValidator:
     def __init__(self):
         self.base_path = Path("notebooks/quickstart_bootcamp/days")
@@ -316,13 +315,12 @@ class SimpleNotebookValidator:
 
         return "\\n".join(lines)
 
-
 def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="Validate Day 6 and Day 7 notebooks")
     parser.add_argument("--quick", action="store_true", help="Quick validation mode")
-    args = parser.parse_args()
+    _args = parser.parse_args()
 
     # Run validation
     validator = SimpleNotebookValidator()
@@ -335,11 +333,10 @@ def main():
     # Save report
     with open("notebook_validation_report.txt", "w") as f:
         f.write(report)
-    print(f"\\n📄 Report saved to: notebook_validation_report.txt")
+    print("\\n📄 Report saved to: notebook_validation_report.txt")
 
     # Exit with appropriate code
     sys.exit(0 if results["failed"] == 0 else 1)
-
 
 if __name__ == "__main__":
     main()

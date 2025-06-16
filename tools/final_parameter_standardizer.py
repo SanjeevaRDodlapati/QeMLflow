@@ -12,7 +12,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
-
 class FinalParameterStandardizer:
     """Complete parameter standardization with intelligent patterns"""
 
@@ -278,7 +277,7 @@ class FinalParameterStandardizer:
         print(f"   📊 Baseline issues: {results['issues_before']}")
 
         # Process priority files first
-        print(f"\n🎯 Processing priority files...")
+        print("\n🎯 Processing priority files...")
 
         priority_paths = []
         for priority_file in self.priority_files:
@@ -302,12 +301,12 @@ class FinalParameterStandardizer:
                     for change in result["changes_log"]:
                         print(f"         • {change}")
                 else:
-                    print(f"      ✅ No changes needed")
+                    print("      ✅ No changes needed")
 
             results["files_processed"] += 1
 
         # Process other core files
-        print(f"\n🔄 Processing additional core files...")
+        print("\n🔄 Processing additional core files...")
 
         other_files = [
             f
@@ -329,7 +328,7 @@ class FinalParameterStandardizer:
             results["files_processed"] += 1
 
         # Get final parameter issues
-        print(f"\n📊 Calculating remaining parameter issues...")
+        print("\n📊 Calculating remaining parameter issues...")
         try:
             final_result = subprocess.run(
                 [sys.executable, "tools/parameter_standardization.py"],
@@ -350,7 +349,6 @@ class FinalParameterStandardizer:
             )
 
         return results
-
 
 def main():
     """Run final parameter standardization"""
@@ -384,12 +382,11 @@ def main():
         print(f"\n⚠️  Files with errors: {len(results['files_with_errors'])}")
 
     if results["detailed_changes"]:
-        print(f"\n📝 Key standardizations made:")
+        print("\n📝 Key standardizations made:")
         for change in results["detailed_changes"][:10]:  # Show first 10
             print(f"   • {change}")
         if len(results["detailed_changes"]) > 10:
             print(f"   ... and {len(results['detailed_changes']) - 10} more")
-
 
 if __name__ == "__main__":
     main()

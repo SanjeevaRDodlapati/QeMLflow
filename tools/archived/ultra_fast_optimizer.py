@@ -12,7 +12,6 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Set
 
-
 class UltraFastImportOptimizer:
     """Advanced import optimization for sub-5s target"""
 
@@ -438,7 +437,7 @@ def cached_import(module_name: str):
                 del sys.modules[module]
 
         # Test new performance
-        start_time = time.time()
+        _start_time = time.time()
         try:
             # Test in subprocess for clean import
             result = subprocess.run(
@@ -479,7 +478,6 @@ def cached_import(module_name: str):
 
         return results
 
-
 def main():
     """Run ultra-fast import optimization"""
     optimizer = UltraFastImportOptimizer()
@@ -490,7 +488,7 @@ def main():
     print("=" * 50)
 
     import_time = results.get("optimized_import_time", 8.0)
-    success = results.get("success", False)
+    _success = results.get("success", False)
 
     print(f"⚡ Final import time: {import_time:.2f}s")
 
@@ -503,12 +501,11 @@ def main():
     else:
         print("📈 PROGRESS: Solid optimization delivered!")
 
-    print(f"\n💡 Key optimizations:")
-    print(f"   • Ultra-minimal imports")
-    print(f"   • Advanced lazy loading")
-    print(f"   • Import result caching")
-    print(f"   • Direct function mapping")
-
+    print("\n💡 Key optimizations:")
+    print("   • Ultra-minimal imports")
+    print("   • Advanced lazy loading")
+    print("   • Import result caching")
+    print("   • Direct function mapping")
 
 if __name__ == "__main__":
     main()

@@ -93,7 +93,7 @@ class BootcampLauncher:
         try:
             import qiskit_aer
 
-            print(f"   ✅ Qiskit Aer")
+            print("   ✅ Qiskit Aer")
             quantum_status["aer"] = True
         except ImportError:
             print("   ❌ Qiskit Aer - MISSING!")
@@ -102,7 +102,7 @@ class BootcampLauncher:
         try:
             import qiskit_algorithms
 
-            print(f"   ✅ Qiskit Algorithms")
+            print("   ✅ Qiskit Algorithms")
             quantum_status["algorithms"] = True
         except ImportError:
             print("   ⚠️ Qiskit Algorithms - using fallbacks")
@@ -111,7 +111,7 @@ class BootcampLauncher:
         try:
             import qiskit_nature
 
-            print(f"   ✅ Qiskit Nature")
+            print("   ✅ Qiskit Nature")
             quantum_status["nature"] = True
         except ImportError:
             print("   ⚠️ Qiskit Nature - compatibility issues")
@@ -213,7 +213,7 @@ class BootcampLauncher:
         quantum_ok = self.check_quantum_environment()
 
         # Summary
-        print(f"\n🎯 ENVIRONMENT STATUS:")
+        print("\n🎯 ENVIRONMENT STATUS:")
         print(f"   Core Libraries: {'✅ Ready' if core_ok else '❌ Issues'}")
         print(f"   ChemML Modules: {'✅ Ready' if chemml_ok else '❌ Issues'}")
         print(f"   Quantum Setup:  {'✅ Ready' if quantum_ok else '⚠️ Partial'}")
@@ -228,11 +228,11 @@ class BootcampLauncher:
             print("\n❌ CRITICAL: Core libraries missing!")
             print("   Run: pip install -r requirements.txt")
         elif overall_score >= 67:
-            print(f"\n🎉 Environment ready for bootcamp!")
-            print(f"   Start with: notebooks/tutorials/01_basic_cheminformatics.ipynb")
+            print("\n🎉 Environment ready for bootcamp!")
+            print("   Start with: notebooks/tutorials/01_basic_cheminformatics.ipynb")
         else:
-            print(f"\n⚠️ Environment partially ready")
-            print(f"   Consider running: python launch_bootcamp.py --fix-quantum")
+            print("\n⚠️ Environment partially ready")
+            print("   Consider running: python launch_bootcamp.py --fix-quantum")
 
 
 def main():

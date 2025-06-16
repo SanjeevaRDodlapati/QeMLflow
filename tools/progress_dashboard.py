@@ -15,7 +15,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from IPython.display import HTML, display
 
-
 class ProgressTracker:
     """Main class for tracking and visualizing learning progress."""
 
@@ -431,7 +430,6 @@ class ProgressTracker:
             "competency_areas_assessed": len(self.progress_data["competency_scores"]),
         }
 
-
 # Usage example
 def create_sample_progress_tracker():
     """Create a sample progress tracker with demo data."""
@@ -464,7 +462,6 @@ def create_sample_progress_tracker():
     }
 
     return tracker
-
 
 if __name__ == "__main__":
     # Demo usage

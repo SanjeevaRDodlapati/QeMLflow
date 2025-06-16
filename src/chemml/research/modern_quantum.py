@@ -129,7 +129,7 @@ class ModernVQE(QuantumAlgorithmBase):
         Returns:
             Dictionary with optimization results
         """
-        print(f"🎯 Starting Modern VQE optimization...")
+        print("🎯 Starting Modern VQE optimization...")
         print(f"   Hamiltonian terms: {len(self.hamiltonian)}")
         print(f"   Parameters: {len(initial_parameters)}")
         print(f"   Optimizer: {self.optimizer}")
@@ -157,7 +157,7 @@ class ModernVQE(QuantumAlgorithmBase):
             "message": result.message,
         }
 
-        print(f"✅ VQE optimization complete!")
+        print("✅ VQE optimization complete!")
         print(f"   Ground state energy: {result.fun:.6f}")
         print(f"   Converged: {result.success}")
         print(f"   Iterations: {len(self.energy_history)}")

@@ -25,7 +25,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-
 class CILintingIntegration:
     """CI/CD integration for linting framework."""
 
@@ -298,7 +297,6 @@ class CILintingIntegration:
         except Exception as e:
             print(f"⚠️ Error updating health tracking: {e}")
 
-
 def main():
     """Main entry point for CI integration."""
     import argparse
@@ -375,7 +373,6 @@ def main():
             exit_code = 1
 
     sys.exit(exit_code)
-
 
 if __name__ == "__main__":
     main()

@@ -194,7 +194,7 @@ class MemoryProfiler:
             after_basic_imports = self.get_memory_usage()
 
             # Create test data
-            test_data = pd.DataFrame(np.random.randn(1000, 10))
+            _test_data = pd.DataFrame(np.random.randn(1000, 10))
             after_data_creation = self.get_memory_usage()
 
             return {
@@ -350,7 +350,7 @@ def main():
         if args.save_report:
             with open("performance_optimization_report.json", "w") as f:
                 json.dump(report, f, indent=2)
-            print(f"\n💾 Detailed report saved to performance_optimization_report.json")
+            print("\n💾 Detailed report saved to performance_optimization_report.json")
 
     except Exception as e:
         print(f"❌ Error during performance analysis: {e}")

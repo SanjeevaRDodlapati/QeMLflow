@@ -518,7 +518,7 @@ class TestStandaloneFunctions:
             tmp_path = tmp_file.name
 
         try:
-            report = create_optimization_report(mock_results, output_file=tmp_path)
+            _report = create_optimization_report(mock_results, output_file=tmp_path)
 
             # Check file was created
             assert os.path.exists(tmp_path)

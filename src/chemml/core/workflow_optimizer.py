@@ -163,7 +163,7 @@ class WorkflowOptimizer:
         }
         try:
             if isinstance(molecules, (list, np.ndarray)):
-                molecular_data = np.array(molecules)
+                _molecular_data = np.array(molecules)
                 characteristics["size"] = len(molecules)
                 if len(molecules) > 0:
                     if isinstance(molecules[0], str):

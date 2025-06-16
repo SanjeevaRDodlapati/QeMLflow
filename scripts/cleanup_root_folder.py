@@ -109,13 +109,13 @@ class RootFolderCleaner:
             elif not item.name.startswith(".") and item.is_file():
                 should_move.append(item)
 
-        print(f"📊 Analysis Results:")
+        print("📊 Analysis Results:")
         print(f"  • Total items: {len(all_items)}")
         print(f"  • Should stay in root: {len(should_stay)}")
         print(f"  • Should be moved: {len(should_move)}")
         print(f"  • Markdown files to organize: {len(md_files)}")
 
-        print(f"\n📄 Markdown files to move:")
+        print("\n📄 Markdown files to move:")
         for md_file in md_files:
             print(f"  • {md_file.name}")
 
@@ -275,20 +275,20 @@ Original files are backed up in `archive/root_cleanup_backup_*/`
         self.create_organization_index()
 
         # Final summary
-        print(f"\n🎯 Cleanup Summary")
-        print(f"-" * 18)
+        print("\n🎯 Cleanup Summary")
+        print("-" * 18)
         print(f"✅ Files moved: {moves_made}")
-        print(f"✅ Backup created: Yes")
-        print(f"✅ Organization index: Created")
-        print(f"✅ Root folder: Cleaned and organized")
+        print("✅ Backup created: Yes")
+        print("✅ Organization index: Created")
+        print("✅ Root folder: Cleaned and organized")
 
         # Show final root state
         self.show_final_state()
 
     def show_final_state(self):
         """Show final root directory state."""
-        print(f"\n📁 Final Root Directory Contents")
-        print(f"-" * 35)
+        print("\n📁 Final Root Directory Contents")
+        print("-" * 35)
 
         root_items = sorted(
             [
@@ -304,7 +304,7 @@ Original files are backed up in `archive/root_cleanup_backup_*/`
             else:
                 print(f"📄 {item.name}")
 
-        print(f"\n🎉 Root folder is now clean and organized!")
+        print("\n🎉 Root folder is now clean and organized!")
 
 
 def main():

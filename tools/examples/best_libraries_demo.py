@@ -22,7 +22,6 @@ import yaml
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-
 def demo_distributed_training():
     """Demonstrate Ray-based distributed training."""
     logger.info("🚀 Demonstrating Ray-based distributed training...")
@@ -83,7 +82,6 @@ def demo_distributed_training():
     except ImportError:
         logger.warning("⚠️  Ray not installed. Install with: pip install ray[default]")
 
-
 def demo_hyperparameter_optimization():
     """Demonstrate Optuna-based hyperparameter optimization."""
     logger.info("🎯 Demonstrating Optuna hyperparameter optimization...")
@@ -95,7 +93,7 @@ def demo_hyperparameter_optimization():
         def objective(trial: Trial) -> float:
             """Objective function for molecular property prediction."""
             # Suggest hyperparameters
-            n_estimators = trial.suggest_int("n_estimators", 10, 100)
+            _n_estimators = trial.suggest_int("n_estimators", 10, 100)
             max_depth = trial.suggest_int("max_depth", 3, 10)
             learning_rate = trial.suggest_float("learning_rate", 0.01, 0.3)
 
@@ -136,7 +134,6 @@ def demo_hyperparameter_optimization():
 
     except ImportError:
         logger.warning("⚠️  Optuna not installed. Install with: pip install optuna")
-
 
 def demo_performance_monitoring():
     """Demonstrate MLflow + W&B performance monitoring."""
@@ -222,7 +219,6 @@ def demo_performance_monitoring():
     except ImportError:
         logger.warning("⚠️  W&B not installed. Install with: pip install wandb")
 
-
 def demo_quantum_integration():
     """Demonstrate PennyLane quantum computing integration."""
     logger.info("⚛️  Demonstrating PennyLane quantum computing...")
@@ -273,7 +269,6 @@ def demo_quantum_integration():
         logger.warning(
             "⚠️  PennyLane not installed. Install with: pip install pennylane"
         )
-
 
 def demo_uncertainty_quantification():
     """Demonstrate advanced uncertainty quantification."""
@@ -330,14 +325,13 @@ def demo_uncertainty_quantification():
         coverage = np.mean((y_test >= lower_bound) & (y_test <= upper_bound))
         avg_interval_width = np.mean(upper_bound - lower_bound)
 
-        logger.info(f"✅ Ensemble uncertainty quantification:")
+        logger.info("✅ Ensemble uncertainty quantification:")
         logger.info(f"   - Coverage: {coverage:.3f} (target: {confidence_level})")
         logger.info(f"   - Average interval width: {avg_interval_width:.3f}")
         logger.info(f"   - Average prediction uncertainty: {np.mean(std_pred):.3f}")
 
     except Exception as e:
         logger.warning(f"⚠️  Uncertainty quantification demo failed: {e}")
-
 
 def demo_automl():
     """Demonstrate AutoML capabilities."""
@@ -376,7 +370,7 @@ def demo_automl():
         r2 = r2_score(y_test, y_pred)
         mse = mean_squared_error(y_test, y_pred)
 
-        logger.info(f"✅ AutoML completed:")
+        logger.info("✅ AutoML completed:")
         logger.info(f"   - Best model: {automl.best_estimator}")
         logger.info(f"   - Best config: {automl.best_config}")
         logger.info(f"   - R² score: {r2:.4f}")
@@ -384,7 +378,6 @@ def demo_automl():
 
     except ImportError:
         logger.warning("⚠️  FLAML not installed. Install with: pip install flaml")
-
 
 def main():
     """Run all demonstrations."""
@@ -416,7 +409,6 @@ def main():
     print(
         "   3. Start implementing long-term enhancements following the implementation guide"
     )
-
 
 if __name__ == "__main__":
     main()

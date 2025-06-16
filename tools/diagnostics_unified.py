@@ -14,7 +14,6 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-
 class ChemMLDiagnostics:
     """Comprehensive diagnostic tool for ChemML system health."""
 
@@ -214,7 +213,7 @@ class ChemMLDiagnostics:
                 "debug_mode": config.debug_mode,
             }
 
-            print(f"✅ Configuration loaded")
+            print("✅ Configuration loaded")
             print(f"Environment: {config.environment}")
             print(f"Debug Mode: {config.debug_mode}")
 
@@ -405,7 +404,6 @@ class ChemMLDiagnostics:
 
         return summary
 
-
 def quick_check():
     """Quick health check."""
     print("🔬 ChemML Quick Health Check")
@@ -424,7 +422,6 @@ def quick_check():
             print(f"✅ {name}")
         except Exception:
             print(f"❌ {name}")
-
 
 if __name__ == "__main__":
     import argparse

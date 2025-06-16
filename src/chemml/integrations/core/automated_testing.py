@@ -161,7 +161,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
                         adapter.fit(X_train, y_train)
 
                 # Make predictions
-                predictions = adapter.predict(X_test)
+                _predictions = adapter.predict(X_test)
 
                 # Measure memory after
                 memory_after = process.memory_info().rss / 1024 / 1024  # MB
@@ -198,7 +198,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
 
                 # Time prediction
                 start_time = time.time()
-                predictions = adapter.predict(X_test)
+                _predictions = adapter.predict(X_test)
                 prediction_time = time.time() - start_time
 
                 # Calculate throughput
@@ -493,7 +493,7 @@ class AdapterTestSuite:
         print(f"🎯 Overall Status: {results['overall_status']}")
 
         if results["recommendations"]:
-            print(f"\n💡 Recommendations:")
+            print("\n💡 Recommendations:")
             for i, rec in enumerate(results["recommendations"], 1):
                 print(f"   {i}. {rec}")
 

@@ -477,7 +477,7 @@ class ExternalModelManager:
 
                 # Validate adapter if requested
                 if validate_adapter:
-                    print(f"🧪 Running adapter validation...")
+                    print("🧪 Running adapter validation...")
                     test_result = quick_adapter_test(type(adapter))
                     print(f"   {test_result}")
 

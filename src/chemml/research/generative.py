@@ -164,7 +164,7 @@ if HAS_TORCH:
             """Decode latent vector to SMILES."""
             if max_length is None:
                 max_length = self.max_length
-            batch_size = z.shape[0]
+            _batch_size = z.shape[0]
             hidden_input = self.decoder_input(z).unsqueeze(1)
             hidden_input = hidden_input.repeat(1, max_length, 1)
             output, _ = self.decoder_lstm(hidden_input)
@@ -324,7 +324,7 @@ if HAS_TORCH:
                     self.output_layer = nn.Linear(hidden_dim, vocab_size)
 
                 def forward(self, z: Any) -> Any:
-                    batch_size = z.shape[0]
+                    _batch_size = z.shape[0]
                     hidden = F.relu(self.fc1(z))
                     hidden = hidden.unsqueeze(1).repeat(1, self.max_length, 1)
                     output, _ = self.lstm(hidden)

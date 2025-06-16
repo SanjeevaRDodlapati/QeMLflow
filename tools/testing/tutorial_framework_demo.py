@@ -29,7 +29,6 @@ from src.chemml.tutorials import (
     visualize_molecules,
 )
 
-
 def main():
     """Demonstrate the ChemML tutorial framework."""
     print("🧪 ChemML Tutorial Framework Demonstration")
@@ -103,7 +102,7 @@ def main():
     tracker.log_progress("lipophilicity", "completed", {"understanding": 0.82})
 
     session_data = tracker.get_session_summary()
-    print(f"✅ Session completed:")
+    print("✅ Session completed:")
     print(f"   • Activities logged: {session_data['total_steps']}")
     print(f"   • Session duration: {session_data['elapsed_time_minutes']:.1f} minutes")
 
@@ -119,7 +118,7 @@ def main():
     }
 
     print("📊 Visualizing molecules (check output above)...")
-    mol_vis = visualize_molecules(sample_molecules, grid_size=(1, 3))
+    _mol_vis = visualize_molecules(sample_molecules, grid_size=(1, 3))
 
     # 6. Quantum Computing Integration
     print("\n🌌 Quantum Computing Integration")
@@ -174,20 +173,19 @@ def main():
     print("-" * 30)
 
     print(f"🧪 Educational datasets: {len(datasets.molecules)} categories")
-    print(f"🎯 Assessment framework: ✅ Operational")
-    print(f"📈 Progress tracking: ✅ Operational")
+    print("🎯 Assessment framework: ✅ Operational")
+    print("📈 Progress tracking: ✅ Operational")
     print(f"🔧 Environment management: ✅ {env_status['overall_status'].title()}")
     print(
         f"🌌 Quantum integration: {'✅ Available' if any(quantum_status.values()) else '⚠️ Limited'}"
     )
-    print(f"🧬 Visualization: ✅ Operational")
+    print("🧬 Visualization: ✅ Operational")
 
     print("\n🎉 ChemML Tutorial Framework is ready for educational use!")
     print("\n💡 Next steps:")
     print("   • Explore notebooks/learning/fundamentals/ for tutorial examples")
     print("   • Use the tutorial framework in your own educational content")
     print("   • Check UPDATED_NOTEBOOKS_INTEGRATION_PLAN.md for the full roadmap")
-
 
 if __name__ == "__main__":
     # Suppress some warnings for cleaner demo output

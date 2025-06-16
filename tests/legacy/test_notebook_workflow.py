@@ -201,7 +201,7 @@ def test_notebook_workflow():
                 actual_logp = Descriptors.MolLogP(mol)
                 print(f"✅ Actual MW: {actual_mw:.2f}")
                 print(f"✅ LogP: {actual_logp:.2f}")
-                print(f"✅ Molecule is valid!")
+                print("✅ Molecule is valid!")
             else:
                 print("❌ Generated molecule is invalid")
         except:
@@ -210,13 +210,13 @@ def test_notebook_workflow():
         # Show optimization trajectory
         valid_trajectory = [t for t in optimization_trajectory if "mw" in t]
         if valid_trajectory:
-            print(f"\n📈 Optimization Progress (showing last 10 valid molecules):")
+            print("\n📈 Optimization Progress (showing last 10 valid molecules):")
             for t in valid_trajectory[-10:]:
                 print(
                     f"   Iter {t['iteration']:2d}: MW={t['mw']:6.2f}, Score={t['score']:6.3f}, SMILES={t['smiles'][:30]}..."
                 )
 
-        print(f"\n✅ PropertyOptimizer workflow completed successfully")
+        print("\n✅ PropertyOptimizer workflow completed successfully")
         return True
 
     except Exception as e:

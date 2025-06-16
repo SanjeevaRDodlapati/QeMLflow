@@ -15,7 +15,6 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-
 class APIDocGenerator:
     """Automatically generate comprehensive API documentation."""
 
@@ -730,7 +729,6 @@ class APIDocGenerator:
         with open(self.output_dir / "search.js", "w", encoding="utf-8") as f:
             f.write(js_content)
 
-
 # Command-line interface
 if __name__ == "__main__":
     import argparse
@@ -748,7 +746,7 @@ if __name__ == "__main__":
     generator = APIDocGenerator(args.source, args.output)
     stats = generator.scan_and_document()
 
-    print(f"\n📊 Documentation Statistics:")
+    print("\n📊 Documentation Statistics:")
     print(f"   📦 Modules: {stats['modules']}")
     print(f"   🔧 Functions: {stats['functions']}")
     print(f"   🏗️ Classes: {stats['classes']}")

@@ -407,7 +407,7 @@ class TestQuantumOptimization:
 
     def test_parameter_gradient_estimation(self):
         """Test parameter gradient estimation"""
-        qnn = QuantumNeuralNetwork(num_qubits=2, num_layers=1)
+        _qnn = QuantumNeuralNetwork(num_qubits=2, num_layers=1)
 
         params = np.random.random(4)
 
@@ -492,7 +492,7 @@ class TestQuantumErrorHandling:
         """Test handling of invalid qubit counts"""
         # Test zero qubits
         try:
-            circuit = QuantumCircuit(0)
+            _circuit = QuantumCircuit(0)
             # Should either work or raise appropriate error
             assert True
         except ValueError:
@@ -574,7 +574,7 @@ class TestQuantumIntegrationScenarios:
             vqe.set_hamiltonian(hamiltonian)
 
             # Run optimization
-            result = vqe.optimize()
+            _result = vqe.optimize()
 
             # Should complete without error
             assert True
@@ -645,7 +645,7 @@ class TestQuantumPerformance:
         start_time = time.time()
 
         for _ in range(100):
-            circuit = create_variational_circuit(4, 2)
+            _circuit = create_variational_circuit(4, 2)
 
         end_time = time.time()
 

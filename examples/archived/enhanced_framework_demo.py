@@ -171,7 +171,7 @@ def demo_automated_pipeline():
         # Try to add advanced models
         try:
             pipeline.add_model("ensemble", "ensemble", ensemble_method="voting")
-        except:
+        except Exception:
             print("⚠️  Could not add ensemble model")
 
         # Train models

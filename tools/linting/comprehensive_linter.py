@@ -33,7 +33,6 @@ try:
 except ImportError:
     yaml = None
 
-
 @dataclass
 class LintingIssue:
     """Represents a single linting issue."""
@@ -46,7 +45,6 @@ class LintingIssue:
     severity: str  # 'error', 'warning', 'info'
     tool: str  # 'flake8', 'black', 'isort', 'mypy'
     auto_fixable: bool = False
-
 
 @dataclass
 class LintingReport:
@@ -61,7 +59,6 @@ class LintingReport:
     issues: List[LintingIssue] = field(default_factory=list)
     auto_fixable_count: int = 0
     health_score: float = 0.0
-
 
 class ComprehensiveLinter:
     """Advanced linting framework for ChemML."""
@@ -640,7 +637,6 @@ class ComprehensiveLinter:
 
         return report_path
 
-
 def main():
     """Main entry point for comprehensive linting."""
     import argparse
@@ -698,7 +694,6 @@ def main():
         report_path = linter.save_report(report, args.format)
         if not quiet_mode and args.format != "json":
             print(f"\n💾 Report saved to: {report_path}")
-
 
 if __name__ == "__main__":
     main()

@@ -4,7 +4,6 @@ Test script to validate new framework modules for clinical research,
 environmental chemistry, and materials discovery.
 """
 
-
 def test_clinical_research():
     """Test clinical research module functionality."""
     try:
@@ -34,7 +33,6 @@ def test_clinical_research():
         print(f"❌ Clinical Research Module: FAILED - {e}")
         return False
 
-
 def test_environmental_chemistry():
     """Test environmental chemistry module functionality."""
     try:
@@ -63,7 +61,6 @@ def test_environmental_chemistry():
     except Exception as e:
         print(f"❌ Environmental Chemistry Module: FAILED - {e}")
         return False
-
 
 def test_materials_discovery():
     """Test materials discovery module functionality."""
@@ -99,7 +96,6 @@ def test_materials_discovery():
         print(f"❌ Materials Discovery Module: FAILED - {e}")
         return False
 
-
 def main():
     """Run all validation tests."""
     print("🧪 Testing ChemML Framework Module Integration")
@@ -132,7 +128,6 @@ def main():
         print("⚠️ Some modules need attention")
 
     return passed == total
-
 
 if __name__ == "__main__":
     main()

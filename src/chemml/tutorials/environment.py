@@ -585,7 +585,7 @@ class EnvironmentManager:
         print(f"🐍 Python: {status['python_version'].split()[0]}")
 
         # Dependencies
-        print(f"\n📦 Dependencies:")
+        print("\n📦 Dependencies:")
         for dep, dep_status in status["dependencies"].items():
             if dep_status["available"]:
                 if dep_status["meets_requirements"]:
@@ -601,7 +601,7 @@ class EnvironmentManager:
 
         # Recommendations
         if status["recommendations"]:
-            print(f"\n💡 Recommendations:")
+            print("\n💡 Recommendations:")
             for rec in status["recommendations"]:
                 print(f"   • {rec}")
 
@@ -631,7 +631,7 @@ def check_dependencies(
         result[dep] = status["dependencies"].get(dep, {}).get("available", False)
 
     if verbose:
-        print(f"\n📋 Dependency Check Results:")
+        print("\n📋 Dependency Check Results:")
         for dep, available in result.items():
             emoji = "✅" if available else "❌"
             print(f"   {emoji} {dep}")

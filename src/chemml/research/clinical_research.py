@@ -137,7 +137,7 @@ class PatientStratificationEngine:
         from sklearn.cluster import KMeans
 
         kmeans = KMeans(n_clusters=n_strata, random_state=42)
-        cluster_labels = kmeans.fit_predict(X)
+        _cluster_labels = kmeans.fit_predict(X)
         return {
             "method": "unsupervised",
             "cluster_model": kmeans,
@@ -585,7 +585,7 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
     """
     stratification_engine = PatientStratificationEngine("biomarker_based")
     trial_optimizer = ClinicalTrialOptimizer()
-    compliance_framework = RegulatoryComplianceFramework()
+    _compliance_framework = RegulatoryComplianceFramework()
     import numpy as np
     import pandas as pd
 
@@ -612,7 +612,7 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
         effect_size=0.3,
         power=0.8,
     )
-    trial_documents = {
+    _trial_documents = {
         "protocol_version": "2.0",
         "statistical_analysis_plan": True,
         "data_management_plan": True,

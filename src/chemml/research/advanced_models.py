@@ -467,7 +467,7 @@ if HAS_TORCH:
 
         def forward(self, x, return_attention=False):
             """Forward pass with optional attention weights."""
-            batch_size = x.shape[0]
+            _batch_size = x.shape[0]
             features = self.feature_projection(x)
             features = features.unsqueeze(1)
             attended_features, attention_weights = self.attention(

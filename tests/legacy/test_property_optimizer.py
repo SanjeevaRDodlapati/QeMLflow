@@ -100,7 +100,7 @@ class PropertyOptimizer:
 
         with torch.no_grad():
             outputs = self.vae_model.decode(z_tensor)
-            tokens = torch.argmax(outputs[0], dim=-1).cpu().numpy()
+            _tokens = torch.argmax(outputs[0], dim=-1).cpu().numpy()
 
         # Simple mock decoding for testing
         return "CCO"  # Return ethanol as a simple valid molecule
@@ -187,14 +187,14 @@ def test_property_optimizer():
     optimizer = PropertyOptimizer(mock_vae, None)
 
     print("📋 Test Case 1: Class Instantiation")
-    print(f"✅ PropertyOptimizer created successfully")
+    print("✅ PropertyOptimizer created successfully")
     print(f"   VAE latent dim: {optimizer.vae_model.latent_dim}")
 
     print("\n📋 Test Case 2: SMILES to Tokens Conversion")
     try:
         smiles = "CCO"
         tokens = optimizer.smiles_to_tokens(smiles)
-        print(f"✅ SMILES to tokens conversion works")
+        print("✅ SMILES to tokens conversion works")
         print(f"   Input SMILES: {smiles}")
         print(f"   Token length: {len(tokens)}")
         print(f"   First 10 tokens: {tokens[:10]}")
@@ -205,7 +205,7 @@ def test_property_optimizer():
     print("\n📋 Test Case 3: Molecule Encoding")
     try:
         z = optimizer.encode_molecule("CCO")
-        print(f"✅ Molecule encoding works")
+        print("✅ Molecule encoding works")
         print(f"   Latent vector shape: {z.shape}")
         print(f"   Latent vector mean: {z.mean():.4f}")
     except Exception as e:
@@ -216,15 +216,15 @@ def test_property_optimizer():
     try:
         z = np.random.randn(mock_vae.latent_dim)
         smiles = optimizer.decode_latent(z)
-        print(f"✅ Latent decoding works")
+        print("✅ Latent decoding works")
         print(f"   Generated SMILES: {smiles}")
 
         # Test if it's a valid molecule
         mol = Chem.MolFromSmiles(smiles)
         if mol is not None:
-            print(f"   ✓ Generated molecule is valid")
+            print("   ✓ Generated molecule is valid")
         else:
-            print(f"   ⚠️ Generated molecule is invalid (expected in mock test)")
+            print("   ⚠️ Generated molecule is invalid (expected in mock test)")
     except Exception as e:
         print(f"❌ Latent decoding failed: {e}")
         return False
@@ -236,7 +236,7 @@ def test_property_optimizer():
             target_mw, num_iterations=10, learning_rate=0.05
         )
 
-        print(f"✅ Property optimization works")
+        print("✅ Property optimization works")
         print(f"   Target MW: {target_mw}")
         print(f"   Optimization iterations: {len(trajectory)}")
         print(f"   Best latent vector shape: {best_z.shape}")

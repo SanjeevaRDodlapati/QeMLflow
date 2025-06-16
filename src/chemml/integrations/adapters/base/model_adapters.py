@@ -132,7 +132,7 @@ class SklearnModelAdapter(ExternalModelWrapper):
             if hasattr(self.external_model, "score"):
                 try:
                     score["train_score"] = self.external_model.score(X, y)
-                except:
+                except Exception:
                     pass
 
             return score

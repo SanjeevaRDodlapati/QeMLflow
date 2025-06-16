@@ -399,7 +399,7 @@ def load_quantum_molecules(
         "include_hamiltonians": include_hamiltonians,
     }
 
-    print(f"🧬 Quantum molecular dataset loaded:")
+    print("🧬 Quantum molecular dataset loaded:")
     print(f"   • Molecules: {', '.join(molecules)}")
     print(f"   • Basis set: {basis_set}")
     print(f"   • Difficulty: {difficulty_level}")

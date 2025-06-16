@@ -211,7 +211,7 @@ class AdaptiveEnsemble(BaseEstimator):
     ) -> np.ndarray:
         """Make adaptive predictions based on input characteristics."""
         if self.molecular_clusters_ is not None:
-            cluster_assignments = np.random.randint(
+            _cluster_assignments = np.random.randint(
                 0, max(self.molecular_clusters_) + 1, len(X)
             )
             weighted_predictions = np.average(

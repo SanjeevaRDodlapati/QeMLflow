@@ -31,7 +31,6 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-
 class HealthChecker:
     """Comprehensive health check for ChemML installation."""
 
@@ -326,7 +325,7 @@ class HealthChecker:
 
             # Simple computation test
             data = np.random.random((1000, 100))
-            result = np.dot(data, data.T)
+            _result = np.dot(data, data.T)
             computation_time = time.time() - start_time
 
             perf_info["computation_test"] = computation_time
@@ -644,7 +643,7 @@ class HealthChecker:
             start_time = time.time()
             a = np.random.random((1000, 1000))
             b = np.random.random((1000, 1000))
-            c = np.dot(a, b)
+            _c = np.dot(a, b)
             computation_time = time.time() - start_time
             benchmark_info["computation_times"]["matrix_1000x1000"] = computation_time
             print(f"   📊 Matrix multiplication (1000x1000): {computation_time:.3f}s")
@@ -806,7 +805,6 @@ class HealthChecker:
 
     # ...existing code...
 
-
 def main():
     """Main CLI interface."""
     parser = argparse.ArgumentParser(description="ChemML Health Check Tool")
@@ -844,7 +842,6 @@ def main():
         print("\n❌ ChemML installation has significant issues")
 
     print(f"\nOverall Health Score: {health_score:.1f}/100")
-
 
 if __name__ == "__main__":
     main()

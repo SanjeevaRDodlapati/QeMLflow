@@ -520,7 +520,7 @@ class TestIntegrationScenarios:
         # Mock RDKit not available for this test
         with patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False):
             # Step 1: Clean data
-            cleaned = clean_data(data.select_dtypes(include=[np.number]))
+            _cleaned = clean_data(data.select_dtypes(include=[np.number]))
 
             # Step 2: Validate SMILES
             validated = validate_smiles_column(data, "smiles")

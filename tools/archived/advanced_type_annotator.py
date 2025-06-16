@@ -332,7 +332,7 @@ def main():
                             f"    • {change['function']}: {len(change['changes'])} annotations"
                         )
                 else:
-                    print(f"  ✅ No annotations needed")
+                    print("  ✅ No annotations needed")
             except Exception as e:
                 print(f"  ❌ Error: {e}")
         else:
@@ -352,7 +352,7 @@ def main():
                     print(f"  ✅ {result.get('message', 'No changes needed')}")
 
     if not args.dry_run:
-        print(f"\n✅ Enhancement complete!")
+        print("\n✅ Enhancement complete!")
         print(f"📊 Total functions annotated: {total_functions}")
         print(f"📊 Total annotations added: {total_changes}")
 

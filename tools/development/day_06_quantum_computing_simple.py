@@ -22,7 +22,6 @@ print("=" * 70)
 # SECTION 1: SIMPLE MOCK CLASSES (NO EXTERNAL DEPENDENCIES)
 # ============================================================================
 
-
 class QuantumCircuit:
     """Simple quantum circuit implementation"""
 
@@ -59,7 +58,6 @@ class QuantumCircuit:
     def draw(self):
         return f"Quantum Circuit: {len(self.gates)} gates on {self.num_qubits} qubits"
 
-
 class Parameter:
     """Simple parameter class"""
 
@@ -68,7 +66,6 @@ class Parameter:
 
     def __repr__(self):
         return f"Parameter({self.name})"
-
 
 class ParameterVector:
     """Simple parameter vector"""
@@ -86,7 +83,6 @@ class ParameterVector:
 
     def __iter__(self):
         return iter(self._params)
-
 
 class QubitOperator:
     """Simple qubit operator for Hamiltonians"""
@@ -109,11 +105,9 @@ class QubitOperator:
             self.terms = terms
         self.n_qubits = 4
 
-
 # ============================================================================
 # SECTION 2: MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
-
 
 class MolecularHamiltonianBuilder:
     """Build molecular Hamiltonians for quantum simulation"""
@@ -144,11 +138,9 @@ class MolecularHamiltonianBuilder:
         print(f"✅ Hamiltonian generated with {len(hamiltonian.terms)} terms")
         return hamiltonian
 
-
 # ============================================================================
 # SECTION 3: QUANTUM CIRCUIT DESIGNER
 # ============================================================================
-
 
 class QuantumCircuitDesigner:
     """Design quantum circuits for molecular simulations"""
@@ -200,11 +192,9 @@ class QuantumCircuitDesigner:
 
         return qc, params
 
-
 # ============================================================================
 # SECTION 4: VQE SOLVER
 # ============================================================================
-
 
 class VQESolver:
     """Variational Quantum Eigensolver"""
@@ -324,18 +314,16 @@ class VQESolver:
         plt.show()
 
         # Statistics
-        print(f"\nOptimization Statistics:")
+        print("\nOptimization Statistics:")
         print(f"  Initial energy: {energies[0]:.6f} Ha")
         print(f"  Final energy: {energies[-1]:.6f} Ha")
         print(f"  Best energy: {self.best_energy:.6f} Ha")
         print(f"  Energy improvement: {energies[0] - self.best_energy:.6f} Ha")
         print(f"  Total iterations: {len(self.optimization_history)}")
 
-
 # ============================================================================
 # SECTION 5: MAIN EXECUTION
 # ============================================================================
-
 
 def main():
     """Main execution function"""
@@ -370,13 +358,13 @@ def main():
     initial_params_hea = np.random.uniform(0, 2 * np.pi, len(hea_params))
     result_hea = vqe_hea.optimize(initial_params_hea, max_iter=30)
 
-    print(f"\n  Testing UCC Ansatz:")
+    print("\n  Testing UCC Ansatz:")
     vqe_ucc = VQESolver(h2_hamiltonian, ucc_circuit, ucc_params)
     initial_params_ucc = np.random.uniform(0, 2 * np.pi, len(ucc_params))
     result_ucc = vqe_ucc.optimize(initial_params_ucc, max_iter=30)
 
     # 4. Results comparison
-    print(f"\n4. Results Summary:")
+    print("\n4. Results Summary:")
     print(f"  Classical HF energy: {h2_builder.mf_energy:.6f} Ha")
     print(f"  HEA VQE energy: {result_hea.fun:.6f} Ha")
     print(f"  UCC VQE energy: {result_ucc.fun:.6f} Ha")
@@ -389,11 +377,11 @@ def main():
     print(f"  UCC improvement: {ucc_improvement:.6f} Ha")
 
     # 5. Analyze optimization
-    print(f"\n5. Analyzing VQE Optimization:")
+    print("\n5. Analyzing VQE Optimization:")
     vqe_hea.analyze_optimization()
 
     # 6. Benchmark summary
-    print(f"\n6. Benchmark Summary:")
+    print("\n6. Benchmark Summary:")
     methods = ["Classical HF", "HEA VQE", "UCC VQE"]
     energies = [h2_builder.mf_energy, result_hea.fun, result_ucc.fun]
 
@@ -417,8 +405,8 @@ def main():
     plt.tight_layout()
     plt.show()
 
-    print(f"\n🎉 Quantum Computing Demo Complete!")
-    print(f"✅ All algorithms executed successfully!")
+    print("\n🎉 Quantum Computing Demo Complete!")
+    print("✅ All algorithms executed successfully!")
 
     return {
         "h2_builder": h2_builder,
@@ -428,7 +416,6 @@ def main():
         "classical_energy": h2_builder.mf_energy,
     }
 
-
 # ============================================================================
 # EXECUTION
 # ============================================================================
@@ -436,11 +423,11 @@ def main():
 if __name__ == "__main__":
     results = main()
 
-    print(f"\n🚀 Production Summary:")
-    print(f"   ✅ Molecular Hamiltonian: Generated")
-    print(f"   ✅ Quantum Circuits: Designed")
-    print(f"   ✅ VQE Optimization: Converged")
-    print(f"   ✅ Benchmarking: Complete")
-    print(f"   ✅ Error-Free Execution: Yes")
-    print(f"\n💡 This demonstrates the complete quantum computing workflow")
-    print(f"   for chemistry without any runtime errors!")
+    print("\n🚀 Production Summary:")
+    print("   ✅ Molecular Hamiltonian: Generated")
+    print("   ✅ Quantum Circuits: Designed")
+    print("   ✅ VQE Optimization: Converged")
+    print("   ✅ Benchmarking: Complete")
+    print("   ✅ Error-Free Execution: Yes")
+    print("\n💡 This demonstrates the complete quantum computing workflow")
+    print("   for chemistry without any runtime errors!")

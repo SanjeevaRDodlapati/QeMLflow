@@ -12,7 +12,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
-
 class ParameterStandardizer(ast.NodeTransformer):
     """AST transformer that standardizes parameter names."""
 
@@ -99,7 +98,6 @@ class ParameterStandardizer(ast.NodeTransformer):
         updater = ParameterReferenceUpdater()
         return updater.visit(func_node)
 
-
 def standardize_parameters_in_file(
     filepath: str, backup: bool = True
 ) -> Tuple[bool, List[Dict]]:
@@ -141,7 +139,6 @@ def standardize_parameters_in_file(
     except Exception as e:
         return False, [{"error": f"Error processing file: {e}"}]
 
-
 def create_type_annotation_suggestions(filepath: str) -> List[str]:
     """Create type annotation suggestions for a file."""
     suggestions = []
@@ -174,7 +171,6 @@ def create_type_annotation_suggestions(filepath: str) -> List[str]:
 
     return suggestions
 
-
 def _suggest_return_type(function_name: str) -> str:
     """Suggest return type based on function name."""
     name_lower = function_name.lower()
@@ -193,7 +189,6 @@ def _suggest_return_type(function_name: str) -> str:
         return "bool"
     else:
         return "Any"
-
 
 def _suggest_parameter_type(param_name: str) -> str:
     """Suggest parameter type based on name."""
@@ -221,7 +216,6 @@ def _suggest_parameter_type(param_name: str) -> str:
         return "bool"
     else:
         return "Any"
-
 
 def process_priority_files(src_dir: str = "src/chemml") -> Dict:
     """Process the highest priority files for standardization."""
@@ -257,7 +251,6 @@ def process_priority_files(src_dir: str = "src/chemml") -> Dict:
             print(f"⚠️  {filepath}: File not found")
 
     return results
-
 
 def main():
     """Main function."""
@@ -307,7 +300,6 @@ def main():
 
     else:
         print("Please specify --priority-only or --target-files")
-
 
 if __name__ == "__main__":
     main()

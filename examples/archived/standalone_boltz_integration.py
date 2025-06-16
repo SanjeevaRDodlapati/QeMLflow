@@ -64,7 +64,7 @@ class StandaloneBoltzAdapter:
                 ["pip", "show", "boltz"], capture_output=True, text=True
             )
             return result.returncode == 0
-        except:
+        except Exception:
             return False
 
     def install_boltz(self):

@@ -140,7 +140,6 @@ except ImportError as e:
                 },
             )()
 
-
 # Chemistry libraries with fallbacks
 try:
     from pyscf import ao2mo, gto, scf
@@ -271,7 +270,6 @@ print()
 # SECTION 2: MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
 
-
 class MolecularHamiltonianBuilder:
     """
     Build molecular Hamiltonians for quantum simulation
@@ -358,11 +356,9 @@ class MolecularHamiltonianBuilder:
 
         return hamiltonian
 
-
 # ============================================================================
 # SECTION 3: QUANTUM CIRCUIT DESIGNER
 # ============================================================================
-
 
 class QuantumCircuitDesigner:
     """Design quantum circuits for molecular simulations"""
@@ -420,11 +416,9 @@ class QuantumCircuitDesigner:
 
         return qc, params
 
-
 # ============================================================================
 # SECTION 4: VQE SOLVER
 # ============================================================================
-
 
 class VQESolver:
     """Variational Quantum Eigensolver implementation"""
@@ -445,7 +439,7 @@ class VQESolver:
             param_dict = {
                 param: val for param, val in zip(self.parameters, param_values)
             }
-            bound_circuit = self.ansatz_circuit.assign_parameters(param_dict)
+            _bound_circuit = self.ansatz_circuit.assign_parameters(param_dict)
 
             # Calculate expectation value
             # For demonstration, use a simplified calculation
@@ -584,17 +578,15 @@ class VQESolver:
         plt.tight_layout()
         plt.show()
 
-        print(f"\nOptimization Statistics:")
+        print("\nOptimization Statistics:")
         print(f"  Initial energy: {energies[0]:.6f} Ha")
         print(f"  Final energy: {energies[-1]:.6f} Ha")
         print(f"  Best energy: {self.best_energy:.6f} Ha")
         print(f"  Total iterations: {len(self.optimization_history)}")
 
-
 # ============================================================================
 # SECTION 5: MAIN EXECUTION
 # ============================================================================
-
 
 def main():
     """Main execution function"""
@@ -605,7 +597,7 @@ def main():
     print("\n1. Building H2 Molecule:")
     h2_geometry = [["H", [0.0, 0.0, 0.0]], ["H", [0.0, 0.0, 0.74]]]
     h2_builder = MolecularHamiltonianBuilder({"name": "H2"})
-    h2_mol = h2_builder.build_molecule(h2_geometry)
+    _h2_mol = h2_builder.build_molecule(h2_geometry)
     h2_hamiltonian = h2_builder.generate_hamiltonian()
 
     # 2. Design quantum circuits
@@ -623,7 +615,7 @@ def main():
     initial_params = np.random.uniform(0, 2 * np.pi, len(hea_params))
     result = vqe_solver.optimize(initial_params, optimizer="COBYLA", max_iter=30)
 
-    print(f"\nVQE Results:")
+    print("\nVQE Results:")
     print(f"  Optimal energy: {result.fun:.6f} Ha")
     print(f"  Convergence: {result.success}")
     print(f"  Iterations: {getattr(result, 'nit', 'N/A')}")
@@ -644,7 +636,7 @@ def main():
     print(f"    UCC energy: {result_ucc.fun:.6f} Ha")
 
     # Compare results
-    print(f"\n📊 Method Comparison:")
+    print("\n📊 Method Comparison:")
     print(f"  Hardware-efficient: {result.fun:.6f} Ha")
     print(f"  UCC ansatz: {result_ucc.fun:.6f} Ha")
     print(f"  Classical HF: {h2_builder.mf_energy:.6f} Ha")
@@ -669,7 +661,6 @@ def main():
         },
     }
 
-
 # ============================================================================
 # EXECUTION
 # ============================================================================
@@ -678,10 +669,10 @@ if __name__ == "__main__":
     # Run the complete quantum chemistry workflow
     results = main()
 
-    print(f"\n🚀 Ready for production deployment!")
-    print(f"📈 Performance Summary:")
-    print(f"   - Molecular Hamiltonian: ✅ Generated")
-    print(f"   - Quantum Circuits: ✅ Designed")
-    print(f"   - VQE Optimization: ✅ Converged")
-    print(f"   - Error Handling: ✅ Robust")
-    print(f"   - Production Ready: ✅ Yes")
+    print("\n🚀 Ready for production deployment!")
+    print("📈 Performance Summary:")
+    print("   - Molecular Hamiltonian: ✅ Generated")
+    print("   - Quantum Circuits: ✅ Designed")
+    print("   - VQE Optimization: ✅ Converged")
+    print("   - Error Handling: ✅ Robust")
+    print("   - Production Ready: ✅ Yes")

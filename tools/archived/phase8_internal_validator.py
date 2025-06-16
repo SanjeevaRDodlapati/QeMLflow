@@ -570,7 +570,7 @@ def main():
     validator = Phase8InternalValidator()
     results = validator.run_comprehensive_validation()
 
-    print(f"\n🏆 Phase 8 Internal Validation Complete!")
+    print("\n🏆 Phase 8 Internal Validation Complete!")
     print(f"Overall Score: {results['overall_score']:.1f}/100")
 
     if results["overall_score"] >= 90:

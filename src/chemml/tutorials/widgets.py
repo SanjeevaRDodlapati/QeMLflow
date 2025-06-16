@@ -432,7 +432,7 @@ class ProgressDashboard:
             """
             display(HTML(stats_html))
         else:
-            print(f"\n📈 Learning Progress Summary")
+            print("\n📈 Learning Progress Summary")
             print(f"Total Study Time: {total_time/60:.1f} minutes")
             print(f"Average Score: {avg_score:.1%}")
             print(f"Concepts Covered: {total_concepts}")

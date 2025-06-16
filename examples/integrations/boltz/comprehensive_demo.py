@@ -86,7 +86,7 @@ def demo_basic_integration():
             "max_sequence_length": 1000,
         }
 
-        print(f"📝 Example configuration:")
+        print("📝 Example configuration:")
         for key, value in config_example.items():
             print(f"   {key}: {value}")
 

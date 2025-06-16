@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 import pytest
 
-
 def test_comprehensive_molecular_processing():
     """Test comprehensive molecular processing pipeline."""
     from src.data_processing.feature_extraction import (
@@ -76,7 +75,6 @@ def test_comprehensive_molecular_processing():
 
     print("✅ Comprehensive molecular processing tests passed")
 
-
 def test_comprehensive_ml_pipeline():
     """Test comprehensive ML pipeline with different configurations."""
     from src.models.classical_ml.regression_models import RegressionModel
@@ -133,7 +131,6 @@ def test_comprehensive_ml_pipeline():
 
     print("✅ Comprehensive ML pipeline tests passed")
 
-
 def test_quantum_computing_integration():
     """Test quantum computing integration."""
     from src.models.quantum_ml.quantum_circuits import QuantumCircuit
@@ -186,7 +183,6 @@ def test_quantum_computing_integration():
 
     print("✅ Quantum computing integration tests passed")
 
-
 def test_visualization_functions():
     """Test visualization functions."""
     from src.utils.visualization import (
@@ -200,7 +196,7 @@ def test_visualization_functions():
     # Test molecular structure plotting
     with tempfile.TemporaryDirectory() as tmpdir:
         plot_file = os.path.join(tmpdir, "molecule.png")
-        result = plot_molecular_structure("CCO", filename=plot_file)
+        _result = plot_molecular_structure("CCO", filename=plot_file)
         # Should not raise error
 
     # Test feature importance plotting
@@ -222,8 +218,8 @@ def test_visualization_functions():
         plot_model_performance(history, filename=plot_file)
 
     # Test visualizer classes
-    mol_viz = MolecularVisualizer()
-    model_viz = ModelVisualizer()
+    _mol_viz = MolecularVisualizer()
+    _model_viz = ModelVisualizer()
 
     # Test with sample data
     y_true = np.array([1, 2, 3, 4, 5])
@@ -234,7 +230,6 @@ def test_visualization_functions():
         ModelVisualizer.plot_predictions_vs_actual(y_true, y_pred, filename=plot_file)
 
     print("✅ Visualization function tests passed")
-
 
 def test_io_and_utility_functions():
     """Test I/O and utility functions."""
@@ -279,7 +274,6 @@ def test_io_and_utility_functions():
         assert os.path.exists(results_file)
 
     print("✅ I/O and utility function tests passed")
-
 
 if __name__ == "__main__":
     test_comprehensive_molecular_processing()

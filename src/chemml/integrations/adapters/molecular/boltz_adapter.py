@@ -328,7 +328,7 @@ class BoltzAdapter(ExternalModelWrapper):
         try:
             # Run Boltz prediction
             print(f"Running Boltz prediction: {' '.join(cmd)}")
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            _result = subprocess.run(cmd, capture_output=True, text=True, check=True)
 
             # Parse results
             results = self._parse_results(output_dir, task)

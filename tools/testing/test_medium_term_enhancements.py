@@ -11,7 +11,6 @@ import pandas as pd
 # Add current directory to path
 sys.path.insert(0, "src")
 
-
 def test_workflow_optimizer():
     """Test the workflow optimizer functionality."""
     print("🔧 Testing Workflow Optimizer...")
@@ -55,7 +54,6 @@ def test_workflow_optimizer():
     except Exception as e:
         print(f"   ❌ Workflow optimizer test failed: {e}")
         return False
-
 
 def test_advanced_ensembles():
     """Test the advanced ensemble methods."""
@@ -135,7 +133,6 @@ def test_advanced_ensembles():
         print(f"   ❌ Advanced ensemble test failed: {e}")
         return False
 
-
 def test_integration():
     """Test integration with existing ChemML features."""
     print("🔗 Testing Integration with Existing Features...")
@@ -185,7 +182,6 @@ def test_integration():
         print(f"   ❌ Integration test failed: {e}")
         return False
 
-
 def main():
     """Run all tests for medium-term enhancements."""
     print("🧪 Testing ChemML Medium-Term Enhancements")
@@ -216,7 +212,6 @@ def main():
         print("⚠️  Some tests failed. Check the output above for details.")
 
     return passed == total
-
 
 if __name__ == "__main__":
     success = main()

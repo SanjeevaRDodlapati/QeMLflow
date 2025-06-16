@@ -29,7 +29,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-
 class DependencyAuditor:
     """Comprehensive dependency security and conflict auditor."""
 
@@ -394,7 +393,6 @@ class DependencyAuditor:
         if not fixes_applied:
             print("   ℹ️  No automatic fixes available")
 
-
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(description="ChemML Dependency Security Auditor")
@@ -438,7 +436,7 @@ def main():
     conflicts = len(results.get("conflicts", []))
     recommendations = len(results.get("recommendations", []))
 
-    print(f"\n📊 Audit Summary")
+    print("\n📊 Audit Summary")
     print(f"   Vulnerabilities: {vulnerabilities}")
     print(f"   Conflicts: {conflicts}")
     print(f"   Recommendations: {recommendations}")
@@ -447,9 +445,8 @@ def main():
         print(f"\n⚠️  Action required: {vulnerabilities + conflicts} issues found")
         sys.exit(1)
     else:
-        print(f"\n✅ Security audit passed")
+        print("\n✅ Security audit passed")
         sys.exit(0)
-
 
 if __name__ == "__main__":
     main()

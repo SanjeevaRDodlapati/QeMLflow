@@ -31,7 +31,6 @@ from functools import wraps
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-
 class PerformanceProfiler:
     """Profile and optimize performance bottlenecks."""
 
@@ -113,7 +112,6 @@ class PerformanceProfiler:
             )
 
         return recommendations
-
 
 class ImportOptimizer:
     """Optimize import patterns and reduce startup time."""
@@ -259,7 +257,6 @@ class ImportOptimizer:
             else:
                 return f"from {imp['module']} import {imp['name']}"
 
-
 class CodeStandardizer:
     """Standardize code formatting and style."""
 
@@ -324,7 +321,6 @@ class CodeStandardizer:
 
         return recommendations
 
-
 class UnifiedOptimizer:
     """Main optimizer combining all development tools."""
 
@@ -383,7 +379,7 @@ class UnifiedOptimizer:
     def _generate_summary(self, results: Dict[str, Any]) -> Dict[str, Any]:
         """Generate optimization summary."""
         perf = results.get("performance", {})
-        imports = results.get("imports", {})
+        _imports = results.get("imports", {})
         quality = results.get("code_quality", {})
 
         return {
@@ -412,7 +408,6 @@ class UnifiedOptimizer:
         failure_score = max(0, 100 - (failed_count * 20))  # Penalize failures
 
         return (time_score + failure_score) / 2
-
 
 def main():
     """Main CLI interface."""
@@ -494,7 +489,6 @@ def main():
             print(f"   Total issues in sample: {total_issues}")
 
     print("\n✅ Analysis complete!")
-
 
 if __name__ == "__main__":
     main()

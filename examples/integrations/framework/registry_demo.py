@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 # Add ChemML to path
-current_dir = Path(__file__).parent
+_current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir.parent.parent.parent))
 
 
@@ -155,7 +155,7 @@ def demo_compatibility_checking(registry):
         print("\n🔍 Checking model compatibility...")
 
         # Example compatibility checks
-        compatibility_tests = [
+_compatibility_tests = [
             ("boltz", "alphafold"),
             ("deepchem", "rdkit"),
             ("pytorch", "sklearn"),
@@ -173,11 +173,11 @@ def demo_compatibility_checking(registry):
         print("\n🔄 Checking pipeline compatibility...")
         pipeline_models = ["preprocessing", "boltz", "analysis"]
         try:
-            pipeline_valid = registry.validate_pipeline(pipeline_models)
-            status = "✅ Valid" if pipeline_valid else "❌ Invalid"
+_pipeline_valid = registry.validate_pipeline(pipeline_models)
+_status = "✅ Valid" if pipeline_valid else "❌ Invalid"
             print(f"   Pipeline {' → '.join(pipeline_models)}: {status}")
         except Exception:
-            print(f"   Pipeline validation: ℹ️  Feature not available")
+            print("   Pipeline validation: ℹ️  Feature not available")
 
     except Exception as e:
         print(f"   ⚠️  Compatibility checking: {e}")
@@ -193,7 +193,7 @@ def demo_model_information(registry):
         # Get detailed model info
         print("\n📄 Getting detailed model information...")
 
-        test_models = ["boltz", "test_model", "deepchem"]
+_test_models = ["boltz", "test_model", "deepchem"]
 
         for model_name in test_models:
             try:
@@ -246,7 +246,7 @@ def demo_performance_integration(manager, registry):
             time.sleep(0.1)  # Small delay to simulate computation
 
             # Registry operations
-            models = registry.list_models()
+_models = registry.list_models()
 
         # Get performance stats
         stats = monitor.get_stats()

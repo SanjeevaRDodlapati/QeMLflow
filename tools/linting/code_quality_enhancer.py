@@ -28,7 +28,6 @@ try:
 except ImportError:
     yaml = None
 
-
 @dataclass
 class QualityIssue:
     """Represents a code quality issue."""
@@ -43,7 +42,6 @@ class QualityIssue:
     suggestion: Optional[str] = None
     auto_fixable: bool = False
 
-
 @dataclass
 class ComplexityAnalysis:
     """Analysis of function complexity."""
@@ -55,7 +53,6 @@ class ComplexityAnalysis:
     cognitive_complexity: int
     lines_of_code: int
     suggestions: List[str] = field(default_factory=list)
-
 
 class CodeQualityEnhancer:
     """Advanced code quality improvement tool."""
@@ -194,7 +191,7 @@ class CodeQualityEnhancer:
                 complexity += 1
             elif isinstance(child, ast.ExceptHandler):
                 complexity += 1
-            elif isinstance(child, ast.With, ast.AsyncWith):
+            elif isinstance(child, (ast.With, ast.AsyncWith)):
                 complexity += 1
             elif isinstance(child, ast.BoolOp):
                 complexity += len(child.values) - 1
@@ -214,7 +211,7 @@ class CodeQualityEnhancer:
                 level += 1
             elif isinstance(n, ast.ExceptHandler):
                 complexity += 1 + level
-            elif isinstance(n, (ast.BoolOp,)):
+            elif isinstance(n, ast.BoolOp):
                 complexity += len(n.values) - 1
 
             for child in ast.iter_child_nodes(n):
@@ -387,7 +384,7 @@ class CodeQualityEnhancer:
         print("=" * 80)
 
         summary = report["summary"]
-        print(f"📊 Analysis Summary:")
+        print("📊 Analysis Summary:")
         print(f"  • Files analyzed: {report['files_analyzed']}")
         print(f"  • Complexity issues: {summary['total_complexity_issues']}")
         print(f"  • Security issues: {summary['total_security_issues']}")
@@ -397,7 +394,7 @@ class CodeQualityEnhancer:
 
         # Top complexity issues
         if report["complexity_issues"]:
-            print(f"\n🧮 Top Complexity Issues:")
+            print("\n🧮 Top Complexity Issues:")
             sorted_complexity = sorted(
                 report["complexity_issues"],
                 key=lambda x: x["cyclomatic_complexity"],
@@ -416,7 +413,7 @@ class CodeQualityEnhancer:
 
         # Security issues
         if report["security_issues"]:
-            print(f"\n🔒 Security Issues:")
+            print("\n🔒 Security Issues:")
             for issue in report["security_issues"][:5]:
                 print(
                     f"  • {Path(issue['file']).name}:{issue['line']} [{issue['severity'].upper()}]"
@@ -424,7 +421,7 @@ class CodeQualityEnhancer:
                 print(f"    {issue['message']}")
 
         # Recommendations
-        print(f"\n💡 Recommendations:")
+        print("\n💡 Recommendations:")
         if summary["high_complexity_functions"] > 0:
             print(
                 f"  • Refactor {summary['high_complexity_functions']} high-complexity functions"
@@ -437,7 +434,6 @@ class CodeQualityEnhancer:
             print(f"  • Remove {summary['total_dead_code_issues']} pieces of dead code")
 
         print("=" * 80)
-
 
 def main():
     """Main entry point."""
@@ -492,7 +488,6 @@ def main():
         if args.dead_code:
             issues = enhancer.analyze_dead_code()
             print(f"Found {len(issues)} dead code issues")
-
 
 if __name__ == "__main__":
     main()

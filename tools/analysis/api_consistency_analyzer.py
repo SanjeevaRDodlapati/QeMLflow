@@ -12,7 +12,6 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
-
 class APIAnalyzer:
     """Analyze API consistency across ChemML modules."""
 
@@ -526,7 +525,6 @@ class APIAnalyzer:
         with open(output_file, "w") as f:
             json.dump(report, f, indent=2, default=str)
         print(f"\n💾 Report saved to {output_file}")
-
 
 if __name__ == "__main__":
     analyzer = APIAnalyzer()

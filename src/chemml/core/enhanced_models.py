@@ -203,7 +203,6 @@ class EnsembleModel(BaseModel):
         self.is_fitted = True
 
         # Evaluate
-        from sklearn.model_selection import train_test_split
 
         X_train, X_val, y_train, y_val = train_test_split(
             X, y, test_size=0.2, random_state=42
@@ -270,7 +269,6 @@ if HAS_XGBOOST:
 
         def fit(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, float]:
             """Fit XGBoost model."""
-            from sklearn.model_selection import train_test_split
 
             X_train, X_val, y_train, y_val = train_test_split(
                 X, y, test_size=0.2, random_state=42
@@ -359,7 +357,6 @@ if HAS_LIGHTGBM:
 
         def fit(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, float]:
             """Fit LightGBM model."""
-            from sklearn.model_selection import train_test_split
 
             X_train, X_val, y_train, y_val = train_test_split(
                 X, y, test_size=0.2, random_state=42
@@ -497,7 +494,6 @@ if HAS_TORCH:
             **kwargs,
         ) -> Dict[str, float]:
             """Fit CNN model."""
-            from sklearn.model_selection import train_test_split
 
             # Preprocess data
             X_scaled = self.scaler.fit_transform(X)
@@ -808,7 +804,6 @@ class AutoMLModel(BaseModel):
 
     def _create_model(self, model_type: str, params: Dict) -> BaseModel:
         """Create model instance with given parameters."""
-        from .models import LinearModel, RandomForestModel, SVMModel
 
         if model_type == "rf":
             return RandomForestModel(task_type=self.task_type, **params)

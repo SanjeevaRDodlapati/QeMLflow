@@ -164,7 +164,7 @@ def main():
 
     # Summary
     print("\n" + "=" * 70)
-    print(f"📊 VALIDATION SUMMARY")
+    print("📊 VALIDATION SUMMARY")
     print(f"Total Tests: {total_tests}")
     print(f"Passed: {passed_tests}")
     print(f"Failed: {total_tests - passed_tests}")

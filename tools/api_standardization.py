@@ -11,7 +11,6 @@ import re
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-
 class BareExceptFixer(ast.NodeTransformer):
     """AST transformer to fix bare except clauses."""
 
@@ -32,7 +31,6 @@ class BareExceptFixer(ast.NodeTransformer):
             self.fixes_made.append(f"Line {node.lineno}: Fixed bare except clause")
             return new_node
         return self.generic_visit(node)
-
 
 def fix_bare_except_in_file(filepath: str) -> Tuple[bool, List[str]]:
     """Fix bare except clauses in a Python file."""
@@ -66,7 +64,6 @@ def fix_bare_except_in_file(filepath: str) -> Tuple[bool, List[str]]:
 
     except Exception as e:
         return False, [f"Error processing file: {e}"]
-
 
 def find_parameter_inconsistencies(filepath: str) -> List[Dict]:
     """Find parameter naming inconsistencies in a Python file."""
@@ -104,7 +101,6 @@ def find_parameter_inconsistencies(filepath: str) -> List[Dict]:
 
     except Exception as e:
         return [{"error": f"Error analyzing {filepath}: {e}"}]
-
 
 def find_missing_type_annotations(filepath: str) -> List[Dict]:
     """Find functions missing type annotations."""
@@ -150,7 +146,6 @@ def find_missing_type_annotations(filepath: str) -> List[Dict]:
 
     except Exception as e:
         return [{"error": f"Error analyzing {filepath}: {e}"}]
-
 
 def main():
     """Main function to run API standardization."""
@@ -230,7 +225,6 @@ def main():
                 # Show summary only for brevity
 
     print(f"\n✅ Standardization complete! Made {total_fixes} fixes.")
-
 
 if __name__ == "__main__":
     main()

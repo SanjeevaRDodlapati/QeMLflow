@@ -246,7 +246,7 @@ def enable_all_features():
             return ""
 
         # Add memory-efficient patterns
-        optimizations = [
+        _optimizations = [
             # Lazy evaluation decorators
             ("def ", "def "),  # Keep existing
             # Memory cleanup patterns

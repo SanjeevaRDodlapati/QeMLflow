@@ -171,7 +171,7 @@ def test_notebook_vae():
         with torch.no_grad():
             recon, mu, logvar = vae_model(input_seq, target_seq)
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Input shape: {input_seq.shape}")
         print(f"   Target shape: {target_seq.shape}")
         print(f"   Reconstruction shape: {recon.shape}")
@@ -187,7 +187,7 @@ def test_notebook_vae():
             recon, target_seq, mu, logvar, beta=0.5
         )
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Total loss: {total_loss.item():.4f}")
         print(f"   Reconstruction loss: {recon_loss.item():.4f}")
         print(f"   KL loss: {kl_loss.item():.4f}")
@@ -204,13 +204,13 @@ def test_notebook_vae():
         with torch.no_grad():
             recon, mu, logvar = vae_model(input_seq, None)  # No target_seq
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Input shape: {input_seq.shape}")
         print(f"   Generated shape: {recon.shape}")
         print(f"   Expected shape: [{batch_size}, {max_length}, {vocab_size}]")
 
         assert recon.shape == (batch_size, max_length, vocab_size)
-        print(f"   ✓ Output dimensions correct")
+        print("   ✓ Output dimensions correct")
 
     except Exception as e:
         print(f"❌ FAILED - {type(e).__name__}: {e}")
@@ -233,7 +233,7 @@ def test_notebook_vae():
         # Check if gradients exist
         has_gradients = any(p.grad is not None for p in vae_model.parameters())
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Gradients computed: {has_gradients}")
         print(f"   Loss value: {total_loss.item():.4f}")
 

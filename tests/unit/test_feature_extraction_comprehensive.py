@@ -135,7 +135,7 @@ class TestExtractDescriptors(unittest.TestCase):
         mock_df = pd.DataFrame({"num_atoms": [3]})
         mock_basic_extract.return_value = mock_df
 
-        result = extract_descriptors(self.sample_smiles, descriptor_set="rdkit")
+        _result = extract_descriptors(self.sample_smiles, descriptor_set="rdkit")
 
         mock_basic_extract.assert_called_once_with(self.sample_smiles)
 
@@ -366,7 +366,7 @@ class TestExtractFeatures(unittest.TestCase):
         ) as mock_desc:
             mock_desc.return_value = pd.DataFrame({"desc1": [1.0, 2.0]})
 
-            result = extract_features(self.sample_smiles)
+            _result = extract_features(self.sample_smiles)
 
             mock_desc.assert_called_once()
 
@@ -756,7 +756,7 @@ class TestUtilityFunctions(unittest.TestCase):
         """Test property estimation for different molecules."""
         # Different molecules should give different estimates
         mw1 = _estimate_property("C", "molecular_weight")
-        mw2 = _estimate_property("CC", "molecular_weight")
+        _mw2 = _estimate_property("CC", "molecular_weight")
         mw3 = _estimate_property("CCC", "molecular_weight")
 
         # Longer molecules should generally have higher molecular weights
@@ -1012,7 +1012,7 @@ if __name__ == "__main__":
 
     # Print summary
     print(f"\n{'='*50}")
-    print(f"Feature Extraction Test Summary")
+    print("Feature Extraction Test Summary")
     print(f"{'='*50}")
     print(f"Tests run: {result.testsRun}")
     print(f"Failures: {len(result.failures)}")
@@ -1022,13 +1022,13 @@ if __name__ == "__main__":
     )
 
     if result.failures:
-        print(f"\nFailures:")
+        print("\nFailures:")
         for test, traceback in result.failures:
             error_msg = traceback.split("AssertionError: ")[-1].split("\n")[0]
             print(f"  - {test}: {error_msg}")
 
     if result.errors:
-        print(f"\nErrors:")
+        print("\nErrors:")
         for test, traceback in result.errors:
             error_msg = traceback.split("\n")[-2]
             print(f"  - {test}: {error_msg}")

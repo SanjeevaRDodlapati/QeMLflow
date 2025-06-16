@@ -8,7 +8,6 @@ from pathlib import Path
 
 import PyPDF2
 
-
 def extract_pdf_text(pdf_path):
     """Extract text content from a PDF file"""
     try:
@@ -30,7 +29,6 @@ def extract_pdf_text(pdf_path):
     except Exception as e:
         print(f"Error reading PDF: {e}")
         return None
-
 
 if __name__ == "__main__":
     pdf_path = "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/docs/assets/7DayRoadmap_MLforChemistry.pdf"

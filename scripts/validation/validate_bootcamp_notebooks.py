@@ -176,7 +176,7 @@ class BootcampValidator:
             # Test basic molecule processing
             mol = Chem.MolFromSmiles("CCO")
             if mol is not None:
-                mw = Descriptors.MolWt(mol)
+                _mw = Descriptors.MolWt(mol)
                 self.log("RDKit molecular processing working", "SUCCESS")
                 self.results["ml_workflows"]["rdkit_processing"] = True
             else:
@@ -247,7 +247,7 @@ class BootcampValidator:
 
         success_rate = (passed_tests / total_tests) * 100 if total_tests > 0 else 0
 
-        print(f"\n🎯 OVERALL RESULTS:")
+        print("\n🎯 OVERALL RESULTS:")
         print(f"   Total Tests: {total_tests}")
         print(f"   Passed: {passed_tests}")
         print(f"   Failed: {total_tests - passed_tests}")

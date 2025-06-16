@@ -144,9 +144,9 @@ def check_workflows_exist():
 
                 # Basic validation
                 if "name:" in content and "on:" in content and "jobs:" in content:
-                    print(f"   Valid workflow structure")
+                    print("   Valid workflow structure")
                 else:
-                    print(f"   ⚠️ May be missing required sections")
+                    print("   ⚠️ May be missing required sections")
 
         except FileNotFoundError:
             print(f"❌ {workflow} - NOT FOUND")
@@ -252,7 +252,7 @@ if __name__ == "__main__":
         results = generate_status_report()
 
         # Check for tags
-        print(f"\n🏷️ Git Tags")
+        print("\n🏷️ Git Tags")
         print("=" * 30)
         try:
             tags = subprocess.check_output(["git", "tag", "-l"], text=True).strip()
@@ -265,7 +265,7 @@ if __name__ == "__main__":
         except subprocess.CalledProcessError:
             print("Could not list tags")
 
-        print(f"\n🌐 Next Steps")
+        print("\n🌐 Next Steps")
         print("=" * 30)
         print(
             "1. Check GitHub Actions: https://github.com/SanjeevaRDodlapati/ChemML/actions"

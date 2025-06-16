@@ -250,9 +250,9 @@ class LibraryManager:
             "available": available_count,
             "failed": failed_count,
             "using_fallbacks": fallback_count,
-            "success_rate": available_count / total_libraries
-            if total_libraries > 0
-            else 0,
+            "success_rate": (
+                available_count / total_libraries if total_libraries > 0 else 0
+            ),
             "library_status": self._library_status.copy(),
         }
 

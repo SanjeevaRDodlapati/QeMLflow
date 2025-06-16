@@ -39,9 +39,9 @@ def test_modern_quantum_imports():
 
         # Test instantiation
         hamiltonian = MolecularHamiltonianBuilder.h2_hamiltonian()
-        vqe = ModernVQE(HardwareEfficientAnsatz.two_qubit_ansatz, hamiltonian)
-        feature_map = QuantumFeatureMap(2)
-        workflow = QuantumChemistryWorkflow()
+        _vqe = ModernVQE(HardwareEfficientAnsatz.two_qubit_ansatz, hamiltonian)
+        _feature_map = QuantumFeatureMap(2)
+        _workflow = QuantumChemistryWorkflow()
 
         print("✅ All modern quantum objects instantiated successfully")
         return True
@@ -216,15 +216,15 @@ def main():
                 print(f"      Import error: {import_msg}")
                 all_passed = False
             if structure.get("legacy_quantum_usage", False):
-                print(f"      ⚠️ Contains legacy quantum code")
+                print("      ⚠️ Contains legacy quantum code")
         else:
             print(f"   ❌ {notebook_path} - File not found")
             all_passed = False
 
     # Summary
-    print(f"\n📊 Validation Summary:")
-    print(f"   Modern quantum imports: ✅")
-    print(f"   Core functionality: ✅")
+    print("\n📊 Validation Summary:")
+    print("   Modern quantum imports: ✅")
+    print("   Core functionality: ✅")
 
     modern_count = sum(
         1 for r in results.values() if r["structure"].get("modern_quantum_usage", False)

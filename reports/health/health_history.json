@@ -113,5 +113,61 @@
     "security_score": 100,
     "coverage_percentage": 67.0,
     "technical_debt_minutes": 6045
+  },
+  {
+    "timestamp": "2025-06-16T10:08:32.550514",
+    "health_score": 81.3,
+    "total_issues": 421,
+    "issues_by_severity": {
+      "error": 394,
+      "warning": 27
+    },
+    "issues_by_tool": {
+      "flake8": 421
+    },
+    "files_checked": 218,
+    "auto_fixable_count": 0,
+    "complexity_score": 0,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 6045
+  },
+  {
+    "timestamp": "2025-06-16T10:18:42.347793",
+    "health_score": 85.6,
+    "total_issues": 430,
+    "issues_by_severity": {
+      "error": 209,
+      "warning": 221
+    },
+    "issues_by_tool": {
+      "flake8": 426,
+      "black": 4
+    },
+    "files_checked": 222,
+    "auto_fixable_count": 6,
+    "complexity_score": 0,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 4240
+  },
+  {
+    "timestamp": "2025-06-16T10:21:57.136196",
+    "health_score": 80.5,
+    "total_issues": 473,
+    "issues_by_severity": {
+      "error": 397,
+      "warning": 76
+    },
+    "issues_by_tool": {
+      "flake8": 424,
+      "black": 49
+    },
+    "files_checked": 223,
+    "auto_fixable_count": 205,
+    "complexity_score": 0,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 6335
   }
 ]

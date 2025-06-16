@@ -283,14 +283,14 @@ class QuantumChemistryTutorial:
                 # Calculate expected energy (mock calculation)
                 energy = self._calculate_mock_energy(theta, phi)
 
-                print(f"🔬 VQE Parameters:")
+                print("🔬 VQE Parameters:")
                 print(f"θ = {theta:.2f}, φ = {phi:.2f}")
                 print(f"📊 Expected Energy: {energy:.4f}")
 
                 # Display circuit
                 if MATPLOTLIB_AVAILABLE:
                     try:
-                        fig = circuit_drawer(circuit, output="mpl", style="clifford")
+                        _fig = circuit_drawer(circuit, output="mpl", style="clifford")
                         plt.show()
                     except Exception:
                         print("Circuit visualization not available")
@@ -1075,7 +1075,7 @@ def create_quantum_circuit_widget(
     if available_gates is None:
         available_gates = ["H", "X", "Y", "Z", "CNOT"]
 
-    print(f"🔬 Quantum Circuit Widget Created")
+    print("🔬 Quantum Circuit Widget Created")
     print(f"   • Max qubits: {max_qubits}")
     print(f"   • Available gates: {available_gates}")
     print(f"   • State vector display: {show_statevector}")
@@ -1106,7 +1106,7 @@ def vqe_optimization_tracker(
     Returns:
         VQE optimization tracker
     """
-    print(f"⚡ VQE Optimization Tracker Created")
+    print("⚡ VQE Optimization Tracker Created")
     print(f"   • Molecule: {molecule}")
     print(f"   • Ansatz: {ansatz_type}")
     print(f"   • Optimizer: {optimizer}")
@@ -1134,7 +1134,7 @@ def molecular_hamiltonian_visualizer(
     Returns:
         Hamiltonian visualizer widget
     """
-    print(f"🧬 Molecular Hamiltonian Visualizer Created")
+    print("🧬 Molecular Hamiltonian Visualizer Created")
     print(f"   • Molecules: {len(molecules)}")
     print(f"   • Pauli decomposition: {show_pauli_decomposition}")
 
@@ -1164,7 +1164,7 @@ def quantum_state_analyzer(
     Returns:
         Quantum state analyzer
     """
-    print(f"🔍 Quantum State Analyzer Created")
+    print("🔍 Quantum State Analyzer Created")
     print(f"   • Amplitudes display: {show_amplitudes}")
     print(f"   • 3D visualization: {enable_3d_visualization}")
 

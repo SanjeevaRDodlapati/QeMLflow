@@ -336,7 +336,6 @@ class DataProcessor:
         data: Union[pd.DataFrame, np.ndarray], method_type: Any = "standardize"
     ) -> Any:
         """Normalize feature data using specified method."""
-        import numpy as np
 
         if method_type == "standardize":
             mean = np.mean(data, axis=0)
@@ -461,7 +460,6 @@ def quick_split(
         raise ValueError(f"Unknown split method: {method_type}")
 
 
-import warnings
 from typing import Optional
 
 
@@ -548,7 +546,7 @@ class LegacyModuleWrapper:
         ]
         for module in legacy_modules:
             wrappers[module] = LegacyModuleWrapper(
-                module, f"Use modern chemml.core or chemml.research modules instead"
+                module, "Use modern chemml.core or chemml.research modules instead"
             )
         return wrappers
 

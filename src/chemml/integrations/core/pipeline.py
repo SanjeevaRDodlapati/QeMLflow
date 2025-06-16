@@ -168,7 +168,7 @@ class DrugDiscoveryPipeline:
                     "binding_affinity": avg_affinity + np.random.normal(0, 0.5),
                     "drug_likeness": avg_drug_likeness + np.random.normal(0, 0.1),
                     "admet_score": admet_pass_rate + np.random.normal(0, 0.1),
-                    "smiles": f"CC(=O)NC1=CC=C(C=C1)C(=O)O",
+                    "smiles": "CC(=O)NC1=CC=C(C=C1)C(=O)O",
                 },
             )()
             top_candidates.append(candidate)

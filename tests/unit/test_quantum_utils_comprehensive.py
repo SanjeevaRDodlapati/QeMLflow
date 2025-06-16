@@ -510,7 +510,7 @@ class TestStandaloneFunctions:
         mock_quantum_circuit.return_value = mock_circuit
 
         features = np.array([0.1, 0.2])
-        result = create_quantum_feature_map(features)  # num_qubits=None
+        _result = create_quantum_feature_map(features)  # num_qubits=None
 
         # Should default to len(features) = 2
         mock_quantum_circuit.assert_called_once_with(2)
@@ -545,7 +545,7 @@ class TestStandaloneFunctions:
         mock_circuit = Mock()
         mock_quantum_circuit.return_value = mock_circuit
 
-        result = create_quantum_circuit(n_qubits=2, n_cbits=2)
+        _result = create_quantum_circuit(n_qubits=2, n_cbits=2)
 
         mock_quantum_circuit.assert_called_once_with(2, 2)
 
@@ -556,7 +556,7 @@ class TestStandaloneFunctions:
         mock_circuit = Mock()
         mock_quantum_circuit.return_value = mock_circuit
 
-        result = create_quantum_circuit(n_qubits=4)
+        _result = create_quantum_circuit(n_qubits=4)
 
         # Should default classical bits to match qubits
         mock_quantum_circuit.assert_called_once_with(4, 4)
@@ -679,7 +679,7 @@ class TestStandaloneFunctions:
         mock_circuit.num_qubits = 3
         mock_circuit.num_clbits = 3
 
-        result = measure_quantum_state(mock_circuit)  # qubits=None
+        _result = measure_quantum_state(mock_circuit)  # qubits=None
 
         # Should measure all qubits
         assert mock_circuit.measure.call_count == 3
@@ -826,7 +826,7 @@ class TestErrorHandling:
         # Should not raise error but may not work as expected
 
         # Test CNOT at boundary
-        result = apply_quantum_gate(mock_circuit, "cx", 1)  # Last qubit
+        _result = apply_quantum_gate(mock_circuit, "cx", 1)  # Last qubit
         mock_circuit.cx.assert_called_with(1, 2)  # Should try qubit 2 (out of bounds)
 
     def test_create_quantum_circuit_edge_cases(self):
@@ -869,7 +869,7 @@ class TestPerformance:
         # Large feature vector
         features = np.random.rand(100)
 
-        result = create_quantum_feature_map(features, num_qubits=100)
+        _result = create_quantum_feature_map(features, num_qubits=100)
 
         # Should handle large feature vectors
         mock_quantum_circuit.assert_called_once_with(100)

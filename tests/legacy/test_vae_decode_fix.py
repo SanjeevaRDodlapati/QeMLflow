@@ -137,7 +137,7 @@ def test_vae_decode_fix():
     latent_dim = 64
     max_length = 32
 
-    print(f"Test Configuration:")
+    print("Test Configuration:")
     print(f"  Batch size: {batch_size}")
     print(f"  Sequence length: {seq_len}")
     print(f"  Vocabulary size: {vocab_size}")
@@ -168,7 +168,7 @@ def test_vae_decode_fix():
         with torch.no_grad():
             recon, mu, logvar = vae_model(input_seq, target_seq)
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Input shape: {input_seq.shape}")
         print(f"   Target shape: {target_seq.shape}")
         print(f"   Reconstruction shape: {recon.shape}")
@@ -189,7 +189,7 @@ def test_vae_decode_fix():
                 input_seq, None
             )  # No target_seq = inference mode
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Input shape: {input_seq.shape}")
         print(f"   Generated shape: {recon.shape}")
         print(f"   Expected shape: [{batch_size}, {max_length}, {vocab_size}]")
@@ -202,7 +202,7 @@ def test_vae_decode_fix():
             max_length,
             vocab_size,
         ), f"Wrong output shape: {recon.shape}"
-        print(f"   ✓ Output dimensions correct")
+        print("   ✓ Output dimensions correct")
 
     except Exception as e:
         print(f"❌ FAILED - {type(e).__name__}: {e}")
@@ -236,13 +236,13 @@ def test_vae_decode_fix():
         with torch.no_grad():
             generated = vae_model.decode(z, None)
 
-        print(f"✅ SUCCESS")
+        print("✅ SUCCESS")
         print(f"   Latent shape: {z.shape}")
         print(f"   Generated shape: {generated.shape}")
         print(f"   Expected shape: [{batch_size}, {max_length}, {vocab_size}]")
 
         assert generated.shape == (batch_size, max_length, vocab_size)
-        print(f"   ✓ Direct decode dimensions correct")
+        print("   ✓ Direct decode dimensions correct")
 
     except Exception as e:
         print(f"❌ FAILED - {type(e).__name__}: {e}")

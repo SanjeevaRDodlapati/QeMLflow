@@ -203,17 +203,17 @@ def main():
     ]
 
     # Step 4: Provide recommendations
-    print(f"\n📊 Environment Summary:")
+    print("\n📊 Environment Summary:")
     print(f"   Missing core dependencies: {len(missing_core)}")
     print(f"   Missing optional dependencies: {len(missing_optional)}")
 
     if missing_core:
-        print(f"\n❗ Critical: Install missing core dependencies:")
+        print("\n❗ Critical: Install missing core dependencies:")
         for dep in missing_core:
             print(f"   pip install {dep}")
 
     if missing_optional:
-        print(f"\n💡 Recommended: Install optional dependencies to reduce warnings:")
+        print("\n💡 Recommended: Install optional dependencies to reduce warnings:")
         for dep in missing_optional:
             print(f"   pip install {dep}")
 
@@ -226,9 +226,9 @@ def main():
     # Step 6: Create optimized import template
     create_optimized_imports()
 
-    print(f"\n🎉 Dependency resolution complete!")
+    print("\n🎉 Dependency resolution complete!")
     print(
-        f"💡 Use 'import optimized_chemml_imports' to load ChemML with minimal warnings"
+        "💡 Use 'import optimized_chemml_imports' to load ChemML with minimal warnings"
     )
 
 

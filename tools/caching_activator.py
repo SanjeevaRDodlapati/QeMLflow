@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 """
 Configuration Caching Activator for ChemML
 Activates advanced caching features for improved performance
@@ -17,7 +17,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from chemml.config.unified_config import UnifiedConfig
 from chemml.utils.config_cache import ConfigurationCache
-
 
 class CachingActivator:
     """Activates and configures advanced caching features"""
@@ -73,12 +72,12 @@ class CachingActivator:
             if config_path.exists():
                 # Test cached loading
                 start_time = time.time()
-                cached_config = self.config_cache.get_config(str(config_path))
+                _cached_config = self.config_cache.get_config(str(config_path))
                 cache_time = time.time() - start_time
 
                 # Test direct loading
                 start_time = time.time()
-                direct_config = UnifiedConfig.load_config(str(config_path))
+                _direct_config = UnifiedConfig.load_config(str(config_path))
                 direct_time = time.time() - start_time
 
                 self.performance_metrics["config_cache_speedup"] = (
@@ -215,12 +214,12 @@ class CachingActivator:
                 # Cold load (no cache)
                 self.config_cache.clear_cache()
                 start_time = time.time()
-                config1 = self.config_cache.get_config(str(config_path))
+                _config1 = self.config_cache.get_config(str(config_path))
                 cold_time = time.time() - start_time
 
                 # Warm load (from cache)
                 start_time = time.time()
-                config2 = self.config_cache.get_config(str(config_path))
+                _config2 = self.config_cache.get_config(str(config_path))
                 warm_time = time.time() - start_time
 
                 results["config_cold_load"] = cold_time
@@ -246,7 +245,7 @@ class CachingActivator:
             results["memory_write_time"] = memory_write_time
             results["memory_read_time"] = memory_read_time
 
-            print(f"📊 Performance Results:")
+            print("📊 Performance Results:")
             for key, value in results.items():
                 print(f"   {key}: {value:.4f}s")
 
@@ -290,7 +289,6 @@ class CachingActivator:
 
         return results
 
-
 def main():
     """Run caching activation"""
     activator = CachingActivator()
@@ -319,7 +317,6 @@ def main():
         print("   • Memory-efficient operations")
     else:
         print("🔄 PARTIAL: Some features activated, continuing optimization...")
-
 
 if __name__ == "__main__":
     main()

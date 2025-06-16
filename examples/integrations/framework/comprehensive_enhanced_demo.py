@@ -123,7 +123,7 @@ def demo_enhanced_data_processing():
 
         X = processed_data["X"]
         y = processed_data["y"]
-        print(f"✅ Preprocessing successful!")
+        print("✅ Preprocessing successful!")
         print(f"Features shape: {X.shape}")
         print(
             f"Generated features: {processed_data['preprocessing_info']['feature_counts']}"
@@ -217,7 +217,7 @@ def demo_robust_models():
         automl = create_automl_model(
             task_type="regression",
             n_trials=5,  # Quick demo
-            model_types=["rf", "linear"],  # Safe models
+            model_types=["r", "linear"],  # Safe models
             cv_folds=3,
             optimization_metric="rmse",
         )
@@ -279,7 +279,7 @@ def demo_advanced_ensembles():
         base_models = [
             RandomForestRegressor(n_estimators=50, random_state=42),
             LinearRegression(),
-            SVR(kernel="rbf", C=1.0),
+            SVR(kernel="rb", C=1.0),
         ]
 
         print("🔄 Testing Adaptive Ensemble with robust CV...")
@@ -303,7 +303,7 @@ def demo_advanced_ensembles():
         mse = mean_squared_error(y_test, predictions)
         r2 = r2_score(y_test, predictions)
 
-        print(f"✅ Adaptive Ensemble Results:")
+        print("✅ Adaptive Ensemble Results:")
         print(f"   MSE: {mse:.4f}")
         print(f"   R²: {r2:.4f}")
         print(f"   Mean Uncertainty: {np.mean(uncertainties):.4f}")

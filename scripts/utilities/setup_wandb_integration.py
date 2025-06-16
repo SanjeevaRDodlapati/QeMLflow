@@ -126,7 +126,7 @@ def add_wandb_to_python_file(python_file):
             lines.insert(import_line + 1, "import wandb")
 
             # Add wandb setup function
-            setup_code = """
+_setup_code = """
 # Wandb experiment tracking setup
 def setup_wandb_tracking(experiment_name, config=None):
     \"\"\"Setup wandb experiment tracking.\"\"\"
@@ -136,7 +136,7 @@ def setup_wandb_tracking(experiment_name, config=None):
             project="chemml-experiments",
             name=experiment_name,
             config=config or {},
-            tags=["chemml"]
+_tags = ["chemml"]
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run
@@ -149,7 +149,7 @@ def setup_wandb_tracking(experiment_name, config=None):
             lines.insert(import_line + 3, setup_code)
 
             # Write back to file
-            new_content = "\n".join(lines)
+_new_content = "\n".join(lines)
 
             # Create backup
             backup_path = python_file.with_suffix(".py.backup")
@@ -180,13 +180,13 @@ def integrate_wandb_in_codebase():
         return False
 
     # Create config template
-    config_path = create_wandb_config_template()
+_config_path = create_wandb_config_template()
 
     # Find Python files to integrate
     python_files = []
 
     # Key directories to check
-    directories = [
+_directories = [
         "src/",
         "notebooks/quickstart_bootcamp/days/",
         "tools/development/",
@@ -200,7 +200,7 @@ def integrate_wandb_in_codebase():
     print(f"\n📂 Found {len(python_files)} Python files to check")
 
     # Process key files
-    key_files = [
+_key_files = [
         "src/drug_design/admet_prediction.py",
         "src/models/classical_ml/regression_models.py",
         "src/models/quantum_ml/quantum_circuits.py",
@@ -220,7 +220,7 @@ def integrate_wandb_in_codebase():
     print(f"\n📓 Found {len(notebooks)} Jupyter notebooks")
 
     # Process key notebooks
-    key_notebooks = [
+_key_notebooks = [
         "notebooks/tutorials/03_deepchem_drug_discovery.ipynb",
         "notebooks/quickstart_bootcamp/days/day_02/day_02_deep_learning_molecules_project.ipynb",
         "notebooks/quickstart_bootcamp/days/day_06/day_06_quantum_computing_project.ipynb",
@@ -251,7 +251,7 @@ def integrate_wandb_in_codebase():
 def create_example_script():
     """Create an example script showing wandb usage."""
 
-    example_code = '''#!/usr/bin/env python3
+_example_code = '''#!/usr/bin/env python3
 """
 Example: Using WandB in ChemML Experiments
 ==========================================
@@ -284,9 +284,9 @@ def run_example_experiment():
 
     # Start experiment
     run = start_experiment(
-        experiment_name="chemml_example_experiment",
-        config=config,
-        tags=["example", "tutorial", "molecular_ml"]
+_experiment_name = "chemml_example_experiment",
+_config = config,
+_tags = ["example", "tutorial", "molecular_ml"]
     )
 
     # Simulate training progress
@@ -309,12 +309,12 @@ def run_example_experiment():
     # Simulate final model evaluation
     print("🎯 Simulating final model evaluation...")
     y_true = np.random.randn(100)
-    y_pred = y_true + np.random.normal(0, 0.2, 100)
+_y_pred = y_true + np.random.normal(0, 0.2, 100)
 
     log_model_results(y_true, y_pred, "random_forest")
 
     # Log molecular data summary
-    molecular_summary = {
+_molecular_summary = {
         "num_molecules": 1000,
         "avg_molecular_weight": 342.5,
         "avg_logp": 2.1,

@@ -32,7 +32,6 @@ try:
 except ImportError:
     HAS_MATPLOTLIB = False
 
-
 @dataclass
 class HealthSnapshot:
     """A snapshot of code health at a specific time."""
@@ -51,7 +50,6 @@ class HealthSnapshot:
     coverage_percentage: Optional[float] = None
     technical_debt_minutes: Optional[int] = None
 
-
 @dataclass
 class HealthTrend:
     """Analysis of health trends over time."""
@@ -62,7 +60,6 @@ class HealthTrend:
     trend_direction: str  # 'improving', 'declining', 'stable'
     key_improvements: List[str]
     key_concerns: List[str]
-
 
 class HealthTracker:
     """Code health tracking and dashboard generation."""
@@ -517,7 +514,6 @@ class HealthTracker:
 
         return snapshot, report_file, dashboard_file
 
-
 def main():
     """Main entry point."""
     import argparse
@@ -551,7 +547,6 @@ def main():
         print(report)
     elif args.dashboard:
         tracker.generate_dashboard()
-
 
 if __name__ == "__main__":
     main()

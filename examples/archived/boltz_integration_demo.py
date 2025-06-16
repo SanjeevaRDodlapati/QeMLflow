@@ -41,7 +41,7 @@ def demo_basic_integration():
         boltz_model = manager.integrate_boltz(use_msa_server=True, device="auto")
 
         # Display model information
-        model_info = boltz_model.adapter.get_model_info()
+_model_info = boltz_model.adapter.get_model_info()
         print("\nBoltz Model Information:")
         for key, value in model_info.items():
             if isinstance(value, list):
@@ -79,7 +79,7 @@ def demo_protein_structure_prediction(boltz_model):
         print(f"Predicting structure for sequence: {protein_sequence[:20]}...")
 
         # Predict structure using the integration manager
-        manager = ExternalModelManager()
+_manager = ExternalModelManager()
 
         # Note: This would normally take several minutes for real prediction
         # For demo, we'll show the command that would be executed
@@ -203,8 +203,8 @@ def demo_complex_prediction(boltz_model):
         )
 
         # Convert to IC50
-        log_ic50 = simulated_complex_result["affinity"]["affinity_pred_value"]
-        ic50_um = 10**log_ic50
+_log_ic50 = simulated_complex_result["affinity"]["affinity_pred_value"]
+_ic50_um = 10**log_ic50
         print(f"  Estimated IC50: {ic50_um:.2f} μM")
 
         print("\n✓ Complex prediction demo completed!")
@@ -272,11 +272,11 @@ def demo_batch_processing():
 
         print("\nBatch Processing Results (simulated):")
         for i, result in enumerate(batch_results):
-            protein_id = sample_data.iloc[i]["protein_id"]
-            conf = result["confidence"]["confidence_score"]
+_protein_id = sample_data.iloc[i]["protein_id"]
+_conf = result["confidence"]["confidence_score"]
             aff = result["affinity"]["affinity_pred_value"]
-            prob = result["affinity"]["affinity_probability_binary"]
-            expected = sample_data.iloc[i]["expected_activity"]
+_prob = result["affinity"]["affinity_probability_binary"]
+_expected = sample_data.iloc[i]["expected_activity"]
 
             print(
                 f"  {protein_id}: Confidence={conf:.2f}, Affinity={aff:.2f}, Prob={prob:.3f} (Expected: {expected})"
@@ -297,7 +297,7 @@ def demo_integration_workflow():
     try:
         # Step 1: Setup
         print("Step 1: Setting up ChemML integration environment...")
-        manager = ExternalModelManager()
+_manager = ExternalModelManager()
 
         # Step 2: Model integration
         print("Step 2: Integrating Boltz model...")
@@ -308,7 +308,7 @@ def demo_integration_workflow():
 
         # Step 3: Model usage patterns
         print("\nStep 3: Available usage patterns:")
-        patterns = [
+_patterns = [
             "Single protein structure prediction",
             "Protein-ligand complex modeling",
             "Binding affinity estimation",
@@ -329,7 +329,7 @@ def demo_integration_workflow():
 
         # Step 5: Best practices
         print("\nStep 5: Best practices followed:")
-        best_practices = [
+_best_practices = [
             "Automated dependency management",
             "Unified error handling and logging",
             "Consistent API across all models",

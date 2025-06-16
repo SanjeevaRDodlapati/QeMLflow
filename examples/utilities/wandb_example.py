@@ -143,7 +143,7 @@ def run_example_experiment():
 
     log_metrics(molecular_summary)
 
-    print(f"✅ Experiment completed!")
+    print("✅ Experiment completed!")
     if run and hasattr(run, "url"):
         print(f"🔗 View results: {run.url}")
     else:

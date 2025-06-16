@@ -183,7 +183,7 @@ class TestEndToEndPipelines:
 
             # Encode classical data (if implemented)
             for i, data_point in enumerate(X[:5]):  # Test with first 5 points
-                encoded_circuit = qc.encode_classical_data(
+                _encoded_circuit = qc.encode_classical_data(
                     data_point[:2]
                 )  # Use first 2 features
                 result = qc.simulate()

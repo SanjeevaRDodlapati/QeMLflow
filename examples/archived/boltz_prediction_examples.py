@@ -28,7 +28,7 @@ def check_boltz_installation():
             ["pip", "show", "boltz"], capture_output=True, text=True
         )
         return result.returncode == 0
-    except:
+    except Exception:
         return False
 
 
@@ -87,8 +87,8 @@ def simulate_boltz_prediction(input_type, **kwargs):
             "sequence_length": len(kwargs.get("sequence", "")),
             "structures": [
                 {
-                    "path": "./predictions/structure_model_0.cif",
-                    "format": "cif",
+                    "path": "./predictions/structure_model_0.ci",
+                    "format": "ci",
                     "model_name": "structure_model_0",
                 }
             ],
@@ -113,8 +113,8 @@ def simulate_boltz_prediction(input_type, **kwargs):
             "input_ligand": kwargs.get("ligand_smiles", ""),
             "structures": [
                 {
-                    "path": "./predictions/complex_model_0.cif",
-                    "format": "cif",
+                    "path": "./predictions/complex_model_0.ci",
+                    "format": "ci",
                     "model_name": "complex_model_0",
                 }
             ],
@@ -195,7 +195,7 @@ def test_structure_predictions():
 
     print(f"Average Confidence: {avg_confidence:.3f}")
     print(f"Average Runtime: {avg_runtime:.1f} minutes")
-    print(f"Success Rate: 100% (all predictions completed)")
+    print("Success Rate: 100% (all predictions completed)")
 
     return results
 
@@ -334,7 +334,7 @@ def test_batch_processing():
     print(f"Batch Size: {len(results)} proteins")
     print(f"Total Runtime: {total_runtime:.1f} minutes")
     print(f"Average Runtime per Protein: {total_runtime/len(results):.1f} minutes")
-    print(f"Confidence Statistics:")
+    print("Confidence Statistics:")
     print(f"  Mean: {avg_confidence:.3f} ± {std_confidence:.3f}")
     print(f"  Range: {min_confidence:.3f} - {max_confidence:.3f}")
 
@@ -343,7 +343,7 @@ def test_batch_processing():
     medium_quality = sum(1 for r in results if 0.7 <= r["confidence"] <= 0.85)
     low_quality = sum(1 for r in results if r["confidence"] < 0.7)
 
-    print(f"Quality Distribution:")
+    print("Quality Distribution:")
     print(
         f"  High (>0.85): {high_quality}/{len(results)} ({100*high_quality/len(results):.1f}%)"
     )
@@ -414,7 +414,7 @@ def create_results_summary(structure_results, complex_results, batch_results):
     all_confidences.extend([r["confidence"] for r in complex_results])
     all_confidences.extend([r["confidence"] for r in batch_results])
 
-    print(f"\nOverall Confidence Statistics:")
+    print("\nOverall Confidence Statistics:")
     print(f"  Mean: {np.mean(all_confidences):.3f}")
     print(f"  Std: {np.std(all_confidences):.3f}")
     print(f"  Min: {np.min(all_confidences):.3f}")
@@ -426,20 +426,20 @@ def create_results_summary(structure_results, complex_results, batch_results):
     all_runtimes.extend([r["runtime"] for r in complex_results])
     all_runtimes.extend([r["runtime"] for r in batch_results])
 
-    print(f"\nRuntime Statistics:")
+    print("\nRuntime Statistics:")
     print(f"  Total Compute Time: {sum(all_runtimes):.1f} minutes")
     print(f"  Average per Prediction: {np.mean(all_runtimes):.1f} minutes")
     print(f"  Fastest Prediction: {np.min(all_runtimes):.1f} minutes")
     print(f"  Slowest Prediction: {np.max(all_runtimes):.1f} minutes")
 
     # Success metrics
-    print(f"\nSuccess Metrics:")
-    print(f"  Success Rate: 100% (all predictions completed)")
+    print("\nSuccess Metrics:")
+    print("  Success Rate: 100% (all predictions completed)")
     print(
         f"  High Confidence Rate: {sum(1 for c in all_confidences if c > 0.85)/len(all_confidences)*100:.1f}%"
     )
-    print(f"  Framework Reliability: Excellent (no failures)")
-    print(f"  User Experience: Streamlined (consistent API)")
+    print("  Framework Reliability: Excellent (no failures)")
+    print("  User Experience: Streamlined (consistent API)")
 
 
 def main():

@@ -12,7 +12,6 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
-
 class AdvancedTypeAnnotator:
     """Advanced type annotation system with smart inference"""
 
@@ -420,7 +419,7 @@ class AdvancedTypeAnnotator:
                         results["total_annotations"] += annotations
                         print(f"      ✅ Added {annotations} annotations")
                     else:
-                        print(f"      ✅ No changes needed")
+                        print("      ✅ No changes needed")
 
                 results["files_processed"] += 1
 
@@ -438,7 +437,7 @@ class AdvancedTypeAnnotator:
                 results["files_processed"] += 1
 
         # Get final coverage
-        print(f"\n📊 Calculating final type coverage...")
+        print("\n📊 Calculating final type coverage...")
         try:
             final_result = subprocess.run(
                 [sys.executable, "tools/type_annotation_analyzer.py"],
@@ -459,7 +458,6 @@ class AdvancedTypeAnnotator:
             )
 
         return results
-
 
 def main():
     """Run advanced type annotation completion"""
@@ -491,7 +489,6 @@ def main():
 
     if results["files_with_errors"]:
         print(f"\n⚠️  Files with errors: {len(results['files_with_errors'])}")
-
 
 if __name__ == "__main__":
     main()

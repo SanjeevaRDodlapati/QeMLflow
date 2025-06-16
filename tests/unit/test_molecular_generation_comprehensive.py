@@ -44,7 +44,7 @@ class TestMolecularGenerator:
         with patch("random.seed") as mock_random_seed, patch(
             "numpy.random.seed"
         ) as mock_np_seed:
-            generator = MolecularGenerator(seed=42)
+            _generator = MolecularGenerator(seed=42)
             mock_random_seed.assert_called_once_with(42)
             mock_np_seed.assert_called_once_with(42)
 
@@ -837,5 +837,5 @@ class TestCrossModuleCompatibility:
     def test_numpy_array_compatibility(self):
         """Test compatibility with numpy arrays."""
         with patch("numpy.random.seed") as mock_seed:
-            generator = MolecularGenerator(seed=42)
+            _generator = MolecularGenerator(seed=42)
             mock_seed.assert_called_once_with(42)

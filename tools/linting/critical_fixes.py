@@ -20,7 +20,6 @@ import subprocess
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
-
 class CriticalLintingFixer:
     """Fixes critical linting issues that affect code functionality."""
 
@@ -61,7 +60,7 @@ class CriticalLintingFixer:
             with open(file_path, "r") as f:
                 content = f.read()
 
-            original_content = content
+            _original_content = content
             modified = False
 
             # Common fixes for undefined names
@@ -178,7 +177,7 @@ class CriticalLintingFixer:
             with open(file_path, "r") as f:
                 content = f.read()
 
-            original_content = content
+            _original_content = content
 
             # Look for star imports
             star_import_pattern = r"from\s+([a-zA-Z_][a-zA-Z0-9_.]*)\s+import\s+\*"
@@ -277,7 +276,6 @@ class CriticalLintingFixer:
 
         print("=" * 60)
 
-
 def main():
     """Main entry point."""
     fixer = CriticalLintingFixer()
@@ -298,7 +296,6 @@ def main():
 
     print("\n🎉 Critical linting fixes completed!")
     print("💡 Run the comprehensive linter again to see improvements")
-
 
 if __name__ == "__main__":
     main()

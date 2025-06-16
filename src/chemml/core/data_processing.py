@@ -205,7 +205,6 @@ class ChemMLDataLoader:
 
         # Handle compressed files
         if url.endswith(".gz"):
-            import gzip
 
             content = gzip.decompress(response.content)
             df = pd.read_csv(pd.io.common.StringIO(content.decode("utf-8")))
@@ -514,7 +513,7 @@ class IntelligentDataSplitter:
         Returns:
             Dictionary with train/val/test splits
         """
-        n_samples = len(X)
+        _n_samples = len(X)
 
         if split_method == "random":
             return self._random_split(X, y, test_size, val_size, random_state)
@@ -663,10 +662,9 @@ class IntelligentDataSplitter:
 
     def _stratified_split(self, X, y, test_size, val_size, random_state):
         """Stratified splitting for classification tasks."""
-        from sklearn.model_selection import train_test_split
 
         # Use first target column for stratification
-        target_col = y.columns[0] if hasattr(y, "columns") else 0
+        _target_col = y.columns[0] if hasattr(y, "columns") else 0
         stratify_target = y.iloc[:, 0] if hasattr(y, "iloc") else y
 
         # Handle continuous targets by binning
@@ -763,7 +761,6 @@ class IntelligentDataSplitter:
         """
         if not HAS_RDKIT:
             print("RDKit not available, falling back to random split")
-            from sklearn.model_selection import train_test_split
 
             indices = list(range(len(smiles)))
             return train_test_split(
@@ -808,7 +805,6 @@ class IntelligentDataSplitter:
 
         except Exception as e:
             print(f"Scaffold split failed: {e}, using random split")
-            from sklearn.model_selection import train_test_split
 
             indices = list(range(len(smiles)))
             return train_test_split(
@@ -843,7 +839,6 @@ class IntelligentDataSplitter:
 
         except Exception as e:
             print(f"Temporal split failed: {e}, using random split")
-            from sklearn.model_selection import train_test_split
 
             indices = list(range(len(timestamps)))
             return train_test_split(indices, test_size=test_size, random_state=42)
@@ -863,7 +858,6 @@ class IntelligentDataSplitter:
             Tuple of (train_indices, test_indices)
         """
         try:
-            from sklearn.model_selection import train_test_split
 
             # Handle continuous targets by binning
             stratify_target = targets
@@ -880,7 +874,6 @@ class IntelligentDataSplitter:
 
         except Exception as e:
             print(f"Stratified split failed: {e}, using random split")
-            from sklearn.model_selection import train_test_split
 
             indices = list(range(len(targets)))
             return train_test_split(

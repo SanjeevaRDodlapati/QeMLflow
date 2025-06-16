@@ -1,0 +1,34 @@
+================================================================================
+🔍 ChemML Comprehensive Linting Report
+================================================================================
+📅 Generated: 2025-06-16 10:20:49
+📁 Files checked: 222
+🚨 Total issues: 430
+🏥 Health score: 85.6/100
+
+📊 Issues by Severity:
+  Error: 209
+  Warning: 221
+
+🔧 Issues by Tool:
+  flake8: 426
+  black: 4
+
+📂 Issues by Category:
+  Import Issues: 62
+  Formatting: 35
+  Complexity: 27
+  Unused Variables: 90
+  Type Errors: 26
+  Style Violations: 190
+
+🔧 Auto-fixable issues: 6
+
+📈 Health Assessment: 🟡 Good - Minor issues to address
+
+💡 Recommendations:
+  • Run auto-fix to resolve 6 fixable issues
+  • Refactor complex functions to improve maintainability
+  • Clean up unused imports and organize import statements
+  • Address error-level issues first for code stability
+================================================================================

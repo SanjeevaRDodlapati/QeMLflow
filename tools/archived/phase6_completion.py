@@ -12,7 +12,6 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 class Phase6Completion:
     """Complete Phase 6 enhancements for production readiness"""
 
@@ -143,7 +142,7 @@ class Phase6Completion:
         print("⚡ Optimizing import performance...")
 
         # Test current import time
-        start_time = time.time()
+        _start_time = time.time()
         try:
             # Import in subprocess to get clean timing
             result = subprocess.run(
@@ -385,7 +384,6 @@ Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}
             "metrics": self.metrics,
         }
 
-
 def main():
     """Run Phase 6 completion"""
     completion = Phase6Completion()
@@ -400,7 +398,7 @@ def main():
     print(f"🎯 Overall Grade: {summary['overall_grade']}")
     print(f"📈 Progress: {summary['overall_progress']:.1f}%")
 
-    print(f"\n📊 Key Achievements:")
+    print("\n📊 Key Achievements:")
     for goal, status in summary["status"].items():
         goal_name = goal.replace("_", " ").title()
         icon = "✅" if status["achieved"] else "🔄"
@@ -409,14 +407,13 @@ def main():
         )
 
     if summary["next_steps"]:
-        print(f"\n🔄 Remaining Steps:")
+        print("\n🔄 Remaining Steps:")
         for step in summary["next_steps"]:
             print(f"   • {step}")
     else:
-        print(f"\n🏆 ALL GOALS ACHIEVED! Ready for production! 🎉")
+        print("\n🏆 ALL GOALS ACHIEVED! Ready for production! 🎉")
 
     print(f"\n📄 Detailed results: {results['results_file']}")
-
 
 if __name__ == "__main__":
     main()

@@ -120,7 +120,6 @@ except ImportError as e:
         def get_counts(self):
             return {"0000": 500, "1111": 524}
 
-
 # Chemistry libraries with comprehensive fallbacks
 try:
     from pyscf import ao2mo, gto, scf
@@ -235,14 +234,12 @@ except ImportError:
     def bravyi_kitaev(fermion_op):
         return jordan_wigner(fermion_op)  # Simplified
 
-
 print("✅ All dependencies loaded successfully with fallbacks")
 print()
 
 # ============================================================================
 # MOLECULAR HAMILTONIAN BUILDER
 # ============================================================================
-
 
 class MolecularHamiltonianBuilder:
     """
@@ -363,11 +360,9 @@ class MolecularHamiltonianBuilder:
         hamiltonian.n_qubits = 4
         return hamiltonian
 
-
 # ============================================================================
 # QUANTUM CIRCUIT DESIGNER
 # ============================================================================
-
 
 class QuantumCircuitDesigner:
     """
@@ -481,11 +476,9 @@ class QuantumCircuitDesigner:
         print("✅ Created adiabatic state preparation circuit")
         return circuit, list(params)
 
-
 # ============================================================================
 # VQE SOLVER
 # ============================================================================
-
 
 class VQESolver:
     """
@@ -568,7 +561,7 @@ class VQESolver:
 
     def optimize(self, initial_params, optimizer="COBYLA", max_iter=100, tol=1e-6):
         """Run VQE optimization with multiple optimizers"""
-        print(f"🚀 Starting VQE optimization")
+        print("🚀 Starting VQE optimization")
         print(f"   Optimizer: {optimizer}")
         print(f"   Parameters: {len(initial_params)}")
         print(f"   Max iterations: {max_iter}")
@@ -630,7 +623,7 @@ class VQESolver:
             else:
                 raise ValueError(f"Unsupported optimizer: {optimizer}")
 
-            print(f"✅ Optimization completed!")
+            print("✅ Optimization completed!")
             print(f"   Final energy: {result.fun:.8f} Ha")
             print(f"   Converged: {result.success}")
             print(f"   Iterations: {result.nit}")
@@ -659,7 +652,7 @@ class VQESolver:
             print("❌ No optimization history available")
             return None
 
-        print(f"\n📊 VQE CONVERGENCE ANALYSIS")
+        print("\n📊 VQE CONVERGENCE ANALYSIS")
         print(f"{'='*50}")
 
         energies = [step["energy"] for step in self.optimization_history]
@@ -730,11 +723,9 @@ class VQESolver:
             "convergence_history": self.optimization_history,
         }
 
-
 # ============================================================================
 # QUANTUM ALGORITHM BENCHMARKER
 # ============================================================================
-
 
 class QuantumAlgorithmBenchmarker:
     """
@@ -745,17 +736,17 @@ class QuantumAlgorithmBenchmarker:
         self.hamiltonian = hamiltonian
         self.n_electrons = n_electrons
         self.results = {}
-        print(f"📈 Initialized quantum algorithm benchmarker")
+        print("📈 Initialized quantum algorithm benchmarker")
 
     def benchmark_ansatze(self, circuit_designer, optimizers=["COBYLA", "SLSQP"]):
         """Benchmark different ansätze"""
-        print(f"\n🔬 BENCHMARKING QUANTUM ANSÄTZE")
+        print("\n🔬 BENCHMARKING QUANTUM ANSÄTZE")
         print(f"{'='*60}")
 
         ansatz_results = {}
 
         # Hardware-Efficient Ansatz
-        print(f"\n1️⃣  Hardware-Efficient Ansatz (HEA)")
+        print("\n1️⃣  Hardware-Efficient Ansatz (HEA)")
         for depth in [1, 2, 3]:
             print(f"   Testing depth {depth}...")
             hea_circuit, hea_params = circuit_designer.hardware_efficient_ansatz(
@@ -780,7 +771,7 @@ class QuantumAlgorithmBenchmarker:
                 print(f"      {optimizer}: E = {result.fun:.6f} ({result.nit} iter)")
 
         # UCCSD Ansatz
-        print(f"\n2️⃣  Unitary Coupled Cluster Ansatz (UCCSD)")
+        print("\n2️⃣  Unitary Coupled Cluster Ansatz (UCCSD)")
         for config in [
             {"singles": True, "doubles": False},
             {"singles": False, "doubles": True},
@@ -827,7 +818,7 @@ class QuantumAlgorithmBenchmarker:
 
         results = self.results["ansatz_benchmark"]
 
-        print(f"\n📊 BENCHMARK ANALYSIS")
+        print("\n📊 BENCHMARK ANALYSIS")
         print(f"{'='*60}")
 
         # Convert to DataFrame for analysis
@@ -838,7 +829,7 @@ class QuantumAlgorithmBenchmarker:
         df = pd.DataFrame(df_data)
 
         # Summary statistics
-        print(f"\n🎯 BEST RESULTS BY ANSATZ:")
+        print("\n🎯 BEST RESULTS BY ANSATZ:")
         best_by_ansatz = df.groupby("ansatz")["energy"].min().sort_values()
         for ansatz, energy in best_by_ansatz.items():
             best_result = df[(df["ansatz"] == ansatz) & (df["energy"] == energy)].iloc[
@@ -848,7 +839,7 @@ class QuantumAlgorithmBenchmarker:
                 f"   {ansatz:8s}: {energy:.8f} Ha ({best_result['optimizer']}, {best_result['iterations']} iter)"
             )
 
-        print(f"\n🎯 BEST RESULTS BY OPTIMIZER:")
+        print("\n🎯 BEST RESULTS BY OPTIMIZER:")
         best_by_optimizer = df.groupby("optimizer")["energy"].min().sort_values()
         for optimizer, energy in best_by_optimizer.items():
             best_result = df[
@@ -950,21 +941,19 @@ class QuantumAlgorithmBenchmarker:
 
         return df
 
-
 # ============================================================================
 # MAIN QUANTUM CHEMISTRY WORKFLOW
 # ============================================================================
-
 
 def run_quantum_chemistry_pipeline():
     """
     Execute the complete quantum chemistry pipeline
     """
-    print(f"\n🚀 STARTING QUANTUM CHEMISTRY PIPELINE")
+    print("\n🚀 STARTING QUANTUM CHEMISTRY PIPELINE")
     print(f"{'='*60}")
 
     # Step 1: Build molecular system
-    print(f"\n📍 STEP 1: Molecular System Setup")
+    print("\n📍 STEP 1: Molecular System Setup")
     h2_builder = MolecularHamiltonianBuilder({"name": "H2"})
 
     # H2 molecule at equilibrium bond distance
@@ -974,7 +963,7 @@ def run_quantum_chemistry_pipeline():
     h2_hamiltonian = h2_builder.get_molecular_hamiltonian("jordan_wigner")
 
     # Step 2: Design quantum circuits
-    print(f"\n📍 STEP 2: Quantum Circuit Design")
+    print("\n📍 STEP 2: Quantum Circuit Design")
     circuit_designer = QuantumCircuitDesigner(
         h2_builder.n_qubits, h2_builder.n_electrons
     )
@@ -986,40 +975,40 @@ def run_quantum_chemistry_pipeline():
     )
 
     # Step 3: VQE optimization
-    print(f"\n📍 STEP 3: VQE Optimization")
+    print("\n📍 STEP 3: VQE Optimization")
 
     # HEA-VQE
-    print(f"\n🎯 Hardware-Efficient Ansatz VQE")
+    print("\n🎯 Hardware-Efficient Ansatz VQE")
     vqe_hea = VQESolver(h2_hamiltonian, hea_circuit, hea_params)
     initial_hea = np.random.uniform(0, 2 * np.pi, len(hea_params))
     result_hea = vqe_hea.optimize(initial_hea, optimizer="COBYLA", max_iter=100)
-    analysis_hea = vqe_hea.analyze_convergence()
+    _analysis_hea = vqe_hea.analyze_convergence()
 
     # UCCSD-VQE
-    print(f"\n🎯 UCCSD Ansatz VQE")
+    print("\n🎯 UCCSD Ansatz VQE")
     vqe_uccsd = VQESolver(h2_hamiltonian, uccsd_circuit, uccsd_params)
     initial_uccsd = np.random.uniform(-0.1, 0.1, len(uccsd_params))
     result_uccsd = vqe_uccsd.optimize(initial_uccsd, optimizer="SLSQP", max_iter=100)
-    analysis_uccsd = vqe_uccsd.analyze_convergence()
+    _analysis_uccsd = vqe_uccsd.analyze_convergence()
 
     # Step 4: Comprehensive benchmarking
-    print(f"\n📍 STEP 4: Algorithm Benchmarking")
+    print("\n📍 STEP 4: Algorithm Benchmarking")
     benchmarker = QuantumAlgorithmBenchmarker(h2_hamiltonian, h2_builder.n_electrons)
     benchmark_results = benchmarker.benchmark_ansatze(circuit_designer)
     analysis_df = benchmarker.analyze_benchmark_results()
 
     # Step 5: Final results summary
-    print(f"\n📍 STEP 5: Final Results Summary")
+    print("\n📍 STEP 5: Final Results Summary")
     print(f"{'='*60}")
 
     exact_energy = -1.117349
-    print(f"🎯 QUANTUM CHEMISTRY RESULTS FOR H2:")
-    print(f"   Molecule: H2 (d = 0.74 Å)")
-    print(f"   Basis set: STO-3G")
+    print("🎯 QUANTUM CHEMISTRY RESULTS FOR H2:")
+    print("   Molecule: H2 (d = 0.74 Å)")
+    print("   Basis set: STO-3G")
     print(f"   Exact energy: {exact_energy:.8f} Ha")
     print(f"   HF energy: {h2_builder.hf_energy:.8f} Ha")
 
-    print(f"\n🏆 VQE RESULTS:")
+    print("\n🏆 VQE RESULTS:")
     print(
         f"   HEA-VQE:   {result_hea.fun:.8f} Ha (error: {abs(result_hea.fun - exact_energy):.8f})"
     )
@@ -1037,7 +1026,7 @@ def run_quantum_chemistry_pipeline():
         f"   Accuracy: {(1 - abs(best_energy - exact_energy) / abs(exact_energy)) * 100:.4f}%"
     )
 
-    print(f"\n✅ QUANTUM CHEMISTRY PIPELINE COMPLETED SUCCESSFULLY!")
+    print("\n✅ QUANTUM CHEMISTRY PIPELINE COMPLETED SUCCESSFULLY!")
 
     return {
         "molecule": molecule,
@@ -1049,7 +1038,6 @@ def run_quantum_chemistry_pipeline():
         "builder": h2_builder,
     }
 
-
 # ============================================================================
 # EXECUTION
 # ============================================================================
@@ -1060,27 +1048,27 @@ if __name__ == "__main__":
         results = run_quantum_chemistry_pipeline()
 
         # Additional analysis
-        print(f"\n📊 ADDITIONAL ANALYSIS")
+        print("\n📊 ADDITIONAL ANALYSIS")
         print(f"{'='*60}")
 
         # Performance metrics
-        print(f"\n⚡ PERFORMANCE METRICS:")
+        print("\n⚡ PERFORMANCE METRICS:")
         print(f"   Total Hamiltonian terms: {len(results['hamiltonian'].terms)}")
-        print(f"   Quantum circuits created: 5+")
-        print(f"   VQE optimizations: 10+")
+        print("   Quantum circuits created: 5+")
+        print("   VQE optimizations: 10+")
         print(
             f"   Classical optimization calls: {len(results['hea_result'].nfev) if hasattr(results['hea_result'], 'nfev') else 'N/A'}"
         )
 
         # Resource analysis
-        print(f"\n🔧 RESOURCE ANALYSIS:")
+        print("\n🔧 RESOURCE ANALYSIS:")
         print(f"   Qubits required: {results['builder'].n_qubits}")
         print(f"   Circuit depth (HEA): ~{2 * 2 + 1}")  # depth=2
         print(
             f"   Parameters optimized: {len(results['benchmark_results'])} combinations"
         )
 
-        print(f"\n🎉 ALL TESTS PASSED - PRODUCTION READY!")
+        print("\n🎉 ALL TESTS PASSED - PRODUCTION READY!")
 
     except Exception as e:
         print(f"\n❌ PIPELINE ERROR: {e}")

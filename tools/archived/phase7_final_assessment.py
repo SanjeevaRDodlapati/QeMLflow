@@ -11,7 +11,6 @@ import time
 from pathlib import Path
 from typing import Any, Dict
 
-
 class Phase7FinalAssessment:
     """Complete Phase 7 assessment with production readiness validation"""
 
@@ -446,7 +445,6 @@ ChemML now delivers:
             "report_file": str(report_file),
         }
 
-
 def main():
     """Run Phase 7 final assessment"""
     assessment = Phase7FinalAssessment()
@@ -464,28 +462,27 @@ def main():
     print(f"🎯 Overall Grade: {grade} ({score:.1f}%)")
     print(f"🚀 Production Status: {readiness}")
 
-    print(f"\n📊 Key Metrics:")
+    print("\n📊 Key Metrics:")
     print(f"   ⚡ Import Time: {metrics['import_time']:.3f}s")
     print(f"   📝 Type Coverage: {metrics['type_coverage']:.1f}%")
     print(f"   🔧 Parameter Issues: {metrics['parameter_issues']}")
     print(f"   🧪 Functionality: {metrics['functionality']:.0f}%")
 
-    print(f"\n🎉 Major Achievements:")
+    print("\n🎉 Major Achievements:")
     print(
         f"   • {((25 - metrics['import_time']) / 25 * 100):.0f}% faster imports (25s → {metrics['import_time']:.1f}s)"
     )
     print(f"   • {metrics['type_coverage']:.0f}% type coverage (professional standard)")
     print(f"   • {50 - metrics['parameter_issues']} parameters standardized")
-    print(f"   • Enterprise-grade error handling (100% robust)")
-    print(f"   • Advanced caching and lazy loading infrastructure")
+    print("   • Enterprise-grade error handling (100% robust)")
+    print("   • Advanced caching and lazy loading infrastructure")
 
     if "READY" in readiness:
-        print(f"\n🏆 SUCCESS: ChemML is production-ready! 🚀")
+        print("\n🏆 SUCCESS: ChemML is production-ready! 🚀")
     else:
-        print(f"\n🔥 EXCELLENT: ChemML is nearly production-ready!")
+        print("\n🔥 EXCELLENT: ChemML is nearly production-ready!")
 
     print(f"\n📄 Detailed report: {results['report_file']}")
-
 
 if __name__ == "__main__":
     main()

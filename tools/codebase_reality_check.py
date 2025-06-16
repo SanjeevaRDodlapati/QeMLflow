@@ -11,7 +11,6 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List
 
-
 class CodebaseRealityCheck:
     """Comprehensive analysis of ChemML's actual core framework completion."""
 
@@ -371,7 +370,6 @@ class CodebaseRealityCheck:
         else:
             return "✨ VALIDATION & POLISH (low priority - framework is solid)"
 
-
 def main():
     """Run comprehensive codebase reality check."""
     checker = CodebaseRealityCheck()
@@ -405,7 +403,6 @@ def main():
     print(f"\n🎯 Next Priority: {next_priority}")
 
     return analysis
-
 
 if __name__ == "__main__":
     main()

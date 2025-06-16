@@ -27,7 +27,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-
 class NotebookCellTester:
     """
     Comprehensive testing framework for notebook cells
@@ -292,7 +291,6 @@ NEXT STEPS:
 
         return fixed_cells
 
-
 def run_comprehensive_test():
     """
     Run comprehensive test on all notebook cells
@@ -355,7 +353,6 @@ print("✅ Plotting test successful")
     print(report)
 
     return tester
-
 
 if __name__ == "__main__":
     tester = run_comprehensive_test()

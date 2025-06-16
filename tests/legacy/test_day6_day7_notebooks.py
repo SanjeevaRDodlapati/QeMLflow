@@ -495,7 +495,7 @@ class NotebookTester:
                         print(f"     Error: {error}")
 
         # Overall summary
-        print(f"\n🎯 OVERALL RESULTS:")
+        print("\n🎯 OVERALL RESULTS:")
         print(f"   Total Notebooks: {total_notebooks}")
         print(f"   Passed: {total_passed}")
         print(f"   Failed: {total_failed}")
@@ -516,15 +516,15 @@ class NotebookTester:
         }
 
         # Recommendations
-        print(f"\n💡 RECOMMENDATIONS:")
+        print("\n💡 RECOMMENDATIONS:")
         if total_failed > 0:
             print(f"   - Fix {total_failed} failing notebooks before deployment")
         if total_warnings > 5:
             print(f"   - Review {total_warnings} warnings for potential issues")
         if success_rate < 80:
-            print(f"   - Consider additional testing and validation")
+            print("   - Consider additional testing and validation")
         else:
-            print(f"   - Notebooks are in good shape for deployment!")
+            print("   - Notebooks are in good shape for deployment!")
 
 
 def main():
@@ -561,7 +561,7 @@ def main():
     with open("day6_day7_test_results.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    print(f"\n💾 Detailed results saved to: day6_day7_test_results.json")
+    print("\n💾 Detailed results saved to: day6_day7_test_results.json")
 
     # Exit with appropriate code
     if results["summary"]["failed"] > 0:

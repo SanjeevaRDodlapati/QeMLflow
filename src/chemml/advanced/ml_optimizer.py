@@ -250,7 +250,7 @@ class IntelligentFeatureSelector:
             try:
                 corr = np.corrcoef(X[:, i], y)[0, 1]
                 correlations[name] = abs(corr) if not np.isnan(corr) else 0
-            except:
+            except Exception:
                 correlations[name] = 0
 
         # Sort by correlation strength

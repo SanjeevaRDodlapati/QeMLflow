@@ -44,7 +44,7 @@ def demo_advanced_registry():
         # Create a temporary registry for demo
         temp_dir = tempfile.mkdtemp()
         registry = AdvancedModelRegistry(
-            registry_path=str(Path(temp_dir) / "test_registry.json")
+_registry_path = str(Path(temp_dir) / "test_registry.json")
         )
 
         # 1. List available models by category
@@ -59,24 +59,24 @@ def demo_advanced_registry():
 
         # Protein structure prediction
         recommendations = registry.suggest_models(
-            task_type="protein structure prediction",
-            complexity=TaskComplexity.MODERATE,
-            gpu_available=True,
-            max_memory_gb=16.0,
-            max_runtime_minutes=60.0,
+_task_type = "protein structure prediction",
+_complexity = TaskComplexity.MODERATE,
+_gpu_available = True,
+_max_memory_gb = 16.0,
+_max_runtime_minutes = 60.0,
         )
         rec_names = [name for name, score in recommendations[:3]]
         print(f"  For protein structure prediction: {rec_names}")
 
         # Drug discovery
         recommendations = registry.suggest_models(
-            task_type="drug discovery",
-            complexity=TaskComplexity.SIMPLE,
-            gpu_available=False,
-            max_memory_gb=8.0,
-            max_runtime_minutes=10.0,
+_task_type = "drug discovery",
+_complexity = TaskComplexity.SIMPLE,
+_gpu_available = False,
+_max_memory_gb = 8.0,
+_max_runtime_minutes = 10.0,
         )
-        rec_names = [name for name, score in recommendations[:3]]
+_rec_names = [name for name, score in recommendations[:3]]
         print(f"  For drug discovery: {rec_names}")
 
         # 3. Check model compatibility
@@ -90,13 +90,13 @@ def demo_advanced_registry():
 
         # 4. Workflow suggestions
         print("\n🔄 Workflow Suggestions:")
-        workflows = registry.get_workflow_suggestions("drug discovery screening")
+_workflows = registry.get_workflow_suggestions("drug discovery screening")
         for i, workflow in enumerate(workflows[:3], 1):
             print(f"  {i}. {' → '.join(workflow)}")
 
         # 5. Search functionality
         print("\n🔍 Search Results for 'protein':")
-        search_results = registry.search_models("protein")
+_search_results = registry.search_models("protein")
         print(f"  Found: {', '.join(search_results)}")
 
         # 6. Model detailed report
@@ -146,7 +146,7 @@ def demo_performance_monitoring():
                 print(f"  🔮 Running prediction {i+1}...")
                 time.sleep(0.2)  # Simulate prediction time
                 # Simulate some memory usage
-                temp_data = np.random.random((100, 10))
+_temp_data = np.random.random((100, 10))
                 print(f"     Prediction {i+1} completed")
 
         # Simulate an error
@@ -177,7 +177,7 @@ def demo_performance_monitoring():
             print(f"  Memory: {health['current']['memory_percent']}")
             print(f"  Available Memory: {health['current']['memory_available_gb']} GB")
         else:
-            print(f"  Status: Monitoring system starting up...")
+            print("  Status: Monitoring system starting up...")
 
         # 4. Generate performance report
         print("\n📋 Performance Report (last 1 day):")
@@ -213,7 +213,7 @@ def demo_automated_testing():
 
         # 1. Validate testing framework itself
         print("\n🔧 Validating testing framework...")
-        framework_valid = test_suite.validate_framework_integration()
+_framework_valid = test_suite.validate_framework_integration()
 
         if framework_valid:
             print("✅ Testing framework validation passed")
@@ -342,5 +342,5 @@ def main():
 
 
 if __name__ == "__main__":
-    exit_code = main()
+_exit_code = main()
     sys.exit(exit_code)

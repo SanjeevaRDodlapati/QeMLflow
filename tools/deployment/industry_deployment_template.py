@@ -31,7 +31,6 @@ INDUSTRY_CONFIG = {
     },
 }
 
-
 class IndustryDeployment:
     """Template class for industry-specific deployments."""
 
@@ -57,7 +56,6 @@ class IndustryDeployment:
         self.logger.info(f"Deploying model: {model_path}")
         self.logger.info(f"Security level: {self.config.get('security')}")
         return "deployment_id_12345"
-
 
 if __name__ == "__main__":
     # Example usage

@@ -13,7 +13,6 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-
 class ChemMLTestSuite:
     """Comprehensive test suite for ChemML enhancements."""
 
@@ -52,7 +51,7 @@ class ChemMLTestSuite:
             # Test that core functions work
             test_results = {}
             try:
-                data = chemml.load_sample_data()
+                _data = chemml.load_sample_data()
                 test_results["load_sample_data"] = True
                 print("✅ load_sample_data working")
             except Exception as e:
@@ -60,7 +59,7 @@ class ChemMLTestSuite:
                 print(f"❌ load_sample_data failed: {e}")
 
             try:
-                fps = chemml.morgan_fingerprints(["CCO"])
+                _fps = chemml.morgan_fingerprints(["CCO"])
                 test_results["morgan_fingerprints"] = True
                 print("✅ morgan_fingerprints working (lazy)")
             except Exception as e:
@@ -103,7 +102,7 @@ class ChemMLTestSuite:
 
             try:
                 # This should trigger lazy loading
-                model = chemml.create_rf_model()
+                _model = chemml.create_rf_model()
                 lazy_tests["create_rf_model"] = True
                 print("✅ create_rf_model (lazy) working")
             except Exception as e:
@@ -347,7 +346,7 @@ class ChemMLTestSuite:
         print(f"\n🎯 OVERALL GRADE: {overall_grade}")
 
         # Recommendations
-        print(f"\n💡 Next Steps:")
+        print("\n💡 Next Steps:")
         if import_result.get("import_time", float("inf")) > 10:
             print("  • Continue import optimization (target: <5s)")
         if type_result.get("overall_coverage", 0) < 90:
@@ -357,7 +356,6 @@ class ChemMLTestSuite:
 
         print("  • Implement advanced caching features")
         print("  • Add comprehensive documentation")
-
 
 def main():
     """Main testing function."""
@@ -392,8 +390,7 @@ def main():
     if args.save_report:
         with open("phase5_integration_test_report.json", "w") as f:
             json.dump(results, f, indent=2)
-        print(f"\n💾 Detailed report saved to phase5_integration_test_report.json")
-
+        print("\n💾 Detailed report saved to phase5_integration_test_report.json")
 
 if __name__ == "__main__":
     main()

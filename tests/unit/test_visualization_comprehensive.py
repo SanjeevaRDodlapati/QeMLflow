@@ -103,7 +103,7 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_draw.MolToImage.return_value = mock_img
 
         # Test with SMILES string
-        result = MolecularVisualizer.plot_molecular_structure(self.sample_smiles)
+        _result = MolecularVisualizer.plot_molecular_structure(self.sample_smiles)
 
         mock_chem.MolFromSmiles.assert_called_once_with(self.sample_smiles)
         mock_depictor.Compute2DCoords.assert_called_once_with(mock_mol)
@@ -162,7 +162,7 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_img = Mock()
         mock_draw.MolsToGridImage.return_value = mock_img
 
-        result = MolecularVisualizer.plot_multiple_molecules(self.sample_smiles_list)
+        _result = MolecularVisualizer.plot_multiple_molecules(self.sample_smiles_list)
 
         self.assertEqual(
             mock_chem.MolFromSmiles.call_count, len(self.sample_smiles_list)
@@ -181,7 +181,7 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_draw.MolsToGridImage.return_value = mock_img
 
         titles = ["Ethanol", "Acetic Acid", "Isopropanol"]
-        result = MolecularVisualizer.plot_multiple_molecules(
+        _result = MolecularVisualizer.plot_multiple_molecules(
             self.sample_smiles_list, titles=titles
         )
 
@@ -770,7 +770,7 @@ if __name__ == "__main__":
 
     # Print summary
     print(f"\n{'='*50}")
-    print(f"Visualization Utils Test Summary")
+    print("Visualization Utils Test Summary")
     print(f"{'='*50}")
     print(f"Tests run: {result.testsRun}")
     print(f"Failures: {len(result.failures)}")
@@ -780,13 +780,13 @@ if __name__ == "__main__":
     )
 
     if result.failures:
-        print(f"\nFailures:")
+        print("\nFailures:")
         for test, traceback in result.failures:
             error_msg = traceback.split("AssertionError: ")[-1].split("\n")[0]
             print(f"  - {test}: {error_msg}")
 
     if result.errors:
-        print(f"\nErrors:")
+        print("\nErrors:")
         for test, traceback in result.errors:
             error_msg = traceback.split("\n")[-2]
             print(f"  - {test}: {error_msg}")

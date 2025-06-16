@@ -270,7 +270,7 @@ class IntegrationMetrics:
             operation: Type of operation (integration, prediction, training)
             input_size: Size of input data
         """
-        operation_id = f"{model_name}_{operation}_{int(time.time())}"
+        _operation_id = f"{model_name}_{operation}_{int(time.time())}"
 
         # Record start metrics
         start_time = time.time()

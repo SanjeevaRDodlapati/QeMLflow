@@ -33,7 +33,7 @@ def test_vae_loss_function():
     latent_dim = 32
 
     # Create test tensors with challenging memory layouts
-    print(f"Creating test tensors...")
+    print("Creating test tensors...")
     print(f"  Batch size: {batch_size}")
     print(f"  Sequence length: {seq_len}")
     print(f"  Vocabulary size: {vocab_size}")

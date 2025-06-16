@@ -811,7 +811,7 @@ class TestIntegrationScenarios:
         # 2. Scale features
         scaler = FeatureScaler(method="standard")
         X_train_scaled = scaler.fit_transform(X_train)
-        X_val_scaled = scaler.transform(X_val)
+        _X_val_scaled = scaler.transform(X_val)
         X_test_scaled = scaler.transform(X_test)
 
         # 3. Mock model training and evaluation
@@ -937,7 +937,7 @@ class TestIntegrationScenarios:
 
         # Test with edge cases
         X_single_row = self.X[:1, :]
-        y_single_row = self.y_classification[:1]
+        _y_single_row = self.y_classification[:1]
 
         # Should handle gracefully
         scaler = FeatureScaler(method="standard")

@@ -410,7 +410,7 @@ def run_tests():
             "\n✅ All tests passed! Modular drug discovery architecture is working correctly."
         )
     else:
-        print(f"\n⚠️  Some tests failed. Please review the failures above.")
+        print("\n⚠️  Some tests failed. Please review the failures above.")
 
     return result.wasSuccessful()
 

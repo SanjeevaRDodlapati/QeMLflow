@@ -765,7 +765,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         model.fit(self.sample_X, self.sample_y_regression)
 
         scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(self.sample_X)
+        _X_scaled = scaler.fit_transform(self.sample_X)
 
         legacy_model = {"model": model, "scaler": scaler}
 

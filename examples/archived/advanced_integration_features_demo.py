@@ -27,8 +27,8 @@ try:
     from pathlib import Path
 
     # Add src to path
-    src_path = Path(__file__).parent.parent / "src"
-    sys.path.insert(0, str(src_path))
+    _src_path = Path(__file__).parent.parent / "src"
+    sys.path.insert(0, str(_src_path))
 
     # Import the new modules directly
     from chemml.integrations.advanced_registry import (
@@ -84,11 +84,11 @@ def demo_advanced_registry():
 
     # Drug discovery
     recommendations = registry.suggest_models(
-        task_type="drug discovery",
-        complexity=TaskComplexity.SIMPLE,
-        gpu_available=False,
-        max_memory_gb=8.0,
-        max_runtime_minutes=10.0,
+_task_type = "drug discovery",
+_complexity = TaskComplexity.SIMPLE,
+_gpu_available = False,
+_max_memory_gb = 8.0,
+_max_runtime_minutes = 10.0,
     )
     print(f"  For drug discovery: {[name for name, score in recommendations[:3]]}")
 
@@ -138,7 +138,7 @@ def demo_performance_monitoring():
             print(f"  🔮 Running prediction {i+1}...")
             time.sleep(0.5)  # Simulate prediction time
             # Simulate some memory usage
-            temp_data = np.random.random((1000, 100))
+_temp_data = np.random.random((1000, 100))
             print(f"     Prediction {i+1} completed")
 
     # Simulate an error
@@ -185,7 +185,7 @@ def demo_automated_testing():
 
     # 1. Validate testing framework itself
     print("\n🔧 Validating testing framework...")
-    framework_valid = test_suite.validate_framework_integration()
+_framework_valid = test_suite.validate_framework_integration()
 
     if framework_valid:
         print("✅ Testing framework validation passed")
@@ -255,13 +255,13 @@ def demo_integration_manager_features():
     print("\n💡 Model Recommendations:")
     try:
         recommendations = registry.suggest_models(
-            task_type="molecular property prediction",
-            complexity=TaskComplexity.SIMPLE,
-            gpu_available=False,
-            max_memory_gb=4.0,
-            max_runtime_minutes=5.0,
+_task_type = "molecular property prediction",
+_complexity = TaskComplexity.SIMPLE,
+_gpu_available = False,
+_max_memory_gb = 4.0,
+_max_runtime_minutes = 5.0,
         )
-        rec_names = [name for name, score in recommendations[:3]]
+_rec_names = [name for name, score in recommendations[:3]]
         print(f"  For molecular property prediction: {rec_names}")
     except Exception as e:
         print(f"  ⚠️  Recommendations unavailable: {e}")
@@ -269,7 +269,7 @@ def demo_integration_manager_features():
     # 2. Workflow suggestions
     print("\n🔄 Workflow Suggestions:")
     try:
-        workflows = registry.get_workflow_suggestions("protein docking analysis")
+_workflows = registry.get_workflow_suggestions("protein docking analysis")
         for i, workflow in enumerate(workflows[:3], 1):
             print(f"  {i}. {' → '.join(workflow)}")
     except Exception as e:
@@ -278,7 +278,7 @@ def demo_integration_manager_features():
     # 3. Registry search
     print("\n🔍 Registry Search:")
     try:
-        search_results = registry.search_models("structure")
+_search_results = registry.search_models("structure")
         print(f"  Models matching 'structure': {search_results}")
     except Exception as e:
         print(f"  ⚠️  Search unavailable: {e}")
@@ -295,7 +295,7 @@ def demo_integration_manager_features():
     # 5. Performance metrics integration
     print("\n📊 Performance Integration:")
     try:
-        metrics = get_metrics()
+_metrics = get_metrics()
         print("  ✅ Performance monitoring system active")
         print("  ✅ Registry and monitoring integrated")
     except Exception as e:
@@ -339,5 +339,5 @@ def main():
 
 
 if __name__ == "__main__":
-    exit_code = main()
+_exit_code = main()
     sys.exit(exit_code)
