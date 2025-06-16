@@ -1,0 +1,117 @@
+[
+  {
+    "timestamp": "2025-06-16T09:47:17.531339",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:48:55.030258",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:51:17.913749",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:52:17.110341",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:53:31.580654",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:56:45.265424",
+    "health_score": 0.0,
+    "total_issues": 0,
+    "issues_by_severity": {},
+    "issues_by_tool": {},
+    "files_checked": 0,
+    "auto_fixable_count": 0,
+    "complexity_score": null,
+    "security_score": null,
+    "coverage_percentage": null,
+    "technical_debt_minutes": null
+  },
+  {
+    "timestamp": "2025-06-16T09:59:32.493670",
+    "health_score": 74.9,
+    "total_issues": 692,
+    "issues_by_severity": {
+      "error": 402,
+      "warning": 290
+    },
+    "issues_by_tool": {
+      "flake8": 673,
+      "black": 19
+    },
+    "files_checked": 218,
+    "auto_fixable_count": 19,
+    "complexity_score": 100,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 7480
+  },
+  {
+    "timestamp": "2025-06-16T10:02:44.574270",
+    "health_score": 81.3,
+    "total_issues": 421,
+    "issues_by_severity": {
+      "error": 394,
+      "warning": 27
+    },
+    "issues_by_tool": {
+      "flake8": 421
+    },
+    "files_checked": 218,
+    "auto_fixable_count": 0,
+    "complexity_score": 100,
+    "security_score": 100,
+    "coverage_percentage": 67.0,
+    "technical_debt_minutes": 6045
+  }
+]

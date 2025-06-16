@@ -35,7 +35,7 @@ tools:
       C: warning    # Complexity warnings
       B: warning    # Bugbear warnings
       N: info       # Naming conventions
-    
+
     # Auto-fixable rule codes
     auto_fixable_rules:
       - F401  # Unused imports
@@ -43,25 +43,25 @@ tools:
       - E302  # Expected 2 blank lines
       - E303  # Too many blank lines
       - W293  # Blank line contains whitespace
-    
+
     # Critical rules that should never be ignored
     critical_rules:
       - F821  # Undefined name
       - F822  # Undefined name in __all__
       - E999  # Syntax error
-  
+
   black:
     enabled: true
     auto_fix: true
     line_length: 88
     skip_string_normalization: false
-    
+
   isort:
     enabled: true
     auto_fix: true
     profile: "black"
     line_length: 88
-    
+
   mypy:
     enabled: true
     strict_mode: false
@@ -86,19 +86,19 @@ auto_fix:
   enabled: true
   backup_before_fix: true
   max_files_per_batch: 50
-  
+
 # Reporting settings
 reporting:
   default_format: "console"
   save_history: true
   max_history_files: 10
-  
+
 # Integration settings
 integration:
   pre_commit: true
   ci_cd: true
   git_hooks: true
-  
+
 # Performance settings
 performance:
   parallel_processing: true

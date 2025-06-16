@@ -132,7 +132,7 @@ Found problematic star imports in:
 3. **Update Flake8 Configuration**
    ```ini
    # Add to .flake8
-   exclude = 
+   exclude =
        .git,
        __pycache__,
        .venv,

@@ -10,7 +10,14 @@ A comprehensive linting framework that provides:
 4. Reporting and tracking of linting health
 5. Integration with CI/CD pipeline
 
-This framework helps maintain code quality across the entire ChemML codebase.
+This framework helps main        if not quiet:
+            print("🔍 Running mypy...")
+        mypy_issues = self._run_mypy(files)
+        all_issues.extend(mypy_issues)
+
+        # Populate report
+        report.issues = all_issues
+        report.total_issues = len(all_issues)lity across the entire ChemML codebase.
 """
 
 import json
@@ -166,14 +173,16 @@ class ComprehensiveLinter:
 
                 try:
                     # Parse flake8 output: path:line:col: code message
-                    parts = line.split(":", 3)
-                    if len(parts) >= 4:
-                        file_path = parts[0]
-                        line_num = int(parts[1])
-                        col_num = int(parts[2])
-                        code_and_msg = parts[3].strip().split(" ", 1)
-                        code = code_and_msg[0]
-                        message = code_and_msg[1] if len(code_and_msg) > 1 else ""
+                    # Use regex to handle complex parsing more robustly
+                    import re
+
+                    match = re.match(r"^([^:]+):(\d+):(\d+):\s+(\w+)\s+(.*)$", line)
+                    if match:
+                        file_path = match.group(1)
+                        line_num = int(match.group(2))
+                        col_num = int(match.group(3))
+                        code = match.group(4)
+                        message = match.group(5)
 
                         # Determine severity
                         severity = severity_map.get(code[0], "warning")
@@ -193,8 +202,9 @@ class ComprehensiveLinter:
                                 auto_fixable=auto_fixable,
                             )
                         )
-                except (ValueError, IndexError) as e:
-                    print(f"Error parsing flake8 output: {line} - {e}")
+                except (ValueError, IndexError, AttributeError) as e:
+                    # Skip lines that don't match the expected format
+                    continue
 
         except Exception as e:
             print(f"Error running flake8: {e}")
@@ -281,6 +291,69 @@ class ComprehensiveLinter:
 
         return issues
 
+    def _run_mypy(self, files: List[Path]) -> List[LintingIssue]:
+        """Run mypy type checking."""
+        issues = []
+        if not self.config["tools"]["mypy"]["enabled"]:
+            return issues
+
+        try:
+            # Run mypy on specific files
+            cmd = ["mypy"] + [str(f) for f in files]
+            result = subprocess.run(cmd, capture_output=True, text=True, cwd=self.root)
+
+            if result.returncode != 0:
+                # Parse mypy output
+                output_lines = result.stdout.split("\n")
+                for line in output_lines:
+                    if ":" in line and (
+                        "error:" in line or "warning:" in line or "note:" in line
+                    ):
+                        try:
+                            # Parse line format: file:line:col: severity: message
+                            parts = line.split(":", 3)
+                            if len(parts) >= 4:
+                                file_path = parts[0]
+                                line_num = int(parts[1]) if parts[1].isdigit() else 1
+                                col = int(parts[2]) if parts[2].isdigit() else 1
+                                rest = parts[3].strip()
+
+                                if rest.startswith("error:"):
+                                    severity = "error"
+                                    message = rest[6:].strip()
+                                    rule_code = "MYPY001"
+                                elif rest.startswith("warning:"):
+                                    severity = "warning"
+                                    message = rest[8:].strip()
+                                    rule_code = "MYPY002"
+                                elif rest.startswith("note:"):
+                                    severity = "info"
+                                    message = rest[5:].strip()
+                                    rule_code = "MYPY003"
+                                else:
+                                    continue
+
+                                issues.append(
+                                    LintingIssue(
+                                        file_path=file_path,
+                                        line_number=line_num,
+                                        column=col,
+                                        rule_code=rule_code,
+                                        message=message,
+                                        severity=severity,
+                                        tool="mypy",
+                                        auto_fixable=False,
+                                    )
+                                )
+                        except (ValueError, IndexError):
+                            # Skip malformed lines
+                            continue
+
+        except Exception as e:
+            print(f"Error running mypy: {e}")
+
+        return issues
+
     def _categorize_issues(self, issues: List[LintingIssue]) -> Dict[str, int]:
         """Categorize issues by type."""
         categories = {
@@ -304,7 +377,7 @@ class ComprehensiveLinter:
                 categories["complexity"] += 1
             elif code in ["F841", "F401"]:
                 categories["unused_variables"] += 1
-            elif code.startswith("F8"):
+            elif code.startswith("F8") or code.startswith("MYPY"):
                 categories["type_errors"] += 1
             elif code.startswith("W") or code.startswith("N"):
                 categories["style_violations"] += 1
@@ -335,13 +408,15 @@ class ComprehensiveLinter:
 
         return round(health_score, 1)
 
-    def run_comprehensive_analysis(self) -> LintingReport:
+    def run_comprehensive_analysis(self, quiet: bool = False) -> LintingReport:
         """Run comprehensive linting analysis."""
-        print("🔍 Starting comprehensive linting analysis...")
+        if not quiet:
+            print("🔍 Starting comprehensive linting analysis...")
 
         # Get files to check
         files = self._get_python_files()
-        print(f"📁 Found {len(files)} Python files to check")
+        if not quiet:
+            print(f"📁 Found {len(files)} Python files to check")
 
         # Initialize report
         report = LintingReport(timestamp=datetime.now(), total_files_checked=len(files))
@@ -349,17 +424,25 @@ class ComprehensiveLinter:
         # Run linting tools
         all_issues = []
 
-        print("🔧 Running flake8...")
+        if not quiet:
+            print("🔧 Running flake8...")
         flake8_issues = self._run_flake8(files)
         all_issues.extend(flake8_issues)
 
-        print("🎨 Running black...")
+        if not quiet:
+            print("🎨 Running black...")
         black_issues = self._run_black(files)
         all_issues.extend(black_issues)
 
-        print("📦 Running isort...")
+        if not quiet:
+            print("📦 Running isort...")
         isort_issues = self._run_isort(files)
         all_issues.extend(isort_issues)
+
+        if not quiet:
+            print("🔍 Running mypy...")
+        mypy_issues = self._run_mypy(files)
+        all_issues.extend(mypy_issues)
 
         # Populate report
         report.issues = all_issues
@@ -570,32 +653,51 @@ def main():
         "--format", choices=["console", "json"], default="console", help="Report format"
     )
     parser.add_argument("--save", action="store_true", help="Save report to file")
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Suppress progress output (useful for JSON mode)",
+    )
 
     args = parser.parse_args()
 
     linter = ComprehensiveLinter()
 
+    # Suppress progress output in JSON mode or when explicitly requested
+    quiet_mode = args.format == "json" or args.quiet
+
     # Run analysis
-    report = linter.run_comprehensive_analysis()
+    if not quiet_mode:
+        print("🔍 Starting comprehensive linting analysis...")
+    report = linter.run_comprehensive_analysis(quiet=quiet_mode)
 
     # Auto-fix if requested
     if args.auto_fix:
-        print("\n🔧 Running auto-fix...")
+        if not quiet_mode:
+            print("\n🔧 Running auto-fix...")
         fixed = linter.auto_fix_issues(dry_run=False)
-        print(f"✅ Fixed issues: {sum(fixed.values())}")
+        if not quiet_mode:
+            print(f"✅ Fixed issues: {sum(fixed.values())}")
 
         # Re-run analysis after fixes
-        print("🔄 Re-analyzing after fixes...")
-        report = linter.run_comprehensive_analysis()
+        if not quiet_mode:
+            print("🔄 Re-analyzing after fixes...")
+        report = linter.run_comprehensive_analysis(quiet=quiet_mode)
 
     # Generate and display report
-    console_report = linter.generate_report(report, "console")
-    print(console_report)
+    formatted_report = linter.generate_report(report, args.format)
+
+    # In JSON mode, only output JSON to stdout
+    if args.format == "json":
+        print(formatted_report)
+    else:
+        print(formatted_report)
 
     # Save report if requested
     if args.save:
         report_path = linter.save_report(report, args.format)
-        print(f"\n💾 Report saved to: {report_path}")
+        if not quiet_mode and args.format != "json":
+            print(f"\n💾 Report saved to: {report_path}")
 
 
 if __name__ == "__main__":
