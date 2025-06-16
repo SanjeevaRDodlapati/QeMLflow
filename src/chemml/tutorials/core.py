@@ -228,6 +228,6 @@ def _get_tutorial_directories() -> Dict[str, str]:
 
 
 # Convenience function for backwards compatibility
-def initialize_tutorial_environment(*args, **kwargs):
+def initialize_tutorial_environment(*args, **kwargs) -> Any:
     """Alias for setup_learning_environment for backwards compatibility."""
     return setup_learning_environment(*args, **kwargs)

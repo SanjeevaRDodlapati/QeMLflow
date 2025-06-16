@@ -52,7 +52,7 @@ class MolecularPropertyPredictor:
     Predict various molecular properties relevant to drug discovery.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.models = {}
         self.scalers = {}
         self.trained_properties = set()

@@ -43,7 +43,7 @@ class MolecularOptimizer:
     Base class for molecular optimization strategies.
     """
 
-    def __init__(self, objective_function: Optional[Callable] = None):
+    def __init__(self, objective_function: Optional[Callable] = None) -> None:
         """
         Initialize the molecular optimizer.
 

@@ -4,7 +4,6 @@ ChemML Integration Pipelines
 
 Complete, production-ready pipelines for drug discovery workflows.
 """
-
 import warnings
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
@@ -16,7 +15,6 @@ try:
     from ..core import featurizers, models
     from ..research.drug_discovery import admet, docking
 except ImportError:
-    # Handle relative import issues
     pass
 
 
@@ -35,7 +33,7 @@ class PipelineResults:
 class ScreeningResults:
     """Results from virtual screening."""
 
-    def __init__(self, hits: List[str]):
+    def __init__(self, hits: List[str]) -> None:
         """Initialize with screening hits."""
         self.hits = hits
 
@@ -63,40 +61,39 @@ class DrugDiscoveryPipeline:
         self.include_docking = include_docking
         self.include_generation = include_generation
         self.include_optimization = include_optimization
-
         self.config = {}
 
-    def configure(self, config: Dict[str, Any]):
+    def configure(self, config: Dict[str, Any]) -> Any:
         """Configure pipeline parameters."""
         self.config = config
 
     def virtual_screening(
-        self, method: str = "ml_enhanced", filters: List[str] = None
+        self, method_type: str = "ml_enhanced", filters: List[str] = None
     ) -> ScreeningResults:
         """Perform virtual screening of compound library."""
         compounds = self.config.get("screening_library", [])
-        hit_rate = 0.15  # 15% hit rate is realistic
+        hit_rate = 0.15
         n_hits = int(len(compounds) * hit_rate)
         hits = compounds[:n_hits] if n_hits > 0 else []
         return ScreeningResults(hits)
 
-    def molecular_docking(self, compounds: List[str], docking_algorithm: str = "vina"):
+    def molecular_docking(
+        self, compounds: List[str], docking_algorithm: str = "vina"
+    ) -> Any:
         """Perform molecular docking on compound set."""
-        # Simulate docking results
         results = []
         for i, smiles in enumerate(compounds):
             result = type(
                 "DockingResult",
                 (),
                 {
-                    "ligand_id": f"ligand_{i+1}",
+                    "ligand_id": f"ligand_{i + 1}",
                     "smiles": smiles,
                     "binding_affinity": np.random.uniform(-12.0, -6.0),
                     "confidence_score": np.random.uniform(0.6, 0.95),
                 },
             )()
             results.append(result)
-
         return type(
             "DockingResults",
             (),
@@ -115,10 +112,11 @@ class DrugDiscoveryPipeline:
             },
         )()
 
-    def admet_prediction(self, compounds: List[Any], properties: List[str] = None):
+    def admet_prediction(
+        self, compounds: List[Any], properties: List[str] = None
+    ) -> Union[pd.DataFrame, np.ndarray]:
         """Predict ADMET properties for compounds."""
-        # Simulate ADMET filtering
-        drug_like = compounds[: int(len(compounds) * 0.4)]  # 40% pass ADMET
+        drug_like = compounds[: int(len(compounds) * 0.4)]
         return type("ADMETResults", (), {"drug_like": drug_like})()
 
     def lead_optimization(
@@ -126,12 +124,11 @@ class DrugDiscoveryPipeline:
         leads: List[Any],
         optimization_cycles: int = 3,
         strategy: str = "multi_objective",
-    ):
+    ) -> Any:
         """Optimize lead compounds."""
-        # Simulate optimization
         optimized = []
         for i, lead in enumerate(leads):
-            for j in range(5):  # 5 variants per lead
+            for j in range(5):
                 opt_compound = type(
                     "OptimizedCompound",
                     (),
@@ -144,13 +141,11 @@ class DrugDiscoveryPipeline:
                     },
                 )()
                 optimized.append(opt_compound)
-
         return type("OptimizationResults", (), {"optimized": optimized})()
 
     def generate_final_report(self) -> PipelineResults:
         """Generate comprehensive pipeline results."""
         initial_compounds = len(self.config.get("screening_library", []))
-
         stats = {
             "initial_compounds": initial_compounds,
             "after_screening": int(initial_compounds * 0.15),
@@ -158,28 +153,24 @@ class DrugDiscoveryPipeline:
             "after_admet": int(initial_compounds * 0.02),
             "final_optimized": int(initial_compounds * 0.01),
         }
-
         efficiency = stats["final_optimized"] / max(1, stats["initial_compounds"])
         avg_affinity = np.random.uniform(-9.5, -7.5)
         avg_drug_likeness = np.random.uniform(0.7, 0.9)
         admet_pass_rate = np.random.uniform(0.6, 0.85)
-
-        # Generate top candidates
         top_candidates = []
         for i in range(min(5, stats["final_optimized"])):
             candidate = type(
                 "Candidate",
                 (),
                 {
-                    "compound_id": f"final_candidate_{i+1:02d}",
+                    "compound_id": f"final_candidate_{i + 1:02d}",
                     "binding_affinity": avg_affinity + np.random.normal(0, 0.5),
                     "drug_likeness": avg_drug_likeness + np.random.normal(0, 0.1),
                     "admet_score": admet_pass_rate + np.random.normal(0, 0.1),
-                    "smiles": f"CC(=O)NC1=CC=C(C=C1)C(=O)O",  # Example aspirin-like
+                    "smiles": f"CC(=O)NC1=CC=C(C=C1)C(=O)O",
                 },
             )()
             top_candidates.append(candidate)
-
         return PipelineResults(
             stats=stats,
             efficiency=efficiency,

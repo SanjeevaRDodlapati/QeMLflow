@@ -32,7 +32,7 @@ class DeepChemModelWrapper:
     Wrapper for DeepChem models to provide consistent ChemML interface.
     """
 
-    def __init__(self, model_type: str = "multitask_regressor", **kwargs):
+    def __init__(self, model_type: str = "multitask_regressor", **kwargs) -> None:
         """
         Initialize DeepChem model wrapper.
 

@@ -40,7 +40,7 @@ class MolecularGenerator:
     Generate novel molecular structures using various strategies.
     """
 
-    def __init__(self, seed: Optional[int] = None):
+    def __init__(self, seed: Optional[int] = None) -> None:
         if seed is not None:
             random.seed(seed)
             np.random.seed(seed)

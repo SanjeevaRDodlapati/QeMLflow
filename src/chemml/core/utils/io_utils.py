@@ -20,7 +20,7 @@ import yaml
 class DataLoader:
     """Load data from various formats for ChemML workflows"""
 
-    def __init__(self, data_dir: Optional[str] = None):
+    def __init__(self, data_dir: Optional[str] = None) -> None:
         self.data_dir = Path(data_dir) if data_dir else Path("data")
 
     def load_csv(self, filename: str, **kwargs) -> pd.DataFrame:
@@ -248,7 +248,9 @@ class ResultsExporter:
         self.output_dir = Path(output_dir) if output_dir else Path("results")
         self.output_dir.mkdir(exist_ok=True)
 
-    def save_dataframe(self, df: pd.DataFrame, filename: str, format: str = "csv"):
+    def save_dataframe(
+        self, df: pd.DataFrame, filename: str, format: str = "csv"
+    ) -> None:
         """Save DataFrame in various formats"""
         filepath = self.output_dir / filename
 
@@ -265,7 +267,7 @@ class ResultsExporter:
 
         logging.info(f"Saved DataFrame to {filepath}")
 
-    def save_model_results(self, results: Dict, filename: str):
+    def save_model_results(self, results: Dict, filename: str) -> None:
         """Save model training/evaluation results"""
         filepath = self.output_dir / filename
 
@@ -277,7 +279,9 @@ class ResultsExporter:
 
         logging.info(f"Saved model results to {filepath}")
 
-    def save_plot(self, fig, filename: str, dpi: int = 300, bbox_inches: str = "tight"):
+    def save_plot(
+        self, fig, filename: str, dpi: int = 300, bbox_inches: str = "tight"
+    ) -> None:
         """Save matplotlib figure"""
         filepath = self.output_dir / filename
         fig.savefig(filepath, dpi=dpi, bbox_inches=bbox_inches)
@@ -349,7 +353,7 @@ class ConfigManager:
         else:
             raise ValueError("Config file must be YAML or JSON format")
 
-    def save_config(self, config: Dict, filename: str):
+    def save_config(self, config: Dict, filename: str) -> None:
         """Save configuration to file"""
         filepath = self.config_dir / filename
 
@@ -397,7 +401,7 @@ class FileManager:
     """Manage file operations and directory structure"""
 
     @staticmethod
-    def create_directory_structure(base_dir: str, subdirs: List[str]):
+    def create_directory_structure(base_dir: str, subdirs: List[str]) -> None:
         """Create directory structure for project"""
         base_path = Path(base_dir)
         base_path.mkdir(exist_ok=True)
@@ -451,7 +455,7 @@ class FileManager:
         return str(backup_path)
 
 
-def setup_logging(log_level: str = "INFO", log_file: Optional[str] = None):
+def setup_logging(log_level: str = "INFO", log_file: Optional[str] = None) -> None:
     """Setup logging configuration"""
     log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
@@ -583,7 +587,7 @@ def load_experiment_results(
         return json.load(f)
 
 
-def _json_serializer(obj):
+def _json_serializer(obj) -> Any:
     """Custom JSON serializer for numpy arrays and other objects."""
     if isinstance(obj, np.ndarray):
         return obj.tolist()

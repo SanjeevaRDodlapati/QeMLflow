@@ -191,7 +191,7 @@ def filter_by_molecular_properties(
     return filtered_data.iloc[valid_indices].reset_index(drop=True)
 
 
-def clean_molecular_data(data):
+def clean_molecular_data(data) -> Any:
     """Clean molecular data by handling missing values and infinities."""
     # Create a copy to avoid modifying the original
     data = data.copy()
@@ -213,7 +213,7 @@ def clean_molecular_data(data):
     return data
 
 
-def preprocess_molecular_data(data):
+def preprocess_molecular_data(data) -> Any:
     # Perform cleaning and any additional preprocessing steps
     cleaned_data = clean_molecular_data(data)
 
@@ -222,13 +222,13 @@ def preprocess_molecular_data(data):
     return cleaned_data
 
 
-def handle_missing_values(data):
+def handle_missing_values(data) -> Any:
     # Example function to handle missing values
     # This can be customized based on the specific requirements
     return data.fillna(data.mean())
 
 
-def normalize_data(data):
+def normalize_data(data) -> Any:
     """Normalize numerical features in the dataset."""
     # Create a copy to avoid modifying the original
     normalized_data = data.copy()

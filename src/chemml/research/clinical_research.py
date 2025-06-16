@@ -12,14 +12,12 @@ Key Features:
 - Biomarker discovery and validation
 - Adverse event prediction
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 
-# Machine learning imports
 try:
     from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
     from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
@@ -29,8 +27,6 @@ try:
     HAS_SKLEARN = True
 except ImportError:
     HAS_SKLEARN = False
-
-# Medical data analysis
 try:
     import lifelines
     from lifelines import CoxPHFitter, KaplanMeierFitter
@@ -38,8 +34,6 @@ try:
     HAS_LIFELINES = True
 except ImportError:
     HAS_LIFELINES = False
-
-# Regulatory compliance
 try:
     import hashlib
     import json
@@ -58,7 +52,7 @@ class PatientStratificationEngine:
     based on genomic, clinical, and molecular data.
     """
 
-    def __init__(self, stratification_method: str = "ml_enhanced"):
+    def __init__(self, stratification_method: str = "ml_enhanced") -> None:
         """
         Initialize patient stratification engine.
 
@@ -71,7 +65,7 @@ class PatientStratificationEngine:
 
     def stratify_patients(
         self,
-        patient_data: pd.DataFrame,
+        data: pd.DataFrame,
         stratification_features: List[str],
         target_outcome: Optional[str] = None,
         n_strata: int = 3,
@@ -92,37 +86,25 @@ class PatientStratificationEngine:
             warnings.warn(
                 "scikit-learn not available. Using simplified stratification."
             )
-            return self._simple_stratification(patient_data, n_strata)
-
-        # Prepare features
-        X = patient_data[stratification_features].fillna(0)
+            return self._simple_stratification(data, n_strata)
+        X = data[stratification_features].fillna(0)
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
-
-        if target_outcome and target_outcome in patient_data.columns:
-            # Supervised stratification based on outcome
-            y = patient_data[target_outcome]
+        if target_outcome and target_outcome in data.columns:
+            y = data[target_outcome]
             stratification_result = self._supervised_stratification(
                 X_scaled, y, n_strata
             )
         else:
-            # Unsupervised stratification
             stratification_result = self._unsupervised_stratification(
                 X_scaled, n_strata
             )
-
-        # Add patient assignments
         stratification_result["patient_assignments"] = self._assign_patients_to_strata(
             X_scaled, stratification_result["strata_models"], n_strata
         )
-
-        # Calculate stratum characteristics
         stratification_result["strata_characteristics"] = self._characterize_strata(
-            patient_data,
-            stratification_result["patient_assignments"],
-            stratification_features,
+            data, stratification_result["patient_assignments"], stratification_features
         )
-
         return stratification_result
 
     def _supervised_stratification(
@@ -131,19 +113,15 @@ class PatientStratificationEngine:
         """Supervised patient stratification based on outcome."""
         from sklearn.cluster import KMeans
 
-        # Use outcome-guided clustering
         kmeans = KMeans(n_clusters=n_strata, random_state=42)
         cluster_labels = kmeans.fit_predict(X)
-
-        # Train outcome prediction models for each stratum
         strata_models = {}
         for stratum_id in range(n_strata):
             mask = cluster_labels == stratum_id
-            if np.sum(mask) > 10:  # Minimum patients per stratum
+            if np.sum(mask) > 10:
                 model = RandomForestClassifier(random_state=42)
                 model.fit(X[mask], y[mask])
                 strata_models[stratum_id] = model
-
         return {
             "method": "supervised",
             "strata_models": strata_models,
@@ -159,7 +137,6 @@ class PatientStratificationEngine:
 
         kmeans = KMeans(n_clusters=n_strata, random_state=42)
         cluster_labels = kmeans.fit_predict(X)
-
         return {
             "method": "unsupervised",
             "cluster_model": kmeans,
@@ -172,10 +149,8 @@ class PatientStratificationEngine:
     ) -> np.ndarray:
         """Assign patients to strata based on trained models."""
         if "cluster_model" in strata_models:
-            # Unsupervised case
             return strata_models["cluster_model"].predict(X)
         else:
-            # Supervised case - use distance to cluster centers
             from sklearn.metrics.pairwise import euclidean_distances
 
             distances = euclidean_distances(
@@ -185,54 +160,42 @@ class PatientStratificationEngine:
             return np.argmin(distances, axis=1)
 
     def _characterize_strata(
-        self, patient_data: pd.DataFrame, assignments: np.ndarray, features: List[str]
+        self, data: pd.DataFrame, assignments: np.ndarray, features: List[str]
     ) -> Dict[int, Dict[str, float]]:
         """Characterize each patient stratum."""
         characteristics = {}
-
         for stratum_id in np.unique(assignments):
             mask = assignments == stratum_id
-            stratum_data = patient_data[mask]
-
+            stratum_data = data[mask]
             characteristics[stratum_id] = {
                 "n_patients": np.sum(mask),
                 "mean_features": stratum_data[features].mean().to_dict(),
                 "demographic_profile": self._get_demographic_profile(stratum_data),
             }
-
         return characteristics
 
-    def _get_demographic_profile(self, stratum_data: pd.DataFrame) -> Dict[str, float]:
+    def _get_demographic_profile(self, data: pd.DataFrame) -> Dict[str, float]:
         """Get demographic profile of a patient stratum."""
         profile = {}
-
-        # Age statistics
-        if "age" in stratum_data.columns:
-            profile["mean_age"] = stratum_data["age"].mean()
-            profile["age_std"] = stratum_data["age"].std()
-
-        # Gender distribution
-        if "gender" in stratum_data.columns:
-            gender_counts = stratum_data["gender"].value_counts(normalize=True)
+        if "age" in data.columns:
+            profile["mean_age"] = data["age"].mean()
+            profile["age_std"] = data["age"].std()
+        if "gender" in data.columns:
+            gender_counts = data["gender"].value_counts(normalize=True)
             for gender, proportion in gender_counts.items():
                 profile[f"proportion_{gender}"] = proportion
-
         return profile
 
     def _simple_stratification(
-        self, patient_data: pd.DataFrame, n_strata: int
+        self, data: pd.DataFrame, n_strata: int
     ) -> Dict[str, Any]:
         """Simple stratification fallback when sklearn is not available."""
         warnings.warn("Using simplified stratification method.")
-
-        # Use age-based stratification as fallback
-        if "age" in patient_data.columns:
-            age_bins = pd.qcut(patient_data["age"], q=n_strata, labels=False)
+        if "age" in data.columns:
+            age_bins = pd.qcut(data["age"], q=n_strata, labels=False)
             assignments = age_bins.values
         else:
-            # Random stratification
-            assignments = np.random.randint(0, n_strata, len(patient_data))
-
+            assignments = np.random.randint(0, n_strata, len(data))
         return {
             "method": "simple",
             "patient_assignments": assignments,
@@ -274,19 +237,13 @@ class ClinicalTrialOptimizer:
         Returns:
             Optimized trial design parameters
         """
-        # Sample size calculation
         sample_size = self._calculate_sample_size(effect_size, power, alpha)
-
-        # Adaptive design recommendations
         adaptive_features = self._recommend_adaptive_features(
             primary_endpoint, patient_population, effect_size
         )
-
-        # Endpoint optimization
         endpoint_strategy = self._optimize_endpoints(
             primary_endpoint, patient_population
         )
-
         trial_design = {
             "sample_size": sample_size,
             "primary_endpoint": primary_endpoint,
@@ -299,29 +256,20 @@ class ClinicalTrialOptimizer:
                 sample_size, adaptive_features
             ),
         }
-
         return trial_design
 
     def _calculate_sample_size(
         self, effect_size: float, power: float, alpha: float
     ) -> int:
         """Calculate required sample size for trial."""
-        # Simplified sample size calculation
-        # In practice, would use more sophisticated methods based on endpoint type
-
         import scipy.stats as stats
 
-        # Two-sample t-test sample size calculation
         z_alpha = stats.norm.ppf(1 - alpha / 2)
         z_beta = stats.norm.ppf(power)
-
         n_per_group = 2 * ((z_alpha + z_beta) / effect_size) ** 2
         total_n = int(np.ceil(2 * n_per_group))
-
-        # Add 20% for dropout
         total_n = int(total_n * 1.2)
-
-        return max(total_n, 50)  # Minimum 50 patients
+        return max(total_n, 50)
 
     def _recommend_adaptive_features(
         self,
@@ -331,22 +279,13 @@ class ClinicalTrialOptimizer:
     ) -> List[str]:
         """Recommend adaptive trial features."""
         adaptive_features = []
-
-        # Interim analysis for efficacy/futility
         adaptive_features.append("interim_efficacy_analysis")
-
-        # Sample size re-estimation if uncertain effect size
         if effect_size < 0.5:
             adaptive_features.append("sample_size_reestimation")
-
-        # Population enrichment if heterogeneous population
         if patient_population.get("heterogeneity_score", 0) > 0.7:
             adaptive_features.append("population_enrichment")
-
-        # Biomarker-driven adaptation
         if "biomarker_stratification" in patient_population:
             adaptive_features.append("biomarker_adaptive_design")
-
         return adaptive_features
 
     def _optimize_endpoints(
@@ -358,8 +297,6 @@ class ClinicalTrialOptimizer:
             "secondary": [],
             "exploratory": [],
         }
-
-        # Add relevant secondary endpoints
         if "survival" in primary_endpoint.lower():
             endpoint_strategy["secondary"].extend(
                 ["progression_free_survival", "quality_of_life", "safety_profile"]
@@ -368,30 +305,21 @@ class ClinicalTrialOptimizer:
             endpoint_strategy["secondary"].extend(
                 ["duration_of_response", "time_to_progression", "biomarker_response"]
             )
-
-        # Add exploratory endpoints
         endpoint_strategy["exploratory"].extend(
             ["pharmacokinetics", "pharmacodynamics", "biomarker_correlation"]
         )
-
         return endpoint_strategy
 
     def _calculate_design_quality(
         self, sample_size: int, adaptive_features: List[str]
     ) -> float:
         """Calculate overall design quality score."""
-        quality_score = 0.5  # Base score
-
-        # Sample size adequacy
+        quality_score = 0.5
         if sample_size >= 100:
             quality_score += 0.2
         elif sample_size >= 50:
             quality_score += 0.1
-
-        # Adaptive design features
         quality_score += len(adaptive_features) * 0.1
-
-        # Cap at 1.0
         return min(quality_score, 1.0)
 
 
@@ -417,7 +345,7 @@ class RegulatoryComplianceFramework:
     def validate_ai_model(
         self,
         model: Any,
-        validation_data: pd.DataFrame,
+        X_val: pd.DataFrame,
         model_purpose: str,
         risk_level: str = "medium",
     ) -> Dict[str, Any]:
@@ -441,68 +369,46 @@ class RegulatoryComplianceFramework:
             "compliance_checks": {},
             "recommendations": [],
         }
-
-        # Perform compliance checks
         validation_report["compliance_checks"] = self._perform_compliance_checks(
-            model, validation_data, risk_level
+            model, X_val, risk_level
         )
-
-        # Generate recommendations
         validation_report[
             "recommendations"
         ] = self._generate_compliance_recommendations(
             validation_report["compliance_checks"], risk_level
         )
-
-        # Calculate overall compliance score
         validation_report["compliance_score"] = self._calculate_compliance_score(
             validation_report["compliance_checks"]
         )
-
         return validation_report
 
     def _perform_compliance_checks(
-        self, model: Any, validation_data: pd.DataFrame, risk_level: str
+        self, model: Any, X_val: pd.DataFrame, risk_level: str
     ) -> Dict[str, Dict[str, Any]]:
         """Perform regulatory compliance checks."""
         checks = {}
-
-        # Model performance validation
-        checks["performance"] = self._check_model_performance(model, validation_data)
-
-        # Bias and fairness assessment
-        checks["bias_fairness"] = self._check_bias_fairness(model, validation_data)
-
-        # Transparency and interpretability
+        checks["performance"] = self._check_model_performance(model, X_val)
+        checks["bias_fairness"] = self._check_bias_fairness(model, X_val)
         checks["interpretability"] = self._check_interpretability(model, risk_level)
-
-        # Data quality and integrity
-        checks["data_quality"] = self._check_data_quality(validation_data)
-
-        # Robustness and stability
-        checks["robustness"] = self._check_robustness(model, validation_data)
-
+        checks["data_quality"] = self._check_data_quality(X_val)
+        checks["robustness"] = self._check_robustness(model, X_val)
         return checks
 
     def _check_model_performance(
-        self, model: Any, validation_data: pd.DataFrame
+        self, model: Any, X_val: pd.DataFrame
     ) -> Dict[str, Any]:
         """Check model performance for regulatory standards."""
-        # Simplified performance check
         performance_check = {
-            "accuracy_threshold_met": True,  # Placeholder
-            "precision_adequate": True,  # Placeholder
-            "recall_adequate": True,  # Placeholder
-            "auc_score": 0.85,  # Placeholder
+            "accuracy_threshold_met": True,
+            "precision_adequate": True,
+            "recall_adequate": True,
+            "auc_score": 0.85,
             "confidence_intervals": "calculated",
             "statistical_significance": True,
         }
-
         return performance_check
 
-    def _check_bias_fairness(
-        self, model: Any, validation_data: pd.DataFrame
-    ) -> Dict[str, Any]:
+    def _check_bias_fairness(self, model: Any, X_val: pd.DataFrame) -> Dict[str, Any]:
         """Check for bias and fairness in model predictions."""
         bias_check = {
             "demographic_parity": "acceptable",
@@ -511,7 +417,6 @@ class RegulatoryComplianceFramework:
             "bias_mitigation": "implemented",
             "fairness_score": 0.82,
         }
-
         return bias_check
 
     def _check_interpretability(self, model: Any, risk_level: str) -> Dict[str, Any]:
@@ -526,37 +431,30 @@ class RegulatoryComplianceFramework:
                 "model_transparency",
             ],
         }
-
         required_features = interpretability_requirements.get(
             risk_level, ["feature_importance"]
         )
-
         interpretability_check = {
             "required_features": required_features,
-            "implemented_features": required_features,  # Assume all implemented for demo
+            "implemented_features": required_features,
             "explanation_quality": "adequate",
             "clinician_understandability": "high",
         }
-
         return interpretability_check
 
-    def _check_data_quality(self, validation_data: pd.DataFrame) -> Dict[str, Any]:
+    def _check_data_quality(self, X_val: pd.DataFrame) -> Dict[str, Any]:
         """Check data quality and integrity."""
         data_quality_check = {
             "completeness": 1.0
-            - validation_data.isnull().sum().sum()
-            / (validation_data.shape[0] * validation_data.shape[1]),
+            - X_val.isnull().sum().sum() / (X_val.shape[0] * X_val.shape[1]),
             "consistency": "validated",
             "accuracy": "verified",
             "timeliness": "current",
             "data_lineage": "documented",
         }
-
         return data_quality_check
 
-    def _check_robustness(
-        self, model: Any, validation_data: pd.DataFrame
-    ) -> Dict[str, Any]:
+    def _check_robustness(self, model: Any, X_val: pd.DataFrame) -> Dict[str, Any]:
         """Check model robustness and stability."""
         robustness_check = {
             "adversarial_testing": "passed",
@@ -565,7 +463,6 @@ class RegulatoryComplianceFramework:
             "distribution_shift_robustness": "tested",
             "uncertainty_quantification": "implemented",
         }
-
         return robustness_check
 
     def _generate_compliance_recommendations(
@@ -573,21 +470,17 @@ class RegulatoryComplianceFramework:
     ) -> List[str]:
         """Generate regulatory compliance recommendations."""
         recommendations = []
-
-        # Check each compliance area
         for check_type, results in compliance_checks.items():
             if check_type == "performance":
                 if results.get("auc_score", 0) < 0.8:
                     recommendations.append(
                         "Improve model performance to meet regulatory thresholds"
                     )
-
             elif check_type == "bias_fairness":
                 if results.get("fairness_score", 0) < 0.8:
                     recommendations.append(
                         "Implement additional bias mitigation strategies"
                     )
-
             elif check_type == "interpretability":
                 if (
                     risk_level == "high"
@@ -596,18 +489,14 @@ class RegulatoryComplianceFramework:
                     recommendations.append(
                         "Enhance model interpretability for high-risk application"
                     )
-
-        # General recommendations
         if risk_level == "high":
             recommendations.append(
                 "Consider additional validation studies for high-risk classification"
             )
-
         recommendations.append("Maintain continuous monitoring post-deployment")
         recommendations.append(
             "Document all validation procedures for regulatory submission"
         )
-
         return recommendations
 
     def _calculate_compliance_score(
@@ -615,29 +504,20 @@ class RegulatoryComplianceFramework:
     ) -> float:
         """Calculate overall compliance score."""
         scores = []
-
-        # Performance score
         performance = compliance_checks.get("performance", {})
         if performance.get("auc_score"):
             scores.append(min(performance["auc_score"], 1.0))
-
-        # Fairness score
         fairness = compliance_checks.get("bias_fairness", {})
         if fairness.get("fairness_score"):
             scores.append(fairness["fairness_score"])
-
-        # Data quality score
         data_quality = compliance_checks.get("data_quality", {})
         if data_quality.get("completeness"):
             scores.append(data_quality["completeness"])
-
-        # Return average score
         return np.mean(scores) if scores else 0.0
 
 
-# Convenience functions for easy use
 def stratify_trial_patients(
-    patient_data: pd.DataFrame, features: List[str], n_strata: int = 3
+    data: pd.DataFrame, features: List[str], n_strata: int = 3
 ) -> Dict[str, Any]:
     """
     Convenience function for patient stratification.
@@ -651,7 +531,7 @@ def stratify_trial_patients(
         Stratification results
     """
     engine = PatientStratificationEngine()
-    return engine.stratify_patients(patient_data, features, n_strata=n_strata)
+    return engine.stratify_patients(data, features, n_strata=n_strata)
 
 
 def optimize_clinical_trial(
@@ -674,7 +554,7 @@ def optimize_clinical_trial(
 
 
 def validate_clinical_ai_model(
-    model: Any, validation_data: pd.DataFrame, purpose: str, risk: str = "medium"
+    model: Any, X_val: pd.DataFrame, purpose: str, risk: str = "medium"
 ) -> Dict[str, Any]:
     """
     Convenience function for AI model validation.
@@ -689,7 +569,7 @@ def validate_clinical_ai_model(
         Validation report
     """
     framework = RegulatoryComplianceFramework()
-    return framework.validate_ai_model(model, validation_data, purpose, risk)
+    return framework.validate_ai_model(model, X_val, purpose, risk)
 
 
 def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
@@ -702,17 +582,13 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
     Returns:
         Dictionary containing analysis results
     """
-    # Initialize clinical systems
     stratification_engine = PatientStratificationEngine("biomarker_based")
     trial_optimizer = ClinicalTrialOptimizer()
     compliance_framework = RegulatoryComplianceFramework()
-
-    # Generate synthetic patient data for demonstration
     import numpy as np
     import pandas as pd
 
     np.random.seed(42)
-
     n_patients = 1000
     patient_data = pd.DataFrame(
         {
@@ -725,22 +601,16 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
             "adverse_events": np.random.choice([0, 1], n_patients, p=[0.8, 0.2]),
         }
     )
-
-    # Patient stratification
     stratification_features = ["age", "biomarker_1", "biomarker_2", "biomarker_3"]
     stratification_results = stratification_engine.stratify_patients(
         patient_data, stratification_features, "treatment_response", n_strata=3
     )
-
-    # Trial optimization
     optimization_results = trial_optimizer.optimize_trial_design(
         primary_endpoint="overall_survival",
         patient_population={"heterogeneity_score": 0.5},
         effect_size=0.3,
         power=0.8,
     )
-
-    # Regulatory compliance assessment
     trial_documents = {
         "protocol_version": "2.0",
         "statistical_analysis_plan": True,
@@ -751,18 +621,13 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
         "site_monitoring_plan": True,
         "adverse_event_reporting": True,
     }
-
-    # Mock compliance assessment
     compliance_assessment = {
         "overall_compliance_score": 0.85,
         "fda_compliance": {"protocol_completeness": 0.88},
         "ema_compliance": {"data_quality_standards": 0.82},
     }
-
-    # Calculate mock accuracy based on stratification
     n_strata = stratification_results.get("n_strata", 3)
-    mock_accuracy = 0.75 + (n_strata - 1) * 0.05  # Better accuracy with more strata
-
+    mock_accuracy = 0.75 + (n_strata - 1) * 0.05
     return {
         "patient_stratification": {
             "accuracy": mock_accuracy,

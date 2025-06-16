@@ -61,7 +61,7 @@ def handle_exceptions(
 
     def decorator(func: F) -> F:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
             try:
                 return func(*args, **kwargs)
             except exceptions as e:
@@ -145,7 +145,7 @@ def validate_numeric_range(
 
 
 @contextmanager
-def error_context(operation: str):
+def error_context(operation: str) -> None:
     """
     Context manager for consistent error handling and logging.
 

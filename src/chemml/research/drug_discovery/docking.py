@@ -44,7 +44,7 @@ class TargetAnalysis:
 class ProteinAnalyzer:
     """Analyze protein structures for drug design."""
 
-    def __init__(self, analysis_method: str = "comprehensive"):
+    def __init__(self, analysis_method: str = "comprehensive") -> None:
         """
         Initialize protein analyzer.
 

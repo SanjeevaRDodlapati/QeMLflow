@@ -11,7 +11,6 @@ Key Features:
 - Integration with popular ML libraries
 - Experiment tracking and reproducibility
 """
-
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -20,13 +19,10 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, roc_auc_score
-
-# Core ML libraries
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC, SVR
 
-# Optional deep learning imports
 try:
     import torch
     import torch.nn as nn
@@ -34,7 +30,6 @@ try:
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
-
 try:
     import wandb
 
@@ -46,7 +41,7 @@ except ImportError:
 class BaseModel(ABC):
     """Abstract base class for all ChemML models."""
 
-    def __init__(self, task_type: str = "regression", **kwargs):
+    def __init__(self, task_type: str = "regression", **kwargs) -> None:
         """
         Initialize base model.
 
@@ -72,24 +67,20 @@ class BaseModel(ABC):
     def evaluate(self, X: np.ndarray, y: np.ndarray) -> Dict[str, float]:
         """Evaluate model performance."""
         predictions = self.predict(X)
-
         if self.task_type == "regression":
             mse = mean_squared_error(y, predictions)
             r2 = r2_score(y, predictions)
             rmse = np.sqrt(mse)
             return {"mse": mse, "rmse": rmse, "r2": r2}
-        else:  # classification
+        else:
             accuracy = accuracy_score(y, predictions)
             metrics = {"accuracy": accuracy}
-
-            # Add AUC for binary classification
             try:
                 if len(np.unique(y)) == 2:
                     auc = roc_auc_score(y, predictions)
                     metrics["auc"] = auc
-            except:
+            except Exception:
                 pass
-
             return metrics
 
 
@@ -119,36 +110,26 @@ class LinearModel(BaseModel):
         self.regularization = regularization
         self.alpha = alpha
         self.normalize_features = normalize_features
-
-        # Select model type
         if regularization == "ridge":
             self.model = Ridge(alpha=alpha)
         elif regularization == "lasso":
             self.model = Lasso(alpha=alpha)
         else:
             self.model = LinearRegression()
-
         if normalize_features:
             self.scaler = StandardScaler()
 
     def fit(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, float]:
         """Fit linear model to data."""
-        # Normalize features if requested
         if self.scaler is not None:
             X_scaled = self.scaler.fit_transform(X)
         else:
             X_scaled = X
-
-        # Split data for validation
         X_train, X_val, y_train, y_val = train_test_split(
             X_scaled, y, test_size=0.2, random_state=42
         )
-
-        # Fit model
         self.model.fit(X_train, y_train)
         self.is_fitted = True
-
-        # Evaluate on validation set
         val_metrics = self.evaluate(X_val, y_val)
         return val_metrics
 
@@ -156,12 +137,10 @@ class LinearModel(BaseModel):
         """Make predictions."""
         if not self.is_fitted:
             raise ValueError("Model must be fitted before making predictions")
-
         if self.scaler is not None:
             X_scaled = self.scaler.transform(X)
         else:
             X_scaled = X
-
         return self.model.predict(X_scaled)
 
 
@@ -191,8 +170,6 @@ class RandomForestModel(BaseModel):
         self.n_estimators = n_estimators
         self.max_depth = max_depth
         self.random_state = random_state
-
-        # Select model based on task type
         if self.task_type == "regression":
             self.model = RandomForestRegressor(
                 n_estimators=n_estimators,
@@ -208,16 +185,11 @@ class RandomForestModel(BaseModel):
 
     def fit(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, float]:
         """Fit Random Forest model."""
-        # Split data for validation
         X_train, X_val, y_train, y_val = train_test_split(
             X, y, test_size=0.2, random_state=42
         )
-
-        # Fit model
         self.model.fit(X_train, y_train)
         self.is_fitted = True
-
-        # Evaluate on validation set
         val_metrics = self.evaluate(X_val, y_val)
         return val_metrics
 
@@ -225,7 +197,6 @@ class RandomForestModel(BaseModel):
         """Make predictions."""
         if not self.is_fitted:
             raise ValueError("Model must be fitted before making predictions")
-
         return self.model.predict(X)
 
     def get_feature_importance(self) -> np.ndarray:
@@ -264,34 +235,24 @@ class SVMModel(BaseModel):
         self.C = C
         self.gamma = gamma
         self.normalize_features = normalize_features
-
-        # Select model based on task type
         if self.task_type == "regression":
             self.model = SVR(kernel=kernel, C=C, gamma=gamma)
         else:
             self.model = SVC(kernel=kernel, C=C, gamma=gamma)
-
         if normalize_features:
             self.scaler = StandardScaler()
 
     def fit(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, float]:
         """Fit SVM model."""
-        # Normalize features if requested
         if self.scaler is not None:
             X_scaled = self.scaler.fit_transform(X)
         else:
             X_scaled = X
-
-        # Split data for validation
         X_train, X_val, y_train, y_val = train_test_split(
             X_scaled, y, test_size=0.2, random_state=42
         )
-
-        # Fit model
         self.model.fit(X_train, y_train)
         self.is_fitted = True
-
-        # Evaluate on validation set
         val_metrics = self.evaluate(X_val, y_val)
         return val_metrics
 
@@ -299,16 +260,13 @@ class SVMModel(BaseModel):
         """Make predictions."""
         if not self.is_fitted:
             raise ValueError("Model must be fitted before making predictions")
-
         if self.scaler is not None:
             X_scaled = self.scaler.transform(X)
         else:
             X_scaled = X
-
         return self.model.predict(X_scaled)
 
 
-# Deep Learning Models (if PyTorch available)
 if HAS_TORCH:
 
     class NeuralNetwork(BaseModel, nn.Module):
@@ -335,16 +293,12 @@ if HAS_TORCH:
             """
             BaseModel.__init__(self, **kwargs)
             nn.Module.__init__(self)
-
             self.input_dim = input_dim
             self.hidden_dims = hidden_dims
             self.output_dim = output_dim
             self.dropout_rate = dropout_rate
-
-            # Build network layers
             layers = []
             prev_dim = input_dim
-
             for hidden_dim in hidden_dims:
                 layers.extend(
                     [
@@ -354,13 +308,11 @@ if HAS_TORCH:
                     ]
                 )
                 prev_dim = hidden_dim
-
             layers.append(nn.Linear(prev_dim, output_dim))
-
             self.network = nn.Sequential(*layers)
             self.scaler = StandardScaler()
 
-        def forward(self, x):
+        def forward(self, x) -> Any:
             """Forward pass."""
             return self.network(x)
 
@@ -374,29 +326,20 @@ if HAS_TORCH:
             **kwargs,
         ) -> Dict[str, float]:
             """Fit neural network."""
-            # Normalize features
             X_scaled = self.scaler.fit_transform(X)
-
-            # Split data
             X_train, X_val, y_train, y_val = train_test_split(
                 X_scaled, y, test_size=0.2, random_state=42
             )
-
-            # Convert to tensors
             X_train_tensor = torch.FloatTensor(X_train)
             y_train_tensor = torch.FloatTensor(y_train.reshape(-1, 1))
             X_val_tensor = torch.FloatTensor(X_val)
             y_val_tensor = torch.FloatTensor(y_val.reshape(-1, 1))
-
-            # Setup training
             optimizer = torch.optim.Adam(self.parameters(), lr=learning_rate)
             criterion = (
                 nn.MSELoss()
                 if self.task_type == "regression"
                 else nn.CrossEntropyLoss()
             )
-
-            # Training loop
             self.train()
             for epoch in range(epochs):
                 optimizer.zero_grad()
@@ -404,44 +347,35 @@ if HAS_TORCH:
                 loss = criterion(outputs, y_train_tensor)
                 loss.backward()
                 optimizer.step()
-
             self.is_fitted = True
-
-            # Evaluate on validation set
             self.eval()
             with torch.no_grad():
                 val_outputs = self.forward(X_val_tensor)
                 val_predictions = val_outputs.numpy().flatten()
-
             val_metrics = {}
             if self.task_type == "regression":
                 mse = mean_squared_error(y_val, val_predictions)
                 r2 = r2_score(y_val, val_predictions)
                 val_metrics = {"mse": mse, "r2": r2, "rmse": np.sqrt(mse)}
-
             return val_metrics
 
         def predict(self, X: np.ndarray) -> np.ndarray:
             """Make predictions."""
             if not self.is_fitted:
                 raise ValueError("Model must be fitted before making predictions")
-
             X_scaled = self.scaler.transform(X)
             X_tensor = torch.FloatTensor(X_scaled)
-
             self.eval()
             with torch.no_grad():
                 outputs = self.forward(X_tensor)
                 return outputs.numpy().flatten()
 
 
-# Experiment tracking utilities
-def setup_experiment_tracking(experiment_name: str, config: Dict = None):
+def setup_experiment_tracking(experiment_name: str, config: Dict = None) -> Any:
     """Setup experiment tracking with Weights & Biases."""
     if not HAS_WANDB:
         print("Warning: wandb not available. Install with: pip install wandb")
         return None
-
     try:
         run = wandb.init(
             project="chemml-experiments",
@@ -456,13 +390,12 @@ def setup_experiment_tracking(experiment_name: str, config: Dict = None):
         return None
 
 
-def log_metrics(metrics: Dict[str, float], step: Optional[int] = None):
+def log_metrics(metrics: Dict[str, float], step: Optional[int] = None) -> None:
     """Log metrics to experiment tracker."""
     if HAS_WANDB and wandb.run is not None:
         wandb.log(metrics, step=step)
 
 
-# Model comparison utilities
 def compare_models(
     models: Dict[str, BaseModel], X: np.ndarray, y: np.ndarray
 ) -> pd.DataFrame:
@@ -478,11 +411,8 @@ def compare_models(
         DataFrame with comparison results
     """
     results = []
-
     for name, model in models.items():
         print(f"Training {name}...")
-
-        # Fit model and get metrics
         try:
             metrics = model.fit(X, y)
             metrics["model"] = name
@@ -490,11 +420,9 @@ def compare_models(
         except Exception as e:
             print(f"Error training {name}: {e}")
             continue
-
     return pd.DataFrame(results)
 
 
-# Convenience functions for quick model creation
 def create_linear_model(regularization: str = "none", **kwargs) -> LinearModel:
     """Create a linear regression model."""
     return LinearModel(regularization=regularization, **kwargs)
@@ -517,7 +445,6 @@ if HAS_TORCH:
         return NeuralNetwork(input_dim=input_dim, **kwargs)
 
 
-# Export main classes and functions
 __all__ = [
     "BaseModel",
     "LinearModel",
@@ -530,6 +457,5 @@ __all__ = [
     "create_rf_model",
     "create_svm_model",
 ]
-
 if HAS_TORCH:
     __all__.extend(["NeuralNetwork", "create_neural_network"])

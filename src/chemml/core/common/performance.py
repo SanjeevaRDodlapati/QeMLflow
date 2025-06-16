@@ -43,7 +43,7 @@ class PerformanceMonitor:
 
     _instance: Optional["PerformanceMonitor"] = None
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.metrics_history: Dict[str, list] = defaultdict(list)
         self.logger = logging.getLogger(__name__)
         self.process = psutil.Process()
@@ -55,7 +55,7 @@ class PerformanceMonitor:
             cls._instance = cls()
         return cls._instance
 
-    def record_metrics(self, metrics: PerformanceMetrics):
+    def record_metrics(self, metrics: PerformanceMetrics) -> None:
         """Record performance metrics."""
         self.metrics_history[metrics.function_name].append(metrics)
 
@@ -101,7 +101,7 @@ class PerformanceMonitor:
 
         return summary
 
-    def clear_history(self):
+    def clear_history(self) -> None:
         """Clear all performance metrics history."""
         self.metrics_history.clear()
 
@@ -123,7 +123,7 @@ def monitor_performance(
             return func
 
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
             monitor = PerformanceMonitor.get_instance()
 
             # Start monitoring
@@ -198,7 +198,7 @@ def monitor_performance(
 
 
 @contextmanager
-def performance_context(operation_name: str):
+def performance_context(operation_name: str) -> None:
     """
     Context manager for monitoring performance of code blocks.
 
@@ -270,7 +270,7 @@ def get_system_info() -> Dict[str, Any]:
         return {}
 
 
-def log_performance_summary():
+def log_performance_summary() -> None:
     """Log a summary of all performance metrics."""
     monitor = PerformanceMonitor.get_instance()
     summary = monitor.get_summary()

@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](docs/GET_STARTED.md)
+[![Status](https://img.shields.io/badge/status-production%20ready-green.svg)](PROJECT_STATUS_CONSOLIDATED.md)
 
 ---
 
@@ -79,6 +80,31 @@
 - **[📖 API Reference](docs/API_REFERENCE.md)** - Complete framework documentation
 - **[📖 Complete Reference](docs/REFERENCE.md)** - Technical deep-dive & troubleshooting
 - **[🔧 Installation Guide](docs/GET_STARTED.md#installation)** - Environment setup
+
+---
+
+## ⚡ Installation
+
+### Quick Setup
+```bash
+git clone https://github.com/yourusername/ChemML.git
+cd ChemML
+pip install -r requirements-core.txt  # Core dependencies
+# OR
+pip install -r requirements.txt       # Full development environment
+```
+
+### Environment Setup
+```bash
+# Run the enhanced setup script
+bash scripts/setup/setup_enhanced_development.sh
+```
+
+### Development Setup
+```bash
+# Quick development environment
+python scripts/development/quick_dev.py setup
+```
 
 ---
 

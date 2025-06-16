@@ -5,7 +5,6 @@ ChemML Intelligent Model Recommendation System
 AI-powered system that recommends optimal models based on data characteristics,
 task requirements, and computational constraints.
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -16,13 +15,13 @@ import pandas as pd
 class ModelRecommendationEngine:
     """AI-powered model recommendation for molecular ML tasks."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.model_database = self._build_model_database()
         self.recommendation_history = []
 
     def recommend_best_model(
         self,
-        molecular_data: Union[List[str], np.ndarray, pd.DataFrame],
+        molecules: Union[List[str], np.ndarray, pd.DataFrame],
         target_property: str,
         task_type: str = "auto",
         computational_budget: str = "medium",
@@ -51,20 +50,10 @@ class ModelRecommendationEngine:
         --------
         Dict with recommended model, rationale, and configuration
         """
-
-        # Analyze data characteristics
-        data_profile = self._analyze_data_characteristics(
-            molecular_data, target_property
-        )
-
-        # Detect task type if auto
+        data_profile = self._analyze_data_characteristics(molecules, target_property)
         if task_type == "auto":
-            task_type = self._detect_task_type(molecular_data, target_property)
-
-        # Get model candidates
+            task_type = self._detect_task_type(molecules, target_property)
         candidates = self._get_model_candidates(data_profile, task_type)
-
-        # Score and rank models
         scored_models = self._score_models(
             candidates,
             data_profile,
@@ -72,14 +61,8 @@ class ModelRecommendationEngine:
             accuracy_priority,
             speed_priority,
         )
-
-        # Select best model
         best_model = scored_models[0]
-
-        # Generate configuration
         config = self._generate_model_config(best_model, data_profile)
-
-        # Create recommendation
         recommendation = {
             "recommended_model": best_model["name"],
             "model_type": best_model["type"],
@@ -92,17 +75,13 @@ class ModelRecommendationEngine:
                 best_model, data_profile
             ),
         }
-
-        # Store recommendation
         self.recommendation_history.append(recommendation)
-
         return recommendation
 
     def _analyze_data_characteristics(
-        self, molecular_data: Any, target_property: str
+        self, molecules: Any, target_property: str
     ) -> Dict[str, Any]:
         """Analyze molecular data to extract characteristics."""
-
         profile = {
             "dataset_size": 0,
             "feature_dimension": 0,
@@ -116,62 +95,50 @@ class ModelRecommendationEngine:
             "sparsity": 0.0,
             "class_balance": None,
         }
-
         try:
-            # Handle different data types
-            if isinstance(molecular_data, list):
-                profile["dataset_size"] = len(molecular_data)
+            if isinstance(molecules, list):
+                profile["dataset_size"] = len(molecules)
                 profile["data_type"] = (
                     "smiles"
-                    if all(isinstance(x, str) for x in molecular_data[:10])
+                    if all(isinstance(x, str) for x in molecules[:10])
                     else "mixed"
                 )
                 profile["is_sequence_data"] = profile["data_type"] == "smiles"
-
-                # Check for graph structure indicators
                 if profile["data_type"] == "smiles":
                     profile["has_graph_structure"] = True
                     profile["molecular_complexity"] = self._assess_molecular_complexity(
-                        molecular_data[:100]
+                        molecules[:100]
                     )
-
-            elif isinstance(molecular_data, np.ndarray):
-                profile["dataset_size"] = len(molecular_data)
+            elif isinstance(molecules, np.ndarray):
+                profile["dataset_size"] = len(molecules)
                 profile["feature_dimension"] = (
-                    molecular_data.shape[1] if len(molecular_data.shape) > 1 else 1
+                    molecules.shape[1] if len(molecules.shape) > 1 else 1
                 )
-                profile["has_missing_values"] = np.isnan(molecular_data).any()
+                profile["has_missing_values"] = np.isnan(molecules).any()
                 profile["sparsity"] = (
-                    np.mean(molecular_data == 0)
-                    if molecular_data.dtype in [np.float32, np.float64]
+                    np.mean(molecules == 0)
+                    if molecules.dtype in [np.float32, np.float64]
                     else 0
                 )
                 profile["data_type"] = "features"
-
-            elif isinstance(molecular_data, pd.DataFrame):
-                profile["dataset_size"] = len(molecular_data)
-                profile["feature_dimension"] = len(molecular_data.columns)
-                profile["has_missing_values"] = molecular_data.isnull().any().any()
+            elif isinstance(molecules, pd.DataFrame):
+                profile["dataset_size"] = len(molecules)
+                profile["feature_dimension"] = len(molecules.columns)
+                profile["has_missing_values"] = molecules.isnull().any().any()
                 profile["data_type"] = "dataframe"
-
-                # Check for SMILES column
                 smiles_cols = [
-                    col for col in molecular_data.columns if "smiles" in col.lower()
+                    col for col in molecules.columns if "smiles" in col.lower()
                 ]
                 if smiles_cols:
                     profile["is_sequence_data"] = True
                     profile["has_graph_structure"] = True
-
         except Exception as e:
             warnings.warn(f"Could not fully analyze data: {e}")
-
         return profile
 
     def _categorize_property(self, target_property: str) -> str:
         """Categorize the target property type."""
         property_lower = target_property.lower()
-
-        # ADMET properties
         if any(
             term in property_lower
             for term in [
@@ -184,22 +151,16 @@ class ModelRecommendationEngine:
             ]
         ):
             return "admet"
-
-        # Physicochemical properties
         if any(
             term in property_lower
             for term in ["logp", "solubility", "mw", "molecular_weight", "pka", "polar"]
         ):
             return "physicochemical"
-
-        # Biological activity
         if any(
             term in property_lower
             for term in ["activity", "ic50", "ki", "binding", "inhibition", "potency"]
         ):
             return "biological_activity"
-
-        # Quantum properties
         if any(
             term in property_lower
             for term in [
@@ -212,14 +173,11 @@ class ModelRecommendationEngine:
             ]
         ):
             return "quantum"
-
-        # Toxicity
         if any(
             term in property_lower
             for term in ["toxic", "mutagenic", "carcinogenic", "ames"]
         ):
             return "toxicity"
-
         return "general"
 
     def _assess_molecular_complexity(self, smiles_list: List[str]) -> str:
@@ -230,42 +188,33 @@ class ModelRecommendationEngine:
             )
             ring_indicators = np.mean(
                 [
-                    smiles.count("c") + smiles.count("C")
+                    (smiles.count("c") + smiles.count("C"))
                     for smiles in smiles_list[:50]
                     if isinstance(smiles, str)
                 ]
             )
-
             if avg_length > 50 or ring_indicators > 20:
                 return "high"
             elif avg_length > 25 or ring_indicators > 10:
                 return "medium"
             else:
                 return "low"
-        except:
+        except Exception:
             return "medium"
 
-    def _detect_task_type(self, molecular_data: Any, target_property: str) -> str:
+    def _detect_task_type(self, molecules: Any, target_property: str) -> str:
         """Auto-detect whether task is classification or regression."""
-
-        # Use property name to infer task type
         property_lower = target_property.lower()
-
-        # Classification indicators
         if any(
             term in property_lower
             for term in ["toxic", "active", "mutagenic", "class", "category", "binary"]
         ):
             return "classification"
-
-        # Regression indicators
         if any(
             term in property_lower
             for term in ["logp", "ic50", "ki", "solubility", "mw", "energy", "value"]
         ):
             return "regression"
-
-        # Default to regression for continuous-sounding properties
         return "regression"
 
     def _build_model_database(self) -> List[Dict[str, Any]]:
@@ -405,43 +354,33 @@ class ModelRecommendationEngine:
     ) -> List[Dict[str, Any]]:
         """Get candidate models based on data characteristics."""
         candidates = []
-
         for model in self.model_database:
-            # Check dataset size constraints
-            if not (
-                model["min_dataset_size"]
+            if (
+                not model["min_dataset_size"]
                 <= data_profile["dataset_size"]
                 <= model["max_dataset_size"]
             ):
                 continue
-
-            # Check special requirements
             if (
                 model.get("requires_graph", False)
                 and not data_profile["has_graph_structure"]
             ):
                 continue
-
             if (
                 model.get("requires_sequence", False)
                 and not data_profile["is_sequence_data"]
             ):
                 continue
-
-            # Check if suitable for property type (more lenient)
             if (
                 data_profile["property_category"] in model["suitable_properties"]
                 or "general" in model["suitable_properties"]
             ):
                 candidates.append(model)
-
-        # If no candidates found, return most suitable general models
         if not candidates:
             general_models = [
                 m for m in self.model_database if "general" in m["suitable_properties"]
             ]
             candidates = sorted(general_models, key=lambda x: x["min_dataset_size"])[:3]
-
         return candidates
 
     def _score_models(
@@ -453,13 +392,11 @@ class ModelRecommendationEngine:
         speed_priority: float,
     ) -> List[Dict[str, Any]]:
         """Score and rank model candidates."""
-
         budget_scores = {
             "low": {"very_low": 1.0, "low": 0.8, "medium": 0.3, "high": 0.1},
             "medium": {"very_low": 0.8, "low": 1.0, "medium": 1.0, "high": 0.6},
             "high": {"very_low": 0.6, "low": 0.8, "medium": 1.0, "high": 1.0},
         }
-
         accuracy_scores = {"low": 0.3, "medium": 0.6, "high": 0.8, "very_high": 1.0}
         speed_scores = {
             "very_slow": 0.2,
@@ -468,35 +405,22 @@ class ModelRecommendationEngine:
             "fast": 0.8,
             "very_fast": 1.0,
         }
-
         scored_candidates = []
-
         for model in candidates:
-            # Base accuracy score
             accuracy_score = accuracy_scores.get(model["accuracy_tier"], 0.5)
-
-            # Speed score
             speed_score = speed_scores.get(model["training_speed"], 0.5)
-
-            # Computational budget compatibility
             budget_score = budget_scores[computational_budget].get(
                 model["computational_cost"], 0.5
             )
-
-            # Data size bonus
             dataset_size = data_profile["dataset_size"]
             size_bonus = 1.0
             if dataset_size < 1000 and model["type"] == "classical":
                 size_bonus = 1.2
             elif dataset_size > 10000 and model["type"] == "deep_learning":
                 size_bonus = 1.2
-
-            # Property-specific bonus
             property_bonus = 1.0
             if data_profile["property_category"] in model["suitable_properties"]:
                 property_bonus = 1.1
-
-            # Calculate final score
             final_score = (
                 (
                     accuracy_priority * accuracy_score
@@ -506,22 +430,17 @@ class ModelRecommendationEngine:
                 * size_bonus
                 * property_bonus
             )
-
             scored_candidate = model.copy()
             scored_candidate["score"] = final_score
             scored_candidates.append(scored_candidate)
-
-        # Sort by score (descending)
         return sorted(scored_candidates, key=lambda x: x["score"], reverse=True)
 
     def _generate_model_config(
         self, model: Dict[str, Any], data_profile: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Generate optimal configuration for the recommended model."""
-
         dataset_size = data_profile["dataset_size"]
         feature_dim = data_profile["feature_dimension"]
-
         if model["name"] == "Random Forest":
             return {
                 "n_estimators": min(200, max(50, dataset_size // 10)),
@@ -529,7 +448,6 @@ class ModelRecommendationEngine:
                 "min_samples_split": max(2, dataset_size // 1000),
                 "random_state": 42,
             }
-
         elif model["name"] == "Gradient Boosting (XGBoost)":
             return {
                 "n_estimators": min(500, max(100, dataset_size // 5)),
@@ -537,7 +455,6 @@ class ModelRecommendationEngine:
                 "learning_rate": 0.1 if dataset_size < 10000 else 0.05,
                 "random_state": 42,
             }
-
         elif "Neural Network" in model["name"]:
             hidden_size = min(512, max(64, feature_dim * 2))
             return {
@@ -547,7 +464,6 @@ class ModelRecommendationEngine:
                 "epochs": 100 if dataset_size < 10000 else 50,
                 "dropout": 0.2,
             }
-
         elif "Graph" in model["name"]:
             return {
                 "hidden_dim": 128,
@@ -558,7 +474,6 @@ class ModelRecommendationEngine:
                 "learning_rate": 0.001,
                 "epochs": 200,
             }
-
         else:
             return {"random_state": 42}
 
@@ -566,56 +481,38 @@ class ModelRecommendationEngine:
         self, model: Dict[str, Any], data_profile: Dict[str, Any]
     ) -> str:
         """Generate human-readable rationale for the recommendation."""
-
         reasons = []
-
-        # Dataset size reasoning
         size = data_profile["dataset_size"]
         if size < 1000:
             reasons.append(f"Small dataset ({size} samples) favors classical methods")
         elif size > 10000:
             reasons.append(f"Large dataset ({size} samples) can leverage deep learning")
-
-        # Data type reasoning
         if data_profile["has_graph_structure"] and "Graph" in model["name"]:
             reasons.append(
                 "Molecular graph structure detected - graph neural networks excel here"
             )
-
         if data_profile["is_sequence_data"] and "Transformer" in model["name"]:
             reasons.append("Sequence data (SMILES) detected - transformers are optimal")
-
-        # Property-specific reasoning
         prop_cat = data_profile["property_category"]
         if prop_cat == "quantum" and model["accuracy_tier"] == "very_high":
             reasons.append("Quantum properties require high-accuracy models")
-
-        # Performance reasoning
         reasons.append(
             f"Model offers {model['accuracy_tier']} accuracy with {model['training_speed']} training"
         )
-
         return " • ".join(reasons)
 
     def _estimate_performance(
         self, model: Dict[str, Any], data_profile: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Estimate expected model performance."""
-
-        # Base performance estimates (rough heuristics)
         base_accuracy = {"low": 0.6, "medium": 0.75, "high": 0.85, "very_high": 0.92}[
             model["accuracy_tier"]
         ]
-
-        # Adjust based on data characteristics
-        size_factor = min(1.1, 0.8 + (data_profile["dataset_size"] / 10000) * 0.3)
+        size_factor = min(1.1, 0.8 + data_profile["dataset_size"] / 10000 * 0.3)
         complexity_factor = {"low": 1.0, "medium": 0.95, "high": 0.9}[
             data_profile["molecular_complexity"]
         ]
-
         estimated_accuracy = base_accuracy * size_factor * complexity_factor
-
-        # Estimate training time (in minutes)
         time_estimates = {
             "very_fast": 1,
             "fast": 5,
@@ -626,7 +523,6 @@ class ModelRecommendationEngine:
         base_time = time_estimates[model["training_speed"]]
         size_time_factor = max(1.0, np.log10(data_profile["dataset_size"]) / 3)
         estimated_time = base_time * size_time_factor
-
         return {
             "estimated_accuracy": round(estimated_accuracy, 3),
             "confidence_interval": [
@@ -643,15 +539,12 @@ class ModelRecommendationEngine:
         self, model: Dict[str, Any], data_profile: Dict[str, Any]
     ) -> str:
         """Estimate memory requirements."""
-
         size = data_profile["dataset_size"]
-
         if model["type"] == "classical":
             if size < 10000:
                 return "Low (< 1GB)"
             else:
                 return "Medium (1-4GB)"
-
         elif model["type"] == "deep_learning":
             if size < 5000:
                 return "Medium (2-4GB)"
@@ -659,7 +552,6 @@ class ModelRecommendationEngine:
                 return "High (4-8GB)"
             else:
                 return "Very High (8GB+)"
-
         return "Medium (1-4GB)"
 
     def get_recommendation_history(self) -> List[Dict[str, Any]]:
@@ -668,40 +560,33 @@ class ModelRecommendationEngine:
 
     def compare_models(
         self,
-        molecular_data: Any,
+        molecules: Any,
         target_property: str,
         models_to_compare: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         """Compare multiple models for the same dataset."""
-
         if models_to_compare is None:
-            # Get top 3 recommendations
-            recommendation = self.recommend_best_model(molecular_data, target_property)
+            recommendation = self.recommend_best_model(molecules, target_property)
             models_to_compare = [recommendation["recommended_model"]] + recommendation[
                 "alternatives"
             ][:2]
-
         comparisons = {}
-
         for model_name in models_to_compare:
-            # Find model in database
             model_info = next(
                 (m for m in self.model_database if m["name"] == model_name), None
             )
             if model_info:
                 data_profile = self._analyze_data_characteristics(
-                    molecular_data, target_property
+                    molecules, target_property
                 )
                 config = self._generate_model_config(model_info, data_profile)
                 performance = self._estimate_performance(model_info, data_profile)
-
                 comparisons[model_name] = {
                     "configuration": config,
                     "estimated_performance": performance,
                     "pros": self._get_model_pros(model_info, data_profile),
                     "cons": self._get_model_cons(model_info, data_profile),
                 }
-
         return {
             "comparison": comparisons,
             "recommendation": "Choose based on your priorities: accuracy vs speed vs interpretability",
@@ -712,22 +597,16 @@ class ModelRecommendationEngine:
     ) -> List[str]:
         """Get advantages of a model for the given data."""
         pros = []
-
         if model["accuracy_tier"] in ["high", "very_high"]:
             pros.append("High accuracy potential")
-
         if model["training_speed"] in ["fast", "very_fast"]:
             pros.append("Fast training")
-
         if model.get("handles_missing", False):
             pros.append("Handles missing values")
-
         if model["type"] == "classical":
             pros.append("Good interpretability")
-
         if model["type"] == "deep_learning" and data_profile["dataset_size"] > 10000:
             pros.append("Can learn complex patterns")
-
         return pros
 
     def _get_model_cons(
@@ -735,33 +614,26 @@ class ModelRecommendationEngine:
     ) -> List[str]:
         """Get disadvantages of a model for the given data."""
         cons = []
-
         if model["computational_cost"] == "high":
             cons.append("High computational requirements")
-
         if model["training_speed"] in ["slow", "very_slow"]:
             cons.append("Slow training")
-
         if not model.get("handles_missing", True):
             cons.append("Requires clean data (no missing values)")
-
         if model["type"] == "deep_learning" and data_profile["dataset_size"] < 1000:
             cons.append("May overfit on small datasets")
-
         if model["accuracy_tier"] == "low":
             cons.append("Limited accuracy potential")
-
         return cons
 
 
-# Convenience functions
-def recommend_model(molecular_data, target_property, **kwargs):
+def recommend_model(molecules, target_property, **kwargs) -> Any:
     """Quick model recommendation function."""
     engine = ModelRecommendationEngine()
-    return engine.recommend_best_model(molecular_data, target_property, **kwargs)
+    return engine.recommend_best_model(molecules, target_property, **kwargs)
 
 
-def compare_models(molecular_data, target_property, models=None):
+def compare_models(molecules, target_property, models=None):
     """Quick model comparison function."""
     engine = ModelRecommendationEngine()
-    return engine.compare_models(molecular_data, target_property, models)
+    return engine.compare_models(molecules, target_property, models)

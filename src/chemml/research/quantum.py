@@ -11,13 +11,11 @@ Key Features:
 - Quantum chemistry simulation tools
 - Hybrid classical-quantum models
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
-# Optional quantum computing imports
 try:
     from qiskit import QuantumCircuit, transpile
     from qiskit.circuit import Parameter, ParameterVector
@@ -27,15 +25,12 @@ try:
     HAS_QISKIT = True
 except ImportError:
     HAS_QISKIT = False
-
 try:
     import cirq
 
     HAS_CIRQ = True
 except ImportError:
     HAS_CIRQ = False
-
-# Machine learning imports
 try:
     import torch
     import torch.nn as nn
@@ -52,7 +47,7 @@ class QuantumMolecularEncoder:
     Maps molecular features to quantum states for quantum ML applications.
     """
 
-    def __init__(self, n_qubits: int = 8, encoding: str = "amplitude"):
+    def __init__(self, n_qubits: int = 8, encoding: str = "amplitude") -> None:
         """
         Initialize quantum molecular encoder.
 
@@ -62,7 +57,6 @@ class QuantumMolecularEncoder:
         """
         self.n_qubits = n_qubits
         self.encoding = encoding
-
         if not HAS_QISKIT:
             warnings.warn("Qiskit not available. Using mock implementation.")
 
@@ -78,34 +72,23 @@ class QuantumMolecularEncoder:
         """
         if not HAS_QISKIT:
             return self._mock_encode_features(features)
-
         circuits = []
-
         for feature_vector in features:
             circuit = QuantumCircuit(self.n_qubits)
-
             if self.encoding == "amplitude":
-                # Amplitude encoding
                 normalized_features = self._normalize_for_amplitude_encoding(
                     feature_vector
                 )
                 circuit = self._amplitude_encode(circuit, normalized_features)
-
             elif self.encoding == "angle":
-                # Angle encoding
                 circuit = self._angle_encode(circuit, feature_vector)
-
             elif self.encoding == "basis":
-                # Basis encoding
                 circuit = self._basis_encode(circuit, feature_vector)
-
             circuits.append(circuit)
-
         return circuits
 
     def _normalize_for_amplitude_encoding(self, features: np.ndarray) -> np.ndarray:
         """Normalize features for amplitude encoding."""
-        # Ensure the vector is normalized for quantum state preparation
         norm = np.linalg.norm(features)
         if norm > 0:
             return features / norm
@@ -116,14 +99,11 @@ class QuantumMolecularEncoder:
         self, circuit: "QuantumCircuit", features: np.ndarray
     ) -> "QuantumCircuit":
         """Encode features using amplitude encoding."""
-        # Truncate or pad features to match 2^n_qubits
         n_amplitudes = 2**self.n_qubits
         if len(features) > n_amplitudes:
             features = features[:n_amplitudes]
         else:
             features = np.pad(features, (0, n_amplitudes - len(features)))
-
-        # Initialize quantum state with amplitudes
         circuit.initialize(features, range(self.n_qubits))
         return circuit
 
@@ -139,13 +119,10 @@ class QuantumMolecularEncoder:
         self, circuit: "QuantumCircuit", features: np.ndarray
     ) -> "QuantumCircuit":
         """Encode features using basis encoding."""
-        # Convert continuous features to binary
         binary_features = (features > np.median(features)).astype(int)
-
         for i, bit in enumerate(binary_features[: self.n_qubits]):
             if bit:
                 circuit.x(i)
-
         return circuit
 
     def _mock_encode_features(self, features: np.ndarray) -> List[Dict]:
@@ -188,7 +165,6 @@ class QuantumNeuralNetwork:
         self.n_layers = n_layers
         self.measurement_basis = measurement_basis
         self.parameters = None
-
         if not HAS_QISKIT:
             warnings.warn("Qiskit not available. Using mock implementation.")
 
@@ -201,29 +177,19 @@ class QuantumNeuralNetwork:
         """
         if not HAS_QISKIT:
             return self._mock_create_circuit()
-
-        # Create parameterized circuit
         parameters = ParameterVector("θ", self.n_layers * self.n_qubits * 2)
         circuit = QuantumCircuit(self.n_qubits)
-
         param_idx = 0
-
         for layer in range(self.n_layers):
-            # Rotation gates
             for qubit in range(self.n_qubits):
                 circuit.ry(parameters[param_idx], qubit)
                 param_idx += 1
                 circuit.rz(parameters[param_idx], qubit)
                 param_idx += 1
-
-            # Entangling gates
             for qubit in range(self.n_qubits - 1):
                 circuit.cx(qubit, qubit + 1)
-
-            # Add measurement layer if it's the last layer
             if layer == self.n_layers - 1:
                 circuit.measure_all()
-
         return circuit, parameters
 
     def _mock_create_circuit(self) -> Tuple[Dict, List]:
@@ -234,9 +200,7 @@ class QuantumNeuralNetwork:
             "n_layers": self.n_layers,
             "n_parameters": self.n_layers * self.n_qubits * 2,
         }
-
         mock_parameters = [f"θ_{i}" for i in range(self.n_layers * self.n_qubits * 2)]
-
         return mock_circuit, mock_parameters
 
     def forward(self, input_circuits: List, parameter_values: np.ndarray) -> np.ndarray:
@@ -252,36 +216,24 @@ class QuantumNeuralNetwork:
         """
         if not HAS_QISKIT:
             return self._mock_forward(input_circuits, parameter_values)
-
-        # This would run the quantum circuits and return measurements
-        # Simplified implementation for demonstration
         outputs = []
-
         for circuit in input_circuits:
-            # Bind parameters and execute
             bound_circuit = circuit.bind_parameters(
                 dict(zip(self.parameters, parameter_values))
             )
-
-            # Simulate (in practice, would run on quantum hardware)
             simulator = AerSimulator()
             job = simulator.run(bound_circuit, shots=1024)
             result = job.result()
-
-            # Extract expectation values
             counts = result.get_counts()
             expectation = self._calculate_expectation(counts)
             outputs.append(expectation)
-
         return np.array(outputs)
 
     def _mock_forward(
         self, input_circuits: List, parameter_values: np.ndarray
     ) -> np.ndarray:
         """Mock forward pass for testing."""
-        # Generate mock outputs based on input size
         n_samples = len(input_circuits)
-        # Simple mock: linear combination of parameters
         mock_output = np.mean(parameter_values) * np.ones(n_samples)
         return mock_output
 
@@ -289,12 +241,9 @@ class QuantumNeuralNetwork:
         """Calculate expectation value from measurement counts."""
         total_shots = sum(counts.values())
         expectation = 0.0
-
         for bitstring, count in counts.items():
-            # Simple expectation: count of |0...0⟩ state
             if bitstring == "0" * self.n_qubits:
                 expectation += count / total_shots
-
         return expectation
 
 
@@ -311,7 +260,7 @@ class QuantumChemistrySimulator:
             warnings.warn("Qiskit not available. Using classical approximations.")
 
     def simulate_molecule(
-        self, molecule_data: Dict, method: str = "vqe"
+        self, molecule_data: Dict, method_type: str = "vqe"
     ) -> Dict[str, Any]:
         """
         Simulate molecular properties using quantum algorithms.
@@ -325,20 +274,18 @@ class QuantumChemistrySimulator:
         """
         if not HAS_QISKIT:
             return self._classical_approximation(molecule_data)
-
-        if method == "vqe":
+        if method_type == "vqe":
             return self._variational_quantum_eigensolver(molecule_data)
-        elif method == "qaoa":
+        elif method_type == "qaoa":
             return self._quantum_approximate_optimization(molecule_data)
         else:
-            raise ValueError(f"Unknown method: {method}")
+            raise ValueError(f"Unknown method: {method_type}")
 
     def _variational_quantum_eigensolver(self, molecule_data: Dict) -> Dict[str, Any]:
         """Run VQE simulation."""
-        # Simplified VQE implementation
         results = {
             "method": "VQE",
-            "ground_state_energy": -1.137,  # Mock energy value
+            "ground_state_energy": -1.137,
             "optimization_steps": 100,
             "final_parameters": np.random.random(16),
             "convergence": True,
@@ -347,7 +294,6 @@ class QuantumChemistrySimulator:
 
     def _quantum_approximate_optimization(self, molecule_data: Dict) -> Dict[str, Any]:
         """Run QAOA simulation."""
-        # Simplified QAOA implementation
         results = {
             "method": "QAOA",
             "optimal_parameters": np.random.random(8),
@@ -361,13 +307,12 @@ class QuantumChemistrySimulator:
         """Classical approximation when quantum libraries unavailable."""
         results = {
             "method": "Classical Approximation",
-            "ground_state_energy": -1.0,  # Mock value
+            "ground_state_energy": -1.0,
             "note": "Quantum libraries not available, using classical approximation",
         }
         return results
 
 
-# Hybrid Classical-Quantum Models
 if HAS_TORCH:
 
     class HybridQuantumClassical(nn.Module):
@@ -390,20 +335,14 @@ if HAS_TORCH:
             """
             super().__init__()
             self.n_qubits = n_qubits
-
-            # Classical preprocessing layers
             self.classical_pre = nn.Sequential(
                 nn.Linear(classical_input_dim, 128),
                 nn.ReLU(),
                 nn.Linear(128, 64),
                 nn.ReLU(),
-                nn.Linear(64, n_qubits * 2),  # Parameters for quantum layer
+                nn.Linear(64, n_qubits * 2),
             )
-
-            # Quantum layer (simplified)
             self.quantum_layer = QuantumNeuralNetwork(n_qubits=n_qubits)
-
-            # Classical post-processing layers
             self.classical_post = nn.Sequential(
                 nn.Linear(n_qubits, 32), nn.ReLU(), nn.Linear(32, output_dim)
             )
@@ -411,38 +350,24 @@ if HAS_TORCH:
         def forward(self, x: torch.Tensor) -> torch.Tensor:
             """Forward pass through hybrid network."""
             batch_size = x.shape[0]
-
-            # Classical preprocessing
             quantum_params = self.classical_pre(x)
-
-            # Quantum processing (simplified for demonstration)
             quantum_outputs = []
             for i in range(batch_size):
-                # Mock quantum circuit input
                 mock_circuits = [{"type": "mock"}]
-
-                # Get quantum output
                 q_out = self.quantum_layer.forward(
                     mock_circuits, quantum_params[i].detach().numpy()
                 )
                 quantum_outputs.append(q_out[0] if len(q_out) > 0 else 0.0)
-
             quantum_tensor = torch.tensor(
                 quantum_outputs, dtype=torch.float32
             ).unsqueeze(1)
-
-            # Expand to match expected input dimension for classical_post
             quantum_expanded = quantum_tensor.repeat(1, self.n_qubits)
-
-            # Classical post-processing
             output = self.classical_post(quantum_expanded)
-
             return output
 
 
-# Utility functions
 def estimate_quantum_advantage(
-    problem_size: int, algorithm: str = "vqe"
+    problem_size: int, algorithm_type: str = "vqe"
 ) -> Dict[str, Any]:
     """
     Estimate potential quantum advantage for a given problem.
@@ -454,18 +379,16 @@ def estimate_quantum_advantage(
     Returns:
         Dictionary with advantage analysis
     """
-    classical_complexity = problem_size**3  # Typical classical scaling
-    quantum_complexity = problem_size**2  # Potential quantum scaling
-
+    classical_complexity = problem_size**3
+    quantum_complexity = problem_size**2
     advantage = {
         "problem_size": problem_size,
-        "algorithm": algorithm,
+        "algorithm": algorithm_type,
         "classical_complexity": classical_complexity,
         "quantum_complexity": quantum_complexity,
         "potential_speedup": classical_complexity / quantum_complexity,
         "recommendation": "quantum" if problem_size > 100 else "classical",
     }
-
     return advantage
 
 
@@ -479,7 +402,6 @@ def check_quantum_dependencies() -> Dict[str, bool]:
     }
 
 
-# Export main classes and functions
 __all__ = [
     "QuantumMolecularEncoder",
     "QuantumNeuralNetwork",
@@ -487,6 +409,5 @@ __all__ = [
     "estimate_quantum_advantage",
     "check_quantum_dependencies",
 ]
-
 if HAS_TORCH:
     __all__.append("HybridQuantumClassical")

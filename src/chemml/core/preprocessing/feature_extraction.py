@@ -223,7 +223,7 @@ def _estimate_property(smiles: str, prop_name: str) -> float:
     return estimates.get(prop_name, 0.0)
 
 
-def extract_basic_molecular_descriptors(molecular_data):
+def extract_basic_molecular_descriptors(molecular_data) -> Any:
     """
     Extract basic molecular descriptors from the provided molecular data.
 
@@ -544,7 +544,7 @@ def _extract_single_structural_features(
 
 
 # Legacy functions for backward compatibility
-def extract_molecular_descriptors(molecular_data):
+def extract_molecular_descriptors(molecular_data) -> List[Any]:
     """Legacy function - use extract_descriptors instead."""
     if isinstance(molecular_data, list) and len(molecular_data) > 0:
         if isinstance(molecular_data[0], str):  # SMILES
@@ -552,7 +552,7 @@ def extract_molecular_descriptors(molecular_data):
     return []
 
 
-def calculate_molecular_weight(molecule):
+def calculate_molecular_weight(molecule) -> Union[float, np.ndarray]:
     """Calculate molecular weight for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
@@ -562,7 +562,7 @@ def calculate_molecular_weight(molecule):
     return 0.0
 
 
-def calculate_logP(molecule):
+def calculate_logP(molecule) -> Union[float, np.ndarray]:
     """Calculate logP for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
@@ -570,7 +570,7 @@ def calculate_logP(molecule):
     return 0.0
 
 
-def calculate_num_rotatable_bonds(molecule):
+def calculate_num_rotatable_bonds(molecule) -> Union[float, np.ndarray]:
     """Calculate number of rotatable bonds for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         props = calculate_properties([molecule])
@@ -582,7 +582,7 @@ def calculate_num_rotatable_bonds(molecule):
     return 0
 
 
-def generate_fingerprint(molecule):
+def generate_fingerprint(molecule) -> List[Any]:
     """Generate fingerprint for a single molecule."""
     if isinstance(molecule, str):  # SMILES
         fp_df = extract_fingerprints([molecule])

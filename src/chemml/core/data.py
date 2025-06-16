@@ -11,14 +11,12 @@ Key Features:
 - Dataset splitting and sampling strategies
 - Data quality metrics and reporting
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 
-# Optional chemistry imports
 try:
     from rdkit import Chem
     from rdkit.Chem import MolStandardize, SaltRemover
@@ -26,7 +24,6 @@ try:
     HAS_RDKIT = True
 except ImportError:
     HAS_RDKIT = False
-
 try:
     from sklearn.model_selection import StratifiedShuffleSplit, train_test_split
     from sklearn.preprocessing import MinMaxScaler, RobustScaler, StandardScaler
@@ -60,7 +57,6 @@ class MolecularDataProcessor:
         self.standardize_molecules = standardize_molecules
         self.remove_salts = remove_salts
         self.validate_structures = validate_structures
-
         if HAS_RDKIT:
             if remove_salts:
                 self.salt_remover = SaltRemover.SaltRemover()
@@ -83,36 +79,26 @@ class MolecularDataProcessor:
         """
         if not HAS_RDKIT:
             return smiles_list, [True] * len(smiles_list)
-
         cleaned_smiles = []
         valid_flags = []
-
         for smiles in smiles_list:
             try:
-                # Parse molecule
                 mol = Chem.MolFromSmiles(smiles)
                 if mol is None:
                     cleaned_smiles.append(smiles)
                     valid_flags.append(False)
                     continue
-
-                # Remove salts if requested
                 if self.remove_salts:
                     mol = self.salt_remover.StripMol(mol)
-
-                # Standardize if requested
                 if self.standardize_molecules:
                     standardized_smiles = self.standardizer(Chem.MolToSmiles(mol))
                     cleaned_smiles.append(standardized_smiles)
                 else:
                     cleaned_smiles.append(Chem.MolToSmiles(mol))
-
                 valid_flags.append(True)
-
             except Exception:
                 cleaned_smiles.append(smiles)
                 valid_flags.append(False)
-
         return cleaned_smiles, valid_flags
 
     def process_dataset(
@@ -135,29 +121,19 @@ class MolecularDataProcessor:
             Processed DataFrame
         """
         processed_data = data.copy()
-
-        # Clean SMILES
         if smiles_column in processed_data.columns:
             smiles_list = processed_data[smiles_column].tolist()
             cleaned_smiles, valid_flags = self.clean_smiles(smiles_list)
-
             processed_data[smiles_column] = cleaned_smiles
             processed_data["is_valid"] = valid_flags
-
             if remove_invalid:
                 processed_data = processed_data[processed_data["is_valid"]]
                 processed_data = processed_data.drop("is_valid", axis=1)
-
-        # Remove duplicates
         processed_data = processed_data.drop_duplicates()
-
-        # Handle missing values in target columns
         if target_columns:
             for col in target_columns:
                 if col in processed_data.columns:
-                    # Remove rows with missing targets
                     processed_data = processed_data.dropna(subset=[col])
-
         return processed_data.reset_index(drop=True)
 
 
@@ -187,17 +163,13 @@ class DataSplitter:
         Returns:
             Tuple of (train_df, val_df, test_df)
         """
-        # First split: train+val vs test
         train_val, test = train_test_split(
             data, test_size=test_size, random_state=self.random_state
         )
-
-        # Second split: train vs val
         val_fraction = val_size / (1 - test_size)
         train, val = train_test_split(
             train_val, test_size=val_fraction, random_state=self.random_state
         )
-
         return train, val, test
 
     def stratified_split(
@@ -222,35 +194,26 @@ class DataSplitter:
         if not HAS_SKLEARN:
             warnings.warn("sklearn not available. Using random split instead.")
             return self.random_split(data, test_size, val_size)
-
-        # Convert continuous targets to bins for stratification
         y = data[target_column]
         if y.dtype in ["float64", "float32"]:
-            # Create bins for stratification
             y_binned = pd.cut(y, bins=5, labels=False)
         else:
             y_binned = y
-
-        # First split: train+val vs test
         train_val, test = train_test_split(
             data, test_size=test_size, stratify=y_binned, random_state=self.random_state
         )
-
-        # Second split: train vs val
         val_fraction = val_size / (1 - test_size)
         y_train_val = train_val[target_column]
         if y_train_val.dtype in ["float64", "float32"]:
             y_train_val_binned = pd.cut(y_train_val, bins=5, labels=False)
         else:
             y_train_val_binned = y_train_val
-
         train, val = train_test_split(
             train_val,
             test_size=val_fraction,
             stratify=y_train_val_binned,
             random_state=self.random_state,
         )
-
         return train, val, test
 
     def scaffold_split(
@@ -278,11 +241,9 @@ class DataSplitter:
         if not HAS_RDKIT:
             warnings.warn("RDKit not available. Using random split instead.")
             return self.random_split(data, test_size, val_size)
-
         try:
             from rdkit.Chem.Scaffolds import MurckoScaffold
 
-            # Generate scaffolds
             scaffolds = {}
             for idx, smiles in enumerate(data[smiles_column]):
                 try:
@@ -292,21 +253,15 @@ class DataSplitter:
                         if scaffold not in scaffolds:
                             scaffolds[scaffold] = []
                         scaffolds[scaffold].append(idx)
-                except:
-                    # Assign problematic molecules to their own scaffold
+                except Exception:
                     scaffold = f"invalid_{idx}"
                     scaffolds[scaffold] = [idx]
-
-            # Sort scaffolds by size (largest first)
             scaffold_list = sorted(
                 scaffolds.items(), key=lambda x: len(x[1]), reverse=True
             )
-
-            # Assign scaffolds to splits
             train_indices, val_indices, test_indices = [], [], []
             train_size, val_size_target, test_size_target = 0, 0, 0
             total_size = len(data)
-
             for scaffold, indices in scaffold_list:
                 if test_size_target < test_size * total_size:
                     test_indices.extend(indices)
@@ -317,14 +272,10 @@ class DataSplitter:
                 else:
                     train_indices.extend(indices)
                     train_size += len(indices)
-
-            # Create splits
             train_df = data.iloc[train_indices].reset_index(drop=True)
             val_df = data.iloc[val_indices].reset_index(drop=True)
             test_df = data.iloc[test_indices].reset_index(drop=True)
-
             return train_df, val_df, test_df
-
         except ImportError:
             warnings.warn(
                 "Scaffold splitting requires RDKit. Using random split instead."
@@ -337,7 +288,7 @@ class FeatureScaler:
     Feature scaling utilities for molecular descriptors and fingerprints.
     """
 
-    def __init__(self, method: str = "standard"):
+    def __init__(self, method_type: str = "standard"):
         """
         Initialize feature scaler.
 
@@ -346,17 +297,15 @@ class FeatureScaler:
         """
         if not HAS_SKLEARN:
             raise ImportError("sklearn required for feature scaling")
-
-        self.method = method
-
-        if method == "standard":
+        self.method = method_type
+        if method_type == "standard":
             self.scaler = StandardScaler()
-        elif method == "minmax":
+        elif method_type == "minmax":
             self.scaler = MinMaxScaler()
-        elif method == "robust":
+        elif method_type == "robust":
             self.scaler = RobustScaler()
         else:
-            raise ValueError(f"Unknown scaling method: {method}")
+            raise ValueError(f"Unknown scaling method: {method_type}")
 
     def fit_transform(self, X: np.ndarray) -> np.ndarray:
         """Fit scaler and transform features."""
@@ -382,23 +331,30 @@ class DataProcessor:
         pass
 
     @staticmethod
-    def normalize_features(data, method="standardize"):
+    def normalize_features(
+        data: Union[pd.DataFrame, np.ndarray], method_type: Any = "standardize"
+    ) -> Any:
         """Normalize feature data using specified method."""
         import numpy as np
 
-        if method == "standardize":
+        if method_type == "standardize":
             mean = np.mean(data, axis=0)
             std = np.std(data, axis=0)
-            return (data - mean) / (std + 1e-8)
-        elif method == "minmax":
+            return (data - mean) / (std + 1e-08)
+        elif method_type == "minmax":
             min_val = np.min(data, axis=0)
             max_val = np.max(data, axis=0)
-            return (data - min_val) / (max_val - min_val + 1e-8)
+            return (data - min_val) / (max_val - min_val + 1e-08)
         else:
             return data
 
     @staticmethod
-    def split_data(X, y, test_size=0.2, random_state=42):
+    def split_data(
+        X: Union[pd.DataFrame, np.ndarray],
+        y: Union[pd.Series, np.ndarray],
+        test_size: int = 0.2,
+        random_state: int = 42,
+    ) -> Any:
         """Split data into train/test sets."""
         from sklearn.model_selection import train_test_split
 
@@ -415,21 +371,16 @@ def load_sample_data(dataset_name: str = "tox21") -> pd.DataFrame:
     Returns:
         DataFrame with molecular data
     """
-    # Create sample datasets for demonstration
     if dataset_name == "tox21":
-        # Sample Tox21-like data
         sample_smiles = [
-            "CCO",  # Ethanol
-            "CC(=O)OC1=CC=CC=C1C(=O)O",  # Aspirin
-            "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",  # Caffeine
-            "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",  # Ibuprofen
-            "CC1=CC=C(C=C1)C(=O)C2=CC=CC=C2",  # Deoxybenzoin
+            "CCO",
+            "CC(=O)OC1=CC=CC=C1C(=O)O",
+            "CN1C=NC2=C1C(=O)N(C(=O)N2C)C",
+            "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",
+            "CC1=CC=C(C=C1)C(=O)C2=CC=CC=C2",
         ]
-
-        # Generate sample toxicity data
         np.random.seed(42)
         n_compounds = len(sample_smiles)
-
         data = pd.DataFrame(
             {
                 "smiles": sample_smiles,
@@ -438,29 +389,14 @@ def load_sample_data(dataset_name: str = "tox21") -> pd.DataFrame:
                 "molecular_weight": np.random.uniform(100, 500, n_compounds),
             }
         )
-
     elif dataset_name == "solubility":
-        # Sample solubility data
-        sample_smiles = [
-            "CCO",  # Ethanol
-            "CCCCCCCC",  # Octane
-            "CC(=O)O",  # Acetic acid
-            "O",  # Water
-            "C1=CC=CC=C1",  # Benzene
-        ]
-
-        # Generate sample solubility data (log S)
+        sample_smiles = ["CCO", "CCCCCCCC", "CC(=O)O", "O", "C1=CC=CC=C1"]
         np.random.seed(42)
         data = pd.DataFrame(
-            {
-                "smiles": sample_smiles,
-                "logS": [-0.24, -5.15, -0.17, 0, -2.13],  # Approximate values
-            }
+            {"smiles": sample_smiles, "logS": [-0.24, -5.15, -0.17, 0, -2.13]}
         )
-
     else:
         raise ValueError(f"Unknown dataset: {dataset_name}")
-
     return data
 
 
@@ -482,28 +418,23 @@ def calculate_data_quality_metrics(
         "missing_values": data.isnull().sum().to_dict(),
         "duplicate_rows": data.duplicated().sum(),
     }
-
     if HAS_RDKIT and smiles_column in data.columns:
-        # Check SMILES validity
         valid_count = 0
         for smiles in data[smiles_column]:
             try:
                 mol = Chem.MolFromSmiles(str(smiles))
                 if mol is not None:
                     valid_count += 1
-            except:
+            except Exception:
                 pass
-
         metrics["valid_smiles"] = valid_count
         metrics["invalid_smiles"] = len(data) - valid_count
         metrics["smiles_validity_rate"] = (
             valid_count / len(data) if len(data) > 0 else 0
         )
-
     return metrics
 
 
-# Convenience functions
 def quick_clean(
     data: pd.DataFrame,
     smiles_column: str = "smiles",
@@ -515,30 +446,31 @@ def quick_clean(
 
 
 def quick_split(
-    data: pd.DataFrame, method: str = "random", **kwargs
+    data: pd.DataFrame, method_type: str = "random", **kwargs
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Quickly split data using specified method."""
     splitter = DataSplitter()
-
-    if method == "random":
+    if method_type == "random":
         return splitter.random_split(data, **kwargs)
-    elif method == "stratified":
+    elif method_type == "stratified":
         return splitter.stratified_split(data, **kwargs)
-    elif method == "scaffold":
+    elif method_type == "scaffold":
         return splitter.scaffold_split(data, **kwargs)
     else:
-        raise ValueError(f"Unknown split method: {method}")
+        raise ValueError(f"Unknown split method: {method_type}")
 
 
 import warnings
-
-# Legacy integration wrappers
 from typing import Optional
 
 
 def legacy_molecular_cleaning(
-    df, remove_duplicates=True, handle_missing="drop", validate_smiles=True, **kwargs
-):
+    df: pd.DataFrame,
+    remove_duplicates: List[Any] = True,
+    handle_missing: Any = "drop",
+    validate_smiles: List[Any] = True,
+    **kwargs,
+) -> Any:
     """
     Clean molecular dataset using legacy cleaning functions.
 
@@ -563,7 +495,7 @@ def legacy_molecular_cleaning(
         return df
 
 
-def enhanced_property_prediction():
+def enhanced_property_prediction() -> Union[pd.DataFrame, np.ndarray]:
     """
     Access to enhanced property prediction capabilities.
 
@@ -592,11 +524,9 @@ class LegacyModuleWrapper:
             fallback_message or f"Legacy module {module_name} wrapped for compatibility"
         )
 
-    def wrap_function(self, func_name: str, *args, **kwargs):
+    def wrap_function(self, func_name: str, *args, **kwargs) -> Any:
         """Wrap a legacy function call with error handling."""
         try:
-            # Try to import and call the legacy function
-            # This is a placeholder - actual implementation would import legacy modules
             print(f"🔧 Legacy wrapper: {self.module_name}.{func_name}")
             print(f"💡 {self.fallback_message}")
             return None
@@ -605,7 +535,7 @@ class LegacyModuleWrapper:
             return None
 
     @staticmethod
-    def create_compatibility_layer():
+    def create_compatibility_layer() -> Any:
         """Create compatibility wrappers for common legacy modules."""
         wrappers = {}
         legacy_modules = [
@@ -615,16 +545,13 @@ class LegacyModuleWrapper:
             "qsar_modeling",
             "descriptor_calculation",
         ]
-
         for module in legacy_modules:
             wrappers[module] = LegacyModuleWrapper(
                 module, f"Use modern chemml.core or chemml.research modules instead"
             )
-
         return wrappers
 
 
-# Export main classes and functions
 __all__ = [
     "MolecularDataProcessor",
     "DataSplitter",
@@ -634,7 +561,6 @@ __all__ = [
     "calculate_data_quality_metrics",
     "quick_clean",
     "quick_split",
-    # Legacy integration
     "legacy_molecular_cleaning",
     "enhanced_property_prediction",
 ]

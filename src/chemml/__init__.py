@@ -1,187 +1,109 @@
 """
-ChemML: Machine Learning for Chemistry and Drug Discovery
-
-A comprehensive library providing machine learning tools specifically designed
-for chemistry and drug discovery applications.
-
-Main Modules:
-- core: Essential functionality (featurization, modeling, data processing)
-- research: Advanced research modules (drug discovery, clinical research, environmental chemistry, materials discovery)
-- integrations: Third-party library integrations (DeepChem, RDKit, pipeline systems)
-
-Quick Start:
-    >>> import chemml
-    >>> from chemml.core import featurizers, models, data
-    >>>
-    >>> # Create molecular fingerprints
-    >>> smiles = ['CCO', 'CC(=O)O', 'c1ccccc1']
-    >>> fp = featurizers.morgan_fingerprints(smiles)
-    >>>
-    >>> # Train a model
-    >>> model = models.create_rf_model()
-    >>> # ... continue with your workflow
+ChemML: Machine Learning for Chemistry
+Ultra-optimized for sub-5s imports
 """
 
-# Suppress common warnings for cleaner import experience
+# Minimal essential imports only
+import sys
 import warnings
+from typing import Any
 
+# Fast warning suppression
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
-warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
+# Version info
 __version__ = "0.2.0"
 __author__ = "ChemML Team"
 
-# Core imports for easy access
-from .core import data, evaluation, featurizers, models, utils
-from .core.data import load_sample_data, quick_clean, quick_split
-from .core.evaluation import quick_classification_eval, quick_regression_eval
-
-# Make key functions directly accessible
-from .core.featurizers import (
-    comprehensive_features,
-    molecular_descriptors,
-    morgan_fingerprints,
-)
-from .core.models import (
-    compare_models,
-    create_linear_model,
-    create_rf_model,
-    create_svm_model,
-)
-from .core.utils import ensure_reproducibility, setup_logging
-
-try:
-    from .core.utils import check_environment
-except ImportError:
-    check_environment = None
-
-# Research modules (optional import)
-try:
-    from . import research
-
-    _has_research = True
-except ImportError:
-    # Research modules may have additional dependencies
-    research = None
-    _has_research = False
-
-# Integration modules (optional import)
-try:
-    from . import integrations
-
-    _has_integrations = True
-except ImportError:
-    integrations = None
-    _has_integrations = False
-
-# Enhanced development features (if available)
-try:
-    from .core.ensemble_advanced import (
-        AdaptiveEnsemble,
-        MultiModalEnsemble,
-        UncertaintyQuantifiedEnsemble,
-        create_adaptive_ensemble,
-        create_multimodal_ensemble,
-        create_uncertainty_ensemble,
-    )
-    from .core.monitoring import (
-        PerformanceDashboard,
-        create_performance_dashboard,
-        show_performance_dashboard,
-    )
-    from .core.recommendations import ModelRecommendationEngine
-    from .core.recommendations import compare_models as compare_ml_models
-    from .core.recommendations import recommend_model
-
-    # Medium-term enhancements
-    from .core.workflow_optimizer import (
-        WorkflowOptimizer,
-        compare_model_workflows,
-        optimize_workflow,
-    )
-
-    HAS_ENHANCED_FEATURES = True
-except ImportError:
-    HAS_ENHANCED_FEATURES = False
-
-
-# Setup basic configuration
-def _setup_chemml():
-    """Setup ChemML with sensible defaults."""
-    import warnings
-
-    # Configure warnings for cleaner output
-    warnings.filterwarnings("ignore", category=FutureWarning)
-    warnings.filterwarnings("ignore", category=DeprecationWarning)
-
-    # Print welcome message
+# Ultra-fast initialization flag
+if not hasattr(sys, "_chemml_fast_init"):
     print("ChemML initialized successfully!")
     print(f"Version: {__version__}")
+    sys._chemml_fast_init = True
 
-    # Check environment
-    if check_environment is not None:
+
+# Defer ALL imports until actually needed
+def __getattr__(name: str) -> Any:
+    """Ultra-fast lazy loading for everything"""
+
+    # Core module mapping
+    _module_map = {
+        "core": "chemml.core",
+        "research": "chemml.research",
+        "integrations": "chemml.integrations",
+        "utils": "chemml.utils",
+    }
+
+    # Essential function mapping (most commonly used)
+    _function_map = {
+        "load_sample_data": "chemml.core.data",
+        "quick_clean": "chemml.core.data",
+        "quick_split": "chemml.core.data",
+        "morgan_fingerprints": "chemml.core.featurizers",
+        "create_rf_model": "chemml.core.models",
+        "quick_classification_eval": "chemml.core.evaluation",
+    }
+
+    # Try module first
+    if name in _module_map:
+        import importlib
+
+        module = importlib.import_module(_module_map[name])
+        globals()[name] = module
+        return module
+
+    # Try essential functions
+    if name in _function_map:
+        import importlib
+
+        module = importlib.import_module(_function_map[name])
+        if hasattr(module, name):
+            func = getattr(module, name)
+            globals()[name] = func
+            return func
+
+    # Generic search (slower path)
+    for module_name, module_path in _module_map.items():
         try:
-            env_info = check_environment()
-            missing_core = [
-                pkg
-                for pkg in ["numpy", "pandas", "sklearn"]
-                if pkg in env_info["missing_packages"]
-            ]
+            import importlib
 
-            if missing_core:
-                warnings.warn(f"Missing core packages: {missing_core}")
-        except Exception:
-            # Environment check failed, continue gracefully
-            pass
+            module = importlib.import_module(module_path)
+            if hasattr(module, name):
+                attr = getattr(module, name)
+                globals()[name] = attr
+                return attr
+        except ImportError:
+            continue
 
-    if not _has_research:
-        print("Note: Research modules not available (install optional dependencies)")
-
-    if not _has_integrations:
-        print("Note: Integration modules not available (install optional dependencies)")
+    raise AttributeError(f"module 'chemml' has no attribute '{name}'")
 
 
-# Initialize ChemML
-_setup_chemml()
+# Pre-cache commonly used modules for even faster access
+_cached_modules = {}
 
-__all__ = [
-    # Core modules
-    "featurizers",
-    "models",
-    "data",
-    "evaluation",
-    "utils",
-    # Quick access functions
-    "morgan_fingerprints",
-    "molecular_descriptors",
-    "comprehensive_features",
-    "create_linear_model",
-    "create_rf_model",
-    "create_svm_model",
-    "compare_models",
-    "quick_clean",
-    "quick_split",
-    "load_sample_data",
-    "quick_regression_eval",
-    "quick_classification_eval",
-    "setup_logging",
-    "check_environment",
-    "ensure_reproducibility",
-    # Optional modules
-    "research",
-    "integrations",
-]
 
-# Add enhanced features to __all__ if available
-if HAS_ENHANCED_FEATURES:
-    __all__.extend(
-        [
-            "show_performance_dashboard",
-            "create_performance_dashboard",
-            "recommend_model",
-            "compare_ml_models",
-            "PerformanceDashboard",
-            "ModelRecommendationEngine",
-        ]
-    )
+def _get_cached_module(module_path: str) -> Any:
+    """Get cached module or import and cache"""
+    if module_path not in _cached_modules:
+        import importlib
+
+        _cached_modules[module_path] = importlib.import_module(module_path)
+    return _cached_modules[module_path]
+
+
+# Fast access functions for power users
+def enable_fast_mode() -> None:
+    """Pre-load essential modules for fastest access"""
+    global core, research, integrations
+    core = _get_cached_module("chemml.core")
+    research = _get_cached_module("chemml.research")
+    integrations = _get_cached_module("chemml.integrations")
+    print("⚡ Fast mode enabled - all modules pre-loaded")
+
+
+def clear_cache() -> None:
+    """Clear module cache to save memory"""
+    global _cached_modules
+    _cached_modules.clear()
+    print("🧹 Module cache cleared")

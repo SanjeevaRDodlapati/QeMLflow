@@ -70,7 +70,7 @@ except (ImportError, SyntaxError) as e:
 class DescriptorCalculator:
     """Calculate molecular descriptors for QSAR modeling"""
 
-    def __init__(self, descriptor_set: str = "rdkit"):
+    def __init__(self, descriptor_set: str = "rdkit") -> None:
         """
         Initialize descriptor calculator
 
@@ -179,7 +179,7 @@ class QSARModel:
 
         self._initialize_model()
 
-    def _initialize_model(self):
+    def _initialize_model(self) -> None:
         """Initialize the appropriate model"""
         if self.task_type == "regression":
             if self.model_type == "random_forest":
@@ -334,7 +334,7 @@ class QSARModel:
 
         return importance_df
 
-    def save_model(self, filepath: str):
+    def save_model(self, filepath: str) -> None:
         """Save trained model"""
         model_data = {
             "model": self.model,
@@ -347,7 +347,7 @@ class QSARModel:
         joblib.dump(model_data, filepath)
         logging.info(f"Model saved to {filepath}")
 
-    def load_model(self, filepath: str):
+    def load_model(self, filepath: str) -> None:
         """Load trained model"""
         model_data = joblib.load(filepath)
 
@@ -367,7 +367,7 @@ class ActivityPredictor:
         self.models = {}
         self.descriptor_calculator = DescriptorCalculator("rdkit")
 
-    def add_model(self, activity_type: str, model: QSARModel):
+    def add_model(self, activity_type: str, model: QSARModel) -> None:
         """Add a trained QSAR model for specific activity"""
         self.models[activity_type] = model
 

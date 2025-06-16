@@ -10,14 +10,115 @@ import time
 
 import numpy as np
 
-from chemml_common.tracker import (
-    finish_global_tracking,
-    log_global,
-    quick_track,
-    start_global_tracking,
-    track_experiment,
-    track_training,
-)
+# ChemML experiment tracking with fallbacks
+try:
+    from chemml.integrations.experiment_tracking import setup_wandb_tracking
+
+    HAS_TRACKING = True
+except ImportError:
+    HAS_TRACKING = False
+
+
+# Demo tracking functions with fallbacks
+class ExperimentTracker:
+    """Universal experiment tracker that works as both decorator and context manager."""
+
+    def __init__(self, project=None, tags=None, name=None):
+        self.project = project
+        self.tags = tags or []
+        self.name = name
+        self.active = False
+
+    def __enter__(self):
+        print(
+            f"🧪 Demo: Starting experiment {self.name or 'unnamed'} in project {self.project or 'default'}"
+        )
+        if HAS_TRACKING and self.project and self.name:
+            setup_wandb_tracking(self.name, project=self.project)
+        self.active = True
+        return self
+
+    def __exit__(self, *args):
+        print(f"✅ Demo: Finished experiment {self.name}")
+        self.active = False
+
+    def log(self, data):
+        print(f"📊 Experiment log: {data}")
+
+    def log_hyperparameters(self, params):
+        print(f"⚙️  Hyperparameters: {params}")
+
+    def __call__(self, func):
+        """Allow usage as decorator."""
+
+        def wrapper(*args, **kwargs):
+            with self:
+                print(f"🧪 Demo: Running decorated function {func.__name__}")
+                return func(*args, **kwargs)
+
+        return wrapper
+
+
+def track_experiment(project=None, tags=None, name=None):
+    """Create an experiment tracker that can be used as decorator or context manager."""
+    # If called with a function directly (as decorator without parentheses)
+    if callable(project):
+        func = project
+        tracker = ExperimentTracker("default_project", tags, func.__name__)
+        return tracker(func)
+
+    # Return tracker instance for context manager or decorator usage
+    return ExperimentTracker(project, tags, name)
+
+
+def track_training(name, config=None):
+    """Demo training tracking context manager."""
+
+    class TrainingTracker:
+        def __init__(self, name, config):
+            self.name = name
+            self.config = config
+
+        def __enter__(self):
+            print(f"🚀 Demo: Starting training {self.name}")
+            return self
+
+        def __exit__(self, *args):
+            print(f"✅ Demo: Finished training {self.name}")
+
+        def log(self, data):
+            print(f"📊 Training log: {data}")
+
+    return TrainingTracker(name, config)
+
+
+def quick_track(name, project=None):
+    """Demo quick tracking."""
+    print(f"📊 Demo: Quick tracking {name} in project {project}")
+
+    class MockTracker:
+        def log(self, data):
+            print(f"📈 Log: {data}")
+
+        def finish(self):
+            print("✅ Finished tracking")
+
+    return MockTracker()
+
+
+def start_global_tracking(name, project=None):
+    """Demo global tracking start."""
+    print(f"🌍 Demo: Starting global tracking {name} in project {project}")
+
+
+def log_global(data):
+    """Demo global logging."""
+    print(f"📈 Demo: Global log {data}")
+
+
+def finish_global_tracking():
+    """Demo global tracking finish."""
+    print("✅ Demo: Finished global tracking")
 
 
 def demo_decorator_pattern():

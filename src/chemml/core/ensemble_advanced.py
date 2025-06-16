@@ -5,7 +5,6 @@ ChemML Advanced Ensemble Methods
 Sophisticated ensemble learning methods specifically designed for molecular ML.
 Includes adaptive ensemble selection, multi-modal fusion, and uncertainty quantification.
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -36,7 +35,6 @@ class AdaptiveEnsemble(BaseEstimator):
         self.adaptation_strategy = adaptation_strategy
         self.uncertainty_quantification = uncertainty_quantification
         self.molecular_similarity_threshold = molecular_similarity_threshold
-
         self.model_weights_ = None
         self.performance_history_ = []
         self.molecular_clusters_ = None
@@ -47,7 +45,7 @@ class AdaptiveEnsemble(BaseEstimator):
         X: np.ndarray,
         y: np.ndarray,
         molecular_features: Optional[np.ndarray] = None,
-    ):
+    ) -> Self:
         """
         Fit the adaptive ensemble to training data.
 
@@ -61,24 +59,17 @@ class AdaptiveEnsemble(BaseEstimator):
             Additional molecular features for clustering
         """
         with performance_context("adaptive_ensemble_fit"):
-            # Identify molecular clusters if features provided
             if molecular_features is not None:
                 self.molecular_clusters_ = self._identify_molecular_clusters(
                     molecular_features
                 )
-
-            # Fit base models
             for i, model in enumerate(self.base_models):
                 try:
                     model.fit(X, y)
                 except Exception as e:
                     warnings.warn(f"Model {i} failed to fit: {e}")
-
-            # Calculate adaptive weights
             self.model_weights_ = self._calculate_adaptive_weights(X, y)
-
             self.fitted_ = True
-
         return self
 
     def predict(
@@ -103,8 +94,6 @@ class AdaptiveEnsemble(BaseEstimator):
         """
         if not self.fitted_:
             raise ValueError("Ensemble must be fitted before making predictions")
-
-        # Get predictions from all models
         model_predictions = []
         for model in self.base_models:
             try:
@@ -113,16 +102,11 @@ class AdaptiveEnsemble(BaseEstimator):
             except Exception as e:
                 warnings.warn(f"Model failed to predict: {e}")
                 model_predictions.append(np.zeros(len(X)))
-
         model_predictions = np.array(model_predictions).T
-
-        # Apply adaptive weighting
         ensemble_predictions = self._adaptive_predict(model_predictions, X)
-
         if return_uncertainty and self.uncertainty_quantification:
             uncertainties = self._calculate_uncertainties(model_predictions)
             return ensemble_predictions, uncertainties
-
         return ensemble_predictions
 
     def _identify_molecular_clusters(
@@ -131,37 +115,74 @@ class AdaptiveEnsemble(BaseEstimator):
         """Identify molecular clusters based on similarity."""
         from sklearn.cluster import KMeans
 
-        # Use k-means clustering as a simple approach
-        n_clusters = min(
-            10, len(molecular_features) // 50
-        )  # Adaptive number of clusters
+        n_clusters = min(10, len(molecular_features) // 50)
         if n_clusters < 2:
             return np.zeros(len(molecular_features))
-
         kmeans = KMeans(n_clusters=n_clusters, random_state=42)
         return kmeans.fit_predict(molecular_features)
 
     def _calculate_adaptive_weights(self, X: np.ndarray, y: np.ndarray) -> np.ndarray:
-        """Calculate adaptive weights for base models."""
+        """Calculate adaptive weights for base models with robust cross-validation."""
         n_models = len(self.base_models)
-        weights = np.ones(n_models) / n_models  # Start with equal weights
+        weights = np.ones(n_models) / n_models
 
         if self.adaptation_strategy == "performance_weighted":
-            # Weight based on cross-validation performance
             for i, model in enumerate(self.base_models):
                 try:
-                    scores = cross_val_score(
-                        model, X, y, cv=3, scoring="neg_mean_squared_error"
+                    # Enhanced cross-validation with error handling
+                    from sklearn.model_selection import KFold, StratifiedKFold
+
+                    # Determine if this is classification or regression
+                    is_classification = (
+                        hasattr(model, "predict_proba") or len(np.unique(y)) < 20
                     )
-                    weights[i] = np.exp(np.mean(scores))  # Exponential weighting
-                except Exception:
-                    weights[i] = 0.1  # Low weight for failed models
+
+                    # Choose appropriate CV strategy
+                    if is_classification and len(np.unique(y)) > 1:
+                        try:
+                            cv_strategy = StratifiedKFold(
+                                n_splits=min(3, len(np.unique(y))),
+                                shuffle=True,
+                                random_state=42,
+                            )
+                        except ValueError:
+                            cv_strategy = KFold(
+                                n_splits=min(3, len(y) // 2),
+                                shuffle=True,
+                                random_state=42,
+                            )
+                    else:
+                        cv_strategy = KFold(
+                            n_splits=min(3, len(y) // 2), shuffle=True, random_state=42
+                        )
+
+                    # Perform cross-validation
+                    scores = cross_val_score(
+                        model,
+                        X,
+                        y,
+                        cv=cv_strategy,
+                        scoring="neg_mean_squared_error",
+                        error_score=0.0,
+                    )
+
+                    # Convert to positive weight (higher is better)
+                    if len(scores) > 0:
+                        weights[i] = np.exp(
+                            np.mean(scores) / 1000
+                        )  # Scale to prevent overflow
+                    else:
+                        weights[i] = 0.1
+
+                except Exception as e:
+                    warnings.warn(f"Model {i} failed during weight calculation: {e}")
+                    weights[i] = 0.1
 
         elif self.adaptation_strategy == "diversity_weighted":
-            # Weight based on prediction diversity
             weights = self._calculate_diversity_weights(X, y)
 
-        # Normalize weights
+        # Normalize weights and handle edge cases
+        weights = np.maximum(weights, 0.01)  # Minimum weight
         weights = weights / np.sum(weights)
         return weights
 
@@ -169,8 +190,6 @@ class AdaptiveEnsemble(BaseEstimator):
         """Calculate weights based on model diversity."""
         n_models = len(self.base_models)
         weights = np.ones(n_models)
-
-        # Get predictions from all models
         predictions = []
         for model in self.base_models:
             try:
@@ -178,15 +197,10 @@ class AdaptiveEnsemble(BaseEstimator):
                 predictions.append(pred)
             except Exception:
                 predictions.append(np.zeros(3))
-
-        # Calculate pairwise correlations
         correlations = np.corrcoef(predictions)
-
-        # Weight inversely to average correlation (promote diversity)
         for i in range(n_models):
             avg_correlation = np.mean(np.abs(correlations[i, :]))
             weights[i] = 1.0 / (1.0 + avg_correlation)
-
         return weights
 
     def _adaptive_predict(
@@ -194,7 +208,6 @@ class AdaptiveEnsemble(BaseEstimator):
     ) -> np.ndarray:
         """Make adaptive predictions based on input characteristics."""
         if self.molecular_clusters_ is not None:
-            # Use cluster-specific weights (simplified approach)
             cluster_assignments = np.random.randint(
                 0, max(self.molecular_clusters_) + 1, len(X)
             )
@@ -202,21 +215,15 @@ class AdaptiveEnsemble(BaseEstimator):
                 model_predictions, weights=self.model_weights_, axis=1
             )
         else:
-            # Standard weighted average
             weighted_predictions = np.average(
                 model_predictions, weights=self.model_weights_, axis=1
             )
-
         return weighted_predictions
 
     def _calculate_uncertainties(self, model_predictions: np.ndarray) -> np.ndarray:
         """Calculate prediction uncertainties."""
-        # Use prediction variance as uncertainty measure
         uncertainties = np.var(model_predictions, axis=1)
-
-        # Add weight-based adjustment
         weighted_uncertainty = uncertainties * (1.0 + np.std(self.model_weights_))
-
         return weighted_uncertainty
 
 
@@ -235,12 +242,11 @@ class MultiModalEnsemble(BaseEstimator):
         self.modality_models = modality_models
         self.fusion_strategy = fusion_strategy
         self.modality_weights = modality_weights or {}
-
         self.fitted_models_ = {}
         self.learned_weights_ = {}
         self.fitted_ = False
 
-    def fit(self, modality_data: Dict[str, np.ndarray], y: np.ndarray):
+    def fit(self, modality_data: Dict[str, np.ndarray], y: np.ndarray) -> Self:
         """
         Fit multi-modal ensemble.
 
@@ -262,22 +268,15 @@ class MultiModalEnsemble(BaseEstimator):
                         warnings.warn(
                             f"Failed to fit model for modality {modality}: {e}"
                         )
-
-            # Learn optimal modality weights
             self.learned_weights_ = self._learn_modality_weights(modality_data, y)
-
             self.fitted_ = True
-
         return self
 
     def predict(self, modality_data: Dict[str, np.ndarray]) -> np.ndarray:
         """Make multi-modal predictions."""
         if not self.fitted_:
             raise ValueError("Ensemble must be fitted before making predictions")
-
         modality_predictions = {}
-
-        # Get predictions from each modality
         for modality, data in modality_data.items():
             if modality in self.fitted_models_:
                 try:
@@ -285,8 +284,6 @@ class MultiModalEnsemble(BaseEstimator):
                     modality_predictions[modality] = pred
                 except Exception as e:
                     warnings.warn(f"Failed to predict with modality {modality}: {e}")
-
-        # Fuse predictions
         if self.fusion_strategy == "late_fusion":
             return self._late_fusion(modality_predictions)
         elif self.fusion_strategy == "weighted_fusion":
@@ -299,51 +296,38 @@ class MultiModalEnsemble(BaseEstimator):
     ) -> Dict[str, float]:
         """Learn optimal weights for each modality."""
         weights = {}
-
         for modality in self.fitted_models_:
             if modality in modality_data:
                 try:
-                    # Use cross-validation to assess modality performance
                     model = self.fitted_models_[modality]
                     scores = cross_val_score(model, modality_data[modality], y, cv=3)
                     weights[modality] = np.mean(scores)
                 except Exception:
                     weights[modality] = 0.1
-
-        # Normalize weights
         total_weight = sum(weights.values())
         if total_weight > 0:
-            weights = {k: v / total_weight for k, v in weights.items()}
-
+            weights = {k: (v / total_weight) for k, v in weights.items()}
         return weights
 
     def _late_fusion(self, modality_predictions: Dict[str, np.ndarray]) -> np.ndarray:
         """Perform late fusion of modality predictions."""
         if not modality_predictions:
             raise ValueError("No valid predictions from any modality")
-
-        # Stack predictions and take weighted average
         predictions_array = []
         weights_array = []
-
         for modality, pred in modality_predictions.items():
             predictions_array.append(pred)
             weight = self.learned_weights_.get(modality, 1.0)
             weights_array.append(weight)
-
         predictions_array = np.array(predictions_array)
         weights_array = np.array(weights_array)
-
-        # Weighted average
         weighted_pred = np.average(predictions_array, weights=weights_array, axis=0)
-
         return weighted_pred
 
     def _weighted_fusion(
         self, modality_predictions: Dict[str, np.ndarray]
     ) -> np.ndarray:
         """Perform weighted fusion with confidence-based weighting."""
-        # Enhanced version of late fusion with adaptive weights
         return self._late_fusion(modality_predictions)
 
     def _simple_average(
@@ -352,7 +336,6 @@ class MultiModalEnsemble(BaseEstimator):
         """Simple average of all modality predictions."""
         if not modality_predictions:
             raise ValueError("No valid predictions from any modality")
-
         predictions_array = np.array(list(modality_predictions.values()))
         return np.mean(predictions_array, axis=0)
 
@@ -376,26 +359,20 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
             "entropy",
         ]
         self.bootstrap_samples = bootstrap_samples
-
         self.bootstrap_models_ = []
         self.fitted_ = False
 
-    def fit(self, X: np.ndarray, y: np.ndarray):
+    def fit(self, X: np.ndarray, y: np.ndarray) -> Self:
         """Fit ensemble with uncertainty quantification."""
         with performance_context("uncertainty_ensemble_fit"):
-            # Fit base models
             for model in self.base_models:
                 try:
                     model.fit(X, y)
                 except Exception as e:
                     warnings.warn(f"Model failed to fit: {e}")
-
-            # Create bootstrap models for uncertainty estimation
             if "bootstrap" in self.uncertainty_methods:
                 self._create_bootstrap_models(X, y)
-
             self.fitted_ = True
-
         return self
 
     def predict(
@@ -404,8 +381,6 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
         """Make predictions with uncertainty estimates."""
         if not self.fitted_:
             raise ValueError("Ensemble must be fitted before making predictions")
-
-        # Get base predictions
         base_predictions = []
         for model in self.base_models:
             try:
@@ -413,39 +388,28 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
                 base_predictions.append(pred)
             except Exception:
                 continue
-
         base_predictions = np.array(base_predictions)
         ensemble_pred = np.mean(base_predictions, axis=0)
-
         if not return_uncertainties:
             return ensemble_pred
-
-        # Calculate uncertainties
         uncertainties = self._calculate_comprehensive_uncertainties(X, base_predictions)
-
         return ensemble_pred, uncertainties
 
-    def _create_bootstrap_models(self, X: np.ndarray, y: np.ndarray):
+    def _create_bootstrap_models(self, X: np.ndarray, y: np.ndarray) -> None:
         """Create bootstrap models for uncertainty estimation."""
         n_samples = len(X)
-
         for _ in range(self.bootstrap_samples):
-            # Bootstrap sampling
             bootstrap_indices = np.random.choice(n_samples, n_samples, replace=True)
             X_bootstrap = X[bootstrap_indices]
             y_bootstrap = y[bootstrap_indices]
-
-            # Fit models on bootstrap sample
             bootstrap_model_set = []
             for model in self.base_models:
                 try:
-                    # Create a copy of the model
                     bootstrap_model = type(model)(**model.get_params())
                     bootstrap_model.fit(X_bootstrap, y_bootstrap)
                     bootstrap_model_set.append(bootstrap_model)
                 except Exception:
                     continue
-
             if bootstrap_model_set:
                 self.bootstrap_models_.append(bootstrap_model_set)
 
@@ -454,38 +418,27 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
     ) -> Dict[str, np.ndarray]:
         """Calculate multiple types of uncertainty estimates."""
         uncertainties = {}
-
-        # Variance-based uncertainty
         if "variance" in self.uncertainty_methods:
             uncertainties["variance"] = np.var(base_predictions, axis=0)
-
-        # Bootstrap uncertainty
         if "bootstrap" in self.uncertainty_methods and self.bootstrap_models_:
             bootstrap_uncertainties = self._calculate_bootstrap_uncertainty(X)
             uncertainties["bootstrap"] = bootstrap_uncertainties
-
-        # Prediction interval uncertainty
         if "intervals" in self.uncertainty_methods:
             uncertainties[
                 "prediction_intervals"
             ] = self._calculate_prediction_intervals(base_predictions)
-
-        # Total uncertainty (combination of all methods)
         total_uncertainty = np.zeros(len(X))
         for unc_type, unc_values in uncertainties.items():
-            if unc_type != "prediction_intervals":  # Skip intervals for total
+            if unc_type != "prediction_intervals":
                 total_uncertainty += unc_values
-
         uncertainties["total"] = total_uncertainty / len(
             [k for k in uncertainties.keys() if k != "prediction_intervals"]
         )
-
         return uncertainties
 
     def _calculate_bootstrap_uncertainty(self, X: np.ndarray) -> np.ndarray:
         """Calculate uncertainty from bootstrap models."""
         bootstrap_predictions = []
-
         for model_set in self.bootstrap_models_:
             set_predictions = []
             for model in model_set:
@@ -494,10 +447,8 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
                     set_predictions.append(pred)
                 except Exception:
                     continue
-
             if set_predictions:
                 bootstrap_predictions.append(np.mean(set_predictions, axis=0))
-
         if bootstrap_predictions:
             bootstrap_predictions = np.array(bootstrap_predictions)
             return np.std(bootstrap_predictions, axis=0)
@@ -509,19 +460,11 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
     ) -> Dict[str, np.ndarray]:
         """Calculate prediction intervals."""
         intervals = {}
-
-        # 95% prediction intervals
         intervals["lower_95"] = np.percentile(base_predictions, 2.5, axis=0)
         intervals["upper_95"] = np.percentile(base_predictions, 97.5, axis=0)
-
-        # 68% prediction intervals
         intervals["lower_68"] = np.percentile(base_predictions, 16, axis=0)
         intervals["upper_68"] = np.percentile(base_predictions, 84, axis=0)
-
         return intervals
-
-
-# Convenience functions for easy usage
 
 
 def create_adaptive_ensemble(

@@ -18,7 +18,7 @@ from ..common.performance import PerformanceMonitor
 class PerformanceDashboard:
     """Smart dashboard for ChemML performance monitoring."""
 
-    def __init__(self, output_dir: str = "./performance_reports"):
+    def __init__(self, output_dir: str = "./performance_reports") -> None:
         self.monitor = PerformanceMonitor.get_instance()
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
@@ -496,7 +496,7 @@ def create_performance_dashboard() -> PerformanceDashboard:
     return PerformanceDashboard()
 
 
-def show_performance_dashboard():
+def show_performance_dashboard() -> None:
     """Generate and display performance dashboard."""
     dashboard = create_performance_dashboard()
     dashboard.generate_html_dashboard()

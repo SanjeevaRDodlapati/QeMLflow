@@ -47,7 +47,7 @@ class VirtualScreener:
     approaches including similarity-based, pharmacophore-based, and ML-based screening.
     """
 
-    def __init__(self, screening_method: str = "similarity", **kwargs):
+    def __init__(self, screening_method: str = "similarity", **kwargs) -> None:
         """
         Initialize the virtual screener.
 
@@ -280,7 +280,7 @@ class SimilarityScreener:
 
         return pd.DataFrame(results)
 
-    def _calculate_fingerprint(self, compound: Union[str, "Chem.Mol"]):
+    def _calculate_fingerprint(self, compound: Union[str, "Chem.Mol"]) -> Any:
         """Calculate molecular fingerprint."""
         if not RDKIT_AVAILABLE:
             # Simple hash-based fingerprint fallback

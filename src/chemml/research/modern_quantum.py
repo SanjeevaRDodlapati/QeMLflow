@@ -49,7 +49,7 @@ except ImportError:
 class QuantumAlgorithmBase(ABC):
     """Base class for quantum algorithms using modern Qiskit 2.0+ primitives"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         if not HAS_QISKIT:
             raise ImportError("Qiskit 2.0+ required for quantum algorithms")
 
@@ -58,7 +58,7 @@ class QuantumAlgorithmBase(ABC):
         self.history = []
 
     @abstractmethod
-    def run(self, *args, **kwargs):
+    def run(self, *args, **kwargs) -> None:
         """Run the quantum algorithm"""
         pass
 
@@ -573,7 +573,7 @@ __all__ = [
 ]
 
 
-def test_modern_quantum_suite():
+def test_modern_quantum_suite() -> None:
     """Test the modern quantum suite functionality."""
     print("🧪 Testing Modern Quantum Suite...")
 

@@ -12,14 +12,12 @@ Key Features:
 - Multi-task learning architectures
 - Attention mechanisms for molecular interpretation
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
 
-# Deep learning imports
 try:
     import torch
     import torch.nn as nn
@@ -40,8 +38,6 @@ except ImportError:
     except ImportError:
         HAS_TORCH = False
         HAS_TORCH_GEOMETRIC = False
-
-# Chemistry imports for graph construction
 try:
     from rdkit import Chem
     from rdkit.Chem import Descriptors, rdMolDescriptors
@@ -51,7 +47,6 @@ except ImportError:
     HAS_RDKIT = False
 
 
-# Molecular Graph Construction
 def smiles_to_graph(smiles: str) -> Optional[Dict]:
     """
     Convert SMILES string to graph representation.
@@ -65,13 +60,10 @@ def smiles_to_graph(smiles: str) -> Optional[Dict]:
     if not HAS_RDKIT:
         warnings.warn("RDKit not available. Cannot create molecular graphs.")
         return None
-
     try:
         mol = Chem.MolFromSmiles(smiles)
         if mol is None:
             return None
-
-        # Node features (atoms)
         node_features = []
         for atom in mol.GetAtoms():
             features = [
@@ -83,25 +75,18 @@ def smiles_to_graph(smiles: str) -> Optional[Dict]:
                 atom.GetNumRadicalElectrons(),
             ]
             node_features.append(features)
-
-        # Edge indices and features (bonds)
         edge_indices = []
         edge_features = []
-
         for bond in mol.GetBonds():
             i = bond.GetBeginAtomIdx()
             j = bond.GetEndAtomIdx()
-
-            # Add both directions for undirected graph
             edge_indices.extend([[i, j], [j, i]])
-
             bond_features = [
                 int(bond.GetBondType()),
                 int(bond.GetIsConjugated()),
                 int(bond.IsInRing()),
             ]
             edge_features.extend([bond_features, bond_features])
-
         graph_data = {
             "node_features": np.array(node_features),
             "edge_indices": np.array(edge_indices).T
@@ -112,15 +97,12 @@ def smiles_to_graph(smiles: str) -> Optional[Dict]:
             else np.empty((0, 3)),
             "num_nodes": len(node_features),
         }
-
         return graph_data
-
     except Exception as e:
         warnings.warn(f"Error creating graph from SMILES: {e}")
         return None
 
 
-# Graph Neural Networks
 if HAS_TORCH and HAS_TORCH_GEOMETRIC:
 
     class MolecularGCN(nn.Module):
@@ -151,15 +133,10 @@ if HAS_TORCH and HAS_TORCH_GEOMETRIC:
             super().__init__()
             self.num_layers = num_layers
             self.dropout = dropout
-
-            # GCN layers
             self.convs = nn.ModuleList()
             self.convs.append(GCNConv(node_features, hidden_dim))
-
             for _ in range(num_layers - 1):
                 self.convs.append(GCNConv(hidden_dim, hidden_dim))
-
-            # Output layers
             self.classifier = nn.Sequential(
                 nn.Linear(hidden_dim, hidden_dim),
                 nn.ReLU(),
@@ -167,23 +144,16 @@ if HAS_TORCH and HAS_TORCH_GEOMETRIC:
                 nn.Linear(hidden_dim, output_dim),
             )
 
-        def forward(self, data):
+        def forward(self, data) -> Any:
             """Forward pass through GCN."""
             x, edge_index, batch = data.x, data.edge_index, data.batch
-
-            # Apply GCN layers
             for i, conv in enumerate(self.convs):
                 x = conv(x, edge_index)
                 if i < len(self.convs) - 1:
                     x = F.relu(x)
                     x = F.dropout(x, p=self.dropout, training=self.training)
-
-            # Global pooling
             x = global_mean_pool(x, batch)
-
-            # Final prediction
             output = self.classifier(x)
-
             return output
 
     class MolecularGAT(nn.Module):
@@ -216,13 +186,10 @@ if HAS_TORCH and HAS_TORCH_GEOMETRIC:
             super().__init__()
             self.num_layers = num_layers
             self.dropout = dropout
-
-            # GAT layers
             self.convs = nn.ModuleList()
             self.convs.append(
                 GATConv(node_features, hidden_dim, heads=num_heads, dropout=dropout)
             )
-
             for _ in range(num_layers - 1):
                 self.convs.append(
                     GATConv(
@@ -232,8 +199,6 @@ if HAS_TORCH and HAS_TORCH_GEOMETRIC:
                         dropout=dropout,
                     )
                 )
-
-            # Output layers
             final_dim = hidden_dim * num_heads
             self.classifier = nn.Sequential(
                 nn.Linear(final_dim, hidden_dim),
@@ -245,24 +210,16 @@ if HAS_TORCH and HAS_TORCH_GEOMETRIC:
         def forward(self, data):
             """Forward pass through GAT."""
             x, edge_index, batch = data.x, data.edge_index, data.batch
-
-            # Apply GAT layers
             for i, conv in enumerate(self.convs):
                 x = conv(x, edge_index)
                 if i < len(self.convs) - 1:
                     x = F.elu(x)
                     x = F.dropout(x, p=self.dropout, training=self.training)
-
-            # Global pooling
             x = global_mean_pool(x, batch)
-
-            # Final prediction
             output = self.classifier(x)
-
             return output
 
 
-# Transformer Models for SMILES
 if HAS_TORCH:
 
     class MolecularTransformer(nn.Module):
@@ -297,12 +254,8 @@ if HAS_TORCH:
             super().__init__()
             self.d_model = d_model
             self.max_length = max_length
-
-            # Embedding layers
             self.token_embedding = nn.Embedding(vocab_size, d_model)
             self.position_embedding = nn.Embedding(max_length, d_model)
-
-            # Transformer layers
             encoder_layer = nn.TransformerEncoderLayer(
                 d_model=d_model,
                 nhead=num_heads,
@@ -313,8 +266,6 @@ if HAS_TORCH:
             self.transformer = nn.TransformerEncoder(
                 encoder_layer, num_layers=num_layers
             )
-
-            # Output layers
             self.classifier = nn.Sequential(
                 nn.Linear(d_model, d_model),
                 nn.ReLU(),
@@ -325,36 +276,23 @@ if HAS_TORCH:
         def forward(self, x, attention_mask=None):
             """Forward pass through transformer."""
             batch_size, seq_len = x.shape
-
-            # Create position indices
             positions = (
                 torch.arange(seq_len, device=x.device)
                 .unsqueeze(0)
                 .repeat(batch_size, 1)
             )
-
-            # Embeddings
             token_emb = self.token_embedding(x)
             pos_emb = self.position_embedding(positions)
             embeddings = token_emb + pos_emb
-
-            # Create attention mask for padding
             if attention_mask is None:
-                attention_mask = x != 0  # Assume 0 is padding token
-
-            # Transformer processing
+                attention_mask = x != 0
             transformer_output = self.transformer(
                 embeddings, src_key_padding_mask=~attention_mask
             )
-
-            # Global pooling (mean of non-padded tokens)
             pooled = (transformer_output * attention_mask.unsqueeze(-1)).sum(
                 dim=1
             ) / attention_mask.sum(dim=1, keepdim=True)
-
-            # Final prediction
             output = self.classifier(pooled)
-
             return output
 
     class MultiTaskMolecularModel(nn.Module):
@@ -381,29 +319,21 @@ if HAS_TORCH:
                 dropout: Dropout probability
             """
             super().__init__()
-
             if task_configs is None:
                 task_configs = {
                     "solubility": {"type": "regression", "output_dim": 1},
                     "toxicity": {"type": "classification", "output_dim": 2},
                     "bioactivity": {"type": "regression", "output_dim": 1},
                 }
-
             self.task_configs = task_configs
-
-            # Shared backbone
             backbone_layers = []
             prev_dim = input_dim
-
             for hidden_dim in hidden_dims:
                 backbone_layers.extend(
                     [nn.Linear(prev_dim, hidden_dim), nn.ReLU(), nn.Dropout(dropout)]
                 )
                 prev_dim = hidden_dim
-
             self.backbone = nn.Sequential(*backbone_layers)
-
-            # Task-specific heads
             self.task_heads = nn.ModuleDict()
             for task_name, config in task_configs.items():
                 head_layers = [
@@ -416,19 +346,13 @@ if HAS_TORCH:
 
         def forward(self, x, tasks=None):
             """Forward pass through multi-task model."""
-            # Shared representation
             shared_features = self.backbone(x)
-
-            # Task-specific predictions
             outputs = {}
-
             if tasks is None:
                 tasks = list(self.task_configs.keys())
-
             for task in tasks:
                 if task in self.task_heads:
                     outputs[task] = self.task_heads[task](shared_features)
-
             return outputs
 
     class MetaLearningModel(nn.Module):
@@ -455,19 +379,14 @@ if HAS_TORCH:
                 num_layers: Number of layers
             """
             super().__init__()
-
-            # Build network
             layers = []
             prev_dim = input_dim
-
             for i in range(num_layers):
                 layers.append(nn.Linear(prev_dim, hidden_dim))
                 if i < num_layers - 1:
                     layers.append(nn.ReLU())
                 prev_dim = hidden_dim
-
             layers.append(nn.Linear(hidden_dim, output_dim))
-
             self.network = nn.Sequential(*layers)
 
         def forward(self, x):
@@ -493,25 +412,20 @@ if HAS_TORCH:
             Returns:
                 Adapted model
             """
-            # Clone current model
             adapted_model = type(self)(
                 input_dim=support_x.shape[1],
-                hidden_dim=256,  # Should match initialization
+                hidden_dim=256,
                 output_dim=support_y.shape[1] if support_y.dim() > 1 else 1,
             )
             adapted_model.load_state_dict(self.state_dict())
-
-            # Adaptation loop
             optimizer = torch.optim.SGD(adapted_model.parameters(), lr=learning_rate)
             criterion = nn.MSELoss()
-
             for step in range(num_steps):
                 optimizer.zero_grad()
                 predictions = adapted_model(support_x)
                 loss = criterion(predictions, support_y)
                 loss.backward()
                 optimizer.step()
-
             return adapted_model
 
     class AttentionMolecularModel(nn.Module):
@@ -540,16 +454,10 @@ if HAS_TORCH:
             super().__init__()
             self.hidden_dim = hidden_dim
             self.num_heads = num_heads
-
-            # Feature projection
             self.feature_projection = nn.Linear(input_dim, hidden_dim)
-
-            # Multi-head attention
             self.attention = nn.MultiheadAttention(
                 embed_dim=hidden_dim, num_heads=num_heads, batch_first=True
             )
-
-            # Output layers
             self.classifier = nn.Sequential(
                 nn.Linear(hidden_dim, hidden_dim // 2),
                 nn.ReLU(),
@@ -559,31 +467,19 @@ if HAS_TORCH:
         def forward(self, x, return_attention=False):
             """Forward pass with optional attention weights."""
             batch_size = x.shape[0]
-
-            # Project features
             features = self.feature_projection(x)
-
-            # Reshape for attention (treat features as sequence)
-            features = features.unsqueeze(1)  # Add sequence dimension
-
-            # Self-attention
+            features = features.unsqueeze(1)
             attended_features, attention_weights = self.attention(
                 features, features, features
             )
-
-            # Global pooling
             pooled_features = attended_features.squeeze(1)
-
-            # Final prediction
             output = self.classifier(pooled_features)
-
             if return_attention:
                 return output, attention_weights
             else:
                 return output
 
 
-# Utility functions for advanced models
 def create_molecular_graph_dataset(
     smiles_list: List[str], labels: Optional[np.ndarray] = None
 ) -> List[Dict]:
@@ -598,15 +494,12 @@ def create_molecular_graph_dataset(
         List of graph data dictionaries
     """
     dataset = []
-
     for i, smiles in enumerate(smiles_list):
         graph_data = smiles_to_graph(smiles)
-
         if graph_data is not None:
             if labels is not None:
                 graph_data["label"] = labels[i]
             dataset.append(graph_data)
-
     return dataset
 
 
@@ -629,13 +522,10 @@ def analyze_attention_weights(
     model.eval()
     with torch.no_grad():
         _, attention_weights = model(features, return_attention=True)
-
-    # Average attention weights across heads and samples
     avg_attention = attention_weights.mean(dim=1).mean(dim=0).cpu().numpy()
-
     analysis = {
         "attention_weights": avg_attention,
-        "top_features": np.argsort(avg_attention)[::-1][:10],  # Top 10 features
+        "top_features": np.argsort(avg_attention)[::-1][:10],
         "attention_distribution": {
             "mean": float(avg_attention.mean()),
             "std": float(avg_attention.std()),
@@ -643,17 +533,15 @@ def analyze_attention_weights(
             "min": float(avg_attention.min()),
         },
     }
-
     if feature_names is not None:
         analysis["top_feature_names"] = [
             feature_names[i] for i in analysis["top_features"]
         ]
-
     return analysis
 
 
 def ensemble_predictions(
-    models: List[nn.Module], features: torch.Tensor, method: str = "mean"
+    models: List[nn.Module], features: torch.Tensor, method_type: str = "mean"
 ) -> torch.Tensor:
     """
     Combine predictions from multiple models.
@@ -667,35 +555,29 @@ def ensemble_predictions(
         Ensemble predictions
     """
     predictions = []
-
     for model in models:
         model.eval()
         with torch.no_grad():
             pred = model(features)
             predictions.append(pred)
-
     predictions = torch.stack(predictions)
-
-    if method == "mean":
+    if method_type == "mean":
         return predictions.mean(dim=0)
-    elif method == "median":
+    elif method_type == "median":
         return predictions.median(dim=0)[0]
-    elif method == "weighted":
-        # Simple equal weighting (could be improved with learned weights)
+    elif method_type == "weighted":
         weights = torch.ones(len(models)) / len(models)
         return (predictions * weights.view(-1, 1, 1)).sum(dim=0)
     else:
-        raise ValueError(f"Unknown ensemble method: {method}")
+        raise ValueError(f"Unknown ensemble method: {method_type}")
 
 
-# Export main classes and functions
 __all__ = [
     "smiles_to_graph",
     "create_molecular_graph_dataset",
     "analyze_attention_weights",
     "ensemble_predictions",
 ]
-
 if HAS_TORCH:
     __all__.extend(
         [
@@ -705,6 +587,5 @@ if HAS_TORCH:
             "AttentionMolecularModel",
         ]
     )
-
 if HAS_TORCH_GEOMETRIC:
     __all__.extend(["MolecularGCN", "MolecularGAT"])

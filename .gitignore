@@ -105,3 +105,13 @@ coverage.xml
 # Backup files
 *_backup.*
 *.backup
+
+# ChemML specific directories and files
+logs/artifacts/mlruns/
+logs/artifacts/wandb/
+logs/performance_reports/
+data/cache/
+data/plots/
+reports/*.json
+*.tar.gz
+chemml_env/

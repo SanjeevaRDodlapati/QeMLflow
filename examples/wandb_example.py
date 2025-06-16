@@ -10,11 +10,78 @@ in your ChemML experiments.
 import os
 import sys
 
-sys.path.append("src")
-
 import numpy as np
 
-from chemml_common.wandb_integration import *
+# Updated ChemML experiment tracking
+try:
+    from chemml.integrations.experiment_tracking import setup_wandb_tracking
+
+    HAS_WANDB_INTEGRATION = True
+except ImportError:
+    HAS_WANDB_INTEGRATION = False
+    print(
+        "⚠️  ChemML experiment tracking not available. Install with: pip install wandb"
+    )
+
+# Optional direct wandb import
+try:
+    import wandb
+
+    HAS_WANDB = True
+except ImportError:
+    HAS_WANDB = False
+
+
+# ChemML experiment tracking helper functions
+def start_experiment(experiment_name, config=None, tags=None):
+    """Start a wandb experiment with ChemML integration."""
+    if HAS_WANDB_INTEGRATION:
+        return setup_wandb_tracking(
+            experiment_name, config or {}, project="chemml-examples"
+        )
+    elif HAS_WANDB:
+        return wandb.init(
+            project="chemml-examples",
+            name=experiment_name,
+            config=config or {},
+            tags=tags or [],
+        )
+    else:
+        print(f"📊 Demo: Starting experiment {experiment_name}")
+        return None
+
+
+def log_metrics(metrics, step=None):
+    """Log metrics to wandb."""
+    if HAS_WANDB and wandb.run:
+        wandb.log(metrics, step=step)
+    else:
+        print(f"📈 Demo: Logging metrics {metrics}")
+
+
+def log_model_results(y_true, y_pred, model_name):
+    """Log model evaluation results."""
+    from sklearn.metrics import mean_squared_error, r2_score
+
+    mse = mean_squared_error(y_true, y_pred)
+    r2 = r2_score(y_true, y_pred)
+
+    results = {
+        f"{model_name}_mse": mse,
+        f"{model_name}_r2": r2,
+        f"{model_name}_rmse": mse**0.5,
+    }
+
+    log_metrics(results)
+    return results
+
+
+def finish_experiment():
+    """Finish the wandb experiment."""
+    if HAS_WANDB and wandb.run:
+        wandb.finish()
+    else:
+        print("✅ Demo: Experiment finished")
 
 
 def run_example_experiment():
@@ -77,7 +144,10 @@ def run_example_experiment():
     log_metrics(molecular_summary)
 
     print(f"✅ Experiment completed!")
-    print(f"🔗 View results: {run.url}")
+    if run and hasattr(run, "url"):
+        print(f"🔗 View results: {run.url}")
+    else:
+        print("📊 Demo mode: No wandb URL available")
 
     # Finish experiment
     finish_experiment()

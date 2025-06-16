@@ -39,7 +39,7 @@ except ImportError:
 class MolecularDescriptors:
     """Calculate molecular descriptors using RDKit"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         if not RDKIT_AVAILABLE:
             raise ImportError("RDKit is required for MolecularDescriptors")
 
@@ -190,7 +190,7 @@ class MoleculeVisualizer:
             raise ImportError("RDKit is required for MoleculeVisualizer")
 
     @staticmethod
-    def view_2d(mol: Chem.Mol, size: Tuple[int, int] = (300, 300)):
+    def view_2d(mol: Chem.Mol, size: Tuple[int, int] = (300, 300)) -> Any:
         """Display 2D structure of molecule"""
         from rdkit.Chem import Draw
 
@@ -832,7 +832,9 @@ class MolecularVisualization:
         if not RDKIT_AVAILABLE:
             raise ImportError("RDKit is required for MolecularVisualization")
 
-    def draw_molecule_2d(self, mol: Chem.Mol, size: Tuple[int, int] = (300, 300)):
+    def draw_molecule_2d(
+        self, mol: Chem.Mol, size: Tuple[int, int] = (300, 300)
+    ) -> Any:
         """Draw 2D representation of molecule."""
         if not RDKIT_AVAILABLE:
             return None
@@ -844,7 +846,7 @@ class MolecularVisualization:
         except Exception:
             return None
 
-    def draw_molecule_3d(self, mol: Chem.Mol):
+    def draw_molecule_3d(self, mol: Chem.Mol) -> str:
         """Draw 3D representation of molecule using py3Dmol."""
         if not PY3DMOL_AVAILABLE:
             return None

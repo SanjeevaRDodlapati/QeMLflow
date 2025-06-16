@@ -81,7 +81,7 @@ __all__ = [
 import warnings
 
 
-def _show_deprecation_warning():
+def _show_deprecation_warning() -> None:
     """Show deprecation warning for direct import of this module."""
     warnings.warn(
         "Importing from chemml.research.drug_discovery directly is deprecated. "

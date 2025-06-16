@@ -152,13 +152,13 @@ class FeatureScaler:
             raise ValueError("Scaler must be fitted before inverse transforming")
         return self.scaler.inverse_transform(X)
 
-    def save(self, filepath: str):
+    def save(self, filepath: str) -> None:
         """Save fitted scaler"""
         if not self.fitted:
             raise ValueError("Cannot save unfitted scaler")
         joblib.dump(self.scaler, filepath)
 
-    def load(self, filepath: str):
+    def load(self, filepath: str) -> None:
         """Load fitted scaler"""
         self.scaler = joblib.load(filepath)
         self.fitted = True
@@ -305,7 +305,7 @@ class ModelPersistence:
     """Save and load models with metadata"""
 
     @staticmethod
-    def save_model(model: Any, filepath: str, metadata: Optional[Dict] = None):
+    def save_model(model: Any, filepath: str, metadata: Optional[Dict] = None) -> None:
         """
         Save model with optional metadata
 

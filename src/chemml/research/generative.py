@@ -11,14 +11,12 @@ Key Features:
 - Autoregressive models for SMILES generation
 - Property-guided molecular optimization
 """
-
 import warnings
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 import pandas as pd
 
-# Deep learning imports
 try:
     import torch
     import torch.nn as nn
@@ -28,8 +26,6 @@ try:
     HAS_TORCH = True
 except ImportError:
     HAS_TORCH = False
-
-# Chemistry imports
 try:
     from rdkit import Chem
     from rdkit.Chem import Descriptors
@@ -37,9 +33,6 @@ try:
     HAS_RDKIT = True
 except ImportError:
     HAS_RDKIT = False
-
-
-# Custom dataset for molecular data
 if HAS_TORCH:
 
     class MolecularDataset(Dataset):
@@ -57,8 +50,6 @@ if HAS_TORCH:
             """
             self.smiles = smiles_list
             self.properties = properties
-
-            # Create vocabulary for SMILES tokenization
             self.vocab = self._build_vocabulary(smiles_list)
             self.vocab_size = len(self.vocab)
             self.max_length = max(len(s) for s in smiles_list)
@@ -68,12 +59,9 @@ if HAS_TORCH:
             chars = set()
             for smiles in smiles_list:
                 chars.update(smiles)
-
-            # Add special tokens
             vocab = {"<PAD>": 0, "<START>": 1, "<END>": 2, "<UNK>": 3}
             for i, char in enumerate(sorted(chars)):
                 vocab[char] = i + 4
-
             return vocab
 
         def encode_smiles(self, smiles: str) -> List[int]:
@@ -82,18 +70,14 @@ if HAS_TORCH:
             for char in smiles:
                 tokens.append(self.vocab.get(char, self.vocab["<UNK>"]))
             tokens.append(self.vocab["<END>"])
-
-            # Pad to max length
-            while len(tokens) < self.max_length + 2:  # +2 for START/END
+            while len(tokens) < self.max_length + 2:
                 tokens.append(self.vocab["<PAD>"])
-
             return tokens[: self.max_length + 2]
 
         def decode_tokens(self, tokens: List[int]) -> str:
             """Decode token indices back to SMILES."""
             char_to_idx = {v: k for k, v in self.vocab.items()}
             smiles = ""
-
             for token in tokens:
                 char = char_to_idx.get(token, "<UNK>")
                 if char in ["<START>", "<PAD>", "<UNK>"]:
@@ -102,25 +86,21 @@ if HAS_TORCH:
                     break
                 else:
                     smiles += char
-
             return smiles
 
-        def __len__(self):
+        def __len__(self) -> Any:
             return len(self.smiles)
 
-        def __getitem__(self, idx):
+        def __getitem__(self, idx) -> Any:
             encoded = self.encode_smiles(self.smiles[idx])
             item = {"smiles_tokens": torch.tensor(encoded, dtype=torch.long)}
-
             if self.properties is not None:
                 item["properties"] = torch.tensor(
                     self.properties[idx], dtype=torch.float32
                 )
-
             return item
 
 
-# Molecular VAE
 if HAS_TORCH:
 
     class MolecularVAE(nn.Module):
@@ -152,14 +132,10 @@ if HAS_TORCH:
             self.max_length = max_length
             self.latent_dim = latent_dim
             self.hidden_dim = hidden_dim
-
-            # Encoder
             self.embedding = nn.Embedding(vocab_size, hidden_dim)
             self.encoder_lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
             self.fc_mu = nn.Linear(hidden_dim, latent_dim)
             self.fc_logvar = nn.Linear(hidden_dim, latent_dim)
-
-            # Decoder
             self.decoder_input = nn.Linear(latent_dim, hidden_dim)
             self.decoder_lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
             self.output_layer = nn.Linear(hidden_dim, vocab_size)
@@ -168,13 +144,9 @@ if HAS_TORCH:
             """Encode SMILES to latent space."""
             embedded = self.embedding(x)
             _, (hidden, _) = self.encoder_lstm(embedded)
-
-            # Use last hidden state
-            hidden = hidden[-1]  # Take last layer
-
+            hidden = hidden[-1]
             mu = self.fc_mu(hidden)
             logvar = self.fc_logvar(hidden)
-
             return mu, logvar
 
         def reparameterize(
@@ -191,16 +163,11 @@ if HAS_TORCH:
             """Decode latent vector to SMILES."""
             if max_length is None:
                 max_length = self.max_length
-
             batch_size = z.shape[0]
-
-            # Initialize decoder
             hidden_input = self.decoder_input(z).unsqueeze(1)
             hidden_input = hidden_input.repeat(1, max_length, 1)
-
             output, _ = self.decoder_lstm(hidden_input)
             logits = self.output_layer(output)
-
             return logits
 
         def forward(
@@ -210,24 +177,17 @@ if HAS_TORCH:
             mu, logvar = self.encode(x)
             z = self.reparameterize(mu, logvar)
             recon = self.decode(z)
-
             return recon, mu, logvar
 
         def generate(self, num_samples: int = 1) -> List[torch.Tensor]:
             """Generate new molecules by sampling from latent space."""
             self.eval()
             with torch.no_grad():
-                # Sample from unit Gaussian
                 z = torch.randn(num_samples, self.latent_dim)
-
-                # Decode to SMILES
                 logits = self.decode(z)
-
-                # Sample from categorical distribution
                 probs = F.softmax(logits, dim=-1)
                 samples = torch.multinomial(probs.view(-1, self.vocab_size), 1)
                 samples = samples.view(num_samples, -1)
-
                 return samples
 
     class ConditionalVAE(MolecularVAE):
@@ -257,13 +217,9 @@ if HAS_TORCH:
             """
             super().__init__(vocab_size, max_length, latent_dim, hidden_dim)
             self.property_dim = property_dim
-
-            # Modify encoder to include properties
             self.property_encoder = nn.Linear(property_dim, hidden_dim)
-            self.fc_mu = nn.Linear(hidden_dim * 2, latent_dim)  # Concatenated features
+            self.fc_mu = nn.Linear(hidden_dim * 2, latent_dim)
             self.fc_logvar = nn.Linear(hidden_dim * 2, latent_dim)
-
-            # Modify decoder to include properties
             self.decoder_input = nn.Linear(latent_dim + property_dim, hidden_dim)
 
         def encode(
@@ -273,16 +229,10 @@ if HAS_TORCH:
             embedded = self.embedding(x)
             _, (hidden, _) = self.encoder_lstm(embedded)
             hidden = hidden[-1]
-
-            # Encode properties
             prop_encoded = self.property_encoder(properties)
-
-            # Concatenate SMILES and property features
             combined = torch.cat([hidden, prop_encoded], dim=1)
-
             mu = self.fc_mu(combined)
             logvar = self.fc_logvar(combined)
-
             return mu, logvar
 
         def decode(
@@ -294,16 +244,11 @@ if HAS_TORCH:
             """Decode latent vector and properties to SMILES."""
             if max_length is None:
                 max_length = self.max_length
-
-            # Concatenate latent vector with properties
             z_prop = torch.cat([z, properties], dim=1)
-
             hidden_input = self.decoder_input(z_prop).unsqueeze(1)
             hidden_input = hidden_input.repeat(1, max_length, 1)
-
             output, _ = self.decoder_lstm(hidden_input)
             logits = self.output_layer(output)
-
             return logits
 
         def forward(
@@ -313,7 +258,6 @@ if HAS_TORCH:
             mu, logvar = self.encode(x, properties)
             z = self.reparameterize(mu, logvar)
             recon = self.decode(z, properties)
-
             return recon, mu, logvar
 
         def generate_with_properties(
@@ -322,27 +266,18 @@ if HAS_TORCH:
             """Generate molecules with target properties."""
             self.eval()
             with torch.no_grad():
-                # Sample from unit Gaussian
                 z = torch.randn(num_samples, self.latent_dim)
-
-                # Repeat target properties for batch
                 if target_properties.dim() == 1:
                     target_properties = target_properties.unsqueeze(0).repeat(
                         num_samples, 1
                     )
-
-                # Decode to SMILES
                 logits = self.decode(z, target_properties)
-
-                # Sample from categorical distribution
                 probs = F.softmax(logits, dim=-1)
                 samples = torch.multinomial(probs.view(-1, self.vocab_size), 1)
                 samples = samples.view(num_samples, -1)
-
                 return samples
 
 
-# Molecular GAN
 if HAS_TORCH:
 
     class MolecularGAN:
@@ -372,11 +307,7 @@ if HAS_TORCH:
             self.max_length = max_length
             self.latent_dim = latent_dim
             self.hidden_dim = hidden_dim
-
-            # Generator
             self.generator = self._build_generator()
-
-            # Discriminator
             self.discriminator = self._build_discriminator()
 
         def _build_generator(self) -> nn.Module:
@@ -387,26 +318,16 @@ if HAS_TORCH:
                     super().__init__()
                     self.hidden_dim = hidden_dim
                     self.max_length = max_length
-
                     self.fc1 = nn.Linear(latent_dim, hidden_dim)
                     self.lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
                     self.output_layer = nn.Linear(hidden_dim, vocab_size)
 
-                def forward(self, z):
+                def forward(self, z: Any) -> Any:
                     batch_size = z.shape[0]
-
-                    # Project noise to hidden dimension
                     hidden = F.relu(self.fc1(z))
-
-                    # Repeat for sequence length
                     hidden = hidden.unsqueeze(1).repeat(1, self.max_length, 1)
-
-                    # LSTM processing
                     output, _ = self.lstm(hidden)
-
-                    # Output layer
                     logits = self.output_layer(output)
-
                     return logits
 
             return Generator(
@@ -423,7 +344,7 @@ if HAS_TORCH:
                     self.lstm = nn.LSTM(hidden_dim, hidden_dim, batch_first=True)
                     self.fc = nn.Linear(hidden_dim, 1)
 
-                def forward(self, x):
+                def forward(self, x: Any) -> Any:
                     embedded = self.embedding(x)
                     _, (hidden, _) = self.lstm(embedded)
                     output = torch.sigmoid(self.fc(hidden[-1]))
@@ -437,16 +358,12 @@ if HAS_TORCH:
             with torch.no_grad():
                 noise = torch.randn(num_samples, self.latent_dim)
                 logits = self.generator(noise)
-
-                # Sample from categorical distribution
                 probs = F.softmax(logits, dim=-1)
                 samples = torch.multinomial(probs.view(-1, self.vocab_size), 1)
                 samples = samples.view(num_samples, -1)
-
                 return samples
 
 
-# Molecular optimization using reinforcement learning
 class MolecularOptimizer:
     """
     Optimize molecular properties using reinforcement learning.
@@ -487,25 +404,14 @@ class MolecularOptimizer:
         if not HAS_TORCH:
             warnings.warn("PyTorch not available. Cannot perform optimization.")
             return []
-
         best_molecules = []
-
         for iteration in range(num_iterations):
-            # Generate candidate molecules
             candidates = self.generator.generate(batch_size)
-
-            # Decode to SMILES (assuming we have a decode function)
             smiles_candidates = self._decode_molecules(candidates)
-
-            # Evaluate properties
             scores = self._evaluate_molecules(smiles_candidates, target_properties)
-
-            # Select best molecules
-            best_idx = np.argsort(scores)[-5:]  # Top 5
+            best_idx = np.argsort(scores)[-5:]
             iteration_best = [smiles_candidates[i] for i in best_idx]
             best_molecules.extend(iteration_best)
-
-            # Log progress
             self.optimization_history.append(
                 {
                     "iteration": iteration,
@@ -514,42 +420,31 @@ class MolecularOptimizer:
                     "best_molecules": iteration_best,
                 }
             )
-
         return best_molecules
 
     def _decode_molecules(self, tokens: torch.Tensor) -> List[str]:
         """Decode token tensors to SMILES strings."""
-        # This would use the dataset's decode function
-        # Simplified implementation
-        return [f"CC{'C' * i}" for i in range(len(tokens))]  # Mock SMILES
+        return [f"CC{'C' * i}" for i in range(len(tokens))]
 
     def _evaluate_molecules(
         self, smiles_list: List[str], target_properties: Dict[str, float]
     ) -> List[float]:
         """Evaluate molecules against target properties."""
         scores = []
-
         for smiles in smiles_list:
             try:
-                # Calculate properties
                 predicted_props = self.property_predictor(smiles)
-
-                # Calculate score based on how close to target
                 score = 0.0
                 for prop_name, target_value in target_properties.items():
                     if prop_name in predicted_props:
                         diff = abs(predicted_props[prop_name] - target_value)
-                        score += 1.0 / (1.0 + diff)  # Inverse distance
-
+                        score += 1.0 / (1.0 + diff)
                 scores.append(score)
-
             except Exception:
-                scores.append(0.0)  # Penalize invalid molecules
-
+                scores.append(0.0)
         return scores
 
 
-# Utility functions
 def calculate_molecular_properties(smiles: str) -> Dict[str, float]:
     """
     Calculate molecular properties for a SMILES string.
@@ -568,12 +463,10 @@ def calculate_molecular_properties(smiles: str) -> Dict[str, float]:
             "tpsa": 50.0,
             "num_rotatable_bonds": 3,
         }
-
     try:
         mol = Chem.MolFromSmiles(smiles)
         if mol is None:
             return {}
-
         properties = {
             "molecular_weight": Descriptors.MolWt(mol),
             "logp": Descriptors.MolLogP(mol),
@@ -582,9 +475,7 @@ def calculate_molecular_properties(smiles: str) -> Dict[str, float]:
             "num_h_donors": Descriptors.NumHDonors(mol),
             "num_h_acceptors": Descriptors.NumHAcceptors(mol),
         }
-
         return properties
-
     except Exception:
         return {}
 
@@ -606,52 +497,39 @@ def validate_generated_molecules(smiles_list: List[str]) -> Dict[str, Any]:
         "drug_like_molecules": 0,
         "novel_molecules": 0,
     }
-
     if not HAS_RDKIT:
         warnings.warn("RDKit not available. Cannot validate molecules.")
         return stats
-
     valid_smiles = []
-
     for smiles in smiles_list:
         try:
             mol = Chem.MolFromSmiles(smiles)
             if mol is not None:
                 valid_smiles.append(smiles)
                 stats["valid_molecules"] += 1
-
-                # Check drug-likeness (simplified Lipinski's rule)
                 mw = Descriptors.MolWt(mol)
                 logp = Descriptors.MolLogP(mol)
                 hbd = Descriptors.NumHDonors(mol)
                 hba = Descriptors.NumHAcceptors(mol)
-
                 if mw <= 500 and logp <= 5 and hbd <= 5 and hba <= 10:
                     stats["drug_like_molecules"] += 1
-        except:
+        except Exception:
             continue
-
-    # Count unique molecules
     stats["unique_molecules"] = len(set(valid_smiles))
-
-    # Calculate rates
     if stats["total_generated"] > 0:
         stats["validity_rate"] = stats["valid_molecules"] / stats["total_generated"]
         stats["uniqueness_rate"] = stats["unique_molecules"] / stats["total_generated"]
         stats["drug_like_rate"] = (
             stats["drug_like_molecules"] / stats["total_generated"]
         )
-
     return stats
 
 
-# Export main classes and functions
 __all__ = [
     "MolecularOptimizer",
     "calculate_molecular_properties",
     "validate_generated_molecules",
 ]
-
 if HAS_TORCH:
     __all__.extend(
         ["MolecularDataset", "MolecularVAE", "ConditionalVAE", "MolecularGAN"]

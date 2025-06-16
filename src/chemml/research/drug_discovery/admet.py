@@ -41,7 +41,7 @@ class ADMETPredictor:
     Predict ADMET properties using simple rule-based and ML approaches.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.models = {}
         self.scalers = {}
 

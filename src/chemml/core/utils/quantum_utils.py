@@ -47,7 +47,7 @@ except Exception:
 class QuantumCircuitBuilder:
     """Build quantum circuits for molecular systems"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         if not QISKIT_AVAILABLE:
             raise ImportError("Qiskit is required for QuantumCircuitBuilder")
 
@@ -267,11 +267,11 @@ class QuantumMachineLearning:
         self.num_qubits = num_qubits
         self.dev = qml.device("default.qubit", wires=num_qubits)
 
-    def create_variational_classifier(self, num_layers: int = 2):
+    def create_variational_classifier(self, num_layers: int = 2) -> Any:
         """Create a variational quantum classifier"""
 
         @qml.qnode(self.dev)
-        def circuit(weights, x):
+        def circuit(weights, x) -> Any:
             # Encode classical data
             for i in range(len(x)):
                 qml.RX(x[i], wires=i % self.num_qubits)
@@ -290,11 +290,11 @@ class QuantumMachineLearning:
 
         return circuit
 
-    def create_quantum_embedding(self, data_reps: int = 1):
+    def create_quantum_embedding(self, data_reps: int = 1) -> Any:
         """Create quantum feature embedding circuit"""
 
         @qml.qnode(self.dev)
-        def embedding(features):
+        def embedding(features) -> Any:
             for rep in range(data_reps):
                 for i, feature in enumerate(features):
                     if i < self.num_qubits:
@@ -392,19 +392,19 @@ def create_quantum_circuit(
                 self.num_clbits = n_classical or n_qubits
                 self.data = []  # Mock circuit data
 
-            def measure(self, qubit, clbit):
+            def measure(self, qubit, clbit) -> None:
                 """Mock measure method"""
                 pass
 
-            def h(self, qubit):
+            def h(self, qubit) -> None:
                 """Mock Hadamard gate"""
                 self.data.append(("h", qubit))
 
-            def x(self, qubit):
+            def x(self, qubit) -> None:
                 """Mock X gate"""
                 self.data.append(("x", qubit))
 
-            def cx(self, control, target):
+            def cx(self, control, target) -> None:
                 """Mock CNOT gate"""
                 self.data.append(("cx", control, target))
 

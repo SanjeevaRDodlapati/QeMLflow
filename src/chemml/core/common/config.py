@@ -16,15 +16,15 @@ except ImportError:
 
     # Create fallback classes
     class BaseSettings:
-        def __init__(self, **kwargs):
+        def __init__(self, **kwargs) -> None:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
-    def Field(default=None, **kwargs):
+    def Field(default=None, **kwargs) -> Any:
         return default
 
-    def validator(*args, **kwargs):
-        def decorator(func):
+    def validator(*args, **kwargs) -> Any:
+        def decorator(func) -> Any:
             return func
 
         return decorator
@@ -55,7 +55,7 @@ class ChemMLPaths:
     models_dir: Path = Path("models")
     logs_dir: Path = Path("logs")
 
-    def ensure_exists(self):
+    def ensure_exists(self) -> None:
         """Create directories if they don't exist."""
         for path in [
             self.data_dir,
@@ -121,19 +121,19 @@ class ChemMLConfig(BaseSettings):
             case_sensitive = False
 
         @validator("data_dir", "output_dir", "cache_dir", "models_dir", "logs_dir")
-        def path_validator(cls, v):
+        def path_validator(cls, v) -> Any:
             if isinstance(v, str):
                 return Path(v)
             return v
 
         @validator("memory_limit")
-        def memory_limit_validator(cls, v):
+        def memory_limit_validator(cls, v) -> Any:
             if v <= 0:
                 raise ValueError("Memory limit must be positive")
             return v
 
         @validator("max_workers")
-        def max_workers_validator(cls, v):
+        def max_workers_validator(cls, v) -> Any:
             if v <= 0:
                 raise ValueError("Max workers must be positive")
             return min(v, os.cpu_count() or 4)
@@ -148,7 +148,7 @@ class ChemMLConfig(BaseSettings):
             logs_dir=self.logs_dir,
         )
 
-    def ensure_directories(self):
+    def ensure_directories(self) -> None:
         """Create all required directories."""
         self.get_paths().ensure_exists()
 
@@ -166,14 +166,14 @@ def get_config() -> ChemMLConfig:
     return _config
 
 
-def update_config(**kwargs):
+def update_config(**kwargs) -> None:
     """Update the global configuration."""
     global _config
     _config = ChemMLConfig(**kwargs)
     _config.ensure_directories()
 
 
-def reset_config():
+def reset_config() -> None:
     """Reset the global configuration to defaults."""
     global _config
     _config = None

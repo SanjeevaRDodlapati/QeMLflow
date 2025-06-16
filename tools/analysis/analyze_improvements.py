@@ -57,12 +57,13 @@ def analyze_scripts():
 
     enhanced_files = ["day_01_enhanced.py"]
 
-    common_files = [
-        "chemml_common/__init__.py",
-        "chemml_common/config/environment.py",
-        "chemml_common/core/base_runner.py",
-        "chemml_common/libraries/manager.py",
-        "chemml_common/assessment/framework.py",
+    # Note: chemml_common has been integrated into the main framework
+    framework_files = [
+        "src/chemml/__init__.py",
+        "src/chemml/config/environment.py",
+        "src/chemml/core/base_runner.py",
+        "src/chemml/integrations/experiment_tracking.py",
+        "src/chemml/assessment/framework.py",
     ]
 
     print("🔍 ChemML Scripts Enhancement Analysis")
@@ -97,31 +98,33 @@ def analyze_scripts():
     )
 
     # Analyze enhanced infrastructure
-    print("\n📚 Enhanced Common Infrastructure:")
+    print("\n📚 Enhanced Framework Infrastructure:")
     print("-" * 50)
 
-    total_common_lines = 0
-    total_common_functions = 0
-    total_common_classes = 0
+    total_framework_lines = 0
+    total_framework_functions = 0
+    total_framework_classes = 0
 
-    for file_name in common_files:
+    for file_name in framework_files:
         file_path = Path(file_name)
         if file_path.exists():
             lines = count_lines_in_file(file_path)
             functions = count_functions_in_file(file_path)
             classes = count_classes_in_file(file_path)
 
-            total_common_lines += lines
-            total_common_functions += functions
-            total_common_classes += classes
+            total_framework_lines += lines
+            total_framework_functions += functions
+            total_framework_classes += classes
 
             print(
                 f"{file_name:35} | {lines:4d} lines | {functions:2d} functions | {classes:2d} classes"
             )
+        else:
+            print(f"{file_name:35} | NOT FOUND")
 
     print("-" * 50)
     print(
-        f"{'TOTAL COMMON INFRASTRUCTURE':35} | {total_common_lines:4d} lines | {total_common_functions:2d} functions | {total_common_classes:2d} classes"
+        f"{'TOTAL FRAMEWORK INFRASTRUCTURE':35} | {total_framework_lines:4d} lines | {total_framework_functions:2d} functions | {total_framework_classes:2d} classes"
     )
 
     # Analyze enhanced scripts
@@ -169,15 +172,15 @@ def analyze_scripts():
         print(f"Original Day 1 Script:         {original_day1_lines:4d} lines")
         print(f"Enhanced Day 1 Script:         {enhanced_day1_lines:4d} lines")
         print(f"Reduction Ratio:               {reduction_ratio:.1%}")
-        print(f"")
+        print("")
         print(f"Original Total (All Scripts):  {total_original_lines:4d} lines")
-        print(f"Common Infrastructure:         {total_common_lines:4d} lines")
+        print(f"Framework Infrastructure:      {total_framework_lines:4d} lines")
         print(
-            f"Projected Enhanced Total:      {projected_enhanced_total + total_common_lines:4d} lines"
+            f"Projected Enhanced Total:      {projected_enhanced_total + total_framework_lines:4d} lines"
         )
-        print(f"")
+        print("")
         print(
-            f"Estimated Total Reduction:     {((total_original_lines - (projected_enhanced_total + total_common_lines)) / total_original_lines):.1%}"
+            f"Estimated Total Reduction:     {((total_original_lines - (projected_enhanced_total + total_framework_lines)) / total_original_lines):.1%}"
         )
 
     # Code quality improvements

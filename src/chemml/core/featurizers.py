@@ -36,7 +36,7 @@ except ImportError:
 class BaseFeaturizer(ABC):
     """Abstract base class for molecular featurizers."""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs) -> None:
         self.kwargs = kwargs
 
     @abstractmethod
