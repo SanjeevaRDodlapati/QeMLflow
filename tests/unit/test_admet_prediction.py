@@ -12,6 +12,10 @@ import numpy as np
 import pandas as pd
 
 from chemml.research.drug_discovery.admet import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     ADMETPredictor,
     apply_admet_filters,
     assess_drug_likeness,

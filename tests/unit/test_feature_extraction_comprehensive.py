@@ -53,6 +53,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # Import the feature_extraction module
 from src.data_processing.feature_extraction import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     _calculate_single_fingerprint,
     _estimate_property,
     _extract_basic_descriptors,

@@ -15,6 +15,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn import *
 
 # Add src to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))

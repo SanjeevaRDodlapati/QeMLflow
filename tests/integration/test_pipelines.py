@@ -30,6 +30,10 @@ except ImportError as e:
     pytest.skip(f"Integration modules not available: {e}", allow_module_level=True)
 
 from tests.conftest import skip_if_no_deepchem, skip_if_no_rdkit
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
 
 
 class TestEndToEndPipelines:

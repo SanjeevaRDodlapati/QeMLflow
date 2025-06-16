@@ -1,0 +1,711 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Quantum-Enhanced Molecular Machine Learning Framework">
+      
+      
+      
+        <link rel="canonical" href="https://chemml.io/integrations/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>ChemML Integration Documentation - ChemML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemml-integration-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChemML Integration Documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ChemML Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/quick-start.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/basic-tutorial.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Quick Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Quick Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-integration-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Integration Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Integration Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📁 Integration Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#molecular-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Molecular Modeling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drug-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Drug Discovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materials-science" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materials Science
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#experiment-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiment Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-specific-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      📖 Model-Specific Guides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 See Also
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chemml-integration-documentation">ChemML Integration Documentation<a class="headerlink" href="#chemml-integration-documentation" title="Permanent link">&para;</a></h1>
+<p><strong>Comprehensive guide for integrating external models into ChemML</strong></p>
+<hr />
+<h2 id="overview">📋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>ChemML provides a flexible framework for integrating external machine learning models, quantum computing tools, and scientific libraries. This guide covers the complete integration process from basic adapters to advanced workflows.</p>
+<h2 id="quick-integration">🚀 Quick Integration<a class="headerlink" href="#quick-integration" title="Permanent link">&para;</a></h2>
+<h3 id="basic-integration-steps">Basic Integration Steps<a class="headerlink" href="#basic-integration-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Choose Adapter Type</strong></li>
+<li><code>BaseModelAdapter</code> - General ML models</li>
+<li><code>TorchModelAdapter</code> - PyTorch models</li>
+<li><code>HuggingFaceAdapter</code> - Transformers/NLP models</li>
+<li>
+<p><code>PaperAdapter</code> - Research implementations</p>
+</li>
+<li>
+<p><strong>Create Adapter</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.adapters.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchModelAdapter</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModelAdapter</span><span class="p">(</span><span class="n">TorchModelAdapter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_path</span> <span class="o">=</span> <span class="n">model_path</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Your model loading logic</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_data</span><span class="p">):</span>
+        <span class="c1"># Your prediction logic</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<ol>
+<li><strong>Register Model</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
+
+<span class="n">manager</span> <span class="o">=</span> <span class="n">get_manager</span><span class="p">()</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">register_adapter</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">MyModelAdapter</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="integration-categories">📁 Integration Categories<a class="headerlink" href="#integration-categories" title="Permanent link">&para;</a></h2>
+<h3 id="molecular-modeling">Molecular Modeling<a class="headerlink" href="#molecular-modeling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Protein Structure</strong>: Boltz, AlphaFold, ChimeraX</li>
+<li><strong>Quantum Chemistry</strong>: PySCF, Psi4, Gaussian</li>
+<li><strong>Molecular Dynamics</strong>: OpenMM, GROMACS, AMBER</li>
+</ul>
+<h3 id="drug-discovery">Drug Discovery<a class="headerlink" href="#drug-discovery" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>QSAR/QSPR</strong>: ChemProp, DeepChem</li>
+<li><strong>Generative Models</strong>: MOSES, GuacaMol</li>
+<li><strong>Docking</strong>: AutoDock, Vina, Glide</li>
+</ul>
+<h3 id="materials-science">Materials Science<a class="headerlink" href="#materials-science" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Crystal Structure</strong>: VASP, Quantum Espresso</li>
+<li><strong>Properties</strong>: AFLOW, Materials Project</li>
+<li><strong>ML Potentials</strong>: ANI, PhysNet</li>
+</ul>
+<h2 id="advanced-features">🛠 Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h2>
+<h3 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">PerformanceMonitor</span>
+
+<span class="n">monitor</span> <span class="o">=</span> <span class="n">PerformanceMonitor</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">monitor</span><span class="o">.</span><span class="n">track_performance</span><span class="p">():</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediction time: </span><span class="si">{</span><span class="n">monitor</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()[</span><span class="s1">&#39;prediction_time&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="experiment-tracking">Experiment Tracking<a class="headerlink" href="#experiment-tracking" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
+
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">ExperimentTracker</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;wandb&quot;</span><span class="p">)</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">log_experiment</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="automated-testing">Automated Testing<a class="headerlink" href="#automated-testing" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutomatedTesting</span>
+
+<span class="n">tester</span> <span class="o">=</span> <span class="n">AutomatedTesting</span><span class="p">()</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">test_adapter</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="model-specific-guides">📖 Model-Specific Guides<a class="headerlink" href="#model-specific-guides" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="model_specific/boltz/">Boltz Integration</a></strong> - Protein structure prediction</li>
+<li><strong><a href="model_specific/deepchem.md">DeepChem Integration</a></strong> - Chemical ML toolkit</li>
+<li><strong><a href="model_specific/custom_models.md">Custom Model Guide</a></strong> - Build your own adapters</li>
+</ul>
+<h2 id="see-also">🔗 See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../FRAMEWORK_INTEGRATION_GUIDE/">Framework Integration Guide</a></strong> - Core concepts</li>
+<li><strong><a href="../ENHANCED_FEATURES_GUIDE/">Enhanced Features Guide</a></strong> - Advanced capabilities</li>
+<li><strong><a href="../../examples/integrations/">Examples</a></strong> - Working demonstrations</li>
+<li><strong><a href="../REFERENCE/">API Reference</a></strong> - Complete API documentation</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

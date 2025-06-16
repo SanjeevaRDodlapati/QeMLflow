@@ -18,6 +18,10 @@ import pytest
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
 from utils.molecular_utils import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     PY3DMOL_AVAILABLE,
     RDKIT_AVAILABLE,
     LipinskiFilter,

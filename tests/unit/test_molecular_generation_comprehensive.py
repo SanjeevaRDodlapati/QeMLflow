@@ -19,6 +19,10 @@ import pytest
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 from drug_design.molecular_generation import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     FragmentBasedGenerator,
     MolecularGenerator,
     generate_diverse_library,

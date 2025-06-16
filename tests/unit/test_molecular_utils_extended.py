@@ -12,6 +12,10 @@ import numpy as np
 import pandas as pd
 
 from src.utils.molecular_utils import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     LipinskiFilter,
     MolecularDescriptors,
     MolecularVisualization,

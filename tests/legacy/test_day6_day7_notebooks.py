@@ -26,6 +26,13 @@ import time
 import traceback
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
+from sklearn import *
+import numpy as np
+import pandas as pd
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
 
 # Setup logging
 logging.basicConfig(

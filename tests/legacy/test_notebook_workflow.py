@@ -9,6 +9,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 from rdkit import Chem
 from rdkit.Chem import Descriptors
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
 
 
 def test_notebook_workflow():

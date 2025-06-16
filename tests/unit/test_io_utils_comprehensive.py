@@ -18,6 +18,10 @@ import pandas as pd
 import pytest
 
 from src.utils.io_utils import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     ConfigManager,
     DataLoader,
     FileManager,

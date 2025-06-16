@@ -14,6 +14,11 @@ from unittest.mock import MagicMock, Mock, patch
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn import *
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
 
 # Add src to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))

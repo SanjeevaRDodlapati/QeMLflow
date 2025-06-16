@@ -1,0 +1,1301 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Quantum-Enhanced Molecular Machine Learning Framework">
+      
+      
+      
+        <link rel="canonical" href="https://chemml.io/development/MAINTENANCE_PLAYBOOK/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>ChemML Maintenance Playbook - ChemML Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chemml-maintenance-playbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ChemML Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChemML Maintenance Playbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    ChemML Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/basic-tutorial.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic Tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../REFERENCE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#emergency-response-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Emergency Response Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Emergency Response Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical-health-score-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Health Score (&lt;50)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-collection-failures-10-failure-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Collection Failures (&gt;10% failure rate)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buildci-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build/CI Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routine-maintenance-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      📅 Routine Maintenance Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📅 Routine Maintenance Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-automated-via-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily (Automated via CI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weekly (Manual)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monthly-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly (Manual)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quarterly-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarterly (Manual)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Troubleshooting Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Troubleshooting Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-high-technical-debt-300-hours" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. High Technical Debt (&gt;300 hours)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-low-test-coverage-60" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Low Test Coverage (&lt;60%)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-slow-import-times-5-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Slow Import Times (&gt;5 seconds)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-memory-usage-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Memory Usage Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-cicd-pipeline-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. CI/CD Pipeline Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-score-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Health Score Interpretation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Health Score Interpretation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#score-ranges-and-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Score Ranges and Actions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Score Ranges and Actions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#90-100-excellent" class="md-nav__link">
+    <span class="md-ellipsis">
+      90-100: Excellent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80-89-good" class="md-nav__link">
+    <span class="md-ellipsis">
+      80-89: Good
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70-79-fair" class="md-nav__link">
+    <span class="md-ellipsis">
+      70-79: Fair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#60-69-poor" class="md-nav__link">
+    <span class="md-ellipsis">
+      60-69: Poor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50-59-critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      50-59: Critical
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#50-crisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      &lt;50: Crisis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Performance Targets
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Performance Targets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reliability-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reliability Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improvement-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Improvement Workflows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Improvement Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#weekly-improvement-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weekly Improvement Cycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monthly-improvement-sprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly Improvement Sprint
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quarterly-strategic-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarterly Strategic Planning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escalation-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      📞 Escalation Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📞 Escalation Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-developer-self-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1: Developer Self-Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-team-lead-involvement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2: Team Lead Involvement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-emergency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 3: Emergency Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-management-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 4: Management Escalation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Change Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Change Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-making-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Making Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#before-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before Merging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-merging" class="md-nav__link">
+    <span class="md-ellipsis">
+      After Merging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chemml-maintenance-playbook">ChemML Maintenance Playbook<a class="headerlink" href="#chemml-maintenance-playbook" title="Permanent link">&para;</a></h1>
+<p><strong>Version</strong>: 1.0<br />
+<strong>Last Updated</strong>: June 16, 2025<br />
+<strong>Purpose</strong>: Step-by-step procedures for maintaining ChemML codebase health</p>
+<hr />
+<h2 id="emergency-response-procedures">🚨 Emergency Response Procedures<a class="headerlink" href="#emergency-response-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="critical-health-score-50">Critical Health Score (&lt;50)<a class="headerlink" href="#critical-health-score-50" title="Permanent link">&para;</a></h3>
+<p><strong>Immediate Actions (within 2 hours):</strong></p>
+<ol>
+<li>
+<p><strong>Assess Scope</strong>:
+   <code>bash
+   python tools/monitoring/health_monitor.py
+   python tools/linting/comprehensive_linter.py --quiet</code></p>
+</li>
+<li>
+<p><strong>Auto-fix Critical Issues</strong>:
+   <code>bash
+   python tools/linting/comprehensive_linter.py --auto-fix
+   python tools/linting/critical_fixes.py --severity=error</code></p>
+</li>
+<li>
+<p><strong>Validate Fix</strong>:
+   <code>bash
+   scripts/quick_validate.sh
+   python tools/linting/health_tracker.py --report</code></p>
+</li>
+<li>
+<p><strong>If Health Score Still &lt;50</strong>:</p>
+</li>
+<li>Alert team lead immediately</li>
+<li>Consider rolling back recent changes</li>
+<li>Schedule emergency maintenance session</li>
+</ol>
+<h3 id="test-collection-failures-10-failure-rate">Test Collection Failures (&gt;10% failure rate)<a class="headerlink" href="#test-collection-failures-10-failure-rate" title="Permanent link">&para;</a></h3>
+<p><strong>Immediate Actions:</strong></p>
+<ol>
+<li>
+<p><strong>Identify Failed Tests</strong>:
+   <code>bash
+   pytest --collect-only -v &gt; test_collection.log 2&gt;&amp;1
+   grep -E "ERROR|FAILED" test_collection.log</code></p>
+</li>
+<li>
+<p><strong>Fix Import Issues</strong>:
+   <code>bash
+   python tools/linting/syntax_fixer.py --target=tests/
+   python tools/linting/incremental_refactor.py --scope=imports</code></p>
+</li>
+<li>
+<p><strong>Validate Collections</strong>:
+   <code>bash
+   pytest --collect-only --tb=no</code></p>
+</li>
+</ol>
+<h3 id="buildci-failures">Build/CI Failures<a class="headerlink" href="#buildci-failures" title="Permanent link">&para;</a></h3>
+<p><strong>Immediate Actions:</strong></p>
+<ol>
+<li><strong>Check Build Logs</strong>:</li>
+<li>Review GitHub Actions workflow logs</li>
+<li>
+<p>Identify specific failure point</p>
+</li>
+<li>
+<p><strong>Local Reproduction</strong>:
+   <code>bash
+   scripts/full_validate.sh</code></p>
+</li>
+<li>
+<p><strong>Common Fixes</strong>:</p>
+</li>
+<li>Dependency conflicts: <code>pip install -r requirements.txt --force-reinstall</code></li>
+<li>Import errors: <code>python tools/linting/syntax_fixer.py</code></li>
+<li>Test failures: <code>pytest tests/failing_module/ -v</code></li>
+</ol>
+<hr />
+<h2 id="routine-maintenance-procedures">📅 Routine Maintenance Procedures<a class="headerlink" href="#routine-maintenance-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="daily-automated-via-ci">Daily (Automated via CI)<a class="headerlink" href="#daily-automated-via-ci" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Health score monitoring</li>
+<li>Security dependency scans</li>
+<li>Quick validation tests</li>
+</ul>
+<h3 id="weekly-manual">Weekly (Manual)<a class="headerlink" href="#weekly-manual" title="Permanent link">&para;</a></h3>
+<p><strong>Every Monday Morning (30 minutes):</strong></p>
+<ol>
+<li>
+<p><strong>Health Assessment</strong>:
+   <code>bash
+   python tools/monitoring/health_monitor.py</code></p>
+</li>
+<li>
+<p><strong>Address Auto-fixable Issues</strong>:
+   <code>bash
+   python tools/linting/comprehensive_linter.py --auto-fix
+   git add -A &amp;&amp; git commit -m "🔧 Weekly auto-fix maintenance"</code></p>
+</li>
+<li>
+<p><strong>Run Medium Validation</strong>:
+   <code>bash
+   scripts/medium_validate.sh</code></p>
+</li>
+<li>
+<p><strong>Review and Triage Alerts</strong>:</p>
+</li>
+<li>Check monitoring alerts</li>
+<li>Create GitHub issues for non-trivial problems</li>
+<li>Schedule fixes based on priority</li>
+</ol>
+<h3 id="monthly-manual">Monthly (Manual)<a class="headerlink" href="#monthly-manual" title="Permanent link">&para;</a></h3>
+<p><strong>First Friday of Each Month (2 hours):</strong></p>
+<ol>
+<li>
+<p><strong>Comprehensive Health Review</strong>:
+   <code>bash
+   scripts/full_validate.sh
+   python tools/monitoring/health_monitor.py</code></p>
+</li>
+<li>
+<p><strong>Technical Debt Analysis</strong>:
+   <code>bash
+   python tools/linting/comprehensive_linter.py --detailed &gt; monthly_debt_analysis.txt</code></p>
+</li>
+<li>
+<p><strong>Dependency Updates</strong>:
+   <code>bash
+   pip list --outdated
+   # Update non-breaking dependencies
+   pip install --upgrade $(pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1)
+   scripts/medium_validate.sh  # Validate after updates</code></p>
+</li>
+<li>
+<p><strong>Performance Benchmarking</strong>:
+   <code>bash
+   python tools/analysis/performance_profiler.py --baseline</code></p>
+</li>
+<li>
+<p><strong>Test Coverage Analysis</strong>:
+   <code>bash
+   pytest tests/ --cov=src/chemml --cov-report=html
+   # Review htmlcov/index.html for gaps</code></p>
+</li>
+</ol>
+<h3 id="quarterly-manual">Quarterly (Manual)<a class="headerlink" href="#quarterly-manual" title="Permanent link">&para;</a></h3>
+<p><strong>Strategic Review Session (4 hours):</strong></p>
+<ol>
+<li><strong>Architecture Review</strong>:</li>
+<li>Review module dependencies</li>
+<li>Identify refactoring opportunities</li>
+<li>
+<p>Plan major improvements</p>
+</li>
+<li>
+<p><strong>Documentation Updates</strong>:</p>
+</li>
+<li>Update API documentation</li>
+<li>Refresh examples and tutorials</li>
+<li>
+<p>Update maintenance procedures</p>
+</li>
+<li>
+<p><strong>Major Dependency Upgrades</strong>:</p>
+</li>
+<li>Plan major framework updates (PyTorch, TensorFlow, etc.)</li>
+<li>Test compatibility in isolated environment</li>
+<li>Create migration plans</li>
+</ol>
+<hr />
+<h2 id="troubleshooting-guide">🔧 Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permanent link">&para;</a></h3>
+<h4 id="1-high-technical-debt-300-hours">1. High Technical Debt (&gt;300 hours)<a class="headerlink" href="#1-high-technical-debt-300-hours" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Slow development, frequent bugs, difficult maintenance</p>
+<p><strong>Solution Strategy</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Phase 1: Auto-fix (2-4 hours)</span>
+python<span class="w"> </span>tools/linting/comprehensive_linter.py<span class="w"> </span>--auto-fix
+python<span class="w"> </span>tools/linting/final_polish.py<span class="w"> </span>--apply-all
+
+<span class="c1"># Phase 2: Targeted fixing (8-16 hours over 2 weeks)</span>
+python<span class="w"> </span>tools/linting/targeted_fixer.py<span class="w"> </span>--focus<span class="o">=</span>complexity
+python<span class="w"> </span>tools/linting/targeted_fixer.py<span class="w"> </span>--focus<span class="o">=</span>imports
+python<span class="w"> </span>tools/linting/targeted_fixer.py<span class="w"> </span>--focus<span class="o">=</span>unused
+
+<span class="c1"># Phase 3: Manual review (schedule with team)</span>
+<span class="c1"># - Complex function refactoring</span>
+<span class="c1"># - Architecture improvements</span>
+<span class="c1"># - Code review sessions</span>
+</code></pre></div>
+
+<h4 id="2-low-test-coverage-60">2. Low Test Coverage (&lt;60%)<a class="headerlink" href="#2-low-test-coverage-60" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Frequent regressions, low confidence in changes</p>
+<p><strong>Solution Strategy</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Identify coverage gaps</span>
+pytest<span class="w"> </span>tests/<span class="w"> </span>--cov<span class="o">=</span>src/chemml<span class="w"> </span>--cov-report<span class="o">=</span>html
+open<span class="w"> </span>htmlcov/index.html
+
+<span class="c1"># Add tests for critical modules first</span>
+<span class="c1"># Priority order: core &gt; integrations &gt; research &gt; advanced</span>
+
+<span class="c1"># Template for new tests:</span>
+cp<span class="w"> </span>tests/unit/test_template.py<span class="w"> </span>tests/unit/test_new_module.py
+</code></pre></div>
+
+<h4 id="3-slow-import-times-5-seconds">3. Slow Import Times (&gt;5 seconds)<a class="headerlink" href="#3-slow-import-times-5-seconds" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Slow development cycle, poor user experience</p>
+<p><strong>Investigation</strong>:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import time</span>
+<span class="s2">start = time.time()</span>
+<span class="s2">import chemml</span>
+<span class="s2">print(f&#39;Import time: {time.time() - start:.2f}s&#39;)</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Profile imports</span>
+python<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"> </span>-s<span class="w"> </span>cumtime<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import chemml&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
+
+<p><strong>Solutions</strong>:
+- Implement lazy loading for heavy modules
+- Move expensive imports inside functions
+- Use optional dependencies pattern</p>
+<h4 id="4-memory-usage-issues">4. Memory Usage Issues<a class="headerlink" href="#4-memory-usage-issues" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: High memory consumption, OOM errors in CI</p>
+<p><strong>Investigation</strong>:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import psutil</span>
+<span class="s2">import chemml</span>
+<span class="s2">process = psutil.Process()</span>
+<span class="s2">print(f&#39;Memory usage: {process.memory_info().rss / 1024 / 1024:.1f} MB&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+
+<p><strong>Solutions</strong>:
+- Profile memory usage with memory_profiler
+- Implement data streaming for large datasets
+- Add memory cleanup in long-running processes</p>
+<h4 id="5-cicd-pipeline-failures">5. CI/CD Pipeline Failures<a class="headerlink" href="#5-cicd-pipeline-failures" title="Permanent link">&para;</a></h4>
+<p><strong>Common Causes and Solutions</strong>:</p>
+<ul>
+<li><strong>Timeout Issues</strong>: Increase timeout limits or optimize slow tests</li>
+<li><strong>Dependency Conflicts</strong>: Pin problematic dependencies</li>
+<li><strong>Platform-specific Issues</strong>: Add platform-specific conditions</li>
+<li><strong>Resource Limits</strong>: Optimize memory/CPU usage in tests</li>
+</ul>
+<hr />
+<h2 id="health-score-interpretation">📊 Health Score Interpretation<a class="headerlink" href="#health-score-interpretation" title="Permanent link">&para;</a></h2>
+<h3 id="score-ranges-and-actions">Score Ranges and Actions<a class="headerlink" href="#score-ranges-and-actions" title="Permanent link">&para;</a></h3>
+<h4 id="90-100-excellent">90-100: Excellent<a class="headerlink" href="#90-100-excellent" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: Production ready</li>
+<li><strong>Action</strong>: Maintain current practices</li>
+<li><strong>Frequency</strong>: Monthly light maintenance</li>
+</ul>
+<h4 id="80-89-good">80-89: Good<a class="headerlink" href="#80-89-good" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: Stable with minor issues</li>
+<li><strong>Action</strong>: Address issues during regular cycles</li>
+<li><strong>Frequency</strong>: Weekly maintenance</li>
+</ul>
+<h4 id="70-79-fair">70-79: Fair<a class="headerlink" href="#70-79-fair" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: Acceptable but needs attention</li>
+<li><strong>Action</strong>: Schedule focused improvement sprint</li>
+<li><strong>Frequency</strong>: Bi-weekly maintenance</li>
+</ul>
+<h4 id="60-69-poor">60-69: Poor<a class="headerlink" href="#60-69-poor" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: Quality concerns</li>
+<li><strong>Action</strong>: Immediate attention required</li>
+<li><strong>Frequency</strong>: Daily monitoring until improved</li>
+</ul>
+<h4 id="50-59-critical">50-59: Critical<a class="headerlink" href="#50-59-critical" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: Significant problems</li>
+<li><strong>Action</strong>: Emergency maintenance mode</li>
+<li><strong>Frequency</strong>: Continuous attention until &gt;70</li>
+</ul>
+<h4 id="50-crisis">&lt;50: Crisis<a class="headerlink" href="#50-crisis" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Status</strong>: System stability at risk</li>
+<li><strong>Action</strong>: All hands on deck</li>
+<li><strong>Frequency</strong>: Immediate intervention required</li>
+</ul>
+<hr />
+<h2 id="performance-targets">🎯 Performance Targets<a class="headerlink" href="#performance-targets" title="Permanent link">&para;</a></h2>
+<h3 id="development-metrics">Development Metrics<a class="headerlink" href="#development-metrics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Import Time</strong>: &lt;2 seconds for core modules</li>
+<li><strong>Test Suite</strong>: &lt;15 minutes for full validation</li>
+<li><strong>CI/CD Pipeline</strong>: &lt;20 minutes end-to-end</li>
+<li><strong>Memory Usage</strong>: &lt;500MB for typical workflows</li>
+</ul>
+<h3 id="quality-metrics">Quality Metrics<a class="headerlink" href="#quality-metrics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Health Score</strong>: &gt;80 (target), &gt;70 (minimum)</li>
+<li><strong>Test Coverage</strong>: &gt;80% (target), &gt;65% (minimum)</li>
+<li><strong>Technical Debt</strong>: &lt;200 hours (target), &lt;300 hours (acceptable)</li>
+<li><strong>Critical Issues</strong>: 0 (always)</li>
+</ul>
+<h3 id="reliability-metrics">Reliability Metrics<a class="headerlink" href="#reliability-metrics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Test Success Rate</strong>: &gt;98%</li>
+<li><strong>CI/CD Success Rate</strong>: &gt;95%</li>
+<li><strong>Documentation Coverage</strong>: &gt;90%</li>
+<li><strong>Example Success Rate</strong>: 100%</li>
+</ul>
+<hr />
+<h2 id="improvement-workflows">🚀 Improvement Workflows<a class="headerlink" href="#improvement-workflows" title="Permanent link">&para;</a></h2>
+<h3 id="weekly-improvement-cycle">Weekly Improvement Cycle<a class="headerlink" href="#weekly-improvement-cycle" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Monday</strong>: Health assessment and planning</li>
+<li><strong>Tuesday-Thursday</strong>: Implementation of fixes</li>
+<li><strong>Friday</strong>: Validation and documentation</li>
+<li><strong>Weekend</strong>: Automated monitoring and alerts</li>
+</ol>
+<h3 id="monthly-improvement-sprint">Monthly Improvement Sprint<a class="headerlink" href="#monthly-improvement-sprint" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Week 1</strong>: Assessment and planning</li>
+<li><strong>Week 2</strong>: Major fixes and improvements</li>
+<li><strong>Week 3</strong>: Testing and validation</li>
+<li><strong>Week 4</strong>: Documentation and process improvement</li>
+</ol>
+<h3 id="quarterly-strategic-planning">Quarterly Strategic Planning<a class="headerlink" href="#quarterly-strategic-planning" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Month 1</strong>: Current state analysis</li>
+<li><strong>Month 2</strong>: Strategy development and planning</li>
+<li><strong>Month 3</strong>: Implementation and validation</li>
+</ol>
+<hr />
+<h2 id="escalation-procedures">📞 Escalation Procedures<a class="headerlink" href="#escalation-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="level-1-developer-self-service">Level 1: Developer Self-Service<a class="headerlink" href="#level-1-developer-self-service" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Health score 70-100</li>
+<li>Use maintenance scripts and auto-fix tools</li>
+<li>Follow weekly maintenance procedures</li>
+</ul>
+<h3 id="level-2-team-lead-involvement">Level 2: Team Lead Involvement<a class="headerlink" href="#level-2-team-lead-involvement" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Health score 50-69</li>
+<li>Multiple CI failures</li>
+<li>Performance degradation</li>
+<li><strong>Action</strong>: Alert team lead, schedule team session</li>
+</ul>
+<h3 id="level-3-emergency-response">Level 3: Emergency Response<a class="headerlink" href="#level-3-emergency-response" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Health score &lt;50</li>
+<li>Critical functionality broken</li>
+<li>Security vulnerabilities</li>
+<li><strong>Action</strong>: Immediate team mobilization, consider rollback</li>
+</ul>
+<h3 id="level-4-management-escalation">Level 4: Management Escalation<a class="headerlink" href="#level-4-management-escalation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Extended outages (&gt;4 hours)</li>
+<li>Major architecture problems</li>
+<li>Resource constraints</li>
+<li><strong>Action</strong>: Management involvement, external support</li>
+</ul>
+<hr />
+<h2 id="change-management">📝 Change Management<a class="headerlink" href="#change-management" title="Permanent link">&para;</a></h2>
+<h3 id="before-making-changes">Before Making Changes<a class="headerlink" href="#before-making-changes" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Run <code>scripts/quick_validate.sh</code></li>
+<li>Check current health score</li>
+<li>Create feature branch</li>
+<li>Document expected impact</li>
+</ol>
+<h3 id="during-development">During Development<a class="headerlink" href="#during-development" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Run <code>scripts/quick_validate.sh</code> frequently</li>
+<li>Monitor health score changes</li>
+<li>Address issues immediately</li>
+<li>Update tests and documentation</li>
+</ol>
+<h3 id="before-merging">Before Merging<a class="headerlink" href="#before-merging" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Run <code>scripts/full_validate.sh</code></li>
+<li>Ensure health score hasn't decreased</li>
+<li>Review test coverage impact</li>
+<li>Get code review approval</li>
+</ol>
+<h3 id="after-merging">After Merging<a class="headerlink" href="#after-merging" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Monitor CI/CD pipeline</li>
+<li>Check health score within 24 hours</li>
+<li>Address any regressions immediately</li>
+<li>Update documentation if needed</li>
+</ol>
+<hr />
+<p>This playbook should be reviewed and updated quarterly to reflect changing needs and lessons learned.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

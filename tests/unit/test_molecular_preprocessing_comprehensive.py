@@ -17,6 +17,10 @@ import pytest
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
 from data_processing.molecular_preprocessing import (
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     RDKIT_AVAILABLE,
     clean_data,
     clean_molecular_data,

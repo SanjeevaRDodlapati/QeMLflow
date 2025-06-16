@@ -65,6 +65,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # Import the visualization module
 from src.utils.visualization import (
+from sklearn import *
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
     ChemicalSpaceVisualizer,
     ModelVisualizer,
     MolecularVisualizer,

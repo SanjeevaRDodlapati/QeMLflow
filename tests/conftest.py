@@ -1,3 +1,12 @@
+
+import sys
+import os
+from pathlib import Path
+
+# Add src directory to Python path
+src_dir = Path(__file__).parent.parent / "src"
+if str(src_dir) not in sys.path:
+    sys.path.insert(0, str(src_dir))
 """
 Pytest configuration and shared fixtures for ChemML tests.
 
@@ -13,6 +22,10 @@ from typing import Any, Dict, List
 import numpy as np
 import pandas as pd
 import pytest
+try:
+    from rdkit import Chem
+except ImportError:
+    pass
 
 # Try to import molecular libraries with graceful fallback
 try:
