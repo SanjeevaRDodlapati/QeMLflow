@@ -158,9 +158,11 @@ class QuantumChemistryTutorial:
 
         # Create feature mapping circuit
         num_features = min(
-            classical_data.shape[-1]
-            if classical_data.ndim > 1
-            else len(classical_data),
+            (
+                classical_data.shape[-1]
+                if classical_data.ndim > 1
+                else len(classical_data)
+            ),
             4,
         )
         feature_map = self._create_feature_map(num_features)
@@ -208,9 +210,9 @@ class QuantumChemistryTutorial:
         if RDKIT_AVAILABLE:
             mol = Chem.MolFromSmiles(molecule_smiles)
             if mol is not None:
-                simulation_data["components"][
-                    "molecule_info"
-                ] = self._extract_molecule_info(mol)
+                simulation_data["components"]["molecule_info"] = (
+                    self._extract_molecule_info(mol)
+                )
             else:
                 simulation_data["components"][
                     "error"
@@ -1225,9 +1227,9 @@ class MolecularHamiltonianVisualizer:
         return {
             "num_qubits": 2 if molecule_name == "H2" else 4,
             "num_terms": 4 if molecule_name == "H2" else 12,
-            "dominant_terms": ["II", "ZZ"]
-            if molecule_name == "H2"
-            else ["II", "ZZ", "XX"],
+            "dominant_terms": (
+                ["II", "ZZ"] if molecule_name == "H2" else ["II", "ZZ", "XX"]
+            ),
         }
 
     def display_dashboard(self):

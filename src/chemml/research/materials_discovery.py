@@ -4,6 +4,7 @@ Advanced Materials Discovery Module
 This module provides comprehensive tools for AI-driven materials design,
 property prediction, and synthesis planning.
 """
+
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -444,7 +445,7 @@ class MaterialsClusterAnalyzer:
 
 
 def comprehensive_materials_discovery(
-    target_properties: Dict[str, float] = None
+    target_properties: Dict[str, float] = None,
 ) -> Dict[str, Any]:
     """
     Perform comprehensive materials discovery analysis.

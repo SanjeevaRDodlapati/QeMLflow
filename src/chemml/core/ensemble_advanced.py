@@ -1,3 +1,5 @@
+from typing_extensions import Self
+
 """
 ChemML Advanced Ensemble Methods
 ===============================
@@ -5,6 +7,7 @@ ChemML Advanced Ensemble Methods
 Sophisticated ensemble learning methods specifically designed for molecular ML.
 Includes adaptive ensemble selection, multi-modal fusion, and uncertainty quantification.
 """
+
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -424,9 +427,9 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
             bootstrap_uncertainties = self._calculate_bootstrap_uncertainty(X)
             uncertainties["bootstrap"] = bootstrap_uncertainties
         if "intervals" in self.uncertainty_methods:
-            uncertainties[
-                "prediction_intervals"
-            ] = self._calculate_prediction_intervals(base_predictions)
+            uncertainties["prediction_intervals"] = (
+                self._calculate_prediction_intervals(base_predictions)
+            )
         total_uncertainty = np.zeros(len(X))
         for unc_type, unc_values in uncertainties.items():
             if unc_type != "prediction_intervals":

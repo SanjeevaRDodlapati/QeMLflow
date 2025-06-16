@@ -104,7 +104,6 @@ def enable_fast_mode() -> None:
 
 def clear_cache() -> None:
     """Clear module cache to save memory"""
-    global _cached_modules
     _cached_modules.clear()
     print("🧹 Module cache cleared")
 

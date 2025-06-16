@@ -466,9 +466,7 @@ class Phase8InternalValidator:
             status_emoji = (
                 "✅"
                 if result["status"] == "PASS"
-                else "❌"
-                if result["status"] == "ERROR"
-                else "⚠️"
+                else "❌" if result["status"] == "ERROR" else "⚠️"
             )
             report_content += f"| {test_name.replace('_', ' ').title()} | {result['score']}/100 | {status_emoji} {result['status']} | - |\n"
 

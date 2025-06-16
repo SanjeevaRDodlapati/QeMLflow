@@ -1,6 +1,7 @@
 """
 High-impact tests for property_prediction.py to target specific missing lines.
 """
+
 import unittest
 from unittest.mock import Mock, patch
 

@@ -131,7 +131,9 @@ class MolecularHamiltonianBuilder:
         print(f"Basis set: {basis}")
 
         # Simulate molecular calculation
-        print(f"✅ Molecule built: {self.n_electrons} electrons, {self.n_qubits} qubits")
+        print(
+            f"✅ Molecule built: {self.n_electrons} electrons, {self.n_qubits} qubits"
+        )
         print(f"   HF Energy: {self.mf_energy:.6f} Ha")
         return True
 

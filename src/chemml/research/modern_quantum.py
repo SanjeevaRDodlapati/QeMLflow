@@ -523,9 +523,9 @@ class QuantumChemistryWorkflow:
         results = {
             "bond_lengths": np.array(bond_lengths),
             "vqe_energies": np.array(energies),
-            "classical_energies": np.array(classical_energies)
-            if classical_energies
-            else None,
+            "classical_energies": (
+                np.array(classical_energies) if classical_energies else None
+            ),
         }
 
         self.results["h2_analysis"] = results

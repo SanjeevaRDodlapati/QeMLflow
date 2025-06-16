@@ -1,3 +1,5 @@
+from typing import Dict, Tuple
+
 """
 ChemML Edge Case Handler
 Robust handling of edge cases and boundary conditions.

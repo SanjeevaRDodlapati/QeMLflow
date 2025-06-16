@@ -123,23 +123,29 @@ class TypeAnnotationAnalyzer(ast.NodeVisitor):
                     return_types.add("Tuple[Any, ...]")
                 elif isinstance(stmt.value, (ast.Constant, ast.Num, ast.Str)):
                     if isinstance(
-                        stmt.value.value
-                        if hasattr(stmt.value, "value")
-                        else stmt.value.n,
+                        (
+                            stmt.value.value
+                            if hasattr(stmt.value, "value")
+                            else stmt.value.n
+                        ),
                         bool,
                     ):
                         return_types.add("bool")
                     elif isinstance(
-                        stmt.value.value
-                        if hasattr(stmt.value, "value")
-                        else stmt.value.n,
+                        (
+                            stmt.value.value
+                            if hasattr(stmt.value, "value")
+                            else stmt.value.n
+                        ),
                         int,
                     ):
                         return_types.add("int")
                     elif isinstance(
-                        stmt.value.value
-                        if hasattr(stmt.value, "value")
-                        else stmt.value.s,
+                        (
+                            stmt.value.value
+                            if hasattr(stmt.value, "value")
+                            else stmt.value.s
+                        ),
                         str,
                     ):
                         return_types.add("str")

@@ -638,7 +638,7 @@ def apply_admet_filters(
 
 
 def predict_admet_properties(
-    molecules: Union[str, List[str]]
+    molecules: Union[str, List[str]],
 ) -> Union[Dict, List[Dict]]:
     """
     Standalone function to predict ADMET properties.

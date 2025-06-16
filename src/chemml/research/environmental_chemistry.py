@@ -4,6 +4,7 @@ Environmental Chemistry AI Module
 This module provides comprehensive tools for environmental monitoring,
 pollution prediction, and green chemistry optimization.
 """
+
 import warnings
 from typing import Any, Dict, List, Optional, Tuple
 

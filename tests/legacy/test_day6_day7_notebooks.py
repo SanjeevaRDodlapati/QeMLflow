@@ -330,7 +330,9 @@ class NotebookTester:
             else:
                 result["tests_passed"] += 1
                 if self.verbose:
-                    print(f"    ✅ {len(python_blocks)} code cells validated for syntax")
+                    print(
+                        f"    ✅ {len(python_blocks)} code cells validated for syntax"
+                    )
                 return True
 
         except Exception as e:

@@ -334,9 +334,11 @@ class APIDocGenerator:
                     "name": func_info["name"],
                     "full_name": func_name,
                     "module": func_info["module"],
-                    "description": func_info.get("docstring", "")[:200]
-                    if func_info.get("docstring")
-                    else "",
+                    "description": (
+                        func_info.get("docstring", "")[:200]
+                        if func_info.get("docstring")
+                        else ""
+                    ),
                     "url": f"functions.html#{func_info['name']}",
                 }
             )
@@ -349,9 +351,11 @@ class APIDocGenerator:
                     "name": class_info["name"],
                     "full_name": class_name,
                     "module": class_info["module"],
-                    "description": class_info.get("docstring", "")[:200]
-                    if class_info.get("docstring")
-                    else "",
+                    "description": (
+                        class_info.get("docstring", "")[:200]
+                        if class_info.get("docstring")
+                        else ""
+                    ),
                     "url": f"classes.html#{class_info['name']}",
                 }
             )

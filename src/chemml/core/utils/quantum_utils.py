@@ -1,3 +1,5 @@
+from typing import Any
+
 """
 Quantum computing utilities for molecular systems
 

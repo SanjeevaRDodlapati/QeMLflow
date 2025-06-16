@@ -137,9 +137,9 @@ class InteractiveAssessment:
             "start_time": self.start_time.isoformat(),
             "end_time": end_time.isoformat(),
             "duration_seconds": duration,
-            "completion_rate": len(self.responses) / len(self.activities)
-            if self.activities
-            else 0,
+            "completion_rate": (
+                len(self.responses) / len(self.activities) if self.activities else 0
+            ),
         }
 
         # Calculate score if applicable

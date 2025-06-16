@@ -10,7 +10,7 @@ repos:
       - id: black
         language_version: python3.11
         args: [--line-length=88]
-        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/|archive/|examples/archived/)
 
   # Python import sorting
   - repo: https://github.com/pycqa/isort
@@ -18,7 +18,7 @@ repos:
     hooks:
       - id: isort
         args: [--profile=black, --line-length=88]
-        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/|archive/|examples/archived/)
 
   # Python linting
   - repo: https://github.com/pycqa/flake8
@@ -31,7 +31,7 @@ repos:
           flake8-builtins,
           flake8-bugbear,
         ]
-        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/)
+        exclude: ^(chemml_env/|\.venv/|venv/|build/|dist/|archive/|examples/archived/)
 
   # General code quality (built-in hooks that don't require external downloads)
   - repo: https://github.com/pre-commit/pre-commit-hooks

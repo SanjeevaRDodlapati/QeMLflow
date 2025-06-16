@@ -286,9 +286,11 @@ class ProteinPreparationPipeline:
             "proteins_processed": len(self.protein_data),
             "successful_conversions": successful_conversions,
             "with_resolution_data": with_resolution,
-            "conversion_success_rate": successful_conversions / len(self.protein_data)
-            if self.protein_data
-            else 0,
+            "conversion_success_rate": (
+                successful_conversions / len(self.protein_data)
+                if self.protein_data
+                else 0
+            ),
         }
 
 

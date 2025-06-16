@@ -214,9 +214,9 @@ class LearningAssessment:
             "total_time_hours": total_time,
             "activities_completed": len(completed_activities),
             "total_activities": len(self.activities),
-            "overall_score": np.mean(understanding_scores)
-            if understanding_scores
-            else None,
+            "overall_score": (
+                np.mean(understanding_scores) if understanding_scores else None
+            ),
             "checkpoints_recorded": len(self.checkpoints),
             "start_time": self.start_time.isoformat(),
             "last_activity": datetime.now().isoformat(),

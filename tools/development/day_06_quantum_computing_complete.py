@@ -306,7 +306,9 @@ class MolecularHamiltonianBuilder:
         self.n_orbitals = self.mol.nao_nr()
         self.n_qubits = 2 * self.n_orbitals
 
-        print(f"✅ Molecule built: {self.n_electrons} electrons, {self.n_qubits} qubits")
+        print(
+            f"✅ Molecule built: {self.n_electrons} electrons, {self.n_qubits} qubits"
+        )
         energy_value = self.mf.e_tot if hasattr(self.mf, "e_tot") else self.mf_energy
         print(f"   HF Energy: {energy_value:.6f} Ha")
 
@@ -326,7 +328,9 @@ class MolecularHamiltonianBuilder:
         # Transform to qubit operators
         self.qubit_hamiltonian = jordan_wigner(self.fermionic_hamiltonian)
 
-        print(f"✅ Hamiltonian generated with {len(self.qubit_hamiltonian.terms)} terms")
+        print(
+            f"✅ Hamiltonian generated with {len(self.qubit_hamiltonian.terms)} terms"
+        )
 
         return self.qubit_hamiltonian
 

@@ -327,9 +327,9 @@ class AdvancedDataPreprocessor:
                 "encoders": self.encoder_dict,
                 "feature_counts": {
                     "molecular": len(X_molecular.columns),
-                    "additional": len(X_features.columns)
-                    if not X_features.empty
-                    else 0,
+                    "additional": (
+                        len(X_features.columns) if not X_features.empty else 0
+                    ),
                     "total": len(X_combined.columns),
                 },
             },

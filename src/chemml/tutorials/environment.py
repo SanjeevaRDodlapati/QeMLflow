@@ -522,11 +522,11 @@ class EnvironmentManager:
 
         print("\n💡 Install all at once:")
         install_cmd = "pip install " + " ".join(
-            "rdkit-pypi"
-            if dep == "rdkit"
-            else "scikit-learn"
-            if dep == "sklearn"
-            else dep
+            (
+                "rdkit-pypi"
+                if dep == "rdkit"
+                else "scikit-learn" if dep == "sklearn" else dep
+            )
             for dep in missing_deps
             if dep != "psi4"
         )

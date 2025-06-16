@@ -228,9 +228,7 @@ class CodebaseRealityCheck:
             status = (
                 "✅"
                 if coverage_percent >= 70
-                else "⚠️"
-                if coverage_percent >= 40
-                else "❌"
+                else "⚠️" if coverage_percent >= 40 else "❌"
             )
             print(
                 f"   {status} {capability}: {coverage_percent:.0f}% coverage ({coverage['found']}/{len(requirements)})"

@@ -71,11 +71,11 @@ class WorkflowValidator:
         return {
             "workflows": workflows,
             "overall_score": overall_score,
-            "status": "excellent"
-            if overall_score >= 90
-            else "good"
-            if overall_score >= 80
-            else "needs_work",
+            "status": (
+                "excellent"
+                if overall_score >= 90
+                else "good" if overall_score >= 80 else "needs_work"
+            ),
         }
 
 

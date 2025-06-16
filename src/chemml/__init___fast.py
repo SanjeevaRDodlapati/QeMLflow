@@ -4,6 +4,7 @@ Optimized for fast imports and lazy loading.
 """
 
 import warnings
+from typing import Any
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)

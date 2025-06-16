@@ -719,9 +719,9 @@ def create_optimization_report(
         "statistics": {
             "score_improvement": 0.0,  # Would calculate from history
             "convergence_iteration": 0,  # Would determine from history
-            "success_rate": 1.0
-            if optimization_results.get("best_score", 0) > 0
-            else 0.0,
+            "success_rate": (
+                1.0 if optimization_results.get("best_score", 0) > 0 else 0.0
+            ),
         },
     }
 

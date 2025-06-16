@@ -2,6 +2,7 @@
 High-impact test cases for feature_extraction.py to target specific missing lines.
 Focus on achieving maximum coverage improvement.
 """
+
 import unittest
 from unittest.mock import Mock, patch
 

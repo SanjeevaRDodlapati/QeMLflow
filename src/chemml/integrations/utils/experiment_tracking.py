@@ -1,9 +1,12 @@
+from typing import Any
+
 """
 ChemML Experiment Tracking Integration
 =====================================
 
 Weights & Biases integration for experiment tracking.
 """
+
 import warnings
 
 try:

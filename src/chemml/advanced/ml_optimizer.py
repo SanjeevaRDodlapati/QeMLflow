@@ -399,18 +399,26 @@ class ModelAnalytics:
         lines.extend(
             [
                 "📈 Latest Performance:",
-                f"  • Accuracy: {latest_metrics.accuracy:.3f}"
-                if latest_metrics.accuracy > 0
-                else "",
-                f"  • R² Score: {latest_metrics.r2_score:.3f}"
-                if latest_metrics.r2_score != 0
-                else "",
-                f"  • RMSE: {latest_metrics.rmse:.3f}"
-                if latest_metrics.rmse > 0
-                else "",
-                f"  • F1 Score: {latest_metrics.f1_score:.3f}"
-                if latest_metrics.f1_score > 0
-                else "",
+                (
+                    f"  • Accuracy: {latest_metrics.accuracy:.3f}"
+                    if latest_metrics.accuracy > 0
+                    else ""
+                ),
+                (
+                    f"  • R² Score: {latest_metrics.r2_score:.3f}"
+                    if latest_metrics.r2_score != 0
+                    else ""
+                ),
+                (
+                    f"  • RMSE: {latest_metrics.rmse:.3f}"
+                    if latest_metrics.rmse > 0
+                    else ""
+                ),
+                (
+                    f"  • F1 Score: {latest_metrics.f1_score:.3f}"
+                    if latest_metrics.f1_score > 0
+                    else ""
+                ),
             ]
         )
 

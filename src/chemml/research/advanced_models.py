@@ -12,6 +12,7 @@ Key Features:
 - Multi-task learning architectures
 - Attention mechanisms for molecular interpretation
 """
+
 import warnings
 from typing import Any, Dict, List, Optional, Tuple, Union
 
@@ -89,12 +90,12 @@ def smiles_to_graph(smiles: str) -> Optional[Dict]:
             edge_features.extend([bond_features, bond_features])
         graph_data = {
             "node_features": np.array(node_features),
-            "edge_indices": np.array(edge_indices).T
-            if edge_indices
-            else np.empty((2, 0)),
-            "edge_features": np.array(edge_features)
-            if edge_features
-            else np.empty((0, 3)),
+            "edge_indices": (
+                np.array(edge_indices).T if edge_indices else np.empty((2, 0))
+            ),
+            "edge_features": (
+                np.array(edge_features) if edge_features else np.empty((0, 3))
+            ),
             "num_nodes": len(node_features),
         }
         return graph_data

@@ -1,3 +1,5 @@
+from typing import Any
+
 """
 Configuration management for ChemML using Pydantic for type safety.
 """

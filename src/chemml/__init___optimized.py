@@ -1,3 +1,5 @@
+from typing import Any
+
 """
 ChemML: Machine Learning for Chemistry and Drug Discovery
 Fast-loading version with optimized imports.

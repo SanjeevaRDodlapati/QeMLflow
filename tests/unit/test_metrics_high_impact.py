@@ -1,6 +1,7 @@
 """
 Tests to target specific missing lines in metrics.py for coverage improvement.
 """
+
 import unittest
 from unittest.mock import patch
 

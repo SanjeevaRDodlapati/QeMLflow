@@ -138,9 +138,11 @@ class IntegrationMetrics:
                             success_rate=h["success_rate"],
                             avg_duration_seconds=h["avg_duration_seconds"],
                             avg_memory_mb=h["avg_memory_mb"],
-                            last_used=datetime.fromisoformat(h["last_used"])
-                            if h["last_used"]
-                            else None,
+                            last_used=(
+                                datetime.fromisoformat(h["last_used"])
+                                if h["last_used"]
+                                else None
+                            ),
                             error_count=h["error_count"],
                             common_errors=h.get("common_errors", {}),
                             performance_trend=h.get("performance_trend", "stable"),
@@ -190,9 +192,9 @@ class IntegrationMetrics:
                             "success_rate": h.success_rate,
                             "avg_duration_seconds": h.avg_duration_seconds,
                             "avg_memory_mb": h.avg_memory_mb,
-                            "last_used": h.last_used.isoformat()
-                            if h.last_used
-                            else None,
+                            "last_used": (
+                                h.last_used.isoformat() if h.last_used else None
+                            ),
                             "error_count": h.error_count,
                             "common_errors": h.common_errors,
                             "performance_trend": h.performance_trend,

@@ -1,0 +1,106 @@
+# ChemML Comprehensive Linting Configuration
+# ==========================================
+
+# File patterns to include in linting
+include_patterns:
+  - "src/**/*.py"
+  - "tests/**/*.py"
+  - "scripts/**/*.py"
+  - "tools/**/*.py"
+  - "examples/**/*.py"
+
+# File patterns to exclude from linting
+exclude_patterns:
+  - "chemml_env/**"
+  - "build/**"
+  - "dist/**"
+  - ".venv/**"
+  - "__pycache__/**"
+  - "*.egg-info/**"
+  - "archive/**"        # Exclude legacy/archived code
+  - "docs/_build/**"
+  - "site/**"
+  - "*.pyc"
+  - "*/.pytest_cache/**"
+
+# Tool configurations
+tools:
+  flake8:
+    enabled: true
+    max_line_length: 88
+    severity_map:
+      E: error      # PEP 8 errors
+      W: warning    # PEP 8 warnings
+      F: error      # PyFlakes errors
+      C: warning    # Complexity warnings
+      B: warning    # Bugbear warnings
+      N: info       # Naming conventions
+    
+    # Auto-fixable rule codes
+    auto_fixable_rules:
+      - F401  # Unused imports
+      - W391  # Blank line at end of file
+      - E302  # Expected 2 blank lines
+      - E303  # Too many blank lines
+      - W293  # Blank line contains whitespace
+    
+    # Critical rules that should never be ignored
+    critical_rules:
+      - F821  # Undefined name
+      - F822  # Undefined name in __all__
+      - E999  # Syntax error
+  
+  black:
+    enabled: true
+    auto_fix: true
+    line_length: 88
+    skip_string_normalization: false
+    
+  isort:
+    enabled: true
+    auto_fix: true
+    profile: "black"
+    line_length: 88
+    
+  mypy:
+    enabled: true
+    strict_mode: false
+    ignore_missing_imports: true
+    follow_imports: "silent"
+
+# Severity weights for health score calculation
+severity_weights:
+  error: 1.0
+  warning: 0.5
+  info: 0.1
+
+# Health score thresholds
+health_thresholds:
+  excellent: 90  # 90-100: Excellent code quality
+  good: 75       # 75-89: Good code quality
+  fair: 50       # 50-74: Fair code quality
+  poor: 0        # 0-49: Poor code quality
+
+# Auto-fix settings
+auto_fix:
+  enabled: true
+  backup_before_fix: true
+  max_files_per_batch: 50
+  
+# Reporting settings
+reporting:
+  default_format: "console"
+  save_history: true
+  max_history_files: 10
+  
+# Integration settings
+integration:
+  pre_commit: true
+  ci_cd: true
+  git_hooks: true
+  
+# Performance settings
+performance:
+  parallel_processing: true
+  max_workers: 4
+  chunk_size: 10

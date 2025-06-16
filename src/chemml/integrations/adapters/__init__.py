@@ -66,9 +66,11 @@ def search_models(query: str):
                     {
                         "model": model,
                         "category": category,
-                        "relevance": "exact_match"
-                        if query_lower == model.lower()
-                        else "partial_match",
+                        "relevance": (
+                            "exact_match"
+                            if query_lower == model.lower()
+                            else "partial_match"
+                        ),
                     }
                 )
 

@@ -517,9 +517,11 @@ def lipinski_analysis(
         drug_like_counts = results["Drug_Like"].value_counts()
         fig_pie = px.pie(
             values=drug_like_counts.values,
-            names=["Non-Drug-Like", "Drug-Like"]
-            if False in drug_like_counts.index
-            else ["Drug-Like"],
+            names=(
+                ["Non-Drug-Like", "Drug-Like"]
+                if False in drug_like_counts.index
+                else ["Drug-Like"]
+            ),
             title="Drug-Likeness Distribution",
         )
         analysis_results["drug_like_plot"] = fig_pie

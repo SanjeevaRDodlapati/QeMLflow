@@ -412,7 +412,9 @@ class HealthChecker:
                 if result.stdout:
                     safety_data = json.loads(result.stdout)
                     security_info["vulnerabilities"].extend(safety_data)
-                    print(f"   📊 Safety scan: {len(safety_data)} vulnerabilities found")
+                    print(
+                        f"   📊 Safety scan: {len(safety_data)} vulnerabilities found"
+                    )
                 else:
                     print("   ✅ Safety scan: no vulnerabilities found")
             except Exception as e:
