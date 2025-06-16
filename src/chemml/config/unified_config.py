@@ -252,7 +252,9 @@ def get_config() -> ChemMLConfig:
 def set_config(config: ChemMLConfig):
     """Set the global ChemML configuration."""
     global _global_config
-#_global_config = config
+
+
+# _global_config = config
 
 
 def load_config() -> ChemMLConfig:

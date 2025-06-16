@@ -120,6 +120,7 @@ try:
 
     # Import help as chemml_help to avoid conflict with built-in help
     from .utils.enhanced_ui import help as chemml_help
+
     print("✅ Phase 2: Enhanced UX features loaded")
 except ImportError as e:
     print(f"⚠️ Phase 2 features not available: {e}")

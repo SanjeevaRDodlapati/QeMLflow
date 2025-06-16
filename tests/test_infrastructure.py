@@ -6,6 +6,7 @@ import numpy as np
 import pytest
 
 from tests.conftest import MockModel
+
 try:
     from rdkit import Chem
 except ImportError:

@@ -25,10 +25,11 @@ Usage:
 import threading
 import time
 from collections import defaultdict, deque
-from pathlib import Path
 from dataclasses import dataclass
-from typing import Dict, Any, List, Optional, Union, Callable
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional, Union
+
 import numpy as np
 
 

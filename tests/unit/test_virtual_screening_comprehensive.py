@@ -15,15 +15,19 @@ import pandas as pd
 import pytest
 
 from chemml.research.drug_discovery.screening import (
-try:
-    from rdkit import Chem
-except ImportError:
-    pass
+    Chem,
+    ImportError:,
     PharmacophoreScreener,
     SimilarityScreener,
     VirtualScreener,
     calculate_screening_metrics,
+    except,
+    from,
+    import,
+    pass,
     perform_virtual_screening,
+    rdkit,
+    try:,
 )
 
 

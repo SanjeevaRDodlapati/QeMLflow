@@ -17,6 +17,7 @@ spec.loader.exec_module(utils_module)
 setup_logging = getattr(utils_module, "setup_logging", None)
 check_environment = getattr(utils_module, "check_environment", None)
 get_sample_data = getattr(utils_module, "get_sample_data", None)
+validate_input = getattr(utils_module, "validate_input", None)
 ensure_reproducibility = getattr(utils_module, "ensure_reproducibility", None)
 configure_warnings = getattr(utils_module, "configure_warnings", None)
 
@@ -53,8 +54,8 @@ except ImportError:
 
 __all__ = [
     "setup_logging",
-"check_environment",
-"get_sample_data",
-"ensure_reproducibility",
-"configure_warnings",
+    "check_environment",
+    "get_sample_data",
+    "ensure_reproducibility",
+    "configure_warnings",
 ]

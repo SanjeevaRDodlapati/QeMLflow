@@ -13,8 +13,10 @@ Key Features:
 """
 
 import warnings
+
 import numpy as np
 import pandas as pd
+
 try:
     from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
     from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
@@ -576,7 +578,7 @@ def quick_clinical_analysis(trial_type: str = "oncology") -> Dict[str, Any]:
     """
     stratification_engine = PatientStratificationEngine("biomarker_based")
     trial_optimizer = ClinicalTrialOptimizer()
-#_compliance_framework = RegulatoryComplianceFramework()
+mpliance_framework = RegulatoryComplianceFramework()
     import numpy as np
     import pandas as pd
 

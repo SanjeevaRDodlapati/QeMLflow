@@ -11,6 +11,7 @@ import warnings
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
+from typing import Dict, List, Optional, Set, Tuple
 
 
 class ModelCategory(Enum):
@@ -600,5 +601,5 @@ def get_advanced_registry() -> AdvancedModelRegistry:
     """Get the global advanced registry instance."""
     global _advanced_registry
     if _advanced_registry is None:
-#_advanced_registry = AdvancedModelRegistry()
+        _advanced_registry = AdvancedModelRegistry()
     return _advanced_registry

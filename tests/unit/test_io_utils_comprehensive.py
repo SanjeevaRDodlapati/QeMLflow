@@ -18,21 +18,25 @@ import pandas as pd
 import pytest
 
 from src.utils.io_utils import (
-try:
-    from rdkit import Chem
-except ImportError:
-    pass
+    Chem,
     ConfigManager,
     DataLoader,
     FileManager,
+    ImportError:,
     ResultsExporter,
     _json_serializer,
+    except,
     export_results,
+    from,
+    import,
     load_experiment_results,
     load_molecular_data,
+    pass,
+    rdkit,
     save_model_results,
     save_molecular_data,
     setup_logging,
+    try:,
     validate_data_integrity,
 )
 

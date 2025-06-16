@@ -13,6 +13,7 @@ Key Features:
 """
 
 import warnings
+
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.ensemble import (
     BaggingClassifier,
@@ -27,7 +28,12 @@ from sklearn.metrics import (
     r2_score,
     roc_auc_score,
 )
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_val_score, train_test_split
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    cross_val_score,
+    train_test_split,
+)
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Import base model from core

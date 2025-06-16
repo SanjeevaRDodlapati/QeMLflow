@@ -159,7 +159,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
                         adapter.fit(X_train, y_train)
 
                 # Make predictions
-#_predictions = adapter.predict(X_test)
+                # _predictions = adapter.predict(X_test)
 
                 # Measure memory after
                 memory_after = process.memory_info().rss / 1024 / 1024  # MB
@@ -196,7 +196,7 @@ class AdapterTestCase(unittest.TestCase, ABC):
 
                 # Time prediction
                 start_time = time.time()
-#_predictions = adapter.predict(X_test)
+                # _predictions = adapter.predict(X_test)
                 prediction_time = time.time() - start_time
 
                 # Calculate throughput

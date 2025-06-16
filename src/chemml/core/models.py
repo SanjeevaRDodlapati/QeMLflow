@@ -13,8 +13,11 @@ Key Features:
 """
 
 from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional, Union
+
 import numpy as np
 import pandas as pd
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.linear_model import Lasso, LinearRegression, Ridge
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score, roc_auc_score
 from sklearn.model_selection import cross_val_score, train_test_split
@@ -446,7 +449,7 @@ if HAS_TORCH:
 # Alias for backward compatibility and generic usage
 Model = BaseModel
 
-#__all__ = [
+__all__ = [
     "BaseModel",
     "Model",  # Add the alias to exports
     "LinearModel",

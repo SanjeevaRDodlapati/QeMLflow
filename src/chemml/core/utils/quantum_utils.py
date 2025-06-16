@@ -5,7 +5,10 @@ molecular modeling and drug discovery.
 """
 
 import logging
+from typing import Any, Dict, List, Optional, Tuple, Union
+
 import numpy as np
+
 try:
     from qiskit.algorithms.optimizers import COBYLA, SPSA
     from qiskit.primitives import Estimator

@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import Mock, patch
 
 import pandas as pd
+
 try:
     from rdkit import Chem
 except ImportError:

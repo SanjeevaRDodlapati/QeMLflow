@@ -9,4 +9,4 @@ molecular property prediction, and compound optimization tools.
 # Currently empty - ready for future drug discovery model integrations
 # Future additions: ChemProp, MOSES, GuacaMol, DGL-LifeSci, etc.
 
-#__all__ = []
+# __all__ = []

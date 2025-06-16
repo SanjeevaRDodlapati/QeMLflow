@@ -1,6 +1,5 @@
-
-import sys
 import os
+import sys
 from pathlib import Path
 
 # Add src directory to Python path
@@ -22,6 +21,7 @@ from typing import Any, Dict, List
 import numpy as np
 import pandas as pd
 import pytest
+
 try:
     from rdkit import Chem
 except ImportError:

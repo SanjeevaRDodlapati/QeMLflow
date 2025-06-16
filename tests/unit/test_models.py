@@ -18,8 +18,9 @@ try:
 except ImportError as e:
     pytest.skip(f"Models modules not available: {e}", allow_module_level=True)
 
-from tests.conftest import skip_if_no_qiskit
 from sklearn import *
+
+from tests.conftest import skip_if_no_qiskit
 
 
 class TestRegressionModels:

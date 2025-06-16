@@ -29,6 +29,7 @@ except ImportError as e:
     pytest.skip(f"Data processing modules not available: {e}", allow_module_level=True)
 
 from tests.conftest import skip_if_no_deepchem, skip_if_no_rdkit
+
 try:
     from rdkit import Chem
 except ImportError:

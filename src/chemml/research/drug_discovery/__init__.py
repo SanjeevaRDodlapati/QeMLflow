@@ -20,41 +20,41 @@ Sub-modules:
 
 from .admet import (
     ADMETPredictor,
-DrugLikenessAssessor,
-ToxicityPredictor,
-apply_admet_filters,
-assess_drug_likeness,
-predict_admet_profile,
-predict_admet_properties,
+    DrugLikenessAssessor,
+    ToxicityPredictor,
+    apply_admet_filters,
+    assess_drug_likeness,
+    predict_admet_profile,
+    predict_admet_properties,
 )
 from .generation import (
     FragmentBasedGenerator,
-MolecularGenerator,
-generate_diverse_library,
-generate_molecular_structures,
-optimize_structure,
+    MolecularGenerator,
+    generate_diverse_library,
+    generate_molecular_structures,
+    optimize_structure,
 )
 from .molecular_optimization import (
     BayesianOptimizer,
-GeneticAlgorithmOptimizer,
-MolecularOptimizer,
-batch_optimize,
-optimize_molecule,
+    GeneticAlgorithmOptimizer,
+    MolecularOptimizer,
+    batch_optimize,
+    optimize_molecule,
 )
 from .properties import (
     MolecularPropertyPredictor,
-TrainedPropertyModel,
-predict_properties,
+    TrainedPropertyModel,
+    predict_properties,
 )
 from .qsar import (
     ActivityPredictor,
-DescriptorCalculator,
-QSARModel,
-TrainedQSARModel,
-build_qsar_dataset,
-build_qsar_model,
-predict_activity,
-validate_qsar_model,
+    DescriptorCalculator,
+    QSARModel,
+    TrainedQSARModel,
+    build_qsar_dataset,
+    build_qsar_model,
+    predict_activity,
+    validate_qsar_model,
 )
 from .screening import PharmacophoreScreener, SimilarityScreener, VirtualScreener
 

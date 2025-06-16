@@ -5,9 +5,10 @@ This package provides the core functionality for ChemML including
 data processing, machine learning models, and evaluation tools.
 """
 
+
 def __getattr__(name):
     """Dynamic import for lazy loading."""
-    
+
     # Direct function mappings (fastest path)
     _direct_map = {
         "quick_clean": ("chemml.core.data", "quick_clean"),
@@ -18,14 +19,26 @@ def __getattr__(name):
         "create_linear_model": ("chemml.core.models", "create_linear_model"),
         "create_svm_model": ("chemml.core.models", "create_svm_model"),
         # Enhanced models
-        "create_ensemble_model": ("chemml.core.enhanced_models", "create_ensemble_model"),
+        "create_ensemble_model": (
+            "chemml.core.enhanced_models",
+            "create_ensemble_model",
+        ),
         "create_automl_model": ("chemml.core.enhanced_models", "create_automl_model"),
         "create_xgboost_model": ("chemml.core.enhanced_models", "create_xgboost_model"),
-        "create_lightgbm_model": ("chemml.core.enhanced_models", "create_lightgbm_model"),
+        "create_lightgbm_model": (
+            "chemml.core.enhanced_models",
+            "create_lightgbm_model",
+        ),
         "create_cnn_model": ("chemml.core.enhanced_models", "create_cnn_model"),
         # Data processing
-        "load_chemical_dataset": ("chemml.core.data_processing", "load_chemical_dataset"),
-        "preprocess_chemical_data": ("chemml.core.data_processing", "preprocess_chemical_data"),
+        "load_chemical_dataset": (
+            "chemml.core.data_processing",
+            "load_chemical_dataset",
+        ),
+        "preprocess_chemical_data": (
+            "chemml.core.data_processing",
+            "preprocess_chemical_data",
+        ),
         "split_chemical_data": ("chemml.core.data_processing", "split_chemical_data"),
         # Pipeline
         "create_pipeline": ("chemml.core.pipeline", "create_pipeline"),
@@ -34,6 +47,7 @@ def __getattr__(name):
 
     if name in _direct_map:
         import importlib
+
         module_path, attr_name = _direct_map[name]
         module = importlib.import_module(module_path)
         attr = getattr(module, attr_name)
@@ -54,6 +68,7 @@ def __getattr__(name):
 
     if name in _module_map:
         import importlib
+
         module = importlib.import_module(_module_map[name])
         globals()[name] = module
         return module
@@ -68,6 +83,7 @@ def __getattr__(name):
 
     if name in _heavy_map:
         import importlib
+
         module = importlib.import_module(_heavy_map[name])
         globals()[name] = module
         return module
@@ -76,6 +92,7 @@ def __getattr__(name):
     for module_path in _module_map.values():
         try:
             import importlib
+
             module = importlib.import_module(module_path)
             if hasattr(module, name):
                 attr = getattr(module, name)

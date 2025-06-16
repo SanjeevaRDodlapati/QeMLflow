@@ -13,12 +13,12 @@ Key Components:
 
 from .dashboard import (
     PerformanceDashboard,
-create_performance_dashboard,
-show_performance_dashboard,
+    create_performance_dashboard,
+    show_performance_dashboard,
 )
 
 __all__ = [
     "PerformanceDashboard",
-"create_performance_dashboard",
-"show_performance_dashboard",
+    "create_performance_dashboard",
+    "show_performance_dashboard",
 ]

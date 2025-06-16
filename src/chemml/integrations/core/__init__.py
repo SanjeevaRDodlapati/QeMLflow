@@ -14,19 +14,19 @@ from .performance_monitoring import get_metrics, track_integration, track_predic
 
 # Note: pipeline import temporarily disabled due to dependencies
 
-#__all__ = [
+__all__ = [
     # Core classes
-"ExternalModelWrapper",
-"PublicationModelRegistry",
-"ExternalModelManager",
-"get_manager",
-# Advanced features
-"get_advanced_registry",
-"ModelCategory",
-"TaskComplexity",
-"get_metrics",
-"track_integration",
-"track_prediction",
-"create_adapter_test_suite",
-"quick_adapter_test",
+    "ExternalModelWrapper",
+    "PublicationModelRegistry",
+    "ExternalModelManager",
+    "get_manager",
+    # Advanced features
+    "get_advanced_registry",
+    "ModelCategory",
+    "TaskComplexity",
+    "get_metrics",
+    "track_integration",
+    "track_prediction",
+    "create_adapter_test_suite",
+    "quick_adapter_test",
 ]

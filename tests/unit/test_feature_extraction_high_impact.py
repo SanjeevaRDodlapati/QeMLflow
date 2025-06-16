@@ -8,6 +8,7 @@ from unittest.mock import Mock, patch
 
 import numpy as np
 import pandas as pd
+
 try:
     from rdkit import Chem
 except ImportError:

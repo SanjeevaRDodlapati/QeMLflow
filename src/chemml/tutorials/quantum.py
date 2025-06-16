@@ -14,7 +14,9 @@ Key Features:
 
 import logging
 import warnings
+
 import numpy as np
+
 if TYPE_CHECKING:
     try:
         from qiskit import QuantumCircuit
@@ -32,11 +34,11 @@ except ImportError:
 # Quantum computing dependencies
 try:
     import qiskit
-    from qiskit.quantum_info import SparsePauliOp
-    from qiskit.visualization import circuit_drawer
     from qiskit.algorithms import VQE
     from qiskit.algorithms.optimizers import SPSA
     from qiskit.primitives import Estimator
+    from qiskit.quantum_info import SparsePauliOp
+    from qiskit.visualization import circuit_drawer
 
     QISKIT_AVAILABLE = True
 except ImportError:
@@ -69,6 +71,7 @@ except ImportError:
 # Optional visualization
 try:
     import ipywidgets as widgets
+
     WIDGETS_AVAILABLE = True
 except ImportError:
     WIDGETS_AVAILABLE = False
@@ -298,7 +301,7 @@ class QuantumChemistryTutorial:
                 # Display circuit
                 if MATPLOTLIB_AVAILABLE:
                     try:
-#_fig = circuit_drawer(circuit, output="mpl", style="clifford")
+                        # _fig = circuit_drawer(circuit, output="mpl", style="clifford")
                         plt.show()
                     except Exception:
                         print("Circuit visualization not available")

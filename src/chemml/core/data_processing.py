@@ -881,6 +881,46 @@ class IntelligentDataSplitter:
             )
 
 
+def process_smiles(smiles_list: List[str], sanitize: bool = True) -> List[Optional[str]]:
+    """
+    Process a list of SMILES strings for chemical analysis.
+    
+    Parameters:
+    -----------
+    smiles_list : List[str]
+        List of SMILES strings to process
+    sanitize : bool, default=True
+        Whether to sanitize molecules using RDKit
+        
+    Returns:
+    --------
+    List[Optional[str]]
+        Processed SMILES strings, None for invalid molecules
+    """
+    if not HAS_RDKIT:
+        raise ImportError("RDKit is required for SMILES processing")
+    
+    processed = []
+    for smiles in smiles_list:
+        try:
+            mol = Chem.MolFromSmiles(smiles)
+            if mol is None:
+                processed.append(None)
+                continue
+                
+            if sanitize:
+                Chem.SanitizeMol(mol)
+                processed_smiles = Chem.MolToSmiles(mol)
+            else:
+                processed_smiles = smiles
+                
+            processed.append(processed_smiles)
+        except Exception:
+            processed.append(None)
+            
+    return processed
+
+
 # Convenience functions for quick access
 def load_chemical_dataset(dataset_name: str, **kwargs):
     """Load a chemical dataset quickly."""

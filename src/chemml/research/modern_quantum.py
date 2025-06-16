@@ -18,15 +18,18 @@ Compatible: Qiskit 2.0+
 
 import warnings
 from abc import ABC, abstractmethod
+
 import numpy as np
 import pandas as pd
+
 try:
+    from typing import Callable
+
     import matplotlib.pyplot as plt
     from qiskit import QuantumCircuit
-    from qiskit.quantum_info import SparsePauliOp
     from qiskit.primitives import StatevectorEstimator, StatevectorSampler
+    from qiskit.quantum_info import SparsePauliOp
     from scipy.optimize import minimize
-    from typing import Callable
 
     HAS_QISKIT = True
 except ImportError as e:

@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 import numpy as np
 from sklearn import *
+
 try:
     from rdkit import Chem
 except ImportError:

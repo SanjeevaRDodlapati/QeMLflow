@@ -43,34 +43,34 @@ data = load_tutorial_data("molecular_properties")
 from .assessment import ConceptCheckpoint, LearningAssessment, ProgressTracker
 from .core import (
     create_interactive_demo,
-load_tutorial_data,
-setup_learning_environment,
+    load_tutorial_data,
+    setup_learning_environment,
 )
 from .data import (
     EducationalDatasets,
-create_synthetic_examples,
-get_sample_datasets,
-load_educational_molecules,
+    create_synthetic_examples,
+    get_sample_datasets,
+    load_educational_molecules,
 )
 from .environment import EnvironmentManager, check_dependencies, setup_fallbacks
 from .quantum import (
     QuantumChemistryTutorial,
-QuantumMachineLearning,
-check_quantum_requirements,
-create_h2_vqe_tutorial,
-create_quantum_ml_demo,
-get_quantum_tutorial_overview,
+    QuantumMachineLearning,
+    check_quantum_requirements,
+    create_h2_vqe_tutorial,
+    create_quantum_ml_demo,
+    get_quantum_tutorial_overview,
 )
 from .utils import (
     create_progress_dashboard,
-interactive_parameter_tuning,
-setup_logging,
-visualize_molecules,
+    interactive_parameter_tuning,
+    setup_logging,
+    visualize_molecules,
 )
 from .widgets import (
     InteractiveAssessment,
-MolecularVisualizationWidget,
-ProgressDashboard,
+    MolecularVisualizationWidget,
+    ProgressDashboard,
 )
 
 # Version information

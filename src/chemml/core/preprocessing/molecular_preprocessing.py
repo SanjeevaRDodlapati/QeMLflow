@@ -7,6 +7,8 @@ molecular datasets for machine learning applications.
 
 import numpy as np
 import pandas as pd
+from typing import List, Optional, Dict, Any, Tuple
+
 # Optional imports
 try:
     from rdkit import Chem

@@ -49,6 +49,7 @@ except ImportError as e:
     pytest.skip(f"Utils modules not available: {e}", allow_module_level=True)
 
 from tests.conftest import skip_if_no_qiskit, skip_if_no_rdkit
+
 try:
     from rdkit import Chem
 except ImportError:

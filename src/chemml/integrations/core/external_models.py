@@ -18,8 +18,11 @@ import subprocess
 import sys
 import tempfile
 import warnings
-import numpy as np
+from typing import Any, Dict, List, Optional, Union
 from pathlib import Path
+
+import numpy as np
+
 try:
     import git
 

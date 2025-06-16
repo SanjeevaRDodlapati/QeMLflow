@@ -15,6 +15,8 @@ from contextlib import contextmanager
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
+
 import psutil
 
 
@@ -632,14 +634,14 @@ class IntegrationMetrics:
 
 
 # Global instance
-#_metrics_instance = None
+_metrics_instance = None
 
 
 def get_metrics() -> IntegrationMetrics:
     """Get the global metrics instance."""
     global _metrics_instance
     if _metrics_instance is None:
-#_metrics_instance = IntegrationMetrics()
+        _metrics_instance = IntegrationMetrics()
     return _metrics_instance
 
 

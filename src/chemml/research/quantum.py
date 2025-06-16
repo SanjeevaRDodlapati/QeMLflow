@@ -15,8 +15,9 @@ import warnings
 
 import numpy as np
 import pandas as pd
+
 try:
-    from qiskit import QuantumCircuit, ParameterVector
+    from qiskit import ParameterVector, QuantumCircuit
     from qiskit.providers.aer import AerSimulator
 
     HAS_QISKIT = True

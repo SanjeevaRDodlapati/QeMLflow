@@ -24,6 +24,7 @@ import time
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 
 
@@ -466,7 +467,11 @@ class AutoMLOptimizer:
             raise ValueError(f"Unknown optimization strategy: {optimization_strategy}")
 
     def optimize(
-        self, X: np.ndarray, y: np.ndarray, feature_names: Optional[List[str]] = None, **kwargs
+        self,
+        X: np.ndarray,
+        y: np.ndarray,
+        feature_names: Optional[List[str]] = None,
+        **kwargs,
     ) -> OptimizationResult:
         """Complete AutoML optimization pipeline."""
         print("🤖 Starting AutoML Optimization Pipeline")

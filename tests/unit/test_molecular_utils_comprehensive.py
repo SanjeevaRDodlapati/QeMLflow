@@ -18,12 +18,10 @@ import pytest
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
 from utils.molecular_utils import (
-try:
-    from rdkit import Chem
-except ImportError:
-    pass
     PY3DMOL_AVAILABLE,
     RDKIT_AVAILABLE,
+    Chem,
+    ImportError:,
     LipinskiFilter,
     MolecularDescriptors,
     MolecularVisualization,
@@ -37,15 +35,21 @@ except ImportError:
     calculate_molecular_properties,
     calculate_molecular_weight,
     calculate_similarity,
+    except,
     filter_molecules_by_properties,
+    from,
     generate_conformers,
     get_molecular_formula,
+    import,
     mol_to_smiles,
     neutralize_molecule,
+    pass,
+    rdkit,
     remove_salts,
     smiles_to_mol,
     standardize_molecule,
     standardize_smiles,
+    try:,
     validate_molecule,
     validate_smiles,
 )

@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 import pytest
 from sklearn import *
+
 try:
     from rdkit import Chem
 except ImportError:

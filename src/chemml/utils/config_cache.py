@@ -7,9 +7,9 @@ import hashlib
 import pickle
 import threading
 import time
-from pathlib import Path
 from dataclasses import dataclass
-from typing import Dict, Any, Optional
+from pathlib import Path
+from typing import Any, Dict, Optional
 
 import yaml
 
@@ -276,8 +276,8 @@ class ConfigurationCache:
 
 
 # Global cache instance
-#_global_cache = None
-#_cache_lock = threading.Lock()
+# _global_cache = None
+# _cache_lock = threading.Lock()
 
 
 def get_config_cache(

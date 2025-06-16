@@ -15,28 +15,28 @@ from .drug_discovery_legacy import *
 from .environmental_chemistry import *
 
 # Lazy loading registry
-#_LAZY_MODULES = {
-"advanced_models": ".advanced_models",
-"materials_discovery": ".materials_discovery",
-"generative": ".generative",
-"quantum": ".quantum",
-"modern_quantum": ".modern_quantum",
+_LAZY_MODULES = {
+    "advanced_models": ".advanced_models",
+    "materials_discovery": ".materials_discovery",
+    "generative": ".generative",
+    "quantum": ".quantum",
+    "modern_quantum": ".modern_quantum",
 }
 
 
 def __getattr__(name: str) -> Any:
     """Lazy loading for heavy modules"""
-for module_name, module_path in _LAZY_MODULES.items():
+    for module_name, module_path in _LAZY_MODULES.items():
         try:
             module = __import__(module_path, fromlist=[name], level=1)
-if hasattr(module, name):
+            if hasattr(module, name):
                 # Cache the attribute for future access
-globals()[name] = getattr(module, name)
-return globals()[name]
-except (ImportError, AttributeError):
+                globals()[name] = getattr(module, name)
+                return globals()[name]
+        except (ImportError, AttributeError):
             continue
-
-raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
+    
+    raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
 
 
 # Version info

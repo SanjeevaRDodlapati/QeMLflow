@@ -21,7 +21,7 @@ Usage:
 
 import json
 from dataclasses import dataclass, field
-from typing import Dict, Any, List, Optional, Type, Union, Callable
+from typing import Any, Callable, Dict, List, Optional, Type, Union
 
 
 @dataclass

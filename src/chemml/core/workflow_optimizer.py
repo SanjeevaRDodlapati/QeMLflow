@@ -7,6 +7,7 @@ Analyzes data patterns and suggests optimal processing pipelines.
 """
 
 import warnings
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import cross_val_score
@@ -160,7 +161,7 @@ class WorkflowOptimizer:
         }
         try:
             if isinstance(molecules, (list, np.ndarray)):
-#_molecular_data = np.array(molecules)
+                # _molecular_data = np.array(molecules)
                 characteristics["size"] = len(molecules)
                 if len(molecules) > 0:
                     if isinstance(molecules[0], str):

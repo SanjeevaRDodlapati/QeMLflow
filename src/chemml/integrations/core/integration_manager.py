@@ -588,7 +588,7 @@ def get_manager() -> ExternalModelManager:
     """Get the global external model manager."""
     global _global_manager
     if _global_manager is None:
-#_global_manager = ExternalModelManager()
+        _global_manager = ExternalModelManager()
     return _global_manager
 
 

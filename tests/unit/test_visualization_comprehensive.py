@@ -64,19 +64,24 @@ except ImportError:
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # Import the visualization module
+from src.utils.visualization import *
 from src.utils.visualization import (
-from sklearn import *
-try:
-    from rdkit import Chem
-except ImportError:
-    pass
+    Chem,
     ChemicalSpaceVisualizer,
+    ImportError:,
     ModelVisualizer,
     MolecularVisualizer,
     create_dashboard_plots,
+    except,
+    from,
+    import,
+    pass,
     plot_feature_importance,
     plot_model_performance,
     plot_molecular_structure,
+    rdkit,
+    sklearn,
+    try:,
 )
 
 

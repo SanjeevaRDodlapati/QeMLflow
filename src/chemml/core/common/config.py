@@ -163,7 +163,7 @@ def get_config() -> ChemMLConfig:
     """Get the global configuration instance."""
     global _config
     if _config is None:
-#_config = ChemMLConfig()
+        # _config = ChemMLConfig()
         _config.ensure_directories()
     return _config
 
@@ -171,11 +171,13 @@ def get_config() -> ChemMLConfig:
 def update_config(**kwargs) -> None:
     """Update the global configuration."""
     global _config
-#_config = ChemMLConfig(**kwargs)
+    # _config = ChemMLConfig(**kwargs)
     _config.ensure_directories()
 
 
 def reset_config() -> None:
     """Reset the global configuration to defaults."""
     global _config
-#_config = None
+
+
+# _config = None

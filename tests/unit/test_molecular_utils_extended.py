@@ -12,18 +12,22 @@ import numpy as np
 import pandas as pd
 
 from src.utils.molecular_utils import (
-try:
-    from rdkit import Chem
-except ImportError:
-    pass
+    Chem,
+    ImportError:,
     LipinskiFilter,
     MolecularDescriptors,
     MolecularVisualization,
     SimilarityCalculator,
     StructuralAlerts,
     calculate_molecular_properties,
+    except,
+    from,
     generate_conformers,
+    import,
+    pass,
+    rdkit,
     standardize_smiles,
+    try:,
     validate_molecule,
 )
 
