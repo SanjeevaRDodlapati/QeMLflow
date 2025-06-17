@@ -30,7 +30,7 @@ from .drug_discovery.screening import *
 # These maintain the exact same interface as the original monolithic implementation
 
 # Re-export all the classes and functions
-#__all__ = [
+__all__ = [
     # Molecular Optimization
     "MolecularOptimizer",
     "BayesianOptimizer",

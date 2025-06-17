@@ -214,14 +214,14 @@ def create_progress_dashboard(
     # Extract data for visualization
     sessions = list(range(1, len(session_data) + 1))
     scores = [session.get("score", 0) for session in session_data]
-#_durations = [
+    durations = [
         session.get("duration_seconds", 0) / 60 for session in session_data
     ]  # Convert to minutes
     concepts = []
     for session in session_data:
         concepts.extend(session.get("concepts", []))
 
-#_unique_concepts = list(set(concepts))
+    unique_concepts = list(set(concepts))
 
     if PLOTLY_AVAILABLE:
         print(f"📊 Progress Dashboard for {student_id}")
@@ -325,12 +325,12 @@ def create_learning_assessment_summary(assessment_results: List[Dict[str, Any]])
         return None
 
     # Extract data
-#_sections = [
+    sections = [
         result.get("section", f"Assessment {i+1}")
         for i, result in enumerate(assessment_results)
     ]
-#_scores = [result.get("score", 0) for result in assessment_results]
-#_durations = [
+    scores = [result.get("score", 0) for result in assessment_results]
+    durations = [
         result.get("duration_seconds", 0) / 60 for result in assessment_results
     ]
 #_completion_rates = [

@@ -74,42 +74,42 @@ from .widgets import (
 )
 
 # Version information
-#__version__ = "1.0.0"
-#__author__ = "QeMLflow Development Team"
+# __version__ = "1.0.0"
+# __author__ = "QeMLflow Development Team"
 
 # Export all public components
-#__all__ = [
+__all__ = [
     # Core functionality
-"setup_learning_environment",
-"load_tutorial_data",
-"create_interactive_demo",
-# Assessment and tracking
-"LearningAssessment",
-"ProgressTracker",
-"ConceptCheckpoint",
-# Educational data
-"EducationalDatasets",
-"get_sample_datasets",
-"load_educational_molecules",
-"create_synthetic_examples",
-# Environment management
-"EnvironmentManager",
-"check_dependencies",
-"setup_fallbacks",
-# Interactive components
-"InteractiveAssessment",
-"ProgressDashboard",
-"MolecularVisualizationWidget",
-# Utilities
-"visualize_molecules",
-"interactive_parameter_tuning",
-"create_progress_dashboard",
-"setup_logging",
-# Quantum computing
-"QuantumChemistryTutorial",
-"QuantumMachineLearning",
-"create_h2_vqe_tutorial",
-"create_quantum_ml_demo",
-"check_quantum_requirements",
-"get_quantum_tutorial_overview",
-"""
+    "setup_learning_environment",
+    "load_tutorial_data",
+    "create_interactive_demo",
+    # Assessment and tracking
+    "LearningAssessment",
+    "ProgressTracker",
+    "ConceptCheckpoint",
+    # Educational data
+    "EducationalDatasets",
+    "get_sample_datasets",
+    "load_educational_molecules",
+    "create_synthetic_examples",
+    # Environment management
+    "EnvironmentManager",
+    "check_dependencies",
+    "setup_fallbacks",
+    # Interactive components
+    "InteractiveAssessment",
+    "ProgressDashboard",
+    "MolecularVisualizationWidget",
+    # Utilities
+    "visualize_molecules",
+    "interactive_parameter_tuning",
+    "create_progress_dashboard",
+    "setup_logging",
+    # Quantum computing
+    "QuantumChemistryTutorial",
+    "QuantumMachineLearning",
+    "create_h2_vqe_tutorial",
+    "create_quantum_ml_demo",
+    "check_quantum_requirements",
+    "get_quantum_tutorial_overview",
+]
