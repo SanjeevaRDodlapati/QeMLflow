@@ -1,4 +1,4 @@
-"""
+from typing import List\n"""
 QeMLflow Integrations Package
 
 This package provides integrations with external libraries and models.
@@ -84,7 +84,7 @@ def get_manager():
     """Get the external model manager instance."""
     try:
         from .core.integration_manager import get_manager as _get_manager
-        
+
         return _get_manager()
     except ImportError:
         return None

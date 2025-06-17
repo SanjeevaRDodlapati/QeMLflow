@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 External Model Integration for QeMLflow
 ====================================
 
@@ -18,8 +18,8 @@ import subprocess
 import sys
 import tempfile
 import warnings
-from typing import Any, Dict, List, Optional, Union
 from pathlib import Path
+from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 

@@ -1,4 +1,4 @@
-"""
+from typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 Protein Structure Preparation Pipeline for Molecular Docking
 
 This module provides utilities for downloading, converting, and preparing

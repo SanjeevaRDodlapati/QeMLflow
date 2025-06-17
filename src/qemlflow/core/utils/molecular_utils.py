@@ -857,3 +857,4 @@ class MolecularVisualization:
             return "3D visualization placeholder"
         except Exception:
             return None
+\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union

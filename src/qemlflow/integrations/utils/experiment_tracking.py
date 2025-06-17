@@ -26,7 +26,10 @@ def setup_wandb_tracking(
         return None
     try:
         run = wandb.init(
-            project=project, name=experiment_name, config=config or {}, tags=["qemlflow"]
+            project=project,
+            name=experiment_name,
+            config=config or {},
+            tags=["qemlflow"],
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run

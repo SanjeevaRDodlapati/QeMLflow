@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 QeMLflow Model Pipeline Framework
 ==============================
 
@@ -27,8 +27,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 try:
     from .data_processing import (
         AdvancedDataPreprocessor,
-        QeMLflowDataLoader,
         IntelligentDataSplitter,
+        QeMLflowDataLoader,
     )
     from .enhanced_models import (
         AutoMLModel,
@@ -47,8 +47,8 @@ try:
 except ImportError:
     from qemlflow.core.data_processing import (
         AdvancedDataPreprocessor,
-        QeMLflowDataLoader,
         IntelligentDataSplitter,
+        QeMLflowDataLoader,
     )
     from qemlflow.core.enhanced_models import (
         AutoMLModel,

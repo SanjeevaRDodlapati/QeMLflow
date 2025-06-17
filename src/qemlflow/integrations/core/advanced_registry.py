@@ -1,4 +1,4 @@
-"""
+from typing import List\nfrom typing import Optional\n"""
 Advanced Model Registry with AI-Powered Recommendations
 =====================================================
 
@@ -594,7 +594,7 @@ class AdvancedModelRegistry:
 
 
 # Global instance
-#_advanced_registry = None
+# _advanced_registry = None
 
 
 def get_advanced_registry() -> AdvancedModelRegistry:

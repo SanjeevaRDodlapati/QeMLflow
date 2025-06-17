@@ -1,13 +1,14 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\n"""
 Molecular data preprocessing utilities.
 
 This module provides functions for cleaning, normalizing, and preprocessing
 molecular datasets for machine learning applications.
 """
 
+from typing import Any, Dict, List, Optional, Tuple
+
 import numpy as np
 import pandas as pd
-from typing import List, Optional, Dict, Any, Tuple
 
 # Optional imports
 try:

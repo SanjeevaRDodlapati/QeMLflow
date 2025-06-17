@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Callable\n"""
 Modern Quantum Computing Suite for QeMLflow
 =========================================
 Native Qiskit 2.0+ implementation for quantum machine learning and quantum chemistry.
@@ -23,7 +23,7 @@ import numpy as np
 import pandas as pd
 
 try:
-    from typing import Callable, Optional, List, Dict, Any
+    from typing import Any, Callable, Dict, List, Optional
 
     import matplotlib.pyplot as plt
     from qiskit import QuantumCircuit

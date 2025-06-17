@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import Optional\n"""
 Import result caching for QeMLflow
 Caches expensive import operations
 """

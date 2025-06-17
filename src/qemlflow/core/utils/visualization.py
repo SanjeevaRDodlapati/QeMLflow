@@ -1,4 +1,4 @@
-"""
+from typing import List\nfrom typing import Optional\n"""
 Comprehensive visualization utilities for QeMLflow.
 
 This module provides plotting and visualization functions for molecular data,

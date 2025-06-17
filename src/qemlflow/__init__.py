@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 QeMLflow: Machine Learning for Chemistry
 Ultra-optimized for sub-5s imports
 """
@@ -6,7 +6,7 @@ Ultra-optimized for sub-5s imports
 # Minimal essential imports only
 import sys
 import warnings
-from typing import Any, Optional, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
 
 # Fast warning suppression
 warnings.filterwarnings("ignore", category=DeprecationWarning)

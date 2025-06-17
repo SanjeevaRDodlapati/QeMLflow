@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\n"""
 Environment Management for ChemML Tutorials
 ==========================================
 
@@ -523,7 +523,9 @@ class EnvironmentManager:
             (
                 "rdkit-pypi"
                 if dep == "rdkit"
-                else "scikit-learn" if dep == "sklearn" else dep
+                else "scikit-learn"
+                if dep == "sklearn"
+                else dep
             )
             for dep in missing_deps
             if dep != "psi4"

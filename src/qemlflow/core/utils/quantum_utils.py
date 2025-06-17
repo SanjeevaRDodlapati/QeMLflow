@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 Quantum computing utilities for molecular systems
 This module provides utilities for quantum computing applications in
 molecular modeling and drug discovery.

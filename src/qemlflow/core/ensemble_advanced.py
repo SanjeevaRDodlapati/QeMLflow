@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
 QeMLflow Advanced Ensemble Methods
 ===============================
 
@@ -211,7 +211,7 @@ class AdaptiveEnsemble(BaseEstimator):
     ) -> np.ndarray:
         """Make adaptive predictions based on input characteristics."""
         if self.molecular_clusters_ is not None:
-#_cluster_assignments = np.random.randint(
+            cluster_assignments = np.random.randint(
                 0, max(self.molecular_clusters_) + 1, len(X)
             )
             weighted_predictions = np.average(
@@ -430,9 +430,9 @@ class UncertaintyQuantifiedEnsemble(BaseEstimator):
             bootstrap_uncertainties = self._calculate_bootstrap_uncertainty(X)
             uncertainties["bootstrap"] = bootstrap_uncertainties
         if "intervals" in self.uncertainty_methods:
-            uncertainties["prediction_intervals"] = (
-                self._calculate_prediction_intervals(base_predictions)
-            )
+            uncertainties[
+                "prediction_intervals"
+            ] = self._calculate_prediction_intervals(base_predictions)
         total_uncertainty = np.zeros(len(X))
         for unc_type, unc_values in uncertainties.items():
             if unc_type != "prediction_intervals":

@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import Optional\nfrom typing import Callable\n"""
 Performance monitoring and profiling utilities for QeMLflow.
 """
 

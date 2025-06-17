@@ -1,4 +1,4 @@
-"""
+from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Callable\n"""
 Automated Testing Framework for External Model Adapters
 ======================================================
 
