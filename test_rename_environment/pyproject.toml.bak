@@ -1,0 +1,12 @@
+[project]
+name = "qemlflow"
+version = "0.2.0"
+description = "Quantum-Enhanced Molecular Machine Learning Framework"
+authors = [
+    {name = "QeMLflow Contributors", email = "qemlflow@example.com"}
+]
+keywords = [
+    "machine-learning",
+    "cheminformatics",
+    "molecular-modeling"
+]
