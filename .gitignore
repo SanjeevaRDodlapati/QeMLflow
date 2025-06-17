@@ -39,6 +39,8 @@ qemlflow_env/
 .artifacts/
 qemlflow_backup_*/
 backups/archive/
+backups/auto_fix_*/
+backups/unused_imports_*/
 reports/archives/
 
 # Maintenance and temporary files
@@ -46,6 +48,7 @@ maintenance_report.json
 quick_syntax_check.py
 automated_maintenance.py
 STATUS_REPORT.md
+debug_status_check.py
 
 # Jupyter Notebook
 .ipynb_checkpoints
