@@ -1,7 +1,7 @@
-# 📋 ChemML Codebase Master Reorganization Plan
+# 📋 QeMLflow Codebase Master Reorganization Plan
 
 ## 🎯 Objective
-Transform the current cluttered ChemML codebase into a clean, professional, production-ready repository with clear structure, minimal redundancy, and optimal user experience.
+Transform the current cluttered QeMLflow codebase into a clean, professional, production-ready repository with clear structure, minimal redundancy, and optimal user experience.
 
 ## 📊 Current State Analysis
 
@@ -18,7 +18,7 @@ Transform the current cluttered ChemML codebase into a clean, professional, prod
 
 ### **What Works Well ✅**
 - `notebooks/quickstart_bootcamp/` - Well organized
-- `chemml_common/` - Clean framework
+- `qemlflow_common/` - Clean framework
 - `quick_access_demo.py` - Excellent entry point
 - `tools/` directory structure
 - `docs/` organization
@@ -77,8 +77,8 @@ qm9_cache/                                  → logs/cache/qm9/
 #### **Files to CONSOLIDATE**
 ```bash
 # Create single documentation files
-CHEMML_FILES_LOCATION_GUIDE.md    }
-CHEMML_FRAMEWORK_GUIDE.md         } → docs/USER_GUIDE.md
+QEMLFLOW_FILES_LOCATION_GUIDE.md    }
+QEMLFLOW_FRAMEWORK_GUIDE.md         } → docs/USER_GUIDE.md
 FRAMEWORK_QUICK_REFERENCE.md      }
 ```
 
@@ -86,12 +86,12 @@ FRAMEWORK_QUICK_REFERENCE.md      }
 
 #### **Target Clean Structure**
 ```
-ChemML/                                     # 🎯 CLEAN MAIN DIRECTORY
+QeMLflow/                                     # 🎯 CLEAN MAIN DIRECTORY
 ├── README.md                               # ⭐ Primary entry point
 ├── quick_access_demo.py                    # 🚀 Interactive launcher
 ├── requirements.txt                        # 📦 Dependencies
 ├── setup.py                               # 🔧 Installation
-├── chemml_common/                          # 🧩 Core framework
+├── qemlflow_common/                          # 🧩 Core framework
 ├── notebooks/                             # 📚 Learning materials
 │   └── quickstart_bootcamp/               # Well-organized bootcamp
 ├── docs/                                  # 📖 All documentation
@@ -116,7 +116,7 @@ ChemML/                                     # 🎯 CLEAN MAIN DIRECTORY
 
 **`docs/USER_GUIDE.md`** (Consolidate 3 files):
 ```markdown
-# ChemML User Guide
+# QeMLflow User Guide
 ## Quick Start (15 minutes)
 ## Framework Guide
 ## File Locations
@@ -125,8 +125,8 @@ ChemML/                                     # 🎯 CLEAN MAIN DIRECTORY
 
 **`docs/API_REFERENCE.md`** (New):
 ```markdown
-# ChemML Framework API Reference
-## chemml_common package
+# QeMLflow Framework API Reference
+## qemlflow_common package
 ## Configuration options
 ## Library manager
 ## Assessment framework
@@ -134,7 +134,7 @@ ChemML/                                     # 🎯 CLEAN MAIN DIRECTORY
 
 **`docs/QUICK_START.md`** (Enhanced):
 ```markdown
-# ChemML Quick Start Guide
+# QeMLflow Quick Start Guide
 ## Installation (2 minutes)
 ## First Script (5 minutes)
 ## Framework Usage (8 minutes)
@@ -198,12 +198,12 @@ def reorganize_codebase():
 
 ### **Main Directory (Clean!)**
 ```
-ChemML/
+QeMLflow/
 ├── README.md                    # Clear introduction
 ├── quick_access_demo.py         # Primary launcher
 ├── requirements.txt             # Dependencies
 ├── setup.py                     # Installation
-├── chemml_common/               # Core framework
+├── qemlflow_common/               # Core framework
 ├── notebooks/                   # Learning materials
 ├── docs/                        # All documentation
 ├── src/                         # Library code
@@ -218,7 +218,7 @@ ChemML/
 1. **Land on GitHub** → See clean README.md
 2. **Quick start** → `python quick_access_demo.py`
 3. **Learn systematically** → `notebooks/quickstart_bootcamp/`
-4. **Use framework** → `from chemml_common import *`
+4. **Use framework** → `from qemlflow_common import *`
 5. **Get help** → `docs/USER_GUIDE.md`
 
 ## 🎯 Priority Implementation

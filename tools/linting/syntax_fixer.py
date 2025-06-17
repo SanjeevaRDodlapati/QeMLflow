@@ -143,7 +143,7 @@ class SyntaxErrorFixer:
                 "examples/archived/standalone_advanced_features_demo.py",
                 "examples/integrations/framework/registry_demo.py",
                 "scripts/utilities/setup_wandb_integration.py",
-                "src/chemml/core/pipeline.py",
+                "src/qemlflow/core/pipeline.py",
             ]
 
         print("Fixing critical syntax errors...")

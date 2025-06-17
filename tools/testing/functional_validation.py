@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Functional Validation Tests for ChemML
+Functional Validation Tests for QeMLflow
 =====================================
 
-Comprehensive tests to validate that the ChemML codebase is working properly
+Comprehensive tests to validate that the QeMLflow codebase is working properly
 beyond just configuration and dependencies.
 """
 
@@ -19,31 +19,31 @@ def test_basic_imports():
     print("🔍 Testing Basic Imports...")
     
     try:
-        import chemml
-        print(f"   ✅ chemml: {chemml.__version__}")
+        import qemlflow
+        print(f"   ✅ qemlflow: {qemlflow.__version__}")
     except Exception as e:
-        print(f"   ❌ chemml: {e}")
+        print(f"   ❌ qemlflow: {e}")
         return False
     
     try:
-        import chemml.core
-        print("   ✅ chemml.core")
+        import qemlflow.core
+        print("   ✅ qemlflow.core")
     except Exception as e:
-        print(f"   ❌ chemml.core: {e}")
+        print(f"   ❌ qemlflow.core: {e}")
         return False
     
     try:
-        import chemml.integrations
-        print("   ✅ chemml.integrations")
+        import qemlflow.integrations
+        print("   ✅ qemlflow.integrations")
     except Exception as e:
-        print(f"   ❌ chemml.integrations: {e}")
+        print(f"   ❌ qemlflow.integrations: {e}")
         return False
     
     try:
-        import chemml.core.preprocessing
-        print("   ✅ chemml.core.preprocessing")
+        import qemlflow.core.preprocessing
+        print("   ✅ qemlflow.core.preprocessing")
     except Exception as e:
-        print(f"   ❌ chemml.core.preprocessing: {e}")
+        print(f"   ❌ qemlflow.core.preprocessing: {e}")
         return False
     
     return True
@@ -56,7 +56,7 @@ def test_data_processing():
     try:
         import pandas as pd
         import numpy as np
-        from chemml.core.data_processing import process_smiles
+        from qemlflow.core.data_processing import process_smiles
         
         # Test with sample SMILES
         test_smiles = ["CCO", "c1ccccc1", "CC(=O)O"]
@@ -82,7 +82,7 @@ def test_molecular_features():
     print("\n🧪 Testing Molecular Features...")
     
     try:
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
         
         # Test with sample SMILES
         test_smiles = ["CCO", "c1ccccc1"]
@@ -109,7 +109,7 @@ def test_integration_system():
     
     try:
         # Test basic integration module import
-        import chemml.integrations
+        import qemlflow.integrations
         
         # Instead of testing the complex manager, test basic integration functionality
         print("   ✅ Integration system: Basic functionality working")
@@ -128,7 +128,7 @@ def test_core_utilities():
     print("\n🛠️  Testing Core Utilities...")
     
     try:
-        from chemml.core.utils import validate_input
+        from qemlflow.core.utils import validate_input
         
         # Test validation with sample data
         test_data = {"test": "value"}
@@ -150,7 +150,7 @@ def test_error_handling():
     print("\n🛡️  Testing Error Handling...")
     
     try:
-        from chemml.core.data_processing import process_smiles
+        from qemlflow.core.data_processing import process_smiles
         
         # Test with invalid SMILES
         invalid_smiles = ["INVALID", "BADSMILES", ""]
@@ -170,7 +170,7 @@ def test_error_handling():
 
 def run_functional_validation():
     """Run all functional validation tests."""
-    print("🧪 ChemML Functional Validation Test Suite")
+    print("🧪 QeMLflow Functional Validation Test Suite")
     print("=" * 50)
     
     tests = [

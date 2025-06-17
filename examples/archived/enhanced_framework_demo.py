@@ -1,5 +1,5 @@
 """
-ChemML Enhanced Framework Demo
+QeMLflow Enhanced Framework Demo
 =============================
 
 - Comprehensive data processing pipeline
@@ -17,13 +17,13 @@ import pandas as pd
 
 def demo_enhanced_data_processing():
     """Demonstrate enhanced data processing capabilities."""
-    print("🧪 ChemML Enhanced Data Processing Demo")
+    print("🧪 QeMLflow Enhanced Data Processing Demo")
     print("=" * 50)
 
     # Import enhanced data processing
-    from chemml.core.data_processing import (
+    from qemlflow.core.data_processing import (
         AdvancedDataPreprocessor,
-        ChemMLDataLoader,
+        QeMLflowDataLoader,
         IntelligentDataSplitter,
         load_chemical_dataset,
         preprocess_chemical_data,
@@ -75,7 +75,7 @@ def demo_enhanced_data_processing():
 
 def demo_enhanced_models():
     """Demonstrate enhanced model capabilities."""
-    print("\n🤖 ChemML Enhanced Models Demo")
+    print("\n🤖 QeMLflow Enhanced Models Demo")
     print("=" * 50)
 
     # Create synthetic data
@@ -83,7 +83,7 @@ def demo_enhanced_models():
 
     # Import enhanced models
     try:
-        from chemml.core.enhanced_models import (
+        from qemlflow.core.enhanced_models import (
             AutoMLModel,
             EnsembleModel,
             create_automl_model,
@@ -111,7 +111,7 @@ def demo_enhanced_models():
 
         # Test gradient boosting if available
         try:
-            from chemml.core.enhanced_models import create_xgboost_model
+            from qemlflow.core.enhanced_models import create_xgboost_model
 
             print("\n🔄 Testing XGBoost Model...")
             xgb_model = create_xgboost_model(task_type="regression")
@@ -126,11 +126,11 @@ def demo_enhanced_models():
 
 def demo_automated_pipeline():
     """Demonstrate automated ML pipeline."""
-    print("\n🚀 ChemML Automated Pipeline Demo")
+    print("\n🚀 QeMLflow Automated Pipeline Demo")
     print("=" * 50)
 
     try:
-        from chemml.core.pipeline import create_pipeline, quick_pipeline
+        from qemlflow.core.pipeline import create_pipeline, quick_pipeline
 
         # Create synthetic dataset
         df = create_synthetic_chemistry_dataset(n_samples=200)
@@ -181,7 +181,7 @@ def demo_automated_pipeline():
         print(results[["model", "type", "r2", "rmse"]].round(4))
 
         # Save pipeline
-        save_path = Path.home() / ".chemml" / "demo_pipeline"
+        save_path = Path.home() / ".qemlflow" / "demo_pipeline"
         pipeline.save_pipeline(save_path)
         print(f"💾 Pipeline saved to {save_path}")
 
@@ -197,7 +197,7 @@ def demo_performance_comparison():
     # Create test data
     X, y = create_synthetic_features(n_samples=500, n_features=50)
 
-    from chemml.core.models import LinearModel, RandomForestModel, compare_models
+    from qemlflow.core.models import LinearModel, RandomForestModel, compare_models
 
     # Create models for comparison
     models = {
@@ -207,7 +207,7 @@ def demo_performance_comparison():
 
     # Add enhanced models if available
     try:
-        from chemml.core.enhanced_models import EnsembleModel
+        from qemlflow.core.enhanced_models import EnsembleModel
 
         models["Ensemble"] = EnsembleModel(task_type="regression")
     except ImportError:
@@ -253,8 +253,8 @@ def create_synthetic_features(n_samples: int = 100, n_features: int = 20) -> tup
 
 
 def run_full_demo():
-    """Run the complete enhanced ChemML demo."""
-    print("🌟 ChemML Enhanced Framework Demo")
+    """Run the complete enhanced QeMLflow demo."""
+    print("🌟 QeMLflow Enhanced Framework Demo")
     print("=" * 60)
     print("Demonstrating new core framework capabilities...")
     print()

@@ -1,6 +1,6 @@
-site_name: ChemML Documentation
+site_name: QeMLflow Documentation
 site_description: Quantum-Enhanced Molecular Machine Learning Framework
-site_url: https://chemml.io
+site_url: https://qemlflow.io
 
 theme:
   name: material

@@ -1,6 +1,6 @@
-# 🔍 ChemML Codebase Architecture & Redundancy Analysis
+# 🔍 QeMLflow Codebase Architecture & Redundancy Analysis
 
-**Comprehensive review of the current ChemML structure, identifying redundancies and organizational improvements**
+**Comprehensive review of the current QeMLflow structure, identifying redundancies and organizational improvements**
 
 *Analysis conducted: June 14, 2025*
 
@@ -9,14 +9,14 @@
 ## 📊 **Executive Summary**
 
 ### ✅ **Strengths**
-- **Clean modular structure** in `src/chemml/` with clear separation of concerns
+- **Clean modular structure** in `src/qemlflow/` with clear separation of concerns
 - **Appropriate file sizes** (largest module: 1,114 lines - reasonable)
 - **Good test coverage** with comprehensive test suites
 - **Proper import hierarchy** following dependency inversion principles
 
 ### ⚠️ **Issues Identified**
 1. **Redundant directories and files** scattered throughout the project
-2. **Duplicate chemml_common** structures in multiple locations
+2. **Duplicate qemlflow_common** structures in multiple locations
 3. **Empty directories** cluttering the structure
 4. **Excessive documentation files** with overlapping content
 5. **Backup files** not properly archived
@@ -28,7 +28,7 @@
 ### **Core Structure Analysis** ✅ **EXCELLENT**
 
 ```
-src/chemml/                     # 17K lines total (well-organized)
+src/qemlflow/                     # 17K lines total (well-organized)
 ├── core/                       # 🧩 Foundation (4,891 lines)
 │   ├── featurizers.py         # 659 lines - appropriate
 │   ├── data.py                # 640 lines - good
@@ -58,11 +58,11 @@ src/chemml/                     # 17K lines total (well-organized)
 ./outputs/                     # Empty
 ```
 
-#### **2. Duplicate chemml_common Structures**
+#### **2. Duplicate qemlflow_common Structures**
 ```bash
 # Root level (legacy)
-./chemml_common/               # REDUNDANT - functionality moved to src/chemml/core/
-./notebooks/quickstart_bootcamp/chemml_common/  # DUPLICATE
+./qemlflow_common/               # REDUNDANT - functionality moved to src/qemlflow/core/
+./notebooks/quickstart_bootcamp/qemlflow_common/  # DUPLICATE
 ```
 
 #### **3. Backup Files in Working Directory**
@@ -132,11 +132,11 @@ qsar.py                        # 766 lines
 # Remove empty directories
 rm -rf config/ models/ outputs/
 
-# Remove root-level redundant chemml_common
-rm -rf chemml_common/
+# Remove root-level redundant qemlflow_common
+rm -rf qemlflow_common/
 
-# Clean up duplicate notebook chemml_common
-rm -rf notebooks/quickstart_bootcamp/chemml_common/
+# Clean up duplicate notebook qemlflow_common
+rm -rf notebooks/quickstart_bootcamp/qemlflow_common/
 
 # Remove backup files from active directories
 rm tests/unit/*_backup.py
@@ -178,7 +178,7 @@ docs/
 
 ### **Current State:** 🏆 **EXCELLENT FOUNDATION**
 
-The core `src/chemml/` structure is **professionally organized** and represents a **significant achievement** in modular design. The architecture supports:
+The core `src/qemlflow/` structure is **professionally organized** and represents a **significant achievement** in modular design. The architecture supports:
 
 - ✅ **Scalability:** Easy to add new models and features
 - ✅ **Maintainability:** Clear boundaries and responsibilities
@@ -217,7 +217,7 @@ After implementing recommended cleanup:
 
 ## 🎉 **Conclusion**
 
-The ChemML codebase has **achieved an excellent modular architecture**. The identified redundancies are **organizational debt** rather than fundamental issues. After cleanup, this will be a **reference-quality** scientific Python project structure.
+The QeMLflow codebase has **achieved an excellent modular architecture**. The identified redundancies are **organizational debt** rather than fundamental issues. After cleanup, this will be a **reference-quality** scientific Python project structure.
 
 **Overall Grade: A- (becomes A+ after cleanup)**
 

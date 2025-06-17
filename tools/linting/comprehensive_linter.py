@@ -1,5 +1,5 @@
 """
-Comprehensive Linting Framework for ChemML
+Comprehensive Linting Framework for QeMLflow
 ==========================================
 
 A comprehensive linting framework that provides:
@@ -16,7 +16,7 @@ This framework helps main        if not quiet:
 
         # Populate report
         report.issues = all_issues
-        report.total_issues = len(all_issues)lity across the entire ChemML codebase.
+        report.total_issues = len(all_issues)lity across the entire QeMLflow codebase.
 """
 
 import json
@@ -63,12 +63,12 @@ class LintingReport:
 
 
 class ComprehensiveLinter:
-    """Advanced linting framework for ChemML."""
+    """Advanced linting framework for QeMLflow."""
 
     def __init__(self, root_path: Optional[Path] = None):
         self.root = (
             root_path or Path(__file__).parent.parent.parent
-        )  # Go up to ChemML root
+        )  # Go up to QeMLflow root
         self.config_path = self.root / "tools" / "linting" / "linting_config.yaml"
         self.reports_dir = self.root / "reports" / "linting"
         self.reports_dir.mkdir(parents=True, exist_ok=True)
@@ -92,7 +92,7 @@ class ComprehensiveLinter:
         self.exclude_patterns = self.config.get(
             "exclude_patterns",
             [
-                "chemml_env/**",
+                "qemlflow_env/**",
                 "build/**",
                 "dist/**",
                 ".venv/**",
@@ -534,7 +534,7 @@ class ComprehensiveLinter:
         """Generate console-friendly report."""
         lines = []
         lines.append("=" * 80)
-        lines.append("🔍 ChemML Comprehensive Linting Report")
+        lines.append("🔍 QeMLflow Comprehensive Linting Report")
         lines.append("=" * 80)
         lines.append(f"📅 Generated: {report.timestamp.strftime('%Y-%m-%d %H:%M:%S')}")
         lines.append(f"📁 Files checked: {report.total_files_checked}")
@@ -644,7 +644,7 @@ def main():
     """Main entry point for comprehensive linting."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="ChemML Comprehensive Linting")
+    parser = argparse.ArgumentParser(description="QeMLflow Comprehensive Linting")
     parser.add_argument(
         "--auto-fix", action="store_true", help="Auto-fix common issues"
     )

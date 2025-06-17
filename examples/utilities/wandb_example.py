@@ -1,9 +1,9 @@
 """
-Example: Using WandB in ChemML Experiments
+Example: Using WandB in QeMLflow Experiments
 ==========================================
 
 This script demonstrates how to use Weights & Biases experiment tracking
-in your ChemML experiments.
+in your QeMLflow experiments.
 """
 
 import os
@@ -11,15 +11,15 @@ import sys
 
 import numpy as np
 
-# Updated ChemML experiment tracking
+# Updated QeMLflow experiment tracking
 try:
-    from chemml.integrations.experiment_tracking import setup_wandb_tracking
+    from qemlflow.integrations.experiment_tracking import setup_wandb_tracking
 
     HAS_WANDB_INTEGRATION = True
 except ImportError:
     HAS_WANDB_INTEGRATION = False
     print(
-        "⚠️  ChemML experiment tracking not available. Install with: pip install wandb"
+        "⚠️  QeMLflow experiment tracking not available. Install with: pip install wandb"
     )
 
 # Optional direct wandb import
@@ -31,16 +31,16 @@ except ImportError:
     HAS_WANDB = False
 
 
-# ChemML experiment tracking helper functions
+# QeMLflow experiment tracking helper functions
 def start_experiment(experiment_name, config=None, tags=None):
-    """Start a wandb experiment with ChemML integration."""
+    """Start a wandb experiment with QeMLflow integration."""
     if HAS_WANDB_INTEGRATION:
         return setup_wandb_tracking(
-            experiment_name, config or {}, project="chemml-examples"
+            experiment_name, config or {}, project="qemlflow-examples"
         )
     elif HAS_WANDB:
         return wandb.init(
-            project="chemml-examples",
+            project="qemlflow-examples",
             name=experiment_name,
             config=config or {},
             tags=tags or [],
@@ -86,7 +86,7 @@ def finish_experiment():
 def run_example_experiment():
     """Run an example experiment with wandb tracking."""
 
-    print("🧪 Running example ChemML experiment with wandb...")
+    print("🧪 Running example QeMLflow experiment with wandb...")
 
     # Configuration for the experiment
     config = {
@@ -100,7 +100,7 @@ def run_example_experiment():
 
     # Start experiment
     run = start_experiment(
-        experiment_name="chemml_example_experiment",
+        experiment_name="qemlflow_example_experiment",
         config=config,
         tags=["example", "tutorial", "molecular_ml"],
     )

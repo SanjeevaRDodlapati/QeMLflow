@@ -9,7 +9,7 @@ environment: development
 experiment_tracking:
   auto_log_artifacts: true
   auto_log_metrics: true
-  default_project: chemml-experiments
+  default_project: qemlflow-experiments
   enabled: true
   tags: []
   wandb_api_key: null

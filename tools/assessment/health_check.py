@@ -1,8 +1,8 @@
 """
-ChemML Health Check and Assessment Tool
+QeMLflow Health Check and Assessment Tool
 ======================================
 
-Consolidated tool for checking ChemML installation, configuration,
+Consolidated tool for checking QeMLflow installation, configuration,
 and overall system health. Combines functionality from multiple
 assessment scripts.
 
@@ -31,7 +31,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 
 class HealthChecker:
-    """Comprehensive health check for ChemML installation."""
+    """Comprehensive health check for QeMLflow installation."""
 
     def __init__(self):
         self.results = {}
@@ -47,7 +47,7 @@ class HealthChecker:
 
     def run_full_assessment(self) -> Dict[str, Any]:
         """Run complete health assessment."""
-        print("🏥 ChemML Health Check & Assessment")
+        print("🏥 QeMLflow Health Check & Assessment")
         print("=" * 50)
 
         # System information
@@ -56,8 +56,8 @@ class HealthChecker:
         # Python environment
         self.results["python"] = self._check_python_environment()
 
-        # ChemML installation
-        self.results["chemml"] = self._check_chemml_installation()
+        # QeMLflow installation
+        self.results["qemlflow"] = self._check_qemlflow_installation()
 
         # Dependencies
         self.results["dependencies"] = self._check_dependencies()
@@ -138,27 +138,27 @@ class HealthChecker:
 
         return env_info
 
-    def _check_chemml_installation(self) -> Dict[str, Any]:
-        """Check ChemML installation status."""
-        print("\n3️⃣ ChemML Installation")
+    def _check_qemlflow_installation(self) -> Dict[str, Any]:
+        """Check QeMLflow installation status."""
+        print("\n3️⃣ QeMLflow Installation")
         print("-" * 30)
 
         install_info = {}
 
         try:
-            import chemml
+            import qemlflow
 
             install_info["installed"] = True
-            install_info["version"] = getattr(chemml, "__version__", "unknown")
-            install_info["location"] = chemml.__file__
-            print(f"   ✅ ChemML installed: v{install_info['version']}")
+            install_info["version"] = getattr(qemlflow, "__version__", "unknown")
+            install_info["location"] = qemlflow.__file__
+            print(f"   ✅ QeMLflow installed: v{install_info['version']}")
             print(f"   📍 Location: {Path(install_info['location']).parent}")
 
             # Test basic imports
             test_imports = [
-                "chemml.core",
-                "chemml.integrations",
-                "chemml.core.preprocessing",  # Fixed: preprocessing is under core
+                "qemlflow.core",
+                "qemlflow.integrations",
+                "qemlflow.core.preprocessing",  # Fixed: preprocessing is under core
             ]
 
             import_results = {}
@@ -178,8 +178,8 @@ class HealthChecker:
             install_info["installed"] = False
             install_info["error"] = str(e)
             install_info["status"] = "error"
-            print(f"   ❌ ChemML not installed: {e}")
-            self.fixes_available.append("Install ChemML: pip install chemml")
+            print(f"   ❌ QeMLflow not installed: {e}")
+            self.fixes_available.append("Install QeMLflow: pip install qemlflow")
 
         return install_info
 
@@ -246,7 +246,7 @@ class HealthChecker:
 
         try:
             # Simple import test first
-            from chemml.integrations import get_manager
+            from qemlflow.integrations import get_manager
             integration_info["manager_available"] = True
             print("   ✅ Integration system imports successfully")
             integration_info["status"] = "good"
@@ -269,18 +269,18 @@ class HealthChecker:
         # Test import performance
         start_time = time.time()
         try:
-            import chemml
+            import qemlflow
 
             import_time = time.time() - start_time
-            perf_info["chemml_import_time"] = import_time
-            print(f"   ⏱️  ChemML import time: {import_time:.3f}s")
+            perf_info["qemlflow_import_time"] = import_time
+            print(f"   ⏱️  QeMLflow import time: {import_time:.3f}s")
 
             if import_time > 2.0:
                 perf_info["import_warning"] = "Slow import time (>2s)"
                 print(f"   ⚠️  Slow import time: {import_time:.3f}s")
         except ImportError:
-            perf_info["chemml_import_time"] = None
-            print("   ❌ Cannot measure import time (ChemML not available)")
+            perf_info["qemlflow_import_time"] = None
+            print("   ❌ Cannot measure import time (QeMLflow not available)")
 
         # Test basic computation
         try:
@@ -312,9 +312,9 @@ class HealthChecker:
 
         # Check for configuration files
         config_paths = [
-            Path.cwd() / "config" / "chemml_config.yaml",
+            Path.cwd() / "config" / "qemlflow_config.yaml",
             Path.cwd() / "config" / "advanced_config.yaml",
-            Path.home() / ".chemml" / "config.yaml",
+            Path.home() / ".qemlflow" / "config.yaml",
         ]
 
         found_configs = []
@@ -498,8 +498,8 @@ class HealthChecker:
 
         # Check registry files
         registry_paths = [
-            Path.home() / ".chemml" / "model_registry.json",
-            Path.cwd() / "config" / "chemml_config.yaml",
+            Path.home() / ".qemlflow" / "model_registry.json",
+            Path.cwd() / "config" / "qemlflow_config.yaml",
             Path.cwd() / "config" / "advanced_config.yaml",
         ]
 
@@ -567,9 +567,9 @@ class HealthChecker:
 
         # Test import performance
         import_tests = [
-            "chemml",
-            "chemml.core",
-            "chemml.integrations",
+            "qemlflow",
+            "qemlflow.core",
+            "qemlflow.integrations",
             "numpy",
             "pandas",
             "torch",
@@ -645,8 +645,8 @@ class HealthChecker:
         # Generate recommendations
         recommendations = []
 
-        if self.results.get("chemml", {}).get("status") == "error":
-            recommendations.append("Install ChemML package")
+        if self.results.get("qemlflow", {}).get("status") == "error":
+            recommendations.append("Install QeMLflow package")
 
         if self.results.get("dependencies", {}).get("missing_core"):
             recommendations.append("Install missing core dependencies")
@@ -744,14 +744,14 @@ class HealthChecker:
         fixes_applied = 0
 
         # Fix 1: Create missing directories
-        chemml_dir = Path.home() / ".chemml"
-        if not chemml_dir.exists():
-            chemml_dir.mkdir(parents=True, exist_ok=True)
-            print("   ✅ Created ChemML user directory")
+        qemlflow_dir = Path.home() / ".qemlflow"
+        if not qemlflow_dir.exists():
+            qemlflow_dir.mkdir(parents=True, exist_ok=True)
+            print("   ✅ Created QeMLflow user directory")
             fixes_applied += 1
 
         # Fix 2: Create basic registry if missing
-        registry_file = chemml_dir / "model_registry.json"
+        registry_file = qemlflow_dir / "model_registry.json"
         if not registry_file.exists():
             basic_registry = {
                 "models": {},
@@ -773,7 +773,7 @@ class HealthChecker:
 
 def main():
     """Main CLI interface."""
-    parser = argparse.ArgumentParser(description="ChemML Health Check Tool")
+    parser = argparse.ArgumentParser(description="QeMLflow Health Check Tool")
     parser.add_argument(
         "--detailed", action="store_true", help="Show detailed information"
     )
@@ -801,11 +801,11 @@ def main():
     health_score = results["summary"]["health_score"]
 
     if health_score >= 80:
-        print("\n🎉 ChemML installation looks healthy!")
+        print("\n🎉 QeMLflow installation looks healthy!")
     elif health_score >= 60:
-        print("\n⚠️  ChemML installation has some issues but is functional")
+        print("\n⚠️  QeMLflow installation has some issues but is functional")
     else:
-        print("\n❌ ChemML installation has significant issues")
+        print("\n❌ QeMLflow installation has significant issues")
 
     print(f"\nOverall Health Score: {health_score:.1f}/100")
 

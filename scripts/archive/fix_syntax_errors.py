@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fix syntax errors in ChemML codebase - specifically unmatched brackets and indentation issues.
+Fix syntax errors in QeMLflow codebase - specifically unmatched brackets and indentation issues.
 """
 
 import os
@@ -125,7 +125,7 @@ def fix_incomplete_if_blocks(file_path):
 
 def main():
     """Main function to fix syntax errors."""
-    print("🔧 Fixing syntax errors in ChemML codebase...")
+    print("🔧 Fixing syntax errors in QeMLflow codebase...")
     
     error_files = get_e999_files()
     if not error_files:

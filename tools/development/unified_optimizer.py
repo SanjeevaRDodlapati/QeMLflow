@@ -1,5 +1,5 @@
 """
-ChemML Unified Development Tools
+QeMLflow Unified Development Tools
 ===============================
 
 Consolidated development utilities for performance optimization,
@@ -68,19 +68,19 @@ class PerformanceProfiler:
 
         return results
 
-    def analyze_chemml_performance(self) -> Dict[str, Any]:
-        """Analyze ChemML performance characteristics."""
-        chemml_modules = [
-            "chemml",
-            "chemml.core",
-            "chemml.integrations",
-            "chemml.integrations.core",
-            "chemml.integrations.adapters",
-            "chemml.preprocessing",
-            "chemml.models",
+    def analyze_qemlflow_performance(self) -> Dict[str, Any]:
+        """Analyze QeMLflow performance characteristics."""
+        qemlflow_modules = [
+            "qemlflow",
+            "qemlflow.core",
+            "qemlflow.integrations",
+            "qemlflow.integrations.core",
+            "qemlflow.integrations.adapters",
+            "qemlflow.preprocessing",
+            "qemlflow.models",
         ]
 
-        import_times = self.profile_imports(chemml_modules)
+        import_times = self.profile_imports(qemlflow_modules)
 
         # Analyze results
         slow_imports = {k: v for k, v in import_times.items() if v > 0.1}
@@ -225,14 +225,14 @@ class ImportOptimizer:
 
     def _reorganize_imports(self, imports: List[Dict]) -> Dict[str, List[str]]:
         """Reorganize imports into logical groups."""
-        groups = {"stdlib": [], "third_party": [], "local": [], "chemml": []}
+        groups = {"stdlib": [], "third_party": [], "local": [], "qemlflow": []}
 
         for imp in imports:
             module = imp["module"]
             if self._is_stdlib_import(module):
                 groups["stdlib"].append(self._format_import(imp))
-            elif module.startswith("chemml"):
-                groups["chemml"].append(self._format_import(imp))
+            elif module.startswith("qemlflow"):
+                groups["qemlflow"].append(self._format_import(imp))
             elif "." not in module or module.split(".")[0] in [
                 "numpy",
                 "pandas",
@@ -334,10 +334,10 @@ class UnifiedOptimizer:
 
     def optimize_project(self, project_path: Path) -> Dict[str, Any]:
         """Run complete optimization analysis on project."""
-        print(f"🔧 Optimizing ChemML project at {project_path}")
+        print(f"🔧 Optimizing QeMLflow project at {project_path}")
 
         results = {
-            "performance": self.profiler.analyze_chemml_performance(),
+            "performance": self.profiler.analyze_qemlflow_performance(),
             "imports": self._analyze_project_imports(project_path),
             "code_quality": self._analyze_project_quality(project_path),
             "summary": {},
@@ -415,7 +415,7 @@ class UnifiedOptimizer:
 
 def main():
     """Main CLI interface."""
-    parser = argparse.ArgumentParser(description="ChemML Unified Development Tools")
+    parser = argparse.ArgumentParser(description="QeMLflow Unified Development Tools")
     parser.add_argument(
         "--optimize-imports", action="store_true", help="Optimize import patterns"
     )
@@ -459,7 +459,7 @@ def main():
     else:
         if args.analyze_performance:
             print("📈 Analyzing performance...")
-            perf_results = optimizer.profiler.analyze_chemml_performance()
+            perf_results = optimizer.profiler.analyze_qemlflow_performance()
             print(f"   Total import time: {perf_results['total_time']:.3f}s")
             print(f"   Slow modules: {len(perf_results['slow_imports'])}")
 
@@ -467,8 +467,8 @@ def main():
             print("🔄 Analyzing imports...")
             # Analyze a few key files
             key_files = [
-                project_path / "src" / "chemml" / "__init__.py",
-                project_path / "src" / "chemml" / "integrations" / "__init__.py",
+                project_path / "src" / "qemlflow" / "__init__.py",
+                project_path / "src" / "qemlflow" / "integrations" / "__init__.py",
             ]
 
             for file_path in key_files:

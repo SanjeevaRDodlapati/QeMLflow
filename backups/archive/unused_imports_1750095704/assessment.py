@@ -1,5 +1,5 @@
 """
-ChemML Tutorial Framework - Assessment Module
+QeMLflow Tutorial Framework - Assessment Module
 =============================================
 
 Provides learning assessment, progress tracking, and educational evaluation tools.

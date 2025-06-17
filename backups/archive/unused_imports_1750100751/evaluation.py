@@ -1,5 +1,5 @@
 """
-ChemML Core Evaluation
+QeMLflow Core Evaluation
 =====================
 
 Provides domain-specific metrics and visualization tools.

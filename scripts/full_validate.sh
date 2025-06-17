@@ -1,10 +1,10 @@
 #!/bin/bash
-# ChemML Full Validation Script (30+ minutes)
+# QeMLflow Full Validation Script (30+ minutes)
 # Purpose: Complete validation for releases and major changes
 
 set -e  # Exit on any error
 
-echo "🔬 ChemML Full Validation Starting..."
+echo "🔬 QeMLflow Full Validation Starting..."
 echo "⏱️  Expected time: 30+ minutes"
 echo "============================================"
 
@@ -15,7 +15,7 @@ start_time=$(date +%s)
 echo "🧪 Running complete test suite with coverage..."
 echo "This may take 20+ minutes..."
 pytest tests/ \
-    --cov=src/chemml \
+    --cov=src/qemlflow \
     --cov-report=html \
     --cov-report=term-missing \
     --cov-fail-under=65 \
@@ -66,9 +66,9 @@ print(f'📊 System Memory: {memory.total // (1024**3)}GB total, {memory.availab
 
 # Import performance test
 start_time = time.time()
-import chemml
+import qemlflow
 import_time = time.time() - start_time
-print(f'⏱️  ChemML import time: {import_time:.2f}s')
+print(f'⏱️  QeMLflow import time: {import_time:.2f}s')
 
 if import_time > 5.0:
     print('⚠️  Import time > 5s, consider optimization')

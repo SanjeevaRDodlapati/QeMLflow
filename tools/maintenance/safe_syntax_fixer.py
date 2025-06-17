@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SAFE syntax error fixer for ChemML.
+SAFE syntax error fixer for QeMLflow.
 Conservative approach with extensive safety checks and backups.
 """
 
@@ -88,7 +88,7 @@ def fix_unterminated_docstring_conservative(file_path):
         ):
             first_line = content.split("\n")[0]
             if (
-                first_line.strip().endswith("for ChemML tests.")
+                first_line.strip().endswith("for QeMLflow tests.")
                 or first_line.strip().endswith("and workflows.")
                 or first_line.strip().endswith("module.")
             ):

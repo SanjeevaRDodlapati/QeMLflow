@@ -2,7 +2,7 @@ from typing import Any, Dict
 
 # !/usr/bin/env python3
 """
-Configuration Caching Activator for ChemML
+Configuration Caching Activator for QeMLflow
 Activates advanced caching features for improved performance
 """
 
@@ -15,15 +15,15 @@ from pathlib import Path
 # Add src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from chemml.config.unified_config import UnifiedConfig
-from chemml.utils.config_cache import ConfigurationCache
+from qemlflow.config.unified_config import UnifiedConfig
+from qemlflow.utils.config_cache import ConfigurationCache
 
 
 class CachingActivator:
     """Activates and configures advanced caching features"""
 
     def __init__(self):
-        self.cache_dir = Path.home() / ".chemml" / "cache"
+        self.cache_dir = Path.home() / ".qemlflow" / "cache"
         self.config_cache = ConfigurationCache()
         self.performance_metrics = {}
 
@@ -121,8 +121,8 @@ class CachingActivator:
                     json.dump(initial_metrics, f, indent=2)
 
             # Set environment variable to enable monitoring
-            os.environ["CHEMML_PERFORMANCE_MONITORING"] = "true"
-            os.environ["CHEMML_CACHE_DIR"] = str(self.cache_dir)
+            os.environ["QEMLFLOW_PERFORMANCE_MONITORING"] = "true"
+            os.environ["QEMLFLOW_CACHE_DIR"] = str(self.cache_dir)
 
             print("✅ Performance monitoring ready")
             return True
@@ -258,7 +258,7 @@ class CachingActivator:
 
     def run_activation(self) -> Dict[str, Any]:
         """Run complete caching activation suite"""
-        print("🚀 ChemML Advanced Caching Activation")
+        print("🚀 QeMLflow Advanced Caching Activation")
         print("=" * 50)
 
         results = {

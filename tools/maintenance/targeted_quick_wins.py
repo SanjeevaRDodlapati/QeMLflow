@@ -1,5 +1,5 @@
 """
-ChemML Targeted Quick Wins
+QeMLflow Targeted Quick Wins
 
 Implements specific, safe improvements:
 1. Fix unused imports in specific files
@@ -44,31 +44,31 @@ class TargetedQuickWins:
         """Create an enhanced README with better structure."""
         readme_path = self.base_dir / "README.md"
 
-        enhanced_content = """# ChemML: Advanced Machine Learning for Chemistry
+        enhanced_content = """# QeMLflow: Advanced Machine Learning for Chemistry
 
-[![CI Status](https://github.com/hachmannlab/chemml/workflows/CI/badge.svg)](https://github.com/hachmannlab/chemml/actions)
-[![Coverage](https://codecov.io/gh/hachmannlab/chemml/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/chemml)
+[![CI Status](https://github.com/hachmannlab/qemlflow/workflows/CI/badge.svg)](https://github.com/hachmannlab/qemlflow/actions)
+[![Coverage](https://codecov.io/gh/hachmannlab/qemlflow/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/qemlflow)
 [![License: BSD](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-**ChemML** is a comprehensive, enterprise-grade machine learning framework specifically designed for chemistry and materials science applications. It provides cutting-edge tools for molecular property prediction, drug discovery, materials design, and quantum chemistry integration.
+**QeMLflow** is a comprehensive, enterprise-grade machine learning framework specifically designed for chemistry and materials science applications. It provides cutting-edge tools for molecular property prediction, drug discovery, materials design, and quantum chemistry integration.
 
 ## 🚀 Quick Start
 
 ```python
-import chemml
+import qemlflow
 
 # Load sample data
-data = chemml.load_sample_data("molecules")
+data = qemlflow.load_sample_data("molecules")
 
 # Generate molecular fingerprints
-fingerprints = chemml.morgan_fingerprints(data.smiles)
+fingerprints = qemlflow.morgan_fingerprints(data.smiles)
 
 # Create and train a model
-model = chemml.create_rf_model(fingerprints, data.targets)
+model = qemlflow.create_rf_model(fingerprints, data.targets)
 
 # Evaluate performance
-results = chemml.quick_classification_eval(model, fingerprints, data.targets)
+results = qemlflow.quick_classification_eval(model, fingerprints, data.targets)
 print(f"Accuracy: {results.accuracy:.3f}")
 ```
 
@@ -98,33 +98,33 @@ print(f"Accuracy: {results.accuracy:.3f}")
 
 ### Standard Installation
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### Development Installation
 ```bash
-git clone https://github.com/hachmannlab/chemml.git
-cd chemml
+git clone https://github.com/hachmannlab/qemlflow.git
+cd qemlflow
 pip install -e ".[dev]"
 ```
 
 ### With Optional Dependencies
 ```bash
 # For quantum chemistry features
-pip install "chemml[quantum]"
+pip install "qemlflow[quantum]"
 
 # For deep learning capabilities
-pip install "chemml[deep]"
+pip install "qemlflow[deep]"
 
 # For full research suite
-pip install "chemml[research]"
+pip install "qemlflow[research]"
 ```
 
 ## 🎯 Use Cases
 
 ### 1. **Molecular Property Prediction**
 ```python
-from chemml.core import molecular_properties
+from qemlflow.core import molecular_properties
 
 # Predict solubility for a set of molecules
 solubility = molecular_properties.predict_solubility(smiles_list)
@@ -132,7 +132,7 @@ solubility = molecular_properties.predict_solubility(smiles_list)
 
 ### 2. **Drug Discovery Pipeline**
 ```python
-from chemml.research.drug_discovery import VirtualScreening
+from qemlflow.research.drug_discovery import VirtualScreening
 
 # Screen compound library
 screening = VirtualScreening(target_protein="1abc")
@@ -141,7 +141,7 @@ hits = screening.screen_library(compound_library)
 
 ### 3. **Materials Design**
 ```python
-from chemml.research.materials_discovery import PropertyOptimizer
+from qemlflow.research.materials_discovery import PropertyOptimizer
 
 # Optimize material properties
 optimizer = PropertyOptimizer(target_properties=["bandgap", "stability"])
@@ -171,8 +171,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 ```bash
 # Clone and setup development environment
-git clone https://github.com/hachmannlab/chemml.git
-cd chemml
+git clone https://github.com/hachmannlab/qemlflow.git
+cd qemlflow
 make dev-install  # Sets up environment and pre-commit hooks
 ```
 
@@ -190,7 +190,7 @@ make test-coverage
 
 ## 📊 Performance & Benchmarks
 
-ChemML has been benchmarked on standard chemistry datasets:
+QeMLflow has been benchmarked on standard chemistry datasets:
 
 | Dataset | Task | Accuracy | Speed |
 |---------|------|----------|-------|
@@ -208,26 +208,26 @@ ChemML has been benchmarked on standard chemistry datasets:
 
 ## 📄 Citation
 
-If you use ChemML in your research, please cite:
+If you use QeMLflow in your research, please cite:
 
 ```bibtex
-@software{chemml2024,
-  title={ChemML: Machine Learning for Chemistry},
+@software{qemlflow2024,
+  title={QeMLflow: Machine Learning for Chemistry},
   author={Hachmann Lab},
   year={2024},
-  url={https://github.com/hachmannlab/chemml}
+  url={https://github.com/hachmannlab/qemlflow}
 }
 ```
 
 ## 📝 License
 
-ChemML is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for details.
+QeMLflow is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for details.
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/hachmannlab/chemml/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/hachmannlab/chemml/discussions)
-- **Documentation**: [https://chemml.readthedocs.io](https://chemml.readthedocs.io)
+- **Issues**: [GitHub Issues](https://github.com/hachmannlab/qemlflow/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/hachmannlab/qemlflow/discussions)
+- **Documentation**: [https://qemlflow.readthedocs.io](https://qemlflow.readthedocs.io)
 
 ---
 
@@ -251,29 +251,29 @@ ChemML is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for de
 
         quick_start_content = """# Quick Start Guide
 
-Welcome to ChemML! This guide will get you up and running in minutes.
+Welcome to QeMLflow! This guide will get you up and running in minutes.
 
 ## 🏃‍♂️ 5-Minute Quick Start
 
 ### 1. Installation
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### 2. Your First Prediction
 ```python
-import chemml
+import qemlflow
 
 # Load sample data
-data = chemml.load_sample_data("molecules")
+data = qemlflow.load_sample_data("molecules")
 print(f"Loaded {len(data)} molecules")
 
 # Generate features
-features = chemml.morgan_fingerprints(data.smiles)
+features = qemlflow.morgan_fingerprints(data.smiles)
 print(f"Generated {features.shape[1]} molecular features")
 
 # Train a model
-model = chemml.create_rf_model(features, data.targets)
+model = qemlflow.create_rf_model(features, data.targets)
 print("Model trained successfully!")
 
 # Make predictions
@@ -284,7 +284,7 @@ print(f"Sample predictions: {predictions}")
 ### 3. Evaluate Results
 ```python
 # Quick evaluation
-results = chemml.quick_classification_eval(model, features, data.targets)
+results = qemlflow.quick_classification_eval(model, features, data.targets)
 print(f"Model accuracy: {results.accuracy:.3f}")
 print(f"Cross-validation score: {results.cv_score:.3f}")
 ```
@@ -293,7 +293,7 @@ print(f"Cross-validation score: {results.cv_score:.3f}")
 
 ### Molecular Property Prediction
 ```python
-from chemml.core import featurizers, models
+from qemlflow.core import featurizers, models
 
 # Generate descriptors
 descriptors = featurizers.molecular_descriptors(smiles_list)
@@ -308,7 +308,7 @@ new_properties = property_model.predict(new_descriptors)
 
 ### Drug Discovery Screening
 ```python
-from chemml.research.drug_discovery import VirtualScreening
+from qemlflow.research.drug_discovery import VirtualScreening
 
 # Setup virtual screening
 screener = VirtualScreening(
@@ -327,7 +327,7 @@ print(f"Found {len(hits)} potential drug candidates")
 
 ### Materials Property Optimization
 ```python
-from chemml.research.materials_discovery import MaterialsOptimizer
+from qemlflow.research.materials_discovery import MaterialsOptimizer
 
 # Define optimization problem
 optimizer = MaterialsOptimizer(
@@ -348,24 +348,24 @@ print(f"Generated {len(candidates)} optimized candidates")
 
 ### Environment Setup
 ```python
-import chemml
+import qemlflow
 
 # Configure for your environment
-chemml.config.set_backend("sklearn")  # or "xgboost", "tensorflow"
-chemml.config.set_n_jobs(4)          # parallel processing
-chemml.config.enable_caching(True)    # speed up repeated operations
+qemlflow.config.set_backend("sklearn")  # or "xgboost", "tensorflow"
+qemlflow.config.set_n_jobs(4)          # parallel processing
+qemlflow.config.enable_caching(True)    # speed up repeated operations
 ```
 
 ### Performance Tuning
 ```python
 # Enable fast mode for production
-chemml.enable_fast_mode()
+qemlflow.enable_fast_mode()
 
 # Use GPU acceleration (if available)
-chemml.config.enable_gpu(True)
+qemlflow.config.enable_gpu(True)
 
 # Set memory limits
-chemml.config.set_memory_limit("8GB")
+qemlflow.config.set_memory_limit("8GB")
 ```
 
 ## ❓ Troubleshooting
@@ -383,15 +383,15 @@ pip install rdkit-pypi
 **Memory errors with large datasets**
 ```python
 # Use batch processing
-for batch in chemml.utils.batch_iterator(large_dataset, batch_size=1000):
+for batch in qemlflow.utils.batch_iterator(large_dataset, batch_size=1000):
     results = process_batch(batch)
 ```
 
 **Slow performance**
 ```python
 # Enable performance optimizations
-chemml.enable_fast_mode()
-chemml.config.set_n_jobs(-1)  # use all CPU cores
+qemlflow.enable_fast_mode()
+qemlflow.config.set_n_jobs(-1)  # use all CPU cores
 ```
 
 ## 🚀 Next Steps
@@ -405,7 +405,7 @@ chemml.config.set_n_jobs(-1)  # use all CPU cores
 
 - Start with sample data to understand the workflow
 - Use built-in validation functions to check your results
-- Leverage ChemML's caching for faster repeated operations
+- Leverage QeMLflow's caching for faster repeated operations
 - Check the documentation for optimization tips
 - Join our community discussions for help and best practices
 
@@ -423,34 +423,34 @@ Ready to dive deeper? Check out our [comprehensive tutorials](../tutorials/) or 
 
         performance_content = """# Performance Optimization Guide
 
-This guide helps you get the best performance from ChemML for production workloads.
+This guide helps you get the best performance from QeMLflow for production workloads.
 
 ## ⚡ Quick Performance Wins
 
 ### 1. Enable Fast Mode
 ```python
-import chemml
+import qemlflow
 
 # Pre-load commonly used modules
-chemml.enable_fast_mode()
+qemlflow.enable_fast_mode()
 ```
 
 ### 2. Use Caching
 ```python
 # Enable result caching for repeated operations
-chemml.config.enable_caching(True)
+qemlflow.config.enable_caching(True)
 
 # Set cache size (default: 1GB)
-chemml.config.set_cache_size("2GB")
+qemlflow.config.set_cache_size("2GB")
 ```
 
 ### 3. Parallel Processing
 ```python
 # Use all available CPU cores
-chemml.config.set_n_jobs(-1)
+qemlflow.config.set_n_jobs(-1)
 
 # Or specify number of cores
-chemml.config.set_n_jobs(4)
+qemlflow.config.set_n_jobs(4)
 ```
 
 ## 🚀 Advanced Optimizations
@@ -458,21 +458,21 @@ chemml.config.set_n_jobs(4)
 ### Memory Management
 ```python
 # Set memory limits to prevent OOM errors
-chemml.config.set_memory_limit("8GB")
+qemlflow.config.set_memory_limit("8GB")
 
 # Use memory-efficient data structures
-chemml.config.enable_memory_optimization(True)
+qemlflow.config.enable_memory_optimization(True)
 
 # Clear cache periodically for long-running processes
-chemml.clear_cache()
+qemlflow.clear_cache()
 ```
 
 ### GPU Acceleration
 ```python
 # Enable GPU support (requires CUDA)
-if chemml.cuda.is_available():
-    chemml.config.enable_gpu(True)
-    chemml.config.set_gpu_memory_limit("4GB")
+if qemlflow.cuda.is_available():
+    qemlflow.config.enable_gpu(True)
+    qemlflow.config.set_gpu_memory_limit("4GB")
 ```
 
 ### Batch Processing
@@ -480,8 +480,8 @@ if chemml.cuda.is_available():
 # Process large datasets in batches
 def process_large_dataset(dataset, batch_size=1000):
     results = []
-    for batch in chemml.utils.batch_iterator(dataset, batch_size):
-        batch_results = chemml.process_molecules(batch)
+    for batch in qemlflow.utils.batch_iterator(dataset, batch_size):
+        batch_results = qemlflow.process_molecules(batch)
         results.extend(batch_results)
     return results
 ```
@@ -501,10 +501,10 @@ def process_large_dataset(dataset, batch_size=1000):
 
 ### Production Settings
 ```python
-import chemml
+import qemlflow
 
 # Optimal production configuration
-chemml.config.configure_for_production(
+qemlflow.config.configure_for_production(
     n_jobs=-1,                    # Use all cores
     enable_caching=True,          # Cache results
     cache_size="2GB",             # Generous cache
@@ -517,7 +517,7 @@ chemml.config.configure_for_production(
 ### Development Settings
 ```python
 # Development-friendly configuration
-chemml.config.configure_for_development(
+qemlflow.config.configure_for_development(
     n_jobs=2,                     # Leave cores for other work
     enable_caching=False,         # Fresh results each time
     memory_limit="4GB",           # Conservative memory use
@@ -530,29 +530,29 @@ chemml.config.configure_for_development(
 ### Slow Import Times
 ```python
 # Use lazy loading for better startup time
-import chemml  # Fast import
+import qemlflow  # Fast import
 # Modules loaded on-demand
 
 # Or pre-load specific modules
-from chemml.core import models  # Only load what you need
+from qemlflow.core import models  # Only load what you need
 ```
 
 ### High Memory Usage
 ```python
 # Monitor memory usage
-memory_info = chemml.utils.get_memory_usage()
+memory_info = qemlflow.utils.get_memory_usage()
 print(f"Current usage: {memory_info.used_gb:.1f}GB")
 
 # Clear unnecessary data
 del large_dataset
-chemml.clear_cache()
+qemlflow.clear_cache()
 import gc; gc.collect()
 ```
 
 ### CPU Bottlenecks
 ```python
 # Profile your code
-with chemml.utils.profiler() as prof:
+with qemlflow.utils.profiler() as prof:
     results = expensive_operation(data)
 
 prof.print_stats()  # See where time is spent
@@ -582,13 +582,13 @@ prof.print_stats()  # See where time is spent
 ```dockerfile
 FROM python:3.11-slim
 
-# Install ChemML with performance optimizations
-RUN pip install chemml[performance]
+# Install QeMLflow with performance optimizations
+RUN pip install qemlflow[performance]
 
 # Configure for production
-ENV CHEMML_N_JOBS=-1
-ENV CHEMML_CACHE_SIZE=2GB
-ENV CHEMML_MEMORY_LIMIT=16GB
+ENV QEMLFLOW_N_JOBS=-1
+ENV QEMLFLOW_CACHE_SIZE=2GB
+ENV QEMLFLOW_MEMORY_LIMIT=16GB
 
 COPY app.py .
 CMD ["python", "app.py"]
@@ -599,14 +599,14 @@ CMD ["python", "app.py"]
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chemml-app
+  name: qemlflow-app
 spec:
   replicas: 3
   template:
     spec:
       containers:
-      - name: chemml
-        image: chemml-app:latest
+      - name: qemlflow
+        image: qemlflow-app:latest
         resources:
           requests:
             memory: "8Gi"
@@ -634,7 +634,7 @@ For more optimization strategies, see our [Enterprise Deployment Guide](enterpri
         if quick_validate_path.exists():
             enhanced_script = """#!/bin/bash
 
-# ChemML Enhanced Quick Validation
+# QeMLflow Enhanced Quick Validation
 # Comprehensive health check with improved error handling and reporting
 
 set -euo pipefail  # Exit on any error, undefined variable, or pipe failure
@@ -650,7 +650,7 @@ NC='\\033[0m' # No Color
 LOG_FILE="logs/quick_validation_$(date +%Y%m%d_%H%M%S).log"
 TIMEOUT=300  # 5 minutes timeout for operations
 
-echo -e "${BLUE}🚀 ChemML Enhanced Quick Validation${NC}"
+echo -e "${BLUE}🚀 QeMLflow Enhanced Quick Validation${NC}"
 echo -e "${BLUE}⏱️  Expected time: ~3-5 minutes${NC}"
 echo "============================================"
 
@@ -668,7 +668,7 @@ handle_error() {
     echo -e "${RED}❌ Error occurred (exit code: $exit_code)${NC}" | tee -a "$LOG_FILE"
     echo -e "${YELLOW}💡 Check the log file for details: $LOG_FILE${NC}"
     echo -e "${YELLOW}💡 Common solutions:${NC}"
-    echo -e "${YELLOW}   • Activate virtual environment: source chemml_env/bin/activate${NC}"
+    echo -e "${YELLOW}   • Activate virtual environment: source qemlflow_env/bin/activate${NC}"
     echo -e "${YELLOW}   • Install dependencies: pip install -r requirements.txt${NC}"
     echo -e "${YELLOW}   • Check Python version: python --version${NC}"
     exit $exit_code
@@ -689,7 +689,7 @@ log "Starting enhanced quick validation..."
 # 1. Environment check
 echo -e "${BLUE}🔍 Checking environment...${NC}"
 python --version | tee -a "$LOG_FILE"
-pip list | grep -E "(chemml|rdkit|numpy|pandas|sklearn)" | tee -a "$LOG_FILE" || true
+pip list | grep -E "(qemlflow|rdkit|numpy|pandas|sklearn)" | tee -a "$LOG_FILE" || true
 
 # 2. Enhanced core import test
 echo -e "${BLUE}📦 Testing core imports...${NC}"
@@ -699,19 +699,19 @@ import time
 start_time = time.time()
 
 try:
-    import chemml
-    print(f'✅ ChemML imported successfully in {time.time() - start_time:.2f}s')
+    import qemlflow
+    print(f'✅ QeMLflow imported successfully in {time.time() - start_time:.2f}s')
     
     # Test lazy loading
     print('🔄 Testing lazy loading...')
-    _ = chemml.core
+    _ = qemlflow.core
     print('✅ Core module loaded')
     
     # Test essential functions
     print('🧪 Testing essential functions...')
-    hasattr(chemml, 'load_sample_data')
-    hasattr(chemml, 'morgan_fingerprints') 
-    hasattr(chemml, 'create_rf_model')
+    hasattr(qemlflow, 'load_sample_data')
+    hasattr(qemlflow, 'morgan_fingerprints') 
+    hasattr(qemlflow, 'create_rf_model')
     print('✅ Essential functions available')
     
 except Exception as e:
@@ -722,14 +722,14 @@ except Exception as e:
 # 3. Quick functionality test
 echo -e "${BLUE}⚡ Testing core functionality...${NC}"
 run_with_timeout $TIMEOUT python -c "
-import chemml
+import qemlflow
 import numpy as np
 
 print('🧪 Testing molecular fingerprints...')
 # Test with simple SMILES
 test_smiles = ['CCO', 'CCC', 'C1CCCCC1']
 try:
-    fps = chemml.morgan_fingerprints(test_smiles)
+    fps = qemlflow.morgan_fingerprints(test_smiles)
     print(f'✅ Generated fingerprints: {fps.shape}')
 except Exception as e:
     print(f'⚠️  Fingerprint generation failed: {e}')
@@ -739,7 +739,7 @@ try:
     # Create dummy data
     X = np.random.rand(10, 5)
     y = np.random.randint(0, 2, 10)
-    model = chemml.create_rf_model(X, y)
+    model = qemlflow.create_rf_model(X, y)
     print('✅ Random forest model created')
 except Exception as e:
     print(f'⚠️  Model creation failed: {e}')
@@ -802,7 +802,7 @@ log "Enhanced quick validation completed successfully"
         # Create a simple code formatter
         formatter_content = '''#!/usr/bin/env python3
 """
-Simple Code Formatter for ChemML
+Simple Code Formatter for QeMLflow
 
 Applies basic formatting improvements without breaking syntax.
 """
@@ -935,7 +935,7 @@ if __name__ == "__main__":
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ChemML Targeted Quick Wins")
+    parser = argparse.ArgumentParser(description="QeMLflow Targeted Quick Wins")
     parser.add_argument(
         "--fix",
         choices=["docs", "validation", "tools", "all"],

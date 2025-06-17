@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick and targeted syntax error fixer for ChemML.
+Quick and targeted syntax error fixer for QeMLflow.
 Focuses on the most common syntax issues identified in the analysis.
 """
 

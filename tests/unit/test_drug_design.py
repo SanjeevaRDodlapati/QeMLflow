@@ -12,17 +12,17 @@ import pytest
 
 # Import modules under test
 try:
-    from chemml.research.drug_discovery.molecular_generation import (
+    from qemlflow.research.drug_discovery.molecular_generation import (
         generate_molecular_structures,
         optimize_structure,
         save_generated_structures,
     )
-    from chemml.research.drug_discovery.property_prediction import (
+    from qemlflow.research.drug_discovery.property_prediction import (
         evaluate_property_predictions,
         predict_properties,
         train_property_model,
     )
-    from chemml.research.drug_discovery.qsar_modeling import (
+    from qemlflow.research.drug_discovery.qsar_modeling import (
         build_qsar_model,
         predict_activity,
         validate_qsar_model,

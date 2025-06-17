@@ -1,4 +1,4 @@
-# Quick Completion Plan - ChemML Phases 5-8
+# Quick Completion Plan - QeMLflow Phases 5-8
 
 ## IMMEDIATE PRIORITIES (Next 30 minutes)
 

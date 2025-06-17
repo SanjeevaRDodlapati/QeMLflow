@@ -1,4 +1,4 @@
-# ChemML Folder Organization
+# QeMLflow Folder Organization
 
 This document describes the reorganized folder structure for better maintainability and navigation.
 

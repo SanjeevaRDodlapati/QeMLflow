@@ -1,5 +1,5 @@
 """
-Input/Output utilities for ChemML
+Input/Output utilities for QeMLflow
 
 This module provides utilities for data loading, saving results,
 and configuration management.
@@ -18,7 +18,7 @@ import yaml
 
 
 class DataLoader:
-    """Load data from various formats for ChemML workflows"""
+    """Load data from various formats for QeMLflow workflows"""
 
     def __init__(self, data_dir: Optional[str] = None) -> None:
         self.data_dir = Path(data_dir) if data_dir else Path("data")
@@ -379,7 +379,7 @@ class ConfigManager:
         config = {
             "experiment": {
                 "name": experiment_name,
-                "description": f"ChemML experiment: {experiment_name}",
+                "description": f"QeMLflow experiment: {experiment_name}",
                 "created_at": pd.Timestamp.now().isoformat(),
             },
             "data": data_params,

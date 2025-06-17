@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Safe Renaming Script: ChemML -> QeMLflow
+Safe Renaming Script: QeMLflow -> QeMLflow
 
-This script safely renames all instances of ChemML to QeMLflow throughout the codebase.
+This script safely renames all instances of QeMLflow to QeMLflow throughout the codebase.
 It includes comprehensive backup, validation, and rollback capabilities.
 
 Usage:
@@ -31,28 +31,28 @@ class QeMLflowRenamer:
         # Define replacement patterns
         self.replacements = {
             # Exact matches (case sensitive)
-            'chemml': 'qemlflow',
-            'ChemML': 'QeMLflow', 
-            'CHEMML': 'QEMLFLOW',
-            'chemML': 'qeMLflow',  # Handle camelCase variations
+            'qemlflow': 'qemlflow',
+            'QeMLflow': 'QeMLflow', 
+            'QEMLFLOW': 'QEMLFLOW',
+            'qeMLflow': 'qeMLflow',  # Handle camelCase variations
             
             # Package and module names
-            'src/chemml': 'src/qemlflow',
-            'chemml/': 'qemlflow/',
-            'chemml.': 'qemlflow.',
-            'from chemml': 'from qemlflow',
-            'import chemml': 'import qemlflow',
+            'src/qemlflow': 'src/qemlflow',
+            'qemlflow/': 'qemlflow/',
+            'qemlflow.': 'qemlflow.',
+            'from qemlflow': 'from qemlflow',
+            'import qemlflow': 'import qemlflow',
             
             # Configuration and metadata
-            '"chemml"': '"qemlflow"',
-            "'chemml'": "'qemlflow'",
-            '"ChemML"': '"QeMLflow"',
-            "'ChemML'": "'QeMLflow'",
+            '"qemlflow"': '"qemlflow"',
+            "'qemlflow'": "'qemlflow'",
+            '"QeMLflow"': '"QeMLflow"',
+            "'QeMLflow'": "'QeMLflow'",
             
             # Documentation and comments
-            '# ChemML': '# QeMLflow',
-            '## ChemML': '## QeMLflow',
-            '### ChemML': '### QeMLflow',
+            '# QeMLflow': '# QeMLflow',
+            '## QeMLflow': '## QeMLflow',
+            '### QeMLflow': '### QeMLflow',
         }
         
         # Files to process (by extension)
@@ -83,7 +83,7 @@ class QeMLflowRenamer:
         path_str = str(path)
         
         # Skip if it's a backup directory we created
-        if 'chemml_backup_' in path_str or 'qemlflow_backup_' in path_str:
+        if 'qemlflow_backup_' in path_str or 'qemlflow_backup_' in path_str:
             return True
             
         # Check skip patterns
@@ -135,7 +135,7 @@ class QeMLflowRenamer:
                 'timestamp': timestamp,
                 'original_dir': os.getcwd(),
                 'replacements': self.replacements,
-                'purpose': 'ChemML to QeMLflow renaming backup'
+                'purpose': 'QeMLflow to QeMLflow renaming backup'
             }
             
             with open(f"{self.backup_dir}/backup_metadata.json", 'w') as f:
@@ -220,13 +220,13 @@ class QeMLflowRenamer:
             return False
     
     def rename_directories(self, dry_run=False):
-        """Rename directories (specifically src/chemml -> src/qemlflow)"""
+        """Rename directories (specifically src/qemlflow -> src/qemlflow)"""
         directories_to_rename = []
         
         # Find directories that need renaming
         for root, dirs, files in os.walk('.', topdown=False):
             for dir_name in dirs:
-                if 'chemml' in dir_name.lower():
+                if 'qemlflow' in dir_name.lower():
                     old_path = Path(root) / dir_name
                     new_name = dir_name
                     for old, new in self.replacements.items():
@@ -294,7 +294,7 @@ class QeMLflowRenamer:
     
     def execute_rename(self):
         """Execute the full renaming process"""
-        print("🚀 EXECUTING RENAME: ChemML -> QeMLflow")
+        print("🚀 EXECUTING RENAME: QeMLflow -> QeMLflow")
         print("=" * 60)
         
         # Create backup first
@@ -412,7 +412,7 @@ class QeMLflowRenamer:
             return False
 
 def main():
-    parser = argparse.ArgumentParser(description="Safe ChemML to QeMLflow renaming script")
+    parser = argparse.ArgumentParser(description="Safe QeMLflow to QeMLflow renaming script")
     parser.add_argument('--dry-run', action='store_true', 
                        help='Preview changes without applying them')
     parser.add_argument('--backup-only', action='store_true',

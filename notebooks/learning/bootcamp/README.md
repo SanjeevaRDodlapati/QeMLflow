@@ -1,4 +1,4 @@
-# 🚀 ChemML Bootcamp Learning Path
+# 🚀 QeMLflow Bootcamp Learning Path
 
 **🚨 INTEGRATION UPDATE**: Framework-integrated versions now available! Use `*_INTEGRATED.ipynb` notebooks for professional, efficient learning.
 
@@ -6,7 +6,7 @@
 
 ## � **Framework-Integrated Notebooks** (RECOMMENDED)
 
-**These notebooks use the ChemML framework properly and represent industry best practices:**
+**These notebooks use the QeMLflow framework properly and represent industry best practices:**
 
 ### **Phase 1: Fundamentals (Bootcamps 1-3)**
 | Bootcamp | Title | Status | Benefits |
@@ -69,7 +69,7 @@ Focus on practical applications
 
 ### **Before Starting**
 - **Python**: Basic programming knowledge
-- **Environment**: ChemML environment set up
+- **Environment**: QeMLflow environment set up
 - **Time**: 2-6 hours per bootcamp
 
 ### **Recommended Order**
@@ -90,8 +90,8 @@ Focus on practical applications
 git clone <repository-url>
 
 # 2. Set up environment
-cd ChemML
-./setup_chemml_bootcamp.sh
+cd QeMLflow
+./setup_qemlflow_bootcamp.sh
 
 # 3. Start with Bootcamp 1
 jupyter notebook notebooks/learning/bootcamp/01_ml_cheminformatics.ipynb

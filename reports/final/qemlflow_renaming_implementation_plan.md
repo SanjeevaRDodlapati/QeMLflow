@@ -1,12 +1,12 @@
 # QeMLflow Renaming Implementation Plan
 
-## 🎯 **Safe Renaming Strategy for ChemML → QeMLflow**
+## 🎯 **Safe Renaming Strategy for QeMLflow → QeMLflow**
 
 ### **Current Analysis**
 - **94 Python files** in src/ directory need renaming
 - **226 markdown files** with potential references
-- **134+ text references** to "chemml" across the codebase
-- **51+ import statements** with chemml references
+- **134+ text references** to "qemlflow" across the codebase
+- **51+ import statements** with qemlflow references
 - **Critical files**: setup.py, pyproject.toml, __init__.py files
 
 ---
@@ -17,10 +17,10 @@
 ```bash
 # Full repository backup
 cd /Users/sanjeev/Downloads/Repos/
-cp -r ChemML ChemML_BACKUP_BEFORE_QEMLFLOW_RENAME_$(date +%Y%m%d_%H%M%S)
+cp -r QeMLflow QeMLflow_BACKUP_BEFORE_QEMLFLOW_RENAME_$(date +%Y%m%d_%H%M%S)
 
 # Git safety checkpoint
-cd ChemML
+cd QeMLflow
 git add . && git commit -m "CHECKPOINT: Before QeMLflow renaming - safe restore point"
 git tag pre-qemlflow-rename
 ```
@@ -42,20 +42,20 @@ We'll create automated scripts that can be reversed if needed.
 ```bash
 # 1. Rename main source directory
 cd src/
-mv chemml qemlflow
+mv qemlflow qemlflow
 
 # 2. Update all internal __init__.py files
-find qemlflow/ -name "__init__.py" -exec sed -i '' 's/chemml/qemlflow/g' {} \;
+find qemlflow/ -name "__init__.py" -exec sed -i '' 's/qemlflow/qemlflow/g' {} \;
 ```
 
 ### **Step 2.2: Configuration Files Update**
 ```python
 # setup.py changes
-name="ChemML" → name="QeMLflow"
+name="QeMLflow" → name="QeMLflow"
 packages=find_packages(where="src") # Will auto-detect qemlflow/
 
 # pyproject.toml changes  
-name = "chemml" → name = "qemlflow"
+name = "qemlflow" → name = "qemlflow"
 description = "Quantum-Enhanced Molecular Machine Learning Framework"
 keywords = ["quantum-computing", "machine-learning", "drug-discovery", "molecular-modeling"]
 ```
@@ -63,9 +63,9 @@ keywords = ["quantum-computing", "machine-learning", "drug-discovery", "molecula
 ### **Step 2.3: Import Statement Updates**
 ```bash
 # Safe pattern replacement for import statements
-find . -name "*.py" -exec sed -i '' 's/import chemml/import qemlflow/g' {} \;
-find . -name "*.py" -exec sed -i '' 's/from chemml/from qemlflow/g' {} \;
-find . -name "*.py" -exec sed -i '' 's/chemml\./qemlflow\./g' {} \;
+find . -name "*.py" -exec sed -i '' 's/import qemlflow/import qemlflow/g' {} \;
+find . -name "*.py" -exec sed -i '' 's/from qemlflow/from qemlflow/g' {} \;
+find . -name "*.py" -exec sed -i '' 's/qemlflow\./qemlflow\./g' {} \;
 ```
 
 ---
@@ -106,8 +106,8 @@ python tools/testing/functional_validation.py
 ### **Step 4.1: Markdown Files Update**
 ```bash
 # Update documentation references
-find . -name "*.md" -exec sed -i '' 's/ChemML/QeMLflow/g' {} \;
-find . -name "*.md" -exec sed -i '' 's/chemml/qemlflow/g' {} \;
+find . -name "*.md" -exec sed -i '' 's/QeMLflow/QeMLflow/g' {} \;
+find . -name "*.md" -exec sed -i '' 's/qemlflow/qemlflow/g' {} \;
 
 # Update specific content patterns
 find . -name "*.md" -exec sed -i '' 's/Machine Learning for Chemistry/Quantum-Enhanced Machine Learning Workflows/g' {} \;
@@ -132,7 +132,7 @@ from qemlflow.quantum import QuantumProcessor
 ### **Step 4.3: Comments and Docstrings**
 ```bash
 # Update code comments and docstrings
-find src/ -name "*.py" -exec sed -i '' 's/ChemML/QeMLflow/g' {} \;
+find src/ -name "*.py" -exec sed -i '' 's/QeMLflow/QeMLflow/g' {} \;
 find src/ -name "*.py" -exec sed -i '' 's/Chemical ML/Quantum-Enhanced ML/g' {} \;
 ```
 
@@ -144,7 +144,7 @@ find src/ -name "*.py" -exec sed -i '' 's/Chemical ML/Quantum-Enhanced ML/g' {} 
 ```bash
 # This will be done through GitHub web interface:
 # 1. Go to repository Settings
-# 2. Repository name: ChemML → QeMLflow  
+# 2. Repository name: QeMLflow → QeMLflow  
 # 3. Update repository URL references
 ```
 
@@ -152,7 +152,7 @@ find src/ -name "*.py" -exec sed -i '' 's/Chemical ML/Quantum-Enhanced ML/g' {} 
 ```bash
 # Update virtual environment
 cd ..
-mv chemml_env qemlflow_env
+mv qemlflow_env qemlflow_env
 
 # Update IDE settings and configurations
 # Update Docker configurations if any
@@ -179,8 +179,8 @@ python -c "import qemlflow; print('✅ QeMLflow import successful')"
 # Emergency rollback procedure
 git reset --hard pre-qemlflow-rename
 # OR restore from backup
-rm -rf /Users/sanjeev/Downloads/Repos/ChemML
-mv /Users/sanjeev/Downloads/Repos/ChemML_BACKUP_* /Users/sanjeev/Downloads/Repos/ChemML
+rm -rf /Users/sanjeev/Downloads/Repos/QeMLflow
+mv /Users/sanjeev/Downloads/Repos/QeMLflow_BACKUP_* /Users/sanjeev/Downloads/Repos/QeMLflow
 ```
 
 ---
@@ -190,10 +190,10 @@ mv /Users/sanjeev/Downloads/Repos/ChemML_BACKUP_* /Users/sanjeev/Downloads/Repos
 ### **Step 7.1: Git Commit & Push**
 ```bash
 git add .
-git commit -m "MAJOR: Rename ChemML to QeMLflow - Quantum-Enhanced ML Framework
+git commit -m "MAJOR: Rename QeMLflow to QeMLflow - Quantum-Enhanced ML Framework
 
-Complete framework rebranding from ChemML to QeMLflow:
-- Renamed src/chemml/ to src/qemlflow/
+Complete framework rebranding from QeMLflow to QeMLflow:
+- Renamed src/qemlflow/ to src/qemlflow/
 - Updated all import statements and module references
 - Updated package configuration (setup.py, pyproject.toml)
 - Updated documentation and README files
@@ -202,9 +202,9 @@ Complete framework rebranding from ChemML to QeMLflow:
 - All tests passing with new naming structure
 
 Breaking changes:
-- Import statements: 'import chemml' → 'import qemlflow'
-- Package name: 'chemml' → 'qemlflow'
-- Repository name: ChemML → QeMLflow
+- Import statements: 'import qemlflow' → 'import qemlflow'
+- Package name: 'qemlflow' → 'qemlflow'
+- Repository name: QeMLflow → QeMLflow
 
 Framework functionality remains identical - only naming changed."
 
@@ -227,7 +227,7 @@ python -m twine upload dist/qemlflow-*
 ```python
 #!/usr/bin/env python3
 """
-Safe automated renaming script: ChemML → QeMLflow
+Safe automated renaming script: QeMLflow → QeMLflow
 """
 import os
 import shutil
@@ -238,7 +238,7 @@ from pathlib import Path
 def create_backup():
     """Create comprehensive backup before renaming."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    backup_name = f"ChemML_BACKUP_BEFORE_QEMLFLOW_{timestamp}"
+    backup_name = f"QeMLflow_BACKUP_BEFORE_QEMLFLOW_{timestamp}"
     parent_dir = Path.cwd().parent
     backup_path = parent_dir / backup_name
     
@@ -256,15 +256,15 @@ def git_checkpoint():
 
 def rename_directories():
     """Rename main directories."""
-    if Path("src/chemml").exists():
-        Path("src/chemml").rename("src/qemlflow")
-        print("✅ Renamed src/chemml/ → src/qemlflow/")
+    if Path("src/qemlflow").exists():
+        Path("src/qemlflow").rename("src/qemlflow")
+        print("✅ Renamed src/qemlflow/ → src/qemlflow/")
 
 def update_files():
     """Update all file contents."""
     replacements = [
-        ("chemml", "qemlflow"),
-        ("ChemML", "QeMLflow"),
+        ("qemlflow", "qemlflow"),
+        ("QeMLflow", "QeMLflow"),
         ("Machine Learning for Chemistry", "Quantum-Enhanced Machine Learning Workflows"),
     ]
     
@@ -303,7 +303,7 @@ def validate_imports():
 
 def main():
     """Execute complete renaming process."""
-    print("🚀 Starting ChemML → QeMLflow renaming process")
+    print("🚀 Starting QeMLflow → QeMLflow renaming process")
     
     # Safety first
     backup_path = create_backup()
@@ -362,4 +362,4 @@ python3 scripts/rename_to_qemlflow.py
 - ✅ **Comprehensive test suite verification**
 - ✅ **Reversible process at every stage**
 
-This plan ensures a **safe, systematic, and reversible** transition from ChemML to QeMLflow while maintaining all functionality and providing multiple rollback options if needed.
+This plan ensures a **safe, systematic, and reversible** transition from QeMLflow to QeMLflow while maintaining all functionality and providing multiple rollback options if needed.

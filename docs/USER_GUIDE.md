@@ -1,4 +1,4 @@
-# 📚 ChemML User Guide
+# 📚 QeMLflow User Guide
 
 ## 🚀 Quick Start (15 minutes to success!)
 
@@ -6,7 +6,7 @@
 ```bash
 # Clone and setup
 git clone <repository>
-cd ChemML
+cd QeMLflow
 pip install -r requirements.txt
 ```
 
@@ -35,13 +35,13 @@ python day_01_ml_cheminformatics_final.py
 
 ---
 
-## 🧩 ChemML Framework Guide
+## 🧩 QeMLflow Framework Guide
 
 ### **Framework Overview**
-ChemML provides a unified framework for molecular machine learning with quantum computing integration.
+QeMLflow provides a unified framework for molecular machine learning with quantum computing integration.
 
 **Core Components:**
-- **`chemml_common/`** - Main framework package
+- **`qemlflow_common/`** - Main framework package
 - **Configuration Management** - Environment-based setup
 - **Library Management** - Automatic fallbacks for missing dependencies
 - **Assessment Framework** - Progress tracking and reporting
@@ -50,12 +50,12 @@ ChemML provides a unified framework for molecular machine learning with quantum 
 
 #### **Basic Usage**
 ```python
-from chemml_common.config import ChemMLConfig
-from chemml_common.library_manager import LibraryManager
-from chemml_common.utils import setup_logging
+from qemlflow_common.config import QeMLflowConfig
+from qemlflow_common.library_manager import LibraryManager
+from qemlflow_common.utils import setup_logging
 
 # Initialize framework
-config = ChemMLConfig()
+config = QeMLflowConfig()
 lib_manager = LibraryManager()
 logger = setup_logging()
 
@@ -68,13 +68,13 @@ logger.info(f"Missing libraries: {missing_libs}")
 ```python
 # Environment variables for configuration
 import os
-os.environ['CHEMML_STUDENT_ID'] = 'your_student_id'
-os.environ['CHEMML_TRACK'] = 'quantum_ml'
-os.environ['CHEMML_OUTPUT_DIR'] = './outputs'
+os.environ['QEMLFLOW_STUDENT_ID'] = 'your_student_id'
+os.environ['QEMLFLOW_TRACK'] = 'quantum_ml'
+os.environ['QEMLFLOW_OUTPUT_DIR'] = './outputs'
 
 # Use configuration
-from chemml_common.config import ChemMLConfig
-config = ChemMLConfig()
+from qemlflow_common.config import QeMLflowConfig
+config = QeMLflowConfig()
 ```
 
 ### **Production Scripts**
@@ -90,7 +90,7 @@ All Day 1-7 scripts are production-ready:
 
 ### **Main Entry Points**
 ```
-ChemML/
+QeMLflow/
 ├── README.md                    # 📖 Project overview
 ├── quick_access_demo.py         # 🚀 MAIN LAUNCHER
 ├── requirements.txt             # 📦 Dependencies
@@ -108,12 +108,12 @@ notebooks/quickstart_bootcamp/
 │   ├── day_05/                 # Quantum ML Integration
 │   ├── day_06/                 # Quantum Computing
 │   └── day_07/                 # End-to-End Integration
-└── chemml_common/              # 🧩 Framework (local copy)
+└── qemlflow_common/              # 🧩 Framework (local copy)
 ```
 
 ### **Core Framework**
 ```
-chemml_common/
+qemlflow_common/
 ├── config.py                   # Configuration management
 ├── library_manager.py          # Library detection & fallbacks
 ├── utils.py                    # Common utilities
@@ -171,10 +171,10 @@ python quick_access_demo.py
 ### **For Development**
 ```python
 # Import and use framework components
-from chemml_common import ChemMLConfig, LibraryManager
+from qemlflow_common import QeMLflowConfig, LibraryManager
 
 # Create custom applications
-config = ChemMLConfig()
+config = QeMLflowConfig()
 lib_manager = LibraryManager()
 
 # Your custom molecular ML code here...
@@ -183,9 +183,9 @@ lib_manager = LibraryManager()
 ### **For Production Deployment**
 ```bash
 # Environment-based configuration
-export CHEMML_STUDENT_ID="production_user"
-export CHEMML_TRACK="quantum_ml"
-export CHEMML_OUTPUT_DIR="/data/outputs"
+export QEMLFLOW_STUDENT_ID="production_user"
+export QEMLFLOW_TRACK="quantum_ml"
+export QEMLFLOW_OUTPUT_DIR="/data/outputs"
 
 # Run scripts in production
 python notebooks/quickstart_bootcamp/days/day_05/day_05_quantum_ml_final.py
@@ -198,25 +198,25 @@ python notebooks/quickstart_bootcamp/days/day_05/day_05_quantum_ml_final.py
 ### **Environment Variables**
 ```bash
 # Student identification
-export CHEMML_STUDENT_ID="your_id"              # Default: auto-generated
+export QEMLFLOW_STUDENT_ID="your_id"              # Default: auto-generated
 
 # Learning track selection
-export CHEMML_TRACK="quantum_ml"                 # Options: standard, quantum_ml, etc.
+export QEMLFLOW_TRACK="quantum_ml"                 # Options: standard, quantum_ml, etc.
 
 # Output configuration
-export CHEMML_OUTPUT_DIR="./custom_outputs"     # Default: ./day_XX_outputs
+export QEMLFLOW_OUTPUT_DIR="./custom_outputs"     # Default: ./day_XX_outputs
 
 # Library preferences
-export CHEMML_PREFER_CPU="true"                 # Force CPU execution
-export CHEMML_DISABLE_GPU="true"                # Disable GPU libraries
+export QEMLFLOW_PREFER_CPU="true"                 # Force CPU execution
+export QEMLFLOW_DISABLE_GPU="true"                # Disable GPU libraries
 ```
 
 ### **Framework Configuration**
 ```python
 # In your code
-from chemml_common.config import ChemMLConfig
+from qemlflow_common.config import QeMLflowConfig
 
-config = ChemMLConfig(
+config = QeMLflowConfig(
     student_id="custom_id",
     track="quantum_ml",
     output_dir="./results",
@@ -233,7 +233,7 @@ config = ChemMLConfig(
 #### **Missing Libraries**
 ```bash
 # Check what's missing
-python -c "from chemml_common import LibraryManager; print(LibraryManager().get_missing_libraries())"
+python -c "from qemlflow_common import LibraryManager; print(LibraryManager().get_missing_libraries())"
 
 # Install missing dependencies
 pip install rdkit-pypi torch deepchem
@@ -244,7 +244,7 @@ pip install rdkit-pypi torch deepchem
 # If importing from wrong location, use:
 import sys
 sys.path.append('notebooks/quickstart_bootcamp')
-from chemml_common import LibraryManager
+from qemlflow_common import LibraryManager
 ```
 
 #### **Script Won't Run**
@@ -282,6 +282,6 @@ python quick_access_demo.py
 
 ---
 
-**🎉 You're ready to start your ChemML journey!**
+**🎉 You're ready to start your QeMLflow journey!**
 
 Run `python quick_access_demo.py` to begin exploring.

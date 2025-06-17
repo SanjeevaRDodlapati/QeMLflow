@@ -36,35 +36,35 @@ log_test() {
     fi
 }
 
-# Function to create test files with various ChemML patterns
+# Function to create test files with various QeMLflow patterns
 create_test_files() {
-    echo -e "${BLUE}Creating test files with various ChemML patterns...${NC}"
+    echo -e "${BLUE}Creating test files with various QeMLflow patterns...${NC}"
     
-    mkdir -p "${TEST_DIR}/src/chemml/core"
-    mkdir -p "${TEST_DIR}/src/chemml/utils" 
+    mkdir -p "${TEST_DIR}/src/qemlflow/core"
+    mkdir -p "${TEST_DIR}/src/qemlflow/utils" 
     mkdir -p "${TEST_DIR}/docs"
     mkdir -p "${TEST_DIR}/tests"
     
     # Test Python file with imports
-    cat > "${TEST_DIR}/src/chemml/__init__.py" << 'EOF'
+    cat > "${TEST_DIR}/src/qemlflow/__init__.py" << 'EOF'
 """
-ChemML: Machine Learning for Chemistry
+QeMLflow: Machine Learning for Chemistry
 """
-import chemml.core
-from chemml.utils import helpers
-from chemml import models
+import qemlflow.core
+from qemlflow.utils import helpers
+from qemlflow import models
 
 __version__ = "0.2.0"
-__author__ = "ChemML Contributors"
+__author__ = "QeMLflow Contributors"
 
 # Test various patterns
-class ChemMLBase:
-    """Base class for ChemML components."""
+class QeMLflowBase:
+    """Base class for QeMLflow components."""
     pass
 
-def initialize_chemml():
-    """Initialize ChemML framework."""
-    print("ChemML initialized successfully!")
+def initialize_qemlflow():
+    """Initialize QeMLflow framework."""
+    print("QeMLflow initialized successfully!")
     return True
 EOF
 
@@ -73,9 +73,9 @@ EOF
 from setuptools import find_packages, setup
 
 setup(
-    name="ChemML",
+    name="QeMLflow",
     version="0.1.0",
-    author="ChemML Team",
+    author="QeMLflow Team",
     description="Chemical Machine Learning Framework",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
@@ -88,11 +88,11 @@ EOF
     # Test pyproject.toml
     cat > "${TEST_DIR}/pyproject.toml" << 'EOF'
 [project]
-name = "chemml"
+name = "qemlflow"
 version = "0.2.0"
 description = "Quantum-Enhanced Molecular Machine Learning Framework"
 authors = [
-    {name = "ChemML Contributors", email = "chemml@example.com"}
+    {name = "QeMLflow Contributors", email = "qemlflow@example.com"}
 ]
 keywords = [
     "machine-learning",
@@ -103,24 +103,24 @@ EOF
 
     # Test documentation
     cat > "${TEST_DIR}/docs/README.md" << 'EOF'
-# ChemML Documentation
+# QeMLflow Documentation
 
-Welcome to ChemML, the comprehensive chemical machine learning framework.
+Welcome to QeMLflow, the comprehensive chemical machine learning framework.
 
 ## Installation
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ## Usage
 
 ```python
-import chemml
-from chemml.core import models
+import qemlflow
+from qemlflow.core import models
 ```
 
-## ChemML Features
+## QeMLflow Features
 
 - Chemical data processing
 - Machine learning integration
@@ -129,11 +129,11 @@ EOF
 
     # Test requirements file
     cat > "${TEST_DIR}/requirements.txt" << 'EOF'
-# ChemML Dependencies
+# QeMLflow Dependencies
 numpy>=1.19.0
 pandas>=1.2.0
 scikit-learn>=0.24.0
-# For ChemML quantum features
+# For QeMLflow quantum features
 qiskit>=0.30.0
 EOF
 
@@ -141,30 +141,30 @@ EOF
     cat > "${TEST_DIR}/Dockerfile" << 'EOF'
 FROM python:3.9
 
-# Install ChemML
-COPY . /chemml
-WORKDIR /chemml
+# Install QeMLflow
+COPY . /qemlflow
+WORKDIR /qemlflow
 
 RUN pip install -e .
 
-# ChemML entrypoint
-CMD ["python", "-c", "import chemml; print('ChemML ready!')"]
+# QeMLflow entrypoint
+CMD ["python", "-c", "import qemlflow; print('QeMLflow ready!')"]
 EOF
 
     # Test GitHub workflow
     mkdir -p "${TEST_DIR}/.github/workflows"
     cat > "${TEST_DIR}/.github/workflows/test.yml" << 'EOF'
-name: ChemML Tests
+name: QeMLflow Tests
 on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Test ChemML
+    - name: Test QeMLflow
       run: |
         python -m pytest tests/
-        python -c "import chemml; print('ChemML imported successfully')"
+        python -c "import qemlflow; print('QeMLflow imported successfully')"
 EOF
 
     echo -e "${GREEN}Test files created successfully!${NC}"
@@ -177,13 +177,13 @@ test_pattern_matching() {
     cd "${TEST_DIR}"
     
     # Test that we can find all the patterns we expect
-    local chemml_count=$(grep -r "chemml" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
-    local ChemML_count=$(grep -r "ChemML" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
+    local qemlflow_count=$(grep -r "qemlflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
+    local QeMLflow_count=$(grep -r "QeMLflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
     
-    echo "Found $chemml_count instances of 'chemml'"
-    echo "Found $ChemML_count instances of 'ChemML'"
+    echo "Found $qemlflow_count instances of 'qemlflow'"
+    echo "Found $QeMLflow_count instances of 'QeMLflow'"
     
-    if [ "$chemml_count" -gt 0 ] && [ "$ChemML_count" -gt 0 ]; then
+    if [ "$qemlflow_count" -gt 0 ] && [ "$QeMLflow_count" -gt 0 ]; then
         log_test "Pattern Detection" "PASS"
     else
         log_test "Pattern Detection" "FAIL"
@@ -206,14 +206,14 @@ set -e
 echo "Starting test rename process..."
 
 # Text replacements in files
-find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/chemml/qemlflow/g' {} \;
-find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/ChemML/QeMLflow/g' {} \;
-find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/CHEMML/QEMLFLOW/g' {} \;
+find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/qemlflow/qemlflow/g' {} \;
+find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/QeMLflow/QeMLflow/g' {} \;
+find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) -exec sed -i.bak 's/QEMLFLOW/QEMLFLOW/g' {} \;
 
 # Directory renaming (test with a copy first)
-if [ -d "src/chemml" ]; then
-    echo "Renaming src/chemml to src/qemlflow..."
-    mv src/chemml src/qemlflow
+if [ -d "src/qemlflow" ]; then
+    echo "Renaming src/qemlflow to src/qemlflow..."
+    mv src/qemlflow src/qemlflow
 fi
 
 echo "Test rename process completed!"
@@ -227,23 +227,23 @@ EOF
     # Verify the changes
     local new_qemlflow_count=$(grep -r "qemlflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
     local new_QeMLflow_count=$(grep -r "QeMLflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
-    local remaining_chemml=$(grep -r "chemml" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
-    local remaining_ChemML=$(grep -r "ChemML" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
+    local remaining_qemlflow=$(grep -r "qemlflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
+    local remaining_QeMLflow=$(grep -r "QeMLflow" . --include="*.py" --include="*.md" --include="*.txt" --include="*.toml" --include="*.yml" | wc -l)
     
     echo "After renaming:"
     echo "Found $new_qemlflow_count instances of 'qemlflow'"
     echo "Found $new_QeMLflow_count instances of 'QeMLflow'"
-    echo "Remaining $remaining_chemml instances of 'chemml'"
-    echo "Remaining $remaining_ChemML instances of 'ChemML'"
+    echo "Remaining $remaining_qemlflow instances of 'qemlflow'"
+    echo "Remaining $remaining_QeMLflow instances of 'QeMLflow'"
     
-    if [ "$new_qemlflow_count" -gt 0 ] && [ "$new_QeMLflow_count" -gt 0 ] && [ "$remaining_chemml" -eq 0 ] && [ "$remaining_ChemML" -eq 0 ]; then
+    if [ "$new_qemlflow_count" -gt 0 ] && [ "$new_QeMLflow_count" -gt 0 ] && [ "$remaining_qemlflow" -eq 0 ] && [ "$remaining_QeMLflow" -eq 0 ]; then
         log_test "Text Replacement" "PASS"
     else
         log_test "Text Replacement" "FAIL"
     fi
     
     # Test directory renaming
-    if [ -d "src/qemlflow" ] && [ ! -d "src/chemml" ]; then
+    if [ -d "src/qemlflow" ] && [ ! -d "src/qemlflow" ]; then
         log_test "Directory Renaming" "PASS"
     else
         log_test "Directory Renaming" "FAIL"
@@ -286,13 +286,13 @@ test_import_statements() {
     local import_issues=0
     
     # Look for potential problematic patterns
-    if grep -r "from chemml" . --include="*.py" >/dev/null 2>&1; then
-        echo -e "${RED}Found unreplaced 'from chemml' imports${NC}"
+    if grep -r "from qemlflow" . --include="*.py" >/dev/null 2>&1; then
+        echo -e "${RED}Found unreplaced 'from qemlflow' imports${NC}"
         import_issues=$((import_issues + 1))
     fi
     
-    if grep -r "import chemml" . --include="*.py" >/dev/null 2>&1; then
-        echo -e "${RED}Found unreplaced 'import chemml' statements${NC}"
+    if grep -r "import qemlflow" . --include="*.py" >/dev/null 2>&1; then
+        echo -e "${RED}Found unreplaced 'import qemlflow' statements${NC}"
         import_issues=$((import_issues + 1))
     fi
     
@@ -345,7 +345,7 @@ test_rollback_capability() {
         local test_file="setup.py"
         if [ -f "${test_file}.bak" ]; then
             cp "${test_file}.bak" "${test_file}"
-            if grep -q "ChemML" "$test_file"; then
+            if grep -q "QeMLflow" "$test_file"; then
                 log_test "Rollback Capability" "PASS"
             else
                 log_test "Rollback Capability" "FAIL"

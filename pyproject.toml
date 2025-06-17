@@ -3,16 +3,16 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "chemml"
+name = "qemlflow"
 version = "0.2.0"
 description = "Quantum-Enhanced Molecular Machine Learning Framework"
 readme = "README.md"
 license = "MIT"
 authors = [
-    {name = "ChemML Contributors", email = "chemml@example.com"}
+    {name = "QeMLflow Contributors", email = "qemlflow@example.com"}
 ]
 maintainers = [
-    {name = "ChemML Maintainers", email = "chemml@example.com"}
+    {name = "QeMLflow Maintainers", email = "qemlflow@example.com"}
 ]
 keywords = [
     "machine-learning",
@@ -143,20 +143,20 @@ gpu = [
 
 # Complete installation (all optional dependencies)
 all = [
-    "chemml[dev,docs,quantum,molecular,deeplearning,mlops,molecular-viz,gpu]"
+    "qemlflow[dev,docs,quantum,molecular,deeplearning,mlops,molecular-viz,gpu]"
 ]
 
 [project.urls]
-Homepage = "https://github.com/chemml/chemml"
-Documentation = "https://chemml.readthedocs.io"
-Repository = "https://github.com/chemml/chemml.git"
-Issues = "https://github.com/chemml/chemml/issues"
-Changelog = "https://github.com/chemml/chemml/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/qemlflow/qemlflow"
+Documentation = "https://qemlflow.readthedocs.io"
+Repository = "https://github.com/qemlflow/qemlflow.git"
+Issues = "https://github.com/qemlflow/qemlflow/issues"
+Changelog = "https://github.com/qemlflow/qemlflow/blob/main/CHANGELOG.md"
 
 [project.scripts]
-chemml-train = "chemml.cli:train"
-chemml-predict = "chemml.cli:predict"
-chemml-bootcamp = "chemml.bootcamp:main"
+qemlflow-train = "qemlflow.cli:train"
+qemlflow-predict = "qemlflow.cli:predict"
+qemlflow-bootcamp = "qemlflow.bootcamp:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -220,7 +220,7 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | chemml_env
+  | qemlflow_env
 )/
 '''
 
@@ -233,8 +233,8 @@ force_grid_wrap = 0
 use_parentheses = true
 ensure_newline_before_comments = true
 line_length = 88
-skip = ["chemml_env", ".venv", "venv", "build", "dist"]
-known_first_party = ["chemml", "src"]
+skip = ["qemlflow_env", ".venv", "venv", "build", "dist"]
+known_first_party = ["qemlflow", "src"]
 known_third_party = [
     "numpy", "pandas", "scipy", "sklearn", "matplotlib", "seaborn",
     "tensorflow", "torch", "qiskit", "rdkit", "deepchem", "pytest"
@@ -278,7 +278,7 @@ omit = [
     "*/tests/*",
     "*/test_*",
     "*/__pycache__/*",
-    "*/chemml_env/*",
+    "*/qemlflow_env/*",
     "*/venv/*",
     "*/build/*",
     "*/dist/*",
@@ -316,7 +316,7 @@ extend-ignore = [
 exclude = [
     ".git",
     "__pycache__",
-    "chemml_env",
+    "qemlflow_env",
     ".venv",
     "venv",
     "build",
@@ -331,5 +331,5 @@ per-file-ignores = [
 
 # Bandit Security Linting
 [tool.bandit]
-exclude_dirs = ["tests", "chemml_env", ".venv", "venv"]
+exclude_dirs = ["tests", "qemlflow_env", ".venv", "venv"]
 skips = ["B101", "B601"]  # Skip assert_used and shell_injection_process_start in tests

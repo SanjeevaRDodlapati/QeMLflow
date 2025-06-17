@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/MIGRATION_GUIDE/">
+        <link rel="canonical" href="https://qemlflow.io/MIGRATION_GUIDE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Import Migration Guide - ChemML Documentation</title>
+        <title>QeMLflow Import Migration Guide - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-import-migration-guide" class="md-skip">
+        <a href="#qemlflow-import-migration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Import Migration Guide
+              QeMLflow Import Migration Guide
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -621,9 +621,9 @@
 
 
 
-<h1 id="chemml-import-migration-guide">ChemML Import Migration Guide<a class="headerlink" href="#chemml-import-migration-guide" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-import-migration-guide">QeMLflow Import Migration Guide<a class="headerlink" href="#qemlflow-import-migration-guide" title="Permanent link">&para;</a></h1>
 <h2 id="new-modular-import-structure">🔄 New Modular Import Structure<a class="headerlink" href="#new-modular-import-structure" title="Permanent link">&para;</a></h2>
-<p>As of ChemML v1.0.0, the drug discovery module has been restructured into focused, modular components for better maintainability and usability.</p>
+<p>As of QeMLflow v1.0.0, the drug discovery module has been restructured into focused, modular components for better maintainability and usability.</p>
 <h2 id="migration-overview">📋 Migration Overview<a class="headerlink" href="#migration-overview" title="Permanent link">&para;</a></h2>
 <h3 id="before-legacy">Before (Legacy)<a class="headerlink" href="#before-legacy" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Old monolithic imports</span>
@@ -635,10 +635,10 @@
 
 <h3 id="after-new-modular-structure">After (New Modular Structure)<a class="headerlink" href="#after-new-modular-structure" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># New modular imports</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreener</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreener</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span>
 </code></pre></div>
 
 <h2 id="module-mapping">🗂️ Module Mapping<a class="headerlink" href="#module-mapping" title="Permanent link">&para;</a></h2>
@@ -654,32 +654,32 @@
 <tr>
 <td><strong>Molecular Optimization</strong></td>
 <td><code>src.drug_design.molecular_optimization</code></td>
-<td><code>chemml.research.drug_discovery.molecular_optimization</code></td>
+<td><code>qemlflow.research.drug_discovery.molecular_optimization</code></td>
 </tr>
 <tr>
 <td><strong>ADMET Prediction</strong></td>
 <td><code>src.drug_design.admet_prediction</code></td>
-<td><code>chemml.research.drug_discovery.admet</code></td>
+<td><code>qemlflow.research.drug_discovery.admet</code></td>
 </tr>
 <tr>
 <td><strong>Virtual Screening</strong></td>
 <td><code>src.drug_design.virtual_screening</code></td>
-<td><code>chemml.research.drug_discovery.screening</code></td>
+<td><code>qemlflow.research.drug_discovery.screening</code></td>
 </tr>
 <tr>
 <td><strong>Property Prediction</strong></td>
 <td><code>src.drug_design.property_prediction</code></td>
-<td><code>chemml.research.drug_discovery.properties</code></td>
+<td><code>qemlflow.research.drug_discovery.properties</code></td>
 </tr>
 <tr>
 <td><strong>Molecular Generation</strong></td>
 <td><code>src.drug_design.molecular_generation</code></td>
-<td><code>chemml.research.drug_discovery.generation</code></td>
+<td><code>qemlflow.research.drug_discovery.generation</code></td>
 </tr>
 <tr>
 <td><strong>QSAR Modeling</strong></td>
 <td><code>src.drug_design.qsar_modeling</code></td>
-<td><code>chemml.research.drug_discovery.qsar</code></td>
+<td><code>qemlflow.research.drug_discovery.qsar</code></td>
 </tr>
 </tbody>
 </table>
@@ -689,7 +689,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.drug_design.admet_prediction</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
 
 <span class="c1"># New</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
 </code></pre></div>
 
 <h3 id="2-function-imports">2. Function Imports<a class="headerlink" href="#2-function-imports" title="Permanent link">&para;</a></h3>
@@ -697,7 +697,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.drug_design.property_prediction</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
 
 <span class="c1"># New</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
 </code></pre></div>
 
 <h3 id="3-multiple-imports">3. Multiple Imports<a class="headerlink" href="#3-multiple-imports" title="Permanent link">&para;</a></h3>
@@ -705,12 +705,12 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.drug_design.qsar_modeling</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_qsar_model</span><span class="p">,</span> <span class="n">predict_activity</span>
 
 <span class="c1"># New</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_qsar_model</span><span class="p">,</span> <span class="n">predict_activity</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_qsar_model</span><span class="p">,</span> <span class="n">predict_activity</span>
 </code></pre></div>
 
 <h3 id="4-main-module-import-convenience">4. Main Module Import (Convenience)<a class="headerlink" href="#4-main-module-import-convenience" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Still supported for backward compatibility</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">MolecularOptimizer</span><span class="p">,</span>
     <span class="n">ADMETPredictor</span><span class="p">,</span>
     <span class="n">VirtualScreener</span><span class="p">,</span>
@@ -720,10 +720,10 @@
 
 <h2 id="step-by-step-migration">📝 Step-by-Step Migration<a class="headerlink" href="#step-by-step-migration" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-update-import-statements">Step 1: Update Import Statements<a class="headerlink" href="#step-1-update-import-statements" title="Permanent link">&para;</a></h3>
-<p>Replace all occurrences of <code>src.drug_design.*</code> with the corresponding <code>chemml.research.drug_discovery.*</code> path:</p>
+<p>Replace all occurrences of <code>src.drug_design.*</code> with the corresponding <code>qemlflow.research.drug_discovery.*</code> path:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Find and replace in your codebase</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/from src\.drug_design\./from chemml.research.drug_discovery./g&#39;</span><span class="w"> </span>*.py
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/src\.drug_design\./chemml.research.drug_discovery./g&#39;</span><span class="w"> </span>*.py
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/from src\.drug_design\./from qemlflow.research.drug_discovery./g&#39;</span><span class="w"> </span>*.py
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/src\.drug_design\./qemlflow.research.drug_discovery./g&#39;</span><span class="w"> </span>*.py
 </code></pre></div>
 
 <h3 id="step-2-module-specific-replacements">Step 2: Module-Specific Replacements<a class="headerlink" href="#step-2-module-specific-replacements" title="Permanent link">&para;</a></h3>
@@ -737,34 +737,34 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/src
 <tbody>
 <tr>
 <td><code>src.drug_design.admet_prediction</code></td>
-<td><code>chemml.research.drug_discovery.admet</code></td>
+<td><code>qemlflow.research.drug_discovery.admet</code></td>
 </tr>
 <tr>
 <td><code>src.drug_design.property_prediction</code></td>
-<td><code>chemml.research.drug_discovery.properties</code></td>
+<td><code>qemlflow.research.drug_discovery.properties</code></td>
 </tr>
 <tr>
 <td><code>src.drug_design.virtual_screening</code></td>
-<td><code>chemml.research.drug_discovery.screening</code></td>
+<td><code>qemlflow.research.drug_discovery.screening</code></td>
 </tr>
 <tr>
 <td><code>src.drug_design.qsar_modeling</code></td>
-<td><code>chemml.research.drug_discovery.qsar</code></td>
+<td><code>qemlflow.research.drug_discovery.qsar</code></td>
 </tr>
 <tr>
 <td><code>src.drug_design.molecular_generation</code></td>
-<td><code>chemml.research.drug_discovery.generation</code></td>
+<td><code>qemlflow.research.drug_discovery.generation</code></td>
 </tr>
 <tr>
 <td><code>src.drug_design.molecular_optimization</code></td>
-<td><code>chemml.research.drug_discovery.molecular_optimization</code></td>
+<td><code>qemlflow.research.drug_discovery.molecular_optimization</code></td>
 </tr>
 </tbody>
 </table>
 <h3 id="step-3-test-your-changes">Step 3: Test Your Changes<a class="headerlink" href="#step-3-test-your-changes" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Verify imports work</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_admet_properties</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_admet_properties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">predict_properties</span>
 
 <span class="c1"># Test functionality</span>
 <span class="n">molecules</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span> <span class="s2">&quot;CCC&quot;</span><span class="p">]</span>
@@ -776,17 +776,17 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/src
 <h2 id="verification-script">🔍 Verification Script<a class="headerlink" href="#verification-script" title="Permanent link">&para;</a></h2>
 <p>Use this script to verify your migration:</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
-<span class="sd">&quot;&quot;&quot;Verify ChemML import migration&quot;&quot;&quot;</span>
+<span class="sd">&quot;&quot;&quot;Verify QeMLflow import migration&quot;&quot;&quot;</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_new_imports</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Test all new modular imports</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularPropertyPredictor</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreener</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.generation</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularGenerator</span>
-        <span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.molecular_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularOptimizer</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.admet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularPropertyPredictor</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreener</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.generation</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularGenerator</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.molecular_optimization</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularOptimizer</span>
 
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ All new imports successful!&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
@@ -809,20 +809,20 @@ sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/src
 <h2 id="backward-compatibility">🔄 Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Permanent link">&para;</a></h2>
 <p>The main module import still works for backward compatibility:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># This still works (but prefer modular imports)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span><span class="p">,</span> <span class="n">QSARModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADMETPredictor</span><span class="p">,</span> <span class="n">QSARModel</span>
 </code></pre></div>
 
 <h2 id="troubleshooting">🆘 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Import Error</strong>: Make sure you've updated to ChemML v1.0.0+</li>
+<li><strong>Import Error</strong>: Make sure you've updated to QeMLflow v1.0.0+</li>
 <li><strong>Module Not Found</strong>: Verify you're using the correct new import paths</li>
 <li><strong>Attribute Error</strong>: Some function names may have changed - check the module documentation</li>
 </ol>
 <h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Check the <a href="https://chemml.readthedocs.io">ChemML Documentation</a></li>
-<li>Visit our <a href="https://github.com/chemml/chemml/issues">GitHub Issues</a></li>
+<li>Check the <a href="https://qemlflow.readthedocs.io">QeMLflow Documentation</a></li>
+<li>Visit our <a href="https://github.com/qemlflow/qemlflow/issues">GitHub Issues</a></li>
 <li>Join our community discussions</li>
 </ul>
 <hr />

@@ -1,8 +1,8 @@
-# ChemML Quickstart Bootcamp: Notebook-to-Python Conversion Plan
+# QeMLflow Quickstart Bootcamp: Notebook-to-Python Conversion Plan
 
 ## Executive Summary
 
-This plan outlines the systematic conversion of all ChemML quickstart bootcamp Jupyter notebooks into production-ready Python scripts. Based on the successful completion of Day 6 Quantum Computing, we'll apply the same robust methodology across all 7 days of the bootcamp.
+This plan outlines the systematic conversion of all QeMLflow quickstart bootcamp Jupyter notebooks into production-ready Python scripts. Based on the successful completion of Day 6 Quantum Computing, we'll apply the same robust methodology across all 7 days of the bootcamp.
 
 ## Project Scope & Inventory
 
@@ -236,7 +236,7 @@ For each notebook, we'll implement:
 
 #### **File Structure**
 ```
-ChemML/
+QeMLflow/
 ├── day_01_ml_cheminformatics_final.py
 ├── day_02_deep_learning_molecules_final.py
 ├── day_03_molecular_docking_final.py
@@ -383,6 +383,6 @@ ChemML/
 
 ## Conclusion
 
-This plan provides a systematic, phase-based approach to convert all ChemML quickstart bootcamp notebooks into production-ready Python scripts. Building on the successful Day 6 implementation, we'll ensure each conversion maintains the highest standards of code quality, educational value, and production readiness.
+This plan provides a systematic, phase-based approach to convert all QeMLflow quickstart bootcamp notebooks into production-ready Python scripts. Building on the successful Day 6 implementation, we'll ensure each conversion maintains the highest standards of code quality, educational value, and production readiness.
 
 **Ready to proceed with your approval and feedback!** 🚀

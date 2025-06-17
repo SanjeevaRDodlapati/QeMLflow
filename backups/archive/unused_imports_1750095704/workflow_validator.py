@@ -1,11 +1,11 @@
 """
-ChemML Workflow Validator
+QeMLflow Workflow Validator
 Comprehensive real-world workflow testing and validation.
 """
 
 import time
 class WorkflowValidator:
-    """Validates common ChemML workflows."""
+    """Validates common QeMLflow workflows."""
 
     def __init__(self):
         self.results = {}

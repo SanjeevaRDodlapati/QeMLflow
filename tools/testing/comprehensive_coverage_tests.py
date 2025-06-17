@@ -1,4 +1,4 @@
-Additional integration tests to improve coverage for ChemML modules.
+Additional integration tests to improve coverage for QeMLflow modules.
 These tests exercise more code paths to increase coverage percentage.
 """
 import os

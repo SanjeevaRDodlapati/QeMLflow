@@ -1,4 +1,4 @@
-# ChemML API Style Guide
+# QeMLflow API Style Guide
 
 ## Parameter Naming Standards
 
@@ -52,15 +52,15 @@ All public methods must have:
 
 ### Custom Exceptions
 ```python
-class ChemMLError(Exception):
-    """Base exception for ChemML operations"""
+class QeMLflowError(Exception):
+    """Base exception for QeMLflow operations"""
     pass
 
-class ChemMLDataError(ChemMLError):
+class QeMLflowDataError(QeMLflowError):
     """Raised when data validation fails"""
     pass
 
-class ChemMLModelError(ChemMLError):
+class QeMLflowModelError(QeMLflowError):
     """Raised when model operations fail"""
     pass
 ```
@@ -82,6 +82,6 @@ All machine learning classes should implement:
 ### Context Managers
 Use context managers for resource management:
 ```python
-with ChemMLExperiment() as exp:
+with QeMLflowExperiment() as exp:
     exp.run_analysis()
 ```

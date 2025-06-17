@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple Code Formatter for ChemML
+Simple Code Formatter for QeMLflow
 
 Applies basic formatting improvements without breaking syntax.
 """

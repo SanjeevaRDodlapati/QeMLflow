@@ -1,5 +1,5 @@
 """
-Enhanced Data Loading and Processing for ChemML
+Enhanced Data Loading and Processing for QeMLflow
 Comprehensive data loaders for chemistry and drug discovery datasets.
 """
 
@@ -22,13 +22,13 @@ except ImportError:
     HAS_RDKIT = False
 
 
-class ChemMLDataLoader:
+class QeMLflowDataLoader:
     """Comprehensive data loader for chemical datasets."""
 
     def __init__(self, cache_dir: Optional[str] = None):
         """Initialize data loader with optional caching."""
         self.cache_dir = (
-            Path(cache_dir) if cache_dir else Path.home() / ".chemml" / "data"
+            Path(cache_dir) if cache_dir else Path.home() / ".qemlflow" / "data"
         )
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -880,7 +880,7 @@ class IntelligentDataSplitter:
 # Convenience functions for quick access
 def load_chemical_dataset(dataset_name: str, **kwargs):
     """Load a chemical dataset quickly."""
-    loader = ChemMLDataLoader()
+    loader = QeMLflowDataLoader()
     return loader.load_dataset(dataset_name, **kwargs)
 
 

@@ -1,6 +1,6 @@
 """
 Automated Parameter Standardization Tool
-Automatically fixes parameter naming inconsistencies in ChemML codebase.
+Automatically fixes parameter naming inconsistencies in QeMLflow codebase.
 """
 
 import argparse
@@ -222,15 +222,15 @@ def _suggest_parameter_type(param_name: str) -> str:
         return "Any"
 
 
-def process_priority_files(src_dir: str = "src/chemml") -> Dict:
+def process_priority_files(src_dir: str = "src/qemlflow") -> Dict:
     """Process the highest priority files for standardization."""
     priority_files = [
-        "src/chemml/core/data.py",
-        "src/chemml/core/models.py",
-        "src/chemml/core/evaluation.py",
-        "src/chemml/research/drug_discovery.py",
-        "src/chemml/research/clinical_research.py",
-        "src/chemml/integrations/deepchem_integration.py",
+        "src/qemlflow/core/data.py",
+        "src/qemlflow/core/models.py",
+        "src/qemlflow/core/evaluation.py",
+        "src/qemlflow/research/drug_discovery.py",
+        "src/qemlflow/research/clinical_research.py",
+        "src/qemlflow/integrations/deepchem_integration.py",
     ]
 
     results = {

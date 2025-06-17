@@ -1,5 +1,5 @@
 """
-ChemML Advanced Models
+QeMLflow Advanced Models
 =====================
 
 Provides cutting-edge architectures and novel approaches for molecular ML.

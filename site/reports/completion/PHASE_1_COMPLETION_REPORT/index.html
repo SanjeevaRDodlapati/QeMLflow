@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/reports/completion/PHASE_1_COMPLETION_REPORT/">
+        <link rel="canonical" href="https://qemlflow.io/reports/completion/PHASE_1_COMPLETION_REPORT/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Phase 1 Implementation Report: Fundamentals Notebook Refactoring - ChemML Documentation</title>
+        <title>Phase 1 Implementation Report: Fundamentals Notebook Refactoring - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -539,9 +539,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#added-to-srcchemmltutorialsutilspy" class="md-nav__link">
+  <a href="#added-to-srcqemlflowtutorialsutilspy" class="md-nav__link">
     <span class="md-ellipsis">
-      Added to src/chemml/tutorials/utils.py:
+      Added to src/qemlflow/tutorials/utils.py:
     </span>
   </a>
   
@@ -846,18 +846,18 @@
 <li>✅ <strong>Educational data loading</strong> via <code>load_educational_molecules()</code></li>
 <li>✅ <strong>Interactive widgets</strong> for molecular exploration</li>
 <li>✅ <strong>Automated progress tracking</strong> with checkpoints</li>
-<li>✅ <strong>Seamless ChemML integration</strong> demonstration</li>
+<li>✅ <strong>Seamless QeMLflow integration</strong> demonstration</li>
 <li>✅ <strong>Modular, reusable components</strong> throughout</li>
 </ul>
 <h3 id="technical-implementation-details">🛠️ Technical Implementation Details<a class="headerlink" href="#technical-implementation-details" title="Permanent link">&para;</a></h3>
 <h4 id="1-environment-setup-framework-integration"><strong>1. Environment Setup &amp; Framework Integration</strong><a class="headerlink" href="#1-environment-setup-framework-integration" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># NEW: Standardized tutorial framework setup</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">setup_learning_environment</span><span class="p">,</span>
     <span class="n">load_tutorial_data</span><span class="p">,</span>
     <span class="n">create_interactive_demo</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials.assessment</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials.assessment</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">LearningAssessment</span><span class="p">,</span>
     <span class="n">ProgressTracker</span><span class="p">,</span>
     <span class="n">ConceptCheckpoint</span>
@@ -927,12 +927,12 @@
 </code></pre></div>
 
 <h3 id="framework-enhancements-implemented">🔧 Framework Enhancements Implemented<a class="headerlink" href="#framework-enhancements-implemented" title="Permanent link">&para;</a></h3>
-<h4 id="added-to-srcchemmltutorialsutilspy"><strong>Added to <code>src/chemml/tutorials/utils.py</code>:</strong><a class="headerlink" href="#added-to-srcchemmltutorialsutilspy" title="Permanent link">&para;</a></h4>
+<h4 id="added-to-srcqemlflowtutorialsutilspy"><strong>Added to <code>src/qemlflow/tutorials/utils.py</code>:</strong><a class="headerlink" href="#added-to-srcqemlflowtutorialsutilspy" title="Permanent link">&para;</a></h4>
 <ol>
 <li><strong><code>lipinski_analysis()</code></strong> - Enhanced drug-likeness analysis with statistics and visualizations</li>
 <li><strong><code>create_rule_dashboard()</code></strong> - Interactive dashboard for drug-likeness rules</li>
 <li><strong><code>similarity_explorer()</code></strong> - Molecular similarity analysis tool</li>
-<li><strong><code>demonstrate_integration()</code></strong> - Shows framework integration with main ChemML modules</li>
+<li><strong><code>demonstrate_integration()</code></strong> - Shows framework integration with main QeMLflow modules</li>
 <li><strong>Improved error handling</strong> and fallback mechanisms for missing dependencies</li>
 </ol>
 <h2 id="educational-value-improvements">📈 Educational Value Improvements<a class="headerlink" href="#educational-value-improvements" title="Permanent link">&para;</a></h2>
@@ -973,11 +973,11 @@
 <li><strong>💊 Interactive Drug-Likeness Analysis</strong> - Lipinski rules with dashboard</li>
 <li><strong>🎯 Learning Assessment &amp; Progress Tracking</strong> - Understanding validation</li>
 <li><strong>🚀 Extended Exercises &amp; Next Steps</strong> - Applied practice</li>
-<li><strong>🔗 ChemML Hybrid Architecture Integration</strong> - Advanced workflow demo</li>
+<li><strong>🔗 QeMLflow Hybrid Architecture Integration</strong> - Advanced workflow demo</li>
 </ol>
 <h2 id="validation-results">✅ Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
 <h3 id="tutorial-framework-demo-results"><strong>Tutorial Framework Demo Results:</strong><a class="headerlink" href="#tutorial-framework-demo-results" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>🧪 ChemML Tutorial Framework Demonstration
+<div class="codehilite"><pre><span></span><code>🧪 QeMLflow Tutorial Framework Demonstration
 ✅ Educational datasets: 3 categories
 ✅ Assessment framework: Operational
 ✅ Progress tracking: Operational
@@ -992,7 +992,7 @@
 <li>✅ <strong>Data loading</strong>: Educational datasets load correctly</li>
 <li>✅ <strong>Widget creation</strong>: Interactive components function properly</li>
 <li>✅ <strong>Assessment tracking</strong>: Progress and understanding metrics work</li>
-<li>✅ <strong>Module integration</strong>: Framework connects to main ChemML modules</li>
+<li>✅ <strong>Module integration</strong>: Framework connects to main QeMLflow modules</li>
 </ul>
 <h2 id="files-modifiedcreated">📁 Files Modified/Created<a class="headerlink" href="#files-modifiedcreated" title="Permanent link">&para;</a></h2>
 <h3 id="refactored-notebooks"><strong>Refactored Notebooks:</strong><a class="headerlink" href="#refactored-notebooks" title="Permanent link">&para;</a></h3>
@@ -1002,7 +1002,7 @@
 </ul>
 <h3 id="enhanced-framework-modules"><strong>Enhanced Framework Modules:</strong><a class="headerlink" href="#enhanced-framework-modules" title="Permanent link">&para;</a></h3>
 <ul>
-<li>✅ <code>src/chemml/tutorials/utils.py</code> - <strong>Added 5 new utility functions</strong></li>
+<li>✅ <code>src/qemlflow/tutorials/utils.py</code> - <strong>Added 5 new utility functions</strong></li>
 <li>✅ Existing framework modules validated and working</li>
 </ul>
 <h2 id="framework-integration-benefits-achieved">🔗 Framework Integration Benefits Achieved<a class="headerlink" href="#framework-integration-benefits-achieved" title="Permanent link">&para;</a></h2>
@@ -1054,7 +1054,7 @@
 </ul>
 <hr />
 <h2 id="phase-1-status-complete">🏆 Phase 1 Status: <strong>COMPLETE</strong> ✅<a class="headerlink" href="#phase-1-status-complete" title="Permanent link">&para;</a></h2>
-<p>The fundamentals notebook has been successfully refactored to use the ChemML Tutorial Framework, demonstrating the full potential of our modular learning architecture. The enhanced educational experience includes interactive widgets, structured assessment, and seamless integration with the main ChemML codebase.</p>
+<p>The fundamentals notebook has been successfully refactored to use the QeMLflow Tutorial Framework, demonstrating the full potential of our modular learning architecture. The enhanced educational experience includes interactive widgets, structured assessment, and seamless integration with the main QeMLflow codebase.</p>
 <p><strong>Ready to proceed to Phase 2: Quantum Computing Notebook Refactoring</strong> 🌌</p>
 
 

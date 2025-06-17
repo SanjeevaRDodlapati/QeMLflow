@@ -1,4 +1,4 @@
-# ChemML Folder Organization & Scalability Assessment
+# QeMLflow Folder Organization & Scalability Assessment
 
 **Date:** June 16, 2025
 **Status:** 📊 **COMPREHENSIVE ANALYSIS COMPLETE**

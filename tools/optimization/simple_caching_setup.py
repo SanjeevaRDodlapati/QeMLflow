@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Simple Caching Infrastructure Setup for ChemML
+Simple Caching Infrastructure Setup for QeMLflow
 Sets up caching without complex imports
 """
 
@@ -11,11 +11,11 @@ from pathlib import Path
 
 
 def setup_caching_infrastructure():
-    """Set up ChemML caching infrastructure"""
-    print("🔧 Setting up ChemML caching infrastructure...")
+    """Set up QeMLflow caching infrastructure"""
+    print("🔧 Setting up QeMLflow caching infrastructure...")
 
     # Create cache directory
-    cache_dir = Path.home() / ".chemml" / "cache"
+    cache_dir = Path.home() / ".qemlflow" / "cache"
     cache_dir.mkdir(parents=True, exist_ok=True)
 
     # Create subdirectories
@@ -105,8 +105,8 @@ def setup_caching_infrastructure():
         json.dump(initial_metrics, f, indent=2)
 
     # Set environment variables
-    os.environ["CHEMML_PERFORMANCE_MONITORING"] = "true"
-    os.environ["CHEMML_CACHE_DIR"] = str(cache_dir)
+    os.environ["QEMLFLOW_PERFORMANCE_MONITORING"] = "true"
+    os.environ["QEMLFLOW_CACHE_DIR"] = str(cache_dir)
 
     print(f"✅ Cache infrastructure created at: {cache_dir}")
     print("✅ Optimization profiles created")
@@ -118,13 +118,13 @@ def setup_caching_infrastructure():
 
 def create_cache_usage_guide():
     """Create a guide for using the caching system"""
-    cache_dir = Path.home() / ".chemml" / "cache"
+    cache_dir = Path.home() / ".qemlflow" / "cache"
     guide_file = cache_dir / "USAGE_GUIDE.md"
 
-    guide_content = """# ChemML Caching System Usage Guide
+    guide_content = """# QeMLflow Caching System Usage Guide
 
 ## Overview
-The ChemML caching system provides smart caching for configurations, models, and data to improve performance.
+The QeMLflow caching system provides smart caching for configurations, models, and data to improve performance.
 
 ## Profiles
 
@@ -152,7 +152,7 @@ The ChemML caching system provides smart caching for configurations, models, and
 import json
 from pathlib import Path
 
-cache_dir = Path.home() / '.chemml' / 'cache'
+cache_dir = Path.home() / '.qemlflow' / 'cache'
 profile_file = cache_dir / 'active_profile.json'
 
 # Switch to production profile
@@ -162,8 +162,8 @@ with open(profile_file, 'w') as f:
 
 ## Environment Variables
 
-- `CHEMML_PERFORMANCE_MONITORING`: Enable/disable monitoring
-- `CHEMML_CACHE_DIR`: Custom cache directory location
+- `QEMLFLOW_PERFORMANCE_MONITORING`: Enable/disable monitoring
+- `QEMLFLOW_CACHE_DIR`: Custom cache directory location
 
 ## Cache Management
 
@@ -171,10 +171,10 @@ The cache automatically manages itself, but you can manually clean it:
 
 ```bash
 # Clear all cache
-rm -rf ~/.chemml/cache/*
+rm -rf ~/.qemlflow/cache/*
 
 # Clear only configuration cache
-rm -rf ~/.chemml/cache/config/*
+rm -rf ~/.qemlflow/cache/config/*
 ```
 
 ## Performance Benefits
@@ -193,7 +193,7 @@ rm -rf ~/.chemml/cache/config/*
 
 def main():
     """Set up caching infrastructure"""
-    print("🚀 ChemML Advanced Caching Setup")
+    print("🚀 QeMLflow Advanced Caching Setup")
     print("=" * 40)
 
     try:

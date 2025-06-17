@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery - Property Prediction
+QeMLflow Drug Discovery - Property Prediction
 ==========================================
 
 Comprehensive molecular property prediction tools for drug discovery.

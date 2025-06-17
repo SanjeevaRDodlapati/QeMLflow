@@ -1,11 +1,11 @@
 """
-ChemML Notebook Integration Templates
+QeMLflow Notebook Integration Templates
 ====================================
 
-Standardized templates and utilities for integrating ChemML functionality into Jupyter notebooks.
+Standardized templates and utilities for integrating QeMLflow functionality into Jupyter notebooks.
 This module provides:
 
-1. Notebook templates with pre-configured ChemML imports
+1. Notebook templates with pre-configured QeMLflow imports
 2. Cell execution helpers and error handling
 3. Progress tracking integration
 4. Output standardization
@@ -20,7 +20,7 @@ from typing import Any, Dict, List, Optional
 
 
 class NotebookTemplate:
-    """Base class for ChemML notebook templates."""
+    """Base class for QeMLflow notebook templates."""
 
     def __init__(self, name: str, description: str, level: str = "beginner"):
         self.name = name
@@ -34,7 +34,7 @@ class NotebookTemplate:
                 "name": "python3",
             },
             "language_info": {"name": "python", "version": "3.11.0"},
-            "chemml": {
+            "qemlflow": {
                 "template_version": "1.0",
                 "level": level,
                 "created": datetime.now().isoformat(),
@@ -62,29 +62,29 @@ class NotebookTemplate:
         return self
 
     def add_setup_cell(self) -> "NotebookTemplate":
-        """Add standard ChemML setup cell."""
-        setup_code = """# ChemML Setup
+        """Add standard QeMLflow setup cell."""
+        setup_code = """# QeMLflow Setup
 import sys
 import warnings
 
 warnings.filterwarnings('ignore')
 
-# Core ChemML imports
-import chemml
-from chemml.models import ChemMLModel
-from chemml.preprocessing import MoleculePreprocessor
-from chemml.visualization import ChemMLVisualizer
+# Core QeMLflow imports
+import qemlflow
+from qemlflow.models import QeMLflowModel
+from qemlflow.preprocessing import MoleculePreprocessor
+from qemlflow.visualization import QeMLflowVisualizer
 
 # Optional integrations (with graceful fallbacks)
 try:
-    from chemml.integrations.experiment_tracking import setup_wandb_tracking
+    from qemlflow.integrations.experiment_tracking import setup_wandb_tracking
     HAS_TRACKING = True
 except ImportError:
     HAS_TRACKING = False
     print("⚠️  Experiment tracking not available")
 
-# Display ChemML info
-print(f"🧪 ChemML {chemml.__version__} loaded successfully!")
+# Display QeMLflow info
+print(f"🧪 QeMLflow {qemlflow.__version__} loaded successfully!")
 if HAS_TRACKING:
     print("📊 Experiment tracking available")"""
 
@@ -93,7 +93,7 @@ if HAS_TRACKING:
     def add_data_cell(self, dataset_name: str = "molecules") -> "NotebookTemplate":
         """Add data loading cell."""
         data_code = f"""# Load sample data
-from chemml.datasets import load_{dataset_name}
+from qemlflow.datasets import load_{dataset_name}
 
 # Load dataset with error handling
 try:
@@ -126,13 +126,13 @@ print(f"Data keys: {{list(data.keys())}}")"""
         print(f"📓 Notebook saved to {filepath}")
 
 
-class BasicChemMLTemplate(NotebookTemplate):
-    """Template for basic ChemML introduction."""
+class BasicQeMLflowTemplate(NotebookTemplate):
+    """Template for basic QeMLflow introduction."""
 
     def __init__(self):
         super().__init__(
-            "Basic ChemML Introduction",
-            "Introduction to ChemML basics with molecular data processing",
+            "Basic QeMLflow Introduction",
+            "Introduction to QeMLflow basics with molecular data processing",
             "beginner",
         )
         self._build_template()
@@ -141,12 +141,12 @@ class BasicChemMLTemplate(NotebookTemplate):
         """Build the basic template structure."""
         # Title
         self.add_markdown_cell(
-            """# ChemML Basic Tutorial
+            """# QeMLflow Basic Tutorial
 
-Welcome to ChemML! This notebook will introduce you to the basics of computational chemistry and machine learning with ChemML.
+Welcome to QeMLflow! This notebook will introduce you to the basics of computational chemistry and machine learning with QeMLflow.
 
 ## Learning Objectives
-- Set up ChemML environment
+- Set up QeMLflow environment
 - Load and explore molecular data
 - Perform basic molecular preprocessing
 - Create simple predictive models
@@ -181,7 +181,7 @@ except Exception as e:
         self.add_markdown_cell("## 4. Model Training")
         self.add_code_cell(
             """# Initialize model
-model = ChemMLModel(model_type="random_forest")
+model = QeMLflowModel(model_type="random_forest")
 
 # Train model with error handling
 try:
@@ -200,7 +200,7 @@ except Exception as e:
         self.add_markdown_cell("## 5. Visualization")
         self.add_code_cell(
             """# Create visualizations
-visualizer = ChemMLVisualizer()
+visualizer = QeMLflowVisualizer()
 
 # Plot results with error handling
 try:
@@ -223,9 +223,9 @@ except Exception as e:
         self.add_markdown_cell(
             """## Summary
 
-Congratulations! You've completed the basic ChemML tutorial. You learned how to:
+Congratulations! You've completed the basic QeMLflow tutorial. You learned how to:
 
-- ✅ Set up the ChemML environment
+- ✅ Set up the QeMLflow environment
 - ✅ Load molecular datasets
 - ✅ Preprocess molecular data
 - ✅ Train predictive models
@@ -239,12 +239,12 @@ Congratulations! You've completed the basic ChemML tutorial. You learned how to:
         )
 
 
-class IntermediateChemMLTemplate(NotebookTemplate):
-    """Template for intermediate ChemML features."""
+class IntermediateQeMLflowTemplate(NotebookTemplate):
+    """Template for intermediate QeMLflow features."""
 
     def __init__(self):
         super().__init__(
-            "Intermediate ChemML Features",
+            "Intermediate QeMLflow Features",
             "Advanced molecular modeling and experiment tracking",
             "intermediate",
         )
@@ -253,9 +253,9 @@ class IntermediateChemMLTemplate(NotebookTemplate):
     def _build_template(self):
         """Build intermediate template."""
         self.add_markdown_cell(
-            """# ChemML Intermediate Tutorial
+            """# QeMLflow Intermediate Tutorial
 
-This tutorial covers intermediate ChemML features including:
+This tutorial covers intermediate QeMLflow features including:
 - Advanced molecular descriptors
 - Deep learning models
 - Experiment tracking with Weights & Biases
@@ -272,7 +272,7 @@ This tutorial covers intermediate ChemML features including:
 if HAS_TRACKING:
     experiment = setup_wandb_tracking(
         "intermediate_tutorial",
-        project="chemml-tutorials",
+        project="qemlflow-tutorials",
         tags=["intermediate", "molecular-modeling"]
     )
     print("📊 Experiment tracking initialized")
@@ -284,7 +284,7 @@ else:
         self.add_markdown_cell("## Advanced Molecular Descriptors")
         self.add_code_cell(
             """# Use advanced molecular descriptors
-from chemml.preprocessing import AdvancedMoleculePreprocessor
+from qemlflow.preprocessing import AdvancedMoleculePreprocessor
 
 advanced_preprocessor = AdvancedMoleculePreprocessor(
     descriptor_types=["morgan", "rdkit", "3d"],
@@ -312,18 +312,18 @@ def create_notebook_templates():
     templates_dir.mkdir(parents=True, exist_ok=True)
 
     # Create basic template
-    basic_template = BasicChemMLTemplate()
-    basic_template.save(templates_dir / "chemml_basic_tutorial.ipynb")
+    basic_template = BasicQeMLflowTemplate()
+    basic_template.save(templates_dir / "qemlflow_basic_tutorial.ipynb")
 
     # Create intermediate template
-    intermediate_template = IntermediateChemMLTemplate()
-    intermediate_template.save(templates_dir / "chemml_intermediate_tutorial.ipynb")
+    intermediate_template = IntermediateQeMLflowTemplate()
+    intermediate_template.save(templates_dir / "qemlflow_intermediate_tutorial.ipynb")
 
     print(f"✅ Created notebook templates in {templates_dir}")
 
 
 def integrate_existing_notebooks():
-    """Integrate existing notebooks with ChemML standards."""
+    """Integrate existing notebooks with QeMLflow standards."""
     notebooks_dir = Path("notebooks")
 
     for notebook_path in notebooks_dir.rglob("*.ipynb"):
@@ -334,7 +334,7 @@ def integrate_existing_notebooks():
             with open(notebook_path, "r", encoding="utf-8") as f:
                 notebook = json.load(f)
 
-            # Check if notebook needs ChemML integration
+            # Check if notebook needs QeMLflow integration
             needs_integration = _check_notebook_needs_integration(notebook)
 
             if needs_integration:
@@ -348,29 +348,29 @@ def integrate_existing_notebooks():
 
 
 def _check_notebook_needs_integration(notebook: Dict) -> bool:
-    """Check if notebook needs ChemML integration."""
-    # Check metadata for ChemML marker
+    """Check if notebook needs QeMLflow integration."""
+    # Check metadata for QeMLflow marker
     metadata = notebook.get("metadata", {})
-    if "chemml" in metadata:
+    if "qemlflow" in metadata:
         return False
 
-    # Check for ChemML imports in code cells
+    # Check for QeMLflow imports in code cells
     for cell in notebook.get("cells", []):
         if cell.get("cell_type") == "code":
             source = "".join(cell.get("source", []))
-            if "import chemml" in source:
+            if "import qemlflow" in source:
                 return False
 
     return True
 
 
 def _integrate_notebook(notebook: Dict, notebook_path: Path) -> None:
-    """Integrate notebook with ChemML standards."""
-    # Add ChemML metadata
+    """Integrate notebook with QeMLflow standards."""
+    # Add QeMLflow metadata
     if "metadata" not in notebook:
         notebook["metadata"] = {}
 
-    notebook["metadata"]["chemml"] = {
+    notebook["metadata"]["qemlflow"] = {
         "integrated": True,
         "integration_date": datetime.now().isoformat(),
         "version": "1.0",
@@ -379,7 +379,7 @@ def _integrate_notebook(notebook: Dict, notebook_path: Path) -> None:
     # Add setup cell at the beginning if not present
     cells = notebook.get("cells", [])
     has_setup = any(
-        "import chemml" in "".join(cell.get("source", []))
+        "import qemlflow" in "".join(cell.get("source", []))
         for cell in cells
         if cell.get("cell_type") == "code"
     )
@@ -391,9 +391,9 @@ def _integrate_notebook(notebook: Dict, notebook_path: Path) -> None:
             "metadata": {},
             "outputs": [],
             "source": [
-                "# ChemML Integration Setup",
-                "import chemml",
-                "print(f'🧪 ChemML {chemml.__version__} loaded for this notebook')",
+                "# QeMLflow Integration Setup",
+                "import qemlflow",
+                "print(f'🧪 QeMLflow {qemlflow.__version__} loaded for this notebook')",
             ],
         }
         cells.insert(0, setup_cell)

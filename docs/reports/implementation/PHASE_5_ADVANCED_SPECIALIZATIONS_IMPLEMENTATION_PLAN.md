@@ -2,7 +2,7 @@
 
 ## 🎯 **Phase Overview**
 
-**Phase 5** focuses on developing **advanced specialization bootcamps** that build upon the core ChemML foundation to provide expert-level training in specialized domains of computational drug discovery and chemical AI.
+**Phase 5** focuses on developing **advanced specialization bootcamps** that build upon the core QeMLflow foundation to provide expert-level training in specialized domains of computational drug discovery and chemical AI.
 
 ---
 
@@ -144,7 +144,7 @@ Master **AI-driven materials discovery** for pharmaceutical applications:
 
 ## 🎓 **Advanced Certification Framework**
 
-### **ChemML Domain Expert Certifications**
+### **QeMLflow Domain Expert Certifications**
 Upon successful completion of each specialization:
 
 - **Chemical AI Expert**: Foundation models and generative chemistry
@@ -154,7 +154,7 @@ Upon successful completion of each specialization:
 
 ### **Master Certification**
 Completion of all Phase 5 bootcamps awards:
-- **ChemML Advanced Practitioner Certificate**
+- **QeMLflow Advanced Practitioner Certificate**
 - **Principal Scientist Readiness Validation**
 - **Industry Leadership Pathway Access**
 
@@ -170,6 +170,6 @@ Completion of all Phase 5 bootcamps awards:
 
 ---
 
-**Phase 5** will establish **ChemML** as the **premier platform** for advanced computational chemistry specialization, producing **domain experts** capable of leading innovation in pharmaceutical AI, clinical technology, environmental sustainability, and advanced materials discovery.
+**Phase 5** will establish **QeMLflow** as the **premier platform** for advanced computational chemistry specialization, producing **domain experts** capable of leading innovation in pharmaceutical AI, clinical technology, environmental sustainability, and advanced materials discovery.
 
 *Ready to advance the frontiers of specialized chemical AI!* 🚀🧬🌍

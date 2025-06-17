@@ -4,7 +4,7 @@ Focused Syntax Error Fix - Return Outside Function
 ==================================================
 
 A minimal, safe tool to fix the specific "return outside function" 
-syntax errors found in the ChemML codebase.
+syntax errors found in the QeMLflow codebase.
 
 This tool:
 1. Makes backups before any changes

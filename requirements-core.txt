@@ -1,4 +1,4 @@
-# ChemML - Core Dependencies
+# QeMLflow - Core Dependencies
 # Updated for 2025 compatibility
 
 # Core Scientific Computing

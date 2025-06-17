@@ -1,8 +1,8 @@
-# ChemML Enhanced Features Guide
+# QeMLflow Enhanced Features Guide
 
 ## Overview
 
-ChemML now includes significantly enhanced capabilities for machine learning in chemistry and drug discovery. This guide covers the new features and how to use them effectively.
+QeMLflow now includes significantly enhanced capabilities for machine learning in chemistry and drug discovery. This guide covers the new features and how to use them effectively.
 
 ## 🚀 New Features
 
@@ -10,10 +10,10 @@ ChemML now includes significantly enhanced capabilities for machine learning in 
 
 #### Advanced Data Loading
 ```python
-from chemml.core.data_processing import ChemMLDataLoader
+from qemlflow.core.data_processing import QeMLflowDataLoader
 
 # Load popular chemistry datasets
-loader = ChemMLDataLoader()
+loader = QeMLflowDataLoader()
 df = loader.load_dataset('bbbp')  # Blood-brain barrier permeability
 df = loader.load_dataset('qm9')   # Quantum machine 9
 df = loader.load_dataset('tox21') # Toxicology data
@@ -24,7 +24,7 @@ df = loader.load_custom_dataset('my_data.csv', smiles_column='SMILES')
 
 #### Intelligent Data Preprocessing
 ```python
-from chemml.core.data_processing import AdvancedDataPreprocessor
+from qemlflow.core.data_processing import AdvancedDataPreprocessor
 
 preprocessor = AdvancedDataPreprocessor()
 processed_data = preprocessor.create_preprocessing_pipeline(
@@ -40,7 +40,7 @@ y = processed_data['y']  # Processed targets
 
 #### Smart Data Splitting
 ```python
-from chemml.core.data_processing import IntelligentDataSplitter
+from qemlflow.core.data_processing import IntelligentDataSplitter
 
 splitter = IntelligentDataSplitter()
 
@@ -67,7 +67,7 @@ train_idx, test_idx = splitter.stratified_split(
 
 #### Ensemble Methods
 ```python
-from chemml.core.enhanced_models import create_ensemble_model
+from qemlflow.core.enhanced_models import create_ensemble_model
 
 # Create voting ensemble
 ensemble = create_ensemble_model(
@@ -87,20 +87,20 @@ predictions = ensemble.predict(X_test)
 
 #### Gradient Boosting Models
 ```python
-from chemml.core.enhanced_models import create_xgboost_model
+from qemlflow.core.enhanced_models import create_xgboost_model
 
 # XGBoost with automatic task detection
 xgb_model = create_xgboost_model(task_type='regression')
 xgb_model.fit(X_train, y_train)
 
 # LightGBM for faster training
-from chemml.core.enhanced_models import create_lightgbm_model
+from qemlflow.core.enhanced_models import create_lightgbm_model
 lgb_model = create_lightgbm_model(task_type='classification')
 ```
 
 #### AutoML Pipeline
 ```python
-from chemml.core.enhanced_models import create_automl_model
+from qemlflow.core.enhanced_models import create_automl_model
 
 # Automated model selection and hyperparameter optimization
 automl = create_automl_model(
@@ -120,7 +120,7 @@ best_params = automl.get_best_params()
 
 #### Adaptive Ensemble
 ```python
-from chemml.core.ensemble_advanced import AdaptiveEnsemble
+from qemlflow.core.ensemble_advanced import AdaptiveEnsemble
 
 # Ensemble that adapts weights based on molecular similarity
 adaptive_ensemble = AdaptiveEnsemble(
@@ -135,7 +135,7 @@ predictions, uncertainties = adaptive_ensemble.predict(X_test, return_uncertaint
 
 #### Multi-Modal Ensemble
 ```python
-from chemml.core.ensemble_advanced import MultiModalEnsemble
+from qemlflow.core.ensemble_advanced import MultiModalEnsemble
 
 # Combine different molecular representations
 multimodal = MultiModalEnsemble(
@@ -160,7 +160,7 @@ multimodal.fit(modality_data, y_train)
 
 #### Quick Pipeline
 ```python
-from chemml.core.pipeline import quick_pipeline
+from qemlflow.core.pipeline import quick_pipeline
 
 # One-line ML pipeline
 results = quick_pipeline(
@@ -175,7 +175,7 @@ print(results[['model', 'type', 'accuracy', 'f1_score']])
 
 #### Comprehensive Pipeline
 ```python
-from chemml.core.pipeline import create_pipeline
+from qemlflow.core.pipeline import create_pipeline
 
 # Create customizable pipeline
 pipeline = create_pipeline(
@@ -251,21 +251,21 @@ model_config = {
 ## 📊 Performance Optimization
 
 ### Import Optimization
-ChemML now features ultra-fast imports (~0.02s) with lazy loading:
+QeMLflow now features ultra-fast imports (~0.02s) with lazy loading:
 
 ```python
-import chemml  # Fast import
-chemml.enable_fast_mode()  # Pre-load for power users
+import qemlflow  # Fast import
+qemlflow.enable_fast_mode()  # Pre-load for power users
 ```
 
 ### Memory Management
 ```python
 # Clear caches to save memory
-chemml.clear_cache()
+qemlflow.clear_cache()
 
 # Use streaming for large datasets
-from chemml.core.data_processing import ChemMLDataLoader
-loader = ChemMLDataLoader()
+from qemlflow.core.data_processing import QeMLflowDataLoader
+loader = QeMLflowDataLoader()
 data_stream = loader.load_dataset_stream('large_dataset', chunk_size=1000)
 ```
 
@@ -285,7 +285,7 @@ pipeline = create_pipeline(
 
 ### Molecular Feature Engineering
 ```python
-from chemml.core.data_processing import AdvancedDataPreprocessor
+from qemlflow.core.data_processing import AdvancedDataPreprocessor
 
 preprocessor = AdvancedDataPreprocessor()
 
@@ -311,7 +311,7 @@ valid_df = loader._validate_smiles(df, smiles_column='smiles')
 
 ### Drug-like Property Filters
 ```python
-from chemml.core.data_processing import apply_drug_filters
+from qemlflow.core.data_processing import apply_drug_filters
 
 # Apply Lipinski's Rule of Five
 filtered_df = apply_drug_filters(df, filters=['lipinski', 'veber'])

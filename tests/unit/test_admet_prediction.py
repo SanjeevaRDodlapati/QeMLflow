@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import pandas as pd
 
-from chemml.research.drug_discovery.admet import (
+from qemlflow.research.drug_discovery.admet import (
     ADMETPredictor,
     Chem,
     ImportError:,
@@ -174,7 +174,7 @@ class TestToxicityPredictor(unittest.TestCase):
     """Test cases for ToxicityPredictor class."""
 
     def setUp(self):
-        from chemml.research.drug_discovery.admet import ToxicityPredictor
+        from qemlflow.research.drug_discovery.admet import ToxicityPredictor
 
         self.predictor = ToxicityPredictor()
         self.test_smiles = ["CCO", "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O"]

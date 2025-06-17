@@ -1,4 +1,4 @@
-# 📚 ChemML Learning Paths
+# 📚 QeMLflow Learning Paths
 
 **🚨 FRAMEWORK INTEGRATION UPDATE**: New framework-integrated bootcamps available! Use `*_INTEGRATED.ipynb` versions for professional learning.
 
@@ -8,7 +8,7 @@
 
 ### � **Framework-Integrated Learning** (RECOMMENDED)
 
-**Professional development using ChemML framework APIs - Industry Standard**
+**Professional development using QeMLflow framework APIs - Industry Standard**
 
 - 👨‍🎓 **Beginner to ML/Chemistry** → [Framework-Integrated Bootcamp](../notebooks/learning/bootcamp/README.md)
 - 🔬 **ML Engineer** → [Professional Track with Framework](#framework-professional-track)
@@ -459,4 +459,4 @@ Use the assessment above or:
 
 ---
 
-*Last Updated: June 10, 2025 | ChemML Learning Team*
+*Last Updated: June 10, 2025 | QeMLflow Learning Team*

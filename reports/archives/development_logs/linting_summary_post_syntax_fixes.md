@@ -1,4 +1,4 @@
-# ChemML Linting Error Summary - Post Syntax Fixes
+# QeMLflow Linting Error Summary - Post Syntax Fixes
 
 ## Current Status
 - **Health Score**: 60.0/100
@@ -55,7 +55,7 @@
 ## Most Problematic Files
 
 Based on error concentration:
-- `src/chemml/research/drug_discovery_legacy.py` - 38 F405 errors
+- `src/qemlflow/research/drug_discovery_legacy.py` - 38 F405 errors
 - Various `__init__.py` files with star imports
 - Core modules with many unused imports
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Code Health Tracking Dashboard for ChemML
+Code Health Tracking Dashboard for QeMLflow
 =========================================
 
 This script creates a health tracking dashboard that monitors code quality
@@ -330,7 +330,7 @@ class HealthTracker:
 
         # Create dashboard
         fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(15, 10))
-        fig.suptitle("ChemML Code Health Dashboard", fontsize=16, fontweight="bold")
+        fig.suptitle("QeMLflow Code Health Dashboard", fontsize=16, fontweight="bold")
 
         # Health score over time
         ax1.plot(timestamps, health_scores, marker="o", linewidth=2, markersize=4)
@@ -398,7 +398,7 @@ class HealthTracker:
 
         report = []
         report.append("=" * 80)
-        report.append("🏥 ChemML Code Health Report")
+        report.append("🏥 QeMLflow Code Health Report")
         report.append("=" * 80)
         report.append(f"📅 Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         report.append("")
@@ -523,7 +523,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Code health tracking and dashboard for ChemML"
+        description="Code health tracking and dashboard for QeMLflow"
     )
     parser.add_argument(
         "--update",

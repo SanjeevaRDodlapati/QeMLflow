@@ -1,5 +1,5 @@
 """
-External Model Integration for ChemML
+External Model Integration for QeMLflow
 ====================================
 
 Integration wrapper for external GitHub models from research publications.
@@ -7,7 +7,7 @@ Provides unified interface for models from different repositories.
 
 Key Features:
 - Automatic dependency management
-- Unified ChemML API compatibility
+- Unified QeMLflow API compatibility
 - Error handling and fallbacks
 - Model versioning and caching
 """
@@ -28,11 +28,11 @@ except ImportError:
     HAS_GITPYTHON = False
     warnings.warn("GitPython not available. Install with: pip install GitPython")
 
-# Import ChemML base classes
+# Import QeMLflow base classes
 try:
     from ..core.models import BaseModel
 except ImportError:
-    from chemml.core.models import BaseModel
+    from qemlflow.core.models import BaseModel
 
 
 class ExternalModelWrapper(BaseModel):
@@ -40,7 +40,7 @@ class ExternalModelWrapper(BaseModel):
     Base wrapper class for external models from GitHub repositories.
 
     This class provides a unified interface for integrating models from
-    research publications and external repositories into ChemML.
+    research publications and external repositories into QeMLflow.
     """
 
     def __init__(
@@ -84,7 +84,7 @@ class ExternalModelWrapper(BaseModel):
 
     def _setup_temp_repo(self) -> Path:
         """Create temporary directory for repository."""
-        temp_dir = tempfile.mkdtemp(prefix="chemml_external_")
+        temp_dir = tempfile.mkdtemp(prefix="qemlflow_external_")
         repo_name = self.repo_url.split("/")[-1].replace(".git", "")
         return Path(temp_dir) / repo_name
 

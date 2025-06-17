@@ -1,5 +1,5 @@
 """
-ChemML Clinical Research Module
+QeMLflow Clinical Research Module
 ============================
 
 Specialized machine learning models and analytical frameworks designed for clinical research.

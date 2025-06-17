@@ -1,5 +1,5 @@
 """
-Enhanced ML Models for ChemML
+Enhanced ML Models for QeMLflow
 ============================
 
 and specialized architectures for chemistry and drug discovery applications.
@@ -35,7 +35,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 try:
     from .models import BaseModel, LinearModel, RandomForestModel, SVMModel
 except ImportError:
-    from chemml.core.models import BaseModel, LinearModel, RandomForestModel, SVMModel
+    from qemlflow.core.models import BaseModel, LinearModel, RandomForestModel, SVMModel
 
 # Optional imports with graceful fallbacks
 try:

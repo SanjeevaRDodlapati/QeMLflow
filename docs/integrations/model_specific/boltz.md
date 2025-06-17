@@ -1,19 +1,19 @@
 # Boltz Integration Guide
 
-**Complete guide for integrating the Boltz biomolecular interaction model into ChemML**
+**Complete guide for integrating the Boltz biomolecular interaction model into QeMLflow**
 
 ---
 
 ## 🔬 Overview
 
-Boltz is a state-of-the-art deep learning model for predicting biomolecular structures and interactions. This guide covers its integration into ChemML for protein structure prediction, protein-ligand docking, and binding affinity prediction.
+Boltz is a state-of-the-art deep learning model for predicting biomolecular structures and interactions. This guide covers its integration into QeMLflow for protein structure prediction, protein-ligand docking, and binding affinity prediction.
 
 ## 🚀 Quick Start
 
 ### Basic Usage
 
 ```python
-from chemml.integrations import get_manager
+from qemlflow.integrations import get_manager
 
 # Get integration manager
 manager = get_manager()
@@ -116,7 +116,7 @@ boltz.set_preprocessing_options(
 ### Tracking Predictions
 
 ```python
-from chemml.integrations.core import PerformanceMonitor
+from qemlflow.integrations.core import PerformanceMonitor
 
 monitor = PerformanceMonitor()
 
@@ -190,7 +190,7 @@ boltz.set_loss_function(custom_structure_loss)
 
 ```python
 # Combine with DeepChem
-from chemml.integrations.adapters.molecular import DeepChemIntegration
+from qemlflow.integrations.adapters.molecular import DeepChemIntegration
 
 deepchem = manager.get_adapter("deepchem")
 
@@ -202,7 +202,7 @@ properties = deepchem.predict_properties(structure)
 ### Experiment Tracking
 
 ```python
-from chemml.integrations.utils import ExperimentTracker
+from qemlflow.integrations.utils import ExperimentTracker
 
 tracker = ExperimentTracker(backend="wandb")
 
@@ -227,8 +227,8 @@ tracker.log_results({
 """
 Complete protein analysis workflow using Boltz
 """
-from chemml.integrations import get_manager
-from chemml.integrations.utils import ExperimentTracker
+from qemlflow.integrations import get_manager
+from qemlflow.integrations.utils import ExperimentTracker
 
 def protein_analysis_workflow(protein_sequence, ligand_smiles):
     """Complete protein-ligand analysis using Boltz."""

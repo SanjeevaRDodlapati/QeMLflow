@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Comprehensive linting analysis tool for ChemML codebase.
+Comprehensive linting analysis tool for QeMLflow codebase.
 Provides detailed module-wise breakdown of code quality issues.
 """
 
@@ -66,8 +66,8 @@ def analyze_by_module(flake8_lines):
         error_message = ":".join(parts[3:])
 
         # Extract module path
-        if file_path.startswith("src/chemml/"):
-            module_path = file_path[len("src/chemml/") :]
+        if file_path.startswith("src/qemlflow/"):
+            module_path = file_path[len("src/qemlflow/") :]
             if "/" in module_path:
                 module = module_path.split("/")[0]
             else:
@@ -137,7 +137,7 @@ def get_file_stats():
 def print_detailed_analysis(module_stats, error_stats, file_count, total_lines):
     """Print comprehensive analysis results."""
     print("=" * 80)
-    print("📊 COMPREHENSIVE CHEMML LINTING ANALYSIS")
+    print("📊 COMPREHENSIVE QEMLFLOW LINTING ANALYSIS")
     print("=" * 80)
     print()
 

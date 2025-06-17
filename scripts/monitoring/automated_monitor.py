@@ -1,5 +1,5 @@
 """
-ChemML Automated Monitoring System
+QeMLflow Automated Monitoring System
 ==================================
 
 Comprehensive monitoring system that automatically checks:
@@ -23,11 +23,11 @@ from typing import Dict, List, Optional, Tuple
 import requests
 
 
-class ChemMLMonitor:
-    """Automated monitoring system for ChemML project."""
+class QeMLflowMonitor:
+    """Automated monitoring system for QeMLflow project."""
 
     def __init__(
-        self, repo_owner: str = "SanjeevaRDodlapati", repo_name: str = "ChemML"
+        self, repo_owner: str = "SanjeevaRDodlapati", repo_name: str = "QeMLflow"
     ):
         self.repo_owner = repo_owner
         self.repo_name = repo_name
@@ -196,7 +196,7 @@ class ChemMLMonitor:
 
                 # Check for expected content
                 content_checks = {
-                    "title_present": "chemml" in content,
+                    "title_present": "qemlflow" in content,
                     "navigation_present": "getting started" in content
                     or "quick start" in content,
                     "content_loaded": len(content) > 1000,
@@ -374,7 +374,7 @@ class ChemMLMonitor:
 
     def run_comprehensive_check(self) -> Dict:
         """Run all monitoring checks and return comprehensive results."""
-        print("🔍 Starting ChemML Comprehensive Monitoring...")
+        print("🔍 Starting QeMLflow Comprehensive Monitoring...")
         print("=" * 60)
 
         # Run all checks
@@ -409,7 +409,7 @@ class ChemMLMonitor:
 
     def print_results(self):
         """Print monitoring results in a human-readable format."""
-        print("\n📋 ChemML Monitoring Results")
+        print("\n📋 QeMLflow Monitoring Results")
         print("=" * 60)
         print(f"Timestamp: {self.results['timestamp']}")
         print(
@@ -492,7 +492,7 @@ class ChemMLMonitor:
 
 def main():
     """Main monitoring function."""
-    monitor = ChemMLMonitor()
+    monitor = QeMLflowMonitor()
 
     try:
         # Run comprehensive check

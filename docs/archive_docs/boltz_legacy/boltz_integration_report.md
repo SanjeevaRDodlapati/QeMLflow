@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document describes the successful integration of the Boltz biomolecular interaction model (https://github.com/jwohlwend/boltz) into the ChemML framework. Boltz is a state-of-the-art deep learning model for protein structure prediction and binding affinity estimation, developed by researchers and representing cutting-edge advances in biomolecular modeling.
+This document describes the successful integration of the Boltz biomolecular interaction model (https://github.com/jwohlwend/boltz) into the QeMLflow framework. Boltz is a state-of-the-art deep learning model for protein structure prediction and binding affinity estimation, developed by researchers and representing cutting-edge advances in biomolecular modeling.
 
 ## Integration Approach
 
@@ -77,13 +77,13 @@ def batch_predict(self, input_list: List[Dict], **kwargs) -> List[Dict]
 
 #### B. **BoltzModel Class** (High-level wrapper)
 
-**Purpose:** ChemML-compatible interface for seamless workflow integration
+**Purpose:** QeMLflow-compatible interface for seamless workflow integration
 
 **Key Features:**
 - Pandas DataFrame support
 - scikit-learn-like API (`fit`, `predict`, `score`)
 - Automatic input format detection
-- ChemML pipeline compatibility
+- QeMLflow pipeline compatibility
 
 #### C. **Integration Manager Extensions**
 
@@ -145,7 +145,7 @@ The adapter builds Boltz commands dynamically:
 boltz predict input.yaml \
     --use_msa_server \
     --out_dir ./predictions \
-    --cache ~/.chemml/boltz \
+    --cache ~/.qemlflow/boltz \
     --recycling_steps 3 \
     --diffusion_samples 1 \
     --sampling_steps 200 \
@@ -208,7 +208,7 @@ All predictions return a consistent format:
 
 #### A. **Basic Setup**
 ```python
-from chemml.integrations import ExternalModelManager
+from qemlflow.integrations import ExternalModelManager
 
 manager = ExternalModelManager()
 boltz_model = manager.integrate_boltz(use_msa_server=True, device='auto')
@@ -258,7 +258,7 @@ inputs = [
 results = boltz_model.adapter.batch_predict(inputs, task="structure_prediction")
 ```
 
-#### E. **ChemML Pipeline Integration**
+#### E. **QeMLflow Pipeline Integration**
 ```python
 # Using pandas DataFrame
 df = pd.DataFrame({
@@ -266,7 +266,7 @@ df = pd.DataFrame({
     'smiles': ['CCO', 'CC(C)O']
 })
 
-# Predict using ChemML-style API
+# Predict using QeMLflow-style API
 predictions = boltz_model.predict(df, task="complex_prediction")
 ```
 
@@ -276,7 +276,7 @@ predictions = boltz_model.predict(df, task="complex_prediction")
 
 #### A. **Unified API**
 - Consistent interface across all external models
-- ChemML-compatible data structures
+- QeMLflow-compatible data structures
 - Standard error handling patterns
 
 #### B. **Flexible Configuration**
@@ -327,7 +327,7 @@ predictions = boltz_model.predict(df, task="complex_prediction")
 3. **Dependency Management**
    - **Challenge:** Heavy dependencies (PyTorch, CUDA, molecular libraries)
    - **Solution:** Isolated installation with environment management
-   - **Impact:** Reduced conflicts with existing ChemML dependencies
+   - **Impact:** Reduced conflicts with existing QeMLflow dependencies
 
 4. **Result Parsing**
    - **Challenge:** Multiple output files with different formats
@@ -413,7 +413,7 @@ Based on Boltz publications:
 1. **Async Execution:** Background processing for long-running predictions
 2. **Progress Monitoring:** Real-time status updates
 3. **Resource Optimization:** Memory and GPU usage optimization
-4. **Result Visualization:** Integration with ChemML plotting tools
+4. **Result Visualization:** Integration with QeMLflow plotting tools
 
 #### B. **Long-term Extensions**
 1. **Model Registry:** Centralized catalog of available models
@@ -454,7 +454,7 @@ class DockingAdapter(BaseModelAdapter):
 
 ### 15. **Integration Success Summary**
 
-The Boltz integration demonstrates the effectiveness of the ChemML external model integration framework:
+The Boltz integration demonstrates the effectiveness of the QeMLflow external model integration framework:
 
 **✅ **Technical Success:**
 - Successfully integrated a complex, state-of-the-art biomolecular model
@@ -478,11 +478,11 @@ The Boltz integration demonstrates the effectiveness of the ChemML external mode
 - Comprehensive error handling and validation
 - Resource management and caching
 - Batch processing capabilities
-- ChemML pipeline compatibility
+- QeMLflow pipeline compatibility
 
 ### 16. **Impact and Applications**
 
-This integration enables ChemML users to:
+This integration enables QeMLflow users to:
 
 1. **Drug Discovery:** Screen protein-ligand interactions at scale
 2. **Structural Biology:** Predict protein structures and complexes
@@ -502,4 +502,4 @@ The integration framework is robust, extensible, and ready for production use in
 
 ---
 
-**Integration Complete:** The Boltz biomolecular interaction model is now fully integrated into ChemML, demonstrating the power and flexibility of the external model integration framework.
+**Integration Complete:** The Boltz biomolecular interaction model is now fully integrated into QeMLflow, demonstrating the power and flexibility of the external model integration framework.

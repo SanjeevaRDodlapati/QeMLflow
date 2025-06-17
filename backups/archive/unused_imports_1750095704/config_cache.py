@@ -1,5 +1,5 @@
 """
-ChemML Configuration Caching System
+QeMLflow Configuration Caching System
 Provides smart caching for configuration files and settings to improve startup performance.
 """
 
@@ -24,21 +24,21 @@ class CacheMetadata:
 
 
 class ConfigurationCache:
-    """Smart caching system for ChemML configurations."""
+    """Smart caching system for QeMLflow configurations."""
 
     def __init__(self, cache_dir: Optional[str] = None, ttl: int = 3600) -> None:
         """
         Initialize configuration cache.
 
         Args:
-            cache_dir: Directory to store cache files (default: ~/.chemml/cache)
+            cache_dir: Directory to store cache files (default: ~/.qemlflow/cache)
             ttl: Time-to-live for cache entries in seconds (default: 1 hour)
         """
         self.ttl = ttl
         self._lock = threading.Lock()
 
         if cache_dir is None:
-            cache_dir = Path.home() / ".chemml" / "cache"
+            cache_dir = Path.home() / ".qemlflow" / "cache"
 
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)

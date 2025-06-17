@@ -1,11 +1,11 @@
 [
   {
     "type": "function",
-    "name": "_setup_chemml",
-    "full_name": "._setup_chemml",
+    "name": "_setup_qemlflow",
+    "full_name": "._setup_qemlflow",
     "module": "",
-    "description": "Setup ChemML with sensible defaults.",
-    "url": "functions.html#_setup_chemml"
+    "description": "Setup QeMLflow with sensible defaults.",
+    "url": "functions.html#_setup_qemlflow"
   },
   {
     "type": "function",
@@ -2260,7 +2260,7 @@
     "name": "setup_logging",
     "full_name": "core.utils.setup_logging",
     "module": "core.utils",
-    "description": "Setup logging configuration for ChemML.\n\nArgs:\n    level: Logging level ('DEBUG', 'INFO', 'WARNING', 'ERROR')\n    log_file: Path to log file (optional)\n    format_string: Custom format string (optiona",
+    "description": "Setup logging configuration for QeMLflow.\n\nArgs:\n    level: Logging level ('DEBUG', 'INFO', 'WARNING', 'ERROR')\n    log_file: Path to log file (optional)\n    format_string: Custom format string (optiona",
     "url": "functions.html#setup_logging"
   },
   {
@@ -2332,7 +2332,7 @@
     "name": "create_directory_structure",
     "full_name": "core.utils.create_directory_structure",
     "module": "core.utils",
-    "description": "Create standard ChemML project directory structure.\n\nArgs:\n    base_path: Base directory path",
+    "description": "Create standard QeMLflow project directory structure.\n\nArgs:\n    base_path: Base directory path",
     "url": "functions.html#create_directory_structure"
   },
   {
@@ -2369,11 +2369,11 @@
   },
   {
     "type": "function",
-    "name": "deepchem_to_chemml_format",
-    "full_name": "integrations.deepchem_integration.deepchem_to_chemml_format",
+    "name": "deepchem_to_qemlflow_format",
+    "full_name": "integrations.deepchem_integration.deepchem_to_qemlflow_format",
     "module": "integrations.deepchem_integration",
-    "description": "Convert DeepChem dataset to ChemML format.\n\nArgs:\n    dataset: DeepChem dataset\n\nReturns:\n    Tuple of (features, labels)",
-    "url": "functions.html#deepchem_to_chemml_format"
+    "description": "Convert DeepChem dataset to QeMLflow format.\n\nArgs:\n    dataset: DeepChem dataset\n\nReturns:\n    Tuple of (features, labels)",
+    "url": "functions.html#deepchem_to_qemlflow_format"
   },
   {
     "type": "function",
@@ -2412,7 +2412,7 @@
     "name": "__init__",
     "full_name": "integrations.deepchem_integration.__init__",
     "module": "integrations.deepchem_integration",
-    "description": "Initialize hybrid featurizer.\n\nArgs:\n    chemml_featurizers: List of ChemML featurizer instances\n    deepchem_featurizers: List of DeepChem featurizer instances",
+    "description": "Initialize hybrid featurizer.\n\nArgs:\n    qemlflow_featurizers: List of QeMLflow featurizer instances\n    deepchem_featurizers: List of DeepChem featurizer instances",
     "url": "functions.html#__init__"
   },
   {
@@ -2444,7 +2444,7 @@
     "name": "featurize",
     "full_name": "integrations.deepchem_integration.featurize",
     "module": "integrations.deepchem_integration",
-    "description": "Generate combined features using both ChemML and DeepChem featurizers.\n\nArgs:\n    smiles_list: List of SMILES strings\n\nReturns:\n    Combined feature matrix",
+    "description": "Generate combined features using both QeMLflow and DeepChem featurizers.\n\nArgs:\n    smiles_list: List of SMILES strings\n\nReturns:\n    Combined feature matrix",
     "url": "functions.html#featurize"
   },
   {
@@ -4628,7 +4628,7 @@
     "name": "setup_learning_environment",
     "full_name": "tutorials.core.setup_learning_environment",
     "module": "tutorials.core",
-    "description": "Setup the learning environment for ChemML tutorials.\n\nThis function configures logging, plotting style, random seeds,\nand checks available dependencies for a consistent tutorial experience.\n\nArgs:\n   ",
+    "description": "Setup the learning environment for QeMLflow tutorials.\n\nThis function configures logging, plotting style, random seeds,\nand checks available dependencies for a consistent tutorial experience.\n\nArgs:\n   ",
     "url": "functions.html#setup_learning_environment"
   },
   {
@@ -4636,7 +4636,7 @@
     "name": "load_tutorial_data",
     "full_name": "tutorials.core.load_tutorial_data",
     "module": "tutorials.core",
-    "description": "Load educational datasets for ChemML tutorials.\n\nArgs:\n    dataset_name: Name of the dataset to load\n    cache_dir: Directory to cache downloaded data\n    force_download: Whether to force re-download ",
+    "description": "Load educational datasets for QeMLflow tutorials.\n\nArgs:\n    dataset_name: Name of the dataset to load\n    cache_dir: Directory to cache downloaded data\n    force_download: Whether to force re-download ",
     "url": "functions.html#load_tutorial_data"
   },
   {
@@ -5596,7 +5596,7 @@
     "name": "demonstrate_integration",
     "full_name": "tutorials.utils.demonstrate_integration",
     "module": "tutorials.utils",
-    "description": "Demonstrate integration between tutorial framework and main ChemML modules.\n\nArgs:\n    tutorial_data: Tutorial dataset object\n    show_core_integration: Whether to show core module integration\n    sho",
+    "description": "Demonstrate integration between tutorial framework and main QeMLflow modules.\n\nArgs:\n    tutorial_data: Tutorial dataset object\n    show_core_integration: Whether to show core module integration\n    sho",
     "url": "functions.html#demonstrate_integration"
   },
   {
@@ -5913,19 +5913,19 @@
   },
   {
     "type": "class",
-    "name": "ChemMLPaths",
-    "full_name": "core.common.config.ChemMLPaths",
+    "name": "QeMLflowPaths",
+    "full_name": "core.common.config.QeMLflowPaths",
     "module": "core.common.config",
-    "description": "Standard paths for ChemML data and outputs.",
-    "url": "classes.html#ChemMLPaths"
+    "description": "Standard paths for QeMLflow data and outputs.",
+    "url": "classes.html#QeMLflowPaths"
   },
   {
     "type": "class",
-    "name": "ChemMLConfig",
-    "full_name": "core.common.config.ChemMLConfig",
+    "name": "QeMLflowConfig",
+    "full_name": "core.common.config.QeMLflowConfig",
     "module": "core.common.config",
-    "description": "Central configuration for ChemML with environment variable support.",
-    "url": "classes.html#ChemMLConfig"
+    "description": "Central configuration for QeMLflow with environment variable support.",
+    "url": "classes.html#QeMLflowConfig"
   },
   {
     "type": "class",
@@ -5945,11 +5945,11 @@
   },
   {
     "type": "class",
-    "name": "ChemMLError",
-    "full_name": "core.common.errors.ChemMLError",
+    "name": "QeMLflowError",
+    "full_name": "core.common.errors.QeMLflowError",
     "module": "core.common.errors",
-    "description": "Base exception for ChemML-specific errors.",
-    "url": "classes.html#ChemMLError"
+    "description": "Base exception for QeMLflow-specific errors.",
+    "url": "classes.html#QeMLflowError"
   },
   {
     "type": "class",
@@ -6036,7 +6036,7 @@
     "name": "DataProcessor",
     "full_name": "core.data.DataProcessor",
     "module": "core.data",
-    "description": "General data processing utilities for ChemML workflows.\n\nProvides common data processing operations for molecular and chemical data.",
+    "description": "General data processing utilities for QeMLflow workflows.\n\nProvides common data processing operations for molecular and chemical data.",
     "url": "classes.html#DataProcessor"
   },
   {
@@ -6044,7 +6044,7 @@
     "name": "LegacyModuleWrapper",
     "full_name": "core.data.LegacyModuleWrapper",
     "module": "core.data",
-    "description": "Wrapper for legacy ChemML modules to ensure backward compatibility.\n\nProvides a compatibility layer for older ChemML modules while transitioning\nto the new hybrid architecture.",
+    "description": "Wrapper for legacy QeMLflow modules to ensure backward compatibility.\n\nProvides a compatibility layer for older QeMLflow modules while transitioning\nto the new hybrid architecture.",
     "url": "classes.html#LegacyModuleWrapper"
   },
   {
@@ -6132,7 +6132,7 @@
     "name": "BaseModel",
     "full_name": "core.models.BaseModel",
     "module": "core.models",
-    "description": "Abstract base class for all ChemML models.",
+    "description": "Abstract base class for all QeMLflow models.",
     "url": "classes.html#BaseModel"
   },
   {
@@ -6172,7 +6172,7 @@
     "name": "PerformanceDashboard",
     "full_name": "core.monitoring.dashboard.PerformanceDashboard",
     "module": "core.monitoring.dashboard",
-    "description": "Smart dashboard for ChemML performance monitoring.",
+    "description": "Smart dashboard for QeMLflow performance monitoring.",
     "url": "classes.html#PerformanceDashboard"
   },
   {
@@ -6196,7 +6196,7 @@
     "name": "DataLoader",
     "full_name": "core.utils.io_utils.DataLoader",
     "module": "core.utils.io_utils",
-    "description": "Load data from various formats for ChemML workflows",
+    "description": "Load data from various formats for QeMLflow workflows",
     "url": "classes.html#DataLoader"
   },
   {
@@ -6412,7 +6412,7 @@
     "name": "DeepChemModelWrapper",
     "full_name": "integrations.deepchem_integration.DeepChemModelWrapper",
     "module": "integrations.deepchem_integration",
-    "description": "Wrapper for DeepChem models to provide consistent ChemML interface.",
+    "description": "Wrapper for DeepChem models to provide consistent QeMLflow interface.",
     "url": "classes.html#DeepChemModelWrapper"
   },
   {
@@ -6420,7 +6420,7 @@
     "name": "HybridFeaturizer",
     "full_name": "integrations.deepchem_integration.HybridFeaturizer",
     "module": "integrations.deepchem_integration",
-    "description": "Combine ChemML custom featurizers with DeepChem featurizers.",
+    "description": "Combine QeMLflow custom featurizers with DeepChem featurizers.",
     "url": "classes.html#HybridFeaturizer"
   },
   {
@@ -6444,7 +6444,7 @@
     "name": "DrugDiscoveryPipeline",
     "full_name": "integrations.pipeline.DrugDiscoveryPipeline",
     "module": "integrations.pipeline",
-    "description": "Complete drug discovery pipeline integrating all ChemML components.",
+    "description": "Complete drug discovery pipeline integrating all QeMLflow components.",
     "url": "classes.html#DrugDiscoveryPipeline"
   },
   {
@@ -6988,7 +6988,7 @@
     "name": "EducationalDatasets",
     "full_name": "tutorials.data.EducationalDatasets",
     "module": "tutorials.data",
-    "description": "Manager for educational datasets used in ChemML tutorials.\n\nThis class provides easy access to curated molecular datasets,\nsynthetic data generation, and educational examples.",
+    "description": "Manager for educational datasets used in QeMLflow tutorials.\n\nThis class provides easy access to curated molecular datasets,\nsynthetic data generation, and educational examples.",
     "url": "classes.html#EducationalDatasets"
   },
   {
@@ -7004,7 +7004,7 @@
     "name": "EnvironmentManager",
     "full_name": "tutorials.environment.EnvironmentManager",
     "module": "tutorials.environment",
-    "description": "Comprehensive environment management for ChemML tutorials.\n\nThis class handles dependency checking, environment setup, and provides\nfallback mechanisms to ensure tutorials work across different enviro",
+    "description": "Comprehensive environment management for QeMLflow tutorials.\n\nThis class handles dependency checking, environment setup, and provides\nfallback mechanisms to ensure tutorials work across different enviro",
     "url": "classes.html#EnvironmentManager"
   },
   {

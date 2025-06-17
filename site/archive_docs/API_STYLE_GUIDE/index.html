@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/archive_docs/API_STYLE_GUIDE/">
+        <link rel="canonical" href="https://qemlflow.io/archive_docs/API_STYLE_GUIDE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML API Style Guide - ChemML Documentation</title>
+        <title>QeMLflow API Style Guide - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-api-style-guide" class="md-skip">
+        <a href="#qemlflow-api-style-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML API Style Guide
+              QeMLflow API Style Guide
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -585,7 +585,7 @@
 
 
 
-<h1 id="chemml-api-style-guide">ChemML API Style Guide<a class="headerlink" href="#chemml-api-style-guide" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-api-style-guide">QeMLflow API Style Guide<a class="headerlink" href="#qemlflow-api-style-guide" title="Permanent link">&para;</a></h1>
 <h2 id="parameter-naming-standards">Parameter Naming Standards<a class="headerlink" href="#parameter-naming-standards" title="Permanent link">&para;</a></h2>
 <h3 id="data-parameters">Data Parameters<a class="headerlink" href="#data-parameters" title="Permanent link">&para;</a></h3>
 <ul>
@@ -639,15 +639,15 @@
 - Docstrings with type information</p>
 <h2 id="error-handling-standards">Error Handling Standards<a class="headerlink" href="#error-handling-standards" title="Permanent link">&para;</a></h2>
 <h3 id="custom-exceptions">Custom Exceptions<a class="headerlink" href="#custom-exceptions" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ChemMLError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base exception for ChemML operations&quot;&quot;&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">QeMLflowError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base exception for QeMLflow operations&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ChemMLDataError</span><span class="p">(</span><span class="n">ChemMLError</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QeMLflowDataError</span><span class="p">(</span><span class="n">QeMLflowError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when data validation fails&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">ChemMLModelError</span><span class="p">(</span><span class="n">ChemMLError</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QeMLflowModelError</span><span class="p">(</span><span class="n">QeMLflowError</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when model operations fail&quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div>
@@ -667,7 +667,7 @@
 - <code>get_params()</code> and <code>set_params()</code> methods</p>
 <h3 id="context-managers">Context Managers<a class="headerlink" href="#context-managers" title="Permanent link">&para;</a></h3>
 <p>Use context managers for resource management:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">with</span> <span class="n">ChemMLExperiment</span><span class="p">()</span> <span class="k">as</span> <span class="n">exp</span><span class="p">:</span>
+<div class="codehilite"><pre><span></span><code><span class="k">with</span> <span class="n">QeMLflowExperiment</span><span class="p">()</span> <span class="k">as</span> <span class="n">exp</span><span class="p">:</span>
     <span class="n">exp</span><span class="o">.</span><span class="n">run_analysis</span><span class="p">()</span>
 </code></pre></div>
 

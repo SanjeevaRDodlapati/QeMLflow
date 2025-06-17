@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 class AdvancedTypeAnnotator:
     """Advanced type annotation system with smart inference"""
 
-    def __init__(self, src_path: str = "src/chemml"):
+    def __init__(self, src_path: str = "src/qemlflow"):
         self.src_path = Path(src_path)
         self.type_patterns = {
             # Common chemistry patterns

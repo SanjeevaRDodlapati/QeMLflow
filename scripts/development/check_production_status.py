@@ -1,5 +1,5 @@
 """
-ChemML CI/CD Pipeline Status Monitor
+QeMLflow CI/CD Pipeline Status Monitor
 ====================================
 
 Monitors the status of GitHub Actions workflows and provides real-time feedback.
@@ -55,7 +55,7 @@ def check_package_structure():
     print("=" * 50)
 
     critical_files = [
-        "src/chemml/__init__.py",
+        "src/qemlflow/__init__.py",
         "requirements.txt",
         "pyproject.toml",
         ".github/workflows/ci-cd.yml",
@@ -97,17 +97,17 @@ def test_package_import():
         sys.path.insert(0, "src")
 
         # Test basic import
-        import chemml
+        import qemlflow
 
-        print("✅ ChemML imported successfully")
-        print(f"   Version: {chemml.__version__}")
+        print("✅ QeMLflow imported successfully")
+        print(f"   Version: {qemlflow.__version__}")
 
         # Test core modules
         modules_to_test = [
-            "chemml.core",
-            "chemml.preprocessing",
-            "chemml.models",
-            "chemml.config",
+            "qemlflow.core",
+            "qemlflow.preprocessing",
+            "qemlflow.models",
+            "qemlflow.config",
         ]
 
         for module in modules_to_test:
@@ -197,7 +197,7 @@ def test_build_process():
 
 def generate_status_report():
     """Generate comprehensive status report."""
-    print("\n📊 ChemML Production Readiness Status Report")
+    print("\n📊 QeMLflow Production Readiness Status Report")
     print("=" * 60)
     print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -231,7 +231,7 @@ def generate_status_report():
     print(f"\nOverall: {passed}/{total} checks passed")
 
     if passed == total:
-        print("\n🎉 ChemML is PRODUCTION READY! 🚀")
+        print("\n🎉 QeMLflow is PRODUCTION READY! 🚀")
         print("\nNext steps:")
         print("- Monitor GitHub Actions workflows")
         print("- Check documentation deployment")
@@ -245,7 +245,7 @@ def generate_status_report():
 
 
 if __name__ == "__main__":
-    print("🚀 ChemML Production Readiness Checker")
+    print("🚀 QeMLflow Production Readiness Checker")
     print("🔍 Validating project status and CI/CD readiness...\n")
 
     try:
@@ -268,9 +268,9 @@ if __name__ == "__main__":
         print("\n🌐 Next Steps")
         print("=" * 30)
         print(
-            "1. Check GitHub Actions: https://github.com/SanjeevaRDodlapati/ChemML/actions"
+            "1. Check GitHub Actions: https://github.com/SanjeevaRDodlapati/QeMLflow/actions"
         )
-        print("2. Monitor documentation: https://sanjeevardodlapati.github.io/ChemML/")
+        print("2. Monitor documentation: https://sanjeevardodlapati.github.io/QeMLflow/")
         print("3. Review release workflow results")
         print("4. Consider creating official v0.2.0 release")
 

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/integrations/model_specific/boltz/">
+        <link rel="canonical" href="https://qemlflow.io/integrations/model_specific/boltz/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Boltz Integration Guide - ChemML Documentation</title>
+        <title>Boltz Integration Guide - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -667,13 +667,13 @@
 
 
 <h1 id="boltz-integration-guide">Boltz Integration Guide<a class="headerlink" href="#boltz-integration-guide" title="Permanent link">&para;</a></h1>
-<p><strong>Complete guide for integrating the Boltz biomolecular interaction model into ChemML</strong></p>
+<p><strong>Complete guide for integrating the Boltz biomolecular interaction model into QeMLflow</strong></p>
 <hr />
 <h2 id="overview">🔬 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Boltz is a state-of-the-art deep learning model for predicting biomolecular structures and interactions. This guide covers its integration into ChemML for protein structure prediction, protein-ligand docking, and binding affinity prediction.</p>
+<p>Boltz is a state-of-the-art deep learning model for predicting biomolecular structures and interactions. This guide covers its integration into QeMLflow for protein structure prediction, protein-ligand docking, and binding affinity prediction.</p>
 <h2 id="quick-start">🚀 Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
 
 <span class="c1"># Get integration manager</span>
 <span class="n">manager</span> <span class="o">=</span> <span class="n">get_manager</span><span class="p">()</span>
@@ -759,7 +759,7 @@ pip<span class="w"> </span>install<span class="w"> </span>boltz-pytorch<span cla
 
 <h2 id="performance-monitoring">📊 Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h2>
 <h3 id="tracking-predictions">Tracking Predictions<a class="headerlink" href="#tracking-predictions" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">PerformanceMonitor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">PerformanceMonitor</span>
 
 <span class="n">monitor</span> <span class="o">=</span> <span class="n">PerformanceMonitor</span><span class="p">()</span>
 
@@ -821,7 +821,7 @@ pip<span class="w"> </span>install<span class="w"> </span>boltz-pytorch<span cla
 
 <h3 id="integration-with-other-tools">Integration with Other Tools<a class="headerlink" href="#integration-with-other-tools" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Combine with DeepChem</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.adapters.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemIntegration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.adapters.molecular</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemIntegration</span>
 
 <span class="n">deepchem</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">get_adapter</span><span class="p">(</span><span class="s2">&quot;deepchem&quot;</span><span class="p">)</span>
 
@@ -831,7 +831,7 @@ pip<span class="w"> </span>install<span class="w"> </span>boltz-pytorch<span cla
 </code></pre></div>
 
 <h3 id="experiment-tracking">Experiment Tracking<a class="headerlink" href="#experiment-tracking" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
 
 <span class="n">tracker</span> <span class="o">=</span> <span class="n">ExperimentTracker</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;wandb&quot;</span><span class="p">)</span>
 
@@ -853,8 +853,8 @@ pip<span class="w"> </span>install<span class="w"> </span>boltz-pytorch<span cla
 <div class="codehilite"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Complete protein analysis workflow using Boltz</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">protein_analysis_workflow</span><span class="p">(</span><span class="n">protein_sequence</span><span class="p">,</span> <span class="n">ligand_smiles</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Complete protein-ligand analysis using Boltz.&quot;&quot;&quot;</span>

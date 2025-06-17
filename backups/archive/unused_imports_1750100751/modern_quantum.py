@@ -1,5 +1,5 @@
 """
-Modern Quantum Computing Suite for ChemML
+Modern Quantum Computing Suite for QeMLflow
 =========================================
 Native Qiskit 2.0+ implementation for quantum machine learning and quantum chemistry.
 This module provides modern, future-proof quantum algorithms without legacy dependencies.
@@ -11,7 +11,7 @@ Features:
 - Quantum chemistry utilities
 - Hardware-efficient ansätze
 
-Author: ChemML Development Team
+Author: QeMLflow Development Team
 Version: 1.0.0
 Compatible: Qiskit 2.0+
 """

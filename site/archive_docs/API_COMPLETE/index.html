@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/archive_docs/API_COMPLETE/">
+        <link rel="canonical" href="https://qemlflow.io/archive_docs/API_COMPLETE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>📚 ChemML Complete API Reference - ChemML Documentation</title>
+        <title>📚 QeMLflow Complete API Reference - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-complete-api-reference" class="md-skip">
+        <a href="#qemlflow-complete-api-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              📚 ChemML Complete API Reference
+              📚 QeMLflow Complete API Reference
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -463,13 +463,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#chemmlcore" class="md-nav__link">
+  <a href="#qemlflowcore" class="md-nav__link">
     <span class="md-ellipsis">
-      chemml.core
+      qemlflow.core
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="chemml.core">
+    <nav class="md-nav" aria-label="qemlflow.core">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -681,12 +681,12 @@
 
 
 
-<h1 id="chemml-complete-api-reference">📚 ChemML Complete API Reference<a class="headerlink" href="#chemml-complete-api-reference" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-complete-api-reference">📚 QeMLflow Complete API Reference<a class="headerlink" href="#qemlflow-complete-api-reference" title="Permanent link">&para;</a></h1>
 <h2 id="quick-start"><strong>🚀 Quick Start</strong><a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Lightning-fast imports (&lt; 0.1s)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChemML version: </span><span class="si">{</span><span class="n">chemml</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;QeMLflow version: </span><span class="si">{</span><span class="n">qemlflow</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Core functionality available immediately</span>
 <span class="c1"># Heavy modules loaded only when needed (lazy loading)</span>
@@ -729,23 +729,23 @@
 <h2 id="architecture-overview"><strong>🏗️ Architecture Overview</strong><a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
 <h3 id="core-modules"><strong>Core Modules</strong><a class="headerlink" href="#core-modules" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>chemml.core</code> - Core functionality and exceptions</li>
-<li><code>chemml.utils</code> - Utilities and helper functions</li>
-<li><code>chemml.datasets</code> - Data handling and preprocessing</li>
-<li><code>chemml.features</code> - Feature engineering</li>
-<li><code>chemml.models</code> - Machine learning models</li>
+<li><code>qemlflow.core</code> - Core functionality and exceptions</li>
+<li><code>qemlflow.utils</code> - Utilities and helper functions</li>
+<li><code>qemlflow.datasets</code> - Data handling and preprocessing</li>
+<li><code>qemlflow.features</code> - Feature engineering</li>
+<li><code>qemlflow.models</code> - Machine learning models</li>
 </ul>
 <h3 id="smart-import-system"><strong>Smart Import System</strong><a class="headerlink" href="#smart-import-system" title="Permanent link">&para;</a></h3>
-<p>ChemML uses intelligent lazy loading:
+<p>QeMLflow uses intelligent lazy loading:
 - Common functions available immediately
 - Heavy dependencies loaded only when needed
 - Zero performance penalty for unused features</p>
 <hr />
 <h2 id="core-api"><strong>🔧 Core API</strong><a class="headerlink" href="#core-api" title="Permanent link">&para;</a></h2>
-<h3 id="chemmlcore"><strong>chemml.core</strong><a class="headerlink" href="#chemmlcore" title="Permanent link">&para;</a></h3>
+<h3 id="qemlflowcore"><strong>qemlflow.core</strong><a class="headerlink" href="#qemlflowcore" title="Permanent link">&para;</a></h3>
 <h4 id="exception-handling"><strong>Exception Handling</strong><a class="headerlink" href="#exception-handling" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">ChemMLError</span><span class="p">,</span>           <span class="c1"># Base exception</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QeMLflowError</span><span class="p">,</span>           <span class="c1"># Base exception</span>
     <span class="n">DataError</span><span class="p">,</span>             <span class="c1"># Data-related errors</span>
     <span class="n">ModelError</span><span class="p">,</span>            <span class="c1"># Model-related errors</span>
     <span class="n">CompatibilityError</span>     <span class="c1"># Compatibility issues</span>
@@ -753,7 +753,7 @@
 </code></pre></div>
 
 <h4 id="configuration"><strong>Configuration</strong><a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_config</span><span class="p">,</span> <span class="n">set_config</span>
 
 <span class="c1"># Get current configuration</span>
 <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
@@ -767,13 +767,13 @@
 <h3 id="loading-data"><strong>Loading Data</strong><a class="headerlink" href="#loading-data" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Data loading with robust error handling</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;path/to/data.csv&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">chemml</span><span class="o">.</span><span class="n">DataError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;path/to/data.csv&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">DataError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data loading failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="edge-case-handling"><strong>Edge Case Handling</strong><a class="headerlink" href="#edge-case-handling" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.utils.edge_case_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">edge_case_handler</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.utils.edge_case_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">edge_case_handler</span>
 
 <span class="c1"># Validate data before processing</span>
 <span class="n">valid</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="n">edge_case_handler</span><span class="o">.</span><span class="n">handle_empty_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -784,7 +784,7 @@
 <hr />
 <h2 id="workflow-validation"><strong>🧪 Workflow Validation</strong><a class="headerlink" href="#workflow-validation" title="Permanent link">&para;</a></h2>
 <h3 id="real-world-workflows"><strong>Real-World Workflows</strong><a class="headerlink" href="#real-world-workflows" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.utils.workflow_validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">workflow_validator</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.utils.workflow_validator</span><span class="w"> </span><span class="kn">import</span> <span class="n">workflow_validator</span>
 
 <span class="c1"># Validate complete workflow</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">workflow_validator</span><span class="o">.</span><span class="n">run_comprehensive_workflow_test</span><span class="p">()</span>
@@ -795,29 +795,29 @@
 <h2 id="best-practices"><strong>🎯 Best Practices</strong><a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="performance-optimization"><strong>Performance Optimization</strong><a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Import only what you need</strong> - ChemML's lazy loading handles the rest</li>
+<li><strong>Import only what you need</strong> - QeMLflow's lazy loading handles the rest</li>
 <li><strong>Use edge case handlers</strong> - Robust error handling built-in</li>
 <li><strong>Validate workflows</strong> - Built-in validation tools available</li>
 <li><strong>Monitor performance</strong> - Built-in profiling capabilities</li>
 </ol>
 <h3 id="error-handling"><strong>Error Handling</strong><a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="c1"># Your ChemML code here</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">some_function</span><span class="p">()</span>
-<span class="k">except</span> <span class="n">chemml</span><span class="o">.</span><span class="n">ChemMLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="c1"># ChemML-specific error handling</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChemML error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Your QeMLflow code here</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">some_function</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">QeMLflowError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># QeMLflow-specific error handling</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;QeMLflow error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="c1"># General error handling</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="memory-management"><strong>Memory Management</strong><a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="c1"># ChemML automatically handles memory efficiently</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># QeMLflow automatically handles memory efficiently</span>
 <span class="c1"># For large datasets, chunking is handled automatically</span>
-<span class="n">large_data</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">load_large_dataset</span><span class="p">(</span><span class="s1">&#39;huge_file.csv&#39;</span><span class="p">)</span>
+<span class="n">large_data</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">load_large_dataset</span><span class="p">(</span><span class="s1">&#39;huge_file.csv&#39;</span><span class="p">)</span>
 <span class="c1"># Memory management handled internally</span>
 </code></pre></div>
 
@@ -841,12 +841,12 @@
 <h2 id="support-migration"><strong>📞 Support &amp; Migration</strong><a class="headerlink" href="#support-migration" title="Permanent link">&para;</a></h2>
 <h3 id="getting-help"><strong>Getting Help</strong><a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Check built-in documentation: <code>help(chemml.function_name)</code></li>
+<li>Check built-in documentation: <code>help(qemlflow.function_name)</code></li>
 <li>Use workflow validators for testing</li>
 <li>Leverage edge case handlers for robustness</li>
 </ul>
 <h3 id="migration-from-older-versions"><strong>Migration from Older Versions</strong><a class="headerlink" href="#migration-from-older-versions" title="Permanent link">&para;</a></h3>
-<p>ChemML maintains backward compatibility while offering new features:
+<p>QeMLflow maintains backward compatibility while offering new features:
 - Old APIs continue to work
 - New optimized paths available
 - Gradual migration supported</p>

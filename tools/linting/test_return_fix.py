@@ -210,7 +210,7 @@ return "test"
 
 
 class TestRealWorldScenario(unittest.TestCase):
-    """Test with the actual problematic pattern found in ChemML."""
+    """Test with the actual problematic pattern found in QeMLflow."""
     
     def setUp(self):
         """Set up test environment."""
@@ -230,8 +230,8 @@ class TestRealWorldScenario(unittest.TestCase):
             f.write(content)
         return file_path
 
-    def test_chemml_adapter_pattern(self):
-        """Test the exact pattern found in ChemML adapters/__init__.py."""
+    def test_qemlflow_adapter_pattern(self):
+        """Test the exact pattern found in QeMLflow adapters/__init__.py."""
         content = '''def list_adapters_by_category(category: str):
     """List available adapters for a specific category."""
     return ADAPTER_CATEGORIES.get(category, [])

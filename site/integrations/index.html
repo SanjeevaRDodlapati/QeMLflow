@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/integrations/">
+        <link rel="canonical" href="https://qemlflow.io/integrations/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Integration Documentation - ChemML Documentation</title>
+        <title>QeMLflow Integration Documentation - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-integration-documentation" class="md-skip">
+        <a href="#qemlflow-integration-documentation" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Integration Documentation
+              QeMLflow Integration Documentation
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -552,11 +552,11 @@
 
 
 
-<h1 id="chemml-integration-documentation">ChemML Integration Documentation<a class="headerlink" href="#chemml-integration-documentation" title="Permanent link">&para;</a></h1>
-<p><strong>Comprehensive guide for integrating external models into ChemML</strong></p>
+<h1 id="qemlflow-integration-documentation">QeMLflow Integration Documentation<a class="headerlink" href="#qemlflow-integration-documentation" title="Permanent link">&para;</a></h1>
+<p><strong>Comprehensive guide for integrating external models into QeMLflow</strong></p>
 <hr />
 <h2 id="overview">📋 Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ChemML provides a flexible framework for integrating external machine learning models, quantum computing tools, and scientific libraries. This guide covers the complete integration process from basic adapters to advanced workflows.</p>
+<p>QeMLflow provides a flexible framework for integrating external machine learning models, quantum computing tools, and scientific libraries. This guide covers the complete integration process from basic adapters to advanced workflows.</p>
 <h2 id="quick-integration">🚀 Quick Integration<a class="headerlink" href="#quick-integration" title="Permanent link">&para;</a></h2>
 <h3 id="basic-integration-steps">Basic Integration Steps<a class="headerlink" href="#basic-integration-steps" title="Permanent link">&para;</a></h3>
 <ol>
@@ -571,7 +571,7 @@
 <p><strong>Create Adapter</strong></p>
 </li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.adapters.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchModelAdapter</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.adapters.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">TorchModelAdapter</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyModelAdapter</span><span class="p">(</span><span class="n">TorchModelAdapter</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -590,7 +590,7 @@
 <ol>
 <li><strong>Register Model</strong></li>
 </ol>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_manager</span>
 
 <span class="n">manager</span> <span class="o">=</span> <span class="n">get_manager</span><span class="p">()</span>
 <span class="n">manager</span><span class="o">.</span><span class="n">register_adapter</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">MyModelAdapter</span><span class="p">)</span>
@@ -617,7 +617,7 @@
 </ul>
 <h2 id="advanced-features">🛠 Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h2>
 <h3 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">PerformanceMonitor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">PerformanceMonitor</span>
 
 <span class="n">monitor</span> <span class="o">=</span> <span class="n">PerformanceMonitor</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">monitor</span><span class="o">.</span><span class="n">track_performance</span><span class="p">():</span>
@@ -627,14 +627,14 @@
 </code></pre></div>
 
 <h3 id="experiment-tracking">Experiment Tracking<a class="headerlink" href="#experiment-tracking" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
 
 <span class="n">tracker</span> <span class="o">=</span> <span class="n">ExperimentTracker</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s2">&quot;wandb&quot;</span><span class="p">)</span>
 <span class="n">tracker</span><span class="o">.</span><span class="n">log_experiment</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="automated-testing">Automated Testing<a class="headerlink" href="#automated-testing" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutomatedTesting</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutomatedTesting</span>
 
 <span class="n">tester</span> <span class="o">=</span> <span class="n">AutomatedTesting</span><span class="p">()</span>
 <span class="n">tester</span><span class="o">.</span><span class="n">test_adapter</span><span class="p">(</span><span class="s2">&quot;my_model&quot;</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>

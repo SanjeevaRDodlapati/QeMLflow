@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# ChemML Development Environment Setup
+# QeMLflow Development Environment Setup
 # ===================================
-# One-command setup for ChemML development and enhancement features
+# One-command setup for QeMLflow development and enhancement features
 
 set -e  # Exit on any error
 
-echo "🧬 Setting up ChemML Development Environment..."
+echo "🧬 Setting up QeMLflow Development Environment..."
 echo "=============================================="
 
 # Color codes for output
@@ -34,17 +34,17 @@ print_error() {
 }
 
 # Check if we're in the right directory
-if [ ! -f "pyproject.toml" ] || [ ! -d "src/chemml" ]; then
-    print_error "This script must be run from the ChemML root directory"
+if [ ! -f "pyproject.toml" ] || [ ! -d "src/qemlflow" ]; then
+    print_error "This script must be run from the QeMLflow root directory"
     exit 1
 fi
 
-print_status "Starting ChemML setup..."
+print_status "Starting QeMLflow setup..."
 
-# 1. Install ChemML in development mode
-print_status "Installing ChemML in development mode..."
+# 1. Install QeMLflow in development mode
+print_status "Installing QeMLflow in development mode..."
 pip install -e . || {
-    print_error "Failed to install ChemML"
+    print_error "Failed to install QeMLflow"
     exit 1
 }
 
@@ -69,7 +69,7 @@ python tools/development/auto_docs.py || {
 print_status "Creating development configuration..."
 cat > development_config.py << 'EOF'
 """
-ChemML Development Configuration
+QeMLflow Development Configuration
 ===============================
 
 Quick setup configuration for development features.
@@ -90,9 +90,9 @@ API_DOCS_DIR = PROJECT_ROOT / "docs" / "api_auto"
 
 # Quick setup function
 def setup_development_environment():
-    """Setup ChemML development environment with enhanced features."""
+    """Setup QeMLflow development environment with enhanced features."""
 
-    print("🚀 Initializing ChemML development environment...")
+    print("🚀 Initializing QeMLflow development environment...")
 
     # Create necessary directories
     PERFORMANCE_REPORTS_DIR.mkdir(exist_ok=True)
@@ -100,21 +100,21 @@ def setup_development_environment():
 
     # Import and test core functionality
     try:
-        import chemml
-        print("✅ ChemML core imported successfully")
+        import qemlflow
+        print("✅ QeMLflow core imported successfully")
 
         # Test performance monitoring
-        from chemml.core.monitoring import show_performance_dashboard
+        from qemlflow.core.monitoring import show_performance_dashboard
         print("✅ Performance monitoring available")
 
         # Test model recommendations
-        from chemml.core.recommendations import recommend_model
+        from qemlflow.core.recommendations import recommend_model
         print("✅ Model recommendation system available")
 
         print("\n🎉 Development environment ready!")
         print("\nQuick commands:")
-        print("  📊 Performance dashboard: python -c 'from chemml.core.monitoring import show_performance_dashboard; show_performance_dashboard()'")
-        print("  🤖 Model recommendation: python -c 'from chemml.core.recommendations import recommend_model; print(recommend_model([\"CCO\", \"CCC\"], \"logP\"))'")
+        print("  📊 Performance dashboard: python -c 'from qemlflow.core.monitoring import show_performance_dashboard; show_performance_dashboard()'")
+        print("  🤖 Model recommendation: python -c 'from qemlflow.core.recommendations import recommend_model; print(recommend_model([\"CCO\", \"CCC\"], \"logP\"))'")
         print("  📚 API docs: open docs/api_auto/index.html")
 
         return True
@@ -128,26 +128,26 @@ if __name__ == "__main__":
 EOF
 
 # 6. Test the installation
-print_status "Testing ChemML installation..."
+print_status "Testing QeMLflow installation..."
 python -c "
-import chemml
-print('✅ ChemML imported successfully')
-print(f'📦 Version: {chemml.__version__}')
+import qemlflow
+print('✅ QeMLflow imported successfully')
+print(f'📦 Version: {qemlflow.__version__}')
 
 # Test new features
 try:
-    from chemml.core.monitoring import create_performance_dashboard
+    from qemlflow.core.monitoring import create_performance_dashboard
     print('✅ Performance monitoring available')
 except ImportError:
     print('⚠️ Performance monitoring not available')
 
 try:
-    from chemml.core.recommendations import ModelRecommendationEngine
+    from qemlflow.core.recommendations import ModelRecommendationEngine
     print('✅ Model recommendation system available')
 except ImportError:
     print('⚠️ Model recommendation system not available')
 " || {
-    print_error "ChemML installation test failed"
+    print_error "QeMLflow installation test failed"
     exit 1
 }
 
@@ -156,7 +156,7 @@ print_status "Setting up development commands..."
 cat > quick_dev.py << 'EOF'
 #!/usr/bin/env python3
 """
-Quick Development Commands for ChemML
+Quick Development Commands for QeMLflow
 ====================================
 
 Easy access to enhanced development features.
@@ -167,12 +167,12 @@ import subprocess
 
 def show_dashboard():
     """Show performance dashboard."""
-    from chemml.core.monitoring import show_performance_dashboard
+    from qemlflow.core.monitoring import show_performance_dashboard
     show_performance_dashboard()
 
 def recommend_model_demo():
     """Demo model recommendation system."""
-    from chemml.core.recommendations import recommend_model
+    from qemlflow.core.recommendations import recommend_model
 
     # Demo data
     demo_smiles = ["CCO", "CCC", "c1ccccc1", "CCN", "CCCN"]
@@ -201,12 +201,12 @@ def run_tests():
     subprocess.run([sys.executable, "-m", "pytest", "tests/", "-v"])
 
 def setup_notebook():
-    """Setup Jupyter notebook with ChemML."""
+    """Setup Jupyter notebook with QeMLflow."""
     subprocess.run([sys.executable, "-m", "jupyter", "lab", "--ip=0.0.0.0"])
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("🧬 ChemML Quick Development Commands")
+        print("🧬 QeMLflow Quick Development Commands")
         print("=" * 40)
         print("python quick_dev.py dashboard     - Show performance dashboard")
         print("python quick_dev.py recommend     - Demo model recommendation")
@@ -244,7 +244,7 @@ python development_config.py || {
 # 10. Create development README
 print_status "Creating development README..."
 cat > DEVELOPMENT.md << 'EOF'
-# ChemML Development Guide
+# QeMLflow Development Guide
 
 ## Quick Start
 
@@ -272,14 +272,14 @@ python quick_dev.py notebook
 ### 📊 Performance Monitoring
 
 ```python
-from chemml.core.monitoring import show_performance_dashboard
+from qemlflow.core.monitoring import show_performance_dashboard
 show_performance_dashboard()
 ```
 
 ### 🤖 Model Recommendations
 
 ```python
-from chemml.core.recommendations import recommend_model
+from qemlflow.core.recommendations import recommend_model
 
 # Get model recommendation
 recommendation = recommend_model(
@@ -319,12 +319,12 @@ pytest tests/ -v
 Happy coding! 🧬✨
 EOF
 
-print_success "ChemML development environment setup complete!"
+print_success "QeMLflow development environment setup complete!"
 echo ""
-echo "🎉 Success! Your enhanced ChemML development environment is ready."
+echo "🎉 Success! Your enhanced QeMLflow development environment is ready."
 echo ""
 echo "📋 What's been set up:"
-echo "   ✅ ChemML installed in development mode"
+echo "   ✅ QeMLflow installed in development mode"
 echo "   ✅ Performance monitoring system"
 echo "   ✅ AI-powered model recommendation engine"
 echo "   ✅ Auto-generated API documentation"

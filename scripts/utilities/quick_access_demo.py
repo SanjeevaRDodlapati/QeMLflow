@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-ChemML Bootcamp Quick Access Demo
+QeMLflow Bootcamp Quick Access Demo
 =====================================
 
-This script demonstrates how to access and run the organized ChemML bootcamp scripts.
+This script demonstrates how to access and run the organized QeMLflow bootcamp scripts.
 It provides a simple interface to navigate and execute the Day 1-7 production-ready scripts.
 """
 
@@ -21,10 +21,10 @@ def setup_wandb_tracking(experiment_name, config=None):
     try:
         wandb.login(key="b4f102d87161194b68baa7395d5862aa3f93b2b7", relogin=True)
         run = wandb.init(
-            project="chemml-experiments",
+            project="qemlflow-experiments",
             name=experiment_name,
             config=config or {},
-            tags=["chemml"],
+            tags=["qemlflow"],
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run
@@ -145,7 +145,7 @@ def run_script(script_path):
     bootcamp_root = Path(__file__).parent / "notebooks" / "quickstart_bootcamp"
     script_dir = script_path.parent
 
-    # For day scripts, we need to run from bootcamp root so chemml_common is accessible
+    # For day scripts, we need to run from bootcamp root so qemlflow_common is accessible
     if "day_" in script_path.name and script_dir.name.startswith("day_"):
         working_dir = bootcamp_root
         # Create relative path from bootcamp root to script
@@ -204,10 +204,10 @@ def get_user_input(prompt):
 
 def main():
     """Main function"""
-    print_header("ChemML Bootcamp - Quick Access Demo")
+    print_header("QeMLflow Bootcamp - Quick Access Demo")
 
     print_info(
-        "This tool helps you navigate and run the organized ChemML bootcamp scripts."
+        "This tool helps you navigate and run the organized QeMLflow bootcamp scripts."
     )
     print_info(
         "All scripts are production-ready and can run without interactive input."
@@ -218,7 +218,7 @@ def main():
     if not scripts_dir.exists():
         print_error("Organized scripts directory not found!")
         print_error(f"Expected location: {scripts_dir}")
-        print_info("Please ensure you're running this from the ChemML root directory.")
+        print_info("Please ensure you're running this from the QeMLflow root directory.")
         return
 
     # List available days

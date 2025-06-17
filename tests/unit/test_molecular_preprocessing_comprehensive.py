@@ -15,7 +15,7 @@ import pandas as pd
 import pytest
 
 # Import the module under test
-sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
+sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
 from data_processing.molecular_preprocessing import (
     RDKIT_AVAILABLE,
     Chem,

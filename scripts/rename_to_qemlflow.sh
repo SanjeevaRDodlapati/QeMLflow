@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # QeMLflow Renaming Script - PRODUCTION VERSION
-# This script safely renames ChemML to QeMLflow throughout the entire codebase
+# This script safely renames QeMLflow to QeMLflow throughout the entire codebase
 
 set -e  # Exit on any error
 
@@ -38,7 +38,7 @@ create_backup() {
     # Copy the entire project structure except heavy directories
     rsync -av --exclude='.git/' --exclude='__pycache__/' --exclude='*.pyc' \
           --exclude='node_modules/' --exclude='.pytest_cache/' \
-          --exclude='chemml_env/' --exclude='site/' \
+          --exclude='qemlflow_env/' --exclude='site/' \
           "$PROJECT_ROOT/" "$BACKUP_DIR/"
     
     log_message "Backup created successfully at: $BACKUP_DIR"
@@ -49,15 +49,15 @@ create_backup() {
 verify_current_state() {
     echo -e "${YELLOW}Verifying current state...${NC}"
     
-    local chemml_count=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
+    local qemlflow_count=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
                         -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" \
-                        -exec grep -l "chemml\|ChemML" {} \; | wc -l)
+                        -exec grep -l "qemlflow\|QeMLflow" {} \; | wc -l)
     
-    log_message "Found $chemml_count files containing ChemML references"
-    echo -e "${BLUE}Found $chemml_count files containing ChemML references${NC}"
+    log_message "Found $qemlflow_count files containing QeMLflow references"
+    echo -e "${BLUE}Found $qemlflow_count files containing QeMLflow references${NC}"
     
-    if [ "$chemml_count" -eq 0 ]; then
-        echo -e "${RED}Warning: No ChemML references found. Already renamed?${NC}"
+    if [ "$qemlflow_count" -eq 0 ]; then
+        echo -e "${RED}Warning: No QeMLflow references found. Already renamed?${NC}"
         read -p "Continue anyway? (y/N): " -n 1 -r
         echo
         if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -72,7 +72,7 @@ perform_text_replacements() {
     
     # Find all relevant files (excluding git, backups, and cache directories)
     local files_to_process=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" -o -name "*.cfg" -o -name "*.ini" \) \
-                           -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" -not -path "./__pycache__/*" -not -path "./chemml_env/*" -not -path "./site/*")
+                           -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" -not -path "./__pycache__/*" -not -path "./qemlflow_env/*" -not -path "./site/*")
     
     local file_count=$(echo "$files_to_process" | wc -l)
     log_message "Processing $file_count files for text replacement"
@@ -83,9 +83,9 @@ perform_text_replacements() {
             cp "$file" "${file}.pre_qemlflow_bak"
             
             # Perform replacements
-            sed -i.tmp 's/chemml/qemlflow/g' "$file"
-            sed -i.tmp 's/ChemML/QeMLflow/g' "$file"
-            sed -i.tmp 's/CHEMML/QEMLFLOW/g' "$file"
+            sed -i.tmp 's/qemlflow/qemlflow/g' "$file"
+            sed -i.tmp 's/QeMLflow/QeMLflow/g' "$file"
+            sed -i.tmp 's/QEMLFLOW/QEMLFLOW/g' "$file"
             
             # Remove temporary files
             rm -f "${file}.tmp"
@@ -102,20 +102,20 @@ perform_text_replacements() {
 rename_directories() {
     echo -e "${YELLOW}Renaming directories...${NC}"
     
-    # Find and rename chemml directories
-    if [ -d "src/chemml" ]; then
-        log_message "Renaming src/chemml to src/qemlflow"
-        mv "src/chemml" "src/qemlflow"
-        echo -e "${GREEN}✓ Renamed src/chemml to src/qemlflow${NC}"
+    # Find and rename qemlflow directories
+    if [ -d "src/qemlflow" ]; then
+        log_message "Renaming src/qemlflow to src/qemlflow"
+        mv "src/qemlflow" "src/qemlflow"
+        echo -e "${GREEN}✓ Renamed src/qemlflow to src/qemlflow${NC}"
     fi
     
-    # Check for any other chemml directories
-    local other_dirs=$(find . -type d -name "*chemml*" -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*")
+    # Check for any other qemlflow directories
+    local other_dirs=$(find . -type d -name "*qemlflow*" -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*")
     if [ -n "$other_dirs" ]; then
-        echo -e "${YELLOW}Found other directories with 'chemml' in name:${NC}"
+        echo -e "${YELLOW}Found other directories with 'qemlflow' in name:${NC}"
         echo "$other_dirs"
         echo -e "${YELLOW}Please rename these manually if needed.${NC}"
-        log_message "Additional chemml directories found: $other_dirs"
+        log_message "Additional qemlflow directories found: $other_dirs"
     fi
     
     log_message "Directory renaming completed"
@@ -146,25 +146,25 @@ update_package_config() {
 verify_renaming_results() {
     echo -e "${YELLOW}Verifying renaming results...${NC}"
     
-    # Check for remaining ChemML references
-    local remaining_chemml=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
+    # Check for remaining QeMLflow references
+    local remaining_qemlflow=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
                            -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" -not -name "*.bak" \
-                           -exec grep -l "chemml\|ChemML" {} \; 2>/dev/null | wc -l)
+                           -exec grep -l "qemlflow\|QeMLflow" {} \; 2>/dev/null | wc -l)
     
     local new_qemlflow=$(find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
                         -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" -not -name "*.bak" \
                         -exec grep -l "qemlflow\|QeMLflow" {} \; 2>/dev/null | wc -l)
     
-    log_message "Verification results: $remaining_chemml ChemML files remaining, $new_qemlflow QeMLflow files created"
+    log_message "Verification results: $remaining_qemlflow QeMLflow files remaining, $new_qemlflow QeMLflow files created"
     
-    if [ "$remaining_chemml" -gt 0 ]; then
-        echo -e "${YELLOW}Warning: $remaining_chemml files still contain ChemML references${NC}"
+    if [ "$remaining_qemlflow" -gt 0 ]; then
+        echo -e "${YELLOW}Warning: $remaining_qemlflow files still contain QeMLflow references${NC}"
         echo -e "${YELLOW}These may need manual review:${NC}"
         find . -type f \( -name "*.py" -o -name "*.md" -o -name "*.txt" -o -name "*.toml" -o -name "*.yml" -o -name "*.yaml" \) \
              -not -path "./.git/*" -not -path "./pre_*" -not -path "./test_*" -not -name "*.bak" \
-             -exec grep -l "chemml\|ChemML" {} \; 2>/dev/null | head -10
+             -exec grep -l "qemlflow\|QeMLflow" {} \; 2>/dev/null | head -10
     else
-        echo -e "${GREEN}✓ No remaining ChemML references found${NC}"
+        echo -e "${GREEN}✓ No remaining QeMLflow references found${NC}"
     fi
     
     if [ "$new_qemlflow" -gt 0 ]; then
@@ -222,10 +222,10 @@ provide_rollback_instructions() {
 # Main execution function
 main() {
     log_message "Starting QeMLflow renaming process"
-    echo -e "${BLUE}Starting ChemML to QeMLflow renaming process...${NC}"
+    echo -e "${BLUE}Starting QeMLflow to QeMLflow renaming process...${NC}"
     
     # Confirm with user
-    echo -e "${YELLOW}This will rename all instances of ChemML to QeMLflow in your codebase.${NC}"
+    echo -e "${YELLOW}This will rename all instances of QeMLflow to QeMLflow in your codebase.${NC}"
     echo -e "${YELLOW}A backup will be created automatically.${NC}"
     read -p "Do you want to proceed? (y/N): " -n 1 -r
     echo

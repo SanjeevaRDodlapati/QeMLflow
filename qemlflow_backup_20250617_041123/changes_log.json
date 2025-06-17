@@ -1,0 +1,6019 @@
+{
+  "changes": [
+    {
+      "file": "FOLDER_ORGANIZATION.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.711934",
+      "status": "applied"
+    },
+    {
+      "file": "mkdocs.yml",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.712446",
+      "status": "applied"
+    },
+    {
+      "file": "requirements.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.715778",
+      "status": "applied"
+    },
+    {
+      "file": "requirements-core.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.716827",
+      "status": "applied"
+    },
+    {
+      "file": "pyproject.toml",
+      "changes": [
+        "chemml -> qemlflow (25 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.717298",
+      "status": "applied"
+    },
+    {
+      "file": "README.md",
+      "changes": [
+        "chemml -> qemlflow (26 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.718283",
+      "status": "applied"
+    },
+    {
+      "file": "setup.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.719031",
+      "status": "applied"
+    },
+    {
+      "file": "docker-compose.yml",
+      "changes": [
+        "chemml -> qemlflow (21 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.719470",
+      "status": "applied"
+    },
+    {
+      "file": "debug_rollback.sh",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.720126",
+      "status": "applied"
+    },
+    {
+      "file": ".config/advanced_config.yaml",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.720745",
+      "status": "applied"
+    },
+    {
+      "file": ".config/chemml_config.yaml",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.721232",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/FINAL_STATUS_ASSESSMENT.md",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.721847",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/CURRENT_STAGE_ASSESSMENT.md",
+      "changes": [
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.723828",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/ENHANCEMENT_IMPLEMENTATION_COMPLETE.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.725109",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/original_drug_discovery_4292_lines.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.728815",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/CODEBASE_CLEANUP_PLAN.md",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.731078",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/LONG_TERM_IMPLEMENTATION_GUIDE.md",
+      "changes": [
+        "chemml -> qemlflow (23 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.735608",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/NEXT_PHASE_ENHANCEMENTS.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.736654",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/CORE_FRAMEWORK_ENHANCEMENT_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.737089",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.737406",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/core/base_runner.py",
+      "changes": [
+        "ChemML -> QeMLflow (11 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.737948",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/core/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.738437",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/config/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.738811",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/libraries/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.739188",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/libraries/manager.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.740512",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/assessment/framework.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.744630",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/chemml_common_legacy/assessment/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.745546",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/FINAL_STATUS_ASSESSMENT.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.746143",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/FOLDER_ORGANIZATION_FINAL_ASSESSMENT.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.748181",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/FOLDER_REORGANIZATION_IMPLEMENTATION_COMPLETE.md",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.749731",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/PRODUCTION_READINESS_COMPLETE.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.750546",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/NEXT_STEPS_ACTION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.750994",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/PROJECT_STATUS_CONSOLIDATED.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.751465",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/CONTRIBUTING.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.752045",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/DEVELOPMENT_HISTORY.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.752506",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/DEVELOPMENT.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.753290",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/root_cleanup_backup_20250616_091402/CODEBASE_CLEANUP_COMPLETE.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.754393",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/development/FINAL_REORGANIZATION_ACHIEVEMENT.md",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.755656",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/development/REORGANIZATION_IMPLEMENTATION_TRACKER.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)",
+        "CHEMML -> QEMLFLOW (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.760972",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/development/CODEBASE_REORGANIZATION_IMPLEMENTATION_TRACKER.md",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.761702",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/development/BOOTCAMP_CONVERSION_MASTER_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.762476",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/development/CODEBASE_MASTER_REORGANIZATION_PLAN.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (7 times)",
+        "CHEMML -> QEMLFLOW (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.764409",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/implementation_history/implementation_priorities_complete.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.765764",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/implementation_history/immediate_actions_implementation_complete.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.766320",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/archive/implementation_history/integration_system_reorganization_complete.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.766912",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/tools/caching_activator.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (2 times)",
+        "CHEMML -> QEMLFLOW (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.767958",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/integrations/framework/registry_demo.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.769511",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/integrations/framework/comprehensive_enhanced_demo.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.773352",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/integrations/boltz/comprehensive_demo.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.774719",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/advanced_integration_features_demo.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.777378",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/boltz_integration_demo.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.778916",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/enhanced_framework_demo.py",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.779598",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/boltz_prediction_examples.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.783895",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/standalone_boltz_integration.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.785285",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/examples/archived/standalone_advanced_features_demo.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.789084",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/scripts/utilities/setup_wandb_integration.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.789793",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/advanced/ml_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.793407",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/core/enhanced_models.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.795732",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/core/pipeline.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.798138",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/core/data_processing.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.801035",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/core/data.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.809519",
+      "status": "applied"
+    },
+    {
+      "file": ".archive/backup/refactor_20250616_101121/src/chemml/enterprise/monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.812160",
+      "status": "applied"
+    },
+    {
+      "file": "tools/type_annotation_analyzer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.813201",
+      "status": "applied"
+    },
+    {
+      "file": "tools/progress_dashboard.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.815012",
+      "status": "applied"
+    },
+    {
+      "file": "tools/integration_test_suite.py",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.816042",
+      "status": "applied"
+    },
+    {
+      "file": "tools/README.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.816652",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/code_quality_enhancer.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.818174",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/linting_config.yaml",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.819645",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/ci_integration.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)",
+        "CHEMML -> QEMLFLOW (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.821077",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/syntax_fixer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.821771",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/test_return_fix.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.822240",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/emergency_syntax_fix.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.822783",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/return_fix.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.824202",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/conservative_refactor.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.828916",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/critical_fixes.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.829848",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/final_polish.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.831936",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/incremental_refactor.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.836695",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/comprehensive_linter.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.838008",
+      "status": "applied"
+    },
+    {
+      "file": "tools/linting/health_tracker.py",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.838934",
+      "status": "applied"
+    },
+    {
+      "file": "tools/core/codebase_reality_check.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.843502",
+      "status": "applied"
+    },
+    {
+      "file": "tools/core/diagnostics_unified.py",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.846311",
+      "status": "applied"
+    },
+    {
+      "file": "tools/core/production_polish_tool.py",
+      "changes": [
+        "chemml -> qemlflow (37 times)",
+        "ChemML -> QeMLflow (28 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.847824",
+      "status": "applied"
+    },
+    {
+      "file": "tools/core/import_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.848511",
+      "status": "applied"
+    },
+    {
+      "file": "tools/analysis/analyze_improvements.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.849271",
+      "status": "applied"
+    },
+    {
+      "file": "tools/analysis/detailed_linting_analysis.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.850204",
+      "status": "applied"
+    },
+    {
+      "file": "tools/analysis/api_consistency_analyzer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.852813",
+      "status": "applied"
+    },
+    {
+      "file": "tools/security/dependency_audit.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.855111",
+      "status": "applied"
+    },
+    {
+      "file": "tools/development/safe_formatter.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.856303",
+      "status": "applied"
+    },
+    {
+      "file": "tools/development/unified_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.862721",
+      "status": "applied"
+    },
+    {
+      "file": "tools/development/auto_docs.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.864893",
+      "status": "applied"
+    },
+    {
+      "file": "tools/development/quick_access_demo.py",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.867527",
+      "status": "applied"
+    },
+    {
+      "file": "tools/development/read_pdf.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.870916",
+      "status": "applied"
+    },
+    {
+      "file": "tools/optimization/simple_caching_setup.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (6 times)",
+        "CHEMML -> QEMLFLOW (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.871484",
+      "status": "applied"
+    },
+    {
+      "file": "tools/optimization/caching_activator.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (2 times)",
+        "CHEMML -> QEMLFLOW (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.872029",
+      "status": "applied"
+    },
+    {
+      "file": "tools/standardization/automated_standardization.py",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.872696",
+      "status": "applied"
+    },
+    {
+      "file": "tools/standardization/parameter_standardization.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.875539",
+      "status": "applied"
+    },
+    {
+      "file": "tools/standardization/api_standardization.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.877954",
+      "status": "applied"
+    },
+    {
+      "file": "tools/standardization/final_parameter_standardizer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.879264",
+      "status": "applied"
+    },
+    {
+      "file": "tools/assessment/health_check.py",
+      "changes": [
+        "chemml -> qemlflow (27 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.881094",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/performance_tests.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.882252",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/tutorial_framework_demo.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.883736",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/final_integration_tests.py",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.884928",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/comprehensive_coverage_tests.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.886402",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/test_new_modules.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.887037",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/comprehensive_functionality_tests.py",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.887658",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/functional_validation.py",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.888234",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/test_medium_term_enhancements.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.889069",
+      "status": "applied"
+    },
+    {
+      "file": "tools/testing/simple_notebook_test.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.890497",
+      "status": "applied"
+    },
+    {
+      "file": "tools/deployment/certification_framework.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.894600",
+      "status": "applied"
+    },
+    {
+      "file": "tools/deployment/industry_deployment_template.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.895563",
+      "status": "applied"
+    },
+    {
+      "file": "tools/examples/best_libraries_demo.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.896311",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/fix_test_collection.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.897885",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/safe_quick_wins.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.899619",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/fix_syntax_errors.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.901469",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/quick_wins.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.902828",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/fix_docstring_syntax.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.903415",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/unused_import_remover.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.903977",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/quick_syntax_fixer.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.904501",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/targeted_quick_wins.py",
+      "changes": [
+        "chemml -> qemlflow (81 times)",
+        "ChemML -> QeMLflow (16 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.906306",
+      "status": "applied"
+    },
+    {
+      "file": "tools/maintenance/safe_syntax_fixer.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.908739",
+      "status": "applied"
+    },
+    {
+      "file": "tools/monitoring/health_monitor.py",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.911334",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/phase7_final_assessment.py",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.912590",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/advanced_type_completion.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.914176",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/phase6_completion.py",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.915760",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/ultra_fast_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (42 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.918532",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/phase8_internal_validator.py",
+      "changes": [
+        "chemml -> qemlflow (16 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.920337",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/advanced_import_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (21 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.921238",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/advanced_type_annotator.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.922110",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/performance_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (22 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.922811",
+      "status": "applied"
+    },
+    {
+      "file": "tools/archived/final_assessment.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.925794",
+      "status": "applied"
+    },
+    {
+      "file": "tools/migration/test_rename_script.py",
+      "changes": [
+        "chemml -> qemlflow (39 times)",
+        "ChemML -> QeMLflow (26 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.927642",
+      "status": "applied"
+    },
+    {
+      "file": "tools/migration/safe_rename_to_qemlflow.py",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (11 times)",
+        "CHEMML -> QEMLFLOW (1 times)",
+        "chemML -> qeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.929204",
+      "status": "applied"
+    },
+    {
+      "file": "tests/conftest.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.930828",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_molecular_utils_comprehensive.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.933646",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_quantum_circuits_comprehensive.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.935999",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_property_prediction_high_impact.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.936727",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_quantum_utils_comprehensive.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.937685",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_drug_design.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.942059",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_virtual_screening_comprehensive.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.948931",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_property_prediction_comprehensive.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.952023",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_qsar_modeling_comprehensive.py",
+      "changes": [
+        "chemml -> qemlflow (92 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.953715",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_admet_prediction.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.955400",
+      "status": "applied"
+    },
+    {
+      "file": "tests/unit/test_molecular_preprocessing_comprehensive.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.957768",
+      "status": "applied"
+    },
+    {
+      "file": "tests/integration/test_pipelines.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.961598",
+      "status": "applied"
+    },
+    {
+      "file": "tests/integration/test_comprehensive_enhancements.py",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.963010",
+      "status": "applied"
+    },
+    {
+      "file": "tests/comprehensive/test_modular_drug_discovery.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.964064",
+      "status": "applied"
+    },
+    {
+      "file": "tests/legacy/test_integration_quick.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.967982",
+      "status": "applied"
+    },
+    {
+      "file": "tests/legacy/test_day6_day7_notebooks.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.969262",
+      "status": "applied"
+    },
+    {
+      "file": "tests/fixtures/test_sample_data.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.969776",
+      "status": "applied"
+    },
+    {
+      "file": "docs/REFERENCE.md",
+      "changes": [
+        "chemml -> qemlflow (72 times)",
+        "ChemML -> QeMLflow (17 times)",
+        "CHEMML -> QEMLFLOW (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.971185",
+      "status": "applied"
+    },
+    {
+      "file": "docs/USER_GUIDE.md",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (14 times)",
+        "CHEMML -> QEMLFLOW (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.971997",
+      "status": "applied"
+    },
+    {
+      "file": "docs/LEARNING_PATHS.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.973392",
+      "status": "applied"
+    },
+    {
+      "file": "docs/CODEBASE_STRUCTURE.md",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.975525",
+      "status": "applied"
+    },
+    {
+      "file": "docs/PROJECT_ORGANIZATION.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.978068",
+      "status": "applied"
+    },
+    {
+      "file": "docs/FRAMEWORK_INTEGRATION_GUIDE.md",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.978799",
+      "status": "applied"
+    },
+    {
+      "file": "docs/FOLDER_ORGANIZATION_SCALABILITY_ASSESSMENT.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.979670",
+      "status": "applied"
+    },
+    {
+      "file": "docs/performance_guide.md",
+      "changes": [
+        "chemml -> qemlflow (26 times)",
+        "ChemML -> QeMLflow (2 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.980199",
+      "status": "applied"
+    },
+    {
+      "file": "docs/ENHANCED_FEATURES_GUIDE.md",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.981689",
+      "status": "applied"
+    },
+    {
+      "file": "docs/FOLDER_ORGANIZATION_IMPLEMENTATION_SUMMARY.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.983479",
+      "status": "applied"
+    },
+    {
+      "file": "docs/README.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.984768",
+      "status": "applied"
+    },
+    {
+      "file": "docs/research_innovation_template.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.985532",
+      "status": "applied"
+    },
+    {
+      "file": "docs/index.md",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.986709",
+      "status": "applied"
+    },
+    {
+      "file": "docs/MIGRATION_GUIDE.md",
+      "changes": [
+        "chemml -> qemlflow (35 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.987173",
+      "status": "applied"
+    },
+    {
+      "file": "docs/QUICK_START.md",
+      "changes": [
+        "chemml -> qemlflow (21 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.987872",
+      "status": "applied"
+    },
+    {
+      "file": "docs/user-guide/overview.md",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (11 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.988397",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/LINTING_FINAL_ACHIEVEMENT_SUMMARY.md",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.988834",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/QUICK_WINS_IMPLEMENTATION_SUMMARY.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.991948",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/NEXT_STEPS_ACTION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.994909",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/FINAL_CODEBASE_FUNCTIONALITY_VERIFICATION.md",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.995515",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/CODEBASE_ASSESSMENT_AND_STRATEGIC_PLAN.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.996609",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/MAINTENANCE_PLAYBOOK.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:25.998172",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/LINTING_FRAMEWORK_COMPLETION.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.000279",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/CONTRIBUTING.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.001370",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/DEVELOPMENT_HISTORY.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.002966",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/CURRENT_HEALTH_STATUS_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.003481",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/REPOSITORY_REORGANIZATION_SUCCESS.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.003920",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/DEVELOPMENT.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.004338",
+      "status": "applied"
+    },
+    {
+      "file": "docs/development/LINTING_ASSESSMENT_AND_FRAMEWORK.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.004788",
+      "status": "applied"
+    },
+    {
+      "file": "docs/planning/PHASE_3_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.005120",
+      "status": "applied"
+    },
+    {
+      "file": "docs/integrations/README.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.005478",
+      "status": "applied"
+    },
+    {
+      "file": "docs/integrations/model_specific/boltz.md",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.005840",
+      "status": "applied"
+    },
+    {
+      "file": "docs/api_auto/index.html",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.006471",
+      "status": "applied"
+    },
+    {
+      "file": "docs/api_auto/functions.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.037988",
+      "status": "applied"
+    },
+    {
+      "file": "docs/api_auto/modules.html",
+      "changes": [
+        "chemml -> qemlflow (61 times)",
+        "ChemML -> QeMLflow (60 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.047681",
+      "status": "applied"
+    },
+    {
+      "file": "docs/api_auto/search_index.json",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (32 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.055685",
+      "status": "applied"
+    },
+    {
+      "file": "docs/api_auto/classes.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (27 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.088771",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/API_REFERENCE.md",
+      "changes": [
+        "chemml -> qemlflow (28 times)",
+        "ChemML -> QeMLflow (21 times)",
+        "CHEMML -> QEMLFLOW (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.092396",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/API_STYLE_GUIDE.md",
+      "changes": [
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.094731",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/QUICK_START.md",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.095760",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/API_COMPLETE.md",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.097409",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/boltz_legacy/boltz_integration_report.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.100688",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/boltz_legacy/boltz_integration_comprehensive_analysis.md",
+      "changes": [
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.102591",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/boltz_legacy/boltz_integration_demo_summary.md",
+      "changes": [
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.103633",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/redundant_guides/GET_STARTED.md",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.106373",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/redundant_guides/getting-started/basic-tutorial.md",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.107447",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/redundant_guides/getting-started/quick-start.md",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (9 times)",
+        "CHEMML -> QEMLFLOW (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.108536",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/redundant_guides/getting-started/installation.md",
+      "changes": [
+        "chemml -> qemlflow (30 times)",
+        "ChemML -> QeMLflow (11 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.110043",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/redundant_guides/getting_started/quick_start_guide.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.111799",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/external_model_legacy/external_model_integration_final_assessment.md",
+      "changes": [
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.114302",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/external_model_legacy/external_model_integration_best_practices.md",
+      "changes": [
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.116706",
+      "status": "applied"
+    },
+    {
+      "file": "docs/archive_docs/external_model_legacy/external_model_framework_scalability_review.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.119140",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/FINAL_STATUS_ASSESSMENT.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.120446",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/FOLDER_ORGANIZATION_FINAL_ASSESSMENT.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.121494",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/FOLDER_REORGANIZATION_IMPLEMENTATION_COMPLETE.md",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.123321",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/PRODUCTION_READINESS_COMPLETE.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.125095",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/PROJECT_STATUS_CONSOLIDATED.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.125825",
+      "status": "applied"
+    },
+    {
+      "file": "docs/project-status/CODEBASE_CLEANUP_COMPLETE.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.126726",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reference/api_reference.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.127659",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reference/troubleshooting.md",
+      "changes": [
+        "chemml -> qemlflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.128302",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reference/assessment_rubrics.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.136676",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/PHASE_3_PROGRESS_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.137869",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/README.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.138875",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/PHASE_6_RESULTS.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.139666",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/PRODUCTION_POLISH_REPORT.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.140271",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/LONG_TERM_RESEARCH_SUMMARY.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.141055",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/IMMEDIATE_ACTION_PLAN.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.142885",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/REVOLUTIONARY_ENHANCEMENT_ANALYSIS.md",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.143883",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/LONG_TERM_RESEARCH_ENHANCEMENTS.md",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.145992",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/LONG_TERM_QUICK_REFERENCE.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.148703",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/innovation/STRATEGIC_INNOVATION_ANALYSIS_FINAL.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.149693",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/UPDATED_FRAMEWORK_INTEGRATION_ANALYSIS.md",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.150823",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/PHASES_5-8_COMPLETION_REPORT.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.152430",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/PHASES_1_2_SUCCESS_SUMMARY.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.154482",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/QUICK_COMPLETION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.155676",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/COMPREHENSIVE_ACHIEVEMENT_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.158784",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/CODEBASE_IMPROVEMENT_IMPLEMENTATION_COMPLETE.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.164407",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/FINAL_CODEBASE_CLEANUP_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.165740",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/NOTEBOOKS_INTEGRATION_ANALYSIS_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.169478",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/UPDATED_NOTEBOOKS_INTEGRATION_PLAN.md",
+      "changes": [
+        "chemml -> qemlflow (27 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.172097",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/ARCHITECTURE_REVIEW.md",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.174161",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/FRAMEWORK_INTEGRATION_ANALYSIS_CRITICAL.md",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.185397",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/CODEBASE_COMPREHENSIVE_REVIEW_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (28 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.188998",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/FINAL_INTEGRATION_VALIDATION_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.191114",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/COMPLETE_FRAMEWORK_INTEGRATION_FINAL_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.192346",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/comprehensive/FRAMEWORK_INTEGRATION_IMPLEMENTATION_COMPLETE.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.195654",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_1_COMPLETION_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.197368",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_4_3_MOLECULAR_DOCKING_COMPLETION_REPORT.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.201615",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_0_COMPLETION_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.205214",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_3_COMPLETION_REPORT.md",
+      "changes": [
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.206856",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_2_COMPLETION_REPORT.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.208459",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/completion/PHASE_4_6_CADD_COMPLETION_REPORT.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.211997",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_4_6_CADD_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.214000",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_4_7_PRECISION_MEDICINE_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.218900",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_4_4_ADMET_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.220777",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_7_RESEARCH_INNOVATION_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.223282",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_8_CERTIFICATION_DEPLOYMENT_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (27 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.226350",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_4_5_QUANTUM_CHEMISTRY_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.231660",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_5_ADVANCED_SPECIALIZATIONS_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.232993",
+      "status": "applied"
+    },
+    {
+      "file": "docs/reports/implementation/PHASE_6_INDUSTRY_APPLICATIONS_IMPLEMENTATION_PLAN.md",
+      "changes": [
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.234645",
+      "status": "applied"
+    },
+    {
+      "file": "docs/getting_started/quick_start.md",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.236893",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/monitoring_20250616_034055.json",
+      "changes": [
+        "ChemML -> QeMLflow (22 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.237604",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/monitoring_20250616_032656.json",
+      "changes": [
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.238529",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/monitoring_20250616_033250.json",
+      "changes": [
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.240635",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/monitoring_20250616_032243.json",
+      "changes": [
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.241579",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/performance_reports/performance_dashboard.html",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.243007",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/outputs/day_01_outputs/ml_cheminformatics_enhanced_report.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.247641",
+      "status": "applied"
+    },
+    {
+      "file": ".temp/logs/outputs/day_00_outputs/framework_demo_report.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.248421",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/index.html",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (25 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.251092",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/404.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (32 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.254711",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/sitemap.xml",
+      "changes": [
+        "ChemML -> QeMLflow (76 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.255710",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/ENHANCED_FEATURES_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (20 times)",
+        "ChemML -> QeMLflow (23 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.263103",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/user-guide/overview/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (27 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.270893",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/USER_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (16 times)",
+        "ChemML -> QeMLflow (32 times)",
+        "CHEMML -> QEMLFLOW (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.274504",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/planning/PHASE_3_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.276602",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/research_innovation_template/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.280678",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/search/search_index.json",
+      "changes": [
+        "chemml -> qemlflow (533 times)",
+        "ChemML -> QeMLflow (345 times)",
+        "CHEMML -> QEMLFLOW (35 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.320258",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/api_auto/index.html",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.322156",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/api_auto/functions.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.368483",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/api_auto/modules.html",
+      "changes": [
+        "chemml -> qemlflow (61 times)",
+        "ChemML -> QeMLflow (60 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.390772",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/api_auto/search_index.json",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (32 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.403322",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/api_auto/classes.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (27 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.420448",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/LEARNING_PATHS/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.424835",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/GET_STARTED/index.html",
+      "changes": [
+        "chemml -> qemlflow (16 times)",
+        "ChemML -> QeMLflow (31 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.427643",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/archive_docs/API_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (26 times)",
+        "ChemML -> QeMLflow (27 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.433818",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/archive_docs/API_STYLE_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (24 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.435656",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/archive_docs/API_REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (36 times)",
+        "ChemML -> QeMLflow (38 times)",
+        "CHEMML -> QEMLFLOW (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.440880",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/archive_docs/QUICK_START/index.html",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (26 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.447359",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting-started/installation/index.html",
+      "changes": [
+        "chemml -> qemlflow (31 times)",
+        "ChemML -> QeMLflow (25 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.450283",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting-started/basic-tutorial/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (25 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.451768",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting-started/quick-start/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (23 times)",
+        "CHEMML -> QEMLFLOW (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.454099",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/FRAMEWORK_INTEGRATION_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.456731",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/CODEBASE_STRUCTURE/index.html",
+      "changes": [
+        "chemml -> qemlflow (34 times)",
+        "ChemML -> QeMLflow (22 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.461034",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/MIGRATION_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (38 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.463293",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/assets/visual_aids/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.464471",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (93 times)",
+        "ChemML -> QeMLflow (33 times)",
+        "CHEMML -> QEMLFLOW (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.512545",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/faq/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.515956",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/assessment_rubrics/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.518707",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/quick_reference_card/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.519853",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/troubleshooting/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.521550",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/api_reference/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.522332",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/glossary/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.525793",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/REFERENCE/psi4_installation_guide/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.529123",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.530708",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/LONG_TERM_RESEARCH_ENHANCEMENTS/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.537108",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/STRATEGIC_INNOVATION_ANALYSIS_FINAL/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.539339",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/LONG_TERM_RESEARCH_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.541804",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/IMMEDIATE_ACTION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.545605",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/REVOLUTIONARY_ENHANCEMENT_ANALYSIS/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.550632",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/innovation/LONG_TERM_QUICK_REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.551785",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/PHASE_6_RESULTS/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.552614",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/PHASE_8_INTERNAL_VALIDATION/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.553901",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/PRODUCTION_POLISH_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.554931",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/PHASE_3_PROGRESS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (28 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.556272",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/UPDATED_NOTEBOOKS_INTEGRATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (30 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.566120",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/FRAMEWORK_INTEGRATION_ANALYSIS_CRITICAL/index.html",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.570181",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/COMPLETE_FRAMEWORK_INTEGRATION_FINAL_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.572260",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/CODEBASE_COMPREHENSIVE_REVIEW_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (34 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.580117",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/CODEBASE_IMPROVEMENT_IMPLEMENTATION_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.585769",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/ARCHITECTURE_REVIEW/index.html",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.588899",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/PHASES_5-8_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.591318",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/FINAL_INTEGRATION_VALIDATION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.595505",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/COMPREHENSIVE_ACHIEVEMENT_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (22 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.597824",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/PHASES_1_2_SUCCESS_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.600812",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/FRAMEWORK_INTEGRATION_IMPLEMENTATION_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.602619",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/NOTEBOOKS_INTEGRATION_ANALYSIS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (22 times)",
+        "ChemML -> QeMLflow (25 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.606376",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/QUICK_COMPLETION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.610146",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/FINAL_CODEBASE_CLEANUP_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.612426",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/comprehensive/UPDATED_FRAMEWORK_INTEGRATION_ANALYSIS/index.html",
+      "changes": [
+        "chemml -> qemlflow (21 times)",
+        "ChemML -> QeMLflow (24 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.614790",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_1_BOOTCAMP_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.619192",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_2_DEEP_LEARNING_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.620851",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_5_QUANTUM_CHEMISTRY_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.622487",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_7_SECTION_1_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.624911",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_6_CADD_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.629791",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_2_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.635789",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_4_ADMET_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.637689",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_3_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (25 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.640917",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_4_3_MOLECULAR_DOCKING_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.646467",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_0_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.648785",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/completion/PHASE_1_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.651734",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_8_CERTIFICATION_DEPLOYMENT_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (47 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.653758",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_4_6_CADD_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.655631",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_4_7_PRECISION_MEDICINE_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.661331",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_6_INDUSTRY_APPLICATIONS_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (22 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.663579",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_4_4_ADMET_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.668603",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_7_RESEARCH_INNOVATION_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (28 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.670610",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_5_ADVANCED_SPECIALIZATIONS_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.672468",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/implementation/PHASE_4_5_QUANTUM_CHEMISTRY_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.679330",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/reports/phases/PHASE_4_3_MOLECULAR_DOCKING_PROGRESS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.682279",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting_started/prerequisites/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.684952",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting_started/quick_start_guide/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.687067",
+      "status": "applied"
+    },
+    {
+      "file": ".artifacts/site/getting_started/learning_path_selector/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.688508",
+      "status": "applied"
+    },
+    {
+      "file": "examples/README.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.689120",
+      "status": "applied"
+    },
+    {
+      "file": "examples/quickstart/basic_integration.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.689867",
+      "status": "applied"
+    },
+    {
+      "file": "examples/integrations/framework/registry_demo.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.691248",
+      "status": "applied"
+    },
+    {
+      "file": "examples/integrations/framework/comprehensive_enhanced_demo.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.693661",
+      "status": "applied"
+    },
+    {
+      "file": "examples/integrations/boltz/comprehensive_demo.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.695129",
+      "status": "applied"
+    },
+    {
+      "file": "examples/utilities/direct_module_test.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.696205",
+      "status": "applied"
+    },
+    {
+      "file": "examples/utilities/wandb_example.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.697040",
+      "status": "applied"
+    },
+    {
+      "file": "examples/utilities/universal_tracker_demo.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.700804",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/advanced_integration_features_demo.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.702490",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/boltz_integration_demo.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.703128",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/test_boltz_integration.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.703578",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/enhanced_framework_demo.py",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.704106",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/boltz_prediction_examples.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.705041",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/standalone_boltz_test.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.705570",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/standalone_boltz_integration.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.706338",
+      "status": "applied"
+    },
+    {
+      "file": "examples/archived/standalone_advanced_features_demo.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.707567",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/generate_enhancement_summary.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.711712",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/rename_to_qemlflow.sh",
+      "changes": [
+        "chemml -> qemlflow (23 times)",
+        "ChemML -> QeMLflow (14 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.713094",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/full_validate.sh",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.713671",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/quick_validate.sh",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.714474",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/test_rename_script.sh",
+      "changes": [
+        "chemml -> qemlflow (35 times)",
+        "ChemML -> QeMLflow (34 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.716965",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/medium_validate.sh",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.718735",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/cleanup_root_folder.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.719564",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/archive/fix_syntax_errors.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.720114",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/development/development_config.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.720490",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/development/quick_dev.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.720798",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/development/check_production_status.py",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.721243",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/development/check_workflow_status.py",
+      "changes": [
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.721715",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/development/quick_status_check.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.722222",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/setup/install_best_libraries.sh",
+      "changes": [
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.722709",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/setup/setup_chemml_bootcamp.sh",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.723824",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/setup/setup_enhanced_development.sh",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (22 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.724926",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/rename_to_qemlflow.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.729692",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/optimized_chemml_imports.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.730934",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/launch_bootcamp.py",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.732046",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/setup_wandb_integration.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.733849",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/quick_access_demo.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.734723",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/utilities/resolve_dependencies.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.735298",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/monitoring/README.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.735835",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/monitoring/status_dashboard.py",
+      "changes": [
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.736372",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/monitoring/automated_monitor.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.737424",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/migration/migrate_to_hybrid_architecture.py",
+      "changes": [
+        "chemml -> qemlflow (22 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.738172",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/validation/validate_modern_quantum_suite.py",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.738746",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/validation/validate_bootcamp_notebooks.py",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.739379",
+      "status": "applied"
+    },
+    {
+      "file": "scripts/validation/phase_4_validation.py",
+      "changes": [
+        "chemml -> qemlflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.740815",
+      "status": "applied"
+    },
+    {
+      "file": "site/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.744164",
+      "status": "applied"
+    },
+    {
+      "file": "site/404.html",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.748099",
+      "status": "applied"
+    },
+    {
+      "file": "site/sitemap.xml",
+      "changes": [
+        "chemml -> qemlflow (108 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.752135",
+      "status": "applied"
+    },
+    {
+      "file": "site/ENHANCED_FEATURES_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (21 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.762969",
+      "status": "applied"
+    },
+    {
+      "file": "site/FOLDER_ORGANIZATION_IMPLEMENTATION_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.764997",
+      "status": "applied"
+    },
+    {
+      "file": "site/FOLDER_ORGANIZATION_SCALABILITY_ASSESSMENT/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.768683",
+      "status": "applied"
+    },
+    {
+      "file": "site/PROJECT_ORGANIZATION/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.769676",
+      "status": "applied"
+    },
+    {
+      "file": "site/user-guide/overview/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (19 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.771408",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/LINTING_FINAL_ACHIEVEMENT_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.772566",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/NEXT_STEPS_ACTION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.773342",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/LINTING_FRAMEWORK_COMPLETION/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.775302",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/DEVELOPMENT_HISTORY/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.779472",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/DEVELOPMENT/index.html",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.780952",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/CONTRIBUTING/index.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.783448",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/MAINTENANCE_PLAYBOOK/index.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.785668",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/LINTING_ASSESSMENT_AND_FRAMEWORK/index.html",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.787288",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/QUICK_WINS_IMPLEMENTATION_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.788457",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/REPOSITORY_REORGANIZATION_SUCCESS/index.html",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.790120",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/CODEBASE_ASSESSMENT_AND_STRATEGIC_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.793044",
+      "status": "applied"
+    },
+    {
+      "file": "site/development/FINAL_CODEBASE_FUNCTIONALITY_VERIFICATION/index.html",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.796433",
+      "status": "applied"
+    },
+    {
+      "file": "site/performance_guide/index.html",
+      "changes": [
+        "chemml -> qemlflow (27 times)",
+        "ChemML -> QeMLflow (9 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.801330",
+      "status": "applied"
+    },
+    {
+      "file": "site/USER_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (25 times)",
+        "CHEMML -> QEMLFLOW (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.804073",
+      "status": "applied"
+    },
+    {
+      "file": "site/planning/PHASE_3_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.804832",
+      "status": "applied"
+    },
+    {
+      "file": "site/research_innovation_template/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.805371",
+      "status": "applied"
+    },
+    {
+      "file": "site/search/search_index.json",
+      "changes": [
+        "chemml -> qemlflow (646 times)",
+        "ChemML -> QeMLflow (494 times)",
+        "CHEMML -> QEMLFLOW (38 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.852049",
+      "status": "applied"
+    },
+    {
+      "file": "site/integrations/index.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.854138",
+      "status": "applied"
+    },
+    {
+      "file": "site/integrations/model_specific/boltz/index.html",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.856158",
+      "status": "applied"
+    },
+    {
+      "file": "site/api_auto/index.html",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.864007",
+      "status": "applied"
+    },
+    {
+      "file": "site/api_auto/functions.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.921351",
+      "status": "applied"
+    },
+    {
+      "file": "site/api_auto/modules.html",
+      "changes": [
+        "chemml -> qemlflow (61 times)",
+        "ChemML -> QeMLflow (60 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.932465",
+      "status": "applied"
+    },
+    {
+      "file": "site/api_auto/search_index.json",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (32 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.943408",
+      "status": "applied"
+    },
+    {
+      "file": "site/api_auto/classes.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (27 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.968578",
+      "status": "applied"
+    },
+    {
+      "file": "site/LEARNING_PATHS/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.979023",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/API_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (28 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.989057",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/API_STYLE_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.990593",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/API_REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (39 times)",
+        "ChemML -> QeMLflow (31 times)",
+        "CHEMML -> QEMLFLOW (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:26.994212",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/boltz_legacy/boltz_integration_report/index.html",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.001109",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/boltz_legacy/boltz_integration_demo_summary/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.002822",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/boltz_legacy/boltz_integration_comprehensive_analysis/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (16 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.004334",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/GET_STARTED/index.html",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (24 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.006844",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting-started/installation/index.html",
+      "changes": [
+        "chemml -> qemlflow (31 times)",
+        "ChemML -> QeMLflow (18 times)",
+        "CHEMML -> QEMLFLOW (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.008674",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting-started/basic-tutorial/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.010382",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting-started/quick-start/index.html",
+      "changes": [
+        "chemml -> qemlflow (15 times)",
+        "ChemML -> QeMLflow (16 times)",
+        "CHEMML -> QEMLFLOW (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.012765",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting_started/prerequisites/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.016027",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting_started/quick_start_guide/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.018416",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/redundant_guides/getting_started/learning_path_selector/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.019366",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/external_model_legacy/external_model_framework_scalability_review/index.html",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.022295",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/external_model_legacy/external_model_integration_best_practices/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.023995",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/external_model_legacy/external_model_integration_final_assessment/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.027705",
+      "status": "applied"
+    },
+    {
+      "file": "site/archive_docs/QUICK_START/index.html",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.036083",
+      "status": "applied"
+    },
+    {
+      "file": "site/FRAMEWORK_INTEGRATION_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.037679",
+      "status": "applied"
+    },
+    {
+      "file": "site/CODEBASE_STRUCTURE/index.html",
+      "changes": [
+        "chemml -> qemlflow (39 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.039155",
+      "status": "applied"
+    },
+    {
+      "file": "site/MIGRATION_GUIDE/index.html",
+      "changes": [
+        "chemml -> qemlflow (39 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.041270",
+      "status": "applied"
+    },
+    {
+      "file": "site/assets/visual_aids/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.044051",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/FINAL_STATUS_ASSESSMENT/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.082411",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/FOLDER_REORGANIZATION_IMPLEMENTATION_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.085612",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/CODEBASE_CLEANUP_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.087304",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/FOLDER_ORGANIZATION_FINAL_ASSESSMENT/index.html",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.088865",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/PROJECT_STATUS_CONSOLIDATED/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.098873",
+      "status": "applied"
+    },
+    {
+      "file": "site/project-status/PRODUCTION_READINESS_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.104565",
+      "status": "applied"
+    },
+    {
+      "file": "site/QUICK_START/index.html",
+      "changes": [
+        "chemml -> qemlflow (28 times)",
+        "ChemML -> QeMLflow (25 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.113743",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (112 times)",
+        "ChemML -> QeMLflow (24 times)",
+        "CHEMML -> QEMLFLOW (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.124068",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/faq/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.129705",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/assessment_rubrics/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.136190",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/quick_reference_card/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.137545",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/troubleshooting/index.html",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.139104",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/api_reference/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.141776",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/glossary/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.144267",
+      "status": "applied"
+    },
+    {
+      "file": "site/REFERENCE/psi4_installation_guide/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.146286",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.148121",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/LONG_TERM_RESEARCH_ENHANCEMENTS/index.html",
+      "changes": [
+        "chemml -> qemlflow (16 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.157104",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/STRATEGIC_INNOVATION_ANALYSIS_FINAL/index.html",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.164243",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/LONG_TERM_RESEARCH_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.167323",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/IMMEDIATE_ACTION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.168670",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/REVOLUTIONARY_ENHANCEMENT_ANALYSIS/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.171879",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/innovation/LONG_TERM_QUICK_REFERENCE/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.176225",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/PHASE_6_RESULTS/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.178948",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/PHASE_8_INTERNAL_VALIDATION/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.180909",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/PRODUCTION_POLISH_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.184967",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/PHASE_3_PROGRESS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.187787",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/UPDATED_NOTEBOOKS_INTEGRATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (31 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.203487",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/FRAMEWORK_INTEGRATION_ANALYSIS_CRITICAL/index.html",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.206205",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/COMPLETE_FRAMEWORK_INTEGRATION_FINAL_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.213960",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/CODEBASE_COMPREHENSIVE_REVIEW_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (36 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.218347",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/CODEBASE_IMPROVEMENT_IMPLEMENTATION_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.220621",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/ARCHITECTURE_REVIEW/index.html",
+      "changes": [
+        "chemml -> qemlflow (20 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.225322",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/PHASES_5-8_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.233311",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/FINAL_INTEGRATION_VALIDATION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (20 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.237041",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/COMPREHENSIVE_ACHIEVEMENT_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.239288",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/PHASES_1_2_SUCCESS_SUMMARY/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.248804",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/FRAMEWORK_INTEGRATION_IMPLEMENTATION_COMPLETE/index.html",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.252943",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/NOTEBOOKS_INTEGRATION_ANALYSIS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (23 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.256030",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/QUICK_COMPLETION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.259540",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/FINAL_CODEBASE_CLEANUP_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.261001",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/comprehensive/UPDATED_FRAMEWORK_INTEGRATION_ANALYSIS/index.html",
+      "changes": [
+        "chemml -> qemlflow (25 times)",
+        "ChemML -> QeMLflow (17 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.262753",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_1_BOOTCAMP_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.270255",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_2_DEEP_LEARNING_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.271833",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_5_QUANTUM_CHEMISTRY_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.274301",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_7_SECTION_1_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.279708",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_6_CADD_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.283900",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_2_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (14 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.287197",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_4_ADMET_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.289094",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_3_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (18 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.291446",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_4_3_MOLECULAR_DOCKING_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.296227",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_0_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.298622",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/completion/PHASE_1_COMPLETION_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (14 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.301810",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_8_CERTIFICATION_DEPLOYMENT_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (19 times)",
+        "ChemML -> QeMLflow (40 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.304310",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_4_6_CADD_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.307176",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_4_7_PRECISION_MEDICINE_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.312829",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_6_INDUSTRY_APPLICATIONS_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.316267",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_4_4_ADMET_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (11 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.319765",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_7_RESEARCH_INNOVATION_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (21 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.321752",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_5_ADVANCED_SPECIALIZATIONS_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (12 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.324038",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/implementation/PHASE_4_5_QUANTUM_CHEMISTRY_IMPLEMENTATION_PLAN/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.327812",
+      "status": "applied"
+    },
+    {
+      "file": "site/reports/phases/PHASE_4_3_MOLECULAR_DOCKING_PROGRESS_REPORT/index.html",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.330182",
+      "status": "applied"
+    },
+    {
+      "file": "site/getting_started/quick_start/index.html",
+      "changes": [
+        "chemml -> qemlflow (20 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.335275",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/assessment.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.336754",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/external_models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.337701",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/metrics.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.338671",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/config_cache.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.339537",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/deepchem_integration.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.342749",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/advanced_registry.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.346652",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/clinical_research.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.348264",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/advanced_models.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.349946",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.352161",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/integration_manager.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.353354",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/docking.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.354136",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/properties.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.354957",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/edge_case_handler.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.355493",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.356295",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/evaluation.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.364219",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/recommendations.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.366764",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/optimization.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.368745",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/workflow_validator.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.369820",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/core.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.371066",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/screening.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.371791",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/visualization.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.372539",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/performance_monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.373654",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/enhanced_models.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.377491",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/imports.py",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.378698",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/integration.py",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (39 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.380419",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/widgets.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.454235",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/boltz_adapter.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.455665",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/utils.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.457380",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/pipeline.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.458297",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/ml_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.460467",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/enhanced_ui.py",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.462580",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/enhanced_error_handling.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.469256",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/data_processing.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.470713",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/admet.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.471656",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/io_utils.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.472709",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.474781",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/errors.py",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.477765",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/modern_quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.478673",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/workflow_optimizer.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.479738",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095704/unified_config.py",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (16 times)",
+        "CHEMML -> QEMLFLOW (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.482509",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/external_models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.483780",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/metrics.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.484566",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/deepchem_integration.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.485645",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/advanced_registry.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.486538",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/clinical_research.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.487351",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/advanced_models.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.488169",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.489264",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/docking.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.490187",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/properties.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.491148",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.492067",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/evaluation.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.492870",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/recommendations.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.494281",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/performance_monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.495534",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/enhanced_models.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.498462",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/imports.py",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.499577",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/widgets.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.501423",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/boltz_adapter.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.502403",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/pipeline.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.503317",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/enhanced_ui.py",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.504198",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/enhanced_error_handling.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.505394",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/admet.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.506404",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.508705",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/errors.py",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.509729",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/modern_quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.510509",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750100751/workflow_optimizer.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.511622",
+      "status": "applied"
+    },
+    {
+      "file": "backups/archive/unused_imports_1750095752/pipeline.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.512553",
+      "status": "applied"
+    },
+    {
+      "file": "notebooks/README.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.514248",
+      "status": "applied"
+    },
+    {
+      "file": "notebooks/learning/bootcamp/README.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.516042",
+      "status": "applied"
+    },
+    {
+      "file": "reports/linting/linting_report_20250616_095048.json",
+      "changes": [
+        "chemml -> qemlflow (133 times)",
+        "ChemML -> QeMLflow (692 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.522270",
+      "status": "applied"
+    },
+    {
+      "file": "reports/linting/linting_report_20250616_095704.json",
+      "changes": [
+        "chemml -> qemlflow (133 times)",
+        "ChemML -> QeMLflow (694 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.527461",
+      "status": "applied"
+    },
+    {
+      "file": "reports/security/dependency_audit_20250616_085604.json",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.529625",
+      "status": "applied"
+    },
+    {
+      "file": "reports/security/dependency_audit_20250616_090130.json",
+      "changes": [
+        "chemml -> qemlflow (85 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.530585",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_100119.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.531193",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_102336.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.531674",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_101004.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.532104",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_104556.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.532524",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_094726.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.532978",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_094904.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.533447",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_102743.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.533983",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_100418.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.534428",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_102030.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.534882",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_095340.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.535437",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_095226.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.535857",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_095653.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.536306",
+      "status": "applied"
+    },
+    {
+      "file": "reports/health/health_report_20250616_095126.txt",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.536789",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/development_logs/linting_summary_post_syntax_fixes.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.537838",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/development_logs/linting_fixes_summary_20250616.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.538495",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/development_logs/linting_discrepancy_investigation.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.540225",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/development_logs/linting_system_robustness_analysis.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.541580",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/development_logs/linting_summary_table.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.542869",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/phase1_sessions/phase1_completion_report.md",
+      "changes": [
+        "chemml -> qemlflow (4 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.544250",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/phase1_sessions/phase1_cleanup_batch_fixes_session.md",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.544939",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/phase1_sessions/phase1_lightning_batch_fixes_session.md",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.545619",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/phase1_sessions/phase1_cleanup_progress_session2.md",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.547454",
+      "status": "applied"
+    },
+    {
+      "file": "reports/archives/lint_outputs/flake8_detailed.txt",
+      "changes": [
+        "chemml -> qemlflow (247 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.550537",
+      "status": "applied"
+    },
+    {
+      "file": "reports/enhancements/enhancement_implementation_summary_20250616_091130.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.551815",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/next_steps_implementation_plan.md",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.552541",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/health_score_comparison_analysis.md",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.554082",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/folder_reorganization_completion.md",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.554984",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/comprehensive_testing_final_report.md",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.555593",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/qemlflow_renaming_implementation_plan.md",
+      "changes": [
+        "chemml -> qemlflow (17 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.556447",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/chemml_renaming_analysis.md",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (9 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.557635",
+      "status": "applied"
+    },
+    {
+      "file": "reports/final/qemlflow_script_validation_report.md",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (3 times)",
+        "CHEMML -> QEMLFLOW (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.558533",
+      "status": "applied"
+    },
+    {
+      "file": "reports/active/framework_status.md",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.559341",
+      "status": "applied"
+    },
+    {
+      "file": "reports/active/linting_system_status.md",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.560044",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/__init___backup_20250616_002516.py",
+      "changes": [
+        "chemml -> qemlflow (10 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.560818",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/__init__.py",
+      "changes": [
+        "chemml -> qemlflow (20 times)",
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.561685",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/__init___fast.py",
+      "changes": [
+        "chemml -> qemlflow (8 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.562379",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/__init___optimized.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.562907",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/clinical_research.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.566113",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/advanced_models.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.567210",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery_legacy.py",
+      "changes": [
+        "chemml -> qemlflow (7 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.568633",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/generative.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.569433",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.570104",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/modern_quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.571582",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/docking.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.573978",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/properties.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.575155",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/optimization.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.582117",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.586961",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/screening.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.587774",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/research/drug_discovery/admet.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.588520",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/advanced/ml_optimizer.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.589778",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/ensemble_advanced.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.591021",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.598621",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/evaluation.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.602434",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/recommendations.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.603425",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/__init__.py",
+      "changes": [
+        "chemml -> qemlflow (30 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.604311",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/enhanced_models.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.605306",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/featurizers.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.606061",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (8 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.607345",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/pipeline.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (19 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.610985",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/data_processing.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.613509",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/exceptions.py",
+      "changes": [
+        "ChemML -> QeMLflow (32 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.617606",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/workflow_optimizer.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.618899",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/data.py",
+      "changes": [
+        "chemml -> qemlflow (3 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.619977",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/metrics.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.622389",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.623223",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/molecular_utils.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.624218",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/visualization.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.625296",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/ml_utils.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.627382",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/utils/io_utils.py",
+      "changes": [
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.630902",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/common/config.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (11 times)",
+        "CHEMML -> QEMLFLOW (23 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.636975",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/common/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.638251",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/common/errors.py",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.638881",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/common/performance.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.640160",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/preprocessing/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.640947",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/monitoring/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.644177",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/core/monitoring/dashboard.py",
+      "changes": [
+        "ChemML -> QeMLflow (7 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.645178",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/enterprise/monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.651019",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/config/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.653477",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/config/unified_config.py",
+      "changes": [
+        "chemml -> qemlflow (11 times)",
+        "ChemML -> QeMLflow (16 times)",
+        "CHEMML -> QEMLFLOW (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.654157",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/config_cache.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.654992",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/import_cache.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.655994",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/edge_case_handler.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.656611",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/workflow_validator.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.657970",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/imports.py",
+      "changes": [
+        "chemml -> qemlflow (13 times)",
+        "ChemML -> QeMLflow (20 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.660634",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/enhanced_ui.py",
+      "changes": [
+        "chemml -> qemlflow (12 times)",
+        "ChemML -> QeMLflow (13 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.663743",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/enhanced_error_handling.py",
+      "changes": [
+        "chemml -> qemlflow (5 times)",
+        "ChemML -> QeMLflow (15 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.665448",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/utils/lazy_imports.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.667413",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/__init__.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.668066",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/core/external_models.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (4 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.668811",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/core/advanced_registry.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.670343",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/core/integration_manager.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.672189",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/core/performance_monitoring.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.672985",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/core/pipeline.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.673893",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/utils/experiment_tracking.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.675008",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/adapters/molecular/deepchem_integration.py",
+      "changes": [
+        "chemml -> qemlflow (9 times)",
+        "ChemML -> QeMLflow (10 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.676032",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/integrations/adapters/molecular/boltz_adapter.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.677649",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/assessment.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.678831",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/__init__.py",
+      "changes": [
+        "chemml -> qemlflow (1 times)",
+        "ChemML -> QeMLflow (3 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.680293",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/core.py",
+      "changes": [
+        "chemml -> qemlflow (2 times)",
+        "ChemML -> QeMLflow (5 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.682066",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/widgets.py",
+      "changes": [
+        "ChemML -> QeMLflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.684558",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/utils.py",
+      "changes": [
+        "chemml -> qemlflow (6 times)",
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.685937",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/quantum.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.687593",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/tutorials/data.py",
+      "changes": [
+        "ChemML -> QeMLflow (2 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.688577",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/notebooks/__init__.py",
+      "changes": [
+        "ChemML -> QeMLflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.689480",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml/notebooks/integration.py",
+      "changes": [
+        "chemml -> qemlflow (18 times)",
+        "ChemML -> QeMLflow (39 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.690658",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml.egg-info/SOURCES.txt",
+      "changes": [
+        "chemml -> qemlflow (100 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.691701",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml.egg-info/entry_points.txt",
+      "changes": [
+        "chemml -> qemlflow (6 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.692561",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml.egg-info/requires.txt",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.693126",
+      "status": "applied"
+    },
+    {
+      "file": "src/chemml.egg-info/top_level.txt",
+      "changes": [
+        "chemml -> qemlflow (1 times)"
+      ],
+      "timestamp": "2025-06-17T04:11:27.693470",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": ".archive/archive/chemml_common_legacy",
+      "new_path": ".archive/archive/qemlflow_common_legacy",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": ".archive/backup/refactor_20250616_101121/src/chemml",
+      "new_path": ".archive/backup/refactor_20250616_101121/src/qemlflow",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "qemlflow_backup_20250617_041123/.archive/archive/chemml_common_legacy",
+      "new_path": "qemlflow_backup_20250617_041123/.archive/archive/qemlflow_common_legacy",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "qemlflow_backup_20250617_041123/.archive/backup/refactor_20250616_101121/src/chemml",
+      "new_path": "qemlflow_backup_20250617_041123/.archive/backup/refactor_20250616_101121/src/qemlflow",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "qemlflow_backup_20250617_041123/src/chemml",
+      "new_path": "qemlflow_backup_20250617_041123/src/qemlflow",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "chemml_env/lib/python3.11/site-packages/chemml-0.2.0.dist-info",
+      "new_path": "chemml_env/lib/python3.11/site-packages/qemlflow-0.2.0.dist-info",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "src/chemml",
+      "new_path": "src/qemlflow",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "src/chemml.egg-info",
+      "new_path": "src/qemlflow.egg-info",
+      "status": "applied"
+    },
+    {
+      "type": "directory_rename",
+      "old_path": "chemml_env",
+      "new_path": "qemlflow_env",
+      "status": "applied"
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "files_processed": 683,
+    "total_files": 900,
+    "directories_renamed": 9
+  }
+}

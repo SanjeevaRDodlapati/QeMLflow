@@ -332,7 +332,7 @@ class ClinicalAIRWEPlatform:
 
 ## 🎓 **Certification & Professional Development**
 
-### **ChemML Precision Medicine Expert Certification**
+### **QeMLflow Precision Medicine Expert Certification**
 Upon successful completion (≥80 points), participants receive:
 
 - **Digital Credential**: Blockchain-verified precision medicine expertise certificate
@@ -348,6 +348,6 @@ Upon successful completion (≥80 points), participants receive:
 
 ---
 
-**Phase 4.7** will establish **Bootcamp 07** as the **definitive educational experience** for AI-driven precision medicine, positioning ChemML at the forefront of personalized therapeutics education and preparing participants for **leadership roles** in the rapidly evolving precision medicine landscape.
+**Phase 4.7** will establish **Bootcamp 07** as the **definitive educational experience** for AI-driven precision medicine, positioning QeMLflow at the forefront of personalized therapeutics education and preparing participants for **leadership roles** in the rapidly evolving precision medicine landscape.
 
 *Ready to transform the future of personalized medicine through AI-driven innovation!* 🚀🧬💊

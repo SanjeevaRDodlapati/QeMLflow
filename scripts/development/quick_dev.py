@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick Development Commands for ChemML
+Quick Development Commands for QeMLflow
 ====================================
 
 Easy access to enhanced development features.
@@ -12,14 +12,14 @@ import sys
 
 def show_dashboard():
     """Show performance dashboard."""
-    from chemml.core.monitoring import show_performance_dashboard
+    from qemlflow.core.monitoring import show_performance_dashboard
 
     show_performance_dashboard()
 
 
 def recommend_model_demo():
     """Demo model recommendation system."""
-    from chemml.core.recommendations import recommend_model
+    from qemlflow.core.recommendations import recommend_model
 
     # Demo data
     demo_smiles = ["CCO", "CCC", "c1ccccc1", "CCN", "CCCN"]
@@ -53,13 +53,13 @@ def run_tests():
 
 
 def setup_notebook():
-    """Setup Jupyter notebook with ChemML."""
+    """Setup Jupyter notebook with QeMLflow."""
     subprocess.run([sys.executable, "-m", "jupyter", "lab", "--ip=0.0.0.0"])
 
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("🧬 ChemML Quick Development Commands")
+        print("🧬 QeMLflow Quick Development Commands")
         print("=" * 40)
         print("python quick_dev.py dashboard     - Show performance dashboard")
         print("python quick_dev.py recommend     - Demo model recommendation")

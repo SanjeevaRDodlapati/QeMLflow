@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide covers different ways to install ChemML based on your needs.
+This guide covers different ways to install QeMLflow based on your needs.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ This guide covers different ways to install ChemML based on your needs.
 Install from PyPI with all core dependencies:
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 This includes:
@@ -30,8 +30,8 @@ For contributors and advanced users:
 
 ```bash
 # Clone the repository
-git clone https://github.com/SanjeevaRDodlapati/ChemML.git
-cd ChemML
+git clone https://github.com/SanjeevaRDodlapati/QeMLflow.git
+cd QeMLflow
 
 # Install in development mode
 pip install -e ".[dev]"
@@ -51,8 +51,8 @@ For lightweight deployments:
 # Install core dependencies only
 pip install -r requirements-core.txt
 
-# Then install ChemML
-pip install chemml --no-deps
+# Then install QeMLflow
+pip install qemlflow --no-deps
 ```
 
 ### 4. Docker Installation
@@ -61,13 +61,13 @@ Use our official Docker image:
 
 ```bash
 # Pull the latest image
-docker pull chemml/chemml:latest
+docker pull qemlflow/qemlflow:latest
 
 # Run interactive session
-docker run -it --rm chemml/chemml:latest python
+docker run -it --rm qemlflow/qemlflow:latest python
 
 # Mount your data directory
-docker run -it --rm -v $(pwd)/data:/app/data chemml/chemml:latest
+docker run -it --rm -v $(pwd)/data:/app/data qemlflow/qemlflow:latest
 ```
 
 ## Optional Dependencies
@@ -113,13 +113,13 @@ pip install py3Dmol
 Test your installation:
 
 ```python
-import chemml
-print(f"ChemML version: {chemml.__version__}")
+import qemlflow
+print(f"QeMLflow version: {qemlflow.__version__}")
 
 # Test core functionality
-from chemml.preprocessing import MolecularDescriptors
+from qemlflow.preprocessing import MolecularDescriptors
 desc = MolecularDescriptors()
-print("✅ ChemML installed successfully!")
+print("✅ QeMLflow installed successfully!")
 ```
 
 ## Environment Setup
@@ -128,32 +128,32 @@ print("✅ ChemML installed successfully!")
 
 ```bash
 # Create virtual environment
-python -m venv chemml_env
+python -m venv qemlflow_env
 
 # Activate (Linux/Mac)
-source chemml_env/bin/activate
+source qemlflow_env/bin/activate
 
 # Activate (Windows)
-chemml_env\Scripts\activate
+qemlflow_env\Scripts\activate
 
-# Install ChemML
-pip install chemml
+# Install QeMLflow
+pip install qemlflow
 ```
 
 ### Conda Environment
 
 ```bash
 # Create conda environment
-conda create -n chemml python=3.11
+conda create -n qemlflow python=3.11
 
 # Activate environment
-conda activate chemml
+conda activate qemlflow
 
 # Install dependencies
 conda install -c conda-forge rdkit pandas scikit-learn
 
-# Install ChemML
-pip install chemml
+# Install QeMLflow
+pip install qemlflow
 ```
 
 ## Configuration
@@ -162,18 +162,18 @@ pip install chemml
 
 ```bash
 # Optional: Set data directory
-export CHEMML_DATA_DIR="/path/to/your/data"
+export QEMLFLOW_DATA_DIR="/path/to/your/data"
 
 # Optional: Set cache directory
-export CHEMML_CACHE_DIR="/path/to/cache"
+export QEMLFLOW_CACHE_DIR="/path/to/cache"
 
 # Optional: Enable GPU acceleration
-export CHEMML_GPU=true
+export QEMLFLOW_GPU=true
 ```
 
 ### Configuration File
 
-Create `chemml_config.yaml`:
+Create `qemlflow_config.yaml`:
 
 ```yaml
 environment: production
@@ -206,7 +206,7 @@ mamba install -c conda-forge rdkit
 #### 2. Permission Errors
 ```bash
 # Use user installation
-pip install --user chemml
+pip install --user qemlflow
 
 # Or create virtual environment
 python -m venv venv && source venv/bin/activate
@@ -215,11 +215,11 @@ python -m venv venv && source venv/bin/activate
 #### 3. Memory Issues
 ```bash
 # Install with limited memory
-pip install --no-cache-dir chemml
+pip install --no-cache-dir qemlflow
 
 # Or install dependencies separately
 pip install numpy pandas scikit-learn
-pip install chemml --no-deps
+pip install qemlflow --no-deps
 ```
 
 #### 4. Import Errors
@@ -229,8 +229,8 @@ import sys
 print(sys.path)
 
 # Verify modules
-import chemml
-print(chemml.__file__)
+import qemlflow
+print(qemlflow.__file__)
 ```
 
 ### Platform-Specific Notes
@@ -267,22 +267,22 @@ sudo yum install python3-devel gcc gcc-c++
 ### Memory Usage
 ```python
 # Configure for limited memory
-import chemml
-chemml.config.set_memory_limit(2048)  # 2GB limit
+import qemlflow
+qemlflow.config.set_memory_limit(2048)  # 2GB limit
 ```
 
 ### Parallel Processing
 ```python
 # Set number of CPU cores
-import chemml
-chemml.config.set_n_jobs(4)  # Use 4 cores
+import qemlflow
+qemlflow.config.set_n_jobs(4)  # Use 4 cores
 ```
 
 ### GPU Acceleration
 ```python
 # Enable GPU if available
-import chemml
-chemml.config.enable_gpu(True)
+import qemlflow
+qemlflow.config.enable_gpu(True)
 ```
 
 ## Next Steps
@@ -295,6 +295,6 @@ After installation:
 
 ## Getting Help
 
-- **GitHub Issues**: [Report installation problems](https://github.com/SanjeevaRDodlapati/ChemML/issues)
-- **Discussions**: [Ask questions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
-- **Documentation**: [Full documentation](https://sanjeevardodlapati.github.io/ChemML/)
+- **GitHub Issues**: [Report installation problems](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
+- **Discussions**: [Ask questions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
+- **Documentation**: [Full documentation](https://sanjeevardodlapati.github.io/QeMLflow/)

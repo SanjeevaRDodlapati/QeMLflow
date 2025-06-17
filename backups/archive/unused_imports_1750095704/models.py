@@ -1,5 +1,5 @@
 """
-ChemML Core Models
+QeMLflow Core Models
 =================
 
 Machine learning models optimized for chemistry and drug discovery applications.
@@ -39,7 +39,7 @@ except ImportError:
 
 
 class BaseModel(ABC):
-    """Abstract base class for all ChemML models."""
+    """Abstract base class for all QeMLflow models."""
 
     def __init__(self, task_type: str = "regression", **kwargs) -> None:
         """
@@ -378,10 +378,10 @@ def setup_experiment_tracking(experiment_name: str, config: Dict = None) -> Any:
         return None
     try:
         run = wandb.init(
-            project="chemml-experiments",
+            project="qemlflow-experiments",
             name=experiment_name,
             config=config or {},
-            tags=["chemml"],
+            tags=["qemlflow"],
         )
         print(f"✅ Experiment tracking started: {run.url}")
         return run

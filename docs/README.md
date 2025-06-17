@@ -1,6 +1,6 @@
-# 📚 ChemML Documentation
+# 📚 QeMLflow Documentation
 
-**Essential documentation for ChemML developers and users**
+**Essential documentation for QeMLflow developers and users**
 
 ---
 

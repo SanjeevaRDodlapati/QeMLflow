@@ -1,8 +1,8 @@
 """
-ChemML Hybrid Architecture Migration Script
+QeMLflow Hybrid Architecture Migration Script
 ==========================================
 
-Migrates existing ChemML codebase to the new hybrid architecture.
+Migrates existing QeMLflow codebase to the new hybrid architecture.
 This script handles:
 - Moving files to new structure
 - Updating import statements
@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 
-class ChemMLMigrator:
+class QeMLflowMigrator:
     """Handles migration to the new hybrid architecture."""
 
     def __init__(self, root_dir: str, dry_run: bool = False, backup: bool = True):
@@ -29,7 +29,7 @@ class ChemMLMigrator:
         Initialize migrator.
 
         Args:
-            root_dir: Root directory of ChemML project
+            root_dir: Root directory of QeMLflow project
             dry_run: If True, only print what would be done
             backup: If True, create backup of original files
         """
@@ -45,7 +45,7 @@ class ChemMLMigrator:
 
     def migrate(self):
         """Run the complete migration process."""
-        print("🚀 Starting ChemML Hybrid Architecture Migration")
+        print("🚀 Starting QeMLflow Hybrid Architecture Migration")
         print("=" * 50)
 
         try:
@@ -85,7 +85,7 @@ class ChemMLMigrator:
         print("\n📁 Migrating drug design modules...")
 
         old_drug_design = self.src_dir / "drug_design"
-        new_research_dir = self.src_dir / "chemml" / "research"
+        new_research_dir = self.src_dir / "qemlflow" / "research"
 
         if not old_drug_design.exists():
             print("⚠️  No drug_design directory found, skipping...")
@@ -110,7 +110,7 @@ class ChemMLMigrator:
     def _combine_drug_design_files(self, drug_design_dir: Path) -> str:
         """Combine multiple drug design files into one module."""
         header = '''"""
-ChemML Drug Discovery Research Module
+QeMLflow Drug Discovery Research Module
 ====================================
 
 Advanced drug discovery algorithms and workflows.
@@ -198,10 +198,10 @@ import warnings
         """Migrate common utilities."""
         print("\n🔧 Migrating utilities...")
 
-        old_common = self.src_dir / "chemml_common"
+        old_common = self.src_dir / "qemlflow_common"
 
         if not old_common.exists():
-            print("⚠️  No chemml_common directory found, skipping...")
+            print("⚠️  No qemlflow_common directory found, skipping...")
             return
 
         # Most utility functions are already in core/utils.py
@@ -218,7 +218,7 @@ import warnings
         print("📈 Migrating experiment tracking...")
 
         exp_tracking_content = '''"""
-ChemML Experiment Tracking Integration
+QeMLflow Experiment Tracking Integration
 =====================================
 
 Weights & Biases integration for experiment tracking.
@@ -233,7 +233,7 @@ except ImportError:
     HAS_WANDB = False
 
 
-def setup_wandb_tracking(experiment_name: str, config: dict = None, project: str = "chemml-experiments"):
+def setup_wandb_tracking(experiment_name: str, config: dict = None, project: str = "qemlflow-experiments"):
     """Setup wandb experiment tracking."""
     if not HAS_WANDB:
         warnings.warn("wandb not available. Install with: pip install wandb")
@@ -244,7 +244,7 @@ def setup_wandb_tracking(experiment_name: str, config: dict = None, project: str
             project=project,
             name=experiment_name,
             config=config or {},
-            tags=["chemml"]
+            tags=["qemlflow"]
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run
@@ -269,7 +269,7 @@ __all__ = ['setup_wandb_tracking', 'log_metrics', 'finish_run']
 '''
 
         target_file = (
-            self.src_dir / "chemml" / "integrations" / "experiment_tracking.py"
+            self.src_dir / "qemlflow" / "integrations" / "experiment_tracking.py"
         )
 
         if not self.dry_run:
@@ -338,12 +338,12 @@ __all__ = ['setup_wandb_tracking', 'log_metrics', 'finish_run']
         """Update a single import line."""
         # Common import replacements
         replacements = {
-            "from src.chemml_custom": "from chemml.core",
-            "from chemml_custom": "from chemml.core",
-            "from src.drug_design": "from chemml.research.drug_discovery",
-            "from src.data_processing": "from chemml.core.data",
-            "from src.models": "from chemml.core.models",
-            "from src.chemml_common": "from chemml.core.utils",
+            "from src.qemlflow_custom": "from qemlflow.core",
+            "from qemlflow_custom": "from qemlflow.core",
+            "from src.drug_design": "from qemlflow.research.drug_discovery",
+            "from src.data_processing": "from qemlflow.core.data",
+            "from src.models": "from qemlflow.core.models",
+            "from src.qemlflow_common": "from qemlflow.core.utils",
             "import sys; sys.path.append": "# Removed sys.path manipulation",
         }
 
@@ -358,7 +358,7 @@ __all__ = ['setup_wandb_tracking', 'log_metrics', 'finish_run']
         print("\n🔄 Creating compatibility layer...")
 
         compat_content = '''"""
-ChemML Compatibility Layer
+QeMLflow Compatibility Layer
 =========================
 
 Provides backward compatibility for old import paths.
@@ -369,9 +369,9 @@ import warnings
 
 # Provide old import paths
 try:
-    from chemml.core.featurizers import *
-    from chemml.core.models import *
-    from chemml.core.data import *
+    from qemlflow.core.featurizers import *
+    from qemlflow.core.models import *
+    from qemlflow.core.data import *
 
     # Legacy aliases
     ModernMorganFingerprint = MorganFingerprint
@@ -379,7 +379,7 @@ try:
     ModernECFPFingerprint = ECFPFingerprint
 
     warnings.warn(
-        "Using legacy chemml_custom imports. Please update to: from chemml.core import featurizers",
+        "Using legacy qemlflow_custom imports. Please update to: from qemlflow.core import featurizers",
         DeprecationWarning,
         stacklevel=2
     )
@@ -394,7 +394,7 @@ __all__ = [
 '''
 
         # Create compatibility module
-        compat_file = self.src_dir / "chemml_custom" / "__init__.py"
+        compat_file = self.src_dir / "qemlflow_custom" / "__init__.py"
 
         if not self.dry_run and compat_file.parent.exists():
             with open(compat_file, "w") as f:
@@ -428,7 +428,7 @@ __all__ = [
 
             # Update packages finder
             old_packages = 'packages=find_packages("src")'
-            new_packages = 'packages=find_packages("src", include=["chemml*"])'
+            new_packages = 'packages=find_packages("src", include=["qemlflow*"])'
 
             content = content.replace(old_packages, new_packages)
 
@@ -475,19 +475,19 @@ __all__ = [
 def main():
     """Main migration function."""
     parser = argparse.ArgumentParser(
-        description="Migrate ChemML to hybrid architecture"
+        description="Migrate QeMLflow to hybrid architecture"
     )
     parser.add_argument(
         "--dry-run", action="store_true", help="Show what would be done"
     )
     parser.add_argument("--no-backup", action="store_true", help="Skip creating backup")
     parser.add_argument(
-        "--root-dir", default=".", help="Root directory of ChemML project"
+        "--root-dir", default=".", help="Root directory of QeMLflow project"
     )
 
     args = parser.parse_args()
 
-    migrator = ChemMLMigrator(
+    migrator = QeMLflowMigrator(
         root_dir=args.root_dir, dry_run=args.dry_run, backup=not args.no_backup
     )
 

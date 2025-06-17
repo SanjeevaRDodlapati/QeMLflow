@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/development/FINAL_CODEBASE_FUNCTIONALITY_VERIFICATION/">
+        <link rel="canonical" href="https://qemlflow.io/development/FINAL_CODEBASE_FUNCTIONALITY_VERIFICATION/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Codebase Functionality Verification - COMPLETE ✅ - ChemML Documentation</title>
+        <title>QeMLflow Codebase Functionality Verification - COMPLETE ✅ - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-codebase-functionality-verification-complete" class="md-skip">
+        <a href="#qemlflow-codebase-functionality-verification-complete" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Codebase Functionality Verification - COMPLETE ✅
+              QeMLflow Codebase Functionality Verification - COMPLETE ✅
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -663,7 +663,7 @@
 
 
 
-<h1 id="chemml-codebase-functionality-verification-complete">ChemML Codebase Functionality Verification - COMPLETE ✅<a class="headerlink" href="#chemml-codebase-functionality-verification-complete" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-codebase-functionality-verification-complete">QeMLflow Codebase Functionality Verification - COMPLETE ✅<a class="headerlink" href="#qemlflow-codebase-functionality-verification-complete" title="Permanent link">&para;</a></h1>
 <p><strong>Date</strong>: June 16, 2025<br />
 <strong>Status</strong>: 🎉 <strong>FULLY FUNCTIONAL</strong> - All critical issues resolved<br />
 <strong>Summary</strong>: Repository reorganization and functionality restoration is <strong>COMPLETE</strong></p>
@@ -687,25 +687,25 @@
 - Updated return type annotations to use <code>Any</code> instead of undefined adapter types
 - Used adapter dictionary lookups instead of direct class references</p>
 <p><strong>Verification</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.adapters.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">model_adapters</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.adapters.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">model_adapters</span>
 <span class="c1"># ✅ Import successful - no more circular import errors</span>
 </code></pre></div>
 
 <h3 id="2-missing-model-class">2. Missing Model Class ✅<a class="headerlink" href="#2-missing-model-class" title="Permanent link">&para;</a></h3>
-<p><strong>Problem</strong>: <code>ImportError: cannot import name 'Model' from 'chemml.core.models'</code>
+<p><strong>Problem</strong>: <code>ImportError: cannot import name 'Model' from 'qemlflow.core.models'</code>
 <strong>Solution</strong>:
-- Added <code>Model = BaseModel</code> alias in <code>chemml.core.models.py</code>
+- Added <code>Model = BaseModel</code> alias in <code>qemlflow.core.models.py</code>
 - Updated <code>__all__</code> exports to include <code>"Model"</code>
 - Ensures backward compatibility for code expecting a generic Model class</p>
 <p><strong>Verification</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">BaseModel</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">BaseModel</span>
 <span class="c1"># ✅ Both imports work, Model is an alias for BaseModel</span>
 </code></pre></div>
 
 <h2 id="comprehensive-functionality-testing">🧪 Comprehensive Functionality Testing<a class="headerlink" href="#comprehensive-functionality-testing" title="Permanent link">&para;</a></h2>
 <h3 id="core-functionality">Core Functionality ✅<a class="headerlink" href="#core-functionality" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="err">✅</span> <span class="n">ChemML</span> <span class="n">package</span> <span class="n">imports</span> <span class="n">successfully</span>
-<span class="err">✅</span> <span class="n">ChemMLPipeline</span> <span class="n">creates</span> <span class="ow">and</span> <span class="n">works</span> <span class="k">with</span> <span class="n">chemistry</span> <span class="n">data</span>
+<div class="codehilite"><pre><span></span><code><span class="err">✅</span> <span class="n">QeMLflow</span> <span class="n">package</span> <span class="n">imports</span> <span class="n">successfully</span>
+<span class="err">✅</span> <span class="n">QeMLflowPipeline</span> <span class="n">creates</span> <span class="ow">and</span> <span class="n">works</span> <span class="k">with</span> <span class="n">chemistry</span> <span class="n">data</span>
 <span class="err">✅</span> <span class="n">Model</span> <span class="n">creation</span> <span class="p">(</span><span class="n">RF</span><span class="p">,</span> <span class="n">Linear</span><span class="p">,</span> <span class="n">SVM</span><span class="p">)</span> <span class="n">works</span>
 <span class="err">✅</span> <span class="n">Data</span> <span class="n">processing</span> <span class="ow">and</span> <span class="n">featurization</span> <span class="n">works</span>
 <span class="err">✅</span> <span class="n">Pipeline</span> <span class="n">workflow</span> <span class="n">end</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">end</span> <span class="n">works</span>
@@ -732,7 +732,7 @@
 <h3 id="before-vs-after">Before vs After<a class="headerlink" href="#before-vs-after" title="Permanent link">&para;</a></h3>
 <p><strong>Before</strong>: Cluttered root with 30+ files and directories
 <strong>After</strong>: Clean root with organized structure:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">ChemML</span><span class="o">/</span>
+<div class="codehilite"><pre><span></span><code><span class="n">QeMLflow</span><span class="o">/</span>
 <span class="err">├──</span><span class="w"> </span><span class="err">📁</span><span class="w"> </span><span class="o">.</span><span class="n">config</span><span class="o">/</span><span class="w">          </span><span class="c1"># All configuration files</span>
 <span class="err">├──</span><span class="w"> </span><span class="err">📁</span><span class="w"> </span><span class="o">.</span><span class="n">artifacts</span><span class="o">/</span><span class="w">       </span><span class="c1"># Build outputs and generated files  </span>
 <span class="err">├──</span><span class="w"> </span><span class="err">📁</span><span class="w"> </span><span class="o">.</span><span class="n">temp</span><span class="o">/</span><span class="w">           </span><span class="c1"># Temporary and cache files</span>
@@ -779,7 +779,7 @@
 <li><strong>Testing</strong>: Pytest working with comprehensive test suite  </li>
 <li><strong>Documentation</strong>: MkDocs building documentation successfully</li>
 <li><strong>Version Control</strong>: Pre-commit hooks configured and working</li>
-<li><strong>Development</strong>: All core and extended ChemML features accessible</li>
+<li><strong>Development</strong>: All core and extended QeMLflow features accessible</li>
 </ol>
 <h3 id="example-development-commands">Example Development Commands ✅<a class="headerlink" href="#example-development-commands" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Linting and quality checks</span>
@@ -817,7 +817,7 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files<span cl
 <li>
 <p><strong>Ensure all tools, core, and extended functions work</strong>: ✅ COMPLETE</p>
 </li>
-<li>Core ChemML features: ✅ Working</li>
+<li>Core QeMLflow features: ✅ Working</li>
 <li>Extended/integration features: ✅ Working  </li>
 <li>Development tools: ✅ Working</li>
 <li>
@@ -841,7 +841,7 @@ pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files<span cl
 - ✅ Core and extended features work end-to-end
 - ✅ Development workflow is fully functional
 - ✅ Codebase is ready for continued development and production use</p>
-<p><strong>The ChemML codebase is now:</strong>
+<p><strong>The QeMLflow codebase is now:</strong>
 - 🏗️ <strong>Well-organized</strong> with clean structure
 - 🔧 <strong>Fully functional</strong> from core to advanced features<br />
 - 📊 <strong>Quality-monitored</strong> with comprehensive linting

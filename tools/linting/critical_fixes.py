@@ -222,7 +222,7 @@ class CriticalLintingFixer:
         # Skip archived and virtual environment files
         excluded_patterns = [
             "archive/",
-            "chemml_env/",
+            "qemlflow_env/",
             "build/",
             "dist/",
             ".venv/",

@@ -1,5 +1,5 @@
 """
-ChemML Intelligent Model Recommendation System
+QeMLflow Intelligent Model Recommendation System
 =============================================
 
 AI-powered system that recommends optimal models based on data characteristics,

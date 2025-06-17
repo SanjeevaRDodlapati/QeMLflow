@@ -1,10 +1,10 @@
 #!/bin/bash
-# ChemML Medium Validation Script (15 minutes)  
+# QeMLflow Medium Validation Script (15 minutes)  
 # Purpose: Comprehensive validation for regular development cycles
 
 set -e  # Exit on any error
 
-echo "🔍 ChemML Medium Validation Starting..."
+echo "🔍 QeMLflow Medium Validation Starting..."
 echo "⏱️  Expected time: ~15 minutes"
 echo "============================================"
 
@@ -21,16 +21,16 @@ pytest tests/unit/ -x --maxfail=5 --tb=short || (echo "❌ Unit tests failed" &&
 echo "✅ Unit tests passed"
 
 # Step 3: Core functionality verification
-echo "📦 Verifying core ChemML functionality..."
+echo "📦 Verifying core QeMLflow functionality..."
 python -c "
-import chemml
-from chemml.core import ChemMLPipeline
-from chemml.core.models import create_rf_model, create_linear_model
-from chemml.integrations import ExternalModelManager
+import qemlflow
+from qemlflow.core import QeMLflowPipeline
+from qemlflow.core.models import create_rf_model, create_linear_model
+from qemlflow.integrations import ExternalModelManager
 
 # Test pipeline creation
-pipeline = ChemMLPipeline()
-print('✅ ChemMLPipeline created successfully')
+pipeline = QeMLflowPipeline()
+print('✅ QeMLflowPipeline created successfully')
 
 # Test model creation  
 rf_model = create_rf_model()

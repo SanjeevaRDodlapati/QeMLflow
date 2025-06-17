@@ -1,8 +1,8 @@
-# ChemML Linting System Status
+# QeMLflow Linting System Status
 
 ## Current Implementation
 
-The ChemML project now features a **robust multi-layer linting framework** that provides comprehensive code quality assurance through redundancy and cross-validation.
+The QeMLflow project now features a **robust multi-layer linting framework** that provides comprehensive code quality assurance through redundancy and cross-validation.
 
 ## Key Components
 

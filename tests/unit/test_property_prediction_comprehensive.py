@@ -14,7 +14,7 @@ import pandas as pd
 import pytest
 
 # Import the module under test
-sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
+sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
 from drug_design.property_prediction import *
 from drug_design.property_prediction import (
     RDKIT_AVAILABLE,
@@ -1010,7 +1010,7 @@ class TestPerformance:
 
     def test_predict_properties_type_error_line_349(self):
         """Test line 349: TypeError for invalid molecular_data type."""
-        from chemml.research.drug_discovery.properties import predict_properties
+        from qemlflow.research.drug_discovery.properties import predict_properties
 
         # Create a mock model
         mock_model = Mock()
@@ -1025,14 +1025,14 @@ class TestPerformance:
         # Test that the import warning is properly structured
         with patch("builtins.__import__", side_effect=ImportError("RDKit not found")):
             with patch(
-                "chemml.research.drug_discovery.properties.logging.warning"
+                "qemlflow.research.drug_discovery.properties.logging.warning"
             ) as mock_warning:
                 # Force re-import to trigger the warning
                 import importlib
 
-                import chemml.research.drug_discovery.properties
+                import qemlflow.research.drug_discovery.properties
 
-                importlib.reload(chemml.research.drug_discovery.properties)
+                importlib.reload(qemlflow.research.drug_discovery.properties)
 
                 # Should have called the warning
                 mock_warning.assert_called()

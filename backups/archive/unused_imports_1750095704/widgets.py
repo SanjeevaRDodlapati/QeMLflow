@@ -1,5 +1,5 @@
 """
-Interactive Widgets for ChemML Tutorials
+Interactive Widgets for QeMLflow Tutorials
 =======================================
 
 Interactive widgets and educational tools to enhance learning experiences in computational chemistry and machine learning tutorials.

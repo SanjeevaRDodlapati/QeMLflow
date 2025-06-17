@@ -1,5 +1,5 @@
 """
-Advanced Import Performance Optimizer for ChemML
+Advanced Import Performance Optimizer for QeMLflow
 Implements sophisticated import optimization strategies
 """
 
@@ -14,7 +14,7 @@ from pathlib import Path
 class AdvancedImportOptimizer:
     """Advanced import optimization with multiple strategies"""
 
-    def __init__(self, src_path: str = "src/chemml"):
+    def __init__(self, src_path: str = "src/qemlflow"):
         self.src_path = Path(src_path)
         self.import_cache = {}
         self.lazy_modules = set()
@@ -38,22 +38,22 @@ class AdvancedImportOptimizer:
 
         module_times = {}
 
-        # Test main chemml import
+        # Test main qemlflow import
         start_time = time.time()
         try:
-            import chemml
+            import qemlflow
 
-            module_times["chemml"] = time.time() - start_time
+            module_times["qemlflow"] = time.time() - start_time
         except Exception as e:
-            module_times["chemml"] = float("inf")
-            print(f"❌ Failed to import chemml: {e}")
+            module_times["qemlflow"] = float("inf")
+            print(f"❌ Failed to import qemlflow: {e}")
 
         # Test submodules
         submodules = [
-            "chemml.core",
-            "chemml.utils",
-            "chemml.integrations",
-            "chemml.research",
+            "qemlflow.core",
+            "qemlflow.utils",
+            "qemlflow.integrations",
+            "qemlflow.research",
         ]
 
         for module in submodules:
@@ -166,7 +166,7 @@ __version__ = "0.2.0"
         """Generate optimized main __init__.py with sub-5s target"""
 
         content = '''"""
-ChemML: Machine Learning for Chemistry
+QeMLflow: Machine Learning for Chemistry
 Optimized for ultra-fast imports (<5s target)
 """
 
@@ -177,7 +177,7 @@ from typing import TYPE_CHECKING
 
 # Version and metadata
 __version__ = "0.2.0"
-__author__ = "ChemML Team"
+__author__ = "QeMLflow Team"
 
 # Suppress common warnings for faster startup
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -187,16 +187,16 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 from .utils.imports import *
 
 # Fast initialization message
-if not getattr(sys, '_chemml_initialized', False):
-    print("ChemML initialized successfully!")
+if not getattr(sys, '_qemlflow_initialized', False):
+    print("QeMLflow initialized successfully!")
     print(f"Version: {__version__}")
-    sys._chemml_initialized = True
+    sys._qemlflow_initialized = True
 
 # Lazy loading for all heavy modules
 _LAZY_MODULES = {
-    "core": "chemml.core",
-    "research": "chemml.research",
-    "integrations": "chemml.integrations",
+    "core": "qemlflow.core",
+    "research": "qemlflow.research",
+    "integrations": "qemlflow.integrations",
 }
 
 def __getattr__(name: str):
@@ -218,7 +218,7 @@ def __getattr__(name: str):
         except (ImportError, AttributeError):
             continue
 
-    raise AttributeError(f"module 'chemml' has no attribute '{name}'")
+    raise AttributeError(f"module 'qemlflow' has no attribute '{name}'")
 
 # Essential functions that should be immediately available
 from .core.data import load_sample_data
@@ -227,9 +227,9 @@ from .core.data import load_sample_data
 def enable_all_features():
     """Force load all modules for full feature availability"""
     global core, research, integrations
-    core = __import__('chemml.core', fromlist=[''])
-    research = __import__('chemml.research', fromlist=[''])
-    integrations = __import__('chemml.integrations', fromlist=[''])
+    core = __import__('qemlflow.core', fromlist=[''])
+    research = __import__('qemlflow.research', fromlist=[''])
+    integrations = __import__('qemlflow.integrations', fromlist=[''])
 '''
 
         return content
@@ -319,13 +319,13 @@ def enable_all_features():
 
         # Clear import cache
         for module in list(sys.modules.keys()):
-            if module.startswith("chemml"):
+            if module.startswith("qemlflow"):
                 del sys.modules[module]
 
         # Test new performance
         start_time = time.time()
         try:
-            import chemml
+            import qemlflow
 
             optimized_time = time.time() - start_time
             results["optimized_time"] = optimized_time

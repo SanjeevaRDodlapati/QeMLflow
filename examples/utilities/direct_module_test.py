@@ -385,7 +385,7 @@ def test_automated_testing():
 
 def main():
     """Run all tests."""
-    print("🚀 ChemML Advanced Features Direct Test")
+    print("🚀 QeMLflow Advanced Features Direct Test")
     print("=" * 50)
     print("Testing immediate action implementations directly...")
 

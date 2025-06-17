@@ -3,7 +3,7 @@ Advanced User Interface and API Improvements
 ===========================================
 
 Phase 2 implementation: Enhanced user interfaces, better API design,
-and improved usability for ChemML.
+and improved usability for QeMLflow.
 
 Features:
 - Intuitive function interfaces
@@ -13,9 +13,9 @@ Features:
 - Progressive disclosure of complexity
 
 Usage:
-    from chemml.utils.enhanced_ui import ChemMLInterface, interactive_help
+    from qemlflow.utils.enhanced_ui import QeMLflowInterface, interactive_help
 
-    interface = ChemMLInterface()
+    interface = QeMLflowInterface()
     interface.quick_start()
 """
 
@@ -110,12 +110,12 @@ class InteractiveHelp:
         """Load help database with common questions and solutions."""
         return {
             "getting_started": {
-                "title": "Getting Started with ChemML",
+                "title": "Getting Started with QeMLflow",
                 "content": [
-                    "1. Import ChemML: `import chemml`",
-                    "2. Load data: `data = chemml.load_data('your_data.csv')`",
-                    "3. Process data: `processed = chemml.preprocess(data)`",
-                    "4. Train model: `model = chemml.train_model(processed)`",
+                    "1. Import QeMLflow: `import qemlflow`",
+                    "2. Load data: `data = qemlflow.load_data('your_data.csv')`",
+                    "3. Process data: `processed = qemlflow.preprocess(data)`",
+                    "4. Train model: `model = qemlflow.train_model(processed)`",
                 ],
             },
             "common_errors": {
@@ -153,7 +153,7 @@ class InteractiveHelp:
     def _show_help_menu(self) -> str:
         """Show main help menu."""
         lines = [
-            "🔍 ChemML Interactive Help",
+            "🔍 QeMLflow Interactive Help",
             "=" * 30,
             "Available topics:",
         ]
@@ -216,8 +216,8 @@ class ProgressiveDisclosure:
         return interface
 
 
-class ChemMLInterface:
-    """Main enhanced interface for ChemML."""
+class QeMLflowInterface:
+    """Main enhanced interface for QeMLflow."""
 
     def __init__(self):
         self.validator = SmartParameterValidator()
@@ -379,7 +379,7 @@ class ChemMLInterface:
         if not functions:
             return "No functions found matching the criteria."
 
-        lines = ["🧪 Available ChemML Functions", "=" * 30]
+        lines = ["🧪 Available QeMLflow Functions", "=" * 30]
 
         current_category = None
         for func in sorted(functions, key=lambda x: (x.category, x.difficulty, x.name)):
@@ -420,37 +420,37 @@ class APIUsabilityEnhancements:
 
 
 # Global interface instance
-chemml_interface = ChemMLInterface()
+qemlflow_interface = QeMLflowInterface()
 
 
 # Convenience functions
 def help(topic: str = None) -> str:
-    """Get help on ChemML topics."""
-    if topic and topic in chemml_interface.function_registry:
-        return chemml_interface.get_function_help(topic)
-    return chemml_interface.help_system.get_help(topic)
+    """Get help on QeMLflow topics."""
+    if topic and topic in qemlflow_interface.function_registry:
+        return qemlflow_interface.get_function_help(topic)
+    return qemlflow_interface.help_system.get_help(topic)
 
 
 def functions(category: str = None, level: str = None) -> str:
     """List available functions."""
-    return chemml_interface.list_functions(category, level)
+    return qemlflow_interface.list_functions(category, level)
 
 
 def set_level(level: str):
     """Set expertise level."""
-    chemml_interface.set_expertise_level(level)
+    qemlflow_interface.set_expertise_level(level)
 
 
 def quick_start() -> str:
     """Get quick start guide."""
-    return chemml_interface.quick_start()
+    return qemlflow_interface.quick_start()
 
 
 if __name__ == "__main__":
-    print("🚀 ChemML Enhanced UI Test")
+    print("🚀 QeMLflow Enhanced UI Test")
 
     # Test the interface
-    interface = ChemMLInterface()
+    interface = QeMLflowInterface()
 
     # Show quick start
     print(interface.quick_start())

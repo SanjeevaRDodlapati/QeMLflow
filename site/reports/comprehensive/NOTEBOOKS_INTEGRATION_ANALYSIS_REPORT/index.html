@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/reports/comprehensive/NOTEBOOKS_INTEGRATION_ANALYSIS_REPORT/">
+        <link rel="canonical" href="https://qemlflow.io/reports/comprehensive/NOTEBOOKS_INTEGRATION_ANALYSIS_REPORT/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Notebooks Learning Directory - Comprehensive Analysis & Integration Report - ChemML Documentation</title>
+        <title>QeMLflow Notebooks Learning Directory - Comprehensive Analysis & Integration Report - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-notebooks-learning-directory-comprehensive-analysis-integration-report" class="md-skip">
+        <a href="#qemlflow-notebooks-learning-directory-comprehensive-analysis-integration-report" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Notebooks Learning Directory - Comprehensive Analysis &amp; Integration Report
+              QeMLflow Notebooks Learning Directory - Comprehensive Analysis &amp; Integration Report
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -990,7 +990,7 @@
 
 
 
-<h1 id="chemml-notebooks-learning-directory-comprehensive-analysis-integration-report">ChemML Notebooks Learning Directory - Comprehensive Analysis &amp; Integration Report<a class="headerlink" href="#chemml-notebooks-learning-directory-comprehensive-analysis-integration-report" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-notebooks-learning-directory-comprehensive-analysis-integration-report">QeMLflow Notebooks Learning Directory - Comprehensive Analysis &amp; Integration Report<a class="headerlink" href="#qemlflow-notebooks-learning-directory-comprehensive-analysis-integration-report" title="Permanent link">&para;</a></h1>
 <h2 id="executive-summary">📊 Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
 <p>This report provides a detailed analysis of the <code>notebooks/learning/</code> directory, assessing redundancy, alignment with the main codebase, and opportunities for improved modular integration. The analysis reveals significant opportunities to reduce redundancy and create a more cohesive, modular learning experience.</p>
 <h2 id="current-structure-analysis">🔍 Current Structure Analysis<a class="headerlink" href="#current-structure-analysis" title="Permanent link">&para;</a></h2>
@@ -1014,11 +1014,11 @@
 
 <h3 id="main-codebase-alignment-analysis">Main Codebase Alignment Analysis<a class="headerlink" href="#main-codebase-alignment-analysis" title="Permanent link">&para;</a></h3>
 <p><strong>Core Modules Available:</strong>
-- <code>src/chemml/core/featurizers.py</code> (660 lines) - Modern molecular featurization
-- <code>src/chemml/core/data.py</code> (641 lines) - Data processing utilities
-- <code>src/chemml/core/models.py</code> - ML model interfaces
-- <code>src/chemml/research/drug_discovery/qsar.py</code> (767 lines) - QSAR modeling
-- <code>src/chemml/integrations/deepchem_integration.py</code> (406 lines) - DeepChem wrappers</p>
+- <code>src/qemlflow/core/featurizers.py</code> (660 lines) - Modern molecular featurization
+- <code>src/qemlflow/core/data.py</code> (641 lines) - Data processing utilities
+- <code>src/qemlflow/core/models.py</code> - ML model interfaces
+- <code>src/qemlflow/research/drug_discovery/qsar.py</code> (767 lines) - QSAR modeling
+- <code>src/qemlflow/integrations/deepchem_integration.py</code> (406 lines) - DeepChem wrappers</p>
 <h2 id="critical-issues-identified">🚨 Critical Issues Identified<a class="headerlink" href="#critical-issues-identified" title="Permanent link">&para;</a></h2>
 <h3 id="1-massive-redundancy-in-code-implementation">1. <strong>Massive Redundancy in Code Implementation</strong><a class="headerlink" href="#1-massive-redundancy-in-code-implementation" title="Permanent link">&para;</a></h3>
 <p><strong>Problem</strong>: Notebooks contain extensive duplicate implementations of functionality already available in the main codebase.</p>
@@ -1027,7 +1027,7 @@
 - <strong>QSAR Modeling</strong>: Bootcamp notebooks build QSAR models from scratch, while <code>research/drug_discovery/qsar.py</code> provides comprehensive QSAR functionality
 - <strong>DeepChem Integration</strong>: <code>03_deepchem_drug_discovery.ipynb</code> (2,487 lines!) reimplements DeepChem workflows when <code>integrations/deepchem_integration.py</code> exists</p>
 <h3 id="2-api-inconsistency-and-import-chaos">2. <strong>API Inconsistency and Import Chaos</strong><a class="headerlink" href="#2-api-inconsistency-and-import-chaos" title="Permanent link">&para;</a></h3>
-<p><strong>Problem</strong>: Notebooks use inconsistent import patterns and don't leverage the unified ChemML APIs.</p>
+<p><strong>Problem</strong>: Notebooks use inconsistent import patterns and don't leverage the unified QeMLflow APIs.</p>
 <p><strong>Current Pattern (Inconsistent)</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Direct library imports in notebooks</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
@@ -1036,11 +1036,11 @@
 <span class="c1"># ... then reimplementing functionality</span>
 </code></pre></div>
 
-<p><strong>Should Be (Using ChemML APIs)</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Clean ChemML imports</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">qsar</span>
+<p><strong>Should Be (Using QeMLflow APIs)</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Clean QeMLflow imports</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">qsar</span>
 </code></pre></div>
 
 <h3 id="3-poor-modular-integration">3. <strong>Poor Modular Integration</strong><a class="headerlink" href="#3-poor-modular-integration" title="Permanent link">&para;</a></h3>
@@ -1118,9 +1118,9 @@
 </code></pre></div>
 
 <p><strong>New Modular Approach</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># Clean integration with ChemML core</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">DescriptorCalculator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDataProcessor</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Clean integration with QeMLflow core</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">DescriptorCalculator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDataProcessor</span>
 
 <span class="c1"># Use core modules</span>
 <span class="n">processor</span> <span class="o">=</span> <span class="n">MolecularDataProcessor</span><span class="p">()</span>
@@ -1136,8 +1136,8 @@
 <p><strong>Current</strong>: Massive reimplementation
 <strong>New</strong>: Showcase integration capabilities</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># New streamlined approach</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.deepchem_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemModelWrapper</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_dataset_for_deepchem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.deepchem_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemModelWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">prepare_dataset_for_deepchem</span>
 
 <span class="c1"># Clean workflow demonstration</span>
 <span class="n">wrapper</span> <span class="o">=</span> <span class="n">DeepChemModelWrapper</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;multitask_regressor&#39;</span><span class="p">)</span>
@@ -1150,7 +1150,7 @@
 <p><strong>Target</strong>: Showcase <code>research/drug_discovery/qsar.py</code> capabilities</p>
 <p><strong>Current</strong>: Notebooks build QSAR from scratch
 <strong>New</strong>: Demonstrate advanced QSAR capabilities</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span><span class="p">,</span> <span class="n">ActivityPredictor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.qsar</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span><span class="p">,</span> <span class="n">ActivityPredictor</span>
 
 <span class="c1"># Advanced QSAR modeling</span>
 <span class="n">qsar_model</span> <span class="o">=</span> <span class="n">QSARModel</span><span class="p">(</span><span class="n">model_type</span><span class="o">=</span><span class="s1">&#39;ensemble&#39;</span><span class="p">)</span>
@@ -1172,7 +1172,7 @@
 - No clear building progression</p>
 <p><strong>New Structure</strong>:</p>
 <div class="codehilite"><pre><span></span><code>fundamentals/
-├── 01_chemml_core_intro.ipynb          # Core modules introduction
+├── 01_qemlflow_core_intro.ipynb          # Core modules introduction
 ├── 02_molecular_featurization.ipynb   # Featurizers deep dive
 └── 03_data_processing.ipynb           # Data module showcase
 
@@ -1190,22 +1190,22 @@ advanced/
 
 <h3 id="phase-4-api-standardization-priority-4">Phase 4: API Standardization (Priority 4)<a class="headerlink" href="#phase-4-api-standardization-priority-4" title="Permanent link">&para;</a></h3>
 <h4 id="41-unified-import-patterns">4.1 Unified Import Patterns<a class="headerlink" href="#41-unified-import-patterns" title="Permanent link">&para;</a></h4>
-<p><strong>Create ChemML Learning API</strong>:</p>
+<p><strong>Create QeMLflow Learning API</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># New unified learning imports</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">load_tutorial_data</span><span class="p">,</span>
     <span class="n">setup_learning_environment</span><span class="p">,</span>
     <span class="n">create_interactive_demo</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research</span><span class="w"> </span><span class="kn">import</span> <span class="n">drug_discovery</span><span class="p">,</span> <span class="n">quantum</span><span class="p">,</span> <span class="n">generative</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span><span class="p">,</span> <span class="n">experiment_tracking</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research</span><span class="w"> </span><span class="kn">import</span> <span class="n">drug_discovery</span><span class="p">,</span> <span class="n">quantum</span><span class="p">,</span> <span class="n">generative</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span><span class="p">,</span> <span class="n">experiment_tracking</span>
 </code></pre></div>
 
 <h4 id="42-interactive-component-integration">4.2 Interactive Component Integration<a class="headerlink" href="#42-interactive-component-integration" title="Permanent link">&para;</a></h4>
 <p><strong>Add Tutorial-Specific Utils</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Tutorial utilities for better learning experience</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials.utils</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">visualize_molecules</span><span class="p">,</span>
     <span class="n">interactive_parameter_tuning</span><span class="p">,</span>
     <span class="n">progress_tracking</span><span class="p">,</span>
@@ -1320,7 +1320,7 @@ advanced/
 <ul>
 <li>[ ] Reduce total notebook lines by 60%+</li>
 <li>[ ] Achieve &lt;10% code redundancy</li>
-<li>[ ] 100% use of ChemML core APIs</li>
+<li>[ ] 100% use of QeMLflow core APIs</li>
 <li>[ ] Zero import inconsistencies</li>
 </ul>
 <h3 id="educational-metrics">Educational Metrics<a class="headerlink" href="#educational-metrics" title="Permanent link">&para;</a></h3>
@@ -1372,7 +1372,7 @@ advanced/
 <li><strong>Collaboration Platform</strong>: Shared research workflows</li>
 </ol>
 <h2 id="conclusion">📝 Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>The analysis reveals significant opportunities to transform the ChemML learning experience from a collection of disconnected, redundant tutorials into a cohesive, modular learning system that showcases the power of the new hybrid architecture.</p>
+<p>The analysis reveals significant opportunities to transform the QeMLflow learning experience from a collection of disconnected, redundant tutorials into a cohesive, modular learning system that showcases the power of the new hybrid architecture.</p>
 <p><strong>Key Findings</strong>:
 - <strong>67% code reduction possible</strong> through modular integration
 - <strong>Extreme redundancy</strong> in current implementation (especially DeepChem integration)
@@ -1381,7 +1381,7 @@ advanced/
 <p><strong>Recommendation</strong>: Proceed with aggressive refactoring following the proposed phased approach, starting with the highest-impact targets (DeepChem integration and core module showcases).</p>
 <p>This transformation will not only improve the learning experience but also serve as comprehensive documentation and testing for the main codebase, creating a virtuous cycle of improvement for both education and development.</p>
 <hr />
-<p><em>This report establishes the foundation for transforming ChemML's educational materials into a world-class modular learning system that truly showcases the power of the hybrid architecture.</em></p>
+<p><em>This report establishes the foundation for transforming QeMLflow's educational materials into a world-class modular learning system that truly showcases the power of the hybrid architecture.</em></p>
 
 
 

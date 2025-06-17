@@ -2,7 +2,7 @@
 Phase 8: Professional Certification & Global Deployment
 ======================================================
 
-Certification framework and global deployment checklist for ChemML expertise.
+Certification framework and global deployment checklist for QeMLflow expertise.
 """
 
 # Certification Levels
@@ -62,7 +62,7 @@ class CertificationManager:
     def generate_certificate(self, student_id, level):
         """Generate certification credential."""
         timestamp = "2024-12-19"
-        cert_id = f"CHEMML-{level.upper()}-{student_id}-{timestamp}"
+        cert_id = f"QEMLFLOW-{level.upper()}-{student_id}-{timestamp}"
         return {
             "certificate_id": cert_id,
             "level": level,

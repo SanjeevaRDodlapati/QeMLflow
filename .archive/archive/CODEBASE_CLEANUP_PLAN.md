@@ -1,8 +1,8 @@
-# 🧹 ChemML Codebase Cleanup Plan
+# 🧹 QeMLflow Codebase Cleanup Plan
 
 ## 📊 Current Codebase Analysis
 
-After analyzing the ChemML codebase, I've identified several areas for cleanup and consolidation to improve maintainability and reduce clutter.
+After analyzing the QeMLflow codebase, I've identified several areas for cleanup and consolidation to improve maintainability and reduce clutter.
 
 ## 🗂️ **Files to Clean Up**
 
@@ -10,10 +10,10 @@ After analyzing the ChemML codebase, I've identified several areas for cleanup a
 ```bash
 # Pattern: *.backup*, *.backup_20250616_*, *.backup_phase*
 Examples:
-- src/chemml/__init__.py.backup_phase6
-- src/chemml/__init__.py.backup_phase7
-- src/chemml/core/*.backup_20250616_*
-- src/chemml/integrations/*.backup_*
+- src/qemlflow/__init__.py.backup_phase6
+- src/qemlflow/__init__.py.backup_phase7
+- src/qemlflow/core/*.backup_20250616_*
+- src/qemlflow/integrations/*.backup_*
 ```
 **Action**: DELETE - These are temporary development artifacts
 
@@ -108,7 +108,7 @@ docs/:
 ## 📋 **Proposed File Structure After Cleanup**
 
 ```
-ChemML/
+QeMLflow/
 ├── README.md                           # Main project README
 ├── CHANGELOG.md                        # Version history (NEW)
 ├── DEVELOPMENT_HISTORY.md              # Consolidated phase reports (NEW)
@@ -126,7 +126,7 @@ ChemML/
 │   ├── quick_start_example.py          # Simple examples
 │   └── advanced_workflows.py           # Complex examples
 │
-├── src/chemml/                         # Clean source code (no backups)
+├── src/qemlflow/                         # Clean source code (no backups)
 └── archive/                            # Compressed historical files
 ```
 
@@ -135,7 +135,7 @@ ChemML/
 ### **Step 1: Backup Current State**
 ```bash
 # Create full backup before cleanup
-tar -czf chemml_pre_cleanup_backup.tar.gz .
+tar -czf qemlflow_pre_cleanup_backup.tar.gz .
 ```
 
 ### **Step 2: Remove Development Artifacts**
@@ -220,4 +220,4 @@ find src/ -name "*.backup*" -delete
 5. **Optimize examples and source (Phase 3-4)**
 6. **Final testing and validation**
 
-This cleanup will transform ChemML into a professional, well-organized codebase that's easy to navigate and maintain!
+This cleanup will transform QeMLflow into a professional, well-organized codebase that's easy to navigate and maintain!

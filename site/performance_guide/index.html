@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/performance_guide/">
+        <link rel="canonical" href="https://qemlflow.io/performance_guide/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Performance Optimization Guide - ChemML Documentation</title>
+        <title>Performance Optimization Guide - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -661,56 +661,56 @@
 
 
 <h1 id="performance-optimization-guide">Performance Optimization Guide<a class="headerlink" href="#performance-optimization-guide" title="Permanent link">&para;</a></h1>
-<p>This guide helps you get the best performance from ChemML for production workloads.</p>
+<p>This guide helps you get the best performance from QeMLflow for production workloads.</p>
 <h2 id="quick-performance-wins">⚡ Quick Performance Wins<a class="headerlink" href="#quick-performance-wins" title="Permanent link">&para;</a></h2>
 <h3 id="1-enable-fast-mode">1. Enable Fast Mode<a class="headerlink" href="#1-enable-fast-mode" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Pre-load commonly used modules</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
 </code></pre></div>
 
 <h3 id="2-use-caching">2. Use Caching<a class="headerlink" href="#2-use-caching" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enable result caching for repeated operations</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Set cache size (default: 1GB)</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_cache_size</span><span class="p">(</span><span class="s2">&quot;2GB&quot;</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_cache_size</span><span class="p">(</span><span class="s2">&quot;2GB&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="3-parallel-processing">3. Parallel Processing<a class="headerlink" href="#3-parallel-processing" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Use all available CPU cores</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Or specify number of cores</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="advanced-optimizations">🚀 Advanced Optimizations<a class="headerlink" href="#advanced-optimizations" title="Permanent link">&para;</a></h2>
 <h3 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Set memory limits to prevent OOM errors</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="s2">&quot;8GB&quot;</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="s2">&quot;8GB&quot;</span><span class="p">)</span>
 
 <span class="c1"># Use memory-efficient data structures</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_memory_optimization</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_memory_optimization</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Clear cache periodically for long-running processes</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
 </code></pre></div>
 
 <h3 id="gpu-acceleration">GPU Acceleration<a class="headerlink" href="#gpu-acceleration" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enable GPU support (requires CUDA)</span>
-<span class="k">if</span> <span class="n">chemml</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
-    <span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_gpu_memory_limit</span><span class="p">(</span><span class="s2">&quot;4GB&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_gpu_memory_limit</span><span class="p">(</span><span class="s2">&quot;4GB&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="batch-processing">Batch Processing<a class="headerlink" href="#batch-processing" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Process large datasets in batches</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">process_large_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">chemml</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">batch_iterator</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
-        <span class="n">batch_results</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">process_molecules</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">batch_iterator</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="n">batch_results</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">process_molecules</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
         <span class="n">results</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">batch_results</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">results</span>
 </code></pre></div>
@@ -755,10 +755,10 @@
 <p><em>Benchmarks on Intel i7-8700K, 32GB RAM, GeForce RTX 3080</em></p>
 <h2 id="configuration-best-practices">🔧 Configuration Best Practices<a class="headerlink" href="#configuration-best-practices" title="Permanent link">&para;</a></h2>
 <h3 id="production-settings">Production Settings<a class="headerlink" href="#production-settings" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Optimal production configuration</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">configure_for_production</span><span class="p">(</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">configure_for_production</span><span class="p">(</span>
     <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>                    <span class="c1"># Use all cores</span>
     <span class="n">enable_caching</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>          <span class="c1"># Cache results</span>
     <span class="n">cache_size</span><span class="o">=</span><span class="s2">&quot;2GB&quot;</span><span class="p">,</span>             <span class="c1"># Generous cache</span>
@@ -770,7 +770,7 @@
 
 <h3 id="development-settings">Development Settings<a class="headerlink" href="#development-settings" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Development-friendly configuration</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">configure_for_development</span><span class="p">(</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">configure_for_development</span><span class="p">(</span>
     <span class="n">n_jobs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                     <span class="c1"># Leave cores for other work</span>
     <span class="n">enable_caching</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>         <span class="c1"># Fresh results each time</span>
     <span class="n">memory_limit</span><span class="o">=</span><span class="s2">&quot;4GB&quot;</span><span class="p">,</span>           <span class="c1"># Conservative memory use</span>
@@ -781,27 +781,27 @@
 <h2 id="performance-troubleshooting">🐛 Performance Troubleshooting<a class="headerlink" href="#performance-troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="slow-import-times">Slow Import Times<a class="headerlink" href="#slow-import-times" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Use lazy loading for better startup time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>  <span class="c1"># Fast import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>  <span class="c1"># Fast import</span>
 <span class="c1"># Modules loaded on-demand</span>
 
 <span class="c1"># Or pre-load specific modules</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>  <span class="c1"># Only load what you need</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">models</span>  <span class="c1"># Only load what you need</span>
 </code></pre></div>
 
 <h3 id="high-memory-usage">High Memory Usage<a class="headerlink" href="#high-memory-usage" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Monitor memory usage</span>
-<span class="n">memory_info</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_memory_usage</span><span class="p">()</span>
+<span class="n">memory_info</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">get_memory_usage</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current usage: </span><span class="si">{</span><span class="n">memory_info</span><span class="o">.</span><span class="n">used_gb</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">GB&quot;</span><span class="p">)</span>
 
 <span class="c1"># Clear unnecessary data</span>
 <span class="k">del</span> <span class="n">large_dataset</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">gc</span><span class="p">;</span> <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </code></pre></div>
 
 <h3 id="cpu-bottlenecks">CPU Bottlenecks<a class="headerlink" href="#cpu-bottlenecks" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Profile your code</span>
-<span class="k">with</span> <span class="n">chemml</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">profiler</span><span class="p">()</span> <span class="k">as</span> <span class="n">prof</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">profiler</span><span class="p">()</span> <span class="k">as</span> <span class="n">prof</span><span class="p">:</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">expensive_operation</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="n">prof</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>  <span class="c1"># See where time is spent</span>
@@ -831,13 +831,13 @@
 <h3 id="docker-configuration">Docker Configuration<a class="headerlink" href="#docker-configuration" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.11-slim</span>
 
-<span class="c"># Install ChemML with performance optimizations</span>
-<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>chemml<span class="o">[</span>performance<span class="o">]</span>
+<span class="c"># Install QeMLflow with performance optimizations</span>
+<span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>qemlflow<span class="o">[</span>performance<span class="o">]</span>
 
 <span class="c"># Configure for production</span>
-<span class="k">ENV</span><span class="w"> </span><span class="nv">CHEMML_N_JOBS</span><span class="o">=</span>-1
-<span class="k">ENV</span><span class="w"> </span><span class="nv">CHEMML_CACHE_SIZE</span><span class="o">=</span>2GB
-<span class="k">ENV</span><span class="w"> </span><span class="nv">CHEMML_MEMORY_LIMIT</span><span class="o">=</span>16GB
+<span class="k">ENV</span><span class="w"> </span><span class="nv">QEMLFLOW_N_JOBS</span><span class="o">=</span>-1
+<span class="k">ENV</span><span class="w"> </span><span class="nv">QEMLFLOW_CACHE_SIZE</span><span class="o">=</span>2GB
+<span class="k">ENV</span><span class="w"> </span><span class="nv">QEMLFLOW_MEMORY_LIMIT</span><span class="o">=</span>16GB
 
 <span class="k">COPY</span><span class="w"> </span>app.py<span class="w"> </span>.
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
@@ -847,14 +847,14 @@
 <div class="codehilite"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chemml-app</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qemlflow-app</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chemml</span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chemml-app:latest</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qemlflow</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qemlflow-app:latest</span>
 <span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>

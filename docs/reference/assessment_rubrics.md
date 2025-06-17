@@ -170,7 +170,7 @@ This document provides comprehensive assessment rubrics for evaluating progress 
 - Substantial progress on chosen specialization project
 - Technical presentation to external collaborators
 - First draft of methodology paper
-- Contribution to ChemML library
+- Contribution to QeMLflow library
 
 #### Month 12 Milestone (Phase 2 Completion)
 - **Minimum Passing Score**: 60/80 (75%)
@@ -180,7 +180,7 @@ This document provides comprehensive assessment rubrics for evaluating progress 
 **Required Deliverables**:
 - Complete specialization project with results
 - Submitted manuscript or conference paper
-- Integrated contribution to ChemML codebase
+- Integrated contribution to QeMLflow codebase
 - Research proposal for Phase 3
 
 ---

@@ -51,8 +51,8 @@ The root directory now contains only essential files:
 ## Directory Structure Health
 
 ```
-ChemML/
-├── src/chemml/           # Core framework (clean)
+QeMLflow/
+├── src/qemlflow/           # Core framework (clean)
 ├── notebooks/            # Integrated notebooks (clean)
 ├── docs/                 # Comprehensive documentation (clean)
 ├── tests/                # Unit and integration tests (clean)
@@ -78,7 +78,7 @@ ChemML/
 
 ## Conclusion
 
-The ChemML codebase is now in an excellent state with:
+The QeMLflow codebase is now in an excellent state with:
 - **Zero redundancy** in core directories
 - **Professional organization** throughout
 - **Clear purpose** for every file

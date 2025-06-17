@@ -1,4 +1,4 @@
-# 🎉 ChemML Framework - Final Complete Status
+# 🎉 QeMLflow Framework - Final Complete Status
 
 ## 🏆 **MISSION ACCOMPLISHED**
 
@@ -94,11 +94,11 @@
 
 ### Clean Workspace Layout
 ```
-ChemML/
+QeMLflow/
 ├── README.md                           # Main project readme
 ├── PROJECT_STATUS_CONSOLIDATED.md     # This unified status report
 ├── DEVELOPMENT_HISTORY.md            # Complete development timeline
-├── src/chemml/                       # Core framework code
+├── src/qemlflow/                       # Core framework code
 │   ├── core/
 │   │   ├── data_processing.py        # Enhanced data processing
 │   │   ├── enhanced_models.py        # AutoML & advanced models
@@ -208,7 +208,7 @@ ChemML/
 
 ## 🎊 **Project Completion Certificate**
 
-**🏆 ChemML Framework Enhancement Project**
+**🏆 QeMLflow Framework Enhancement Project**
 
 **Status**: ✅ **SUCCESSFULLY COMPLETED**
 **Completion Date**: June 16, 2025
@@ -255,4 +255,4 @@ ChemML/
 **Framework Status: PRODUCTION READY**
 **Community Status: READY FOR ADOPTION**
 
-*The ChemML framework has been successfully enhanced, optimized, documented, and prepared for production use. All objectives have been met or exceeded, and the codebase is ready for community adoption and continued development.*
+*The QeMLflow framework has been successfully enhanced, optimized, documented, and prepared for production use. All objectives have been met or exceeded, and the codebase is ready for community adoption and continued development.*

@@ -7,7 +7,7 @@ src_dir = Path(__file__).parent.parent / "src"
 if str(src_dir) not in sys.path:
     sys.path.insert(0, str(src_dir))
 """
-Pytest configuration and shared fixtures for ChemML tests.
+Pytest configuration and shared fixtures for QeMLflow tests.
 
 This module provides common fixtures and configuration for the entire test suite,
 including sample molecular data, mock models, and test utilities.
@@ -47,7 +47,7 @@ except ImportError:
 @pytest.fixture(scope="session")
 def test_data_dir():
     """Create a temporary directory for test data."""
-    temp_dir = tempfile.mkdtemp(prefix="chemml_test_")
+    temp_dir = tempfile.mkdtemp(prefix="qemlflow_test_")
     yield Path(temp_dir)
     shutil.rmtree(temp_dir)
 

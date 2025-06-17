@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ChemML Health Monitoring and Alerting System
+QeMLflow Health Monitoring and Alerting System
 ============================================
 
 Monitors codebase health metrics and provides actionable insights.
@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 class HealthMonitor:
-    """Monitor and analyze ChemML codebase health metrics."""
+    """Monitor and analyze QeMLflow codebase health metrics."""
 
     def __init__(self):
         self.base_dir = Path(__file__).parent.parent
@@ -221,7 +221,7 @@ class HealthMonitor:
 
     def create_report(self, output_format="console"):
         """Create comprehensive health report."""
-        print("🏥 ChemML Health Monitor")
+        print("🏥 QeMLflow Health Monitor")
         print("=" * 50)
 
         # Get current metrics
@@ -289,7 +289,7 @@ class HealthMonitor:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ChemML Health Monitoring")
+    parser = argparse.ArgumentParser(description="QeMLflow Health Monitoring")
     parser.add_argument(
         "--format", choices=["console", "json"], default="console", help="Output format"
     )

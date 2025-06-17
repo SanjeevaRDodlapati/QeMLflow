@@ -1,8 +1,8 @@
-# 🚀 ChemML Long-Term Research Enhancement Implementation Guide
+# 🚀 QeMLflow Long-Term Research Enhancement Implementation Guide
 
 ## 📋 **Context for New Copilot Session**
 
-This guide provides implementation-ready details for the 6 revolutionary research enhancements to ChemML. The current codebase has already implemented immediate and medium-term enhancements successfully.
+This guide provides implementation-ready details for the 6 revolutionary research enhancements to QeMLflow. The current codebase has already implemented immediate and medium-term enhancements successfully.
 
 ## 🏆 **Best-in-Class Library Strategy**
 
@@ -26,7 +26,7 @@ dask[distributed]>=2023.5.0   # Alternative for data processing
 
 **Flexible Backend Support**:
 ```python
-# src/chemml/distributed/training_backends.py
+# src/qemlflow/distributed/training_backends.py
 class DistributedTrainingBackend:
     SUPPORTED_BACKENDS = {
         'ray': RayDistributedTrainer,
@@ -58,7 +58,7 @@ wandb>=0.15.0                 # Experiment tracking and visualization
 
 **Flexible Optimizer Support**:
 ```python
-# src/chemml/optimization/hyperparameter_search.py
+# src/qemlflow/optimization/hyperparameter_search.py
 class HyperparameterOptimizer:
     SUPPORTED_OPTIMIZERS = {
         'optuna_tpe': OptunaTPEOptimizer,      # Tree Parzen Estimator
@@ -138,14 +138,14 @@ pycaret>=3.1.0               # Low-code ML platform
 
 ### **Plugin-Based Backend System**
 ```python
-# src/chemml/core/backends/base_backend.py
+# src/qemlflow/core/backends/base_backend.py
 from abc import ABC, abstractmethod
 from typing import Dict, Any
-from src.chemml.distributed.ray_utils import RayDistributedTrainer
-from src.chemml.distributed.horovod_utils import HorovodTrainer
-from src.chemml.distributed.dask_utils import DaskMLTrainer
-from src.chemml.distributed.pytorch_ddp_utils import PyTorchDDPTrainer
-from src.chemml.distributed.tensorflow_mirror_utils import TensorFlowMirroredTrainer
+from src.qemlflow.distributed.ray_utils import RayDistributedTrainer
+from src.qemlflow.distributed.horovod_utils import HorovodTrainer
+from src.qemlflow.distributed.dask_utils import DaskMLTrainer
+from src.qemlflow.distributed.pytorch_ddp_utils import PyTorchDDPTrainer
+from src.qemlflow.distributed.tensorflow_mirror_utils import TensorFlowMirroredTrainer
 
 class BaseDistributedBackend(ABC):
     """Base class for distributed computing backends."""
@@ -269,7 +269,7 @@ This architecture gives you the **best of both worlds**: access to cutting-edge 
 
 ### **Implementation Structure**
 ```
-src/chemml/distributed/
+src/qemlflow/distributed/
 ├── __init__.py
 ├── cluster_manager.py       # Core cluster management
 ├── task_scheduler.py        # Molecular task scheduling
@@ -296,7 +296,7 @@ cryptography>=41.0.0          # Secure communication
 
 **Cluster Manager:**
 ```python
-# src/chemml/distributed/cluster_manager.py
+# src/qemlflow/distributed/cluster_manager.py
 import dask.distributed as dd
 import ray
 from typing import List, Dict, Any, Optional
@@ -375,7 +375,7 @@ class MolecularComputeCluster:
 
 **Federated Learning Framework:**
 ```python
-# src/chemml/distributed/federated_learning.py
+# src/qemlflow/distributed/federated_learning.py
 import torch
 import torch.nn as nn
 from typing import List, Dict, Any
@@ -450,7 +450,7 @@ class FederatedMolecularLearning:
 
 ### **Implementation Structure**
 ```
-src/chemml/quantum/
+src/qemlflow/quantum/
 ├── __init__.py
 ├── quantum_embeddings.py    # Quantum molecular representations
 ├── hybrid_models.py         # Quantum-classical hybrid networks
@@ -478,7 +478,7 @@ pytket>=1.20.0             # Cambridge Quantum Computing
 
 **Quantum Molecular Embeddings:**
 ```python
-# src/chemml/quantum/quantum_embeddings.py
+# src/qemlflow/quantum/quantum_embeddings.py
 import qiskit
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 from qiskit.circuit.library import EfficientSU2
@@ -581,7 +581,7 @@ class QuantumMolecularEmbeddings:
 
 **Hybrid Quantum-Classical Networks:**
 ```python
-# src/chemml/quantum/hybrid_models.py
+# src/qemlflow/quantum/hybrid_models.py
 import torch
 import torch.nn as nn
 import pennylane as qml
@@ -705,7 +705,7 @@ class QuantumEnhancedPredictor(nn.Module):
 
 ### **Implementation Structure**
 ```
-src/chemml/autonomous/
+src/qemlflow/autonomous/
 ├── __init__.py
 ├── discovery_agent.py       # Main autonomous research agent
 ├── hypothesis_generator.py  # AI hypothesis generation
@@ -737,7 +737,7 @@ networkx>=3.1                # Graph algorithms
 
 ### **Implementation Structure**
 ```
-src/chemml/multiscale/
+src/qemlflow/multiscale/
 ├── __init__.py
 ├── scale_manager.py         # Multi-scale coordination
 ├── quantum_level.py         # Quantum mechanical calculations
@@ -757,7 +757,7 @@ src/chemml/multiscale/
 
 ### **Implementation Structure**
 ```
-src/chemml/uncertainty/
+src/qemlflow/uncertainty/
 ├── __init__.py
 ├── epistemic_uncertainty.py # Model uncertainty
 ├── aleatoric_uncertainty.py # Data uncertainty
@@ -776,7 +776,7 @@ src/chemml/uncertainty/
 
 ### **Implementation Structure**
 ```
-src/chemml/knowledge/
+src/qemlflow/knowledge/
 ├── __init__.py
 ├── knowledge_graph.py       # Molecular knowledge graph
 ├── literature_extraction.py # Scientific paper processing
@@ -795,27 +795,27 @@ src/chemml/knowledge/
 
 ### **1. Start with Current Codebase**
 ```bash
-cd /Users/sanjeevadodlapati/Downloads/Repos/ChemML
-# The current ChemML framework is production-ready with all immediate/medium-term enhancements
+cd /Users/sanjeevadodlapati/Downloads/Repos/QeMLflow
+# The current QeMLflow framework is production-ready with all immediate/medium-term enhancements
 ```
 
 ### **2. Begin with Distributed Computing (Phase 1)**
 ```bash
 # Create distributed computing module
-mkdir -p src/chemml/distributed/communication
-touch src/chemml/distributed/__init__.py
+mkdir -p src/qemlflow/distributed/communication
+touch src/qemlflow/distributed/__init__.py
 # Implement cluster_manager.py first (provided template above)
 ```
 
 ### **3. Development Workflow**
 1. **Each enhancement is modular** - can be developed independently
-2. **Use existing architecture** - follow the established `src/chemml/` structure
+2. **Use existing architecture** - follow the established `src/qemlflow/` structure
 3. **Test incrementally** - create tests in `tools/testing/`
 4. **Document thoroughly** - update docs as you implement
 
 ### **4. Key Integration Points**
-- **Main module**: Update `src/chemml/__init__.py` to expose new features
-- **Core module**: Update `src/chemml/core/__init__.py` for core functionality
+- **Main module**: Update `src/qemlflow/__init__.py` to expose new features
+- **Core module**: Update `src/qemlflow/core/__init__.py` for core functionality
 - **Dependencies**: Add new requirements to `requirements.txt`
 - **Testing**: Create comprehensive tests for each enhancement
 
@@ -842,4 +842,4 @@ When you start a new Copilot session, this document provides:
 
 **This document is comprehensive enough to guide implementation of all long-term research enhancements in a fresh Copilot session.**
 
-**Ready to transform ChemML into a next-generation molecular intelligence platform!** 🧬⚛️🤖
+**Ready to transform QeMLflow into a next-generation molecular intelligence platform!** 🧬⚛️🤖

@@ -2,7 +2,7 @@
 Simple Boltz Integration Test
 ============================
 
-Direct test of the Boltz integration without full ChemML dependencies.
+Direct test of the Boltz integration without full QeMLflow dependencies.
 """
 
 import os
@@ -18,7 +18,7 @@ def test_boltz_adapter_import():
     print("Testing Boltz adapter import...")
 
     try:
-        from chemml.integrations.boltz_adapter import BoltzAdapter, BoltzModel
+        from qemlflow.integrations.boltz_adapter import BoltzAdapter, BoltzModel
 
         print("✓ Boltz adapter imported successfully")
         return True
@@ -32,7 +32,7 @@ def test_adapter_initialization():
     print("\nTesting Boltz adapter initialization...")
 
     try:
-        from chemml.integrations.boltz_adapter import BoltzAdapter
+        from qemlflow.integrations.boltz_adapter import BoltzAdapter
 
         # Initialize with test configuration
         adapter = BoltzAdapter(
@@ -201,8 +201,8 @@ def demonstrate_usage_patterns():
     print("\n4. Batch Processing:")
     print("   results = boltz_model.batch_predict(input_list)")
 
-    print("\n5. Integration with ChemML:")
-    print("   from chemml.integrations import ExternalModelManager")
+    print("\n5. Integration with QeMLflow:")
+    print("   from qemlflow.integrations import ExternalModelManager")
     print("   manager = ExternalModelManager()")
     print("   boltz = manager.integrate_boltz()")
     print("   results = boltz.predict(dataframe)")

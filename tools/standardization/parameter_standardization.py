@@ -231,7 +231,7 @@ def main():
     """Main function."""
     parser = argparse.ArgumentParser(description="Parameter Naming Standardization")
     parser.add_argument(
-        "--src-dir", default="src/chemml", help="Source directory to analyze"
+        "--src-dir", default="src/qemlflow", help="Source directory to analyze"
     )
     parser.add_argument(
         "--save-report", action="store_true", help="Save detailed report to JSON file"

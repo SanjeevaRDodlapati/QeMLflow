@@ -1,628 +1,628 @@
-src/chemml/__init__.py:113:5: F401 '.utils.enhanced_error_handling.ChemMLError' imported but unused
+src/qemlflow/__init__.py:113:5: F401 '.utils.enhanced_error_handling.QeMLflowError' imported but unused
     from .utils.enhanced_error_handling import (
     ^
-src/chemml/__init__.py:113:5: F401 '.utils.enhanced_error_handling.debug_context' imported but unused
+src/qemlflow/__init__.py:113:5: F401 '.utils.enhanced_error_handling.debug_context' imported but unused
     from .utils.enhanced_error_handling import (
     ^
-src/chemml/__init__.py:113:5: F401 '.utils.enhanced_error_handling.enhance_function_errors' imported but unused
+src/qemlflow/__init__.py:113:5: F401 '.utils.enhanced_error_handling.enhance_function_errors' imported but unused
     from .utils.enhanced_error_handling import (
     ^
-src/chemml/__init__.py:113:5: F401 '.utils.enhanced_error_handling.global_performance_monitor' imported but unused
+src/qemlflow/__init__.py:113:5: F401 '.utils.enhanced_error_handling.global_performance_monitor' imported but unused
     from .utils.enhanced_error_handling import (
     ^
-src/chemml/__init__.py:113:5: F401 '.utils.enhanced_error_handling.setup_enhanced_logging' imported but unused
+src/qemlflow/__init__.py:113:5: F401 '.utils.enhanced_error_handling.setup_enhanced_logging' imported but unused
     from .utils.enhanced_error_handling import (
     ^
-src/chemml/__init__.py:122:5: F401 '.utils.enhanced_ui.chemml_interface' imported but unused
-    from .utils.enhanced_ui import chemml_interface, functions
+src/qemlflow/__init__.py:122:5: F401 '.utils.enhanced_ui.qemlflow_interface' imported but unused
+    from .utils.enhanced_ui import qemlflow_interface, functions
     ^
-src/chemml/__init__.py:122:5: F401 '.utils.enhanced_ui.functions' imported but unused
-    from .utils.enhanced_ui import chemml_interface, functions
+src/qemlflow/__init__.py:122:5: F401 '.utils.enhanced_ui.functions' imported but unused
+    from .utils.enhanced_ui import qemlflow_interface, functions
     ^
-src/chemml/__init__.py:123:5: F401 '.utils.enhanced_ui.help as chemml_help' imported but unused
-    from .utils.enhanced_ui import help as chemml_help
+src/qemlflow/__init__.py:123:5: F401 '.utils.enhanced_ui.help as qemlflow_help' imported but unused
+    from .utils.enhanced_ui import help as qemlflow_help
     ^
-src/chemml/__init__.py:124:5: F401 '.utils.enhanced_ui.quick_start' imported but unused
+src/qemlflow/__init__.py:124:5: F401 '.utils.enhanced_ui.quick_start' imported but unused
     from .utils.enhanced_ui import quick_start, set_level
     ^
-src/chemml/__init__.py:124:5: F401 '.utils.enhanced_ui.set_level' imported but unused
+src/qemlflow/__init__.py:124:5: F401 '.utils.enhanced_ui.set_level' imported but unused
     from .utils.enhanced_ui import quick_start, set_level
     ^
-src/chemml/__init__.py:132:5: F401 '.advanced.ml_optimizer.AutoMLOptimizer' imported but unused
+src/qemlflow/__init__.py:132:5: F401 '.advanced.ml_optimizer.AutoMLOptimizer' imported but unused
     from .advanced.ml_optimizer import (
     ^
-src/chemml/__init__.py:132:5: F401 '.advanced.ml_optimizer.IntelligentFeatureSelector' imported but unused
+src/qemlflow/__init__.py:132:5: F401 '.advanced.ml_optimizer.IntelligentFeatureSelector' imported but unused
     from .advanced.ml_optimizer import (
     ^
-src/chemml/__init__.py:132:5: F401 '.advanced.ml_optimizer.ModelAnalytics' imported but unused
+src/qemlflow/__init__.py:132:5: F401 '.advanced.ml_optimizer.ModelAnalytics' imported but unused
     from .advanced.ml_optimizer import (
     ^
-src/chemml/__init__.py:137:5: F401 '.enterprise.monitoring.AnalyticsDashboard' imported but unused
+src/qemlflow/__init__.py:137:5: F401 '.enterprise.monitoring.AnalyticsDashboard' imported but unused
     from .enterprise.monitoring import (
     ^
-src/chemml/__init__.py:137:5: F401 '.enterprise.monitoring.MetricsCollector' imported but unused
+src/qemlflow/__init__.py:137:5: F401 '.enterprise.monitoring.MetricsCollector' imported but unused
     from .enterprise.monitoring import (
     ^
-src/chemml/__init__.py:137:5: F401 '.enterprise.monitoring.MonitoringDashboard' imported but unused
+src/qemlflow/__init__.py:137:5: F401 '.enterprise.monitoring.MonitoringDashboard' imported but unused
     from .enterprise.monitoring import (
     ^
-src/chemml/__init___backup_20250616_002516.py:36:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:36:1: E402 module level import not at top of file
 from .core import data, evaluation, featurizers, models, utils
 ^
-src/chemml/__init___backup_20250616_002516.py:37:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:37:1: E402 module level import not at top of file
 from .core.data import load_sample_data, quick_clean, quick_split
 ^
-src/chemml/__init___backup_20250616_002516.py:38:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:38:1: E402 module level import not at top of file
 from .core.evaluation import quick_classification_eval, quick_regression_eval
 ^
-src/chemml/__init___backup_20250616_002516.py:41:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:41:1: E402 module level import not at top of file
 from .core.featurizers import (
 ^
-src/chemml/__init___backup_20250616_002516.py:46:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:46:1: E402 module level import not at top of file
 from .core.models import (
 ^
-src/chemml/__init___backup_20250616_002516.py:52:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:52:1: E402 module level import not at top of file
 from .core.utils import ensure_reproducibility, setup_logging
 ^
-src/chemml/__init___backup_20250616_002516.py:55:1: E402 module level import not at top of file
+src/qemlflow/__init___backup_20250616_002516.py:55:1: E402 module level import not at top of file
 from .utils.lazy_imports import check_dependencies, lazy_import
 ^
-src/chemml/__init___fast.py:17:1: E402 module level import not at top of file
+src/qemlflow/__init___fast.py:17:1: E402 module level import not at top of file
 from .core.data import load_sample_data, quick_clean, quick_split
 ^
-src/chemml/__init___fast.py:18:1: E402 module level import not at top of file
+src/qemlflow/__init___fast.py:18:1: E402 module level import not at top of file
 from .core.evaluation import quick_classification_eval, quick_regression_eval
 ^
-src/chemml/__init___fast.py:21:1: E402 module level import not at top of file
+src/qemlflow/__init___fast.py:21:1: E402 module level import not at top of file
 from .utils.lazy_imports import lazy_import
 ^
-src/chemml/__init___optimized.py:17:1: E402 module level import not at top of file
-from chemml.core.data import load_sample_data, quick_clean, quick_split
+src/qemlflow/__init___optimized.py:17:1: E402 module level import not at top of file
+from qemlflow.core.data import load_sample_data, quick_clean, quick_split
 ^
-src/chemml/__init___optimized.py:18:1: E402 module level import not at top of file
-from chemml.core.evaluation import quick_classification_eval, quick_regression_eval
+src/qemlflow/__init___optimized.py:18:1: E402 module level import not at top of file
+from qemlflow.core.evaluation import quick_classification_eval, quick_regression_eval
 ^
-src/chemml/__init___optimized.py:21:1: E402 module level import not at top of file
-from chemml.utils.lazy_imports import lazy_import
+src/qemlflow/__init___optimized.py:21:1: E402 module level import not at top of file
+from qemlflow.utils.lazy_imports import lazy_import
 ^
-src/chemml/advanced/ml_optimizer.py:23:1: F401 'json' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:23:1: F401 'json' imported but unused
 import json
 ^
-src/chemml/advanced/ml_optimizer.py:25:1: F401 'warnings' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:25:1: F401 'warnings' imported but unused
 import warnings
 ^
-src/chemml/advanced/ml_optimizer.py:27:1: F401 'collections.defaultdict' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:27:1: F401 'collections.defaultdict' imported but unused
 from collections import defaultdict
 ^
-src/chemml/advanced/ml_optimizer.py:29:1: F401 'pathlib.Path' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:29:1: F401 'pathlib.Path' imported but unused
 from pathlib import Path
 ^
-src/chemml/advanced/ml_optimizer.py:30:1: F401 'typing.Callable' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:30:1: F401 'typing.Callable' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/advanced/ml_optimizer.py:30:1: F401 'typing.Union' imported but unused
+src/qemlflow/advanced/ml_optimizer.py:30:1: F401 'typing.Union' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/config/unified_config.py:286:61: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 312)
-src/chemml/core/common/errors.py:207:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 241)
-src/chemml/core/common/performance.py:183:13: F841 local variable 'e' is assigned to but never used
+src/qemlflow/config/unified_config.py:286:61: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 312)
+src/qemlflow/core/common/errors.py:207:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 241)
+src/qemlflow/core/common/performance.py:183:13: F841 local variable 'e' is assigned to but never used
             except Exception as e:
             ^
-src/chemml/core/data.py:28:5: F401 'sklearn.model_selection.StratifiedShuffleSplit' imported but unused
+src/qemlflow/core/data.py:28:5: F401 'sklearn.model_selection.StratifiedShuffleSplit' imported but unused
     from sklearn.model_selection import StratifiedShuffleSplit, train_test_split
     ^
-src/chemml/core/data.py:219:5: C901 'DataSplitter.scaffold_split' is too complex (12)
+src/qemlflow/core/data.py:219:5: C901 'DataSplitter.scaffold_split' is too complex (12)
     def scaffold_split(
     ^
-src/chemml/core/data.py:462:1: E402 module level import not at top of file
+src/qemlflow/core/data.py:462:1: E402 module level import not at top of file
 from typing import Optional
 ^
-src/chemml/core/data_processing.py:904:55: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 920)
-src/chemml/core/enhanced_models.py:393:10: E999 SyntaxError: invalid decimal literal
-src/chemml/core/ensemble_advanced.py:13:1: F401 'pandas as pd' imported but unused
+src/qemlflow/core/data_processing.py:904:55: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 920)
+src/qemlflow/core/enhanced_models.py:393:10: E999 SyntaxError: invalid decimal literal
+src/qemlflow/core/ensemble_advanced.py:13:1: F401 'pandas as pd' imported but unused
 import pandas as pd
 ^
-src/chemml/core/ensemble_advanced.py:14:1: F401 'sklearn.base.ClassifierMixin' imported but unused
+src/qemlflow/core/ensemble_advanced.py:14:1: F401 'sklearn.base.ClassifierMixin' imported but unused
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 ^
-src/chemml/core/ensemble_advanced.py:14:1: F401 'sklearn.base.RegressorMixin' imported but unused
+src/qemlflow/core/ensemble_advanced.py:14:1: F401 'sklearn.base.RegressorMixin' imported but unused
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 ^
-src/chemml/core/ensemble_advanced.py:15:1: F401 'sklearn.ensemble.VotingClassifier' imported but unused
+src/qemlflow/core/ensemble_advanced.py:15:1: F401 'sklearn.ensemble.VotingClassifier' imported but unused
 from sklearn.ensemble import VotingClassifier, VotingRegressor
 ^
-src/chemml/core/ensemble_advanced.py:15:1: F401 'sklearn.ensemble.VotingRegressor' imported but unused
+src/qemlflow/core/ensemble_advanced.py:15:1: F401 'sklearn.ensemble.VotingRegressor' imported but unused
 from sklearn.ensemble import VotingClassifier, VotingRegressor
 ^
-src/chemml/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.accuracy_score' imported but unused
+src/qemlflow/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.accuracy_score' imported but unused
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 ^
-src/chemml/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.mean_squared_error' imported but unused
+src/qemlflow/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.mean_squared_error' imported but unused
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 ^
-src/chemml/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.r2_score' imported but unused
+src/qemlflow/core/ensemble_advanced.py:16:1: F401 'sklearn.metrics.r2_score' imported but unused
 from sklearn.metrics import accuracy_score, mean_squared_error, r2_score
 ^
-src/chemml/core/ensemble_advanced.py:49:10: F821 undefined name 'Self'
+src/qemlflow/core/ensemble_advanced.py:49:10: F821 undefined name 'Self'
     ) -> Self:
          ^
-src/chemml/core/ensemble_advanced.py:212:13: F841 local variable '_cluster_assignments' is assigned to but never used
+src/qemlflow/core/ensemble_advanced.py:212:13: F841 local variable '_cluster_assignments' is assigned to but never used
             _cluster_assignments = np.random.randint(
             ^
-src/chemml/core/ensemble_advanced.py:250:75: F821 undefined name 'Self'
+src/qemlflow/core/ensemble_advanced.py:250:75: F821 undefined name 'Self'
     def fit(self, modality_data: Dict[str, np.ndarray], y: np.ndarray) -> Self:
                                                                           ^
-src/chemml/core/ensemble_advanced.py:366:52: F821 undefined name 'Self'
+src/qemlflow/core/ensemble_advanced.py:366:52: F821 undefined name 'Self'
     def fit(self, X: np.ndarray, y: np.ndarray) -> Self:
                                                    ^
-src/chemml/core/evaluation.py:15:1: F401 'typing.Tuple' imported but unused
+src/qemlflow/core/evaluation.py:15:1: F401 'typing.Tuple' imported but unused
 from typing import Any, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/evaluation.py:15:1: F401 'typing.Union' imported but unused
+src/qemlflow/core/evaluation.py:15:1: F401 'typing.Union' imported but unused
 from typing import Any, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/evaluation.py:21:5: F401 'sklearn.metrics.classification_report' imported but unused
+src/qemlflow/core/evaluation.py:21:5: F401 'sklearn.metrics.classification_report' imported but unused
     from sklearn.metrics import (
     ^
-src/chemml/core/featurizers.py:4:28: E999 SyntaxError: unterminated string literal (detected at line 4)
-src/chemml/core/models.py:1:9: E999 SyntaxError: invalid syntax
-src/chemml/core/pipeline.py:830:52: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 840)
-src/chemml/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Dict' imported but unused
+src/qemlflow/core/featurizers.py:4:28: E999 SyntaxError: unterminated string literal (detected at line 4)
+src/qemlflow/core/models.py:1:9: E999 SyntaxError: invalid syntax
+src/qemlflow/core/pipeline.py:830:52: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 840)
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Dict' imported but unused
 from typing import Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Optional' imported but unused
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Optional' imported but unused
 from typing import Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Union' imported but unused
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:8:1: F401 'typing.Union' imported but unused
 from typing import Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:194:35: F821 undefined name 'Any'
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:194:35: F821 undefined name 'Any'
 def clean_molecular_data(data) -> Any:
                                   ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:216:40: F821 undefined name 'Any'
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:216:40: F821 undefined name 'Any'
 def preprocess_molecular_data(data) -> Any:
                                        ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:225:36: F821 undefined name 'Any'
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:225:36: F821 undefined name 'Any'
 def handle_missing_values(data) -> Any:
                                    ^
-src/chemml/core/preprocessing/molecular_preprocessing.py:231:29: F821 undefined name 'Any'
+src/qemlflow/core/preprocessing/molecular_preprocessing.py:231:29: F821 undefined name 'Any'
 def normalize_data(data) -> Any:
                             ^
-src/chemml/core/preprocessing/protein_preparation.py:359:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 363)
-src/chemml/core/recommendations.py:637:41: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 639)
-src/chemml/core/utils/__init__.py:9:1: F401 'sys' imported but unused
+src/qemlflow/core/preprocessing/protein_preparation.py:359:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 363)
+src/qemlflow/core/recommendations.py:637:41: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 639)
+src/qemlflow/core/utils/__init__.py:9:1: F401 'sys' imported but unused
 import sys
 ^
-src/chemml/core/utils/__init__.py:26:5: F403 'from .io_utils import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:26:5: F403 'from .io_utils import *' used; unable to detect undefined names
     from .io_utils import *
     ^
-src/chemml/core/utils/__init__.py:26:5: F401 '.io_utils.*' imported but unused
+src/qemlflow/core/utils/__init__.py:26:5: F401 '.io_utils.*' imported but unused
     from .io_utils import *
     ^
-src/chemml/core/utils/__init__.py:31:5: F403 'from .molecular_utils import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:31:5: F403 'from .molecular_utils import *' used; unable to detect undefined names
     from .molecular_utils import *
     ^
-src/chemml/core/utils/__init__.py:31:5: F401 '.molecular_utils.*' imported but unused
+src/qemlflow/core/utils/__init__.py:31:5: F401 '.molecular_utils.*' imported but unused
     from .molecular_utils import *
     ^
-src/chemml/core/utils/__init__.py:36:5: F403 'from .ml_utils import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:36:5: F403 'from .ml_utils import *' used; unable to detect undefined names
     from .ml_utils import *
     ^
-src/chemml/core/utils/__init__.py:36:5: F401 '.ml_utils.*' imported but unused
+src/qemlflow/core/utils/__init__.py:36:5: F401 '.ml_utils.*' imported but unused
     from .ml_utils import *
     ^
-src/chemml/core/utils/__init__.py:41:5: F403 'from .metrics import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:41:5: F403 'from .metrics import *' used; unable to detect undefined names
     from .metrics import *
     ^
-src/chemml/core/utils/__init__.py:41:5: F401 '.metrics.*' imported but unused
+src/qemlflow/core/utils/__init__.py:41:5: F401 '.metrics.*' imported but unused
     from .metrics import *
     ^
-src/chemml/core/utils/__init__.py:46:5: F403 'from .quantum_utils import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:46:5: F403 'from .quantum_utils import *' used; unable to detect undefined names
     from .quantum_utils import *
     ^
-src/chemml/core/utils/__init__.py:46:5: F401 '.quantum_utils.*' imported but unused
+src/qemlflow/core/utils/__init__.py:46:5: F401 '.quantum_utils.*' imported but unused
     from .quantum_utils import *
     ^
-src/chemml/core/utils/__init__.py:51:5: F403 'from .visualization import *' used; unable to detect undefined names
+src/qemlflow/core/utils/__init__.py:51:5: F403 'from .visualization import *' used; unable to detect undefined names
     from .visualization import *
     ^
-src/chemml/core/utils/__init__.py:51:5: F401 '.visualization.*' imported but unused
+src/qemlflow/core/utils/__init__.py:51:5: F401 '.visualization.*' imported but unused
     from .visualization import *
     ^
-src/chemml/core/utils/io_utils.py:133:46: E999 SyntaxError: unterminated string literal (detected at line 133)
-src/chemml/core/utils/metrics.py:342:20: E999 SyntaxError: invalid character '²' (U+00B2)
-src/chemml/core/utils/molecular_utils.py:17:5: F401 'rdkit.Chem.Crippen' imported but unused
+src/qemlflow/core/utils/io_utils.py:133:46: E999 SyntaxError: unterminated string literal (detected at line 133)
+src/qemlflow/core/utils/metrics.py:342:20: E999 SyntaxError: invalid character '²' (U+00B2)
+src/qemlflow/core/utils/molecular_utils.py:17:5: F401 'rdkit.Chem.Crippen' imported but unused
     from rdkit.Chem import (
     ^
-src/chemml/core/utils/molecular_utils.py:17:5: F401 'rdkit.Chem.Fragments' imported but unused
+src/qemlflow/core/utils/molecular_utils.py:17:5: F401 'rdkit.Chem.Fragments' imported but unused
     from rdkit.Chem import (
     ^
-src/chemml/core/utils/molecular_utils.py:25:5: F401 'rdkit.Chem.Draw.IPythonConsole' imported but unused
+src/qemlflow/core/utils/molecular_utils.py:25:5: F401 'rdkit.Chem.Draw.IPythonConsole' imported but unused
     from rdkit.Chem.Draw import IPythonConsole
     ^
-src/chemml/core/utils/quantum_utils.py:8:1: F401 'typing.Optional' imported but unused
+src/qemlflow/core/utils/quantum_utils.py:8:1: F401 'typing.Optional' imported but unused
 from typing import Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/utils/quantum_utils.py:8:1: F401 'typing.Tuple' imported but unused
+src/qemlflow/core/utils/quantum_utils.py:8:1: F401 'typing.Tuple' imported but unused
 from typing import Dict, List, Optional, Tuple, Union
 ^
-src/chemml/core/utils/quantum_utils.py:13:5: F401 'qiskit.ClassicalRegister' imported but unused
+src/qemlflow/core/utils/quantum_utils.py:13:5: F401 'qiskit.ClassicalRegister' imported but unused
     from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
     ^
-src/chemml/core/utils/quantum_utils.py:13:5: F401 'qiskit.QuantumRegister' imported but unused
+src/qemlflow/core/utils/quantum_utils.py:13:5: F401 'qiskit.QuantumRegister' imported but unused
     from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
     ^
-src/chemml/core/utils/quantum_utils.py:269:69: F821 undefined name 'Any'
+src/qemlflow/core/utils/quantum_utils.py:269:69: F821 undefined name 'Any'
     def create_variational_classifier(self, num_layers: int = 2) -> Any:
                                                                     ^
-src/chemml/core/utils/quantum_utils.py:273:36: F821 undefined name 'Any'
+src/qemlflow/core/utils/quantum_utils.py:273:36: F821 undefined name 'Any'
         def circuit(weights, x) -> Any:
                                    ^
-src/chemml/core/utils/quantum_utils.py:292:63: F821 undefined name 'Any'
+src/qemlflow/core/utils/quantum_utils.py:292:63: F821 undefined name 'Any'
     def create_quantum_embedding(self, data_reps: int = 1) -> Any:
                                                               ^
-src/chemml/core/utils/quantum_utils.py:296:36: F821 undefined name 'Any'
+src/qemlflow/core/utils/quantum_utils.py:296:36: F821 undefined name 'Any'
         def embedding(features) -> Any:
                                    ^
-src/chemml/core/utils/quantum_utils.py:422:1: C901 'apply_quantum_gate' is too complex (16)
+src/qemlflow/core/utils/quantum_utils.py:422:1: C901 'apply_quantum_gate' is too complex (16)
 def apply_quantum_gate(
 ^
-src/chemml/core/utils/visualization.py:1:16: E999 SyntaxError: invalid syntax
-src/chemml/core/workflow_optimizer.py:1:9: E999 SyntaxError: invalid syntax
-src/chemml/enterprise/monitoring.py:25:1: F401 'json' imported but unused
+src/qemlflow/core/utils/visualization.py:1:16: E999 SyntaxError: invalid syntax
+src/qemlflow/core/workflow_optimizer.py:1:9: E999 SyntaxError: invalid syntax
+src/qemlflow/enterprise/monitoring.py:25:1: F401 'json' imported but unused
 import json
 ^
-src/chemml/enterprise/monitoring.py:28:1: F401 'warnings' imported but unused
+src/qemlflow/enterprise/monitoring.py:28:1: F401 'warnings' imported but unused
 import warnings
 ^
-src/chemml/enterprise/monitoring.py:30:1: F401 'dataclasses.field' imported but unused
+src/qemlflow/enterprise/monitoring.py:30:1: F401 'dataclasses.field' imported but unused
 from dataclasses import dataclass, field
 ^
-src/chemml/enterprise/monitoring.py:31:1: F401 'datetime.timedelta' imported but unused
+src/qemlflow/enterprise/monitoring.py:31:1: F401 'datetime.timedelta' imported but unused
 from datetime import datetime, timedelta
 ^
-src/chemml/enterprise/monitoring.py:33:1: F401 'typing.Callable' imported but unused
+src/qemlflow/enterprise/monitoring.py:33:1: F401 'typing.Callable' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/enterprise/monitoring.py:33:1: F401 'typing.Optional' imported but unused
+src/qemlflow/enterprise/monitoring.py:33:1: F401 'typing.Optional' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/enterprise/monitoring.py:33:1: F401 'typing.Union' imported but unused
+src/qemlflow/enterprise/monitoring.py:33:1: F401 'typing.Union' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/enterprise/monitoring.py:577:17: F821 undefined name 'np'
+src/qemlflow/enterprise/monitoring.py:577:17: F821 undefined name 'np'
                 np.random.choice(users)
                 ^
-src/chemml/integrations/__init__.py:88:57: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 95)
-src/chemml/integrations/adapters/__init__.py:112:49: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 132)
-src/chemml/integrations/adapters/base/model_adapters.py:342:49: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 362)
-src/chemml/integrations/adapters/molecular/__init__.py:6:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 14)
-src/chemml/integrations/adapters/molecular/boltz_adapter.py:624:44: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 632)
-src/chemml/integrations/adapters/molecular/deepchem_integration.py:380:53: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 404)
-src/chemml/integrations/core/advanced_registry.py:557:44: E999 SyntaxError: invalid decimal literal
-src/chemml/integrations/core/automated_testing.py:1:12: E999 SyntaxError: invalid syntax
-src/chemml/integrations/core/external_models.py:372:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 383)
-src/chemml/integrations/core/integration_manager.py:656:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 668)
-src/chemml/integrations/core/performance_monitoring.py:579:41: E999 SyntaxError: invalid decimal literal
-src/chemml/integrations/core/pipeline.py:146:53: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 180)
-src/chemml/integrations/utils/__init__.py:6:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 10)
-src/chemml/notebooks/integration.py:225:22: E999 SyntaxError: unterminated string literal (detected at line 225)
-src/chemml/research/__init__.py:5:1: F401 'sys' imported but unused
+src/qemlflow/integrations/__init__.py:88:57: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 95)
+src/qemlflow/integrations/adapters/__init__.py:112:49: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 132)
+src/qemlflow/integrations/adapters/base/model_adapters.py:342:49: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 362)
+src/qemlflow/integrations/adapters/molecular/__init__.py:6:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 14)
+src/qemlflow/integrations/adapters/molecular/boltz_adapter.py:624:44: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 632)
+src/qemlflow/integrations/adapters/molecular/deepchem_integration.py:380:53: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 404)
+src/qemlflow/integrations/core/advanced_registry.py:557:44: E999 SyntaxError: invalid decimal literal
+src/qemlflow/integrations/core/automated_testing.py:1:12: E999 SyntaxError: invalid syntax
+src/qemlflow/integrations/core/external_models.py:372:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 383)
+src/qemlflow/integrations/core/integration_manager.py:656:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 668)
+src/qemlflow/integrations/core/performance_monitoring.py:579:41: E999 SyntaxError: invalid decimal literal
+src/qemlflow/integrations/core/pipeline.py:146:53: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 180)
+src/qemlflow/integrations/utils/__init__.py:6:2: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 10)
+src/qemlflow/notebooks/integration.py:225:22: E999 SyntaxError: unterminated string literal (detected at line 225)
+src/qemlflow/research/__init__.py:5:1: F401 'sys' imported but unused
 import sys
 ^
-src/chemml/research/__init__.py:10:5: F401 'typing.Dict' imported but unused
+src/qemlflow/research/__init__.py:10:5: F401 'typing.Dict' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/research/__init__.py:10:5: F401 'typing.List' imported but unused
+src/qemlflow/research/__init__.py:10:5: F401 'typing.List' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/research/__init__.py:10:5: F401 'typing.Optional' imported but unused
+src/qemlflow/research/__init__.py:10:5: F401 'typing.Optional' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/research/__init__.py:13:1: F403 'from .clinical_research import *' used; unable to detect undefined names
+src/qemlflow/research/__init__.py:13:1: F403 'from .clinical_research import *' used; unable to detect undefined names
 from .clinical_research import *
 ^
-src/chemml/research/__init__.py:13:1: F401 '.clinical_research.*' imported but unused
+src/qemlflow/research/__init__.py:13:1: F401 '.clinical_research.*' imported but unused
 from .clinical_research import *
 ^
-src/chemml/research/__init__.py:14:1: F403 'from .drug_discovery import *' used; unable to detect undefined names
+src/qemlflow/research/__init__.py:14:1: F403 'from .drug_discovery import *' used; unable to detect undefined names
 from .drug_discovery import *
 ^
-src/chemml/research/__init__.py:14:1: F401 '.drug_discovery.*' imported but unused
+src/qemlflow/research/__init__.py:14:1: F401 '.drug_discovery.*' imported but unused
 from .drug_discovery import *
 ^
-src/chemml/research/__init__.py:15:1: F403 'from .drug_discovery_legacy import *' used; unable to detect undefined names
+src/qemlflow/research/__init__.py:15:1: F403 'from .drug_discovery_legacy import *' used; unable to detect undefined names
 from .drug_discovery_legacy import *
 ^
-src/chemml/research/__init__.py:15:1: F401 '.drug_discovery_legacy.*' imported but unused
+src/qemlflow/research/__init__.py:15:1: F401 '.drug_discovery_legacy.*' imported but unused
 from .drug_discovery_legacy import *
 ^
-src/chemml/research/__init__.py:16:1: F403 'from .environmental_chemistry import *' used; unable to detect undefined names
+src/qemlflow/research/__init__.py:16:1: F403 'from .environmental_chemistry import *' used; unable to detect undefined names
 from .environmental_chemistry import *
 ^
-src/chemml/research/__init__.py:16:1: F401 '.environmental_chemistry.*' imported but unused
+src/qemlflow/research/__init__.py:16:1: F401 '.environmental_chemistry.*' imported but unused
 from .environmental_chemistry import *
 ^
-src/chemml/research/advanced_models.py:555:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 590)
-src/chemml/research/clinical_research.py:583:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 656)
-src/chemml/research/drug_discovery/admet.py:377:28: E999 SyntaxError: unterminated string literal (detected at line 377)
-src/chemml/research/drug_discovery/docking.py:281:10: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 303)
-src/chemml/research/drug_discovery/generation.py:510:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 530)
-src/chemml/research/drug_discovery/molecular_optimization.py:1076:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 1112)
-src/chemml/research/drug_discovery/optimization.py:663:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 686)
-src/chemml/research/drug_discovery/properties.py:588:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 607)
-src/chemml/research/drug_discovery/qsar.py:1:7: E999 SyntaxError: invalid syntax
-src/chemml/research/drug_discovery/screening.py:325:51: E999 SyntaxError: unterminated string literal (detected at line 325)
-src/chemml/research/drug_discovery_legacy.py:20:1: F403 'from .drug_discovery.admet import *' used; unable to detect undefined names
+src/qemlflow/research/advanced_models.py:555:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 590)
+src/qemlflow/research/clinical_research.py:583:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 656)
+src/qemlflow/research/drug_discovery/admet.py:377:28: E999 SyntaxError: unterminated string literal (detected at line 377)
+src/qemlflow/research/drug_discovery/docking.py:281:10: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 303)
+src/qemlflow/research/drug_discovery/generation.py:510:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 530)
+src/qemlflow/research/drug_discovery/molecular_optimization.py:1076:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 1112)
+src/qemlflow/research/drug_discovery/optimization.py:663:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 686)
+src/qemlflow/research/drug_discovery/properties.py:588:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 607)
+src/qemlflow/research/drug_discovery/qsar.py:1:7: E999 SyntaxError: invalid syntax
+src/qemlflow/research/drug_discovery/screening.py:325:51: E999 SyntaxError: unterminated string literal (detected at line 325)
+src/qemlflow/research/drug_discovery_legacy.py:20:1: F403 'from .drug_discovery.admet import *' used; unable to detect undefined names
 from .drug_discovery.admet import *
 ^
-src/chemml/research/drug_discovery_legacy.py:21:1: F403 'from .drug_discovery.generation import *' used; unable to detect undefined names
+src/qemlflow/research/drug_discovery_legacy.py:21:1: F403 'from .drug_discovery.generation import *' used; unable to detect undefined names
 from .drug_discovery.generation import *
 ^
-src/chemml/research/drug_discovery_legacy.py:24:1: F403 'from .drug_discovery.molecular_optimization import *' used; unable to detect undefined names
+src/qemlflow/research/drug_discovery_legacy.py:24:1: F403 'from .drug_discovery.molecular_optimization import *' used; unable to detect undefined names
 from .drug_discovery.molecular_optimization import *
 ^
-src/chemml/research/drug_discovery_legacy.py:25:1: F403 'from .drug_discovery.properties import *' used; unable to detect undefined names
+src/qemlflow/research/drug_discovery_legacy.py:25:1: F403 'from .drug_discovery.properties import *' used; unable to detect undefined names
 from .drug_discovery.properties import *
 ^
-src/chemml/research/drug_discovery_legacy.py:26:1: F403 'from .drug_discovery.qsar import *' used; unable to detect undefined names
+src/qemlflow/research/drug_discovery_legacy.py:26:1: F403 'from .drug_discovery.qsar import *' used; unable to detect undefined names
 from .drug_discovery.qsar import *
 ^
-src/chemml/research/drug_discovery_legacy.py:27:1: F403 'from .drug_discovery.screening import *' used; unable to detect undefined names
+src/qemlflow/research/drug_discovery_legacy.py:27:1: F403 'from .drug_discovery.screening import *' used; unable to detect undefined names
 from .drug_discovery.screening import *
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'MolecularOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'MolecularOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'BayesianOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'BayesianOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'GeneticAlgorithmOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'GeneticAlgorithmOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'optimize_molecule' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'optimize_molecule' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'batch_optimize' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'batch_optimize' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'compare_optimization_methods' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'compare_optimization_methods' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'create_optimization_report' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'create_optimization_report' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'calculate_optimization_metrics' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'calculate_optimization_metrics' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'ADMETPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'ADMETPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'DrugLikenessAssessor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'DrugLikenessAssessor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'ToxicityPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'ToxicityPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'predict_admet_profile' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'predict_admet_profile' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'predict_admet_properties' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'predict_admet_properties' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'assess_drug_likeness' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'assess_drug_likeness' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'apply_admet_filters' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'apply_admet_filters' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'calculate_drug_likeness_score' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'calculate_drug_likeness_score' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'predict_toxicity' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'predict_toxicity' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'VirtualScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'VirtualScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'SimilarityScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'SimilarityScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'PharmacophoreScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'PharmacophoreScreener' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'MolecularPropertyPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'MolecularPropertyPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'TrainedPropertyModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'TrainedPropertyModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'predict_properties' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'predict_properties' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'MolecularGenerator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'MolecularGenerator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'FragmentBasedGenerator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'FragmentBasedGenerator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'generate_molecular_structures' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'generate_molecular_structures' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'optimize_structure' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'optimize_structure' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'save_generated_structures' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'save_generated_structures' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'generate_diverse_library' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'generate_diverse_library' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'DescriptorCalculator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'DescriptorCalculator' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'QSARModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'QSARModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'ActivityPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'ActivityPredictor' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'TrainedQSARModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'TrainedQSARModel' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'build_qsar_dataset' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'build_qsar_dataset' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'evaluate_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'evaluate_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'build_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'build_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'predict_activity' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'predict_activity' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/drug_discovery_legacy.py:33:1: F405 'validate_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
+src/qemlflow/research/drug_discovery_legacy.py:33:1: F405 'validate_qsar_model' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 __all__ = [
 ^
-src/chemml/research/environmental_chemistry.py:343:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 369)
-src/chemml/research/generative.py:1:9: E999 SyntaxError: invalid syntax
-src/chemml/research/materials_discovery.py:457:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 508)
-src/chemml/research/modern_quantum.py:21:1: F401 'typing.Tuple' imported but unused
+src/qemlflow/research/environmental_chemistry.py:343:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 369)
+src/qemlflow/research/generative.py:1:9: E999 SyntaxError: invalid syntax
+src/qemlflow/research/materials_discovery.py:457:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 508)
+src/qemlflow/research/modern_quantum.py:21:1: F401 'typing.Tuple' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/research/modern_quantum.py:21:1: F401 'typing.Union' imported but unused
+src/qemlflow/research/modern_quantum.py:21:1: F401 'typing.Union' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 ^
-src/chemml/research/modern_quantum.py:28:5: F401 'qiskit.circuit.Parameter' imported but unused
+src/qemlflow/research/modern_quantum.py:28:5: F401 'qiskit.circuit.Parameter' imported but unused
     from qiskit.circuit import Parameter, ParameterVector
     ^
-src/chemml/research/modern_quantum.py:28:5: F401 'qiskit.circuit.ParameterVector' imported but unused
+src/qemlflow/research/modern_quantum.py:28:5: F401 'qiskit.circuit.ParameterVector' imported but unused
     from qiskit.circuit import Parameter, ParameterVector
     ^
-src/chemml/research/modern_quantum.py:30:5: F401 'qiskit.quantum_info.Pauli' imported but unused
+src/qemlflow/research/modern_quantum.py:30:5: F401 'qiskit.quantum_info.Pauli' imported but unused
     from qiskit.quantum_info import Pauli, SparsePauliOp
     ^
-src/chemml/research/modern_quantum.py:299:5: C901 'QuantumFeatureMap.transform' is too complex (12)
+src/qemlflow/research/modern_quantum.py:299:5: C901 'QuantumFeatureMap.transform' is too complex (12)
     def transform(self, data: np.ndarray) -> np.ndarray:
     ^
-src/chemml/research/quantum.py:395:62: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 412)
-src/chemml/tutorials/assessment.py:349:37: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 372)
-src/chemml/tutorials/core.py:229:74: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 230)
-src/chemml/tutorials/environment.py:662:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 670)
-src/chemml/tutorials/quantum.py:526:10: E999 SyntaxError: invalid character '🎓' (U+1F393)
-src/chemml/tutorials/utils.py:456:31: E999 SyntaxError: unterminated string literal (detected at line 456)
-src/chemml/tutorials/widgets.py:88:14: E999 SyntaxError: invalid character '🎯' (U+1F3AF)
-src/chemml/utils/__init__.py:5:1: F401 'sys' imported but unused
+src/qemlflow/research/quantum.py:395:62: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 412)
+src/qemlflow/tutorials/assessment.py:349:37: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 372)
+src/qemlflow/tutorials/core.py:229:74: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 230)
+src/qemlflow/tutorials/environment.py:662:6: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 670)
+src/qemlflow/tutorials/quantum.py:526:10: E999 SyntaxError: invalid character '🎓' (U+1F393)
+src/qemlflow/tutorials/utils.py:456:31: E999 SyntaxError: unterminated string literal (detected at line 456)
+src/qemlflow/tutorials/widgets.py:88:14: E999 SyntaxError: invalid character '🎯' (U+1F3AF)
+src/qemlflow/utils/__init__.py:5:1: F401 'sys' imported but unused
 import sys
 ^
-src/chemml/utils/__init__.py:10:5: F401 'typing.Dict' imported but unused
+src/qemlflow/utils/__init__.py:10:5: F401 'typing.Dict' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/utils/__init__.py:10:5: F401 'typing.List' imported but unused
+src/qemlflow/utils/__init__.py:10:5: F401 'typing.List' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/utils/__init__.py:10:5: F401 'typing.Optional' imported but unused
+src/qemlflow/utils/__init__.py:10:5: F401 'typing.Optional' imported but unused
     from typing import Dict, List, Optional
     ^
-src/chemml/utils/__init__.py:13:1: F403 'from .config_cache import *' used; unable to detect undefined names
+src/qemlflow/utils/__init__.py:13:1: F403 'from .config_cache import *' used; unable to detect undefined names
 from .config_cache import *
 ^
-src/chemml/utils/__init__.py:13:1: F401 '.config_cache.*' imported but unused
+src/qemlflow/utils/__init__.py:13:1: F401 '.config_cache.*' imported but unused
 from .config_cache import *
 ^
-src/chemml/utils/__init__.py:14:1: F403 'from .imports import *' used; unable to detect undefined names
+src/qemlflow/utils/__init__.py:14:1: F403 'from .imports import *' used; unable to detect undefined names
 from .imports import *
 ^
-src/chemml/utils/__init__.py:14:1: F401 '.imports.*' imported but unused
+src/qemlflow/utils/__init__.py:14:1: F401 '.imports.*' imported but unused
 from .imports import *
 ^
-src/chemml/utils/__init__.py:15:1: F403 'from .lazy_imports import *' used; unable to detect undefined names
+src/qemlflow/utils/__init__.py:15:1: F403 'from .lazy_imports import *' used; unable to detect undefined names
 from .lazy_imports import *
 ^
-src/chemml/utils/__init__.py:15:1: F401 '.lazy_imports.*' imported but unused
+src/qemlflow/utils/__init__.py:15:1: F401 '.lazy_imports.*' imported but unused
 from .lazy_imports import *
 ^
-src/chemml/utils/config_cache.py:7:1: F401 'os' imported but unused
+src/qemlflow/utils/config_cache.py:7:1: F401 'os' imported but unused
 import os
 ^
-src/chemml/utils/config_cache.py:11:1: F401 'dataclasses.asdict' imported but unused
+src/qemlflow/utils/config_cache.py:11:1: F401 'dataclasses.asdict' imported but unused
 from dataclasses import asdict, dataclass
 ^
-src/chemml/utils/config_cache.py:13:1: F401 'typing.Union' imported but unused
+src/qemlflow/utils/config_cache.py:13:1: F401 'typing.Union' imported but unused
 from typing import Any, Dict, Optional, Union
 ^
-src/chemml/utils/config_cache.py:76:5: C901 'ConfigurationCache.get_yaml_config' is too complex (11)
+src/qemlflow/utils/config_cache.py:76:5: C901 'ConfigurationCache.get_yaml_config' is too complex (11)
     def get_yaml_config(
     ^
-src/chemml/utils/edge_case_handler.py:8:1: F401 'typing.Optional' imported but unused
+src/qemlflow/utils/edge_case_handler.py:8:1: F401 'typing.Optional' imported but unused
 from typing import Any, List, Optional, Union
 ^
-src/chemml/utils/edge_case_handler.py:8:1: F401 'typing.Union' imported but unused
+src/qemlflow/utils/edge_case_handler.py:8:1: F401 'typing.Union' imported but unused
 from typing import Any, List, Optional, Union
 ^
-src/chemml/utils/edge_case_handler.py:17:47: F821 undefined name 'Tuple'
+src/qemlflow/utils/edge_case_handler.py:17:47: F821 undefined name 'Tuple'
     def handle_empty_data(self, data: Any) -> Tuple[bool, str]:
                                               ^
-src/chemml/utils/edge_case_handler.py:28:59: F821 undefined name 'Tuple'
+src/qemlflow/utils/edge_case_handler.py:28:59: F821 undefined name 'Tuple'
     def handle_invalid_molecules(self, molecules: Any) -> Tuple[List, List]:
                                                           ^
-src/chemml/utils/edge_case_handler.py:45:10: F821 undefined name 'Dict'
+src/qemlflow/utils/edge_case_handler.py:45:10: F821 undefined name 'Dict'
     ) -> Dict[str, Any]:
          ^
-src/chemml/utils/edge_case_handler.py:56:64: F821 undefined name 'Tuple'
+src/qemlflow/utils/edge_case_handler.py:56:64: F821 undefined name 'Tuple'
     def handle_missing_dependencies(self, module_name: str) -> Tuple[bool, str]:
                                                                ^
-src/chemml/utils/edge_case_handler.py:69:23: F821 undefined name 'Dict'
+src/qemlflow/utils/edge_case_handler.py:69:23: F821 undefined name 'Dict'
         self, params: Dict[str, Any], expected_params: List[str]
                       ^
-src/chemml/utils/edge_case_handler.py:70:10: F821 undefined name 'Dict'
+src/qemlflow/utils/edge_case_handler.py:70:10: F821 undefined name 'Dict'
     ) -> Dict[str, Any]:
          ^
-src/chemml/utils/enhanced_error_handling.py:30:1: F401 'pathlib.Path' imported but unused
+src/qemlflow/utils/enhanced_error_handling.py:30:1: F401 'pathlib.Path' imported but unused
 from pathlib import Path
 ^
-src/chemml/utils/enhanced_error_handling.py:31:1: F401 'typing.Any' imported but unused
+src/qemlflow/utils/enhanced_error_handling.py:31:1: F401 'typing.Any' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/utils/enhanced_error_handling.py:31:1: F401 'typing.Dict' imported but unused
+src/qemlflow/utils/enhanced_error_handling.py:31:1: F401 'typing.Dict' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/utils/enhanced_error_handling.py:31:1: F401 'typing.Union' imported but unused
+src/qemlflow/utils/enhanced_error_handling.py:31:1: F401 'typing.Union' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Union
 ^
-src/chemml/utils/enhanced_ui.py:22:1: F401 'inspect' imported but unused
+src/qemlflow/utils/enhanced_ui.py:22:1: F401 'inspect' imported but unused
 import inspect
 ^
-src/chemml/utils/enhanced_ui.py:23:1: F401 'json' imported but unused
+src/qemlflow/utils/enhanced_ui.py:23:1: F401 'json' imported but unused
 import json
 ^
-src/chemml/utils/enhanced_ui.py:24:1: F401 'sys' imported but unused
+src/qemlflow/utils/enhanced_ui.py:24:1: F401 'sys' imported but unused
 import sys
 ^
-src/chemml/utils/enhanced_ui.py:25:1: F401 'warnings' imported but unused
+src/qemlflow/utils/enhanced_ui.py:25:1: F401 'warnings' imported but unused
 import warnings
 ^
-src/chemml/utils/enhanced_ui.py:27:1: F401 'pathlib.Path' imported but unused
+src/qemlflow/utils/enhanced_ui.py:27:1: F401 'pathlib.Path' imported but unused
 from pathlib import Path
 ^
-src/chemml/utils/enhanced_ui.py:28:1: F401 'typing.Union' imported but unused
+src/qemlflow/utils/enhanced_ui.py:28:1: F401 'typing.Union' imported but unused
 from typing import Any, Callable, Dict, List, Optional, Type, Union
 ^
-src/chemml/utils/imports.py:9:1: F401 'sys' imported but unused
+src/qemlflow/utils/imports.py:9:1: F401 'sys' imported but unused
 import sys
 ^
-src/chemml/utils/imports.py:12:1: F401 'typing.Callable' imported but unused
+src/qemlflow/utils/imports.py:12:1: F401 'typing.Callable' imported but unused
 from typing import Any, Callable, Dict, List, Optional
 ^
-src/chemml/utils/lazy_imports.py:175:1: E402 module level import not at top of file
+src/qemlflow/utils/lazy_imports.py:175:1: E402 module level import not at top of file
 import time
 ^
-src/chemml/utils/workflow_validator.py:59:42: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 82)
+src/qemlflow/utils/workflow_validator.py:59:42: E999 SyntaxError: unterminated triple-quoted string literal (detected at line 82)
 4     C901 'DataSplitter.scaffold_split' is too complex (12)
 15    E402 module level import not at top of file
 48    E999 SyntaxError: unterminated triple-quoted string literal (detected at line 312)
-95    F401 '.utils.enhanced_error_handling.ChemMLError' imported but unused
+95    F401 '.utils.enhanced_error_handling.QeMLflowError' imported but unused
 19    F403 'from .io_utils import *' used; unable to detect undefined names
 38    F405 'MolecularOptimizer' may be undefined, or defined from star imports: .drug_discovery.admet, .drug_discovery.generation, .drug_discovery.molecular_optimization, .drug_discovery.properties, .drug_discovery.qsar, .drug_discovery.screening
 18    F821 undefined name 'Self'

@@ -1,9 +1,9 @@
 """
-Boltz Integration Demonstration for ChemML
+Boltz Integration Demonstration for QeMLflow
 ==========================================
 
 This script demonstrates how to integrate and use the Boltz biomolecular
-interaction model within the ChemML framework.
+interaction model within the QeMLflow framework.
 
 Example usage patterns:
 1. Protein structure prediction
@@ -19,11 +19,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-# Add ChemML integrations to path
+# Add QeMLflow integrations to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from chemml.integrations.boltz_adapter import BoltzAdapter, BoltzModel
-from chemml.integrations.integration_manager import ExternalModelManager
+from qemlflow.integrations.boltz_adapter import BoltzAdapter, BoltzModel
+from qemlflow.integrations.integration_manager import ExternalModelManager
 
 
 def demo_basic_integration():
@@ -296,7 +296,7 @@ def demo_integration_workflow():
 
     try:
         # Step 1: Setup
-        print("Step 1: Setting up ChemML integration environment...")
+        print("Step 1: Setting up QeMLflow integration environment...")
         manager = ExternalModelManager()
 
         # Step 2: Model integration
@@ -320,12 +320,12 @@ def demo_integration_workflow():
         for i, pattern in enumerate(patterns, 1):
             print(f"  {i}. {pattern}")
 
-        # Step 4: Integration with ChemML pipelines
-        print("\nStep 4: Integration with ChemML pipelines:")
-        print("  - Compatible with ChemML data preprocessing")
+        # Step 4: Integration with QeMLflow pipelines
+        print("\nStep 4: Integration with QeMLflow pipelines:")
+        print("  - Compatible with QeMLflow data preprocessing")
         print("  - Integrates with existing ML workflows")
-        print("  - Supports ChemML visualization tools")
-        print("  - Compatible with ChemML evaluation metrics")
+        print("  - Supports QeMLflow visualization tools")
+        print("  - Compatible with QeMLflow evaluation metrics")
 
         # Step 5: Best practices
         print("\nStep 5: Best practices followed:")
@@ -349,10 +349,10 @@ def demo_integration_workflow():
 
 def main():
     """Run all demonstrations."""
-    print("Boltz Integration Demonstration for ChemML")
+    print("Boltz Integration Demonstration for QeMLflow")
     print("=" * 60)
     print("This demonstration shows how to integrate and use the Boltz")
-    print("biomolecular interaction model within ChemML workflows.")
+    print("biomolecular interaction model within QeMLflow workflows.")
     print()
 
     # Note about Boltz installation
@@ -384,10 +384,10 @@ def main():
     print("- Unified API for external model access")
     print("- Automatic dependency management")
     print("- Robust error handling and validation")
-    print("- Seamless ChemML workflow integration")
+    print("- Seamless QeMLflow workflow integration")
     print("- Comprehensive documentation and examples")
     print()
-    print("Ready for production use in ChemML pipelines!")
+    print("Ready for production use in QeMLflow pipelines!")
 
 
 if __name__ == "__main__":

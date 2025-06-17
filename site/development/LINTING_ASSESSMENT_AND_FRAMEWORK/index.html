@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/development/LINTING_ASSESSMENT_AND_FRAMEWORK/">
+        <link rel="canonical" href="https://qemlflow.io/development/LINTING_ASSESSMENT_AND_FRAMEWORK/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Comprehensive Linting Assessment & Framework - ChemML Documentation</title>
+        <title>QeMLflow Comprehensive Linting Assessment & Framework - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-comprehensive-linting-assessment-framework" class="md-skip">
+        <a href="#qemlflow-comprehensive-linting-assessment-framework" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Comprehensive Linting Assessment &amp; Framework
+              QeMLflow Comprehensive Linting Assessment &amp; Framework
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -813,10 +813,10 @@
 
 
 
-<h1 id="chemml-comprehensive-linting-assessment-framework">ChemML Comprehensive Linting Assessment &amp; Framework<a class="headerlink" href="#chemml-comprehensive-linting-assessment-framework" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-comprehensive-linting-assessment-framework">QeMLflow Comprehensive Linting Assessment &amp; Framework<a class="headerlink" href="#qemlflow-comprehensive-linting-assessment-framework" title="Permanent link">&para;</a></h1>
 <p>=====================================</p>
 <h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
-<p>This document provides a comprehensive assessment of linting issues in the ChemML codebase, the framework implemented to address them, and recommendations for ongoing code quality maintenance.</p>
+<p>This document provides a comprehensive assessment of linting issues in the QeMLflow codebase, the framework implemented to address them, and recommendations for ongoing code quality maintenance.</p>
 <h2 id="current-linting-status-june-16-2025">Current Linting Status (June 16, 2025)<a class="headerlink" href="#current-linting-status-june-16-2025" title="Permanent link">&para;</a></h2>
 <h3 id="overall-health-score-797100"><strong>📊 Overall Health Score: 79.7/100</strong> 🟡<a class="headerlink" href="#overall-health-score-797100" title="Permanent link">&para;</a></h3>
 <p><strong>Assessment: Good - Minor issues to address</strong></p>
@@ -859,7 +859,7 @@
 <p><strong>Removed unused global declarations (F824):</strong> 1 issue resolved</p>
 </li>
 <li>
-<p>Fixed unnecessary <code>global _cached_modules</code> in <code>src/chemml/__init__.py</code></p>
+<p>Fixed unnecessary <code>global _cached_modules</code> in <code>src/qemlflow/__init__.py</code></p>
 </li>
 <li>
 <p><strong>Auto-formatting improvements:</strong> 47 issues resolved</p>
@@ -944,7 +944,7 @@
 <p><strong>Exclude Archive Folder from Linting</strong>
    <code>yaml
    # Add to .pre-commit-config.yaml exclude patterns
-   exclude: ^(archive/|chemml_env/|build/|dist/)</code></p>
+   exclude: ^(archive/|qemlflow_env/|build/|dist/)</code></p>
 </li>
 <li>
 <p><strong>Fix Critical F821 Errors</strong></p>
@@ -961,7 +961,7 @@
        .git,
        __pycache__,
        .venv,
-       chemml_env,
+       qemlflow_env,
        archive,  # &lt;-- Add this line
        build,
        dist</code></p>
@@ -1075,7 +1075,7 @@
 <li>Training sessions for team members</li>
 </ul>
 <h2 id="conclusion">🎉 Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>The ChemML codebase now has a <strong>robust linting framework</strong> in place with:</p>
+<p>The QeMLflow codebase now has a <strong>robust linting framework</strong> in place with:</p>
 <ol>
 <li><strong>✅ Comprehensive Analysis:</strong> Multi-tool integration with intelligent reporting</li>
 <li><strong>✅ Automated Fixes:</strong> 64 issues resolved automatically</li>

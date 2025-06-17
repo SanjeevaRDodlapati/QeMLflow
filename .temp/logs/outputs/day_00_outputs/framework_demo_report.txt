@@ -1,4 +1,4 @@
-ChemML Execution Report: framework_demo
+QeMLflow Execution Report: framework_demo
 Generated: 2025-06-13 18:28:56
 
 Configuration:

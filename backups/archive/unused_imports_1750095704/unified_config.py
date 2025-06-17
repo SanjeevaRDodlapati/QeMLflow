@@ -1,8 +1,8 @@
 """
-ChemML Unified Configuration System
+QeMLflow Unified Configuration System
 ==================================
 
-Centralized configuration management for all ChemML components.
+Centralized configuration management for all QeMLflow components.
 Provides environment-based settings, feature flags, and integration controls.
 """
 
@@ -21,7 +21,7 @@ class ExperimentTrackingConfig:
     """Configuration for experiment tracking."""
 
     enabled: bool = True
-    default_project: str = "chemml-experiments"
+    default_project: str = "qemlflow-experiments"
     auto_log_metrics: bool = True
     auto_log_artifacts: bool = True
     tags: List[str] = field(default_factory=list)
@@ -88,8 +88,8 @@ class NotebookConfig:
 
 
 @dataclass
-class ChemMLConfig:
-    """Main ChemML configuration container."""
+class QeMLflowConfig:
+    """Main QeMLflow configuration container."""
 
     environment: str = "development"
     debug_mode: bool = False
@@ -116,23 +116,23 @@ class ChemMLConfig:
 
     def _apply_environment_overrides(self):
         """Apply environment variable overrides."""
-        self.environment = os.getenv("CHEMML_ENV", self.environment)
+        self.environment = os.getenv("QEMLFLOW_ENV", self.environment)
         self.debug_mode = (
-            os.getenv("CHEMML_DEBUG", str(self.debug_mode)).lower() == "true"
+            os.getenv("QEMLFLOW_DEBUG", str(self.debug_mode)).lower() == "true"
         )
-        self.log_level = os.getenv("CHEMML_LOG_LEVEL", self.log_level)
+        self.log_level = os.getenv("QEMLFLOW_LOG_LEVEL", self.log_level)
         if os.getenv("WANDB_API_KEY"):
             self.experiment_tracking.wandb_api_key = os.getenv("WANDB_API_KEY")
-        if os.getenv("CHEMML_MODEL_TYPE"):
-            self.models.default_model_type = os.getenv("CHEMML_MODEL_TYPE")
-        self.data_directory = os.getenv("CHEMML_DATA_DIR", self.data_directory)
-        self.cache_directory = os.getenv("CHEMML_CACHE_DIR", self.cache_directory)
+        if os.getenv("QEMLFLOW_MODEL_TYPE"):
+            self.models.default_model_type = os.getenv("QEMLFLOW_MODEL_TYPE")
+        self.data_directory = os.getenv("QEMLFLOW_DATA_DIR", self.data_directory)
+        self.cache_directory = os.getenv("QEMLFLOW_CACHE_DIR", self.cache_directory)
         self.enable_gpu_acceleration = (
-            os.getenv("CHEMML_GPU", str(self.enable_gpu_acceleration)).lower() == "true"
+            os.getenv("QEMLFLOW_GPU", str(self.enable_gpu_acceleration)).lower() == "true"
         )
         self.enable_distributed_computing = (
             os.getenv(
-                "CHEMML_DISTRIBUTED", str(self.enable_distributed_computing)
+                "QEMLFLOW_DISTRIBUTED", str(self.enable_distributed_computing)
             ).lower()
             == "true"
         )
@@ -159,14 +159,14 @@ class ChemMLConfig:
             Path(directory).mkdir(parents=True, exist_ok=True)
 
     @classmethod
-    def from_file(cls, config_path: str) -> "ChemMLConfig":
+    def from_file(cls, config_path: str) -> "QeMLflowConfig":
         """Load configuration from YAML file."""
         with open(config_path, "r") as f:
             config_dict = yaml.safe_load(f)
         return cls.from_dict(config_dict)
 
     @classmethod
-    def from_dict(cls, config_dict: Dict[str, Any]) -> "ChemMLConfig":
+    def from_dict(cls, config_dict: Dict[str, Any]) -> "QeMLflowConfig":
         """Create configuration from dictionary."""
         exp_tracking_dict = config_dict.pop("experiment_tracking", {})
         models_dict = config_dict.pop("models", {})
@@ -219,18 +219,18 @@ class ChemMLConfig:
         import sys
 
         try:
-            import chemml
+            import qemlflow
 
-            chemml_version = chemml.__version__
+            qemlflow_version = qemlflow.__version__
         except Exception:
-            chemml_version = "unknown"
+            qemlflow_version = "unknown"
         return {
             "timestamp": datetime.now().isoformat(),
             "environment": self.environment,
             "debug_mode": self.debug_mode,
             "python_version": sys.version,
             "platform": platform.platform(),
-            "chemml_version": chemml_version,
+            "qemlflow_version": qemlflow_version,
             "experiment_tracking_enabled": self.experiment_tracking.enabled,
             "gpu_acceleration_enabled": self.enable_gpu_acceleration,
             "quantum_enabled": self.quantum.enabled,
@@ -239,43 +239,43 @@ class ChemMLConfig:
         }
 
 
-_global_config: Optional[ChemMLConfig] = None
+_global_config: Optional[QeMLflowConfig] = None
 
 
-def get_config() -> ChemMLConfig:
-    """Get the global ChemML configuration."""
+def get_config() -> QeMLflowConfig:
+    """Get the global QeMLflow configuration."""
     global _global_config
     if _global_config is None:
         _global_config = load_config()
     return _global_config
 
 
-def set_config(config: ChemMLConfig):
-    """Set the global ChemML configuration."""
+def set_config(config: QeMLflowConfig):
+    """Set the global QeMLflow configuration."""
     global _global_config
     _global_config = config
 
 
-def load_config() -> ChemMLConfig:
+def load_config() -> QeMLflowConfig:
     """Load configuration from default locations."""
     config_paths = [
-        os.getenv("CHEMML_CONFIG"),
-        "chemml_config.yaml",
-        "config/chemml_config.yaml",
-        os.path.expanduser("~/.chemml/config.yaml"),
+        os.getenv("QEMLFLOW_CONFIG"),
+        "qemlflow_config.yaml",
+        "config/qemlflow_config.yaml",
+        os.path.expanduser("~/.qemlflow/config.yaml"),
     ]
     for config_path in config_paths:
         if config_path and Path(config_path).exists():
             try:
-                return ChemMLConfig.from_file(config_path)
+                return QeMLflowConfig.from_file(config_path)
             except Exception as e:
                 print(f"Warning: Failed to load config from {config_path}: {e}")
-    return ChemMLConfig()
+    return QeMLflowConfig()
 
 
-def create_default_config_file(config_path: str = "config/chemml_config.yaml"):
+def create_default_config_file(config_path: str = "config/qemlflow_config.yaml"):
     """Create a default configuration file."""
-    config = ChemMLConfig()
+    config = QeMLflowConfig()
     Path(config_path).parent.mkdir(parents=True, exist_ok=True)
     config.save(config_path)
     print(f"✅ Created default configuration at {config_path}")
@@ -303,7 +303,7 @@ class ConfigContext:
 
 if __name__ == "__main__":
     config = get_config()
-    print("Current ChemML Configuration:")
+    print("Current QeMLflow Configuration:")
     print("=" * 40)
     summary = config.get_environment_summary()
     for key, value in summary.items():

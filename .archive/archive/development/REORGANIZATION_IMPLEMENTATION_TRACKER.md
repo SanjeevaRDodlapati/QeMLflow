@@ -1,4 +1,4 @@
-# 🚀 ChemML Codebase Reorganization - Implementation Tracker
+# 🚀 QeMLflow Codebase Reorganization - Implementation Tracker
 
 ## 📋 Master Plan Execution Status
 
@@ -108,8 +108,8 @@
 
 ```bash
 # Files to consolidate:
-- [ ] CHEMML_FILES_LOCATION_GUIDE.md
-- [ ] CHEMML_FRAMEWORK_GUIDE.md
+- [ ] QEMLFLOW_FILES_LOCATION_GUIDE.md
+- [ ] QEMLFLOW_FRAMEWORK_GUIDE.md
 - [ ] FRAMEWORK_QUICK_REFERENCE.md
 ```
 
@@ -177,12 +177,12 @@
 ## 🎯 Final Target Structure
 
 ```
-ChemML/                                     # CLEAN MAIN DIRECTORY
+QeMLflow/                                     # CLEAN MAIN DIRECTORY
 ├── README.md                               # Primary entry point
 ├── quick_access_demo.py                    # Interactive launcher
 ├── requirements.txt                        # Dependencies
 ├── setup.py                               # Installation
-├── chemml_common/                          # Core framework
+├── qemlflow_common/                          # Core framework
 ├── notebooks/                             # Learning materials
 │   └── quickstart_bootcamp/               # Well-organized bootcamp
 ├── docs/                                  # Consolidated documentation

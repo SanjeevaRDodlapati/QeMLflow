@@ -1,33 +1,33 @@
 # Performance Optimization Guide
 
-This guide helps you get the best performance from ChemML for production workloads.
+This guide helps you get the best performance from QeMLflow for production workloads.
 
 ## ⚡ Quick Performance Wins
 
 ### 1. Enable Fast Mode
 ```python
-import chemml
+import qemlflow
 
 # Pre-load commonly used modules
-chemml.enable_fast_mode()
+qemlflow.enable_fast_mode()
 ```
 
 ### 2. Use Caching
 ```python
 # Enable result caching for repeated operations
-chemml.config.enable_caching(True)
+qemlflow.config.enable_caching(True)
 
 # Set cache size (default: 1GB)
-chemml.config.set_cache_size("2GB")
+qemlflow.config.set_cache_size("2GB")
 ```
 
 ### 3. Parallel Processing
 ```python
 # Use all available CPU cores
-chemml.config.set_n_jobs(-1)
+qemlflow.config.set_n_jobs(-1)
 
 # Or specify number of cores
-chemml.config.set_n_jobs(4)
+qemlflow.config.set_n_jobs(4)
 ```
 
 ## 🚀 Advanced Optimizations
@@ -35,21 +35,21 @@ chemml.config.set_n_jobs(4)
 ### Memory Management
 ```python
 # Set memory limits to prevent OOM errors
-chemml.config.set_memory_limit("8GB")
+qemlflow.config.set_memory_limit("8GB")
 
 # Use memory-efficient data structures
-chemml.config.enable_memory_optimization(True)
+qemlflow.config.enable_memory_optimization(True)
 
 # Clear cache periodically for long-running processes
-chemml.clear_cache()
+qemlflow.clear_cache()
 ```
 
 ### GPU Acceleration
 ```python
 # Enable GPU support (requires CUDA)
-if chemml.cuda.is_available():
-    chemml.config.enable_gpu(True)
-    chemml.config.set_gpu_memory_limit("4GB")
+if qemlflow.cuda.is_available():
+    qemlflow.config.enable_gpu(True)
+    qemlflow.config.set_gpu_memory_limit("4GB")
 ```
 
 ### Batch Processing
@@ -57,8 +57,8 @@ if chemml.cuda.is_available():
 # Process large datasets in batches
 def process_large_dataset(dataset, batch_size=1000):
     results = []
-    for batch in chemml.utils.batch_iterator(dataset, batch_size):
-        batch_results = chemml.process_molecules(batch)
+    for batch in qemlflow.utils.batch_iterator(dataset, batch_size):
+        batch_results = qemlflow.process_molecules(batch)
         results.extend(batch_results)
     return results
 ```
@@ -78,10 +78,10 @@ def process_large_dataset(dataset, batch_size=1000):
 
 ### Production Settings
 ```python
-import chemml
+import qemlflow
 
 # Optimal production configuration
-chemml.config.configure_for_production(
+qemlflow.config.configure_for_production(
     n_jobs=-1,                    # Use all cores
     enable_caching=True,          # Cache results
     cache_size="2GB",             # Generous cache
@@ -94,7 +94,7 @@ chemml.config.configure_for_production(
 ### Development Settings
 ```python
 # Development-friendly configuration
-chemml.config.configure_for_development(
+qemlflow.config.configure_for_development(
     n_jobs=2,                     # Leave cores for other work
     enable_caching=False,         # Fresh results each time
     memory_limit="4GB",           # Conservative memory use
@@ -107,29 +107,29 @@ chemml.config.configure_for_development(
 ### Slow Import Times
 ```python
 # Use lazy loading for better startup time
-import chemml  # Fast import
+import qemlflow  # Fast import
 # Modules loaded on-demand
 
 # Or pre-load specific modules
-from chemml.core import models  # Only load what you need
+from qemlflow.core import models  # Only load what you need
 ```
 
 ### High Memory Usage
 ```python
 # Monitor memory usage
-memory_info = chemml.utils.get_memory_usage()
+memory_info = qemlflow.utils.get_memory_usage()
 print(f"Current usage: {memory_info.used_gb:.1f}GB")
 
 # Clear unnecessary data
 del large_dataset
-chemml.clear_cache()
+qemlflow.clear_cache()
 import gc; gc.collect()
 ```
 
 ### CPU Bottlenecks
 ```python
 # Profile your code
-with chemml.utils.profiler() as prof:
+with qemlflow.utils.profiler() as prof:
     results = expensive_operation(data)
 
 prof.print_stats()  # See where time is spent
@@ -159,13 +159,13 @@ prof.print_stats()  # See where time is spent
 ```dockerfile
 FROM python:3.11-slim
 
-# Install ChemML with performance optimizations
-RUN pip install chemml[performance]
+# Install QeMLflow with performance optimizations
+RUN pip install qemlflow[performance]
 
 # Configure for production
-ENV CHEMML_N_JOBS=-1
-ENV CHEMML_CACHE_SIZE=2GB
-ENV CHEMML_MEMORY_LIMIT=16GB
+ENV QEMLFLOW_N_JOBS=-1
+ENV QEMLFLOW_CACHE_SIZE=2GB
+ENV QEMLFLOW_MEMORY_LIMIT=16GB
 
 COPY app.py .
 CMD ["python", "app.py"]
@@ -176,14 +176,14 @@ CMD ["python", "app.py"]
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chemml-app
+  name: qemlflow-app
 spec:
   replicas: 3
   template:
     spec:
       containers:
-      - name: chemml
-        image: chemml-app:latest
+      - name: qemlflow
+        image: qemlflow-app:latest
         resources:
           requests:
             memory: "8Gi"

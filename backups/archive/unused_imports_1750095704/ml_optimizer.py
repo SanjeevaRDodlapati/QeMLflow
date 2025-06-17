@@ -3,7 +3,7 @@ Advanced ML Optimization and Analytics
 =====================================
 
 Phase 3 implementation: Advanced machine learning features, model optimization,
-and comprehensive analytics for ChemML.
+and comprehensive analytics for QeMLflow.
 
 Features:
 - Automated hyperparameter optimization
@@ -14,7 +14,7 @@ Features:
 - Auto-ML capabilities
 
 Usage:
-    from chemml.advanced.ml_optimizer import AutoMLOptimizer, ModelAnalytics
+    from qemlflow.advanced.ml_optimizer import AutoMLOptimizer, ModelAnalytics
 
     optimizer = AutoMLOptimizer()
     best_model = optimizer.optimize(X, y)
@@ -373,7 +373,7 @@ class ModelAnalytics:
     def generate_performance_report(self, model_name: str = None) -> str:
         """Generate comprehensive performance report."""
         lines = [
-            "📊 ChemML Model Performance Report",
+            "📊 QeMLflow Model Performance Report",
             "=" * 40,
             f"Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}",
             "",
@@ -550,7 +550,7 @@ class AutoMLOptimizer:
 
 
 if __name__ == "__main__":
-    print("🧬 ChemML Advanced ML Optimization Test")
+    print("🧬 QeMLflow Advanced ML Optimization Test")
 
     # Generate sample data
     np.random.seed(42)

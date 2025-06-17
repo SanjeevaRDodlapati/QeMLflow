@@ -1,12 +1,12 @@
-# ChemML Integration Documentation
+# QeMLflow Integration Documentation
 
-**Comprehensive guide for integrating external models into ChemML**
+**Comprehensive guide for integrating external models into QeMLflow**
 
 ---
 
 ## 📋 Overview
 
-ChemML provides a flexible framework for integrating external machine learning models, quantum computing tools, and scientific libraries. This guide covers the complete integration process from basic adapters to advanced workflows.
+QeMLflow provides a flexible framework for integrating external machine learning models, quantum computing tools, and scientific libraries. This guide covers the complete integration process from basic adapters to advanced workflows.
 
 ## 🚀 Quick Integration
 
@@ -20,7 +20,7 @@ ChemML provides a flexible framework for integrating external machine learning m
 
 2. **Create Adapter**
 ```python
-from chemml.integrations.adapters.base import TorchModelAdapter
+from qemlflow.integrations.adapters.base import TorchModelAdapter
 
 class MyModelAdapter(TorchModelAdapter):
     def __init__(self, model_path=None, **kwargs):
@@ -38,7 +38,7 @@ class MyModelAdapter(TorchModelAdapter):
 
 3. **Register Model**
 ```python
-from chemml.integrations import get_manager
+from qemlflow.integrations import get_manager
 
 manager = get_manager()
 manager.register_adapter("my_model", MyModelAdapter)
@@ -65,7 +65,7 @@ manager.register_adapter("my_model", MyModelAdapter)
 
 ### Performance Monitoring
 ```python
-from chemml.integrations.core import PerformanceMonitor
+from qemlflow.integrations.core import PerformanceMonitor
 
 monitor = PerformanceMonitor()
 with monitor.track_performance():
@@ -76,7 +76,7 @@ print(f"Prediction time: {monitor.get_stats()['prediction_time']}")
 
 ### Experiment Tracking
 ```python
-from chemml.integrations.utils import ExperimentTracker
+from qemlflow.integrations.utils import ExperimentTracker
 
 tracker = ExperimentTracker(backend="wandb")
 tracker.log_experiment("my_model", parameters, results)
@@ -84,7 +84,7 @@ tracker.log_experiment("my_model", parameters, results)
 
 ### Automated Testing
 ```python
-from chemml.integrations.core import AutomatedTesting
+from qemlflow.integrations.core import AutomatedTesting
 
 tester = AutomatedTesting()
 tester.test_adapter("my_model", test_data)

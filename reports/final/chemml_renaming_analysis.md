@@ -1,16 +1,16 @@
-# ChemML Renaming Analysis & Name Suggestions
+# QeMLflow Renaming Analysis & Name Suggestions
 
-## 🔍 **Existing ChemML Conflict Analysis**
+## 🔍 **Existing QeMLflow Conflict Analysis**
 
-### **Established ChemML Project**
-- **Repository**: `hachmannlab/chemml` (GitHub)
+### **Established QeMLflow Project**
+- **Repository**: `hachmannlab/qemlflow` (GitHub)
 - **Established**: 2014-2022 (8+ years)
 - **Maturity**: Production-ready, published research
 - **Citations**: Multiple academic papers published
 - **Community**: 168 stars, 32 forks, 9 contributors
 - **Institution**: University at Buffalo (UB)
 - **Funding**: NSF grants, institutional support
-- **PyPI Package**: Available as `chemml`
+- **PyPI Package**: Available as `qemlflow`
 
 ### **Conflict Severity**: **HIGH** ⚠️
 This is a **legitimate academic project** with significant research backing, not just a name squatter.
@@ -22,13 +22,13 @@ This is a **legitimate academic project** with significant research backing, not
 ### **Scope of Changes Required**
 
 #### **1. File & Directory Changes** (Medium Effort)
-- Root directory: `/Users/sanjeev/Downloads/Repos/ChemML` → `/NewName`
-- Package structure: `src/chemml/` → `src/newname/`
-- Import paths: `chemml.core.*` → `newname.core.*`
+- Root directory: `/Users/sanjeev/Downloads/Repos/QeMLflow` → `/NewName`
+- Package structure: `src/qemlflow/` → `src/newname/`
+- Import paths: `qemlflow.core.*` → `newname.core.*`
 
 #### **2. Code Changes** (High Effort)
 - **364+ Python files** need import statement updates
-- **71+ references** to "chemml" in code and docs
+- **71+ references** to "qemlflow" in code and docs
 - **Package configuration files**:
   - `setup.py` (name, package discovery)
   - `pyproject.toml` (project metadata)
@@ -36,7 +36,7 @@ This is a **legitimate academic project** with significant research backing, not
   - Docker configurations
 
 #### **3. Documentation Changes** (Medium Effort)
-- **50+ markdown files** with ChemML references
+- **50+ markdown files** with QeMLflow references
 - API documentation auto-generation
 - README files and user guides
 - Example notebooks and tutorials
@@ -109,7 +109,7 @@ This is a **legitimate academic project** with significant research backing, not
 - **Memorability**: High - familiar concept
 - **Domain Relevance**: Research environment feel
 
-#### **8. PyChemML**
+#### **8. PyQeMLflow**
 - **Focus**: Python-based chemical ML
 - **Uniqueness**: ✅ Likely available
 - **Memorability**: Medium - technical naming
@@ -137,7 +137,7 @@ This is a **legitimate academic project** with significant research backing, not
 - ✅ **Emphasizes your workflow/pipeline strengths**
 - ✅ **Easy to pronounce and type**
 - ✅ **Tech-friendly naming convention**
-- ✅ **Differentiates from existing ChemML**
+- ✅ **Differentiates from existing QeMLflow**
 - ✅ **Domain relevant (chemical workflows)**
 
 ### **#2 MolML** 🥈  
@@ -153,7 +153,7 @@ This is a **legitimate academic project** with significant research backing, not
 - ✅ **Implies building/creating solutions**
 - ✅ **Strong tech association (like PyTorch)**
 - ✅ **Memorable and brandable**
-- ✅ **Differentiates from academic ChemML**
+- ✅ **Differentiates from academic QeMLflow**
 
 ---
 
@@ -199,7 +199,7 @@ This is a **legitimate academic project** with significant research backing, not
 
 ## 🎯 **Final Recommendation**
 
-**Go with `ChemFlow`** - it perfectly captures your framework's strength in chemical data workflows while being unique, memorable, and professionally brandable. It avoids the academic association of the existing ChemML and positions your project as a modern, workflow-focused solution.
+**Go with `ChemFlow`** - it perfectly captures your framework's strength in chemical data workflows while being unique, memorable, and professionally brandable. It avoids the academic association of the existing QeMLflow and positions your project as a modern, workflow-focused solution.
 
 **Alternative**: If you prefer ultra-short branding, `MolML` is equally strong with maximum memorability.
 

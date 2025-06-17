@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Set
 class UltraFastImportOptimizer:
     """Advanced import optimization for sub-5s target"""
 
-    def __init__(self, src_path: str = "src/chemml"):
+    def __init__(self, src_path: str = "src/qemlflow"):
         self.src_path = Path(src_path)
         self.heavy_imports = {
             "tensorflow",
@@ -45,11 +45,11 @@ class UltraFastImportOptimizer:
 
         # Test individual module imports
         test_modules = [
-            "chemml.core.data",
-            "chemml.core.evaluation",
-            "chemml.core.featurizers",
-            "chemml.core.models",
-            "chemml.utils.lazy_imports",
+            "qemlflow.core.data",
+            "qemlflow.core.evaluation",
+            "qemlflow.core.featurizers",
+            "qemlflow.core.models",
+            "qemlflow.utils.lazy_imports",
         ]
 
         for module in test_modules:
@@ -74,7 +74,7 @@ class UltraFastImportOptimizer:
         """Create ultra-minimal __init__.py for fastest imports"""
 
         content = '''"""
-ChemML: Machine Learning for Chemistry
+QeMLflow: Machine Learning for Chemistry
 Ultra-optimized for sub-5s imports
 """
 
@@ -88,13 +88,13 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 # Version info
 __version__ = "0.2.0"
-__author__ = "ChemML Team"
+__author__ = "QeMLflow Team"
 
 # Ultra-fast initialization flag
-if not hasattr(sys, '_chemml_fast_init'):
-    print("ChemML initialized successfully!")
+if not hasattr(sys, '_qemlflow_fast_init'):
+    print("QeMLflow initialized successfully!")
     print(f"Version: {__version__}")
-    sys._chemml_fast_init = True
+    sys._qemlflow_fast_init = True
 
 # Defer ALL imports until actually needed
 def __getattr__(name: str):
@@ -102,20 +102,20 @@ def __getattr__(name: str):
 
     # Core module mapping
     _module_map = {
-        'core': 'chemml.core',
-        'research': 'chemml.research',
-        'integrations': 'chemml.integrations',
-        'utils': 'chemml.utils'
+        'core': 'qemlflow.core',
+        'research': 'qemlflow.research',
+        'integrations': 'qemlflow.integrations',
+        'utils': 'qemlflow.utils'
     }
 
     # Essential function mapping (most commonly used)
     _function_map = {
-        'load_sample_data': 'chemml.core.data',
-        'quick_clean': 'chemml.core.data',
-        'quick_split': 'chemml.core.data',
-        'morgan_fingerprints': 'chemml.core.featurizers',
-        'create_rf_model': 'chemml.core.models',
-        'quick_classification_eval': 'chemml.core.evaluation'
+        'load_sample_data': 'qemlflow.core.data',
+        'quick_clean': 'qemlflow.core.data',
+        'quick_split': 'qemlflow.core.data',
+        'morgan_fingerprints': 'qemlflow.core.featurizers',
+        'create_rf_model': 'qemlflow.core.models',
+        'quick_classification_eval': 'qemlflow.core.evaluation'
     }
 
     # Try module first
@@ -146,7 +146,7 @@ def __getattr__(name: str):
         except ImportError:
             continue
 
-    raise AttributeError(f"module 'chemml' has no attribute '{name}'")
+    raise AttributeError(f"module 'qemlflow' has no attribute '{name}'")
 
 # Pre-cache commonly used modules for even faster access
 _cached_modules = {}
@@ -162,9 +162,9 @@ def _get_cached_module(module_path: str):
 def enable_fast_mode():
     """Pre-load essential modules for fastest access"""
     global core, research, integrations
-    core = _get_cached_module('chemml.core')
-    research = _get_cached_module('chemml.research')
-    integrations = _get_cached_module('chemml.integrations')
+    core = _get_cached_module('qemlflow.core')
+    research = _get_cached_module('qemlflow.research')
+    integrations = _get_cached_module('qemlflow.integrations')
     print("⚡ Fast mode enabled - all modules pre-loaded")
 
 def clear_cache():
@@ -180,7 +180,7 @@ def clear_cache():
         """Create optimized core/__init__.py"""
 
         content = '''"""
-ChemML Core - Optimized for ultra-fast imports
+QeMLflow Core - Optimized for ultra-fast imports
 """
 
 from typing import Any
@@ -195,13 +195,13 @@ def __getattr__(name: str) -> Any:
 
     # Direct function mappings (fastest path)
     _direct_map = {
-        'quick_clean': ('chemml.core.data', 'quick_clean'),
-        'quick_split': ('chemml.core.data', 'quick_split'),
-        'morgan_fingerprints': ('chemml.core.featurizers', 'morgan_fingerprints'),
-        'molecular_descriptors': ('chemml.core.featurizers', 'molecular_descriptors'),
-        'create_rf_model': ('chemml.core.models', 'create_rf_model'),
-        'create_linear_model': ('chemml.core.models', 'create_linear_model'),
-        'create_svm_model': ('chemml.core.models', 'create_svm_model')
+        'quick_clean': ('qemlflow.core.data', 'quick_clean'),
+        'quick_split': ('qemlflow.core.data', 'quick_split'),
+        'morgan_fingerprints': ('qemlflow.core.featurizers', 'morgan_fingerprints'),
+        'molecular_descriptors': ('qemlflow.core.featurizers', 'molecular_descriptors'),
+        'create_rf_model': ('qemlflow.core.models', 'create_rf_model'),
+        'create_linear_model': ('qemlflow.core.models', 'create_linear_model'),
+        'create_svm_model': ('qemlflow.core.models', 'create_svm_model')
     }
 
     if name in _direct_map:
@@ -214,11 +214,11 @@ def __getattr__(name: str) -> Any:
 
     # Module mappings
     _module_map = {
-        'featurizers': 'chemml.core.featurizers',
-        'models': 'chemml.core.models',
-        'data': 'chemml.core.data',
-        'evaluation': 'chemml.core.evaluation',
-        'utils': 'chemml.core.utils'
+        'featurizers': 'qemlflow.core.featurizers',
+        'models': 'qemlflow.core.models',
+        'data': 'qemlflow.core.data',
+        'evaluation': 'qemlflow.core.evaluation',
+        'utils': 'qemlflow.core.utils'
     }
 
     if name in _module_map:
@@ -229,10 +229,10 @@ def __getattr__(name: str) -> Any:
 
     # Heavy modules (lazy load)
     _heavy_map = {
-        'ensemble_advanced': 'chemml.core.ensemble_advanced',
-        'monitoring': 'chemml.core.monitoring',
-        'recommendations': 'chemml.core.recommendations',
-        'workflow_optimizer': 'chemml.core.workflow_optimizer'
+        'ensemble_advanced': 'qemlflow.core.ensemble_advanced',
+        'monitoring': 'qemlflow.core.monitoring',
+        'recommendations': 'qemlflow.core.recommendations',
+        'workflow_optimizer': 'qemlflow.core.workflow_optimizer'
     }
 
     if name in _heavy_map:
@@ -253,7 +253,7 @@ def __getattr__(name: str) -> Any:
         except (ImportError, AttributeError):
             continue
 
-    raise AttributeError(f"module 'chemml.core' has no attribute '{name}'")
+    raise AttributeError(f"module 'qemlflow.core' has no attribute '{name}'")
 
 # Version compatibility
 __all__ = [
@@ -270,7 +270,7 @@ __all__ = [
         cache_file = self.src_path / "utils" / "import_cache.py"
 
         cache_content = '''"""
-Import result caching for ChemML
+Import result caching for QeMLflow
 Caches expensive import operations
 """
 
@@ -285,7 +285,7 @@ class ImportCache:
 
     def __init__(self, cache_dir: Optional[str] = None):
         if cache_dir is None:
-            cache_dir = Path.home() / '.chemml' / 'cache' / 'imports'
+            cache_dir = Path.home() / '.qemlflow' / 'cache' / 'imports'
 
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -433,7 +433,7 @@ def cached_import(module_name: str):
 
         # Clear import cache for clean test
         for module in list(sys.modules.keys()):
-            if module.startswith("chemml"):
+            if module.startswith("qemlflow"):
                 del sys.modules[module]
 
         # Test new performance
@@ -444,7 +444,7 @@ def cached_import(module_name: str):
                 [
                     sys.executable,
                     "-c",
-                    "import time; start=time.time(); import chemml; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
+                    "import time; start=time.time(); import qemlflow; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
                 ],
                 capture_output=True,
                 text=True,
@@ -495,7 +495,7 @@ def main():
 
     if import_time < 5.0:
         print("🏆 BREAKTHROUGH: Sub-5s import achieved!")
-        print("   ChemML now has ultra-fast startup times!")
+        print("   QeMLflow now has ultra-fast startup times!")
     elif import_time < 6.0:
         print("🔥 EXCELLENT: Near-optimal performance!")
         print("   Outstanding improvement achieved!")

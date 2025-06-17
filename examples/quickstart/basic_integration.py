@@ -1,19 +1,19 @@
 """
-Basic ChemML Integration Example
+Basic QeMLflow Integration Example
 ===============================
 
-This is the simplest possible example showing how to use ChemML's
+This is the simplest possible example showing how to use QeMLflow's
 integration framework. Perfect for beginners getting started.
 
 What this example shows:
-- How to import ChemML integrations
+- How to import QeMLflow integrations
 - How to get the integration manager
 - How to check available models
 - How to create a basic adapter
 - How to make a simple prediction
 
 Prerequisites:
-- ChemML installed (pip install chemml)
+- QeMLflow installed (pip install qemlflow)
 - Basic Python knowledge
 
 Expected runtime: < 30 seconds
@@ -22,20 +22,20 @@ Expected runtime: < 30 seconds
 import sys
 from pathlib import Path
 
-# Add ChemML to path if running from examples directory
+# Add QeMLflow to path if running from examples directory
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir.parent.parent))
 
 
 def main():
     """Run basic integration example."""
-    print("🧬 ChemML Basic Integration Example")
+    print("🧬 QeMLflow Basic Integration Example")
     print("=" * 50)
 
     try:
-        # Step 1: Import ChemML integrations
-        print("\n1️⃣ Importing ChemML integrations...")
-        from chemml.integrations import get_manager
+        # Step 1: Import QeMLflow integrations
+        print("\n1️⃣ Importing QeMLflow integrations...")
+        from qemlflow.integrations import get_manager
 
         print("   ✅ Import successful!")
 
@@ -104,14 +104,14 @@ def main():
     except ImportError as e:
         print(f"❌ Import error: {e}")
         print("\n🔧 Troubleshooting:")
-        print("   1. Make sure ChemML is installed: pip install chemml")
+        print("   1. Make sure QeMLflow is installed: pip install qemlflow")
         print("   2. Check your Python environment")
-        print("   3. Try running from the ChemML root directory")
+        print("   3. Try running from the QeMLflow root directory")
 
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
         print("\n🔧 If you see this error, please report it at:")
-        print("   https://github.com/SanjeevaRDodlapati/ChemML/issues")
+        print("   https://github.com/SanjeevaRDodlapati/QeMLflow/issues")
 
 
 if __name__ == "__main__":

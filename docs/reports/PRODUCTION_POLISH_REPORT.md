@@ -49,7 +49,7 @@
 - ✅ **Documentation**: Complete API and quick-start guides
 
 #### **Ready for Controlled Alpha** 🚀
-With 92/100 score, ChemML is ready for:
+With 92/100 score, QeMLflow is ready for:
 1. **Internal alpha testing** with controlled user group
 2. **Performance validation** in real scenarios
 3. **Feedback collection** for final improvements
@@ -92,7 +92,7 @@ With 92/100 score, ChemML is ready for:
 - **Complete documentation** with quick-start guides
 - **API stability** with backward compatibility
 
-**ChemML is now ready for controlled production usage!**
+**QeMLflow is now ready for controlled production usage!**
 
 ---
 

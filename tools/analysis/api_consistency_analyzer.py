@@ -1,7 +1,7 @@
-ChemML API Consistency Analysis
+QeMLflow API Consistency Analysis
 ==============================
 
-Analyze and standardize API patterns across the ChemML codebase.
+Analyze and standardize API patterns across the QeMLflow codebase.
 """
 
 import ast
@@ -12,9 +12,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Set, Tuple
 
 class APIAnalyzer:
-    """Analyze API consistency across ChemML modules."""
+    """Analyze API consistency across QeMLflow modules."""
 
-    def __init__(self, source_dir: str = "src/chemml"):
+    def __init__(self, source_dir: str = "src/qemlflow"):
         self.source_dir = Path(source_dir)
         self.api_patterns = defaultdict(list)
         self.inconsistencies = []
@@ -22,7 +22,7 @@ class APIAnalyzer:
 
     def analyze_api_consistency(self) -> Dict[str, Any]:
         """Run comprehensive API consistency analysis."""
-        print("🔍 ChemML API Consistency Analysis")
+        print("🔍 QeMLflow API Consistency Analysis")
         print("=" * 50)
 
         # Analyze different API aspects

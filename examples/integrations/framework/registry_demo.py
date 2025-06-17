@@ -1,8 +1,8 @@
 """
-ChemML Registry and Model Discovery Demo
+QeMLflow Registry and Model Discovery Demo
 =======================================
 
-This example demonstrates ChemML's advanced model registry and discovery
+This example demonstrates QeMLflow's advanced model registry and discovery
 capabilities, including AI-powered model recommendations and management.
 
 Features demonstrated:
@@ -13,7 +13,7 @@ Features demonstrated:
 - Model information retrieval
 
 Prerequisites:
-- ChemML with integrations installed
+- QeMLflow with integrations installed
 - Understanding of basic integration concepts
 
 Expected runtime: 1-2 minutes
@@ -22,21 +22,21 @@ Expected runtime: 1-2 minutes
 import sys
 from pathlib import Path
 
-# Add ChemML to path
+# Add QeMLflow to path
 _current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir.parent.parent.parent))
 
 
 def main():
     """Run registry and discovery demonstration."""
-    print("🔍 ChemML Registry & Model Discovery Demo")
+    print("🔍 QeMLflow Registry & Model Discovery Demo")
     print("=" * 60)
 
     try:
-        # Import ChemML components
-        print("\n📋 Setting up ChemML integrations...")
-        from chemml.integrations import get_manager
-        from chemml.integrations.core import AdvancedRegistry
+        # Import QeMLflow components
+        print("\n📋 Setting up QeMLflow integrations...")
+        from qemlflow.integrations import get_manager
+        from qemlflow.integrations.core import AdvancedRegistry
 
         # Get manager and registry
         manager = get_manager()
@@ -67,7 +67,7 @@ def main():
 
     except ImportError as e:
         print(f"❌ Import error: {e}")
-        print("   This demo requires the full ChemML integrations package")
+        print("   This demo requires the full QeMLflow integrations package")
         print("   Make sure you have the latest version installed")
 
     except Exception as e:
@@ -232,7 +232,7 @@ def demo_performance_integration(manager, registry):
     try:
         # Performance monitoring setup
         print("\n📊 Setting up performance monitoring...")
-        from chemml.integrations.core import PerformanceMonitor
+        from qemlflow.integrations.core import PerformanceMonitor
 
         monitor = PerformanceMonitor()
         print("   ✅ Performance monitor initialized")

@@ -1,7 +1,7 @@
-ChemML Enhanced Features Example
+QeMLflow Enhanced Features Example
 ===============================
 
-Complete demonstration of ChemML's enhanced capabilities:
+Complete demonstration of QeMLflow's enhanced capabilities:
 1. Advanced data processing and feature engineering
 2. Ensemble and AutoML models
 3. Robust cross-validation and error handling
@@ -87,9 +87,9 @@ def demo_enhanced_data_processing():
     print("=" * 50)
 
     # Import enhanced data processing
-    from chemml.core.data_processing import (
+    from qemlflow.core.data_processing import (
         AdvancedDataPreprocessor,
-        ChemMLDataLoader,
+        QeMLflowDataLoader,
         IntelligentDataSplitter,
     )
 
@@ -101,7 +101,7 @@ def demo_enhanced_data_processing():
 
     # Test data loader with real datasets (with error handling)
     print("\n📊 Testing real dataset loading...")
-    loader = ChemMLDataLoader()
+    loader = QeMLflowDataLoader()
     try:
         bbbp_df = loader.load_dataset("bbbp")
         print(f"✅ Loaded BBBP dataset: {len(bbbp_df)} compounds")
@@ -184,7 +184,7 @@ def demo_robust_models():
     # Test enhanced ensemble methods with robust CV
     print("\n🔄 Testing Enhanced Ensemble Models...")
     try:
-        from chemml.core.enhanced_models import create_ensemble_model
+        from qemlflow.core.enhanced_models import create_ensemble_model
 
         # Create voting ensemble
         ensemble = create_ensemble_model(
@@ -210,7 +210,7 @@ def demo_robust_models():
     # Test robust AutoML with improved CV
     print("\n🔄 Testing Robust AutoML...")
     try:
-        from chemml.core.enhanced_models import create_automl_model
+        from qemlflow.core.enhanced_models import create_automl_model
 
         automl = create_automl_model(
             task_type="regression",
@@ -237,7 +237,7 @@ def demo_robust_models():
 
     # Test gradient boosting if available
     try:
-        from chemml.core.enhanced_models import create_xgboost_model
+        from qemlflow.core.enhanced_models import create_xgboost_model
 
         print("\n🔄 Testing XGBoost...")
 
@@ -271,7 +271,7 @@ def demo_advanced_ensembles():
         from sklearn.linear_model import LinearRegression
         from sklearn.svm import SVR
 
-        from chemml.core.ensemble_advanced import AdaptiveEnsemble
+        from qemlflow.core.ensemble_advanced import AdaptiveEnsemble
 
         # Create base models
         base_models = [
@@ -320,7 +320,7 @@ def demo_complete_pipeline():
     df = create_demo_dataset(n_samples=150)
 
     try:
-        from chemml.core.pipeline import quick_pipeline
+        from qemlflow.core.pipeline import quick_pipeline
 
         print("⚡ Running quick pipeline...")
         results = quick_pipeline(
@@ -338,7 +338,7 @@ def demo_complete_pipeline():
 
     # Test detailed pipeline
     try:
-        from chemml.core.pipeline import create_pipeline
+        from qemlflow.core.pipeline import create_pipeline
 
         print("\n🔧 Running detailed pipeline...")
         pipeline = create_pipeline(
@@ -367,7 +367,7 @@ def demo_complete_pipeline():
 
 def main():
     """Run complete enhanced features demonstration."""
-    print("🧪 ChemML Enhanced Features Complete Demo")
+    print("🧪 QeMLflow Enhanced Features Complete Demo")
     print("=" * 60)
     print("Demonstrating all improvements:")
     print("✓ Fixed RDKit deprecation warnings")
@@ -381,7 +381,7 @@ def main():
         import time
 
         start_time = time.time()
-        import chemml
+        import qemlflow
 
         import_time = time.time() - start_time
         print(f"⚡ Import time: {import_time:.4f} seconds")

@@ -1,4 +1,4 @@
-# 📚 ChemML Notebooks
+# 📚 QeMLflow Notebooks
 
 **Interactive learning materials for computational chemistry and machine learning**
 
@@ -6,7 +6,7 @@
 
 ## 🎯 **Quick Start**
 
-**New to ChemML?** Start here:
+**New to QeMLflow?** Start here:
 1. **[Fundamentals](learning/fundamentals/)** - Core concepts and basic tutorials
 2. **[Bootcamp](learning/bootcamp/)** - 7-day intensive learning program
 3. **[Examples](examples/)** - Quick reference and specific use cases
@@ -75,7 +75,7 @@ All directories → experiments/ → Custom projects
 
 ### **Running Notebooks**
 ```bash
-# Start Jupyter in the ChemML environment
+# Start Jupyter in the QeMLflow environment
 cd notebooks/
 jupyter lab
 
@@ -84,12 +84,12 @@ jupyter notebook learning/fundamentals/01_basic_cheminformatics.ipynb
 ```
 
 ### **Prerequisites**
-- **Environment:** ChemML conda environment active
+- **Environment:** QeMLflow conda environment active
 - **Dependencies:** Run `pip install -r requirements.txt` from project root
 - **Data:** Some notebooks may download datasets automatically
 
 ### **Troubleshooting**
-- **Import errors:** Ensure ChemML environment is activated
+- **Import errors:** Ensure QeMLflow environment is activated
 - **Missing data:** Check individual notebook instructions
 - **Performance issues:** Some quantum notebooks require significant compute
 
@@ -107,7 +107,7 @@ Use the `assessments/` notebooks to track your learning progress:
 ## 🔗 **Related Resources**
 
 - **[Main Documentation](../docs/)** - API reference and guides
-- **[Source Code](../src/chemml/)** - Implementation details
+- **[Source Code](../src/qemlflow/)** - Implementation details
 - **[Tests](../tests/)** - Example usage patterns
 
 ---

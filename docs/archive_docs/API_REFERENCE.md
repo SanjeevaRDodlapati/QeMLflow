@@ -1,6 +1,6 @@
-# 📖 ChemML API Reference
+# 📖 QeMLflow API Reference
 
-**Complete API documentation for ChemML Framework and Core Components**
+**Complete API documentation for QeMLflow Framework and Core Components**
 
 ---
 
@@ -21,13 +21,13 @@
 
 ## 🧩 Core Framework API
 
-### `chemml_common` Package
+### `qemlflow_common` Package
 
-The main framework package providing unified infrastructure for all ChemML components.
+The main framework package providing unified infrastructure for all QeMLflow components.
 
 ```python
-from chemml_common import (
-    ChemMLConfig,
+from qemlflow_common import (
+    QeMLflowConfig,
     get_config,
     print_banner,
     BaseRunner,
@@ -39,22 +39,22 @@ from chemml_common import (
 
 **Package Information:**
 - **Version**: 2.0.0
-- **Author**: ChemML Enhancement System
+- **Author**: QeMLflow Enhancement System
 - **License**: MIT
 
 ---
 
 ## 🔧 Configuration Management
 
-### `ChemMLConfig`
+### `QeMLflowConfig`
 
-Central configuration management for ChemML framework.
+Central configuration management for QeMLflow framework.
 
 ```python
-from chemml_common.config.environment import ChemMLConfig
+from qemlflow_common.config.environment import QeMLflowConfig
 
 # Initialize configuration
-config = ChemMLConfig()
+config = QeMLflowConfig()
 
 # Access configuration properties
 student_id = config.student_id
@@ -80,19 +80,19 @@ output_dir = config.output_dir
 Convenience function to get current configuration instance.
 
 ```python
-from chemml_common import get_config
+from qemlflow_common import get_config
 
 config = get_config()
 ```
 
-**Returns:** `ChemMLConfig` - Current configuration instance
+**Returns:** `QeMLflowConfig` - Current configuration instance
 
 ### `print_banner()`
 
-Display ChemML framework banner with version information.
+Display QeMLflow framework banner with version information.
 
 ```python
-from chemml_common import print_banner
+from qemlflow_common import print_banner
 
 print_banner()
 ```
@@ -106,7 +106,7 @@ print_banner()
 Manages library dependencies with intelligent fallbacks and optional installations.
 
 ```python
-from chemml_common.libraries.manager import LibraryManager
+from qemlflow_common.libraries.manager import LibraryManager
 
 # Initialize library manager
 lib_manager = LibraryManager()
@@ -158,12 +158,12 @@ Get detailed status of all libraries.
 
 ### `BaseRunner`
 
-Abstract base class for creating modular ChemML scripts.
+Abstract base class for creating modular QeMLflow scripts.
 
 ```python
-from chemml_common.core.base_runner import BaseRunner
+from qemlflow_common.core.base_runner import BaseRunner
 
-class MyChemMLScript(BaseRunner):
+class MyQeMLflowScript(BaseRunner):
     def setup(self):
         # Initialize your script
         pass
@@ -177,7 +177,7 @@ class MyChemMLScript(BaseRunner):
         pass
 
 # Run script
-script = MyChemMLScript()
+script = MyQeMLflowScript()
 result = script.run()
 ```
 
@@ -188,7 +188,7 @@ result = script.run()
 
 **Methods:**
 - `run() -> SectionResult` - Execute complete script lifecycle
-- `get_config() -> ChemMLConfig` - Get current configuration
+- `get_config() -> QeMLflowConfig` - Get current configuration
 - `get_logger() -> logging.Logger` - Get script logger
 
 ### `SectionRunner`
@@ -196,7 +196,7 @@ result = script.run()
 Base class for individual script sections with dependency management.
 
 ```python
-from chemml_common.core.base_runner import SectionRunner
+from qemlflow_common.core.base_runner import SectionRunner
 
 class DataProcessingSection(SectionRunner):
     def check_dependencies(self) -> bool:
@@ -217,7 +217,7 @@ result = section.run()
 
 **Properties:**
 - `lib_manager: LibraryManager` - Access to library manager
-- `config: ChemMLConfig` - Access to configuration
+- `config: QeMLflowConfig` - Access to configuration
 - `logger: logging.Logger` - Section logger
 
 ### `SectionResult`
@@ -254,7 +254,7 @@ class SectionResult:
 Comprehensive assessment and progress tracking system.
 
 ```python
-from chemml_common.assessment.framework import AssessmentFramework
+from qemlflow_common.assessment.framework import AssessmentFramework
 
 # Initialize assessment
 assessment = AssessmentFramework()
@@ -315,7 +315,7 @@ Generate detailed execution report.
 ### Molecular Processing
 
 ```python
-from chemml.data_processing import MolecularProcessor
+from qemlflow.data_processing import MolecularProcessor
 
 # Initialize processor
 processor = MolecularProcessor(
@@ -338,7 +338,7 @@ features = processor.extract_features(molecules, feature_type="morgan")
 ### Feature Extraction
 
 ```python
-from chemml.data_processing import (
+from qemlflow.data_processing import (
     calculate_descriptors,
     generate_fingerprints,
     molecular_descriptors
@@ -366,7 +366,7 @@ fingerprints = generate_fingerprints(
 ### Classical Machine Learning
 
 ```python
-from chemml.models.classical import (
+from qemlflow.models.classical import (
     RegressionModel,
     ClassificationModel,
     EnsembleModel
@@ -386,7 +386,7 @@ classes = classifier.predict(X_test)
 ### Deep Learning Models
 
 ```python
-from chemml.models.deep_learning import (
+from qemlflow.models.deep_learning import (
     MolecularNeuralNetwork,
     GraphNeuralNetwork,
     TransformerModel
@@ -411,7 +411,7 @@ gnn_model = GraphNeuralNetwork(
 ### QSAR Models
 
 ```python
-from chemml.models import QSARModel
+from qemlflow.models import QSARModel
 
 # Initialize QSAR model
 model = QSARModel(
@@ -440,7 +440,7 @@ metrics = model.evaluate(X_test, y_test)
 ### Quantum Models
 
 ```python
-from chemml.models.quantum import QuantumMolecularModel
+from qemlflow.models.quantum import QuantumMolecularModel
 
 # Initialize quantum model
 qml_model = QuantumMolecularModel(
@@ -465,7 +465,7 @@ quantum_predictions = qml_model.predict(X_test)
 ### Quantum Algorithms
 
 ```python
-from chemml.quantum.algorithms import VQE, QAOA
+from qemlflow.quantum.algorithms import VQE, QAOA
 
 # Variational Quantum Eigensolver
 vqe = VQE(molecule=h2_molecule, backend="qiskit_aer")
@@ -487,7 +487,7 @@ optimized_structure = qaoa.optimize(initial_molecule)
 ### Molecular Generation
 
 ```python
-from chemml.drug_design.generation import (
+from qemlflow.drug_design.generation import (
     VAE,
     GAN,
     generate_molecules
@@ -508,7 +508,7 @@ molecules = generate_molecules(
 ### Property Prediction
 
 ```python
-from chemml.drug_design.properties import (
+from qemlflow.drug_design.properties import (
     PropertyPredictor,
     predict_admet_properties
 )
@@ -528,7 +528,7 @@ solubility = predictor.predict(molecules)
 ### Visualization
 
 ```python
-from chemml.utils.visualization import (
+from qemlflow.utils.visualization import (
     plot_molecule,
     plot_results,
     plot_property_distribution
@@ -547,7 +547,7 @@ plot_property_distribution(properties, property_name="logP")
 ### Metrics
 
 ```python
-from chemml.utils.metrics import (
+from qemlflow.utils.metrics import (
     calculate_accuracy,
     calculate_r2_score,
     calculate_molecular_diversity
@@ -566,7 +566,7 @@ diversity = calculate_molecular_diversity(molecules)
 ### File I/O
 
 ```python
-from chemml.utils.io import (
+from qemlflow.utils.io import (
     load_sdf,
     save_molecules,
     load_dataset,
@@ -590,15 +590,15 @@ save_results(results, "predictions.csv")
 
 ### Environment Variables
 
-ChemML supports configuration via environment variables:
+QeMLflow supports configuration via environment variables:
 
 ```bash
-export CHEMML_STUDENT_ID="your_student_id"
-export CHEMML_TRACK="quantum_ml"
-export CHEMML_OUTPUT_DIR="./outputs"
-export CHEMML_LOG_LEVEL="INFO"
-export CHEMML_DATA_DIR="./data"
-export CHEMML_CACHE_DIR="./cache"
+export QEMLFLOW_STUDENT_ID="your_student_id"
+export QEMLFLOW_TRACK="quantum_ml"
+export QEMLFLOW_OUTPUT_DIR="./outputs"
+export QEMLFLOW_LOG_LEVEL="INFO"
+export QEMLFLOW_DATA_DIR="./data"
+export QEMLFLOW_CACHE_DIR="./cache"
 ```
 
 ### Configuration File
@@ -606,7 +606,7 @@ export CHEMML_CACHE_DIR="./cache"
 Create `config.yaml` for advanced configuration:
 
 ```yaml
-chemml:
+qemlflow:
   data_dir: "./data"
   cache_dir: "./data/cache"
   results_dir: "./data/results"
@@ -634,8 +634,8 @@ chemml:
 ### Basic Framework Usage
 
 ```python
-from chemml_common import (
-    ChemMLConfig,
+from qemlflow_common import (
+    QeMLflowConfig,
     LibraryManager,
     BaseRunner
 )
@@ -665,7 +665,7 @@ print(f"Outputs: {result.outputs}")
 ### Section-Based Development
 
 ```python
-from chemml_common.core.base_runner import SectionRunner
+from qemlflow_common.core.base_runner import SectionRunner
 
 class DataPreprocessingSection(SectionRunner):
     def check_dependencies(self):
@@ -696,8 +696,8 @@ result = section.run()
 ### Common Exceptions
 
 ```python
-from chemml.exceptions import (
-    ChemMLError,
+from qemlflow.exceptions import (
+    QeMLflowError,
     LibraryNotFoundError,
     MolecularProcessingError,
     ModelTrainingError
@@ -718,7 +718,7 @@ except LibraryNotFoundError as e:
 ### Error Recovery
 
 ```python
-from chemml_common.core.base_runner import SectionRunner
+from qemlflow_common.core.base_runner import SectionRunner
 
 class RobustSection(SectionRunner):
     def execute_section(self):
@@ -737,7 +737,7 @@ class RobustSection(SectionRunner):
 
 ## 📚 Type Hints
 
-ChemML uses comprehensive type hints for better IDE support:
+QeMLflow uses comprehensive type hints for better IDE support:
 
 ```python
 from typing import List, Dict, Any, Optional, Union, Tuple
@@ -771,7 +771,7 @@ def process_molecules(
 ### Custom Backends
 
 ```python
-from chemml.backends import register_backend
+from qemlflow.backends import register_backend
 
 @register_backend("custom_quantum")
 class CustomQuantumBackend:
@@ -786,7 +786,7 @@ model = QuantumMolecularModel(backend="custom_quantum")
 ### Plugin System
 
 ```python
-from chemml.plugins import register_plugin
+from qemlflow.plugins import register_plugin
 
 @register_plugin("molecular_transformer")
 class MolecularTransformerPlugin:
@@ -819,4 +819,4 @@ transformed = transformer.transform(molecules)
 
 ---
 
-*This API reference is automatically updated with each release. For the latest version, check the [GitHub repository](https://github.com/yourusername/ChemML).*
+*This API reference is automatically updated with each release. For the latest version, check the [GitHub repository](https://github.com/yourusername/QeMLflow).*

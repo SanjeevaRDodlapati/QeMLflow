@@ -1,5 +1,5 @@
 """
-ChemML Enhanced Workflow Optimizer
+QeMLflow Enhanced Workflow Optimizer
 =================================
 
 Smart workflow optimization and model comparison system.

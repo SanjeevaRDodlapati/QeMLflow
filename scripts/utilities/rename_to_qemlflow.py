@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Safe automated renaming script: ChemML → QeMLflow
+Safe automated renaming script: QeMLflow → QeMLflow
 Author: GitHub Copilot Assistant
 Date: June 17, 2025
 
-This script safely renames the ChemML framework to QeMLflow with full backup
+This script safely renames the QeMLflow framework to QeMLflow with full backup
 and rollback capabilities.
 """
 
@@ -17,7 +17,7 @@ from pathlib import Path
 import re
 
 class QeMLflowRenamer:
-    """Safe renaming utility for ChemML → QeMLflow transformation."""
+    """Safe renaming utility for QeMLflow → QeMLflow transformation."""
     
     def __init__(self):
         self.root_path = Path.cwd()
@@ -27,7 +27,7 @@ class QeMLflowRenamer:
     def create_backup(self):
         """Create comprehensive backup before renaming."""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup_name = f"ChemML_BACKUP_BEFORE_QEMLFLOW_{timestamp}"
+        backup_name = f"QeMLflow_BACKUP_BEFORE_QEMLFLOW_{timestamp}"
         parent_dir = self.root_path.parent
         self.backup_path = parent_dir / backup_name
         
@@ -62,7 +62,7 @@ class QeMLflowRenamer:
     def rename_directories(self):
         """Rename main directories."""
         renames = [
-            ("src/chemml", "src/qemlflow"),
+            ("src/qemlflow", "src/qemlflow"),
         ]
         
         for old_path, new_path in renames:
@@ -87,17 +87,17 @@ class QeMLflowRenamer:
         # Define replacement patterns
         replacements = [
             # Core package name replacements
-            (r'\bchemml\b', 'qemlflow'),
-            (r'\bChemML\b', 'QeMLflow'),
+            (r'\bqemlflow\b', 'qemlflow'),
+            (r'\bQeMLflow\b', 'QeMLflow'),
             
             # Specific description updates
             (r'Machine Learning for Chemistry and Drug Discovery', 'Quantum-Enhanced Machine Learning Workflows'),
             (r'Machine Learning for Chemistry', 'Quantum-Enhanced Machine Learning'),
             (r'Chemical ML', 'Quantum-Enhanced ML'),
-            (r'ChemML Team', 'QeMLflow Team'),
-            (r'chemml@example\.com', 'qemlflow@example.com'),
-            (r'ChemML Contributors', 'QeMLflow Contributors'),
-            (r'ChemML Maintainers', 'QeMLflow Maintainers'),
+            (r'QeMLflow Team', 'QeMLflow Team'),
+            (r'qemlflow@example\.com', 'qemlflow@example.com'),
+            (r'QeMLflow Contributors', 'QeMLflow Contributors'),
+            (r'QeMLflow Maintainers', 'QeMLflow Maintainers'),
         ]
         
         # File patterns to update
@@ -237,7 +237,7 @@ class QeMLflowRenamer:
     
     def run(self):
         """Execute complete renaming process."""
-        print("🚀 Starting ChemML → QeMLflow renaming process")
+        print("🚀 Starting QeMLflow → QeMLflow renaming process")
         print("="*60)
         
         # Safety first
@@ -282,7 +282,7 @@ def main():
     renamer = QeMLflowRenamer()
     
     # Confirm with user
-    print("This will rename ChemML to QeMLflow across the entire codebase.")
+    print("This will rename QeMLflow to QeMLflow across the entire codebase.")
     response = input("Continue? (y/N): ").strip().lower()
     
     if response != 'y':

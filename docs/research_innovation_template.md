@@ -2,7 +2,7 @@
 
 ## Research Framework Template
 
-This template provides a structured approach for research and innovation projects using ChemML.
+This template provides a structured approach for research and innovation projects using QeMLflow.
 
 ### Research Project Structure
 ```

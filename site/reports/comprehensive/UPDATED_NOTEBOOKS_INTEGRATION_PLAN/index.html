@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/reports/comprehensive/UPDATED_NOTEBOOKS_INTEGRATION_PLAN/">
+        <link rel="canonical" href="https://qemlflow.io/reports/comprehensive/UPDATED_NOTEBOOKS_INTEGRATION_PLAN/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Notebooks Integration & New Module Creation - Comprehensive Updated Plan - ChemML Documentation</title>
+        <title>QeMLflow Notebooks Integration & New Module Creation - Comprehensive Updated Plan - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-notebooks-integration-new-module-creation-comprehensive-updated-plan" class="md-skip">
+        <a href="#qemlflow-notebooks-integration-new-module-creation-comprehensive-updated-plan" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Notebooks Integration &amp; New Module Creation - Comprehensive Updated Plan
+              QeMLflow Notebooks Integration &amp; New Module Creation - Comprehensive Updated Plan
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -975,17 +975,17 @@
 
 
 
-<h1 id="chemml-notebooks-integration-new-module-creation-comprehensive-updated-plan">ChemML Notebooks Integration &amp; New Module Creation - Comprehensive Updated Plan<a class="headerlink" href="#chemml-notebooks-integration-new-module-creation-comprehensive-updated-plan" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-notebooks-integration-new-module-creation-comprehensive-updated-plan">QeMLflow Notebooks Integration &amp; New Module Creation - Comprehensive Updated Plan<a class="headerlink" href="#qemlflow-notebooks-integration-new-module-creation-comprehensive-updated-plan" title="Permanent link">&para;</a></h1>
 <h2 id="executive-summary-key-findings">📊 Executive Summary &amp; Key Findings<a class="headerlink" href="#executive-summary-key-findings" title="Permanent link">&para;</a></h2>
 <p>Based on my comprehensive analysis of the notebooks, main codebase, and identified gaps, this updated plan outlines both the <strong>integration opportunities</strong> and <strong>new module requirements</strong> for creating a world-class modular learning system.</p>
 <h3 id="gap-analysis-missing-critical-components">🔍 <strong>Gap Analysis: Missing Critical Components</strong><a class="headerlink" href="#gap-analysis-missing-critical-components" title="Permanent link">&para;</a></h3>
 <p>While our core codebase is robust, several key components are missing that are essential for effective notebook integration:</p>
 <h2 id="new-modules-required-phase-0-foundation">🆕 <strong>New Modules Required (Phase 0: Foundation)</strong><a class="headerlink" href="#new-modules-required-phase-0-foundation" title="Permanent link">&para;</a></h2>
 <h3 id="1-tutorial-framework-module-critical"><strong>1. Tutorial Framework Module</strong> ⭐⭐⭐⭐⭐ <strong>CRITICAL</strong><a class="headerlink" href="#1-tutorial-framework-module-critical" title="Permanent link">&para;</a></h3>
-<p><strong>Location</strong>: <code>src/chemml/tutorials/</code></p>
+<p><strong>Location</strong>: <code>src/qemlflow/tutorials/</code></p>
 <p><strong>Why Needed</strong>: Notebooks currently implement custom assessment frameworks and tutorial utilities. This creates massive redundancy and inconsistency.</p>
 <p><strong>Functionality Required</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># src/chemml/tutorials/__init__.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/qemlflow/tutorials/__init__.py</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.core</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">setup_learning_environment</span><span class="p">,</span>
     <span class="n">load_tutorial_data</span><span class="p">,</span>
@@ -1013,10 +1013,10 @@
 - <strong>Standardizes</strong> learning experience across all tutorials
 - <strong>Enables</strong> interactive components and progress tracking</p>
 <h3 id="2-interactive-widgets-module-high-priority"><strong>2. Interactive Widgets Module</strong> ⭐⭐⭐⭐ <strong>HIGH PRIORITY</strong><a class="headerlink" href="#2-interactive-widgets-module-high-priority" title="Permanent link">&para;</a></h3>
-<p><strong>Location</strong>: <code>src/chemml/tutorials/widgets/</code></p>
+<p><strong>Location</strong>: <code>src/qemlflow/tutorials/widgets/</code></p>
 <p><strong>Why Needed</strong>: Notebooks contain complex interactive assessment widgets that are duplicated across multiple files.</p>
 <p><strong>Functionality Required</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># src/chemml/tutorials/widgets.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/qemlflow/tutorials/widgets.py</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">InteractiveAssessment</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">concepts</span><span class="p">,</span> <span class="n">activities</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">section</span> <span class="o">=</span> <span class="n">section</span>
@@ -1046,10 +1046,10 @@
 </code></pre></div>
 
 <h3 id="3-educational-data-module-high-priority"><strong>3. Educational Data Module</strong> ⭐⭐⭐⭐ <strong>HIGH PRIORITY</strong><a class="headerlink" href="#3-educational-data-module-high-priority" title="Permanent link">&para;</a></h3>
-<p><strong>Location</strong>: <code>src/chemml/tutorials/data/</code></p>
+<p><strong>Location</strong>: <code>src/qemlflow/tutorials/data/</code></p>
 <p><strong>Why Needed</strong>: Notebooks repeatedly download/create the same educational datasets.</p>
 <p><strong>Functionality Required</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># src/chemml/tutorials/data.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/qemlflow/tutorials/data.py</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">EducationalDatasets</span><span class="p">:</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">load_drug_molecules</span><span class="p">():</span>
@@ -1073,10 +1073,10 @@
 </code></pre></div>
 
 <h3 id="4-environment-setup-validation-module-medium-priority"><strong>4. Environment Setup &amp; Validation Module</strong> ⭐⭐⭐ <strong>MEDIUM PRIORITY</strong><a class="headerlink" href="#4-environment-setup-validation-module-medium-priority" title="Permanent link">&para;</a></h3>
-<p><strong>Location</strong>: <code>src/chemml/tutorials/environment.py</code></p>
+<p><strong>Location</strong>: <code>src/qemlflow/tutorials/environment.py</code></p>
 <p><strong>Why Needed</strong>: Every notebook reimplements environment checking and fallback systems.</p>
 <p><strong>Functionality Required</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># src/chemml/tutorials/environment.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/qemlflow/tutorials/environment.py</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">EnvironmentManager</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">check_dependencies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check all required dependencies&quot;&quot;&quot;</span>
@@ -1097,10 +1097,10 @@
 </code></pre></div>
 
 <h3 id="5-quantum-tutorial-integration-module-medium-priority"><strong>5. Quantum Tutorial Integration Module</strong> ⭐⭐⭐ <strong>MEDIUM PRIORITY</strong><a class="headerlink" href="#5-quantum-tutorial-integration-module-medium-priority" title="Permanent link">&para;</a></h3>
-<p><strong>Location</strong>: <code>src/chemml/tutorials/quantum/</code></p>
+<p><strong>Location</strong>: <code>src/qemlflow/tutorials/quantum/</code></p>
 <p><strong>Why Needed</strong>: Quantum notebooks have unique requirements and should integrate with our quantum research modules.</p>
 <p><strong>Functionality Required</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># src/chemml/tutorials/quantum.py</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/qemlflow/tutorials/quantum.py</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">QuantumTutorialHelper</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">check_quantum_environment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check quantum computing environment&quot;&quot;&quot;</span>
@@ -1119,7 +1119,7 @@
 <h3 id="phase-0-new-module-creation-week-1-2-foundation"><strong>Phase 0: New Module Creation (Week 1-2) - FOUNDATION</strong><a class="headerlink" href="#phase-0-new-module-creation-week-1-2-foundation" title="Permanent link">&para;</a></h3>
 <h4 id="priority-1-tutorial-framework-creation"><strong>Priority 1: Tutorial Framework Creation</strong><a class="headerlink" href="#priority-1-tutorial-framework-creation" title="Permanent link">&para;</a></h4>
 <ul>
-<li>[ ] Create <code>src/chemml/tutorials/</code> directory structure</li>
+<li>[ ] Create <code>src/qemlflow/tutorials/</code> directory structure</li>
 <li>[ ] Implement <code>LearningAssessment</code> class</li>
 <li>[ ] Create <code>ProgressTracker</code> functionality</li>
 <li>[ ] Build <code>setup_learning_environment()</code> function</li>
@@ -1127,7 +1127,7 @@
 </ul>
 <h4 id="priority-2-educational-data-infrastructure"><strong>Priority 2: Educational Data Infrastructure</strong><a class="headerlink" href="#priority-2-educational-data-infrastructure" title="Permanent link">&para;</a></h4>
 <ul>
-<li>[ ] Create <code>src/chemml/tutorials/data/</code> module</li>
+<li>[ ] Create <code>src/qemlflow/tutorials/data/</code> module</li>
 <li>[ ] Implement educational dataset loaders</li>
 <li>[ ] Create synthetic data generators</li>
 <li>[ ] Add offline learning support</li>
@@ -1151,8 +1151,8 @@
 
 <p><strong>After (Using New Modules)</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Clean integration</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">LearningAssessment</span><span class="p">,</span> <span class="n">setup_learning_environment</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">EducationalDatasets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">LearningAssessment</span><span class="p">,</span> <span class="n">setup_learning_environment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">EducationalDatasets</span>
 
 <span class="c1"># Setup with one line</span>
 <span class="n">assessment</span> <span class="o">=</span> <span class="n">LearningAssessment</span><span class="p">(</span><span class="n">student_id</span><span class="o">=</span><span class="s2">&quot;demo&quot;</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;fundamentals&quot;</span><span class="p">)</span>
@@ -1166,9 +1166,9 @@
 <p><strong>Before</strong>: Massive DeepChem reimplementation
 <strong>After</strong>: Showcase existing integration modules</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># New streamlined approach (using existing + new modules)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.deepchem_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemModelWrapper</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_learning_environment</span><span class="p">,</span> <span class="n">ProgressTracker</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_sample_datasets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.deepchem_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">DeepChemModelWrapper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">setup_learning_environment</span><span class="p">,</span> <span class="n">ProgressTracker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_sample_datasets</span>
 
 <span class="c1"># Environment setup</span>
 <span class="n">env</span> <span class="o">=</span> <span class="n">setup_learning_environment</span><span class="p">()</span>
@@ -1187,7 +1187,7 @@
 <h4 id="13-api-standardization"><strong>1.3 API Standardization</strong><a class="headerlink" href="#13-api-standardization" title="Permanent link">&para;</a></h4>
 <p><strong>Create Unified Learning API</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># New unified imports for all tutorials</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="c1"># Core tutorial functionality</span>
     <span class="n">setup_learning_environment</span><span class="p">,</span>
     <span class="n">LearningAssessment</span><span class="p">,</span>
@@ -1206,19 +1206,19 @@
     <span class="n">create_interactive_demo</span>
 <span class="p">)</span>
 
-<span class="c1"># Existing ChemML modules</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research</span><span class="w"> </span><span class="kn">import</span> <span class="n">drug_discovery</span><span class="p">,</span> <span class="n">quantum</span><span class="p">,</span> <span class="n">generative</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span>
+<span class="c1"># Existing QeMLflow modules</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research</span><span class="w"> </span><span class="kn">import</span> <span class="n">drug_discovery</span><span class="p">,</span> <span class="n">quantum</span><span class="p">,</span> <span class="n">generative</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepchem_integration</span>
 </code></pre></div>
 
 <h3 id="phase-2-advanced-integration-week-5-6-enhancement"><strong>Phase 2: Advanced Integration (Week 5-6) - ENHANCEMENT</strong><a class="headerlink" href="#phase-2-advanced-integration-week-5-6-enhancement" title="Permanent link">&para;</a></h3>
 <h4 id="21-quantum-ml-integration-with-new-modules"><strong>2.1 Quantum ML Integration with New Modules</strong><a class="headerlink" href="#21-quantum-ml-integration-with-new-modules" title="Permanent link">&para;</a></h4>
 <p><strong>Target</strong>: Quantum notebooks integration</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enhanced quantum tutorial integration</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumTutorialHelper</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">VQEExperiment</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.modern_quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumMLWorkflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumTutorialHelper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">VQEExperiment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.modern_quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumMLWorkflow</span>
 
 <span class="c1"># Setup quantum learning environment</span>
 <span class="n">quantum_helper</span> <span class="o">=</span> <span class="n">QuantumTutorialHelper</span><span class="p">()</span>
@@ -1232,8 +1232,8 @@
 <h4 id="22-research-module-showcases"><strong>2.2 Research Module Showcases</strong><a class="headerlink" href="#22-research-module-showcases" title="Permanent link">&para;</a></h4>
 <p><strong>Target</strong>: Advanced bootcamp notebooks</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Showcase advanced research capabilities</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span><span class="p">,</span> <span class="n">MolecularOptimizer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_research_demo</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARModel</span><span class="p">,</span> <span class="n">MolecularOptimizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_research_demo</span>
 
 <span class="c1"># Create interactive research demonstration</span>
 <span class="n">demo</span> <span class="o">=</span> <span class="n">create_research_demo</span><span class="p">(</span><span class="s2">&quot;drug_discovery&quot;</span><span class="p">)</span>
@@ -1248,7 +1248,7 @@
 <h4 id="31-new-learning-progression-with-module-integration"><strong>3.1 New Learning Progression with Module Integration</strong><a class="headerlink" href="#31-new-learning-progression-with-module-integration" title="Permanent link">&para;</a></h4>
 <p><strong>New Structure</strong> (utilizing all new modules):</p>
 <div class="codehilite"><pre><span></span><code>fundamentals/
-├── 01_chemml_ecosystem.ipynb         # Tutorial framework demo
+├── 01_qemlflow_ecosystem.ipynb         # Tutorial framework demo
 ├── 02_core_modules.ipynb             # Core modules with tutorial helpers
 └── 03_environment_setup.ipynb       # Environment module showcase
 
@@ -1340,7 +1340,7 @@ advanced/
 </ul>
 <h4 id="with-integration-modules"><strong>With Integration Modules</strong>:<a class="headerlink" href="#with-integration-modules" title="Permanent link">&para;</a></h4>
 <ul>
-<li>✅ <strong>Real Module Usage</strong> - notebooks demonstrate actual ChemML capabilities</li>
+<li>✅ <strong>Real Module Usage</strong> - notebooks demonstrate actual QeMLflow capabilities</li>
 <li>✅ <strong>Production Skills</strong> - learners use the same tools as researchers</li>
 <li>✅ <strong>Reduced Maintenance</strong> - single source of truth for implementations</li>
 <li>✅ <strong>Better Testing</strong> - notebooks validate module functionality</li>
@@ -1430,7 +1430,7 @@ advanced/
 <ul>
 <li>[ ] <strong>80% code reduction</strong> through modular integration + new modules</li>
 <li>[ ] <strong>&lt;3% code redundancy</strong> with tutorial framework</li>
-<li>[ ] <strong>100% ChemML API usage</strong> throughout notebooks</li>
+<li>[ ] <strong>100% QeMLflow API usage</strong> throughout notebooks</li>
 <li>[ ] <strong>Zero import inconsistencies</strong> with unified system</li>
 </ul>
 <h3 id="educational-metrics"><strong>Educational Metrics</strong><a class="headerlink" href="#educational-metrics" title="Permanent link">&para;</a></h3>
@@ -1466,7 +1466,7 @@ advanced/
 <p><strong>Proceed with Phase 0 (New Module Creation) immediately</strong> - this is the foundation that will enable all subsequent improvements. The tutorial framework and educational data modules are critical dependencies for effective integration.</p>
 <p><strong>Expected Timeline</strong>: 10 weeks for complete transformation
 <strong>Expected ROI</strong>: 80% code reduction, 95% redundancy elimination, exponentially better learning experience</p>
-<p>This approach transforms ChemML from having good individual components to having a <strong>world-class integrated learning ecosystem</strong> that rivals or exceeds any educational platform in computational chemistry and machine learning.</p>
+<p>This approach transforms QeMLflow from having good individual components to having a <strong>world-class integrated learning ecosystem</strong> that rivals or exceeds any educational platform in computational chemistry and machine learning.</p>
 <hr />
 <p><em>This updated plan establishes the foundation for creating the most comprehensive and effective molecular machine learning educational platform available.</em></p>
 

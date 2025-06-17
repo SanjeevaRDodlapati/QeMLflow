@@ -11,7 +11,7 @@ from pathlib import Path
 
 def run_final_assessment():
     """Run comprehensive final assessment"""
-    print("🏆 ChemML Phase 6 - Final Assessment")
+    print("🏆 QeMLflow Phase 6 - Final Assessment")
     print("=" * 50)
 
     results = {}
@@ -23,7 +23,7 @@ def run_final_assessment():
             [
                 sys.executable,
                 "-c",
-                "import time; start=time.time(); import chemml; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
+                "import time; start=time.time(); import qemlflow; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
             ],
             capture_output=True,
             text=True,
@@ -98,14 +98,14 @@ def run_final_assessment():
     print("\n🧪 Testing Core Features...")
     try:
         test_script = """
-import chemml
+import qemlflow
 # Test lazy loading
-research = chemml.research
-integrations = chemml.integrations
-core = chemml.core
+research = qemlflow.research
+integrations = qemlflow.integrations
+core = qemlflow.core
 
 # Test essential functions
-data = chemml.load_sample_data()
+data = qemlflow.load_sample_data()
 print(f"FEATURES_OK:True")
 """
 

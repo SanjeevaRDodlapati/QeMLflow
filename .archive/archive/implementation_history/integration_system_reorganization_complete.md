@@ -1,4 +1,4 @@
-# ChemML Integration System Reorganization - Implementation Summary
+# QeMLflow Integration System Reorganization - Implementation Summary
 
 **Date:** June 16, 2025
 **Status:** ✅ **SUCCESSFULLY COMPLETED**
@@ -21,7 +21,7 @@
 ## 📁 **New Directory Structure**
 
 ```
-src/chemml/integrations/
+src/qemlflow/integrations/
 ├── __init__.py                      # Main exports with enhanced discovery
 ├── core/                           # Framework Infrastructure
 │   ├── __init__.py                 # Core component exports
@@ -73,7 +73,7 @@ src/chemml/integrations/
 ### **3. Enhanced Discovery API**
 ```python
 # New discovery functions
-from chemml.integrations import (
+from qemlflow.integrations import (
     discover_models_by_category,
     list_available_categories,
     ADAPTER_CATEGORIES
@@ -178,7 +178,7 @@ adapters/
 
 ## 📝 **Summary**
 
-The ChemML integration system reorganization has been **successfully implemented**, delivering:
+The QeMLflow integration system reorganization has been **successfully implemented**, delivering:
 
 - ✅ **Clean Organization**: Logical structure by scientific domain
 - ✅ **Enhanced Scalability**: Support for unlimited future growth

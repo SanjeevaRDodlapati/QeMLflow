@@ -18,9 +18,9 @@ python --version
 python3 --version
 
 # Create virtual environment (recommended)
-python -m venv chemml_env
-source chemml_env/bin/activate  # On macOS/Linux
-chemml_env\Scripts\activate     # On Windows
+python -m venv qemlflow_env
+source qemlflow_env/bin/activate  # On macOS/Linux
+qemlflow_env\Scripts\activate     # On Windows
 
 # Install required packages
 pip install -r requirements.txt
@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ```bash
 # Install ipykernel in your virtual environment
 pip install ipykernel
-python -m ipykernel install --user --name=chemml_env
+python -m ipykernel install --user --name=qemlflow_env
 # Select the kernel in Jupyter notebook
 ```
 

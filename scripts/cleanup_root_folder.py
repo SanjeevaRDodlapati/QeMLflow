@@ -60,7 +60,7 @@ class RootFolderCleaner:
             "site/",
             "build/",
             "dist/",
-            "chemml_env/",
+            "qemlflow_env/",
             "archive/",
             "assessments/",
             "boltz_cache/",
@@ -179,7 +179,7 @@ class RootFolderCleaner:
         print("\n📋 Creating Organization Index")
         print("-" * 30)
 
-        index_content = f"""# ChemML Project Organization
+        index_content = f"""# QeMLflow Project Organization
 
 **Updated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
@@ -252,7 +252,7 @@ Original files are backed up in `archive/root_cleanup_backup_*/`
 
     def cleanup_root(self):
         """Perform complete root folder cleanup."""
-        print("🧹 ChemML Root Folder Cleanup")
+        print("🧹 QeMLflow Root Folder Cleanup")
         print("=" * 35)
 
         # Analyze current state

@@ -11,13 +11,13 @@ warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
 import matplotlib.pyplot as plt
 
-# Core ChemML imports
+# Core QeMLflow imports
 import numpy as np
 import pandas as pd
 
-# ChemML modern quantum suite
+# QeMLflow modern quantum suite
 try:
-    from chemml.research.modern_quantum import (
+    from qemlflow.research.modern_quantum import (
         HardwareEfficientAnsatz,
         ModernQAOA,
         ModernVQE,
@@ -26,7 +26,7 @@ try:
         QuantumFeatureMap,
     )
 
-    print("✅ ChemML Modern Quantum Suite loaded")
+    print("✅ QeMLflow Modern Quantum Suite loaded")
 except ImportError as e:
     print(f"⚠️ Modern quantum suite not available: {e}")
 
@@ -45,4 +45,4 @@ try:
 except ImportError:
     print("⚠️ PyTorch not available")
 
-print("🎯 ChemML environment ready!")
+print("🎯 QeMLflow environment ready!")

@@ -1,6 +1,6 @@
-# 📖 ChemML Complete Reference
+# 📖 QeMLflow Complete Reference
 
-**Comprehensive technical documentation and API reference for ChemML**
+**Comprehensive technical documentation and API reference for QeMLflow**
 
 ---
 
@@ -39,18 +39,18 @@
 #### Standard Installation
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/ChemML.git
-cd ChemML
+git clone https://github.com/yourusername/QeMLflow.git
+cd QeMLflow
 
 # Create virtual environment
-python -m venv chemml_env
-source chemml_env/bin/activate  # Windows: chemml_env\Scripts\activate
+python -m venv qemlflow_env
+source qemlflow_env/bin/activate  # Windows: qemlflow_env\Scripts\activate
 
 # Install base dependencies
 pip install -r requirements.txt
 
 # Verify installation
-python -c "import chemml; chemml.test_installation()"
+python -c "import qemlflow; qemlflow.test_installation()"
 ```
 
 #### Development Installation
@@ -71,21 +71,21 @@ pytest tests/
 #### Production Installation
 ```bash
 # Production optimized
-pip install chemml[production]
+pip install qemlflow[production]
 
 # With GPU support
-pip install chemml[gpu]
+pip install qemlflow[gpu]
 
 # With all optional dependencies
-pip install chemml[all]
+pip install qemlflow[all]
 ```
 
 ### Environment Configuration
 
 #### Configuration File (`config.yaml`)
 ```yaml
-# ChemML Configuration
-chemml:
+# QeMLflow Configuration
+qemlflow:
   # Data paths
   data_dir: "./data"
   cache_dir: "./data/cache"
@@ -122,13 +122,13 @@ chemml:
 #### Environment Variables
 ```bash
 # Required
-export CHEMML_DATA_DIR="/path/to/data"
-export CHEMML_CONFIG="/path/to/config.yaml"
+export QEMLFLOW_DATA_DIR="/path/to/data"
+export QEMLFLOW_CONFIG="/path/to/config.yaml"
 
 # Optional
-export CHEMML_CACHE_DIR="/path/to/cache"
-export CHEMML_LOG_LEVEL="INFO"
-export CHEMML_GPU_MEMORY_LIMIT="4GB"
+export QEMLFLOW_CACHE_DIR="/path/to/cache"
+export QEMLFLOW_LOG_LEVEL="INFO"
+export QEMLFLOW_GPU_MEMORY_LIMIT="4GB"
 
 # Quantum providers (optional)
 export IBMQ_TOKEN="your_ibm_token"
@@ -141,8 +141,8 @@ export QISKIT_BACKEND="ibmq_qasm_simulator"
 
 ### Project Structure
 ```
-ChemML/
-├── src/chemml/                    # Core package
+QeMLflow/
+├── src/qemlflow/                    # Core package
 │   ├── data_processing/           # Molecular data handling
 │   ├── models/                    # ML and quantum models
 │   ├── drug_design/               # Drug discovery algorithms
@@ -197,7 +197,7 @@ Output Layer (Predictions)
 Central class for molecular data processing and feature extraction.
 
 ```python
-from chemml.data_processing import MolecularProcessor
+from qemlflow.data_processing import MolecularProcessor
 
 # Initialize processor
 processor = MolecularProcessor(
@@ -222,7 +222,7 @@ features = processor.extract_features(molecules, feature_type="morgan")
 Build and evaluate QSAR (Quantitative Structure-Activity Relationship) models.
 
 ```python
-from chemml.models import QSARModel
+from qemlflow.models import QSARModel
 
 # Initialize model
 model = QSARModel(
@@ -253,7 +253,7 @@ metrics = model.evaluate(X_test, y_test)
 Quantum machine learning models for molecular systems.
 
 ```python
-from chemml.models.quantum import QuantumMolecularModel
+from qemlflow.models.quantum import QuantumMolecularModel
 
 # Initialize quantum model
 qml_model = QuantumMolecularModel(
@@ -283,7 +283,7 @@ quantum_predictions = qml_model.predict(X_test)
 
 #### Molecular Preprocessing
 ```python
-from chemml.data_processing import (
+from qemlflow.data_processing import (
     clean_molecular_data,
     standardize_molecules,
     remove_salts,
@@ -305,7 +305,7 @@ valid_mols, invalid_indices = validate_molecules(molecules)
 
 #### Feature Extraction
 ```python
-from chemml.data_processing import (
+from qemlflow.data_processing import (
     calculate_descriptors,
     generate_fingerprints,
     molecular_descriptors,
@@ -331,7 +331,7 @@ fingerprints = generate_fingerprints(
 
 #### Classical Machine Learning
 ```python
-from chemml.models.classical import (
+from qemlflow.models.classical import (
     RegressionModel,
     ClassificationModel,
     EnsembleModel
@@ -354,7 +354,7 @@ ensemble.fit(X_train, y_train)
 
 #### Deep Learning Models
 ```python
-from chemml.models.deep_learning import (
+from qemlflow.models.deep_learning import (
     MolecularNeuralNetwork,
     GraphNeuralNetwork,
     TransformerModel
@@ -386,7 +386,7 @@ transformer = TransformerModel(
 
 #### Quantum Machine Learning
 ```python
-from chemml.models.quantum import (
+from qemlflow.models.quantum import (
     QuantumNeuralNetwork,
     VariationalQuantumEigensolver,
     QuantumApproximateOptimization
@@ -419,7 +419,7 @@ qaoa = QuantumApproximateOptimization(
 
 ### Data Processing Module
 
-#### Molecular Preprocessing (`chemml.data_processing.preprocessing`)
+#### Molecular Preprocessing (`qemlflow.data_processing.preprocessing`)
 
 **Core Functions:**
 ```python
@@ -462,7 +462,7 @@ def validate_molecules(molecules):
     pass
 ```
 
-#### Feature Extraction (`chemml.data_processing.features`)
+#### Feature Extraction (`qemlflow.data_processing.features`)
 
 **Descriptor Calculation:**
 ```python
@@ -522,7 +522,7 @@ def generate_fingerprints(molecules, fingerprint_type="morgan", **kwargs):
 
 ### Models Module
 
-#### Classical ML (`chemml.models.classical`)
+#### Classical ML (`qemlflow.models.classical`)
 
 **Regression Models:**
 ```python
@@ -597,7 +597,7 @@ class RegressionModel:
         pass
 ```
 
-#### Quantum ML (`chemml.models.quantum`)
+#### Quantum ML (`qemlflow.models.quantum`)
 
 **Quantum Neural Networks:**
 ```python
@@ -675,7 +675,7 @@ class QuantumNeuralNetwork:
 
 ### Drug Design Module
 
-#### Molecular Generation (`chemml.drug_design.generation`)
+#### Molecular Generation (`qemlflow.drug_design.generation`)
 
 ```python
 def generate_molecules(model, n_samples=100, **kwargs):
@@ -721,7 +721,7 @@ def optimize_molecules(molecules, objective_function, **kwargs):
     pass
 ```
 
-#### Property Prediction (`chemml.drug_design.properties`)
+#### Property Prediction (`qemlflow.drug_design.properties`)
 
 ```python
 def predict_admet_properties(molecules, model_type="ensemble"):
@@ -774,11 +774,11 @@ def predict_target_activity(molecules, target_protein, **kwargs):
 
 ### Supported Quantum Frameworks
 
-ChemML integrates with multiple quantum computing frameworks:
+QeMLflow integrates with multiple quantum computing frameworks:
 
 #### Qiskit Integration
 ```python
-from chemml.quantum.qiskit import QiskitProvider
+from qemlflow.quantum.qiskit import QiskitProvider
 
 # Initialize Qiskit provider
 provider = QiskitProvider(
@@ -796,7 +796,7 @@ quantum_model = provider.create_quantum_model(
 
 #### PennyLane Integration
 ```python
-from chemml.quantum.pennylane import PennyLaneProvider
+from qemlflow.quantum.pennylane import PennyLaneProvider
 
 # Initialize PennyLane provider
 provider = PennyLaneProvider(
@@ -813,7 +813,7 @@ qml_model = provider.create_qml_model(
 
 #### Cirq Integration
 ```python
-from chemml.quantum.cirq import CirqProvider
+from qemlflow.quantum.cirq import CirqProvider
 
 # Initialize Cirq provider
 provider = CirqProvider(
@@ -831,7 +831,7 @@ qnn = provider.create_quantum_neural_network(
 
 #### Variational Quantum Eigensolver (VQE)
 ```python
-from chemml.quantum.algorithms import VQE
+from qemlflow.quantum.algorithms import VQE
 
 # Initialize VQE for molecular simulation
 vqe = VQE(
@@ -850,7 +850,7 @@ molecular_orbitals = vqe.get_molecular_orbitals()
 
 #### Quantum Approximate Optimization Algorithm (QAOA)
 ```python
-from chemml.quantum.algorithms import QAOA
+from qemlflow.quantum.algorithms import QAOA
 
 # Initialize QAOA for molecular optimization
 qaoa = QAOA(
@@ -870,7 +870,7 @@ optimized_structure = qaoa.optimize(
 
 #### Quantum Convolutional Neural Networks
 ```python
-from chemml.quantum.models import QuantumCNN
+from qemlflow.quantum.models import QuantumCNN
 
 # Initialize quantum CNN
 qcnn = QuantumCNN(
@@ -889,7 +889,7 @@ predictions = qcnn.predict(test_images)
 
 #### Quantum Generative Adversarial Networks
 ```python
-from chemml.quantum.models import QuantumGAN
+from qemlflow.quantum.models import QuantumGAN
 
 # Initialize quantum GAN
 qgan = QuantumGAN(
@@ -913,9 +913,9 @@ generated_molecules = qgan.generate(n_samples=50)
 
 #### FastAPI Application
 ```python
-from chemml.api import create_app
+from qemlflow.api import create_app
 
-# Create ChemML API application
+# Create QeMLflow API application
 app = create_app(
     config_file="production_config.yaml",
     enable_docs=True,
@@ -923,7 +923,7 @@ app = create_app(
 )
 
 # Run with uvicorn
-# uvicorn chemml.api:app --host 0.0.0.0 --port 8000 --workers 4
+# uvicorn qemlflow.api:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
 #### API Endpoints
@@ -986,14 +986,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-# Install ChemML
+# Install QeMLflow
 RUN pip install -e .
 
 # Expose port
 EXPOSE 8000
 
 # Run application
-CMD ["uvicorn", "chemml.api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "qemlflow.api:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 #### Docker Compose
@@ -1001,13 +1001,13 @@ CMD ["uvicorn", "chemml.api:app", "--host", "0.0.0.0", "--port", "8000"]
 version: '3.8'
 
 services:
-  chemml-api:
+  qemlflow-api:
     build: .
     ports:
       - "8000:8000"
     environment:
-      - CHEMML_CONFIG=/app/configs/production.yaml
-      - CHEMML_LOG_LEVEL=INFO
+      - QEMLFLOW_CONFIG=/app/configs/production.yaml
+      - QEMLFLOW_LOG_LEVEL=INFO
     volumes:
       - ./data:/app/data
       - ./configs:/app/configs
@@ -1023,8 +1023,8 @@ services:
   postgres:
     image: postgres:13
     environment:
-      POSTGRES_DB: chemml
-      POSTGRES_USER: chemml
+      POSTGRES_DB: qemlflow
+      POSTGRES_USER: qemlflow
       POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
@@ -1042,24 +1042,24 @@ volumes:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chemml-api
+  name: qemlflow-api
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: chemml-api
+      app: qemlflow-api
   template:
     metadata:
       labels:
-        app: chemml-api
+        app: qemlflow-api
     spec:
       containers:
-      - name: chemml-api
-        image: chemml:latest
+      - name: qemlflow-api
+        image: qemlflow:latest
         ports:
         - containerPort: 8000
         env:
-        - name: CHEMML_CONFIG
+        - name: QEMLFLOW_CONFIG
           value: "/app/configs/production.yaml"
         resources:
           requests:
@@ -1076,26 +1076,26 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: chemml-config
+          name: qemlflow-config
       - name: data-volume
         persistentVolumeClaim:
-          claimName: chemml-data-pvc
+          claimName: qemlflow-data-pvc
 ```
 
 ### Monitoring & Observability
 
 #### Prometheus Metrics
 ```python
-from chemml.monitoring import setup_metrics
+from qemlflow.monitoring import setup_metrics
 
 # Setup application metrics
 setup_metrics(app)
 
 # Custom metrics available:
-# - chemml_predictions_total
-# - chemml_model_training_duration
-# - chemml_quantum_circuit_execution_time
-# - chemml_api_request_duration
+# - qemlflow_predictions_total
+# - qemlflow_model_training_duration
+# - qemlflow_quantum_circuit_execution_time
+# - qemlflow_api_request_duration
 ```
 
 #### Logging Configuration
@@ -1112,11 +1112,11 @@ handlers:
     formatter: default
   file:
     class: logging.FileHandler
-    filename: chemml.log
+    filename: qemlflow.log
     level: DEBUG
     formatter: default
 loggers:
-  chemml:
+  qemlflow:
     level: INFO
     handlers: [console, file]
   uvicorn:
@@ -1147,14 +1147,14 @@ pip install rdkit-pypi==2022.9.5
 pip install qiskit==0.39.0 pennylane==0.26.0
 
 # Avoid conflicts
-pip install chemml[quantum] --no-deps
+pip install qemlflow[quantum] --no-deps
 pip install <specific-quantum-dependencies>
 ```
 
 **Issue: Memory errors during molecular processing**
 ```python
 # Solution: Process in batches
-from chemml.utils import batch_process
+from qemlflow.utils import batch_process
 
 # Process large datasets in chunks
 results = batch_process(
@@ -1182,7 +1182,7 @@ model = MolecularNeuralNetwork(
 **Issue: Quantum circuit too deep**
 ```python
 # Solution: Optimize circuit depth
-from chemml.quantum.optimization import optimize_circuit
+from qemlflow.quantum.optimization import optimize_circuit
 
 optimized_circuit = optimize_circuit(
     original_circuit,
@@ -1196,7 +1196,7 @@ optimized_circuit = optimize_circuit(
 **Issue: Invalid molecular structures**
 ```python
 # Solution: Use validation and cleaning
-from chemml.data_processing import validate_and_clean
+from qemlflow.data_processing import validate_and_clean
 
 clean_molecules, invalid_count = validate_and_clean(
     molecules,
@@ -1210,7 +1210,7 @@ print(f"Removed {invalid_count} invalid molecules")
 **Issue: Inconsistent molecular representations**
 ```python
 # Solution: Standardize all molecules
-from chemml.data_processing import standardize_molecules
+from qemlflow.data_processing import standardize_molecules
 
 standardized_mols = standardize_molecules(
     molecules,
@@ -1225,7 +1225,7 @@ standardized_mols = standardize_molecules(
 #### Memory Management
 ```python
 # Use memory-efficient processing
-from chemml.utils.memory import memory_efficient_processing
+from qemlflow.utils.memory import memory_efficient_processing
 
 # Process large datasets efficiently
 results = memory_efficient_processing(
@@ -1239,7 +1239,7 @@ results = memory_efficient_processing(
 #### Parallel Processing
 ```python
 # Enable parallel processing
-from chemml.utils.parallel import parallel_map
+from qemlflow.utils.parallel import parallel_map
 
 # Parallel molecular processing
 results = parallel_map(
@@ -1253,7 +1253,7 @@ results = parallel_map(
 #### Caching
 ```python
 # Enable computation caching
-from chemml.utils.cache import enable_caching
+from qemlflow.utils.cache import enable_caching
 
 # Cache expensive computations
 enable_caching(
@@ -1272,7 +1272,7 @@ def expensive_calculation(molecules):
 
 #### Model Debugging
 ```python
-from chemml.debugging import ModelDebugger
+from qemlflow.debugging import ModelDebugger
 
 # Debug model performance
 debugger = ModelDebugger(model)
@@ -1290,7 +1290,7 @@ debugger.plot_prediction_analysis(analysis)
 
 #### Quantum Circuit Debugging
 ```python
-from chemml.quantum.debugging import QuantumDebugger
+from qemlflow.quantum.debugging import QuantumDebugger
 
 # Debug quantum circuits
 qdbg = QuantumDebugger(quantum_circuit)
@@ -1314,12 +1314,12 @@ qdbg.visualize_quantum_states(input_states)
 
 ```bash
 # Fork and clone repository
-git clone https://github.com/yourusername/ChemML.git
-cd ChemML
+git clone https://github.com/yourusername/QeMLflow.git
+cd QeMLflow
 
 # Create development environment
-python -m venv chemml_dev
-source chemml_dev/bin/activate
+python -m venv qemlflow_dev
+source qemlflow_dev/bin/activate
 
 # Install development dependencies
 pip install -r requirements-dev.txt
@@ -1389,7 +1389,7 @@ def calculate_molecular_descriptors(
 import pytest
 import numpy as np
 from rdkit import Chem
-from chemml.data_processing import calculate_molecular_descriptors
+from qemlflow.data_processing import calculate_molecular_descriptors
 
 
 class TestMolecularDescriptors:
@@ -1422,8 +1422,8 @@ class TestMolecularDescriptors:
 #### Integration Tests
 ```python
 import pytest
-from chemml.models import QSARModel
-from chemml.data_processing import MolecularProcessor
+from qemlflow.models import QSARModel
+from qemlflow.data_processing import MolecularProcessor
 
 
 class TestQSARPipeline:
@@ -1478,17 +1478,17 @@ class TestQSARPipeline:
 3. **Code Quality Checks**
    ```bash
    # Format code
-   black chemml/
-   isort chemml/
+   black qemlflow/
+   isort qemlflow/
 
    # Type checking
-   mypy chemml/
+   mypy qemlflow/
 
    # Lint code
-   flake8 chemml/
+   flake8 qemlflow/
 
    # Run tests
-   pytest tests/ --cov=chemml
+   pytest tests/ --cov=qemlflow
    ```
 
 4. **Submit Pull Request**
@@ -1502,17 +1502,17 @@ class TestQSARPipeline:
 ## 📄 License & Citations
 
 ### License
-ChemML is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
+QeMLflow is licensed under the MIT License. See [LICENSE](LICENSE) file for details.
 
 ### Citation
-If you use ChemML in your research, please cite:
+If you use QeMLflow in your research, please cite:
 
 ```bibtex
-@software{chemml2025,
-  title={ChemML: Machine Learning and Quantum Computing for Molecular Modeling},
-  author={ChemML Development Team},
+@software{qemlflow2025,
+  title={QeMLflow: Machine Learning and Quantum Computing for Molecular Modeling},
+  author={QeMLflow Development Team},
   year={2025},
-  url={https://github.com/yourusername/ChemML},
+  url={https://github.com/yourusername/QeMLflow},
   version={1.0.0}
 }
 ```
@@ -1535,4 +1535,4 @@ If you use ChemML in your research, please cite:
 
 ---
 
-*Last Updated: June 10, 2025 | ChemML Technical Team*
+*Last Updated: June 10, 2025 | QeMLflow Technical Team*

@@ -1,4 +1,4 @@
-# 🧬 ChemML Long-Term Research Enhancements - Quick Reference
+# 🧬 QeMLflow Long-Term Research Enhancements - Quick Reference
 
 ## 📋 **Six Core Research Enhancements**
 

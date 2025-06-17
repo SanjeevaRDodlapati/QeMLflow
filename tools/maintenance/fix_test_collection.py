@@ -1,5 +1,5 @@
 """
-ChemML Test Collection Fixer
+QeMLflow Test Collection Fixer
 
 This script fixes test collection issues by:
 1. Identifying import errors in test files
@@ -23,7 +23,7 @@ from typing import Dict, List, Set
 
 
 class TestCollectionFixer:
-    """Fixes test collection issues in the ChemML test suite."""
+    """Fixes test collection issues in the QeMLflow test suite."""
 
     def __init__(self, base_dir: Path, dry_run: bool = False, verbose: bool = False):
         self.base_dir = base_dir
@@ -34,7 +34,7 @@ class TestCollectionFixer:
 
     def fix_all_collection_issues(self):
         """Fix all test collection issues."""
-        print("🧪 ChemML Test Collection Fixer")
+        print("🧪 QeMLflow Test Collection Fixer")
         print("=" * 40)
 
         # First, identify collection issues
@@ -299,14 +299,14 @@ def temp_dir(tmp_path):
 
     def _fix_common_imports(self, content: str) -> str:
         """Fix common import issues."""
-        # Fix chemml imports
+        # Fix qemlflow imports
         content = re.sub(
-            r"from chemml\.([a-zA-Z_]+) import", r"from chemml.\1 import", content
+            r"from qemlflow\.([a-zA-Z_]+) import", r"from qemlflow.\1 import", content
         )
 
         # Fix relative imports
         content = re.sub(
-            r"from \.\.([a-zA-Z_]+) import", r"from chemml.\1 import", content
+            r"from \.\.([a-zA-Z_]+) import", r"from qemlflow.\1 import", content
         )
 
         return content
@@ -315,7 +315,7 @@ def temp_dir(tmp_path):
         """Fix relative import paths."""
         # Convert relative imports to absolute
         content = re.sub(
-            r"from \.([a-zA-Z_]+) import", r"from chemml.\1 import", content
+            r"from \.([a-zA-Z_]+) import", r"from qemlflow.\1 import", content
         )
 
         return content
@@ -439,7 +439,7 @@ def temp_dir(tmp_path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ChemML Test Collection Fixer")
+    parser = argparse.ArgumentParser(description="QeMLflow Test Collection Fixer")
     parser.add_argument(
         "--dry-run", action="store_true", help="Preview changes without applying them"
     )

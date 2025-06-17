@@ -60,7 +60,7 @@ class FinalPolish:
             # Skip problematic directories
             if any(
                 excluded in py_file.parts
-                for excluded in {".git", "__pycache__", "chemml_env", "site", "build"}
+                for excluded in {".git", "__pycache__", "qemlflow_env", "site", "build"}
             ):
                 continue
             python_files.append(py_file)

@@ -1,5 +1,5 @@
 """
-Incremental Code Refactoring Tool for ChemML
+Incremental Code Refactoring Tool for QeMLflow
 
 This tool provides targeted fixes for common code quality issues,
 working incrementally to improve the codebase health score.

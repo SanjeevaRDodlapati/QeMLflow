@@ -14,7 +14,7 @@ import numpy as np
 import pytest
 
 # Import the module under test
-sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/src")
+sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
 from utils.quantum_utils import (
     PENNYLANE_AVAILABLE,
     QISKIT_AVAILABLE,

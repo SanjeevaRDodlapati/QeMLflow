@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ChemML Quick Wins Implementation
+QeMLflow Quick Wins Implementation
 
 This script implements immediate improvements to boost codebase health:
 1. Fix remaining auto - fixable linting issues
@@ -33,7 +33,7 @@ class QuickWinsFixer:
 
  def run_all_fixes(self):
  """Run all quick win fixes."""
- print("🚀 ChemML Quick Wins Implementation")
+ print("🚀 QeMLflow Quick Wins Implementation")
  print("=" * 50)
 
  fixes = [
@@ -319,7 +319,7 @@ class QuickWinsFixer:
  print(f" 📄 Detailed report saved to: {report_path}")
 
 def main():
- parser = argparse.ArgumentParser(description='ChemML Quick Wins Implementation')
+ parser = argparse.ArgumentParser(description='QeMLflow Quick Wins Implementation')
  parser.add_argument('--dry - run', action='store_true',
  help='Preview changes without applying them')
  parser.add_argument('--category', choices=['imports', 'syntax', 'docstrings', 'whitespace'],

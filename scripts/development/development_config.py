@@ -1,4 +1,4 @@
-ChemML Development Configuration
+QeMLflow Development Configuration
 ===============================
 
 Quick setup configuration for development features.
@@ -19,9 +19,9 @@ API_DOCS_DIR = PROJECT_ROOT / "docs" / "api_auto"
 
 # Quick setup function
 def setup_development_environment():
-    """Setup ChemML development environment with enhanced features."""
+    """Setup QeMLflow development environment with enhanced features."""
 
-    print("🚀 Initializing ChemML development environment...")
+    print("🚀 Initializing QeMLflow development environment...")
 
     # Create necessary directories
     PERFORMANCE_REPORTS_DIR.mkdir(exist_ok=True)
@@ -29,27 +29,27 @@ def setup_development_environment():
 
     # Import and test core functionality
     try:
-        import chemml
+        import qemlflow
 
-        print("✅ ChemML core imported successfully")
+        print("✅ QeMLflow core imported successfully")
 
         # Test performance monitoring
-        from chemml.core.monitoring import show_performance_dashboard
+        from qemlflow.core.monitoring import show_performance_dashboard
 
         print("✅ Performance monitoring available")
 
         # Test model recommendations
-        from chemml.core.recommendations import recommend_model
+        from qemlflow.core.recommendations import recommend_model
 
         print("✅ Model recommendation system available")
 
         print("\n🎉 Development environment ready!")
         print("\nQuick commands:")
         print(
-            "  📊 Performance dashboard: python -c 'from chemml.core.monitoring import show_performance_dashboard; show_performance_dashboard()'"
+            "  📊 Performance dashboard: python -c 'from qemlflow.core.monitoring import show_performance_dashboard; show_performance_dashboard()'"
         )
         print(
-            '  🤖 Model recommendation: python -c \'from chemml.core.recommendations import recommend_model; print(recommend_model(["CCO", "CCC"], "logP"))\''
+            '  🤖 Model recommendation: python -c \'from qemlflow.core.recommendations import recommend_model; print(recommend_model(["CCO", "CCC"], "logP"))\''
         )
         print("  📚 API docs: open docs/api_auto/index.html")
 

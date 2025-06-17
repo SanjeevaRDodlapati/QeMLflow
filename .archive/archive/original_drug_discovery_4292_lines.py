@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery Research Module
+QeMLflow Drug Discovery Research Module
 ====================================
 
 Advanced drug discovery algorithms and workflows.
@@ -1138,10 +1138,10 @@ def setup_wandb_tracking(experiment_name, config=None):
     try:
         wandb.login(key="b4f102d87161194b68baa7395d5862aa3f93b2b7", relogin=True)
         run = wandb.init(
-            project="chemml-experiments",
+            project="qemlflow-experiments",
             name=experiment_name,
             config=config or {},
-            tags=["chemml"],
+            tags=["qemlflow"],
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run
@@ -1840,7 +1840,7 @@ def assess_drug_likeness(molecules: Union[str, List[str]]) -> pd.DataFrame:
 # Migrated from legacy virtual_screening.py
 
 """
-Virtual Screening Module for ChemML
+Virtual Screening Module for QeMLflow
 
 This module provides tools for virtual screening workflows including similarity-based
 screening, pharmacophore-based screening, and comprehensive virtual screening pipelines.

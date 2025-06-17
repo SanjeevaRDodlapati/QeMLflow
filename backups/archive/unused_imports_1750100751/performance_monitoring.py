@@ -78,7 +78,7 @@ class IntegrationMetrics:
         if metrics_dir:
             self.metrics_dir = Path(metrics_dir)
         else:
-            self.metrics_dir = Path.home() / ".chemml" / "metrics"
+            self.metrics_dir = Path.home() / ".qemlflow" / "metrics"
 
         self.metrics_dir.mkdir(parents=True, exist_ok=True)
 

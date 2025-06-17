@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-ChemML Wandb Integration Setup Script
+QeMLflow Wandb Integration Setup Script
 =====================================
 
-This script integrates Weights & Biases experiment tracking throughout the ChemML codebase.
+This script integrates Weights & Biases experiment tracking throughout the QeMLflow codebase.
 It adds wandb tracking to existing notebooks and Python files with minimal code changes.
 
 Usage:
     python setup_wandb_integration.py
 
-Author: ChemML Team
+Author: QeMLflow Team
 Date: June 14, 2025
 """
 
@@ -23,7 +23,7 @@ import wandb
 
 # Your wandb API key
 WANDB_API_KEY = "b4f102d87161194b68baa7395d5862aa3f93b2b7"
-PROJECT_NAME = "chemml-experiments"
+PROJECT_NAME = "qemlflow-experiments"
 
 
 def setup_wandb():
@@ -47,7 +47,7 @@ def create_wandb_config_template():
     config_template = {
         "project_name": PROJECT_NAME,
         "api_key": WANDB_API_KEY,
-        "default_tags": ["chemml"],
+        "default_tags": ["qemlflow"],
         "auto_login": True,
         "log_code": True,
         "log_artifacts": True,
@@ -55,7 +55,7 @@ def create_wandb_config_template():
     }
 
     # Save to config file
-    config_path = Path("src/chemml_common/wandb_config.json")
+    config_path = Path("src/qemlflow_common/wandb_config.json")
     config_path.parent.mkdir(parents=True, exist_ok=True)
 
     with open(config_path, "w") as f:
@@ -133,10 +133,10 @@ def setup_wandb_tracking(experiment_name, config=None):
     try:
         wandb.login(key="b4f102d87161194b68baa7395d5862aa3f93b2b7", relogin=True)
         run = wandb.init(
-            project="chemml-experiments",
+            project="qemlflow-experiments",
             name=experiment_name,
             config=config or {},
-_tags = ["chemml"]
+_tags = ["qemlflow"]
         )
         print(f"✅ Wandb tracking started: {run.url}")
         return run
@@ -170,9 +170,9 @@ _new_content = "\n".join(lines)
 
 
 def integrate_wandb_in_codebase():
-    """Integrate wandb throughout the ChemML codebase."""
+    """Integrate wandb throughout the QeMLflow codebase."""
 
-    print("🚀 Starting ChemML-WandB Integration...")
+    print("🚀 Starting QeMLflow-WandB Integration...")
     print("=" * 50)
 
     # Setup wandb
@@ -236,12 +236,12 @@ _key_notebooks = [
     create_example_script()
 
     print("\n" + "=" * 50)
-    print("🎉 ChemML-WandB Integration Complete!")
+    print("🎉 QeMLflow-WandB Integration Complete!")
     print(f"📊 Project: {PROJECT_NAME}")
     print(f"🔗 Dashboard: https://wandb.ai/projects/{PROJECT_NAME}")
     print("\n💡 Usage Tips:")
     print(
-        "1. Import the tracking module: from src.chemml_common.wandb_integration import *"
+        "1. Import the tracking module: from src.qemlflow_common.wandb_integration import *"
     )
     print("2. Start experiment: run = start_experiment('my_experiment', config)")
     print("3. Log metrics: log_metrics({'accuracy': 0.95})")
@@ -253,24 +253,24 @@ def create_example_script():
 
 _example_code = '''#!/usr/bin/env python3
 """
-Example: Using WandB in ChemML Experiments
+Example: Using WandB in QeMLflow Experiments
 ==========================================
 
 This script demonstrates how to use Weights & Biases experiment tracking
-in your ChemML experiments.
+in your QeMLflow experiments.
 """
 
 import sys
 import os
 sys.path.append('src')
 
-from chemml_common.wandb_integration import *
+from qemlflow_common.wandb_integration import *
 import numpy as np
 
 def run_example_experiment():
     """Run an example experiment with wandb tracking."""
 
-    print("🧪 Running example ChemML experiment with wandb...")
+    print("🧪 Running example QeMLflow experiment with wandb...")
 
     # Configuration for the experiment
     config = {
@@ -284,7 +284,7 @@ def run_example_experiment():
 
     # Start experiment
     run = start_experiment(
-_experiment_name = "chemml_example_experiment",
+_experiment_name = "qemlflow_example_experiment",
 _config = config,
 _tags = ["example", "tutorial", "molecular_ml"]
     )

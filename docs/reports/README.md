@@ -16,11 +16,11 @@
 
 **See**: `comprehensive/COMPLETE_FRAMEWORK_INTEGRATION_FINAL_REPORT.md` for complete implementation details.chive
 
-This directory contains all historical reports, implementation plans, and comprehensive documentation from the ChemML educational platform development.
+This directory contains all historical reports, implementation plans, and comprehensive documentation from the QeMLflow educational platform development.
 
 ## � **LATEST CRITICAL FINDING** - June 15, 2025
 
-**FRAMEWORK INTEGRATION CRISIS IDENTIFIED**: Comprehensive analysis reveals that only 1/14 bootcamp notebooks properly use the ChemML framework, despite having full functionality available. This represents **massive code redundancy** (~50,000 lines) and poor educational practices.
+**FRAMEWORK INTEGRATION CRISIS IDENTIFIED**: Comprehensive analysis reveals that only 1/14 bootcamp notebooks properly use the QeMLflow framework, despite having full functionality available. This represents **massive code redundancy** (~50,000 lines) and poor educational practices.
 
 ### 📊 Key Findings:
 - **Code Redundancy**: 97% of notebook code could be replaced with framework calls
@@ -103,4 +103,4 @@ find . -name "*IMPLEMENTATION*"
 
 ---
 
-*This archive maintains the complete development history of the ChemML educational platform.*
+*This archive maintains the complete development history of the QeMLflow educational platform.*

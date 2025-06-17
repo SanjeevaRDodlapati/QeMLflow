@@ -1,10 +1,10 @@
-# ChemML Project Status - Consolidated Report
+# QeMLflow Project Status - Consolidated Report
 
 ## 🎯 Current Project State
 
 **Overall Status**: ✅ **PRODUCTION READY**
 **Last Updated**: December 2024
-**Framework Version**: Enhanced ChemML v2.0+
+**Framework Version**: Enhanced QeMLflow v2.0+
 **Codebase Health**: 🟢 Excellent (Post-Cleanup)
 
 ---
@@ -80,7 +80,7 @@
 
 ### Core Modules
 ```
-src/chemml/
+src/qemlflow/
 ├── core/
 │   ├── data_processing.py     # ✅ Enhanced data processing & feature engineering
 │   ├── enhanced_models.py     # ✅ AutoML, ensemble, and advanced models

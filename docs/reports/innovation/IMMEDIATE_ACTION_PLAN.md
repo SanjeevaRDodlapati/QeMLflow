@@ -4,7 +4,7 @@
 
 ### 1. **Smart Performance Dashboard**
 ```python
-# Add to src/chemml/core/monitoring/dashboard.py
+# Add to src/qemlflow/core/monitoring/dashboard.py
 class PerformanceDashboard:
     def __init__(self):
         self.monitor = PerformanceMonitor.get_instance()
@@ -15,7 +15,7 @@ class PerformanceDashboard:
         return f"""
         <html>
         <body>
-        <h2>ChemML Performance Dashboard</h2>
+        <h2>QeMLflow Performance Dashboard</h2>
         <div id="memory-usage">{self.get_memory_chart()}</div>
         <div id="function-performance">{self.get_performance_table()}</div>
         <div id="system-health">{self.get_system_status()}</div>
@@ -40,9 +40,9 @@ class APIDocGenerator:
 ```bash
 # Create setup_everything.sh
 #!/bin/bash
-echo "🚀 Setting up ChemML development environment..."
+echo "🚀 Setting up QeMLflow development environment..."
 pip install -e .
-python -c "import chemml; chemml.setup_development_environment()"
+python -c "import qemlflow; qemlflow.setup_development_environment()"
 echo "✅ Ready to innovate!"
 ```
 
@@ -52,7 +52,7 @@ echo "✅ Ready to innovate!"
 
 ### 1. **AI-Powered Code Assistant**
 ```python
-class ChemMLCodeAssistant:
+class QeMLflowCodeAssistant:
     def suggest_optimizations(self, code_snippet):
         """AI suggests performance improvements"""
         return {
@@ -126,4 +126,4 @@ class ResourceAutoScaler:
 📈 **50% Faster Research**
 🌟 **Industry Leadership Position**
 
-*These enhancements will transform ChemML from an excellent framework into the undisputed leader in computational chemistry!*
+*These enhancements will transform QeMLflow from an excellent framework into the undisputed leader in computational chemistry!*

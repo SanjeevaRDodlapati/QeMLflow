@@ -1,8 +1,8 @@
 """
-ChemML Best-in-Class Libraries Demo
+QeMLflow Best-in-Class Libraries Demo
 ==================================
 
-This script demonstrates how ChemML leverages the best available libraries
+This script demonstrates how QeMLflow leverages the best available libraries
 for distributed ML training, hyperparameter search, and performance monitoring.
 
 """
@@ -150,7 +150,7 @@ def demo_performance_monitoring():
         from sklearn.model_selection import train_test_split
 
         # Set experiment
-        mlflow.set_experiment("chemml_best_libraries_demo")
+        mlflow.set_experiment("qemlflow_best_libraries_demo")
 
         with mlflow.start_run():
             # Generate synthetic molecular property data
@@ -197,7 +197,7 @@ def demo_performance_monitoring():
 
         # Initialize (will prompt for login if not configured)
         wandb.init(
-            project="chemml-demo",
+            project="qemlflow-demo",
             config={
                 "learning_rate": 0.01,
                 "epochs": 10,
@@ -386,7 +386,7 @@ def demo_automl():
 
 def main():
     """Run all demonstrations."""
-    print("🧬 ChemML Best-in-Class Libraries Demonstration")
+    print("🧬 QeMLflow Best-in-Class Libraries Demonstration")
     print("=" * 50)
 
     demos = [

@@ -8,11 +8,11 @@ mkdir -p "$TEST_DIR"
 cd "$TEST_DIR"
 
 echo "Creating test file..."
-echo "ChemML test content" > test.py
+echo "QeMLflow test content" > test.py
 
 echo "Creating backup and modifying..."
 cp test.py test.py.bak
-sed -i.bak2 's/ChemML/QeMLflow/g' test.py
+sed -i.bak2 's/QeMLflow/QeMLflow/g' test.py
 
 echo "Content after modification:"
 cat test.py
@@ -26,7 +26,7 @@ cp test.py.bak test.py
 echo "Content after restore:"
 cat test.py
 
-if grep -q "ChemML" test.py; then
+if grep -q "QeMLflow" test.py; then
     echo "✓ Rollback successful!"
 else
     echo "✗ Rollback failed!"

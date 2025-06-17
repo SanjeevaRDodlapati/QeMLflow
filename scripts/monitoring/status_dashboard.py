@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-ChemML Status Dashboard
+QeMLflow Status Dashboard
 ======================
 
-Provides a comprehensive dashboard view of the ChemML project status,
+Provides a comprehensive dashboard view of the QeMLflow project status,
 including workflows, documentation, and system health.
 """
 
@@ -35,7 +35,7 @@ def load_latest_monitoring_results():
 
 def print_dashboard_header():
     """Print the dashboard header."""
-    print("🔍 ChemML System Status Dashboard")
+    print("🔍 QeMLflow System Status Dashboard")
     print("=" * 60)
     print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -118,7 +118,7 @@ def print_workflow_status(results):
 
     if not workflows or workflows.get("overall") == "unknown":
         print("   ❓ Workflow status unknown")
-        print("   💡 Check: https://github.com/SanjeevaRDodlapati/ChemML/actions")
+        print("   💡 Check: https://github.com/SanjeevaRDodlapati/QeMLflow/actions")
     else:
         recent_runs = workflows.get("recent_runs", [])
         if recent_runs:
@@ -186,10 +186,10 @@ def print_useful_links():
     """Print useful links."""
     print("🔗 Useful Links")
     print("-" * 30)
-    print("   • GitHub Repository: https://github.com/SanjeevaRDodlapati/ChemML")
-    print("   • GitHub Actions: https://github.com/SanjeevaRDodlapati/ChemML/actions")
-    print("   • Documentation Site: https://sanjeevardodlapati.github.io/ChemML/")
-    print("   • Releases: https://github.com/SanjeevaRDodlapati/ChemML/releases")
+    print("   • GitHub Repository: https://github.com/SanjeevaRDodlapati/QeMLflow")
+    print("   • GitHub Actions: https://github.com/SanjeevaRDodlapati/QeMLflow/actions")
+    print("   • Documentation Site: https://sanjeevardodlapati.github.io/QeMLflow/")
+    print("   • Releases: https://github.com/SanjeevaRDodlapati/QeMLflow/releases")
     print()
 
 

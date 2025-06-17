@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick fix for unterminated docstrings in ChemML codebase.
+Quick fix for unterminated docstrings in QeMLflow codebase.
 Automatically detects and fixes missing opening triple quotes.
 """
 

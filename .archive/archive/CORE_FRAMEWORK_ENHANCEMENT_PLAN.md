@@ -1,4 +1,4 @@
-# ChemML Core Framework Enhancement Plan
+# QeMLflow Core Framework Enhancement Plan
 *Priority completion of core data processing and ML model capabilities*
 
 ## Current Assessment Summary

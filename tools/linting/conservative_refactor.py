@@ -144,7 +144,7 @@ class ConservativeRefactor:
             ".tox",
             ".venv",
             "venv",
-            "chemml_env",
+            "qemlflow_env",
             "site",
         }
 

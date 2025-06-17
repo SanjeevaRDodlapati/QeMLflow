@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classes - ChemML API</title>
+    <title>Classes - QeMLflow API</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -38,15 +38,15 @@
             </div>
 
             <div class="api-item">
-                <h3 class="api-name">🏗️ ChemMLConfig</h3>
+                <h3 class="api-name">🏗️ QeMLflowConfig</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.config</span>
                     <span class='bases'>Inherits: BaseSettings</span>
                 </div>
                 <div class="api-description">
-                    Central configuration for ChemML with environment variable support.
+                    Central configuration for QeMLflow with environment variable support.
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = ChemMLConfig()</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = QeMLflowConfig()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
                 <div class="method-item">
                     <h5>get_paths</h5>
@@ -63,15 +63,15 @@
             </div>
 
             <div class="api-item">
-                <h3 class="api-name">🏗️ ChemMLPaths</h3>
+                <h3 class="api-name">🏗️ QeMLflowPaths</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.config</span>
 
                 </div>
                 <div class="api-description">
-                    Standard paths for ChemML data and outputs.
+                    Standard paths for QeMLflow data and outputs.
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = ChemMLPaths()</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = QeMLflowPaths()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
                 <div class="method-item">
                     <h5>ensure_exists</h5>
@@ -108,15 +108,15 @@
             </div>
 
             <div class="api-item">
-                <h3 class="api-name">🏗️ ChemMLError</h3>
+                <h3 class="api-name">🏗️ QeMLflowError</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.errors</span>
                     <span class='bases'>Inherits: Exception</span>
                 </div>
                 <div class="api-description">
-                    Base exception for ChemML-specific errors.
+                    Base exception for QeMLflow-specific errors.
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = ChemMLError()</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>instance = QeMLflowError()</code></pre></div>
 
             </div>
 
@@ -124,7 +124,7 @@
                 <h3 class="api-name">🏗️ ConfigurationError</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.errors</span>
-                    <span class='bases'>Inherits: ChemMLError</span>
+                    <span class='bases'>Inherits: QeMLflowError</span>
                 </div>
                 <div class="api-description">
                     Error in configuration setup.
@@ -137,7 +137,7 @@
                 <h3 class="api-name">🏗️ DataProcessingError</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.errors</span>
-                    <span class='bases'>Inherits: ChemMLError</span>
+                    <span class='bases'>Inherits: QeMLflowError</span>
                 </div>
                 <div class="api-description">
                     Error in data processing operations.
@@ -150,7 +150,7 @@
                 <h3 class="api-name">🏗️ ModelError</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.errors</span>
-                    <span class='bases'>Inherits: ChemMLError</span>
+                    <span class='bases'>Inherits: QeMLflowError</span>
                 </div>
                 <div class="api-description">
                     Error in model operations.
@@ -165,7 +165,7 @@ model.ModelError(X_train, y_train)</code></pre></div>
                 <h3 class="api-name">🏗️ MolecularValidationError</h3>
                 <div class="api-meta">
                     <span class="module-name">core.common.errors</span>
-                    <span class='bases'>Inherits: ChemMLError</span>
+                    <span class='bases'>Inherits: QeMLflowError</span>
                 </div>
                 <div class="api-description">
                     Error in molecular data validation.
@@ -264,7 +264,7 @@ result = MolecularValidationError(smiles)</code></pre></div>
 
                 </div>
                 <div class="api-description">
-                    General data processing utilities for ChemML workflows.
+                    General data processing utilities for QeMLflow workflows.
 
 Provides common data processing operations for molecular and chemical data.
                 </div>
@@ -406,9 +406,9 @@ Args:
 
                 </div>
                 <div class="api-description">
-                    Wrapper for legacy ChemML modules to ensure backward compatibility.
+                    Wrapper for legacy QeMLflow modules to ensure backward compatibility.
 
-Provides a compatibility layer for older ChemML modules while transitioning
+Provides a compatibility layer for older QeMLflow modules while transitioning
 to the new hybrid architecture.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = LegacyModuleWrapper()</code></pre></div>
@@ -936,7 +936,7 @@ Args:
                     <span class='bases'>Inherits: ABC</span>
                 </div>
                 <div class="api-description">
-                    Abstract base class for all ChemML models.
+                    Abstract base class for all QeMLflow models.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = BaseModel()</code></pre><pre><code># Example with training data
 X_train, y_train = load_data()
@@ -1148,7 +1148,7 @@ Args:
 
                 </div>
                 <div class="api-description">
-                    Smart dashboard for ChemML performance monitoring.
+                    Smart dashboard for QeMLflow performance monitoring.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = PerformanceDashboard()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
@@ -1493,7 +1493,7 @@ Dict with recommended model, rationale, and configuration</p>
 
                 </div>
                 <div class="api-description">
-                    Load data from various formats for ChemML workflows
+                    Load data from various formats for QeMLflow workflows
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = DataLoader()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
@@ -2546,7 +2546,7 @@ Args:
 
                 </div>
                 <div class="api-description">
-                    Wrapper for DeepChem models to provide consistent ChemML interface.
+                    Wrapper for DeepChem models to provide consistent QeMLflow interface.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = DeepChemModelWrapper()</code></pre><pre><code># Example with training data
 X_train, y_train = load_data()
@@ -2597,24 +2597,24 @@ Returns:
 
                 </div>
                 <div class="api-description">
-                    Combine ChemML custom featurizers with DeepChem featurizers.
+                    Combine QeMLflow custom featurizers with DeepChem featurizers.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = HybridFeaturizer()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
                 <div class="method-item">
                     <h5>__init__</h5>
-                    <code>__init__(self, chemml_featurizers, deepchem_featurizers)</code>
+                    <code>__init__(self, qemlflow_featurizers, deepchem_featurizers)</code>
                     <p>Initialize hybrid featurizer.
 
 Args:
-    chemml_featurizers: List of ChemML featurizer instances
+    qemlflow_featurizers: List of QeMLflow featurizer instances
     deepchem_featurizers: List of DeepChem featurizer instances</p>
                 </div>
 
                 <div class="method-item">
                     <h5>featurize</h5>
                     <code>featurize(self, smiles_list)</code>
-                    <p>Generate combined features using both ChemML and DeepChem featurizers.
+                    <p>Generate combined features using both QeMLflow and DeepChem featurizers.
 
 Args:
     smiles_list: List of SMILES strings
@@ -2632,7 +2632,7 @@ Returns:
 
                 </div>
                 <div class="api-description">
-                    Complete drug discovery pipeline integrating all ChemML components.
+                    Complete drug discovery pipeline integrating all QeMLflow components.
                 </div>
                 <div class='api-examples'><h4>Examples:</h4><pre><code>instance = DrugDiscoveryPipeline()</code></pre></div>
                 <div class='methods-section'><h4>Methods:</h4>
@@ -5894,7 +5894,7 @@ Args:
 
                 </div>
                 <div class="api-description">
-                    Manager for educational datasets used in ChemML tutorials.
+                    Manager for educational datasets used in QeMLflow tutorials.
 
 This class provides easy access to curated molecular datasets,
 synthetic data generation, and educational examples.
@@ -6025,7 +6025,7 @@ result = QuantumMolecularDataset(smiles)</code></pre></div>
 
                 </div>
                 <div class="api-description">
-                    Comprehensive environment management for ChemML tutorials.
+                    Comprehensive environment management for QeMLflow tutorials.
 
 This class handles dependency checking, environment setup, and provides
 fallback mechanisms to ensure tutorials work across different environments.

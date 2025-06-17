@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery - ADMET Prediction
+QeMLflow Drug Discovery - ADMET Prediction
 =======================================
 
 ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) prediction tools

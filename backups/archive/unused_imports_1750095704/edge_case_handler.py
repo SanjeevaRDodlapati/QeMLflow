@@ -1,5 +1,5 @@
 """
-ChemML Edge Case Handler
+QeMLflow Edge Case Handler
 Robust handling of edge cases and boundary conditions.
 """
 
@@ -8,7 +8,7 @@ import warnings
 
 
 class EdgeCaseHandler:
-    """Handles edge cases robustly across ChemML."""
+    """Handles edge cases robustly across QeMLflow."""
 
     def __init__(self):
         self.logger = logging.getLogger(__name__)

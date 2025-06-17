@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery - Virtual Screening
+QeMLflow Drug Discovery - Virtual Screening
 ========================================
 
 Comprehensive virtual screening capabilities for drug discovery pipelines.

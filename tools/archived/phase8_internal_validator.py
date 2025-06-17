@@ -23,7 +23,7 @@ import psutil
 
 
 class Phase8InternalValidator:
-    """Comprehensive internal validation suite for ChemML."""
+    """Comprehensive internal validation suite for QeMLflow."""
 
     def __init__(self):
         self.results = {
@@ -101,17 +101,17 @@ class Phase8InternalValidator:
         import_times = []
         for i in range(5):
             # Fresh import each time
-            if "chemml" in sys.modules:
-                # Remove chemml and related modules
+            if "qemlflow" in sys.modules:
+                # Remove qemlflow and related modules
                 modules_to_remove = [
-                    k for k in sys.modules.keys() if k.startswith("chemml")
+                    k for k in sys.modules.keys() if k.startswith("qemlflow")
                 ]
                 for mod in modules_to_remove:
                     del sys.modules[mod]
 
             start_time = time.time()
             try:
-                import chemml
+                import qemlflow
 
                 end_time = time.time()
                 import_time = end_time - start_time
@@ -142,7 +142,7 @@ class Phase8InternalValidator:
         memory_before = process.memory_info().rss / 1024 / 1024  # MB
 
         try:
-            import chemml
+            import qemlflow
 
             memory_after = process.memory_info().rss / 1024 / 1024  # MB
             memory_increase = memory_after - memory_before
@@ -182,15 +182,15 @@ class Phase8InternalValidator:
         return int(sum(scores) / len(scores))
 
     def test_real_world_workflows(self) -> int:
-        """Test realistic ChemML workflows."""
+        """Test realistic QeMLflow workflows."""
         scores = []
 
         try:
-            import chemml
+            import qemlflow
 
             # Test 1: Use our new workflow validator
             try:
-                from src.chemml.utils.workflow_validator import workflow_validator
+                from src.qemlflow.utils.workflow_validator import workflow_validator
 
                 print("     Testing with comprehensive workflow validator...")
                 result = workflow_validator.run_comprehensive_workflow_test()
@@ -231,7 +231,7 @@ class Phase8InternalValidator:
                 scores.append(40)
 
         except ImportError as e:
-            print(f"     Cannot import chemml: {e}")
+            print(f"     Cannot import qemlflow: {e}")
             return 0
 
         return int(sum(scores) / len(scores)) if scores else 0
@@ -241,11 +241,11 @@ class Phase8InternalValidator:
         scores = []
 
         try:
-            import chemml
+            import qemlflow
 
             # Test 1: Use our new edge case handler
             try:
-                from src.chemml.utils.edge_case_handler import edge_case_handler
+                from src.qemlflow.utils.edge_case_handler import edge_case_handler
 
                 print("     Testing with comprehensive edge case handler...")
 
@@ -301,13 +301,13 @@ class Phase8InternalValidator:
         scores = []
 
         try:
-            import chemml
+            import qemlflow
 
             # Test 1: Core API availability
             try:
                 # Check that core APIs are available and stable
                 core_apis = [
-                    "chemml.__version__",
+                    "qemlflow.__version__",
                     # Add other core APIs to test
                 ]
 
@@ -357,7 +357,7 @@ class Phase8InternalValidator:
             # Simulate repeated operations
             for i in range(10):
                 try:
-                    import chemml
+                    import qemlflow
 
                     # Perform some operations
                     gc.collect()
@@ -383,9 +383,9 @@ class Phase8InternalValidator:
         return int(sum(scores) / len(scores)) if scores else 50
 
     def test_cross_module_integration(self) -> int:
-        """Test integration between different ChemML modules."""
+        """Test integration between different QeMLflow modules."""
         try:
-            import chemml
+            import qemlflow
 
             # Test basic module integration
             integration_score = 85  # Placeholder - based on our integration work
@@ -397,7 +397,7 @@ class Phase8InternalValidator:
     def test_error_handling(self) -> int:
         """Test error handling robustness."""
         try:
-            import chemml
+            import qemlflow
 
             # Test our custom exception hierarchy and error handling
             error_score = 90  # High score based on our enterprise-grade error handling
@@ -409,7 +409,7 @@ class Phase8InternalValidator:
     def test_lazy_loading(self) -> int:
         """Test lazy loading implementation."""
         try:
-            import chemml
+            import qemlflow
 
             # Test that lazy loading works correctly
             lazy_score = 95  # High score based on our lazy loading implementation

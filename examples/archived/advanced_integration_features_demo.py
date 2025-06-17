@@ -8,7 +8,7 @@ Demonstrates the immediate action implementations:
 2. Performance Monitoring Dashboard
 3. Automated Testing Framework
 
-This script showcases the new capabilities added to the ChemML
+This script showcases the new capabilities added to the QeMLflow
 external model integration framework.
 """
 
@@ -31,12 +31,12 @@ try:
     sys.path.insert(0, str(_src_path))
 
     # Import the new modules directly
-    from chemml.integrations.advanced_registry import (
+    from qemlflow.integrations.advanced_registry import (
         ModelCategory,
         TaskComplexity,
         get_advanced_registry,
     )
-    from chemml.integrations.automated_testing import (
+    from qemlflow.integrations.automated_testing import (
         MockAdapterTestCase,
         create_adapter_test_suite,
         generate_molecular_test_data,
@@ -44,12 +44,12 @@ try:
     )
 
     # For integration manager, we'll create a simplified version for demo
-    from chemml.integrations.external_models import ExternalModelWrapper
-    from chemml.integrations.performance_monitoring import get_metrics
+    from qemlflow.integrations.external_models import ExternalModelWrapper
+    from qemlflow.integrations.performance_monitoring import get_metrics
 
 except ImportError as e:
     print(f"❌ Import error: {e}")
-    print("Please ensure you're running this from the ChemML root directory")
+    print("Please ensure you're running this from the QeMLflow root directory")
     sys.exit(1)
 
 
@@ -304,7 +304,7 @@ _metrics = get_metrics()
 
 def main():
     """Run the complete demo."""
-    print("🚀 ChemML Advanced Integration Features Demo")
+    print("🚀 QeMLflow Advanced Integration Features Demo")
     print("=" * 60)
     print("Demonstrating immediate action implementations:")
     print("1. Enhanced Registry Management")

@@ -1,5 +1,5 @@
 """
-Phase 6 Completion Tool for ChemML
+Phase 6 Completion Tool for QeMLflow
 Final push to achieve production readiness goals
 """
 
@@ -31,11 +31,11 @@ class Phase6Completion:
 
         # Target the most common issues first
         high_priority_files = [
-            "src/chemml/core/data.py",
-            "src/chemml/core/models.py",
-            "src/chemml/core/featurizers.py",
-            "src/chemml/integrations/deepchem_integration.py",
-            "src/chemml/research/drug_discovery.py",
+            "src/qemlflow/core/data.py",
+            "src/qemlflow/core/models.py",
+            "src/qemlflow/core/featurizers.py",
+            "src/qemlflow/integrations/deepchem_integration.py",
+            "src/qemlflow/research/drug_discovery.py",
         ]
 
         total_fixes = 0
@@ -78,10 +78,10 @@ class Phase6Completion:
 
         # Target key modules for type enhancement
         target_modules = [
-            "src/chemml/core/*.py",
-            "src/chemml/utils/*.py",
-            "src/chemml/integrations/*.py",
-            "src/chemml/research/*.py",
+            "src/qemlflow/core/*.py",
+            "src/qemlflow/utils/*.py",
+            "src/qemlflow/integrations/*.py",
+            "src/qemlflow/research/*.py",
         ]
 
         total_annotations = 0
@@ -149,7 +149,7 @@ class Phase6Completion:
                 [
                     sys.executable,
                     "-c",
-                    "import time; start=time.time(); import chemml; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
+                    "import time; start=time.time(); import qemlflow; print(f'IMPORT_TIME:{time.time()-start:.2f}')",
                 ],
                 capture_output=True,
                 text=True,
@@ -333,7 +333,7 @@ class Phase6Completion:
 
 ## **🏆 Impact Summary**
 
-ChemML has achieved **{summary['overall_grade']} grade production readiness** with:
+QeMLflow has achieved **{summary['overall_grade']} grade production readiness** with:
 
 - **🚀 {summary['overall_progress']:.0f}% goal completion**
 - **⚡ Advanced performance optimizations**
@@ -341,7 +341,7 @@ ChemML has achieved **{summary['overall_grade']} grade production readiness** wi
 - **🔧 Professional automation tools**
 - **📝 Improved developer experience**
 
-**The ChemML codebase is now a high-performance, professional-grade machine learning library for chemistry!** 🎉
+**The QeMLflow codebase is now a high-performance, professional-grade machine learning library for chemistry!** 🎉
 
 Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}
 """
@@ -353,7 +353,7 @@ Generated: {time.strftime('%Y-%m-%d %H:%M:%S')}
 
     def run_complete_phase_6(self) -> Dict[str, Any]:
         """Run complete Phase 6 enhancement suite"""
-        print("🚀 ChemML Phase 6 - Production Readiness")
+        print("🚀 QeMLflow Phase 6 - Production Readiness")
         print("=" * 50)
 
         # 1. Parameter standardization

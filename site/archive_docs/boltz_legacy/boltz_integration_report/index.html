@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/archive_docs/boltz_legacy/boltz_integration_report/">
+        <link rel="canonical" href="https://qemlflow.io/archive_docs/boltz_legacy/boltz_integration_report/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Boltz Model Integration: Implementation Report - ChemML Documentation</title>
+        <title>Boltz Model Integration: Implementation Report - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -656,9 +656,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#e-chemml-pipeline-integration" class="md-nav__link">
+  <a href="#e-qemlflow-pipeline-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      E. ChemML Pipeline Integration
+      E. QeMLflow Pipeline Integration
     </span>
   </a>
   
@@ -1055,7 +1055,7 @@
 
 <h1 id="boltz-model-integration-implementation-report">Boltz Model Integration: Implementation Report<a class="headerlink" href="#boltz-model-integration-implementation-report" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This document describes the successful integration of the Boltz biomolecular interaction model (https://github.com/jwohlwend/boltz) into the ChemML framework. Boltz is a state-of-the-art deep learning model for protein structure prediction and binding affinity estimation, developed by researchers and representing cutting-edge advances in biomolecular modeling.</p>
+<p>This document describes the successful integration of the Boltz biomolecular interaction model (https://github.com/jwohlwend/boltz) into the QeMLflow framework. Boltz is a state-of-the-art deep learning model for protein structure prediction and binding affinity estimation, developed by researchers and representing cutting-edge advances in biomolecular modeling.</p>
 <h2 id="integration-approach">Integration Approach<a class="headerlink" href="#integration-approach" title="Permanent link">&para;</a></h2>
 <h3 id="1-repository-assessment">1. <strong>Repository Assessment</strong><a class="headerlink" href="#1-repository-assessment" title="Permanent link">&para;</a></h3>
 <p><strong>Repository Information:</strong>
@@ -1116,12 +1116,12 @@
 </code></pre></div>
 
 <h4 id="b-boltzmodel-class-high-level-wrapper">B. <strong>BoltzModel Class</strong> (High-level wrapper)<a class="headerlink" href="#b-boltzmodel-class-high-level-wrapper" title="Permanent link">&para;</a></h4>
-<p><strong>Purpose:</strong> ChemML-compatible interface for seamless workflow integration</p>
+<p><strong>Purpose:</strong> QeMLflow-compatible interface for seamless workflow integration</p>
 <p><strong>Key Features:</strong>
 - Pandas DataFrame support
 - scikit-learn-like API (<code>fit</code>, <code>predict</code>, <code>score</code>)
 - Automatic input format detection
-- ChemML pipeline compatibility</p>
+- QeMLflow pipeline compatibility</p>
 <h4 id="c-integration-manager-extensions">C. <strong>Integration Manager Extensions</strong><a class="headerlink" href="#c-integration-manager-extensions" title="Permanent link">&para;</a></h4>
 <p><strong>Purpose:</strong> High-level management and convenience functions</p>
 <p><strong>Added Methods:</strong></p>
@@ -1168,7 +1168,7 @@
 <div class="codehilite"><pre><span></span><code>boltz<span class="w"> </span>predict<span class="w"> </span>input.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--use_msa_server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--out_dir<span class="w"> </span>./predictions<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cache<span class="w"> </span>~/.chemml/boltz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cache<span class="w"> </span>~/.qemlflow/boltz<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--recycling_steps<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--diffusion_samples<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--sampling_steps<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="se">\</span>
@@ -1220,7 +1220,7 @@
 <h2 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
 <h3 id="7-integration-patterns-demonstrated">7. <strong>Integration Patterns Demonstrated</strong><a class="headerlink" href="#7-integration-patterns-demonstrated" title="Permanent link">&para;</a></h3>
 <h4 id="a-basic-setup">A. <strong>Basic Setup</strong><a class="headerlink" href="#a-basic-setup" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExternalModelManager</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExternalModelManager</span>
 
 <span class="n">manager</span> <span class="o">=</span> <span class="n">ExternalModelManager</span><span class="p">()</span>
 <span class="n">boltz_model</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">integrate_boltz</span><span class="p">(</span><span class="n">use_msa_server</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
@@ -1267,14 +1267,14 @@
 <span class="n">results</span> <span class="o">=</span> <span class="n">boltz_model</span><span class="o">.</span><span class="n">adapter</span><span class="o">.</span><span class="n">batch_predict</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;structure_prediction&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-<h4 id="e-chemml-pipeline-integration">E. <strong>ChemML Pipeline Integration</strong><a class="headerlink" href="#e-chemml-pipeline-integration" title="Permanent link">&para;</a></h4>
+<h4 id="e-qemlflow-pipeline-integration">E. <strong>QeMLflow Pipeline Integration</strong><a class="headerlink" href="#e-qemlflow-pipeline-integration" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Using pandas DataFrame</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;sequence&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;MKQL...&#39;</span><span class="p">,</span> <span class="s1">&#39;MTEYK...&#39;</span><span class="p">],</span>
     <span class="s1">&#39;smiles&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;CCO&#39;</span><span class="p">,</span> <span class="s1">&#39;CC(C)O&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 
-<span class="c1"># Predict using ChemML-style API</span>
+<span class="c1"># Predict using QeMLflow-style API</span>
 <span class="n">predictions</span> <span class="o">=</span> <span class="n">boltz_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">task</span><span class="o">=</span><span class="s2">&quot;complex_prediction&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -1283,7 +1283,7 @@
 <h4 id="a-unified-api">A. <strong>Unified API</strong><a class="headerlink" href="#a-unified-api" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Consistent interface across all external models</li>
-<li>ChemML-compatible data structures</li>
+<li>QeMLflow-compatible data structures</li>
 <li>Standard error handling patterns</li>
 </ul>
 <h4 id="b-flexible-configuration">B. <strong>Flexible Configuration</strong><a class="headerlink" href="#b-flexible-configuration" title="Permanent link">&para;</a></h4>
@@ -1343,7 +1343,7 @@
 <li><strong>Challenge:</strong> Heavy dependencies (PyTorch, CUDA, molecular libraries)</li>
 <li><strong>Solution:</strong> Isolated installation with environment management</li>
 <li>
-<p><strong>Impact:</strong> Reduced conflicts with existing ChemML dependencies</p>
+<p><strong>Impact:</strong> Reduced conflicts with existing QeMLflow dependencies</p>
 </li>
 <li>
 <p><strong>Result Parsing</strong></p>
@@ -1432,7 +1432,7 @@
 <li><strong>Async Execution:</strong> Background processing for long-running predictions</li>
 <li><strong>Progress Monitoring:</strong> Real-time status updates</li>
 <li><strong>Resource Optimization:</strong> Memory and GPU usage optimization</li>
-<li><strong>Result Visualization:</strong> Integration with ChemML plotting tools</li>
+<li><strong>Result Visualization:</strong> Integration with QeMLflow plotting tools</li>
 </ol>
 <h4 id="b-long-term-extensions">B. <strong>Long-term Extensions</strong><a class="headerlink" href="#b-long-term-extensions" title="Permanent link">&para;</a></h4>
 <ol>
@@ -1468,7 +1468,7 @@
 
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <h3 id="15-integration-success-summary">15. <strong>Integration Success Summary</strong><a class="headerlink" href="#15-integration-success-summary" title="Permanent link">&para;</a></h3>
-<p>The Boltz integration demonstrates the effectiveness of the ChemML external model integration framework:</p>
+<p>The Boltz integration demonstrates the effectiveness of the QeMLflow external model integration framework:</p>
 <p><strong>✅ </strong>Technical Success:**
 - Successfully integrated a complex, state-of-the-art biomolecular model
 - Maintained full feature access while simplifying user interface
@@ -1488,9 +1488,9 @@
 - Comprehensive error handling and validation
 - Resource management and caching
 - Batch processing capabilities
-- ChemML pipeline compatibility</p>
+- QeMLflow pipeline compatibility</p>
 <h3 id="16-impact-and-applications">16. <strong>Impact and Applications</strong><a class="headerlink" href="#16-impact-and-applications" title="Permanent link">&para;</a></h3>
-<p>This integration enables ChemML users to:</p>
+<p>This integration enables QeMLflow users to:</p>
 <ol>
 <li><strong>Drug Discovery:</strong> Screen protein-ligand interactions at scale</li>
 <li><strong>Structural Biology:</strong> Predict protein structures and complexes</li>
@@ -1507,7 +1507,7 @@
 </ol>
 <p>The integration framework is robust, extensible, and ready for production use in computational chemistry and drug discovery workflows.</p>
 <hr />
-<p><strong>Integration Complete:</strong> The Boltz biomolecular interaction model is now fully integrated into ChemML, demonstrating the power and flexibility of the external model integration framework.</p>
+<p><strong>Integration Complete:</strong> The Boltz biomolecular interaction model is now fully integrated into QeMLflow, demonstrating the power and flexibility of the external model integration framework.</p>
 
 
 

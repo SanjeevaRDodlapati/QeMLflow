@@ -1,4 +1,4 @@
-# ChemML Comprehensive Linting Configuration
+# QeMLflow Comprehensive Linting Configuration
 # ==========================================
 
 # File patterns to include in linting
@@ -11,7 +11,7 @@ include_patterns:
 
 # File patterns to exclude from linting
 exclude_patterns:
-  - "chemml_env/**"
+  - "qemlflow_env/**"
   - "build/**"
   - "dist/**"
   - ".venv/**"

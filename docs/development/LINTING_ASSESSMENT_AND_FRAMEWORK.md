@@ -1,9 +1,9 @@
-# ChemML Comprehensive Linting Assessment & Framework
+# QeMLflow Comprehensive Linting Assessment & Framework
 =====================================
 
 ## Executive Summary
 
-This document provides a comprehensive assessment of linting issues in the ChemML codebase, the framework implemented to address them, and recommendations for ongoing code quality maintenance.
+This document provides a comprehensive assessment of linting issues in the QeMLflow codebase, the framework implemented to address them, and recommendations for ongoing code quality maintenance.
 
 ## Current Linting Status (June 16, 2025)
 
@@ -41,7 +41,7 @@ This document provides a comprehensive assessment of linting issues in the ChemM
    - Added missing standard library imports (`numpy as np`)
 
 2. **Removed unused global declarations (F824):** 1 issue resolved
-   - Fixed unnecessary `global _cached_modules` in `src/chemml/__init__.py`
+   - Fixed unnecessary `global _cached_modules` in `src/qemlflow/__init__.py`
 
 3. **Auto-formatting improvements:** 47 issues resolved
    - Applied Black formatting to improve code consistency
@@ -122,7 +122,7 @@ Found problematic star imports in:
 1. **Exclude Archive Folder from Linting**
    ```yaml
    # Add to .pre-commit-config.yaml exclude patterns
-   exclude: ^(archive/|chemml_env/|build/|dist/)
+   exclude: ^(archive/|qemlflow_env/|build/|dist/)
    ```
 
 2. **Fix Critical F821 Errors**
@@ -136,7 +136,7 @@ Found problematic star imports in:
        .git,
        __pycache__,
        .venv,
-       chemml_env,
+       qemlflow_env,
        archive,  # <-- Add this line
        build,
        dist
@@ -238,7 +238,7 @@ pre-commit run --all-files
 
 ## 🎉 Conclusion
 
-The ChemML codebase now has a **robust linting framework** in place with:
+The QeMLflow codebase now has a **robust linting framework** in place with:
 
 1. **✅ Comprehensive Analysis:** Multi-tool integration with intelligent reporting
 2. **✅ Automated Fixes:** 64 issues resolved automatically

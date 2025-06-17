@@ -1,7 +1,7 @@
-ChemML System Diagnostics
+QeMLflow System Diagnostics
 ========================
 
-Consolidated diagnostic utilities for ChemML system health checks.
+Consolidated diagnostic utilities for QeMLflow system health checks.
 Replaces the various scattered diagnostic scripts with a unified tool.
 """
 
@@ -13,8 +13,8 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-class ChemMLDiagnostics:
-    """Comprehensive diagnostic tool for ChemML system health."""
+class QeMLflowDiagnostics:
+    """Comprehensive diagnostic tool for QeMLflow system health."""
 
     def __init__(self):
         self.results = {}
@@ -23,14 +23,14 @@ class ChemMLDiagnostics:
 
     def run_full_diagnostics(self) -> Dict[str, Any]:
         """Run all diagnostic checks."""
-        print("🔬 ChemML System Diagnostics")
+        print("🔬 QeMLflow System Diagnostics")
         print("=" * 50)
 
         # Core system checks
         self.check_python_environment()
         self.check_core_dependencies()
         self.check_optional_dependencies()
-        self.check_chemml_installation()
+        self.check_qemlflow_installation()
         self.check_data_directories()
         self.check_configuration()
 
@@ -124,24 +124,24 @@ class ChemMLDiagnostics:
 
         self.results["optional_dependencies"] = optional_status
 
-    def check_chemml_installation(self):
-        """Check ChemML installation."""
-        print("\n🧪 ChemML Installation")
+    def check_qemlflow_installation(self):
+        """Check QeMLflow installation."""
+        print("\n🧪 QeMLflow Installation")
         print("-" * 30)
 
         try:
-            import chemml
+            import qemlflow
 
-            version = chemml.__version__
-            install_path = chemml.__file__
+            version = qemlflow.__version__
+            install_path = qemlflow.__file__
 
-            self.results["chemml"] = {
+            self.results["qemlflow"] = {
                 "installed": True,
                 "version": version,
                 "path": install_path,
             }
 
-            print(f"✅ ChemML Version: {version}")
+            print(f"✅ QeMLflow Version: {version}")
             print(f"Installation Path: {Path(install_path).parent}")
 
             # Check submodules
@@ -150,20 +150,20 @@ class ChemMLDiagnostics:
 
             for submodule in submodules:
                 try:
-                    importlib.import_module(f"chemml.{submodule}")
+                    importlib.import_module(f"qemlflow.{submodule}")
                     submodule_status[submodule] = True
-                    print(f"✅ chemml.{submodule}")
+                    print(f"✅ qemlflow.{submodule}")
                 except ImportError:
                     submodule_status[submodule] = False
-                    print(f"❌ chemml.{submodule}")
-                    self.warnings.append(f"ChemML submodule {submodule} not available")
+                    print(f"❌ qemlflow.{submodule}")
+                    self.warnings.append(f"QeMLflow submodule {submodule} not available")
 
-            self.results["chemml"]["submodules"] = submodule_status
+            self.results["qemlflow"]["submodules"] = submodule_status
 
         except ImportError:
-            self.results["chemml"] = {"installed": False}
-            print("❌ ChemML not installed")
-            self.errors.append("ChemML not installed")
+            self.results["qemlflow"] = {"installed": False}
+            print("❌ QeMLflow not installed")
+            self.errors.append("QeMLflow not installed")
 
     def check_data_directories(self):
         """Check data directories and permissions."""
@@ -202,7 +202,7 @@ class ChemMLDiagnostics:
         print("-" * 30)
 
         try:
-            from chemml.config import get_config
+            from qemlflow.config import get_config
 
             config = get_config()
 
@@ -393,26 +393,26 @@ class ChemMLDiagnostics:
                 print(f"  • {error}")
 
         if health_score >= 80:
-            print("\n✅ System is healthy and ready for ChemML!")
+            print("\n✅ System is healthy and ready for QeMLflow!")
         elif health_score >= 60:
             print("\n⚠️  System has some issues but should work for basic usage.")
         else:
             print(
-                "\n❌ System has significant issues. Please address errors before using ChemML."
+                "\n❌ System has significant issues. Please address errors before using QeMLflow."
             )
 
         return summary
 
 def quick_check():
     """Quick health check."""
-    print("🔬 ChemML Quick Health Check")
+    print("🔬 QeMLflow Quick Health Check")
     print("=" * 40)
 
     checks = [
         ("Python", lambda: importlib.import_module("sys")),
         ("NumPy", lambda: importlib.import_module("numpy")),
-        ("ChemML", lambda: importlib.import_module("chemml")),
-        ("Config", lambda: importlib.import_module("chemml.config")),
+        ("QeMLflow", lambda: importlib.import_module("qemlflow")),
+        ("Config", lambda: importlib.import_module("qemlflow.config")),
     ]
 
     for name, check_func in checks:
@@ -425,7 +425,7 @@ def quick_check():
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="ChemML System Diagnostics")
+    parser = argparse.ArgumentParser(description="QeMLflow System Diagnostics")
     parser.add_argument("--quick", action="store_true", help="Run quick check only")
     parser.add_argument("--save", type=str, help="Save results to JSON file")
 
@@ -434,7 +434,7 @@ if __name__ == "__main__":
     if args.quick:
         quick_check()
     else:
-        diagnostics = ChemMLDiagnostics()
+        diagnostics = QeMLflowDiagnostics()
         results = diagnostics.run_full_diagnostics()
 
         if args.save:

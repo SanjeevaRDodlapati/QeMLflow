@@ -1,16 +1,16 @@
 """
-ChemML Dependency Resolution and Warning Suppression
+QeMLflow Dependency Resolution and Warning Suppression
 ===================================================
 
 This script helps resolve common dependency issues and suppress warnings
-in ChemML environments. It provides tools to:
+in QeMLflow environments. It provides tools to:
 
 1. Install missing optional dependencies
 2. Suppress common framework warnings
 3. Validate the environment
 4. Provide recommendations for optimal setup
 
-Author: ChemML Development Team
+Author: QeMLflow Development Team
 Version: 1.0.0
 """
 
@@ -72,7 +72,7 @@ def check_environment() -> Dict[str, bool]:
         "mdtraj",
     ]
 
-    print("🔍 Checking ChemML Environment")
+    print("🔍 Checking QeMLflow Environment")
     print("=" * 40)
 
     print("\n✅ Core Dependencies:")
@@ -126,7 +126,7 @@ def install_optional_dependencies():
 def create_optimized_imports():
     """Create optimized import statements that suppress warnings."""
     import_code = """
-# Optimized ChemML Imports with Warning Suppression
+# Optimized QeMLflow Imports with Warning Suppression
 # ================================================
 
 import os
@@ -139,19 +139,19 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 warnings.filterwarnings('ignore', message='.*experimental_relax_shapes.*')
 
-# Core ChemML imports
+# Core QeMLflow imports
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ChemML modern quantum suite
+# QeMLflow modern quantum suite
 try:
-    from chemml.research.modern_quantum import (
+    from qemlflow.research.modern_quantum import (
         ModernVQE, ModernQAOA, QuantumFeatureMap,
         MolecularHamiltonianBuilder, HardwareEfficientAnsatz,
         QuantumChemistryWorkflow
     )
-    print("✅ ChemML Modern Quantum Suite loaded")
+    print("✅ QeMLflow Modern Quantum Suite loaded")
 except ImportError as e:
     print(f"⚠️ Modern quantum suite not available: {e}")
 
@@ -168,18 +168,18 @@ try:
 except ImportError:
     print("⚠️ PyTorch not available")
 
-print("🎯 ChemML environment ready!")
+print("🎯 QeMLflow environment ready!")
 """
 
-    with open("optimized_chemml_imports.py", "w") as f:
+    with open("optimized_qemlflow_imports.py", "w") as f:
         f.write(import_code)
 
-    print("📝 Created optimized_chemml_imports.py")
+    print("📝 Created optimized_qemlflow_imports.py")
 
 
 def main():
     """Main dependency resolution workflow."""
-    print("🧬 ChemML Dependency Resolution Tool")
+    print("🧬 QeMLflow Dependency Resolution Tool")
     print("=" * 50)
 
     # Step 1: Suppress warnings
@@ -227,7 +227,7 @@ def main():
 
     print("\n🎉 Dependency resolution complete!")
     print(
-        "💡 Use 'import optimized_chemml_imports' to load ChemML with minimal warnings"
+        "💡 Use 'import optimized_qemlflow_imports' to load QeMLflow with minimal warnings"
     )
 
 

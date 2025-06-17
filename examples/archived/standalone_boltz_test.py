@@ -1,7 +1,7 @@
 Standalone Boltz Integration Test
 ================================
 
-Test Boltz integration without ChemML package dependencies.
+Test Boltz integration without QeMLflow package dependencies.
 """
 
 import os
@@ -11,11 +11,11 @@ from pathlib import Path
 import yaml
 
 # Add just the integrations directory to path
-integrations_path = Path(__file__).parent.parent / "src" / "chemml" / "integrations"
+integrations_path = Path(__file__).parent.parent / "src" / "qemlflow" / "integrations"
 sys.path.insert(0, str(integrations_path))
 
 
-# Mock the ChemML base imports that might not be available
+# Mock the QeMLflow base imports that might not be available
 class BaseModel:
     """Mock base model class."""
 
@@ -29,7 +29,7 @@ class BaseModelAdapter:
 
 
 # Add mocks to modules
-sys.modules["chemml.core.models"] = type("MockModule", (), {"BaseModel": BaseModel})()
+sys.modules["qemlflow.core.models"] = type("MockModule", (), {"BaseModel": BaseModel})()
 
 
 def test_direct_import():

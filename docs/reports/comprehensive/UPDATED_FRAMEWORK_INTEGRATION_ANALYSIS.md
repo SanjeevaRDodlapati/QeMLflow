@@ -1,4 +1,4 @@
-# 🚨 UPDATED CRITICAL INTEGRATION ANALYSIS: ChemML Framework vs Notebooks
+# 🚨 UPDATED CRITICAL INTEGRATION ANALYSIS: QeMLflow Framework vs Notebooks
 
 **Date:** June 15, 2025
 **Status:** COMPREHENSIVE REDUNDANCY AND INTEGRATION ANALYSIS
@@ -7,11 +7,11 @@
 
 ## 📊 **EXECUTIVE SUMMARY**
 
-**CRITICAL FINDING**: The ChemML bootcamp notebooks show **MASSIVE CODE REDUNDANCY** with minimal framework integration, despite having a well-structured main framework.
+**CRITICAL FINDING**: The QeMLflow bootcamp notebooks show **MASSIVE CODE REDUNDANCY** with minimal framework integration, despite having a well-structured main framework.
 
 ### 📊 INTEGRATION STATUS BY NOTEBOOK
 
-| Notebook | Lines | Functions | Classes | ChemML Imports | Integration Level |
+| Notebook | Lines | Functions | Classes | QeMLflow Imports | Integration Level |
 |----------|-------|-----------|---------|----------------|-------------------|
 | 01_ml_cheminformatics | 4,499 | 8 | 3 | 5 | 🟡 Partial |
 | 02_deep_learning_molecules | 6,150 | 9 | 23 | 0 | 🔴 None |
@@ -28,12 +28,12 @@
 | 13_environmental_chemistry_ai | 72 | 0 | 0 | 0 | 🔴 Skeleton |
 | 14_advanced_materials_discovery | 74 | 0 | 0 | 0 | 🔴 Skeleton |
 
-**TOTAL**: 54,739 lines | 42 functions | 176 classes | 15 ChemML imports
+**TOTAL**: 54,739 lines | 42 functions | 176 classes | 15 QeMLflow imports
 
 ## 🚨 CRITICAL ISSUES IDENTIFIED
 
 ### 1. FRAMEWORK INTEGRATION CRISIS
-- **Only 1/14 notebooks** (05_INTEGRATED) properly uses the ChemML framework
+- **Only 1/14 notebooks** (05_INTEGRATED) properly uses the QeMLflow framework
 - **13/14 notebooks** implement custom code instead of framework functions
 - **176 custom classes** reinventing functionality already in the framework
 
@@ -47,25 +47,25 @@
   - Visualization widgets (available in `tutorials.widgets`)
 
 ### 3. IMPORT VALIDATION STATUS
-✅ **Framework imports working**: All core ChemML modules import successfully
-- `chemml.core` (featurizers, models, data)
-- `chemml.research.drug_discovery.admet`
-- `chemml.tutorials` (assessment, data, widgets)
+✅ **Framework imports working**: All core QeMLflow modules import successfully
+- `qemlflow.core` (featurizers, models, data)
+- `qemlflow.research.drug_discovery.admet`
+- `qemlflow.tutorials` (assessment, data, widgets)
 
 ## 🔧 FRAMEWORK CAPABILITIES AVAILABLE FOR INTEGRATION
 
-### Core Modules (`chemml.core`)
+### Core Modules (`qemlflow.core`)
 - **Featurizers**: Morgan fingerprints, molecular descriptors, comprehensive features
 - **Models**: Linear, Random Forest, SVM, Deep Learning with unified API
 - **Data**: Sample datasets, cleaning, splitting utilities
 - **Evaluation**: Classification/regression metrics
 
-### Research Modules (`chemml.research`)
+### Research Modules (`qemlflow.research`)
 - **Drug Discovery**: ADMET prediction, toxicity assessment
 - **Quantum**: Modern quantum chemistry interfaces
 - **Advanced Models**: State-of-the-art ML architectures
 
-### Tutorial Framework (`chemml.tutorials`)
+### Tutorial Framework (`qemlflow.tutorials`)
 - **Assessment**: Learning progress tracking, concept validation
 - **Widgets**: Interactive components for Jupyter notebooks
 - **Data**: Educational datasets and examples
@@ -82,7 +82,7 @@ class BasicAssessment:
     def get_progress_summary(self): ...
 
 # Framework provides:
-from chemml.tutorials import LearningAssessment, ProgressTracker
+from qemlflow.tutorials import LearningAssessment, ProgressTracker
 ```
 
 ### 2. Molecular Featurization (Duplicated 8+ times)
@@ -92,7 +92,7 @@ def calculate_molecular_features(self, smiles): ...
 def compute_advanced_features(self): ...
 
 # Framework provides:
-from chemml.core.featurizers import morgan_fingerprints, molecular_descriptors
+from qemlflow.core.featurizers import morgan_fingerprints, molecular_descriptors
 ```
 
 ### 3. Model Training (Duplicated 6+ times)
@@ -103,7 +103,7 @@ class ModelSuite:
     def train_and_evaluate(self): ...
 
 # Framework provides:
-from chemml.core.models import create_rf_model, compare_models
+from qemlflow.core.models import create_rf_model, compare_models
 ```
 
 ## 🎯 INTEGRATION ROADMAP
@@ -154,13 +154,13 @@ from chemml.core.models import create_rf_model, compare_models
 - Easier maintenance and updates
 
 ### Learning Experience
-- Students learn the actual ChemML API
+- Students learn the actual QeMLflow API
 - Professional development practices
 - Framework-first thinking
 - Real-world applicable skills
 
 ## 🚦 CONCLUSION
 
-The ChemML framework is **well-designed and functional**, but the educational notebooks **completely bypass it**, creating a massive redundancy problem. The integrated ADMET notebook proves that **80%+ code reduction** is achievable while improving functionality.
+The QeMLflow framework is **well-designed and functional**, but the educational notebooks **completely bypass it**, creating a massive redundancy problem. The integrated ADMET notebook proves that **80%+ code reduction** is achievable while improving functionality.
 
 **Priority**: Immediately integrate all bootcamp notebooks with the framework to provide a professional, consistent learning experience.

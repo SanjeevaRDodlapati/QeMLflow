@@ -1,4 +1,4 @@
-# ChemML Framework Integration Guide
+# QeMLflow Framework Integration Guide
 
 **Updated for New Categorical Organization (June 2025)**
 
@@ -8,7 +8,7 @@
 
 ### **Organized by Scientific Domain**
 ```
-chemml.integrations/
+qemlflow.integrations/
 ├── core/                    # Framework infrastructure
 ├── adapters/
 │   ├── molecular/          # Protein/molecular models
@@ -66,7 +66,7 @@ features = featurizer.featurize(smiles_list)
 ### **After: Framework Integration**
 ```python
 # Framework provides one-line solutions:
-from chemml.core.featurizers import morgan_fingerprints
+from qemlflow.core.featurizers import morgan_fingerprints
 
 # Single function call replaces entire custom class
 features = morgan_fingerprints(smiles_list, radius=2, n_bits=2048)
@@ -89,7 +89,7 @@ class BasicAssessment:
     def record_activity(self, activity, result): ...
 
 # REPLACE WITH: Framework assessment
-from chemml.tutorials import LearningAssessment
+from qemlflow.tutorials import LearningAssessment
 assessment = LearningAssessment(student_id="demo", section="fundamentals")
 ```
 
@@ -101,7 +101,7 @@ def calculate_molecular_features(smiles):
     ...
 
 # REPLACE WITH: Framework featurizers
-from chemml.core.featurizers import molecular_descriptors
+from qemlflow.core.featurizers import molecular_descriptors
 features = molecular_descriptors(smiles)
 ```
 
@@ -113,7 +113,7 @@ class ModelSuite:
     def train_and_evaluate(self): ...
 
 # REPLACE WITH: Framework models
-from chemml.core.models import create_rf_model, compare_models
+from qemlflow.core.models import create_rf_model, compare_models
 model = create_rf_model()
 results = model.fit(X_train, y_train)
 ```
@@ -130,8 +130,8 @@ from .custom_modules import (
 )
 
 # NEW: Simple framework imports
-from chemml.core import featurizers, models, evaluation
-from chemml.tutorials import assessment
+from qemlflow.core import featurizers, models, evaluation
+from qemlflow.tutorials import assessment
 ```
 
 ### **Step 3: Simplify Code Logic**
@@ -152,7 +152,7 @@ for name, model in models.items():
     results[name] = calculate_metrics(y_test, predictions)
 
 # NEW: Framework pipeline (5 lines)
-from chemml.core import featurizers, models, evaluation
+from qemlflow.core import featurizers, models, evaluation
 features = featurizers.molecular_descriptors(molecules)
 X_train, X_test, y_train, y_test = data.quick_split(features, targets)
 model_results = models.compare_models(X_train, y_train, X_test, y_test)
@@ -165,7 +165,7 @@ model_results = models.compare_models(X_train, y_train, X_test, y_test)
 ### **Template 1: Basic ML Workflow**
 ```python
 # Framework-integrated ML workflow
-from chemml.core import featurizers, models, data, evaluation
+from qemlflow.core import featurizers, models, data, evaluation
 
 # Load data
 molecules = data.load_sample_data('molecular_properties')
@@ -188,8 +188,8 @@ print(f"R² Score: {results['r2']:.3f}")
 ### **Template 2: Drug Discovery Pipeline**
 ```python
 # Framework-integrated drug discovery
-from chemml.research.drug_discovery import admet, docking
-from chemml.integrations import pipeline
+from qemlflow.research.drug_discovery import admet, docking
+from qemlflow.integrations import pipeline
 
 # Initialize pipeline
 drug_pipeline = pipeline.DrugDiscoveryPipeline()
@@ -208,8 +208,8 @@ top_drugs = results.get_top_candidates(n=5)
 ### **Template 3: Deep Learning for Molecules**
 ```python
 # Framework-integrated deep learning
-from chemml.core.models import create_gnn_model
-from chemml.core.featurizers import graph_features
+from qemlflow.core.models import create_gnn_model
+from qemlflow.core.featurizers import graph_features
 
 # Convert to graph representation
 graph_data = graph_features(smiles_list, representation='graph')
@@ -295,4 +295,4 @@ predictions = gnn_model.predict(test_graphs)
 
 ---
 
-This guide provides the roadmap for transforming ChemML notebooks from redundant custom implementations to professional, framework-integrated educational experiences.
+This guide provides the roadmap for transforming QeMLflow notebooks from redundant custom implementations to professional, framework-integrated educational experiences.

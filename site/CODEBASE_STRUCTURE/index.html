@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/CODEBASE_STRUCTURE/">
+        <link rel="canonical" href="https://qemlflow.io/CODEBASE_STRUCTURE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>🏗️ ChemML Codebase Structure Guide - ChemML Documentation</title>
+        <title>🏗️ QeMLflow Codebase Structure Guide - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-codebase-structure-guide" class="md-skip">
+        <a href="#qemlflow-codebase-structure-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🏗️ ChemML Codebase Structure Guide
+              🏗️ QeMLflow Codebase Structure Guide
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -454,36 +454,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#srcchemmlcore-framework-foundation" class="md-nav__link">
+  <a href="#srcqemlflowcore-framework-foundation" class="md-nav__link">
     <span class="md-ellipsis">
-      🧩 src/chemml/core/ - Framework Foundation
+      🧩 src/qemlflow/core/ - Framework Foundation
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#srcchemmlresearch-research-experimental" class="md-nav__link">
+  <a href="#srcqemlflowresearch-research-experimental" class="md-nav__link">
     <span class="md-ellipsis">
-      🔬 src/chemml/research/ - Research &amp; Experimental
+      🔬 src/qemlflow/research/ - Research &amp; Experimental
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#srcchemmlintegrations-external-integrations" class="md-nav__link">
+  <a href="#srcqemlflowintegrations-external-integrations" class="md-nav__link">
     <span class="md-ellipsis">
-      🔗 src/chemml/integrations/ - External Integrations
+      🔗 src/qemlflow/integrations/ - External Integrations
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#srcchemmltutorials-learning-materials" class="md-nav__link">
+  <a href="#srcqemlflowtutorials-learning-materials" class="md-nav__link">
     <span class="md-ellipsis">
-      📚 src/chemml/tutorials/ - Learning Materials
+      📚 src/qemlflow/tutorials/ - Learning Materials
     </span>
   </a>
   
@@ -630,12 +630,12 @@
 
 
 
-<h1 id="chemml-codebase-structure-guide">🏗️ ChemML Codebase Structure Guide<a class="headerlink" href="#chemml-codebase-structure-guide" title="Permanent link">&para;</a></h1>
-<p><strong>Current architecture overview for developers working with the ChemML modular structure</strong></p>
+<h1 id="qemlflow-codebase-structure-guide">🏗️ QeMLflow Codebase Structure Guide<a class="headerlink" href="#qemlflow-codebase-structure-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Current architecture overview for developers working with the QeMLflow modular structure</strong></p>
 <p><em>Last updated: June 2025 | Reflects the implemented modular reorganization</em></p>
 <hr />
 <h2 id="quick-navigation">🎯 <strong>Quick Navigation</strong><a class="headerlink" href="#quick-navigation" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span><code><span class="nx">src</span><span class="o">/</span><span class="nx">chemml</span><span class="o">/</span>
+<div class="codehilite"><pre><span></span><code><span class="nx">src</span><span class="o">/</span><span class="nx">qemlflow</span><span class="o">/</span>
 <span class="err">├──</span><span class="w"> </span><span class="nx">core</span><span class="o">/</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="err">🧩</span><span class="w"> </span><span class="nx">Core</span><span class="w"> </span><span class="nx">framework</span><span class="w"> </span><span class="nx">components</span>
 <span class="err">├──</span><span class="w"> </span><span class="nx">research</span><span class="o">/</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="err">🔬</span><span class="w"> </span><span class="nx">Research</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="nx">experimental</span><span class="w"> </span><span class="nx">modules</span>
 <span class="err">├──</span><span class="w"> </span><span class="nx">integrations</span><span class="o">/</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="err">🔗</span><span class="w"> </span><span class="nx">External</span><span class="w"> </span><span class="kn">library</span><span class="w"> </span><span class="nx">integrations</span>
@@ -670,7 +670,7 @@
 
 <hr />
 <h2 id="detailed-module-breakdown">📁 <strong>Detailed Module Breakdown</strong><a class="headerlink" href="#detailed-module-breakdown" title="Permanent link">&para;</a></h2>
-<h3 id="srcchemmlcore-framework-foundation"><strong>🧩 <code>src/chemml/core/</code></strong> - Framework Foundation<a class="headerlink" href="#srcchemmlcore-framework-foundation" title="Permanent link">&para;</a></h3>
+<h3 id="srcqemlflowcore-framework-foundation"><strong>🧩 <code>src/qemlflow/core/</code></strong> - Framework Foundation<a class="headerlink" href="#srcqemlflowcore-framework-foundation" title="Permanent link">&para;</a></h3>
 <p><strong>Purpose:</strong> Essential components used across all research modules</p>
 <div class="codehilite"><pre><span></span><code><span class="n">core</span><span class="o">/</span>
 <span class="err">├──</span><span class="w"> </span><span class="n">__init__</span><span class="o">.</span><span class="n">py</span><span class="w">              </span><span class="c1"># Core API exports</span>
@@ -694,10 +694,10 @@
 
 <p><strong>Key Classes:</strong>
 - <code>HybridMolecularFeaturizer</code> - Combines RDKit + DeepChem features
-- <code>ChemMLBaseModel</code> - Base class for all models
+- <code>QeMLflowBaseModel</code> - Base class for all models
 - <code>MolecularDataset</code> - Standardized molecular data handling</p>
 <hr />
-<h3 id="srcchemmlresearch-research-experimental"><strong>🔬 <code>src/chemml/research/</code></strong> - Research &amp; Experimental<a class="headerlink" href="#srcchemmlresearch-research-experimental" title="Permanent link">&para;</a></h3>
+<h3 id="srcqemlflowresearch-research-experimental"><strong>🔬 <code>src/qemlflow/research/</code></strong> - Research &amp; Experimental<a class="headerlink" href="#srcqemlflowresearch-research-experimental" title="Permanent link">&para;</a></h3>
 <p><strong>Purpose:</strong> Advanced models and specialized research workflows</p>
 <div class="codehilite"><pre><span></span><code>research/
 ├── __init__.py
@@ -722,7 +722,7 @@
 - <strong>Generative Models:</strong> VAEs, GANs for molecular generation
 - <strong>QSAR:</strong> Quantitative structure-activity relationships</p>
 <hr />
-<h3 id="srcchemmlintegrations-external-integrations"><strong>🔗 <code>src/chemml/integrations/</code></strong> - External Integrations<a class="headerlink" href="#srcchemmlintegrations-external-integrations" title="Permanent link">&para;</a></h3>
+<h3 id="srcqemlflowintegrations-external-integrations"><strong>🔗 <code>src/qemlflow/integrations/</code></strong> - External Integrations<a class="headerlink" href="#srcqemlflowintegrations-external-integrations" title="Permanent link">&para;</a></h3>
 <p><strong>Purpose:</strong> Interfaces to external libraries and services</p>
 <div class="codehilite"><pre><span></span><code>integrations/
 ├── __init__.py
@@ -733,7 +733,7 @@
 </code></pre></div>
 
 <hr />
-<h3 id="srcchemmltutorials-learning-materials"><strong>📚 <code>src/chemml/tutorials/</code></strong> - Learning Materials<a class="headerlink" href="#srcchemmltutorials-learning-materials" title="Permanent link">&para;</a></h3>
+<h3 id="srcqemlflowtutorials-learning-materials"><strong>📚 <code>src/qemlflow/tutorials/</code></strong> - Learning Materials<a class="headerlink" href="#srcqemlflowtutorials-learning-materials" title="Permanent link">&para;</a></h3>
 <p><strong>Purpose:</strong> Educational content as first-class modules</p>
 <div class="codehilite"><pre><span></span><code>tutorials/
 ├── __init__.py
@@ -745,20 +745,20 @@
 <hr />
 <h2 id="usage-patterns">🛠️ <strong>Usage Patterns</strong><a class="headerlink" href="#usage-patterns" title="Permanent link">&para;</a></h2>
 <h3 id="quick-start-basic-usage"><strong>Quick Start - Basic Usage</strong><a class="headerlink" href="#quick-start-basic-usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">HybridMolecularFeaturizer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChemMLClassifier</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARPipeline</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">HybridMolecularFeaturizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">QeMLflowClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">QSARPipeline</span>
 </code></pre></div>
 
 <h3 id="research-advanced-usage"><strong>Research - Advanced Usage</strong><a class="headerlink" href="#research-advanced-usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">VQEMolecularOrbitals</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery.generation</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularVAE</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations.qiskit_interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuitBuilder</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.quantum</span><span class="w"> </span><span class="kn">import</span> <span class="n">VQEMolecularOrbitals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery.generation</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularVAE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations.qiskit_interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuitBuilder</span>
 </code></pre></div>
 
 <h3 id="production-deployment-ready"><strong>Production - Deployment Ready</strong><a class="headerlink" href="#production-deployment-ready" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelEvaluator</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDataset</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.evaluation</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelEvaluator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDataset</span>
 </code></pre></div>
 
 <hr />
@@ -815,7 +815,7 @@
 <p><strong>Rule:</strong> Higher levels can import from lower levels, but not vice versa.</p>
 <hr />
 <h2 id="migration-from-legacy-code">🚀 <strong>Migration from Legacy Code</strong><a class="headerlink" href="#migration-from-legacy-code" title="Permanent link">&para;</a></h2>
-<p>If you're updating old ChemML code:</p>
+<p>If you're updating old QeMLflow code:</p>
 <table>
 <thead>
 <tr>
@@ -825,16 +825,16 @@
 </thead>
 <tbody>
 <tr>
-<td><code>from chemml.drug_design import *</code></td>
-<td><code>from chemml.research.drug_discovery import *</code></td>
+<td><code>from qemlflow.drug_design import *</code></td>
+<td><code>from qemlflow.research.drug_discovery import *</code></td>
 </tr>
 <tr>
-<td><code>from chemml.utils import *</code></td>
-<td><code>from chemml.core.utils import *</code></td>
+<td><code>from qemlflow.utils import *</code></td>
+<td><code>from qemlflow.core.utils import *</code></td>
 </tr>
 <tr>
-<td><code>from chemml.models import *</code></td>
-<td><code>from chemml.core.models import *</code></td>
+<td><code>from qemlflow.models import *</code></td>
+<td><code>from qemlflow.core.models import *</code></td>
 </tr>
 </tbody>
 </table>
@@ -843,7 +843,7 @@
 <h2 id="developer-guidelines">🔧 <strong>Developer Guidelines</strong><a class="headerlink" href="#developer-guidelines" title="Permanent link">&para;</a></h2>
 <h3 id="adding-new-models"><strong>Adding New Models:</strong><a class="headerlink" href="#adding-new-models" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Inherit from <code>ChemMLBaseModel</code> in <code>core/models.py</code></li>
+<li>Inherit from <code>QeMLflowBaseModel</code> in <code>core/models.py</code></li>
 <li>Add to appropriate submodule (<code>classical/</code> or <code>quantum/</code>)</li>
 <li>Include unit tests in <code>tests/unit/</code></li>
 <li>Update module <code>__init__.py</code> exports</li>

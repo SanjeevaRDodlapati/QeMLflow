@@ -1,6 +1,6 @@
-# ChemML Automated Monitoring System
+# QeMLflow Automated Monitoring System
 
-This directory contains a comprehensive automated monitoring system for the ChemML project that automatically checks if workflows are successful and the documentation site is live and working.
+This directory contains a comprehensive automated monitoring system for the QeMLflow project that automatically checks if workflows are successful and the documentation site is live and working.
 
 ## 🔍 Monitoring Components
 

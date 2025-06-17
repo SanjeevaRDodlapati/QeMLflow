@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/ENHANCED_FEATURES_GUIDE/">
+        <link rel="canonical" href="https://qemlflow.io/ENHANCED_FEATURES_GUIDE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Enhanced Features Guide - ChemML Documentation</title>
+        <title>QeMLflow Enhanced Features Guide - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-enhanced-features-guide" class="md-skip">
+        <a href="#qemlflow-enhanced-features-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Enhanced Features Guide
+              QeMLflow Enhanced Features Guide
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -909,16 +909,16 @@
 
 
 
-<h1 id="chemml-enhanced-features-guide">ChemML Enhanced Features Guide<a class="headerlink" href="#chemml-enhanced-features-guide" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-enhanced-features-guide">QeMLflow Enhanced Features Guide<a class="headerlink" href="#qemlflow-enhanced-features-guide" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>ChemML now includes significantly enhanced capabilities for machine learning in chemistry and drug discovery. This guide covers the new features and how to use them effectively.</p>
+<p>QeMLflow now includes significantly enhanced capabilities for machine learning in chemistry and drug discovery. This guide covers the new features and how to use them effectively.</p>
 <h2 id="new-features">🚀 New Features<a class="headerlink" href="#new-features" title="Permanent link">&para;</a></h2>
 <h3 id="1-enhanced-data-processing">1. Enhanced Data Processing<a class="headerlink" href="#1-enhanced-data-processing" title="Permanent link">&para;</a></h3>
 <h4 id="advanced-data-loading">Advanced Data Loading<a class="headerlink" href="#advanced-data-loading" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChemMLDataLoader</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">QeMLflowDataLoader</span>
 
 <span class="c1"># Load popular chemistry datasets</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="n">ChemMLDataLoader</span><span class="p">()</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">QeMLflowDataLoader</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;bbbp&#39;</span><span class="p">)</span>  <span class="c1"># Blood-brain barrier permeability</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;qm9&#39;</span><span class="p">)</span>   <span class="c1"># Quantum machine 9</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;tox21&#39;</span><span class="p">)</span> <span class="c1"># Toxicology data</span>
@@ -928,7 +928,7 @@
 </code></pre></div>
 
 <h4 id="intelligent-data-preprocessing">Intelligent Data Preprocessing<a class="headerlink" href="#intelligent-data-preprocessing" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdvancedDataPreprocessor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdvancedDataPreprocessor</span>
 
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">AdvancedDataPreprocessor</span><span class="p">()</span>
 <span class="n">processed_data</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">create_preprocessing_pipeline</span><span class="p">(</span>
@@ -943,7 +943,7 @@
 </code></pre></div>
 
 <h4 id="smart-data-splitting">Smart Data Splitting<a class="headerlink" href="#smart-data-splitting" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntelligentDataSplitter</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntelligentDataSplitter</span>
 
 <span class="n">splitter</span> <span class="o">=</span> <span class="n">IntelligentDataSplitter</span><span class="p">()</span>
 
@@ -968,7 +968,7 @@
 
 <h3 id="2-extended-model-suite">2. Extended Model Suite<a class="headerlink" href="#2-extended-model-suite" title="Permanent link">&para;</a></h3>
 <h4 id="ensemble-methods">Ensemble Methods<a class="headerlink" href="#ensemble-methods" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_ensemble_model</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_ensemble_model</span>
 
 <span class="c1"># Create voting ensemble</span>
 <span class="n">ensemble</span> <span class="o">=</span> <span class="n">create_ensemble_model</span><span class="p">(</span>
@@ -987,19 +987,19 @@
 </code></pre></div>
 
 <h4 id="gradient-boosting-models">Gradient Boosting Models<a class="headerlink" href="#gradient-boosting-models" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_xgboost_model</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_xgboost_model</span>
 
 <span class="c1"># XGBoost with automatic task detection</span>
 <span class="n">xgb_model</span> <span class="o">=</span> <span class="n">create_xgboost_model</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="s1">&#39;regression&#39;</span><span class="p">)</span>
 <span class="n">xgb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># LightGBM for faster training</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_lightgbm_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_lightgbm_model</span>
 <span class="n">lgb_model</span> <span class="o">=</span> <span class="n">create_lightgbm_model</span><span class="p">(</span><span class="n">task_type</span><span class="o">=</span><span class="s1">&#39;classification&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 <h4 id="automl-pipeline">AutoML Pipeline<a class="headerlink" href="#automl-pipeline" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_automl_model</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.enhanced_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_automl_model</span>
 
 <span class="c1"># Automated model selection and hyperparameter optimization</span>
 <span class="n">automl</span> <span class="o">=</span> <span class="n">create_automl_model</span><span class="p">(</span>
@@ -1017,7 +1017,7 @@
 
 <h3 id="3-advanced-ensemble-methods">3. Advanced Ensemble Methods<a class="headerlink" href="#3-advanced-ensemble-methods" title="Permanent link">&para;</a></h3>
 <h4 id="adaptive-ensemble">Adaptive Ensemble<a class="headerlink" href="#adaptive-ensemble" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.ensemble_advanced</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdaptiveEnsemble</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.ensemble_advanced</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdaptiveEnsemble</span>
 
 <span class="c1"># Ensemble that adapts weights based on molecular similarity</span>
 <span class="n">adaptive_ensemble</span> <span class="o">=</span> <span class="n">AdaptiveEnsemble</span><span class="p">(</span>
@@ -1031,7 +1031,7 @@
 </code></pre></div>
 
 <h4 id="multi-modal-ensemble">Multi-Modal Ensemble<a class="headerlink" href="#multi-modal-ensemble" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.ensemble_advanced</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiModalEnsemble</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.ensemble_advanced</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiModalEnsemble</span>
 
 <span class="c1"># Combine different molecular representations</span>
 <span class="n">multimodal</span> <span class="o">=</span> <span class="n">MultiModalEnsemble</span><span class="p">(</span>
@@ -1054,7 +1054,7 @@
 
 <h3 id="4-automated-ml-pipelines">4. Automated ML Pipelines<a class="headerlink" href="#4-automated-ml-pipelines" title="Permanent link">&para;</a></h3>
 <h4 id="quick-pipeline">Quick Pipeline<a class="headerlink" href="#quick-pipeline" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">quick_pipeline</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">quick_pipeline</span>
 
 <span class="c1"># One-line ML pipeline</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">quick_pipeline</span><span class="p">(</span>
@@ -1068,7 +1068,7 @@
 </code></pre></div>
 
 <h4 id="comprehensive-pipeline">Comprehensive Pipeline<a class="headerlink" href="#comprehensive-pipeline" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_pipeline</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_pipeline</span>
 
 <span class="c1"># Create customizable pipeline</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">create_pipeline</span><span class="p">(</span>
@@ -1140,18 +1140,18 @@
 
 <h2 id="performance-optimization">📊 Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
 <h3 id="import-optimization">Import Optimization<a class="headerlink" href="#import-optimization" title="Permanent link">&para;</a></h3>
-<p>ChemML now features ultra-fast imports (~0.02s) with lazy loading:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>  <span class="c1"># Fast import</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>  <span class="c1"># Pre-load for power users</span>
+<p>QeMLflow now features ultra-fast imports (~0.02s) with lazy loading:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>  <span class="c1"># Fast import</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>  <span class="c1"># Pre-load for power users</span>
 </code></pre></div>
 
 <h3 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Clear caches to save memory</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
 
 <span class="c1"># Use streaming for large datasets</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChemMLDataLoader</span>
-<span class="n">loader</span> <span class="o">=</span> <span class="n">ChemMLDataLoader</span><span class="p">()</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">QeMLflowDataLoader</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">QeMLflowDataLoader</span><span class="p">()</span>
 <span class="n">data_stream</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_dataset_stream</span><span class="p">(</span><span class="s1">&#39;large_dataset&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
 
@@ -1168,7 +1168,7 @@
 
 <h2 id="chemistry-specific-features">🧪 Chemistry-Specific Features<a class="headerlink" href="#chemistry-specific-features" title="Permanent link">&para;</a></h2>
 <h3 id="molecular-feature-engineering">Molecular Feature Engineering<a class="headerlink" href="#molecular-feature-engineering" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdvancedDataPreprocessor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdvancedDataPreprocessor</span>
 
 <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">AdvancedDataPreprocessor</span><span class="p">()</span>
 
@@ -1192,7 +1192,7 @@
 </code></pre></div>
 
 <h3 id="drug-like-property-filters">Drug-like Property Filters<a class="headerlink" href="#drug-like-property-filters" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_drug_filters</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.data_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply_drug_filters</span>
 
 <span class="c1"># Apply Lipinski&#39;s Rule of Five</span>
 <span class="n">filtered_df</span> <span class="o">=</span> <span class="n">apply_drug_filters</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lipinski&#39;</span><span class="p">,</span> <span class="s1">&#39;veber&#39;</span><span class="p">])</span>

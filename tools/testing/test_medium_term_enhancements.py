@@ -1,5 +1,5 @@
 """
-Test script for ChemML medium-term enhancements
+Test script for QeMLflow medium-term enhancements
 """
 
 import sys
@@ -15,7 +15,7 @@ def test_workflow_optimizer():
     print("🔧 Testing Workflow Optimizer...")
 
     try:
-        from chemml.core.workflow_optimizer import WorkflowOptimizer, optimize_workflow
+        from qemlflow.core.workflow_optimizer import WorkflowOptimizer, optimize_workflow
 
         # Create sample molecular data
         sample_smiles = ["CCO", "CCC", "CCCO", "CC(C)O"]
@@ -64,7 +64,7 @@ def test_advanced_ensembles():
         from sklearn.linear_model import LinearRegression
         from sklearn.svm import SVR
 
-        from chemml.core.ensemble_advanced import (
+        from qemlflow.core.ensemble_advanced import (
             AdaptiveEnsemble,
             MultiModalEnsemble,
             UncertaintyQuantifiedEnsemble,
@@ -135,14 +135,14 @@ def test_advanced_ensembles():
 
 
 def test_integration():
-    """Test integration with existing ChemML features."""
+    """Test integration with existing QeMLflow features."""
     print("🔗 Testing Integration with Existing Features...")
 
     try:
-        import chemml
+        import qemlflow
 
         # Test that new features are accessible from main module
-        from chemml import (
+        from qemlflow import (
             AdaptiveEnsemble,
             ModelRecommendationEngine,
             PerformanceDashboard,
@@ -186,7 +186,7 @@ def test_integration():
 
 def main():
     """Run all tests for medium-term enhancements."""
-    print("🧪 Testing ChemML Medium-Term Enhancements")
+    print("🧪 Testing QeMLflow Medium-Term Enhancements")
     print("=" * 50)
 
     tests = [test_workflow_optimizer, test_advanced_ensembles, test_integration]

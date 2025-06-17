@@ -2,8 +2,8 @@
 Phase 6: Industry Applications Template
 =======================================
 
-Example industry deployment script for ChemML applications.
-This template demonstrates how to deploy ChemML solutions in production environments.
+Example industry deployment script for QeMLflow applications.
+This template demonstrates how to deploy QeMLflow solutions in production environments.
 """
 
 import logging

@@ -2,7 +2,7 @@
 
 ## 📋 Executive Summary
 
-**Phase 4.6 Objective**: Develop **Bootcamp 06: Computational Drug Design & CADD Systems** as the sixth installment in the ChemML educational platform, focusing on **complete drug discovery pipelines**, **advanced CADD workflows**, and **AI-driven drug optimization** for pharmaceutical and biotech applications.
+**Phase 4.6 Objective**: Develop **Bootcamp 06: Computational Drug Design & CADD Systems** as the sixth installment in the QeMLflow educational platform, focusing on **complete drug discovery pipelines**, **advanced CADD workflows**, and **AI-driven drug optimization** for pharmaceutical and biotech applications.
 
 ## 🎯 Bootcamp 06 Overview
 

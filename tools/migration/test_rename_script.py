@@ -39,9 +39,9 @@ class RenameScriptTester:
         
         # Create directory structure
         directories = [
-            "src/chemml/core",
-            "src/chemml/integrations", 
-            "src/chemml/research",
+            "src/qemlflow/core",
+            "src/qemlflow/integrations", 
+            "src/qemlflow/research",
             "tests",
             "docs",
             "examples",
@@ -51,12 +51,12 @@ class RenameScriptTester:
         for dir_path in directories:
             os.makedirs(dir_path, exist_ok=True)
             
-        # Create test files with various chemml references
+        # Create test files with various qemlflow references
         test_files = {
             "setup.py": '''from setuptools import find_packages, setup
 
 setup(
-    name="ChemML",
+    name="QeMLflow",
     version="0.1.0",
     description="A project for practicing machine learning and quantum computing techniques for molecular modeling and drug designing.",
     packages=find_packages(where="src"),
@@ -64,82 +64,82 @@ setup(
 )''',
             
             "pyproject.toml": '''[project]
-name = "chemml"
+name = "qemlflow"
 version = "0.2.0"
 description = "Quantum-Enhanced Molecular Machine Learning Framework"
 authors = [
-    {name = "ChemML Contributors", email = "chemml@example.com"}
+    {name = "QeMLflow Contributors", email = "qemlflow@example.com"}
 ]''',
             
-            "src/chemml/__init__.py": '''"""
-ChemML: Machine Learning for Chemistry and Drug Discovery
+            "src/qemlflow/__init__.py": '''"""
+QeMLflow: Machine Learning for Chemistry and Drug Discovery
 """
 
-import chemml.core
-from chemml.models import ChemMLModel
+import qemlflow.core
+from qemlflow.models import QeMLflowModel
 ''',
             
-            "src/chemml/core/models.py": '''"""
-ChemML Core Models Module
+            "src/qemlflow/core/models.py": '''"""
+QeMLflow Core Models Module
 """
 
-class ChemMLModel:
-    """Base class for ChemML models"""
+class QeMLflowModel:
+    """Base class for QeMLflow models"""
     
     def __init__(self):
-        self.chemml_version = "2.0"
+        self.qemlflow_version = "2.0"
         
-    def process_chemml_data(self, data):
-        """Process data using ChemML algorithms"""
-        return f"ChemML processed: {data}"
+    def process_qemlflow_data(self, data):
+        """Process data using QeMLflow algorithms"""
+        return f"QeMLflow processed: {data}"
 ''',
             
-            "README.md": '''# ChemML
+            "README.md": '''# QeMLflow
 
-ChemML is a machine learning framework for chemistry.
+QeMLflow is a machine learning framework for chemistry.
 
 ## Installation
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ## Usage
 
 ```python
-import chemml
-from chemml.core import models
+import qemlflow
+from qemlflow.core import models
 ```''',
             
-            "docs/chemml_guide.md": '''# ChemML User Guide
+            "docs/qemlflow_guide.md": '''# QeMLflow User Guide
 
-This guide shows how to use ChemML for chemical machine learning.
+This guide shows how to use QeMLflow for chemical machine learning.
 
-## ChemML Features
+## QeMLflow Features
 
-- chemml.core: Core functionality
-- chemml.models: Machine learning models
+- qemlflow.core: Core functionality
+- qemlflow.models: Machine learning models
 ''',
             
-            "tests/test_chemml.py": '''"""Test ChemML functionality"""
+            "tests/test_qemlflow.py": '''"""Test QeMLflow functionality"""
 
-import chemml
-from chemml.core.models import ChemMLModel
+import qemlflow
+from qemlflow.core.models import QeMLflowModel
 
-def test_chemml_model():
-    model = ChemMLModel()
-    assert "ChemML" in model.chemml_version
+def test_qemlflow_model():
+    model = QeMLflowModel()
+    assert "QeMLflow" in model.qemlflow_version
 ''',
             
-            "examples/chemml_example.py": '''#!/usr/bin/env python3
-"""Example using ChemML"""
+            "examples/qemlflow_example.py": '''#!/usr/bin/env python3
+"""Example using QeMLflow"""
 
-import chemml
-from chemml.core import models
+import qemlflow
+from qemlflow.core import models
 
-# Initialize ChemML
-model = models.ChemMLModel()
-print("ChemML example running")
+# Initialize QeMLflow
+model = models.QeMLflowModel()
+print("QeMLflow example running")
 '''
         }
         
@@ -197,7 +197,7 @@ print("ChemML example running")
             
             if result.returncode == 0:
                 # Check that backup directory was created
-                backup_dirs = [d for d in os.listdir('.') if d.startswith('chemml_backup_')]
+                backup_dirs = [d for d in os.listdir('.') if d.startswith('qemlflow_backup_')]
                 backup_created = len(backup_dirs) > 0
                 
                 if backup_created:
@@ -220,7 +220,7 @@ print("ChemML example running")
             # Create a simple test file
             test_file = "test_replacement.py"
             with open(test_file, 'w') as f:
-                f.write("import chemml\nfrom chemml.core import models\nprint('ChemML test')")
+                f.write("import qemlflow\nfrom qemlflow.core import models\nprint('QeMLflow test')")
             
             # Test the replacement logic manually
             with open(test_file, 'r') as f:
@@ -228,9 +228,9 @@ print("ChemML example running")
             
             # Apply replacements (simulate the script's logic)
             replacements = {
-                'chemml': 'qemlflow',
-                'ChemML': 'QeMLflow',
-                'CHEMML': 'QEMLFLOW'
+                'qemlflow': 'qemlflow',
+                'QeMLflow': 'QeMLflow',
+                'QEMLFLOW': 'QEMLFLOW'
             }
             
             modified = original
@@ -267,7 +267,7 @@ print("ChemML example running")
             
             # Create a file with special characters
             with open("special_chars.txt", 'w', encoding='utf-8') as f:
-                f.write("chemml with unicode: café, naïve, résumé")
+                f.write("qemlflow with unicode: café, naïve, résumé")
             
             # Test that script handles these gracefully
             script_path = "safe_rename_to_qemlflow.py"
@@ -321,7 +321,7 @@ print("ChemML example running")
                             # Check that original content is restored
                             with open("setup.py", 'r') as f:
                                 content_restored = f.read()
-                            rollback_successful = "ChemML" in content_restored and "QeMLflow" not in content_restored
+                            rollback_successful = "QeMLflow" in content_restored and "QeMLflow" not in content_restored
                             
                             self.log_test("Rollback Functionality", rollback_successful,
                                          f"Rollback from {backup_dir}")
@@ -353,25 +353,25 @@ print("ChemML example running")
             ], capture_output=True, text=True)
             
             if result.returncode == 0:
-                # Check that structure is preserved (only src/chemml should change to src/qemlflow)
+                # Check that structure is preserved (only src/qemlflow should change to src/qemlflow)
                 new_structure = {}
                 for root, dirs, files in os.walk('.'):
                     new_structure[root] = {'dirs': dirs.copy(), 'files': files.copy()}
                 
-                # The main difference should be src/chemml -> src/qemlflow
+                # The main difference should be src/qemlflow -> src/qemlflow
                 structure_preserved = True
                 expected_changes = {
-                    'src/chemml': 'src/qemlflow'
+                    'src/qemlflow': 'src/qemlflow'
                 }
                 
-                # Check that src/qemlflow exists and src/chemml doesn't
+                # Check that src/qemlflow exists and src/qemlflow doesn't
                 qemlflow_exists = os.path.exists('src/qemlflow')
-                chemml_gone = not os.path.exists('src/chemml')
+                qemlflow_gone = not os.path.exists('src/qemlflow')
                 
-                structure_preserved = qemlflow_exists and chemml_gone
+                structure_preserved = qemlflow_exists and qemlflow_gone
                 
                 self.log_test("Directory Structure", structure_preserved,
-                             f"QeMLflow dir exists: {qemlflow_exists}, ChemML dir gone: {chemml_gone}")
+                             f"QeMLflow dir exists: {qemlflow_exists}, QeMLflow dir gone: {qemlflow_gone}")
             else:
                 self.log_test("Directory Structure", False, f"Script failed: {result.stderr}")
                 

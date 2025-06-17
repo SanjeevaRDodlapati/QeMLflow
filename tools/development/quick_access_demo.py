@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-ChemML Bootcamp Quick Access Demo
+QeMLflow Bootcamp Quick Access Demo
 =====================================
 
-This script demonstrates how to access and run the organized ChemML bootcamp scripts.
+This script demonstrates how to access and run the organized QeMLflow bootcamp scripts.
 It provides a simple interface to navigate and execute the Day 1-7 production-ready scripts.
 """
 
@@ -141,10 +141,10 @@ def run_script(script_path):
 
 def main():
     """Main function"""
-    print_header("ChemML Bootcamp - Quick Access Demo")
+    print_header("QeMLflow Bootcamp - Quick Access Demo")
 
     print_info(
-        "This tool helps you navigate and run the organized ChemML bootcamp scripts."
+        "This tool helps you navigate and run the organized QeMLflow bootcamp scripts."
     )
     print_info(
         "All scripts are production-ready and can run without interactive input."
@@ -155,7 +155,7 @@ def main():
     if not scripts_dir.exists():
         print_error("Organized scripts directory not found!")
         print_error(f"Expected location: {scripts_dir}")
-        print_info("Please ensure you're running this from the ChemML root directory.")
+        print_info("Please ensure you're running this from the QeMLflow root directory.")
         return
 
     # List available days

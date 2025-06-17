@@ -1,8 +1,8 @@
-# ChemML Maintenance Playbook
+# QeMLflow Maintenance Playbook
 
 **Version**: 1.0  
 **Last Updated**: June 16, 2025  
-**Purpose**: Step-by-step procedures for maintaining ChemML codebase health
+**Purpose**: Step-by-step procedures for maintaining QeMLflow codebase health
 
 ---
 
@@ -133,7 +133,7 @@
 
 5. **Test Coverage Analysis**:
    ```bash
-   pytest tests/ --cov=src/chemml --cov-report=html
+   pytest tests/ --cov=src/qemlflow --cov-report=html
    # Review htmlcov/index.html for gaps
    ```
 
@@ -187,7 +187,7 @@ python tools/linting/targeted_fixer.py --focus=unused
 **Solution Strategy**:
 ```bash
 # Identify coverage gaps
-pytest tests/ --cov=src/chemml --cov-report=html
+pytest tests/ --cov=src/qemlflow --cov-report=html
 open htmlcov/index.html
 
 # Add tests for critical modules first
@@ -205,12 +205,12 @@ cp tests/unit/test_template.py tests/unit/test_new_module.py
 python -c "
 import time
 start = time.time()
-import chemml
+import qemlflow
 print(f'Import time: {time.time() - start:.2f}s')
 "
 
 # Profile imports
-python -m cProfile -s cumtime -c "import chemml" | head -20
+python -m cProfile -s cumtime -c "import qemlflow" | head -20
 ```
 
 **Solutions**:
@@ -225,7 +225,7 @@ python -m cProfile -s cumtime -c "import chemml" | head -20
 ```bash
 python -c "
 import psutil
-import chemml
+import qemlflow
 process = psutil.Process()
 print(f'Memory usage: {process.memory_info().rss / 1024 / 1024:.1f} MB')
 "

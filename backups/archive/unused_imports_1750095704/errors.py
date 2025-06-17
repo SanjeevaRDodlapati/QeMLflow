@@ -1,5 +1,5 @@
 """
-Enhanced error handling and validation utilities for ChemML.
+Enhanced error handling and validation utilities for QeMLflow.
 """
 
 import functools
@@ -13,31 +13,31 @@ F = TypeVar("F", bound=Callable[..., Any])
 T = TypeVar("T")
 
 
-class ChemMLError(Exception):
-    """Base exception for ChemML-specific errors."""
+class QeMLflowError(Exception):
+    """Base exception for QeMLflow-specific errors."""
 
     pass
 
 
-class MolecularValidationError(ChemMLError):
+class MolecularValidationError(QeMLflowError):
     """Error in molecular data validation."""
 
     pass
 
 
-class ModelError(ChemMLError):
+class ModelError(QeMLflowError):
     """Error in model operations."""
 
     pass
 
 
-class DataProcessingError(ChemMLError):
+class DataProcessingError(QeMLflowError):
     """Error in data processing operations."""
 
     pass
 
 
-class ConfigurationError(ChemMLError):
+class ConfigurationError(QeMLflowError):
     """Error in configuration setup."""
 
     pass

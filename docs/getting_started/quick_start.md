@@ -1,28 +1,28 @@
 # Quick Start Guide
 
-Welcome to ChemML! This guide will get you up and running in minutes.
+Welcome to QeMLflow! This guide will get you up and running in minutes.
 
 ## 🏃‍♂️ 5-Minute Quick Start
 
 ### 1. Installation
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### 2. Your First Prediction
 ```python
-import chemml
+import qemlflow
 
 # Load sample data
-data = chemml.load_sample_data("molecules")
+data = qemlflow.load_sample_data("molecules")
 print(f"Loaded {len(data)} molecules")
 
 # Generate features
-features = chemml.morgan_fingerprints(data.smiles)
+features = qemlflow.morgan_fingerprints(data.smiles)
 print(f"Generated {features.shape[1]} molecular features")
 
 # Train a model
-model = chemml.create_rf_model(features, data.targets)
+model = qemlflow.create_rf_model(features, data.targets)
 print("Model trained successfully!")
 
 # Make predictions
@@ -33,7 +33,7 @@ print(f"Sample predictions: {predictions}")
 ### 3. Evaluate Results
 ```python
 # Quick evaluation
-results = chemml.quick_classification_eval(model, features, data.targets)
+results = qemlflow.quick_classification_eval(model, features, data.targets)
 print(f"Model accuracy: {results.accuracy:.3f}")
 print(f"Cross-validation score: {results.cv_score:.3f}")
 ```
@@ -42,7 +42,7 @@ print(f"Cross-validation score: {results.cv_score:.3f}")
 
 ### Molecular Property Prediction
 ```python
-from chemml.core import featurizers, models
+from qemlflow.core import featurizers, models
 
 # Generate descriptors
 descriptors = featurizers.molecular_descriptors(smiles_list)
@@ -57,7 +57,7 @@ new_properties = property_model.predict(new_descriptors)
 
 ### Drug Discovery Screening
 ```python
-from chemml.research.drug_discovery import VirtualScreening
+from qemlflow.research.drug_discovery import VirtualScreening
 
 # Setup virtual screening
 screener = VirtualScreening(
@@ -76,7 +76,7 @@ print(f"Found {len(hits)} potential drug candidates")
 
 ### Materials Property Optimization
 ```python
-from chemml.research.materials_discovery import MaterialsOptimizer
+from qemlflow.research.materials_discovery import MaterialsOptimizer
 
 # Define optimization problem
 optimizer = MaterialsOptimizer(
@@ -97,24 +97,24 @@ print(f"Generated {len(candidates)} optimized candidates")
 
 ### Environment Setup
 ```python
-import chemml
+import qemlflow
 
 # Configure for your environment
-chemml.config.set_backend("sklearn")  # or "xgboost", "tensorflow"
-chemml.config.set_n_jobs(4)          # parallel processing
-chemml.config.enable_caching(True)    # speed up repeated operations
+qemlflow.config.set_backend("sklearn")  # or "xgboost", "tensorflow"
+qemlflow.config.set_n_jobs(4)          # parallel processing
+qemlflow.config.enable_caching(True)    # speed up repeated operations
 ```
 
 ### Performance Tuning
 ```python
 # Enable fast mode for production
-chemml.enable_fast_mode()
+qemlflow.enable_fast_mode()
 
 # Use GPU acceleration (if available)
-chemml.config.enable_gpu(True)
+qemlflow.config.enable_gpu(True)
 
 # Set memory limits
-chemml.config.set_memory_limit("8GB")
+qemlflow.config.set_memory_limit("8GB")
 ```
 
 ## ❓ Troubleshooting
@@ -132,15 +132,15 @@ pip install rdkit-pypi
 **Memory errors with large datasets**
 ```python
 # Use batch processing
-for batch in chemml.utils.batch_iterator(large_dataset, batch_size=1000):
+for batch in qemlflow.utils.batch_iterator(large_dataset, batch_size=1000):
     results = process_batch(batch)
 ```
 
 **Slow performance**
 ```python
 # Enable performance optimizations
-chemml.enable_fast_mode()
-chemml.config.set_n_jobs(-1)  # use all CPU cores
+qemlflow.enable_fast_mode()
+qemlflow.config.set_n_jobs(-1)  # use all CPU cores
 ```
 
 ## 🚀 Next Steps
@@ -154,7 +154,7 @@ chemml.config.set_n_jobs(-1)  # use all CPU cores
 
 - Start with sample data to understand the workflow
 - Use built-in validation functions to check your results
-- Leverage ChemML's caching for faster repeated operations
+- Leverage QeMLflow's caching for faster repeated operations
 - Check the documentation for optimization tips
 - Join our community discussions for help and best practices
 

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/user-guide/overview/">
+        <link rel="canonical" href="https://qemlflow.io/user-guide/overview/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>User Guide Overview - ChemML Documentation</title>
+        <title>User Guide Overview - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -402,9 +402,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-chemml" class="md-nav__link">
+  <a href="#what-is-qemlflow" class="md-nav__link">
     <span class="md-ellipsis">
-      What is ChemML?
+      What is QeMLflow?
     </span>
   </a>
   
@@ -721,9 +721,9 @@
 
 
 <h1 id="user-guide-overview">User Guide Overview<a class="headerlink" href="#user-guide-overview" title="Permanent link">&para;</a></h1>
-<p>Welcome to the ChemML User Guide. This comprehensive guide covers all aspects of using ChemML for molecular machine learning.</p>
-<h2 id="what-is-chemml">What is ChemML?<a class="headerlink" href="#what-is-chemml" title="Permanent link">&para;</a></h2>
-<p>ChemML is a quantum-enhanced molecular machine learning framework designed for:</p>
+<p>Welcome to the QeMLflow User Guide. This comprehensive guide covers all aspects of using QeMLflow for molecular machine learning.</p>
+<h2 id="what-is-qemlflow">What is QeMLflow?<a class="headerlink" href="#what-is-qemlflow" title="Permanent link">&para;</a></h2>
+<p>QeMLflow is a quantum-enhanced molecular machine learning framework designed for:</p>
 <ul>
 <li><strong>Molecular Property Prediction</strong></li>
 <li><strong>Drug Discovery and Design</strong></li>
@@ -762,15 +762,15 @@
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="quick-installation">Quick Installation<a class="headerlink" href="#quick-installation" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>chemml
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>qemlflow
 </code></pre></div>
 
 <h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoMLRegressor</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoMLRegressor</span>
 
 <span class="c1"># Load data</span>
-<span class="n">molecules</span><span class="p">,</span> <span class="n">properties</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_sample_molecules</span><span class="p">()</span>
+<span class="n">molecules</span><span class="p">,</span> <span class="n">properties</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_sample_molecules</span><span class="p">()</span>
 
 <span class="c1"># Train model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoMLRegressor</span><span class="p">()</span>
@@ -805,8 +805,8 @@
 </ul>
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <h3 id="automl-capabilities">AutoML Capabilities<a class="headerlink" href="#automl-capabilities" title="Permanent link">&para;</a></h3>
-<p>ChemML provides state-of-the-art AutoML for molecular data:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoMLRegressor</span>
+<p>QeMLflow provides state-of-the-art AutoML for molecular data:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoMLRegressor</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoMLRegressor</span><span class="p">(</span>
     <span class="n">time_budget</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>  <span class="c1"># 5 minutes</span>
@@ -818,7 +818,7 @@
 
 <h3 id="molecular-descriptors">Molecular Descriptors<a class="headerlink" href="#molecular-descriptors" title="Permanent link">&para;</a></h3>
 <p>Comprehensive molecular representation methods:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDescriptors</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDescriptors</span>
 
 <span class="c1"># Morgan fingerprints</span>
 <span class="n">morgan_desc</span> <span class="o">=</span> <span class="n">MolecularDescriptors</span><span class="p">(</span><span class="n">descriptor_type</span><span class="o">=</span><span class="s1">&#39;morgan&#39;</span><span class="p">)</span>
@@ -832,7 +832,7 @@
 
 <h3 id="experiment-tracking_1">Experiment Tracking<a class="headerlink" href="#experiment-tracking_1" title="Permanent link">&para;</a></h3>
 <p>Built-in experiment management:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.monitoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.monitoring</span><span class="w"> </span><span class="kn">import</span> <span class="n">ExperimentTracker</span>
 
 <span class="k">with</span> <span class="n">ExperimentTracker</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;drug-discovery&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tracker</span><span class="p">:</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -842,19 +842,19 @@
 
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <h3 id="global-configuration">Global Configuration<a class="headerlink" href="#global-configuration" title="Permanent link">&para;</a></h3>
-<p>ChemML can be configured globally:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<p>QeMLflow can be configured globally:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Set global configuration</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>           <span class="c1"># Use 4 CPU cores</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>        <span class="c1"># Enable GPU acceleration</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>  <span class="c1"># 8GB memory limit</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>           <span class="c1"># Use 4 CPU cores</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>        <span class="c1"># Enable GPU acceleration</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="mi">8192</span><span class="p">)</span>  <span class="c1"># 8GB memory limit</span>
 </code></pre></div>
 
 <h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;./config.yaml&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_CACHE_DIR</span><span class="o">=</span><span class="s2">&quot;./cache&quot;</span>
+<div class="codehilite"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_CONFIG_PATH</span><span class="o">=</span><span class="s2">&quot;./config.yaml&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_DATA_DIR</span><span class="o">=</span><span class="s2">&quot;./data&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_CACHE_DIR</span><span class="o">=</span><span class="s2">&quot;./cache&quot;</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span><span class="s2">&quot;your_wandb_key&quot;</span>
 </code></pre></div>
 
@@ -868,7 +868,7 @@
 </ol>
 <h3 id="model-selection">Model Selection<a class="headerlink" href="#model-selection" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Start with AutoML</strong> - Let ChemML find the best models</li>
+<li><strong>Start with AutoML</strong> - Let QeMLflow find the best models</li>
 <li><strong>Try ensemble methods</strong> - Often better than single models</li>
 <li><strong>Consider domain knowledge</strong> - Use chemical intuition</li>
 <li><strong>Validate thoroughly</strong> - Use appropriate metrics and validation sets</li>
@@ -924,14 +924,14 @@
 <li><strong><a href="../getting-started/basic-tutorial.md">Basic Tutorial</a></strong> - Step-by-step tutorial</li>
 <li><strong><a href="../api/core.md">API Reference</a></strong> - Detailed API documentation</li>
 <li><strong><a href="../examples/basic.md">Examples</a></strong> - Practical examples</li>
-<li><strong><a href="https://github.com/SanjeevaRDodlapati/ChemML/issues">GitHub Issues</a></strong> - Report bugs or ask questions</li>
+<li><strong><a href="https://github.com/SanjeevaRDodlapati/QeMLflow/issues">GitHub Issues</a></strong> - Report bugs or ask questions</li>
 </ul>
 <h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
-<p>ChemML is an open-source project. We welcome contributions:</p>
+<p>QeMLflow is an open-source project. We welcome contributions:</p>
 <ul>
 <li><strong><a href="../development/contributing.md">Contributing Guide</a></strong> - How to contribute</li>
-<li><strong><a href="https://github.com/SanjeevaRDodlapati/ChemML">GitHub Repository</a></strong> - Source code</li>
-<li><strong><a href="https://github.com/SanjeevaRDodlapati/ChemML/discussions">Discussions</a></strong> - Community discussions</li>
+<li><strong><a href="https://github.com/SanjeevaRDodlapati/QeMLflow">GitHub Repository</a></strong> - Source code</li>
+<li><strong><a href="https://github.com/SanjeevaRDodlapati/QeMLflow/discussions">Discussions</a></strong> - Community discussions</li>
 </ul>
 
 

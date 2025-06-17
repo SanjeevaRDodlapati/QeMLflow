@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modules - ChemML API</title>
+    <title>Modules - QeMLflow API</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,10 +21,10 @@
             <div class="api-item">
                 <h3 class="api-name">📦 </h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/__init__.py</span>
+                    <span class="path">src/qemlflow/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML: Machine Learning for Chemistry and Drug Discovery
+                    QeMLflow: Machine Learning for Chemistry and Drug Discovery
 
 A comprehensive library providing machine learning tools specifically designed
 for chemistry and drug discovery applications.
@@ -35,8 +35,8 @@ Main Modules:
 - integrations: Third-party library integrations (DeepChem, RDKit, pipeline systems)
 
 Quick Start:
-    >>> import chemml
-    >>> from chemml.core import featurizers, models, data
+    >>> import qemlflow
+    >>> from qemlflow.core import featurizers, models, data
     >>>
     >>> # Create molecular fingerprints
     >>> smiles = ['CCO', 'CC(=O)O', 'c1ccccc1']
@@ -50,7 +50,7 @@ Quick Start:
                     <div class="content-section">
                         <h4>Functions (1)</h4>
                         <ul>
-                            <li><a href='functions.html#_setup_chemml'>_setup_chemml</a></li>
+                            <li><a href='functions.html#_setup_qemlflow'>_setup_qemlflow</a></li>
                         </ul>
                     </div>
                     <div class="content-section">
@@ -65,10 +65,10 @@ Quick Start:
             <div class="api-item">
                 <h3 class="api-name">📦 core</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/__init__.py</span>
+                    <span class="path">src/qemlflow/core/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    Core ChemML functionality - essential modules for chemistry ML workflows.
+                    Core QeMLflow functionality - essential modules for chemistry ML workflows.
 
 This module contains the fundamental building blocks:
 - featurizers: Molecular feature extraction
@@ -96,7 +96,7 @@ This module contains the fundamental building blocks:
             <div class="api-item">
                 <h3 class="api-name">📦 core.common</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/common/__init__.py</span>
+                    <span class="path">src/qemlflow/core/common/__init__.py</span>
                 </div>
                 <div class="api-description">
                     No description available.
@@ -120,10 +120,10 @@ This module contains the fundamental building blocks:
             <div class="api-item">
                 <h3 class="api-name">📦 core.common.config</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/common/config.py</span>
+                    <span class="path">src/qemlflow/core/common/config.py</span>
                 </div>
                 <div class="api-description">
-                    Configuration management for ChemML using Pydantic for type safety.
+                    Configuration management for QeMLflow using Pydantic for type safety.
                 </div>
                 <div class="module-contents">
                     <div class="content-section">
@@ -135,7 +135,7 @@ This module contains the fundamental building blocks:
                     <div class="content-section">
                         <h4>Classes (5)</h4>
                         <ul>
-                            <li><a href='classes.html#WandBConfig'>WandBConfig</a></li><li><a href='classes.html#ChemMLPaths'>ChemMLPaths</a></li><li><a href='classes.html#ChemMLConfig'>ChemMLConfig</a></li><li><a href='classes.html#BaseSettings'>BaseSettings</a></li><li><a href='classes.html#Config'>Config</a></li>
+                            <li><a href='classes.html#WandBConfig'>WandBConfig</a></li><li><a href='classes.html#QeMLflowPaths'>QeMLflowPaths</a></li><li><a href='classes.html#QeMLflowConfig'>QeMLflowConfig</a></li><li><a href='classes.html#BaseSettings'>BaseSettings</a></li><li><a href='classes.html#Config'>Config</a></li>
                         </ul>
                     </div>
                 </div>
@@ -144,10 +144,10 @@ This module contains the fundamental building blocks:
             <div class="api-item">
                 <h3 class="api-name">📦 core.common.errors</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/common/errors.py</span>
+                    <span class="path">src/qemlflow/core/common/errors.py</span>
                 </div>
                 <div class="api-description">
-                    Enhanced error handling and validation utilities for ChemML.
+                    Enhanced error handling and validation utilities for QeMLflow.
                 </div>
                 <div class="module-contents">
                     <div class="content-section">
@@ -159,7 +159,7 @@ This module contains the fundamental building blocks:
                     <div class="content-section">
                         <h4>Classes (6)</h4>
                         <ul>
-                            <li><a href='classes.html#ChemMLError'>ChemMLError</a></li><li><a href='classes.html#MolecularValidationError'>MolecularValidationError</a></li><li><a href='classes.html#ModelError'>ModelError</a></li><li><a href='classes.html#DataProcessingError'>DataProcessingError</a></li><li><a href='classes.html#ConfigurationError'>ConfigurationError</a></li><li><a href='classes.html#RetryableError'>RetryableError</a></li>
+                            <li><a href='classes.html#QeMLflowError'>QeMLflowError</a></li><li><a href='classes.html#MolecularValidationError'>MolecularValidationError</a></li><li><a href='classes.html#ModelError'>ModelError</a></li><li><a href='classes.html#DataProcessingError'>DataProcessingError</a></li><li><a href='classes.html#ConfigurationError'>ConfigurationError</a></li><li><a href='classes.html#RetryableError'>RetryableError</a></li>
                         </ul>
                     </div>
                 </div>
@@ -168,10 +168,10 @@ This module contains the fundamental building blocks:
             <div class="api-item">
                 <h3 class="api-name">📦 core.common.performance</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/common/performance.py</span>
+                    <span class="path">src/qemlflow/core/common/performance.py</span>
                 </div>
                 <div class="api-description">
-                    Performance monitoring and profiling utilities for ChemML.
+                    Performance monitoring and profiling utilities for QeMLflow.
                 </div>
                 <div class="module-contents">
                     <div class="content-section">
@@ -192,10 +192,10 @@ This module contains the fundamental building blocks:
             <div class="api-item">
                 <h3 class="api-name">📦 core.data</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/data.py</span>
+                    <span class="path">src/qemlflow/core/data.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Core Data Processing
+                    QeMLflow Core Data Processing
 ==========================
 
 Comprehensive data processing utilities for chemistry and drug discovery.
@@ -226,10 +226,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 core.evaluation</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/evaluation.py</span>
+                    <span class="path">src/qemlflow/core/evaluation.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Core Evaluation
+                    QeMLflow Core Evaluation
 =====================
 
 Comprehensive evaluation metrics and tools for chemistry ML models.
@@ -260,10 +260,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 core.featurizers</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/featurizers.py</span>
+                    <span class="path">src/qemlflow/core/featurizers.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Core Featurizers
+                    QeMLflow Core Featurizers
 ======================
 
 Modern molecular featurization methods optimized for machine learning.
@@ -294,10 +294,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 core.models</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/models.py</span>
+                    <span class="path">src/qemlflow/core/models.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Core Models
+                    QeMLflow Core Models
 =================
 
 Machine learning models optimized for chemistry and drug discovery applications.
@@ -328,13 +328,13 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 core.monitoring</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/monitoring/__init__.py</span>
+                    <span class="path">src/qemlflow/core/monitoring/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Monitoring Module
+                    QeMLflow Monitoring Module
 =======================
 
-Performance monitoring, analytics, and optimization tools for ChemML.
+Performance monitoring, analytics, and optimization tools for QeMLflow.
 
 Key Components:
 - PerformanceDashboard: Real-time performance visualization
@@ -361,13 +361,13 @@ Key Components:
             <div class="api-item">
                 <h3 class="api-name">📦 core.monitoring.dashboard</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/monitoring/dashboard.py</span>
+                    <span class="path">src/qemlflow/core/monitoring/dashboard.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Smart Performance Dashboard
+                    QeMLflow Smart Performance Dashboard
 =================================
 
-Real-time performance monitoring and visualization for ChemML operations.
+Real-time performance monitoring and visualization for QeMLflow operations.
 Builds on the existing PerformanceMonitor to provide actionable insights.
                 </div>
                 <div class="module-contents">
@@ -389,10 +389,10 @@ Builds on the existing PerformanceMonitor to provide actionable insights.
             <div class="api-item">
                 <h3 class="api-name">📦 core.preprocessing</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/preprocessing/__init__.py</span>
+                    <span class="path">src/qemlflow/core/preprocessing/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    Data Processing Module for ChemML
+                    Data Processing Module for QeMLflow
 
 This module provides utilities for molecular data preprocessing, feature extraction,
 and protein structure preparation for machine learning applications.
@@ -421,7 +421,7 @@ Modules:
             <div class="api-item">
                 <h3 class="api-name">📦 core.preprocessing.feature_extraction</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/preprocessing/feature_extraction.py</span>
+                    <span class="path">src/qemlflow/core/preprocessing/feature_extraction.py</span>
                 </div>
                 <div class="api-description">
                     Feature extraction utilities for molecular data processing.
@@ -448,7 +448,7 @@ fingerprints, and other features from molecular structures.
             <div class="api-item">
                 <h3 class="api-name">📦 core.preprocessing.molecular_preprocessing</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/preprocessing/molecular_preprocessing.py</span>
+                    <span class="path">src/qemlflow/core/preprocessing/molecular_preprocessing.py</span>
                 </div>
                 <div class="api-description">
                     Molecular data preprocessing utilities.
@@ -475,7 +475,7 @@ molecular datasets for machine learning applications.
             <div class="api-item">
                 <h3 class="api-name">📦 core.preprocessing.protein_preparation</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/preprocessing/protein_preparation.py</span>
+                    <span class="path">src/qemlflow/core/preprocessing/protein_preparation.py</span>
                 </div>
                 <div class="api-description">
                     Protein Structure Preparation Pipeline for Molecular Docking
@@ -510,10 +510,10 @@ Functions:
             <div class="api-item">
                 <h3 class="api-name">📦 core.recommendations</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/recommendations.py</span>
+                    <span class="path">src/qemlflow/core/recommendations.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Intelligent Model Recommendation System
+                    QeMLflow Intelligent Model Recommendation System
 =============================================
 
 AI-powered system that recommends optimal models based on data characteristics,
@@ -538,13 +538,13 @@ task requirements, and computational constraints.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils.py</span>
+                    <span class="path">src/qemlflow/core/utils.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Core Utilities
+                    QeMLflow Core Utilities
 ====================
 
-Common utilities and helper functions for ChemML.
+Common utilities and helper functions for QeMLflow.
 Provides logging, environment setup, and convenience functions.
 
 Key Features:
@@ -572,10 +572,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.io_utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/io_utils.py</span>
+                    <span class="path">src/qemlflow/core/utils/io_utils.py</span>
                 </div>
                 <div class="api-description">
-                    Input/Output utilities for ChemML
+                    Input/Output utilities for QeMLflow
 
 This module provides utilities for data loading, saving results,
 and configuration management.
@@ -599,10 +599,10 @@ and configuration management.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.metrics</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/metrics.py</span>
+                    <span class="path">src/qemlflow/core/utils/metrics.py</span>
                 </div>
                 <div class="api-description">
-                    Comprehensive metrics utilities for ChemML evaluations.
+                    Comprehensive metrics utilities for QeMLflow evaluations.
 
 This module provides evaluation metrics for various machine learning tasks
 including classification, regression, ranking, and molecular similarity.
@@ -626,10 +626,10 @@ including classification, regression, ranking, and molecular similarity.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.ml_utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/ml_utils.py</span>
+                    <span class="path">src/qemlflow/core/utils/ml_utils.py</span>
                 </div>
                 <div class="api-description">
-                    Machine Learning utilities for ChemML
+                    Machine Learning utilities for QeMLflow
 
 This module provides utilities for ML workflows in computational chemistry
 and drug discovery applications.
@@ -653,10 +653,10 @@ and drug discovery applications.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.molecular_utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/molecular_utils.py</span>
+                    <span class="path">src/qemlflow/core/utils/molecular_utils.py</span>
                 </div>
                 <div class="api-description">
-                    Molecular utilities for ChemML
+                    Molecular utilities for QeMLflow
 
 This module provides utilities for molecular processing, descriptor calculation,
 and cheminformatics operations using RDKit.
@@ -680,7 +680,7 @@ and cheminformatics operations using RDKit.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.quantum_utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/quantum_utils.py</span>
+                    <span class="path">src/qemlflow/core/utils/quantum_utils.py</span>
                 </div>
                 <div class="api-description">
                     Quantum computing utilities for molecular systems
@@ -707,10 +707,10 @@ molecular modeling and drug discovery.
             <div class="api-item">
                 <h3 class="api-name">📦 core.utils.visualization</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/core/utils/visualization.py</span>
+                    <span class="path">src/qemlflow/core/utils/visualization.py</span>
                 </div>
                 <div class="api-description">
-                    Comprehensive visualization utilities for ChemML.
+                    Comprehensive visualization utilities for QeMLflow.
 
 This module provides plotting and visualization functions for molecular data,
 model performance, feature analysis, and scientific results.
@@ -734,10 +734,10 @@ model performance, feature analysis, and scientific results.
             <div class="api-item">
                 <h3 class="api-name">📦 integrations</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/integrations/__init__.py</span>
+                    <span class="path">src/qemlflow/integrations/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Integrations
+                    QeMLflow Integrations
 ==================
 
 Integration modules for third-party libraries and external tools.
@@ -768,18 +768,18 @@ Modules:
             <div class="api-item">
                 <h3 class="api-name">📦 integrations.deepchem_integration</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/integrations/deepchem_integration.py</span>
+                    <span class="path">src/qemlflow/integrations/deepchem_integration.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML DeepChem Integration
+                    QeMLflow DeepChem Integration
 ==========================
 
 Seamless integration with DeepChem library.
-Provides wrappers and utilities for using DeepChem models with ChemML.
+Provides wrappers and utilities for using DeepChem models with QeMLflow.
 
 Key Features:
 - DeepChem model wrappers with consistent APIs
-- Data format conversions between ChemML and DeepChem
+- Data format conversions between QeMLflow and DeepChem
 - Hybrid workflows combining custom and DeepChem featurizers
 - Model ensemble capabilities
                 </div>
@@ -787,7 +787,7 @@ Key Features:
                     <div class="content-section">
                         <h4>Functions (12)</h4>
                         <ul>
-                            <li><a href='functions.html#create_deepchem_dataset'>create_deepchem_dataset</a></li><li><a href='functions.html#deepchem_to_chemml_format'>deepchem_to_chemml_format</a></li><li><a href='functions.html#create_deepchem_model_ensemble'>create_deepchem_model_ensemble</a></li><li><a href='functions.html#benchmark_deepchem_featurizers'>benchmark_deepchem_featurizers</a></li><li><a href='functions.html#quick_deepchem_model'>quick_deepchem_model</a></li><li><a href='functions.html#deepchem_molecular_transformer'>deepchem_molecular_transformer</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li>
+                            <li><a href='functions.html#create_deepchem_dataset'>create_deepchem_dataset</a></li><li><a href='functions.html#deepchem_to_qemlflow_format'>deepchem_to_qemlflow_format</a></li><li><a href='functions.html#create_deepchem_model_ensemble'>create_deepchem_model_ensemble</a></li><li><a href='functions.html#benchmark_deepchem_featurizers'>benchmark_deepchem_featurizers</a></li><li><a href='functions.html#quick_deepchem_model'>quick_deepchem_model</a></li><li><a href='functions.html#deepchem_molecular_transformer'>deepchem_molecular_transformer</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#fit'>fit</a></li><li><a href='functions.html#predict'>predict</a></li><li><a href='functions.html#evaluate'>evaluate</a></li><li><a href='functions.html#__init__'>__init__</a></li><li><a href='functions.html#featurize'>featurize</a></li>
                         </ul>
                     </div>
                     <div class="content-section">
@@ -802,10 +802,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 integrations.experiment_tracking</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/integrations/experiment_tracking.py</span>
+                    <span class="path">src/qemlflow/integrations/experiment_tracking.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Experiment Tracking Integration
+                    QeMLflow Experiment Tracking Integration
 =====================================
 
 Weights & Biases integration for experiment tracking.
@@ -829,10 +829,10 @@ Weights & Biases integration for experiment tracking.
             <div class="api-item">
                 <h3 class="api-name">📦 integrations.pipeline</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/integrations/pipeline.py</span>
+                    <span class="path">src/qemlflow/integrations/pipeline.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Integration Pipelines
+                    QeMLflow Integration Pipelines
 ===========================
 
 Complete, production-ready pipelines for drug discovery workflows.
@@ -856,10 +856,10 @@ Complete, production-ready pipelines for drug discovery workflows.
             <div class="api-item">
                 <h3 class="api-name">📦 research</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/__init__.py</span>
+                    <span class="path">src/qemlflow/research/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Research Modules
+                    QeMLflow Research Modules
 ======================
 
 Advanced research modules for cutting-edge chemistry ML applications.
@@ -889,10 +889,10 @@ Modules:
             <div class="api-item">
                 <h3 class="api-name">📦 research.advanced_models</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/advanced_models.py</span>
+                    <span class="path">src/qemlflow/research/advanced_models.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Advanced Models
+                    QeMLflow Advanced Models
 =====================
 
 Advanced and experimental machine learning models for chemistry applications.
@@ -924,10 +924,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 research.clinical_research</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/clinical_research.py</span>
+                    <span class="path">src/qemlflow/research/clinical_research.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Clinical Research Module
+                    QeMLflow Clinical Research Module
 ============================
 
 Clinical trial optimization, patient stratification, and regulatory compliance
@@ -959,7 +959,7 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery.py</span>
                 </div>
                 <div class="api-description">
                     No description available.
@@ -983,10 +983,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.admet</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/admet.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/admet.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery - ADMET Prediction
+                    QeMLflow Drug Discovery - ADMET Prediction
 =======================================
 
 ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) prediction tools
@@ -1017,10 +1017,10 @@ This module provides comprehensive tools for:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.docking</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/docking.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/docking.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery - Molecular Docking Module
+                    QeMLflow Drug Discovery - Molecular Docking Module
 ===============================================
 
 Professional molecular docking and structure-based drug design tools.
@@ -1044,7 +1044,7 @@ Professional molecular docking and structure-based drug design tools.
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.generation</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/generation.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/generation.py</span>
                 </div>
                 <div class="api-description">
                     Molecular Generation Module
@@ -1083,7 +1083,7 @@ Functions:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.molecular_optimization</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/molecular_optimization.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/molecular_optimization.py</span>
                 </div>
                 <div class="api-description">
                     Molecular Optimization Module
@@ -1124,10 +1124,10 @@ Functions:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.optimization</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/optimization.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/optimization.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery - Molecular Optimization
+                    QeMLflow Drug Discovery - Molecular Optimization
 ==============================================
 
 Molecular optimization utilities for drug design.
@@ -1155,10 +1155,10 @@ methods to improve desired properties.
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.properties</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/properties.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/properties.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery - Property Prediction
+                    QeMLflow Drug Discovery - Property Prediction
 ==========================================
 
 Comprehensive molecular property prediction tools for drug discovery.
@@ -1188,7 +1188,7 @@ This module provides:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.qsar</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/qsar.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/qsar.py</span>
                 </div>
                 <div class="api-description">
                     QSAR Modeling Module
@@ -1229,10 +1229,10 @@ Functions:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery.screening</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery/screening.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery/screening.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery - Virtual Screening
+                    QeMLflow Drug Discovery - Virtual Screening
 ========================================
 
 Virtual screening tools for compound library filtering and ranking.
@@ -1261,10 +1261,10 @@ This module provides comprehensive virtual screening capabilities including:
             <div class="api-item">
                 <h3 class="api-name">📦 research.drug_discovery_legacy</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/drug_discovery_legacy.py</span>
+                    <span class="path">src/qemlflow/research/drug_discovery_legacy.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Drug Discovery Research Module
+                    QeMLflow Drug Discovery Research Module
 ====================================
 
 Advanced drug discovery algorithms and workflows.
@@ -1300,7 +1300,7 @@ For backward compatibility, all classes and functions are available at the modul
             <div class="api-item">
                 <h3 class="api-name">📦 research.environmental_chemistry</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/environmental_chemistry.py</span>
+                    <span class="path">src/qemlflow/research/environmental_chemistry.py</span>
                 </div>
                 <div class="api-description">
                     Environmental Chemistry AI Module
@@ -1327,10 +1327,10 @@ pollution prediction, and green chemistry optimization.
             <div class="api-item">
                 <h3 class="api-name">📦 research.generative</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/generative.py</span>
+                    <span class="path">src/qemlflow/research/generative.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Generative Models
+                    QeMLflow Generative Models
 =======================
 
 Generative models for molecular design and drug discovery.
@@ -1361,7 +1361,7 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 research.materials_discovery</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/materials_discovery.py</span>
+                    <span class="path">src/qemlflow/research/materials_discovery.py</span>
                 </div>
                 <div class="api-description">
                     Advanced Materials Discovery Module
@@ -1388,10 +1388,10 @@ property prediction, and synthesis planning.
             <div class="api-item">
                 <h3 class="api-name">📦 research.modern_quantum</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/modern_quantum.py</span>
+                    <span class="path">src/qemlflow/research/modern_quantum.py</span>
                 </div>
                 <div class="api-description">
-                    Modern Quantum Computing Suite for ChemML
+                    Modern Quantum Computing Suite for QeMLflow
 =========================================
 
 Native Qiskit 2.0+ implementation for quantum machine learning and quantum chemistry.
@@ -1404,7 +1404,7 @@ Features:
 - Quantum chemistry utilities
 - Hardware-efficient ansätze
 
-Author: ChemML Development Team
+Author: QeMLflow Development Team
 Version: 1.0.0
 Compatible: Qiskit 2.0+
                 </div>
@@ -1427,10 +1427,10 @@ Compatible: Qiskit 2.0+
             <div class="api-item">
                 <h3 class="api-name">📦 research.quantum</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/research/quantum.py</span>
+                    <span class="path">src/qemlflow/research/quantum.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Quantum Computing Module
+                    QeMLflow Quantum Computing Module
 ==============================
 
 Quantum computing and quantum chemistry ML implementations.
@@ -1461,16 +1461,16 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/__init__.py</span>
+                    <span class="path">src/qemlflow/tutorials/__init__.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Tutorial Framework
+                    QeMLflow Tutorial Framework
 ========================
 
 A comprehensive framework for creating interactive and progressive learning experiences
 in computational chemistry and machine learning.
 
-This module provides the foundation for all ChemML tutorials, including:
+This module provides the foundation for all QeMLflow tutorials, including:
 - Learning assessment and progress tracking
 - Interactive components and widgets
 - Educational data management
@@ -1485,7 +1485,7 @@ Key Components:
 - InteractiveComponents: Widgets and visual demonstrations
 
 Usage:
-    from chemml.tutorials import (
+    from qemlflow.tutorials import (
         setup_learning_environment,
         LearningAssessment,
         ProgressTracker,
@@ -1523,10 +1523,10 @@ Usage:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.assessment</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/assessment.py</span>
+                    <span class="path">src/qemlflow/tutorials/assessment.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Tutorial Framework - Assessment Module
+                    QeMLflow Tutorial Framework - Assessment Module
 =============================================
 
 Provides learning assessment, progress tracking, and educational evaluation tools.
@@ -1551,13 +1551,13 @@ This module standardizes how learning progress is measured and tracked across al
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.core</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/core.py</span>
+                    <span class="path">src/qemlflow/tutorials/core.py</span>
                 </div>
                 <div class="api-description">
-                    ChemML Tutorial Framework - Core Module
+                    QeMLflow Tutorial Framework - Core Module
 =======================================
 
-Core functionality for the ChemML tutorial system.
+Core functionality for the QeMLflow tutorial system.
 Provides environment setup, data loading, and basic tutorial infrastructure.
                 </div>
                 <div class="module-contents">
@@ -1579,10 +1579,10 @@ Provides environment setup, data loading, and basic tutorial infrastructure.
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.data</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/data.py</span>
+                    <span class="path">src/qemlflow/tutorials/data.py</span>
                 </div>
                 <div class="api-description">
-                    Educational Data Management for ChemML Tutorials
+                    Educational Data Management for QeMLflow Tutorials
 ===============================================
 
 This module provides curated datasets and data generation utilities specifically
@@ -1618,14 +1618,14 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.environment</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/environment.py</span>
+                    <span class="path">src/qemlflow/tutorials/environment.py</span>
                 </div>
                 <div class="api-description">
-                    Environment Management for ChemML Tutorials
+                    Environment Management for QeMLflow Tutorials
 ==========================================
 
 This module provides robust environment setup, dependency checking, and fallback
-mechanisms for ChemML tutorials to ensure smooth learning experiences across
+mechanisms for QeMLflow tutorials to ensure smooth learning experiences across
 different computational environments.
 
 Key Features:
@@ -1654,14 +1654,14 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.quantum</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/quantum.py</span>
+                    <span class="path">src/qemlflow/tutorials/quantum.py</span>
                 </div>
                 <div class="api-description">
-                    Quantum Computing Integration for ChemML Tutorials
+                    Quantum Computing Integration for QeMLflow Tutorials
 =================================================
 
 This module provides quantum computing educational components and integration
-with quantum chemistry libraries for ChemML tutorials.
+with quantum chemistry libraries for QeMLflow tutorials.
 
 Key Features:
 - Quantum circuit visualization for chemistry
@@ -1689,10 +1689,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.utils</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/utils.py</span>
+                    <span class="path">src/qemlflow/tutorials/utils.py</span>
                 </div>
                 <div class="api-description">
-                    Utility Functions for ChemML Tutorials
+                    Utility Functions for QeMLflow Tutorials
 =====================================
 
 This module provides utility functions and helper tools for creating effective
@@ -1724,10 +1724,10 @@ Key Features:
             <div class="api-item">
                 <h3 class="api-name">📦 tutorials.widgets</h3>
                 <div class="api-meta">
-                    <span class="path">src/chemml/tutorials/widgets.py</span>
+                    <span class="path">src/qemlflow/tutorials/widgets.py</span>
                 </div>
                 <div class="api-description">
-                    Interactive Widgets for ChemML Tutorials
+                    Interactive Widgets for QeMLflow Tutorials
 =======================================
 
 This module provides interactive widgets and components for creating engaging

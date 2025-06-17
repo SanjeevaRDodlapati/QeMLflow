@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Fix syntax errors in ChemML codebase systematically.
+Fix syntax errors in QeMLflow codebase systematically.
 """
 
 import os

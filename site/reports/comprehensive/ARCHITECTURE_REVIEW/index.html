@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/reports/comprehensive/ARCHITECTURE_REVIEW/">
+        <link rel="canonical" href="https://qemlflow.io/reports/comprehensive/ARCHITECTURE_REVIEW/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>🔍 ChemML Codebase Architecture & Redundancy Analysis - ChemML Documentation</title>
+        <title>🔍 QeMLflow Codebase Architecture & Redundancy Analysis - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-codebase-architecture-redundancy-analysis" class="md-skip">
+        <a href="#qemlflow-codebase-architecture-redundancy-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🔍 ChemML Codebase Architecture &amp; Redundancy Analysis
+              🔍 QeMLflow Codebase Architecture &amp; Redundancy Analysis
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -488,9 +488,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-duplicate-chemml_common-structures" class="md-nav__link">
+  <a href="#2-duplicate-qemlflow_common-structures" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Duplicate chemml_common Structures
+      2. Duplicate qemlflow_common Structures
     </span>
   </a>
   
@@ -732,14 +732,14 @@
 
 
 
-<h1 id="chemml-codebase-architecture-redundancy-analysis">🔍 ChemML Codebase Architecture &amp; Redundancy Analysis<a class="headerlink" href="#chemml-codebase-architecture-redundancy-analysis" title="Permanent link">&para;</a></h1>
-<p><strong>Comprehensive review of the current ChemML structure, identifying redundancies and organizational improvements</strong></p>
+<h1 id="qemlflow-codebase-architecture-redundancy-analysis">🔍 QeMLflow Codebase Architecture &amp; Redundancy Analysis<a class="headerlink" href="#qemlflow-codebase-architecture-redundancy-analysis" title="Permanent link">&para;</a></h1>
+<p><strong>Comprehensive review of the current QeMLflow structure, identifying redundancies and organizational improvements</strong></p>
 <p><em>Analysis conducted: June 14, 2025</em></p>
 <hr />
 <h2 id="executive-summary">📊 <strong>Executive Summary</strong><a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
 <h3 id="strengths">✅ <strong>Strengths</strong><a class="headerlink" href="#strengths" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Clean modular structure</strong> in <code>src/chemml/</code> with clear separation of concerns</li>
+<li><strong>Clean modular structure</strong> in <code>src/qemlflow/</code> with clear separation of concerns</li>
 <li><strong>Appropriate file sizes</strong> (largest module: 1,114 lines - reasonable)</li>
 <li><strong>Good test coverage</strong> with comprehensive test suites</li>
 <li><strong>Proper import hierarchy</strong> following dependency inversion principles</li>
@@ -747,7 +747,7 @@
 <h3 id="issues-identified">⚠️ <strong>Issues Identified</strong><a class="headerlink" href="#issues-identified" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Redundant directories and files</strong> scattered throughout the project</li>
-<li><strong>Duplicate chemml_common</strong> structures in multiple locations</li>
+<li><strong>Duplicate qemlflow_common</strong> structures in multiple locations</li>
 <li><strong>Empty directories</strong> cluttering the structure</li>
 <li><strong>Excessive documentation files</strong> with overlapping content</li>
 <li><strong>Backup files</strong> not properly archived</li>
@@ -755,7 +755,7 @@
 <hr />
 <h2 id="current-architecture-assessment">🏗️ <strong>Current Architecture Assessment</strong><a class="headerlink" href="#current-architecture-assessment" title="Permanent link">&para;</a></h2>
 <h3 id="core-structure-analysis-excellent"><strong>Core Structure Analysis</strong> ✅ <strong>EXCELLENT</strong><a class="headerlink" href="#core-structure-analysis-excellent" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="nx">src</span><span class="o">/</span><span class="nx">chemml</span><span class="o">/</span><span class="w">                     </span><span class="err">#</span><span class="w"> </span><span class="mi">17</span><span class="nx">K</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="p">(</span><span class="nx">well</span><span class="o">-</span><span class="nx">organized</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="nx">src</span><span class="o">/</span><span class="nx">qemlflow</span><span class="o">/</span><span class="w">                     </span><span class="err">#</span><span class="w"> </span><span class="mi">17</span><span class="nx">K</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="nx">total</span><span class="w"> </span><span class="p">(</span><span class="nx">well</span><span class="o">-</span><span class="nx">organized</span><span class="p">)</span>
 <span class="err">├──</span><span class="w"> </span><span class="nx">core</span><span class="o">/</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="err">🧩</span><span class="w"> </span><span class="nx">Foundation</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">891</span><span class="w"> </span><span class="nx">lines</span><span class="p">)</span>
 <span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">featurizers</span><span class="p">.</span><span class="nx">py</span><span class="w">         </span><span class="err">#</span><span class="w"> </span><span class="mi">659</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">appropriate</span>
 <span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">py</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="mi">640</span><span class="w"> </span><span class="nx">lines</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">good</span>
@@ -780,10 +780,10 @@
 ./outputs/<span class="w">                     </span><span class="c1"># Empty</span>
 </code></pre></div>
 
-<h4 id="2-duplicate-chemml_common-structures"><strong>2. Duplicate chemml_common Structures</strong><a class="headerlink" href="#2-duplicate-chemml_common-structures" title="Permanent link">&para;</a></h4>
+<h4 id="2-duplicate-qemlflow_common-structures"><strong>2. Duplicate qemlflow_common Structures</strong><a class="headerlink" href="#2-duplicate-qemlflow_common-structures" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Root level (legacy)</span>
-./chemml_common/<span class="w">               </span><span class="c1"># REDUNDANT - functionality moved to src/chemml/core/</span>
-./notebooks/quickstart_bootcamp/chemml_common/<span class="w">  </span><span class="c1"># DUPLICATE</span>
+./qemlflow_common/<span class="w">               </span><span class="c1"># REDUNDANT - functionality moved to src/qemlflow/core/</span>
+./notebooks/quickstart_bootcamp/qemlflow_common/<span class="w">  </span><span class="c1"># DUPLICATE</span>
 </code></pre></div>
 
 <h4 id="3-backup-files-in-working-directory"><strong>3. Backup Files in Working Directory</strong><a class="headerlink" href="#3-backup-files-in-working-directory" title="Permanent link">&para;</a></h4>
@@ -844,11 +844,11 @@ qsar.py<span class="w">                        </span><span class="c1"># 766 lin
 <div class="codehilite"><pre><span></span><code><span class="c1"># Remove empty directories</span>
 rm<span class="w"> </span>-rf<span class="w"> </span>config/<span class="w"> </span>models/<span class="w"> </span>outputs/
 
-<span class="c1"># Remove root-level redundant chemml_common</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>chemml_common/
+<span class="c1"># Remove root-level redundant qemlflow_common</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>qemlflow_common/
 
-<span class="c1"># Clean up duplicate notebook chemml_common</span>
-rm<span class="w"> </span>-rf<span class="w"> </span>notebooks/quickstart_bootcamp/chemml_common/
+<span class="c1"># Clean up duplicate notebook qemlflow_common</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>notebooks/quickstart_bootcamp/qemlflow_common/
 
 <span class="c1"># Remove backup files from active directories</span>
 rm<span class="w"> </span>tests/unit/*_backup.py
@@ -883,7 +883,7 @@ docs/
 <hr />
 <h2 id="final-architecture-recommendations">🎯 <strong>Final Architecture Recommendations</strong><a class="headerlink" href="#final-architecture-recommendations" title="Permanent link">&para;</a></h2>
 <h3 id="current-state-excellent-foundation"><strong>Current State:</strong> 🏆 <strong>EXCELLENT FOUNDATION</strong><a class="headerlink" href="#current-state-excellent-foundation" title="Permanent link">&para;</a></h3>
-<p>The core <code>src/chemml/</code> structure is <strong>professionally organized</strong> and represents a <strong>significant achievement</strong> in modular design. The architecture supports:</p>
+<p>The core <code>src/qemlflow/</code> structure is <strong>professionally organized</strong> and represents a <strong>significant achievement</strong> in modular design. The architecture supports:</p>
 <ul>
 <li>✅ <strong>Scalability:</strong> Easy to add new models and features</li>
 <li>✅ <strong>Maintainability:</strong> Clear boundaries and responsibilities</li>
@@ -939,7 +939,7 @@ docs/
 </ol>
 <hr />
 <h2 id="conclusion">🎉 <strong>Conclusion</strong><a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>The ChemML codebase has <strong>achieved an excellent modular architecture</strong>. The identified redundancies are <strong>organizational debt</strong> rather than fundamental issues. After cleanup, this will be a <strong>reference-quality</strong> scientific Python project structure.</p>
+<p>The QeMLflow codebase has <strong>achieved an excellent modular architecture</strong>. The identified redundancies are <strong>organizational debt</strong> rather than fundamental issues. After cleanup, this will be a <strong>reference-quality</strong> scientific Python project structure.</p>
 <p><strong>Overall Grade: A- (becomes A+ after cleanup)</strong></p>
 <p><em>The core architecture redesign was a major success - now just need to clean up the supporting files.</em></p>
 

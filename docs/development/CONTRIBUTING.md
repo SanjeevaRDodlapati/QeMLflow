@@ -1,6 +1,6 @@
-# Contributing to ChemML
+# Contributing to QeMLflow
 
-Thank you for your interest in contributing to ChemML! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to QeMLflow! This document provides guidelines and information for contributors.
 
 ## Code of Conduct
 
@@ -12,14 +12,14 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 
 1. **Fork and clone the repository**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/ChemML.git
-   cd ChemML
+   git clone https://github.com/YOUR_USERNAME/QeMLflow.git
+   cd QeMLflow
    ```
 
 2. **Create a virtual environment**:
    ```bash
-   python -m venv chemml_dev
-   source chemml_dev/bin/activate  # On Windows: chemml_dev\Scripts\activate
+   python -m venv qemlflow_dev
+   source qemlflow_dev/bin/activate  # On Windows: qemlflow_dev\Scripts\activate
    ```
 
 3. **Install development dependencies**:
@@ -116,8 +116,8 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 ## Project Structure
 
 ```
-ChemML/
-├── src/chemml/           # Main package source
+QeMLflow/
+├── src/qemlflow/           # Main package source
 │   ├── core/            # Core functionality
 │   ├── models/          # ML models
 │   ├── preprocessing/   # Data preprocessing
@@ -169,7 +169,7 @@ pytest
 pytest tests/test_models.py
 
 # Run with coverage
-pytest --cov=src/chemml
+pytest --cov=src/qemlflow
 
 # Run integration tests
 pytest tests/integration/
@@ -227,9 +227,9 @@ Releases are automated through our CI/CD pipeline:
 
 ## Getting Help
 
-- **GitHub Discussions**: [Ask questions and discuss ideas](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
-- **Issues**: [Report bugs or request features](https://github.com/SanjeevaRDodlapati/ChemML/issues)
-- **Documentation**: Check our [comprehensive docs](https://sanjeevardodlapati.github.io/ChemML/)
+- **GitHub Discussions**: [Ask questions and discuss ideas](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
+- **Issues**: [Report bugs or request features](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
+- **Documentation**: Check our [comprehensive docs](https://sanjeevardodlapati.github.io/QeMLflow/)
 
 ## Recognition
 
@@ -238,4 +238,4 @@ Contributors are recognized in:
 - Release notes
 - Documentation acknowledgments
 
-Thank you for contributing to ChemML! 🎉
+Thank you for contributing to QeMLflow! 🎉

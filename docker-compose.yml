@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   # Development environment
-  chemml-dev:
+  qemlflow-dev:
     build:
       context: .
       target: development
     volumes:
       - .:/app
-      - chemml-cache:/home/chemml/.cache
+      - qemlflow-cache:/home/qemlflow/.cache
     environment:
       - PYTHONPATH=/app
     working_dir: /app
@@ -17,7 +17,7 @@ services:
     tty: true
 
   # Jupyter notebook server
-  chemml-notebook:
+  qemlflow-notebook:
     build:
       context: .
       target: notebook
@@ -26,38 +26,38 @@ services:
     volumes:
       - ./notebooks:/app/notebooks
       - ./data:/app/data
-      - chemml-notebook-cache:/home/chemml/.cache
+      - qemlflow-notebook-cache:/home/qemlflow/.cache
     environment:
       - JUPYTER_ENABLE_LAB=yes
-      - JUPYTER_TOKEN=chemml
-    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=chemml
+      - JUPYTER_TOKEN=qemlflow
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=qemlflow
 
   # Production environment
-  chemml-prod:
+  qemlflow-prod:
     build:
       context: .
       target: production
     environment:
       - PYTHONPATH=/app
-    command: python -c "import src; print('ChemML ready for production use')"
+    command: python -c "import src; print('QeMLflow ready for production use')"
 
   # Testing environment
-  chemml-test:
+  qemlflow-test:
     build:
       context: .
       target: development
     volumes:
       - .:/app
-      - chemml-test-cache:/home/chemml/.cache
+      - qemlflow-test-cache:/home/qemlflow/.cache
     environment:
       - PYTHONPATH=/app
     working_dir: /app
     command: pytest tests/ -v
     depends_on:
-      - chemml-dev
+      - qemlflow-dev
 
   # Documentation server
-  chemml-docs:
+  qemlflow-docs:
     build:
       context: .
       target: development
@@ -65,16 +65,16 @@ services:
       - "8000:8000"
     volumes:
       - ./docs:/app/docs
-      - chemml-docs-cache:/home/chemml/.cache
+      - qemlflow-docs-cache:/home/qemlflow/.cache
     working_dir: /app
     command: mkdocs serve --dev-addr=0.0.0.0:8000
 
 volumes:
-  chemml-cache:
-  chemml-notebook-cache:
-  chemml-test-cache:
-  chemml-docs-cache:
+  qemlflow-cache:
+  qemlflow-notebook-cache:
+  qemlflow-test-cache:
+  qemlflow-docs-cache:
 
 networks:
   default:
-    name: chemml-network
+    name: qemlflow-network

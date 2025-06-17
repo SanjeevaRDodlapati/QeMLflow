@@ -1,12 +1,12 @@
-# ChemML Quick Start Guide
+# QeMLflow Quick Start Guide
 
 **Get started with computational molecular modeling and machine learning in 15 minutes!**
 
 ---
 
-## 🎯 Welcome to ChemML
+## 🎯 Welcome to QeMLflow
 
-ChemML is your gateway to computational drug discovery, combining machine learning and quantum computing for molecular modeling. This guide gets you running with your first molecular ML model quickly.
+QeMLflow is your gateway to computational drug discovery, combining machine learning and quantum computing for molecular modeling. This guide gets you running with your first molecular ML model quickly.
 
 ### 🏃‍♂️ Quick Start Options
 
@@ -25,13 +25,13 @@ Choose your installation method:
 
 #### **Standard Installation (Recommended)**
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 #### **Development Installation**
 ```bash
-git clone https://github.com/SanjeevaRDodlapati/ChemML.git
-cd ChemML
+git clone https://github.com/SanjeevaRDodlapati/QeMLflow.git
+cd QeMLflow
 pip install -e ".[dev]"
 ```
 
@@ -43,13 +43,13 @@ pip install -r requirements-core.txt
 ### Step 2: Verify Installation (2 minutes)
 
 ```python
-import chemml
-print(f"ChemML version: {chemml.__version__}")
+import qemlflow
+print(f"QeMLflow version: {qemlflow.__version__}")
 
 # Test basic functionality
-from chemml.preprocessing import MolecularDescriptors
+from qemlflow.preprocessing import MolecularDescriptors
 desc = MolecularDescriptors()
-print("✅ ChemML installed successfully!")
+print("✅ QeMLflow installed successfully!")
 ```
 
 ### Step 3: Your First Success (8 minutes)
@@ -57,9 +57,9 @@ print("✅ ChemML installed successfully!")
 #### **Basic Molecular Property Prediction**
 
 ```python
-import chemml
-from chemml.models import AutoMLRegressor
-from chemml.preprocessing import MolecularDescriptors
+import qemlflow
+from qemlflow.models import AutoMLRegressor
+from qemlflow.preprocessing import MolecularDescriptors
 
 # Sample SMILES strings (molecular representations)
 molecules = [
@@ -88,7 +88,7 @@ print("Predictions:", predictions)
 #### **Using External Models**
 
 ```python
-from chemml.integrations import get_manager
+from qemlflow.integrations import get_manager
 
 # Get integration manager
 manager = get_manager()
@@ -126,15 +126,15 @@ if "boltz" in manager.list_available_models():
 **Quick Integration Test**:
 ```bash
 # Clone and test
-git clone https://github.com/SanjeevaRDodlapati/ChemML.git
-cd ChemML
+git clone https://github.com/SanjeevaRDodlapati/QeMLflow.git
+cd QeMLflow
 python examples/quickstart/basic_integration.py
 ```
 
 **Advanced Features**:
 ```python
 # Performance monitoring
-from chemml.integrations.core import PerformanceMonitor
+from qemlflow.integrations.core import PerformanceMonitor
 
 monitor = PerformanceMonitor()
 with monitor.track_performance():
@@ -142,7 +142,7 @@ with monitor.track_performance():
     pass
 
 # Experiment tracking
-from chemml.integrations.utils import ExperimentTracker
+from qemlflow.integrations.utils import ExperimentTracker
 
 tracker = ExperimentTracker(backend="wandb")
 tracker.start_experiment("my_experiment")
@@ -199,8 +199,8 @@ tracker.start_experiment("my_experiment")
 ### **Molecular Property Prediction**
 ```python
 # examples/quickstart/molecular_properties.py
-from chemml.preprocessing import MolecularDescriptors
-from chemml.models import GradientBoostingRegressor
+from qemlflow.preprocessing import MolecularDescriptors
+from qemlflow.models import GradientBoostingRegressor
 
 # Load data
 molecules = ["CCO", "CC(C)O", "CCC"]
@@ -215,7 +215,7 @@ model.fit(descriptors, properties)
 ### **Protein Structure Prediction**
 ```python
 # examples/integrations/boltz/basic_demo.py
-from chemml.integrations import get_manager
+from qemlflow.integrations import get_manager
 
 manager = get_manager()
 boltz = manager.get_adapter("boltz")
@@ -228,7 +228,7 @@ structure = boltz.predict_structure(sequence)
 ### **Drug Discovery Workflow**
 ```python
 # examples/workflows/drug_discovery.py
-from chemml.workflows import DrugDiscoveryPipeline
+from qemlflow.workflows import DrugDiscoveryPipeline
 
 pipeline = DrugDiscoveryPipeline()
 results = pipeline.run(
@@ -243,15 +243,15 @@ results = pipeline.run(
 
 ### **Installation Issues**
 
-**ImportError: No module named 'chemml'**
+**ImportError: No module named 'qemlflow'**
 ```bash
 # Ensure you're in the right environment
 which python
-pip list | grep chemml
+pip list | grep qemlflow
 
 # Reinstall if needed
-pip uninstall chemml
-pip install chemml
+pip uninstall qemlflow
+pip install qemlflow
 ```
 
 **GPU/CUDA Issues**
@@ -266,7 +266,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 **Memory Errors**
 ```python
 # Use memory-efficient options
-from chemml.integrations.core import PerformanceMonitor
+from qemlflow.integrations.core import PerformanceMonitor
 
 monitor = PerformanceMonitor()
 monitor.set_memory_limit("4GB")  # Adjust as needed
@@ -275,9 +275,9 @@ monitor.set_memory_limit("4GB")  # Adjust as needed
 ### **Getting Help**
 
 - **📚 Documentation**: [Full Documentation](README.md)
-- **💬 Community**: [GitHub Discussions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
-- **🐛 Issues**: [Bug Reports](https://github.com/SanjeevaRDodlapati/ChemML/issues)
-- **📧 Email**: [Support Contact](mailto:support@chemml.org)
+- **💬 Community**: [GitHub Discussions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
+- **🐛 Issues**: [Bug Reports](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
+- **📧 Email**: [Support Contact](mailto:support@qemlflow.org)
 
 ---
 
@@ -287,7 +287,7 @@ monitor.set_memory_limit("4GB")  # Adjust as needed
 1. **Explore Examples**: Browse `examples/` folder for working demonstrations
 2. **Join Bootcamp**: Follow the 7-day intensive learning program
 3. **Read Documentation**: Dive deeper with comprehensive guides
-4. **Contribute**: Help improve ChemML for the community
+4. **Contribute**: Help improve QeMLflow for the community
 
 ### **Recommended Learning Sequence**
 1. **Week 1**: Complete this quick start + basic examples
@@ -297,6 +297,6 @@ monitor.set_memory_limit("4GB")  # Adjust as needed
 
 ---
 
-**🎉 Congratulations! You're ready to explore computational molecular modeling with ChemML!**
+**🎉 Congratulations! You're ready to explore computational molecular modeling with QeMLflow!**
 
-*For the most current information and updates, always refer to the [online documentation](https://chemml.readthedocs.io) and [GitHub repository](https://github.com/SanjeevaRDodlapati/ChemML).*
+*For the most current information and updates, always refer to the [online documentation](https://qemlflow.readthedocs.io) and [GitHub repository](https://github.com/SanjeevaRDodlapati/QeMLflow).*

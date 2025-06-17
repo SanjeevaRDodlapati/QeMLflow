@@ -1,28 +1,28 @@
-# ChemML: Advanced Machine Learning for Chemistry
+# QeMLflow: Advanced Machine Learning for Chemistry
 
-[![CI Status](https://github.com/hachmannlab/chemml/workflows/CI/badge.svg)](https://github.com/hachmannlab/chemml/actions)
-[![Coverage](https://codecov.io/gh/hachmannlab/chemml/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/chemml)
+[![CI Status](https://github.com/hachmannlab/qemlflow/workflows/CI/badge.svg)](https://github.com/hachmannlab/qemlflow/actions)
+[![Coverage](https://codecov.io/gh/hachmannlab/qemlflow/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/qemlflow)
 [![License: BSD](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
-**ChemML** is a comprehensive, enterprise-grade machine learning framework specifically designed for chemistry and materials science applications. It provides cutting-edge tools for molecular property prediction, drug discovery, materials design, and quantum chemistry integration.
+**QeMLflow** is a comprehensive, enterprise-grade machine learning framework specifically designed for chemistry and materials science applications. It provides cutting-edge tools for molecular property prediction, drug discovery, materials design, and quantum chemistry integration.
 
 ## 🚀 Quick Start
 
 ```python
-import chemml
+import qemlflow
 
 # Load sample data
-data = chemml.load_sample_data("molecules")
+data = qemlflow.load_sample_data("molecules")
 
 # Generate molecular fingerprints
-fingerprints = chemml.morgan_fingerprints(data.smiles)
+fingerprints = qemlflow.morgan_fingerprints(data.smiles)
 
 # Create and train a model
-model = chemml.create_rf_model(fingerprints, data.targets)
+model = qemlflow.create_rf_model(fingerprints, data.targets)
 
 # Evaluate performance
-results = chemml.quick_classification_eval(model, fingerprints, data.targets)
+results = qemlflow.quick_classification_eval(model, fingerprints, data.targets)
 print(f"Accuracy: {results.accuracy:.3f}")
 ```
 
@@ -52,33 +52,33 @@ print(f"Accuracy: {results.accuracy:.3f}")
 
 ### Standard Installation
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### Development Installation
 ```bash
-git clone https://github.com/hachmannlab/chemml.git
-cd chemml
+git clone https://github.com/hachmannlab/qemlflow.git
+cd qemlflow
 pip install -e ".[dev]"
 ```
 
 ### With Optional Dependencies
 ```bash
 # For quantum chemistry features
-pip install "chemml[quantum]"
+pip install "qemlflow[quantum]"
 
 # For deep learning capabilities
-pip install "chemml[deep]"
+pip install "qemlflow[deep]"
 
 # For full research suite
-pip install "chemml[research]"
+pip install "qemlflow[research]"
 ```
 
 ## 🎯 Use Cases
 
 ### 1. **Molecular Property Prediction**
 ```python
-from chemml.core import molecular_properties
+from qemlflow.core import molecular_properties
 
 # Predict solubility for a set of molecules
 solubility = molecular_properties.predict_solubility(smiles_list)
@@ -86,7 +86,7 @@ solubility = molecular_properties.predict_solubility(smiles_list)
 
 ### 2. **Drug Discovery Pipeline**
 ```python
-from chemml.research.drug_discovery import VirtualScreening
+from qemlflow.research.drug_discovery import VirtualScreening
 
 # Screen compound library
 screening = VirtualScreening(target_protein="1abc")
@@ -95,7 +95,7 @@ hits = screening.screen_library(compound_library)
 
 ### 3. **Materials Design**
 ```python
-from chemml.research.materials_discovery import PropertyOptimizer
+from qemlflow.research.materials_discovery import PropertyOptimizer
 
 # Optimize material properties
 optimizer = PropertyOptimizer(target_properties=["bandgap", "stability"])
@@ -125,8 +125,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 ```bash
 # Clone and setup development environment
-git clone https://github.com/hachmannlab/chemml.git
-cd chemml
+git clone https://github.com/hachmannlab/qemlflow.git
+cd qemlflow
 make dev-install  # Sets up environment and pre-commit hooks
 ```
 
@@ -144,7 +144,7 @@ make test-coverage
 
 ## 📊 Performance & Benchmarks
 
-ChemML has been benchmarked on standard chemistry datasets:
+QeMLflow has been benchmarked on standard chemistry datasets:
 
 | Dataset | Task | Accuracy | Speed |
 |---------|------|----------|-------|
@@ -162,26 +162,26 @@ ChemML has been benchmarked on standard chemistry datasets:
 
 ## 📄 Citation
 
-If you use ChemML in your research, please cite:
+If you use QeMLflow in your research, please cite:
 
 ```bibtex
-@software{chemml2024,
-  title={ChemML: Machine Learning for Chemistry},
+@software{qemlflow2024,
+  title={QeMLflow: Machine Learning for Chemistry},
   author={Hachmann Lab},
   year={2024},
-  url={https://github.com/hachmannlab/chemml}
+  url={https://github.com/hachmannlab/qemlflow}
 }
 ```
 
 ## 📝 License
 
-ChemML is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for details.
+QeMLflow is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for details.
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/hachmannlab/chemml/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/hachmannlab/chemml/discussions)
-- **Documentation**: [https://chemml.readthedocs.io](https://chemml.readthedocs.io)
+- **Issues**: [GitHub Issues](https://github.com/hachmannlab/qemlflow/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/hachmannlab/qemlflow/discussions)
+- **Documentation**: [https://qemlflow.readthedocs.io](https://qemlflow.readthedocs.io)
 
 ---
 

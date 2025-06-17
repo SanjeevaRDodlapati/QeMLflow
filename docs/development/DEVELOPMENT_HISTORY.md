@@ -1,11 +1,11 @@
-# ChemML Development History & Milestones
+# QeMLflow Development History & Milestones
 
 *Consolidated from all phase reports and development documentation*
 
 ## 📅 **Development Timeline**
 
 ### **Phase 4-8: Core Framework Enhancement (June 2025)**
-*Complete enhancement of ChemML from basic library to production-ready framework*
+*Complete enhancement of QeMLflow from basic library to production-ready framework*
 
 ---
 
@@ -181,7 +181,7 @@
 
 ## 🎉 **Final Achievement Summary**
 
-**ChemML v0.2.0 represents a complete transformation** from a basic machine learning library to a world-class, production-ready framework for chemistry applications.
+**QeMLflow v0.2.0 represents a complete transformation** from a basic machine learning library to a world-class, production-ready framework for chemistry applications.
 
 ### **Key Success Metrics**:
 - ✅ **100x performance improvement** in import speed

@@ -1,5 +1,5 @@
 """
-ChemML Tutorial Framework - Core Module
+QeMLflow Tutorial Framework - Core Module
 =======================================
 
 Provides environment setup, data loading, and basic tutorial infrastructure.
@@ -12,9 +12,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-# Import ChemML core modules
-from chemml.core.utils import check_environment as core_check_environment
-from chemml.core.utils import setup_logging as core_setup_logging
+# Import QeMLflow core modules
+from qemlflow.core.utils import check_environment as core_check_environment
+from qemlflow.core.utils import setup_logging as core_setup_logging
 
 # Optional imports with fallbacks
 try:
@@ -47,7 +47,7 @@ def setup_learning_environment(
     suppress_warnings: bool = True,
 ) -> Dict[str, Any]:
     """
-    Setup the learning environment for ChemML tutorials.
+    Setup the learning environment for QeMLflow tutorials.
 
     This function configures logging, plotting style, random seeds,
     and checks available dependencies for a consistent tutorial experience.
@@ -63,7 +63,7 @@ def setup_learning_environment(
     """
     # Setup logging
     core_setup_logging(level=level)
-    logger.info("Setting up ChemML learning environment")
+    logger.info("Setting up QeMLflow learning environment")
 
     # Set random seeds for reproducibility
     np.random.seed(random_seed)
@@ -108,7 +108,7 @@ def load_tutorial_data(
     dataset_name: str, cache_dir: Optional[str] = None, force_download: bool = False
 ) -> Union[pd.DataFrame, Dict[str, Any]]:
     """
-    Load educational datasets for ChemML tutorials.
+    Load educational datasets for QeMLflow tutorials.
 
     Args:
         dataset_name: Name of the dataset to load

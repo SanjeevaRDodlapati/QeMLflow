@@ -1,8 +1,8 @@
 #!/bin/bash
-# ChemML Best-in-Class Libraries Installation Script
+# QeMLflow Best-in-Class Libraries Installation Script
 # =================================================
 
-echo "🧬 Installing ChemML Best-in-Class Libraries..."
+echo "🧬 Installing QeMLflow Best-in-Class Libraries..."
 echo "================================================"
 
 # Function to check if command exists
@@ -74,8 +74,8 @@ pip install spacy>=3.7.0
 pip install networkx>=3.2.0
 pip install sentence-transformers>=2.2.2
 
-# Install ChemML-specific requirements
-echo "🔄 Installing ChemML requirements..."
+# Install QeMLflow-specific requirements
+echo "🔄 Installing QeMLflow requirements..."
 pip install -r requirements.txt
 
 # Verify key installations
@@ -103,7 +103,7 @@ for lib, name in libraries:
 
 if failed:
     print(f'\n⚠️  Some libraries failed to install: {failed}')
-    print('You can continue with ChemML, but some features may not be available.')
+    print('You can continue with QeMLflow, but some features may not be available.')
 else:
     print('\n🎉 All core libraries installed successfully!')
 "

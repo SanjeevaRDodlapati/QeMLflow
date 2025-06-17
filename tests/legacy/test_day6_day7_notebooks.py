@@ -554,7 +554,7 @@ def main():
     parser.add_argument(
         "--base-path",
         "-p",
-        default="/Users/sanjeevadodlapati/Downloads/Repos/ChemML/notebooks/quickstart_bootcamp/days",
+        default="/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/notebooks/quickstart_bootcamp/days",
         help="Base path to notebooks directory",
     )
 

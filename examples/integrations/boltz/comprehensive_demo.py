@@ -1,8 +1,8 @@
-Boltz Integration Examples for ChemML
+Boltz Integration Examples for QeMLflow
 =====================================
 
 Comprehensive examples showing how to use the Boltz biomolecular interaction
-model within the ChemML framework. This consolidates functionality from
+model within the QeMLflow framework. This consolidates functionality from
 multiple demo files into a single, well-organized example.
 
 1. Basic integration and setup
@@ -21,14 +21,14 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-# Add ChemML integrations to path
+# Add QeMLflow integrations to path
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir.parent.parent))
 
 
 def main():
     """Run comprehensive Boltz integration examples."""
-    print("🧬 ChemML Boltz Integration Examples")
+    print("🧬 QeMLflow Boltz Integration Examples")
     print("=" * 60)
 
     # Run examples in sequence
@@ -60,9 +60,9 @@ def demo_basic_integration():
     print("-" * 40)
 
     try:
-        # Import ChemML integrations
-        from chemml.integrations import get_manager
-        from chemml.integrations.adapters.molecular import BoltzAdapter
+        # Import QeMLflow integrations
+        from qemlflow.integrations import get_manager
+        from qemlflow.integrations.adapters.molecular import BoltzAdapter
 
         # Get integration manager
         manager = get_manager()
@@ -94,7 +94,7 @@ def demo_basic_integration():
         print("   ✓ Adapter would be ready for predictions")
 
     except ImportError as e:
-        print(f"⚠️  ChemML integrations not fully available: {e}")
+        print(f"⚠️  QeMLflow integrations not fully available: {e}")
         print("   This is expected in test mode")
 
 
@@ -258,7 +258,7 @@ def demo_performance_monitoring():
     # Show performance monitoring setup
     monitoring_example = """
     # Actual monitoring code:
-    from chemml.integrations.core import PerformanceMonitor
+    from qemlflow.integrations.core import PerformanceMonitor
 
     monitor = PerformanceMonitor()
     boltz = manager.get_adapter('boltz')
@@ -303,7 +303,7 @@ def demo_experiment_tracking():
     # Show experiment tracking setup
     tracking_example = """
     # Actual experiment tracking code:
-    from chemml.integrations.utils import ExperimentTracker
+    from qemlflow.integrations.utils import ExperimentTracker
 
     tracker = ExperimentTracker(backend="wandb")  # or "mlflow"
     boltz = manager.get_adapter('boltz')

@@ -152,7 +152,7 @@ def check_python_environment():
 
 def main():
     """Run quick status checks."""
-    print("⚡ ChemML Quick Status Checker")
+    print("⚡ QeMLflow Quick Status Checker")
     print("=" * 50)
     print(f"Timestamp: {datetime.now().isoformat()}")
     print()

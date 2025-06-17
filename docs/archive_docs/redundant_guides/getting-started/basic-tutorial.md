@@ -1,10 +1,10 @@
 # Basic Tutorial
 
-This tutorial will walk you through the fundamental concepts and usage patterns of ChemML.
+This tutorial will walk you through the fundamental concepts and usage patterns of QeMLflow.
 
 ## Overview
 
-ChemML provides a comprehensive framework for molecular machine learning. This tutorial covers:
+QeMLflow provides a comprehensive framework for molecular machine learning. This tutorial covers:
 
 1. **Data Loading and Preprocessing**
 2. **Molecular Descriptors and Fingerprints**
@@ -14,28 +14,28 @@ ChemML provides a comprehensive framework for molecular machine learning. This t
 
 ## Prerequisites
 
-Before starting, ensure you have ChemML installed:
+Before starting, ensure you have QeMLflow installed:
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ## Tutorial Steps
 
-### Step 1: Import ChemML
+### Step 1: Import QeMLflow
 
 ```python
-import chemml
+import qemlflow
 import pandas as pd
 import numpy as np
 
-print(f"ChemML version: {chemml.__version__}")
+print(f"QeMLflow version: {qemlflow.__version__}")
 ```
 
 ### Step 2: Load Sample Data
 
 ```python
-from chemml.datasets import load_sample_molecules
+from qemlflow.datasets import load_sample_molecules
 
 # Load built-in sample dataset
 molecules, properties = load_sample_molecules()
@@ -47,7 +47,7 @@ print(f"Target properties shape: {properties.shape}")
 ### Step 3: Generate Molecular Descriptors
 
 ```python
-from chemml.preprocessing import MolecularDescriptors
+from qemlflow.preprocessing import MolecularDescriptors
 
 # Create descriptor generator
 descriptor_gen = MolecularDescriptors(
@@ -77,7 +77,7 @@ print(f"Test set: {X_test.shape}")
 ### Step 5: Train a Model
 
 ```python
-from chemml.models import AutoMLRegressor
+from qemlflow.models import AutoMLRegressor
 
 # Create AutoML model
 model = AutoMLRegressor(
@@ -125,7 +125,7 @@ plt.show()
 ### Experiment Tracking
 
 ```python
-from chemml.monitoring import ExperimentTracker
+from qemlflow.monitoring import ExperimentTracker
 
 # Initialize tracker
 tracker = ExperimentTracker(project="tutorial-project")
@@ -146,7 +146,7 @@ with tracker.track_experiment("automl_model"):
 ### Custom Preprocessing Pipeline
 
 ```python
-from chemml.preprocessing import MolecularPreprocessor
+from qemlflow.preprocessing import MolecularPreprocessor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -163,7 +163,7 @@ X_processed = preprocessor.fit_transform(molecules)
 ### Ensemble Methods
 
 ```python
-from chemml.ensemble import EnsembleRegressor
+from qemlflow.ensemble import EnsembleRegressor
 
 # Create ensemble model
 ensemble = EnsembleRegressor(
@@ -182,7 +182,7 @@ print(f"Ensemble R²: {ensemble_score:.4f}")
 1. **[User Guide](../user-guide/overview.md)** - Explore advanced features
 2. **[API Reference](../api/core.md)** - Detailed API documentation
 3. **[Examples](../examples/basic.md)** - More practical examples
-4. **[Contributing](../development/contributing.md)** - Contribute to ChemML
+4. **[Contributing](../development/contributing.md)** - Contribute to QeMLflow
 
 ## Troubleshooting
 
@@ -194,6 +194,6 @@ print(f"Ensemble R²: {ensemble_score:.4f}")
 
 ### Getting Help
 
-- **GitHub Issues**: [Report problems](https://github.com/SanjeevaRDodlapati/ChemML/issues)
-- **Discussions**: [Ask questions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
-- **Documentation**: [Full documentation](https://sanjeevardodlapati.github.io/ChemML/)
+- **GitHub Issues**: [Report problems](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
+- **Discussions**: [Ask questions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
+- **Documentation**: [Full documentation](https://sanjeevardodlapati.github.io/QeMLflow/)

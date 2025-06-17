@@ -1,4 +1,4 @@
-# ChemML Notebooks Integration & New Module Creation - Comprehensive Updated Plan
+# QeMLflow Notebooks Integration & New Module Creation - Comprehensive Updated Plan
 
 ## 📊 Executive Summary & Key Findings
 
@@ -12,13 +12,13 @@ While our core codebase is robust, several key components are missing that are e
 
 ### **1. Tutorial Framework Module** ⭐⭐⭐⭐⭐ **CRITICAL**
 
-**Location**: `src/chemml/tutorials/`
+**Location**: `src/qemlflow/tutorials/`
 
 **Why Needed**: Notebooks currently implement custom assessment frameworks and tutorial utilities. This creates massive redundancy and inconsistency.
 
 **Functionality Required**:
 ```python
-# src/chemml/tutorials/__init__.py
+# src/qemlflow/tutorials/__init__.py
 from .core import (
     setup_learning_environment,
     load_tutorial_data,
@@ -48,13 +48,13 @@ from .data import (
 
 ### **2. Interactive Widgets Module** ⭐⭐⭐⭐ **HIGH PRIORITY**
 
-**Location**: `src/chemml/tutorials/widgets/`
+**Location**: `src/qemlflow/tutorials/widgets/`
 
 **Why Needed**: Notebooks contain complex interactive assessment widgets that are duplicated across multiple files.
 
 **Functionality Required**:
 ```python
-# src/chemml/tutorials/widgets.py
+# src/qemlflow/tutorials/widgets.py
 class InteractiveAssessment:
     def __init__(self, section, concepts, activities):
         self.section = section
@@ -85,13 +85,13 @@ class ProgressDashboard:
 
 ### **3. Educational Data Module** ⭐⭐⭐⭐ **HIGH PRIORITY**
 
-**Location**: `src/chemml/tutorials/data/`
+**Location**: `src/qemlflow/tutorials/data/`
 
 **Why Needed**: Notebooks repeatedly download/create the same educational datasets.
 
 **Functionality Required**:
 ```python
-# src/chemml/tutorials/data.py
+# src/qemlflow/tutorials/data.py
 class EducationalDatasets:
     @staticmethod
     def load_drug_molecules():
@@ -116,13 +116,13 @@ class EducationalDatasets:
 
 ### **4. Environment Setup & Validation Module** ⭐⭐⭐ **MEDIUM PRIORITY**
 
-**Location**: `src/chemml/tutorials/environment.py`
+**Location**: `src/qemlflow/tutorials/environment.py`
 
 **Why Needed**: Every notebook reimplements environment checking and fallback systems.
 
 **Functionality Required**:
 ```python
-# src/chemml/tutorials/environment.py
+# src/qemlflow/tutorials/environment.py
 class EnvironmentManager:
     def check_dependencies(self):
         """Check all required dependencies"""
@@ -144,13 +144,13 @@ class EnvironmentManager:
 
 ### **5. Quantum Tutorial Integration Module** ⭐⭐⭐ **MEDIUM PRIORITY**
 
-**Location**: `src/chemml/tutorials/quantum/`
+**Location**: `src/qemlflow/tutorials/quantum/`
 
 **Why Needed**: Quantum notebooks have unique requirements and should integrate with our quantum research modules.
 
 **Functionality Required**:
 ```python
-# src/chemml/tutorials/quantum.py
+# src/qemlflow/tutorials/quantum.py
 class QuantumTutorialHelper:
     def check_quantum_environment(self):
         """Check quantum computing environment"""
@@ -170,14 +170,14 @@ class QuantumTutorialHelper:
 ### **Phase 0: New Module Creation (Week 1-2) - FOUNDATION**
 
 #### **Priority 1: Tutorial Framework Creation**
-- [ ] Create `src/chemml/tutorials/` directory structure
+- [ ] Create `src/qemlflow/tutorials/` directory structure
 - [ ] Implement `LearningAssessment` class
 - [ ] Create `ProgressTracker` functionality
 - [ ] Build `setup_learning_environment()` function
 - [ ] Test with one notebook integration
 
 #### **Priority 2: Educational Data Infrastructure**
-- [ ] Create `src/chemml/tutorials/data/` module
+- [ ] Create `src/qemlflow/tutorials/data/` module
 - [ ] Implement educational dataset loaders
 - [ ] Create synthetic data generators
 - [ ] Add offline learning support
@@ -205,8 +205,8 @@ class BasicAssessment:
 **After (Using New Modules)**:
 ```python
 # Clean integration
-from chemml.tutorials import LearningAssessment, setup_learning_environment
-from chemml.tutorials.data import EducationalDatasets
+from qemlflow.tutorials import LearningAssessment, setup_learning_environment
+from qemlflow.tutorials.data import EducationalDatasets
 
 # Setup with one line
 assessment = LearningAssessment(student_id="demo", section="fundamentals")
@@ -225,9 +225,9 @@ drug_molecules = EducationalDatasets.load_drug_molecules()
 
 ```python
 # New streamlined approach (using existing + new modules)
-from chemml.integrations.deepchem_integration import DeepChemModelWrapper
-from chemml.tutorials import setup_learning_environment, ProgressTracker
-from chemml.tutorials.data import get_sample_datasets
+from qemlflow.integrations.deepchem_integration import DeepChemModelWrapper
+from qemlflow.tutorials import setup_learning_environment, ProgressTracker
+from qemlflow.tutorials.data import get_sample_datasets
 
 # Environment setup
 env = setup_learning_environment()
@@ -249,7 +249,7 @@ tracker.log_results(results)
 **Create Unified Learning API**:
 ```python
 # New unified imports for all tutorials
-from chemml.tutorials import (
+from qemlflow.tutorials import (
     # Core tutorial functionality
     setup_learning_environment,
     LearningAssessment,
@@ -268,10 +268,10 @@ from chemml.tutorials import (
     create_interactive_demo
 )
 
-# Existing ChemML modules
-from chemml.core import featurizers, data, models, evaluation
-from chemml.research import drug_discovery, quantum, generative
-from chemml.integrations import deepchem_integration
+# Existing QeMLflow modules
+from qemlflow.core import featurizers, data, models, evaluation
+from qemlflow.research import drug_discovery, quantum, generative
+from qemlflow.integrations import deepchem_integration
 ```
 
 ### **Phase 2: Advanced Integration (Week 5-6) - ENHANCEMENT**
@@ -282,9 +282,9 @@ from chemml.integrations import deepchem_integration
 
 ```python
 # Enhanced quantum tutorial integration
-from chemml.tutorials.quantum import QuantumTutorialHelper
-from chemml.research.quantum import VQEExperiment
-from chemml.research.modern_quantum import QuantumMLWorkflow
+from qemlflow.tutorials.quantum import QuantumTutorialHelper
+from qemlflow.research.quantum import VQEExperiment
+from qemlflow.research.modern_quantum import QuantumMLWorkflow
 
 # Setup quantum learning environment
 quantum_helper = QuantumTutorialHelper()
@@ -301,8 +301,8 @@ tutorial_results = quantum_helper.run_guided_vqe(vqe)
 
 ```python
 # Showcase advanced research capabilities
-from chemml.research.drug_discovery import QSARModel, MolecularOptimizer
-from chemml.tutorials import create_research_demo
+from qemlflow.research.drug_discovery import QSARModel, MolecularOptimizer
+from qemlflow.tutorials import create_research_demo
 
 # Create interactive research demonstration
 demo = create_research_demo("drug_discovery")
@@ -320,7 +320,7 @@ demo.run_guided_workflow([qsar, optimizer])
 **New Structure** (utilizing all new modules):
 ```
 fundamentals/
-├── 01_chemml_ecosystem.ipynb         # Tutorial framework demo
+├── 01_qemlflow_ecosystem.ipynb         # Tutorial framework demo
 ├── 02_core_modules.ipynb             # Core modules with tutorial helpers
 └── 03_environment_setup.ipynb       # Environment module showcase
 
@@ -372,7 +372,7 @@ advanced/
 - ✅ **Offline Learning Support** with synthetic datasets
 
 #### **With Integration Modules**:
-- ✅ **Real Module Usage** - notebooks demonstrate actual ChemML capabilities
+- ✅ **Real Module Usage** - notebooks demonstrate actual QeMLflow capabilities
 - ✅ **Production Skills** - learners use the same tools as researchers
 - ✅ **Reduced Maintenance** - single source of truth for implementations
 - ✅ **Better Testing** - notebooks validate module functionality
@@ -454,7 +454,7 @@ advanced/
 ### **Code Quality Metrics**
 - [ ] **80% code reduction** through modular integration + new modules
 - [ ] **<3% code redundancy** with tutorial framework
-- [ ] **100% ChemML API usage** throughout notebooks
+- [ ] **100% QeMLflow API usage** throughout notebooks
 - [ ] **Zero import inconsistencies** with unified system
 
 ### **Educational Metrics**
@@ -490,7 +490,7 @@ advanced/
 **Expected Timeline**: 10 weeks for complete transformation
 **Expected ROI**: 80% code reduction, 95% redundancy elimination, exponentially better learning experience
 
-This approach transforms ChemML from having good individual components to having a **world-class integrated learning ecosystem** that rivals or exceeds any educational platform in computational chemistry and machine learning.
+This approach transforms QeMLflow from having good individual components to having a **world-class integrated learning ecosystem** that rivals or exceeds any educational platform in computational chemistry and machine learning.
 
 ---
 

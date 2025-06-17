@@ -4,7 +4,7 @@ Standalone Advanced Integration Features Demo
 ============================================
 
 Direct demonstration of the immediate action implementations without
-relying on the full ChemML package imports that have dependency issues.
+relying on the full QeMLflow package imports that have dependency issues.
 
 This demonstrates:
 1. Enhanced Registry Management with AI-powered recommendations
@@ -34,7 +34,7 @@ def demo_advanced_registry():
 
     # Import and test the advanced registry directly
     try:
-        from chemml.integrations.advanced_registry import (
+        from qemlflow.integrations.advanced_registry import (
             AdvancedModelRegistry,
             ModelCategory,
             ModelMetadata,
@@ -121,7 +121,7 @@ def demo_performance_monitoring():
     print("=" * 50)
 
     try:
-        from chemml.integrations.performance_monitoring import (
+        from qemlflow.integrations.performance_monitoring import (
             IntegrationMetric,
             IntegrationMetrics,
             ModelHealthMetrics,
@@ -202,7 +202,7 @@ def demo_automated_testing():
     print("=" * 50)
 
     try:
-        from chemml.integrations.automated_testing import (
+        from qemlflow.integrations.automated_testing import (
             AdapterTestSuite,
             MockAdapterTestCase,
             generate_molecular_test_data,
@@ -306,7 +306,7 @@ def demo_integration_capabilities():
 
 def main():
     """Run the complete standalone demo."""
-    print("🚀 ChemML Advanced Integration Features Demo")
+    print("🚀 QeMLflow Advanced Integration Features Demo")
     print("=" * 60)
     print("Demonstrating immediate action implementations:")
     print("1. Enhanced Registry Management")

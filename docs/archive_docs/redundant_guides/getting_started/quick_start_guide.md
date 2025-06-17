@@ -113,8 +113,8 @@ conda install jupyter notebook
 #### Option 2: Docker Container
 ```bash
 # Pull pre-configured environment
-docker pull chemml/drug-discovery:latest
-docker run -it -p 8888:8888 chemml/drug-discovery:latest
+docker pull qemlflow/drug-discovery:latest
+docker run -it -p 8888:8888 qemlflow/drug-discovery:latest
 ```
 
 #### Option 3: Cloud Platforms

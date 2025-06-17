@@ -1,5 +1,5 @@
 """
-Comprehensive Real-World Functionality Tests for ChemML
+Comprehensive Real-World Functionality Tests for QeMLflow
 ========================================================
 
 Tests actual usage scenarios to validate the codebase works as intended.
@@ -11,16 +11,16 @@ import pytest
 from typing import List, Optional
 
 
-class TestChemMLCoreWorkflows:
-    """Test core ChemML workflows that users would actually use."""
+class TestQeMLflowCoreWorkflows:
+    """Test core QeMLflow workflows that users would actually use."""
     
     def test_basic_data_loading_and_processing(self):
         """Test the complete data loading and processing pipeline."""
         try:
-            from chemml.core.data_processing import ChemMLDataLoader, process_smiles
+            from qemlflow.core.data_processing import QeMLflowDataLoader, process_smiles
             
             # Test basic functionality
-            loader = ChemMLDataLoader()
+            loader = QeMLflowDataLoader()
             assert loader is not None, "DataLoader should be created"
             
             # Test SMILES processing
@@ -40,7 +40,7 @@ class TestChemMLCoreWorkflows:
     def test_molecular_feature_extraction(self):
         """Test molecular feature extraction capabilities."""
         try:
-            from chemml.core.preprocessing import extract_basic_molecular_descriptors
+            from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
             
             # Test with sample molecules
             smiles_list = ["CCO", "c1ccccc1", "CC(=O)O"]
@@ -58,7 +58,7 @@ class TestChemMLCoreWorkflows:
     def test_model_creation_and_training(self):
         """Test model creation and training capabilities."""
         try:
-            from chemml.core.models import create_linear_model
+            from qemlflow.core.models import create_linear_model
             
             # Create sample data
             X = np.random.randn(100, 5)
@@ -81,7 +81,7 @@ class TestChemMLCoreWorkflows:
     def test_utility_functions(self):
         """Test core utility functions."""
         try:
-            from chemml.core.utils import validate_input, setup_logging
+            from qemlflow.core.utils import validate_input, setup_logging
             
             # Test input validation
             assert validate_input({"test": "data"}) == True, "Valid dict should pass validation"
@@ -99,10 +99,10 @@ class TestChemMLCoreWorkflows:
     def test_integration_system(self):
         """Test integration system functionality."""
         try:
-            import chemml.integrations
+            import qemlflow.integrations
             
             # Basic import test - this validates the integration system is loadable
-            assert hasattr(chemml.integrations, '__file__'), "Integration module should be properly loaded"
+            assert hasattr(qemlflow.integrations, '__file__'), "Integration module should be properly loaded"
             
             print("✅ Integration system works")
             return True
@@ -111,15 +111,15 @@ class TestChemMLCoreWorkflows:
             pytest.fail(f"Integration workflow failed: {e}")
 
 
-class TestChemMLRealWorldScenarios:
+class TestQeMLflowRealWorldScenarios:
     """Test realistic usage scenarios."""
     
     def test_drug_discovery_pipeline(self):
         """Test a basic drug discovery workflow."""
         try:
-            from chemml.core.data_processing import process_smiles
-            from chemml.core.preprocessing import extract_basic_molecular_descriptors
-            from chemml.core.utils import validate_input
+            from qemlflow.core.data_processing import process_smiles
+            from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
+            from qemlflow.core.utils import validate_input
             
             # Simulate drug discovery workflow
             # 1. Load molecular data
@@ -149,8 +149,8 @@ class TestChemMLRealWorldScenarios:
     def test_qsar_modeling_scenario(self):
         """Test a QSAR modeling scenario."""
         try:
-            from chemml.core.data_processing import process_smiles
-            from chemml.core.models import create_linear_model
+            from qemlflow.core.data_processing import process_smiles
+            from qemlflow.core.models import create_linear_model
             import numpy as np
             
             # Simulate QSAR workflow
@@ -181,13 +181,13 @@ class TestChemMLRealWorldScenarios:
 
 def run_comprehensive_tests():
     """Run all comprehensive tests and provide detailed results."""
-    print("🧪 Running Comprehensive ChemML Functionality Tests")
+    print("🧪 Running Comprehensive QeMLflow Functionality Tests")
     print("=" * 60)
     
     test_results = []
     
     # Core workflow tests
-    core_tests = TestChemMLCoreWorkflows()
+    core_tests = TestQeMLflowCoreWorkflows()
     core_test_methods = [
         ("Data Loading & Processing", core_tests.test_basic_data_loading_and_processing),
         ("Molecular Features", core_tests.test_molecular_feature_extraction),
@@ -197,7 +197,7 @@ def run_comprehensive_tests():
     ]
     
     # Real-world scenario tests
-    scenario_tests = TestChemMLRealWorldScenarios()
+    scenario_tests = TestQeMLflowRealWorldScenarios()
     scenario_test_methods = [
         ("Drug Discovery Pipeline", scenario_tests.test_drug_discovery_pipeline),
         ("QSAR Modeling", scenario_tests.test_qsar_modeling_scenario),
@@ -228,13 +228,13 @@ def run_comprehensive_tests():
     print(f"   📈 Success Rate: {success_rate:.1f}%")
     
     if success_rate == 100:
-        print("   🎉 All comprehensive tests passed! ChemML is fully functional.")
+        print("   🎉 All comprehensive tests passed! QeMLflow is fully functional.")
     elif success_rate >= 80:
-        print("   ✅ Most tests passed! ChemML is largely functional.")
+        print("   ✅ Most tests passed! QeMLflow is largely functional.")
     elif success_rate >= 50:
-        print("   ⚠️  Some tests failed. ChemML has partial functionality.")
+        print("   ⚠️  Some tests failed. QeMLflow has partial functionality.")
     else:
-        print("   ❌ Many tests failed. ChemML needs significant fixes.")
+        print("   ❌ Many tests failed. QeMLflow needs significant fixes.")
     
     return test_results
 

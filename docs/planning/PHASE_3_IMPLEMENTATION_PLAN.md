@@ -15,7 +15,7 @@
 
 ### Day 5: Error Handling Consistency
 - [ ] Replace 7 bare except clauses with specific exceptions
-- [ ] Implement consistent ChemMLError hierarchy
+- [ ] Implement consistent QeMLflowError hierarchy
 - [ ] Update error handling documentation
 
 ## Week 2: API Standardization Phase 2 & Testing

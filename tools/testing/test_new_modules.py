@@ -6,7 +6,7 @@ environmental chemistry, and materials discovery.
 
 def test_clinical_research():
     """Test clinical research module functionality."""
-        from chemml.research.clinical_research import (
+        from qemlflow.research.clinical_research import (
             ClinicalTrialOptimizer,
             PatientStratificationEngine,
             RegulatoryComplianceFramework,
@@ -35,7 +35,7 @@ def test_clinical_research():
 def test_environmental_chemistry():
     """Test environmental chemistry module functionality."""
     try:
-        from chemml.research.environmental_chemistry import (
+        from qemlflow.research.environmental_chemistry import (
             AtmosphericChemistryAnalyzer,
             EnvironmentalMonitoringSystem,
             GreenChemistryOptimizer,
@@ -64,7 +64,7 @@ def test_environmental_chemistry():
 def test_materials_discovery():
     """Test materials discovery module functionality."""
     try:
-        from chemml.research.materials_discovery import (
+        from qemlflow.research.materials_discovery import (
             GenerativeMaterialsModel,
             InverseMaterialsDesigner,
             MaterialsClusterAnalyzer,
@@ -97,7 +97,7 @@ def test_materials_discovery():
 
 def main():
     """Run all validation tests."""
-    print("🧪 Testing ChemML Framework Module Integration")
+    print("🧪 Testing QeMLflow Framework Module Integration")
     print("=" * 50)
 
     tests = [

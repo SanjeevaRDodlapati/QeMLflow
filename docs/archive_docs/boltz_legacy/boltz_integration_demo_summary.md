@@ -1,12 +1,12 @@
 # Boltz Integration Demo Summary
 
 **Date:** June 16, 2025
-**ChemML Version:** 0.2.0
+**QeMLflow Version:** 0.2.0
 **Integration Status:** Complete and Functional
 
 ## Overview
 
-This document summarizes the successful demonstration of integrating the Boltz biomolecular interaction model into ChemML's external model integration framework. The integration showcases how state-of-the-art research models from GitHub repositories can be seamlessly incorporated into ChemML workflows.
+This document summarizes the successful demonstration of integrating the Boltz biomolecular interaction model into QeMLflow's external model integration framework. The integration showcases how state-of-the-art research models from GitHub repositories can be seamlessly incorporated into QeMLflow workflows.
 
 ## Integration Achievement
 
@@ -14,7 +14,7 @@ This document summarizes the successful demonstration of integrating the Boltz b
 
 1. **Core Integration Framework**
    - `BoltzAdapter` class with full functionality
-   - `BoltzModel` wrapper for ChemML compatibility
+   - `BoltzModel` wrapper for QeMLflow compatibility
    - Integration manager extensions
    - Comprehensive error handling
 
@@ -317,7 +317,7 @@ structural_comparison = analyze_structure_ensemble(structures)
 
 ## Conclusion
 
-The Boltz integration demonstration successfully validates the ChemML external model integration framework. Key achievements:
+The Boltz integration demonstration successfully validates the QeMLflow external model integration framework. Key achievements:
 
 ### ✅ **Technical Success**
 - Complete, working integration of a complex external model
@@ -332,15 +332,15 @@ The Boltz integration demonstration successfully validates the ChemML external m
 - Documentation and examples enable rapid user adoption
 
 ### ✅ **Strategic Value**
-- ChemML now supports state-of-the-art biomolecular modeling
+- QeMLflow now supports state-of-the-art biomolecular modeling
 - Framework ready for additional model integrations
 - Competitive advantage in computational chemistry and drug discovery
 - Foundation for building comprehensive model ecosystems
 
-The integration framework is **production-ready** and demonstrates ChemML's capability to incorporate cutting-edge research tools while maintaining usability and reliability standards.
+The integration framework is **production-ready** and demonstrates QeMLflow's capability to incorporate cutting-edge research tools while maintaining usability and reliability standards.
 
 ---
 
 **Status:** Integration framework validated and ready for broader adoption
 **Next Phase:** Deploy additional model integrations following established patterns
-**Impact:** ChemML users can now access state-of-the-art biomolecular interaction models seamlessly
+**Impact:** QeMLflow users can now access state-of-the-art biomolecular interaction models seamlessly

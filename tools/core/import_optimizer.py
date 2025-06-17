@@ -1,5 +1,5 @@
 """
-ChemML Import Optimization Tool
+QeMLflow Import Optimization Tool
 Identifies and fixes import performance bottlenecks.
 """
 
@@ -84,16 +84,16 @@ class ImportProfiler:
 
 
 def optimize_core_imports():
-    """Optimize imports in core ChemML modules."""
+    """Optimize imports in core QeMLflow modules."""
     print("🚀 Optimizing Core Module Imports")
     print("=" * 40)
 
     core_modules = [
-        "src/chemml/__init__.py",
-        "src/chemml/core/__init__.py",
-        "src/chemml/core/models.py",
-        "src/chemml/core/featurizers.py",
-        "src/chemml/research/__init__.py",
+        "src/qemlflow/__init__.py",
+        "src/qemlflow/core/__init__.py",
+        "src/qemlflow/core/models.py",
+        "src/qemlflow/core/featurizers.py",
+        "src/qemlflow/research/__init__.py",
     ]
 
     profiler = ImportProfiler()
@@ -121,9 +121,9 @@ def optimize_core_imports():
 
 
 def create_optimized_init_file():
-    """Create an optimized version of ChemML's main __init__.py."""
+    """Create an optimized version of QeMLflow's main __init__.py."""
     optimized_content = '''"""
-ChemML: Machine Learning for Chemistry and Drug Discovery
+QeMLflow: Machine Learning for Chemistry and Drug Discovery
 Fast-loading version with optimized imports.
 """
 
@@ -133,7 +133,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
 __version__ = "0.2.0"
-__author__ = "ChemML Team"
+__author__ = "QeMLflow Team"
 
 # Fast imports - core functionality only
 from .utils.lazy_imports import lazy_import
@@ -141,10 +141,10 @@ from .core.data import load_sample_data, quick_clean, quick_split
 from .core.evaluation import quick_classification_eval, quick_regression_eval
 
 # Lazy imports for everything else
-_core_featurizers = lazy_import('chemml.core.featurizers')
-_core_models = lazy_import('chemml.core.models')
-research = lazy_import('chemml.research')
-integrations = lazy_import('chemml.integrations')
+_core_featurizers = lazy_import('qemlflow.core.featurizers')
+_core_models = lazy_import('qemlflow.core.models')
+research = lazy_import('qemlflow.research')
+integrations = lazy_import('qemlflow.integrations')
 
 # Provide quick access to most-used functions
 def morgan_fingerprints(*args, **kwargs):
@@ -164,13 +164,13 @@ def compare_models(*args, **kwargs):
     return _core_models.compare_models(*args, **kwargs)
 
 # Fast setup
-def _setup_chemml():
-    """Fast ChemML initialization."""
-    print("ChemML initialized successfully!")
+def _setup_qemlflow():
+    """Fast QeMLflow initialization."""
+    print("QeMLflow initialized successfully!")
     print(f"Version: {__version__}")
     print("⚡ Fast-loading mode active")
 
-_setup_chemml()
+_setup_qemlflow()
 
 __all__ = [
     'morgan_fingerprints', 'molecular_descriptors', 'create_rf_model',
@@ -180,7 +180,7 @@ __all__ = [
 '''
 
     # Save optimized version
-    optimized_path = "src/chemml/__init___optimized.py"
+    optimized_path = "src/qemlflow/__init___optimized.py"
     with open(optimized_path, "w") as f:
         f.write(optimized_content)
 
@@ -190,7 +190,7 @@ __all__ = [
 
 def main():
     """Main optimization function."""
-    parser = argparse.ArgumentParser(description="ChemML Import Optimization")
+    parser = argparse.ArgumentParser(description="QeMLflow Import Optimization")
     parser.add_argument(
         "--profile-only", action="store_true", help="Only profile, don't optimize"
     )
@@ -200,7 +200,7 @@ def main():
 
     args = parser.parse_args()
 
-    print("🔧 ChemML Import Performance Optimization")
+    print("🔧 QeMLflow Import Performance Optimization")
     print("=" * 50)
 
     # Profile current imports

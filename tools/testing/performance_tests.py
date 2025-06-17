@@ -1,5 +1,5 @@
 """
-Performance and Stress Testing for ChemML
+Performance and Stress Testing for QeMLflow
 ==========================================
 
 Tests performance with larger datasets and stress scenarios.
@@ -12,11 +12,11 @@ from typing import List
 
 
 def test_large_dataset_processing():
-    """Test ChemML with larger datasets."""
+    """Test QeMLflow with larger datasets."""
     print("🧪 Testing Large Dataset Processing...")
     
     try:
-        from chemml.core.data_processing import process_smiles
+        from qemlflow.core.data_processing import process_smiles
         
         # Generate a larger set of SMILES for testing
         test_smiles = [
@@ -53,7 +53,7 @@ def test_feature_extraction_performance():
     print("\n🧪 Testing Feature Extraction Performance...")
     
     try:
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
         
         # Test with moderately sized dataset
         smiles_list = [
@@ -87,7 +87,7 @@ def test_model_training_performance():
     print("\n🧪 Testing Model Training Performance...")
     
     try:
-        from chemml.core.models import create_linear_model, create_rf_model
+        from qemlflow.core.models import create_linear_model, create_rf_model
         
         results = []
         
@@ -142,8 +142,8 @@ def test_memory_usage():
         print(f"   📊 Initial memory usage: {initial_memory:.1f} MB")
         
         # Test memory usage during large operations
-        from chemml.core.data_processing import process_smiles
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.data_processing import process_smiles
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
         
         # Large SMILES processing
         large_smiles = ["CCO", "c1ccccc1", "CC(=O)O"] * 200
@@ -186,7 +186,7 @@ def test_error_handling_robustness():
     
     for test_name, test_input in test_cases:
         try:
-            from chemml.core.data_processing import process_smiles
+            from qemlflow.core.data_processing import process_smiles
             
             print(f"   🧪 Testing: {test_name}")
             
@@ -214,7 +214,7 @@ def test_error_handling_robustness():
 
 def run_performance_tests():
     """Run all performance and stress tests."""
-    print("🚀 ChemML Performance and Stress Testing")
+    print("🚀 QeMLflow Performance and Stress Testing")
     print("=" * 50)
     
     tests = [
@@ -246,9 +246,9 @@ def run_performance_tests():
     print(f"   📈 Success Rate: {success_rate:.1f}%")
     
     if success_rate == 100:
-        print("   🎉 All performance tests passed! ChemML is production-ready.")
+        print("   🎉 All performance tests passed! QeMLflow is production-ready.")
     elif success_rate >= 80:
-        print("   ✅ Most tests passed! ChemML performs well under stress.")
+        print("   ✅ Most tests passed! QeMLflow performs well under stress.")
     else:
         print("   ⚠️  Some performance issues detected.")
     

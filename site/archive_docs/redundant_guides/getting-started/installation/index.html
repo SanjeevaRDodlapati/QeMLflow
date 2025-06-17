@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/archive_docs/redundant_guides/getting-started/installation/">
+        <link rel="canonical" href="https://qemlflow.io/archive_docs/redundant_guides/getting-started/installation/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Installation Guide - ChemML Documentation</title>
+        <title>Installation Guide - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../../../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -772,7 +772,7 @@
 
 
 <h1 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">&para;</a></h1>
-<p>This guide covers different ways to install ChemML based on your needs.</p>
+<p>This guide covers different ways to install QeMLflow based on your needs.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Python</strong>: 3.8 or higher</li>
@@ -783,7 +783,7 @@
 <h2 id="installation-methods">Installation Methods<a class="headerlink" href="#installation-methods" title="Permanent link">&para;</a></h2>
 <h3 id="1-standard-installation-recommended">1. Standard Installation (Recommended)<a class="headerlink" href="#1-standard-installation-recommended" title="Permanent link">&para;</a></h3>
 <p>Install from PyPI with all core dependencies:</p>
-<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>chemml
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>qemlflow
 </code></pre></div>
 
 <p>This includes:
@@ -793,8 +793,8 @@
 <h3 id="2-development-installation">2. Development Installation<a class="headerlink" href="#2-development-installation" title="Permanent link">&para;</a></h3>
 <p>For contributors and advanced users:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Clone the repository</span>
-git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SanjeevaRDodlapati/ChemML.git
-<span class="nb">cd</span><span class="w"> </span>ChemML
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/SanjeevaRDodlapati/QeMLflow.git
+<span class="nb">cd</span><span class="w"> </span>QeMLflow
 
 <span class="c1"># Install in development mode</span>
 pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;.[dev]&quot;</span>
@@ -810,20 +810,20 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 <div class="codehilite"><pre><span></span><code><span class="c1"># Install core dependencies only</span>
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-core.txt
 
-<span class="c1"># Then install ChemML</span>
-pip<span class="w"> </span>install<span class="w"> </span>chemml<span class="w"> </span>--no-deps
+<span class="c1"># Then install QeMLflow</span>
+pip<span class="w"> </span>install<span class="w"> </span>qemlflow<span class="w"> </span>--no-deps
 </code></pre></div>
 
 <h3 id="4-docker-installation">4. Docker Installation<a class="headerlink" href="#4-docker-installation" title="Permanent link">&para;</a></h3>
 <p>Use our official Docker image:</p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Pull the latest image</span>
-docker<span class="w"> </span>pull<span class="w"> </span>chemml/chemml:latest
+docker<span class="w"> </span>pull<span class="w"> </span>qemlflow/qemlflow:latest
 
 <span class="c1"># Run interactive session</span>
-docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>chemml/chemml:latest<span class="w"> </span>python
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>qemlflow/qemlflow:latest<span class="w"> </span>python
 
 <span class="c1"># Mount your data directory</span>
-docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/data:/app/data<span class="w"> </span>chemml/chemml:latest
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/data:/app/data<span class="w"> </span>qemlflow/qemlflow:latest
 </code></pre></div>
 
 <h2 id="optional-dependencies">Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permanent link">&para;</a></h2>
@@ -861,58 +861,58 @@ pip<span class="w"> </span>install<span class="w"> </span>py3Dmol
 
 <h2 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h2>
 <p>Test your installation:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ChemML version: </span><span class="si">{</span><span class="n">chemml</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;QeMLflow version: </span><span class="si">{</span><span class="n">qemlflow</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># Test core functionality</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDescriptors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDescriptors</span>
 <span class="n">desc</span> <span class="o">=</span> <span class="n">MolecularDescriptors</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ ChemML installed successfully!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ QeMLflow installed successfully!&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
 <h3 id="virtual-environment-recommended">Virtual Environment (Recommended)<a class="headerlink" href="#virtual-environment-recommended" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Create virtual environment</span>
-python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>chemml_env
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>qemlflow_env
 
 <span class="c1"># Activate (Linux/Mac)</span>
-<span class="nb">source</span><span class="w"> </span>chemml_env/bin/activate
+<span class="nb">source</span><span class="w"> </span>qemlflow_env/bin/activate
 
 <span class="c1"># Activate (Windows)</span>
-chemml_env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
+qemlflow_env<span class="se">\S</span>cripts<span class="se">\a</span>ctivate
 
-<span class="c1"># Install ChemML</span>
-pip<span class="w"> </span>install<span class="w"> </span>chemml
+<span class="c1"># Install QeMLflow</span>
+pip<span class="w"> </span>install<span class="w"> </span>qemlflow
 </code></pre></div>
 
 <h3 id="conda-environment">Conda Environment<a class="headerlink" href="#conda-environment" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Create conda environment</span>
-conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>chemml<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>qemlflow<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
 
 <span class="c1"># Activate environment</span>
-conda<span class="w"> </span>activate<span class="w"> </span>chemml
+conda<span class="w"> </span>activate<span class="w"> </span>qemlflow
 
 <span class="c1"># Install dependencies</span>
 conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>rdkit<span class="w"> </span>pandas<span class="w"> </span>scikit-learn
 
-<span class="c1"># Install ChemML</span>
-pip<span class="w"> </span>install<span class="w"> </span>chemml
+<span class="c1"># Install QeMLflow</span>
+pip<span class="w"> </span>install<span class="w"> </span>qemlflow
 </code></pre></div>
 
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Optional: Set data directory</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_DATA_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/your/data&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_DATA_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/your/data&quot;</span>
 
 <span class="c1"># Optional: Set cache directory</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_CACHE_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/cache&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_CACHE_DIR</span><span class="o">=</span><span class="s2">&quot;/path/to/cache&quot;</span>
 
 <span class="c1"># Optional: Enable GPU acceleration</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CHEMML_GPU</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QEMLFLOW_GPU</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 
 <h3 id="configuration-file">Configuration File<a class="headerlink" href="#configuration-file" title="Permanent link">&para;</a></h3>
-<p>Create <code>chemml_config.yaml</code>:</p>
+<p>Create <code>qemlflow_config.yaml</code>:</p>
 <div class="codehilite"><pre><span></span><code><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
 <span class="nt">data_directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;./data&quot;</span>
 <span class="nt">cache_directory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;./cache&quot;</span>
@@ -939,7 +939,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 
 <h4 id="2-permission-errors">2. Permission Errors<a class="headerlink" href="#2-permission-errors" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Use user installation</span>
-pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>chemml
+pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>qemlflow
 
 <span class="c1"># Or create virtual environment</span>
 python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
@@ -947,11 +947,11 @@ python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </s
 
 <h4 id="3-memory-issues">3. Memory Issues<a class="headerlink" href="#3-memory-issues" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Install with limited memory</span>
-pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>chemml
+pip<span class="w"> </span>install<span class="w"> </span>--no-cache-dir<span class="w"> </span>qemlflow
 
 <span class="c1"># Or install dependencies separately</span>
 pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>scikit-learn
-pip<span class="w"> </span>install<span class="w"> </span>chemml<span class="w"> </span>--no-deps
+pip<span class="w"> </span>install<span class="w"> </span>qemlflow<span class="w"> </span>--no-deps
 </code></pre></div>
 
 <h4 id="4-import-errors">4. Import Errors<a class="headerlink" href="#4-import-errors" title="Permanent link">&para;</a></h4>
@@ -960,8 +960,8 @@ pip<span class="w"> </span>install<span class="w"> </span>chemml<span class="w">
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
 
 <span class="c1"># Verify modules</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chemml</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qemlflow</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
 </code></pre></div>
 
 <h3 id="platform-specific-notes">Platform-Specific Notes<a class="headerlink" href="#platform-specific-notes" title="Permanent link">&para;</a></h3>
@@ -992,20 +992,20 @@ sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> <
 <h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
 <h3 id="memory-usage">Memory Usage<a class="headerlink" href="#memory-usage" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Configure for limited memory</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>  <span class="c1"># 2GB limit</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>  <span class="c1"># 2GB limit</span>
 </code></pre></div>
 
 <h3 id="parallel-processing">Parallel Processing<a class="headerlink" href="#parallel-processing" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Set number of CPU cores</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Use 4 cores</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Use 4 cores</span>
 </code></pre></div>
 
 <h3 id="gpu-acceleration">GPU Acceleration<a class="headerlink" href="#gpu-acceleration" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enable GPU if available</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -1016,9 +1016,9 @@ sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> <
 4. <strong><a href="../api/core.md">API Reference</a></strong> - Detailed documentation</p>
 <h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>GitHub Issues</strong>: <a href="https://github.com/SanjeevaRDodlapati/ChemML/issues">Report installation problems</a></li>
-<li><strong>Discussions</strong>: <a href="https://github.com/SanjeevaRDodlapati/ChemML/discussions">Ask questions</a></li>
-<li><strong>Documentation</strong>: <a href="https://sanjeevardodlapati.github.io/ChemML/">Full documentation</a></li>
+<li><strong>GitHub Issues</strong>: <a href="https://github.com/SanjeevaRDodlapati/QeMLflow/issues">Report installation problems</a></li>
+<li><strong>Discussions</strong>: <a href="https://github.com/SanjeevaRDodlapati/QeMLflow/discussions">Ask questions</a></li>
+<li><strong>Documentation</strong>: <a href="https://sanjeevardodlapati.github.io/QeMLflow/">Full documentation</a></li>
 </ul>
 
 

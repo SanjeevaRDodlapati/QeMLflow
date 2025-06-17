@@ -1,4 +1,4 @@
-# ChemML Development Tools
+# QeMLflow Development Tools
 
 **Consolidated development utilities for optimization, assessment, and maintenance**
 
@@ -127,13 +127,13 @@ python tools/diagnostics_unified.py
 # Add to .pre-commit-config.yaml
 - repo: local
   hooks:
-    - id: chemml-health-check
-      name: ChemML Health Check
+    - id: qemlflow-health-check
+      name: QeMLflow Health Check
       entry: python tools/assessment/health_check.py
       language: system
 
-    - id: chemml-code-standards
-      name: ChemML Code Standards
+    - id: qemlflow-code-standards
+      name: QeMLflow Code Standards
       entry: python tools/development/unified_optimizer.py --standardize-code
       language: system
 ```
@@ -141,7 +141,7 @@ python tools/diagnostics_unified.py
 ### **CI/CD Integration**
 ```yaml
 # GitHub Actions workflow
-- name: Run ChemML Health Check
+- name: Run QeMLflow Health Check
   run: python tools/assessment/health_check.py --json-output
 
 - name: Performance Assessment
@@ -185,7 +185,7 @@ Options:
 **Features**:
 - System compatibility check
 - Python environment validation
-- ChemML installation verification
+- QeMLflow installation verification
 - Dependency analysis
 - Integration system health
 - Performance assessment
@@ -206,7 +206,7 @@ Options:
 ## 🔗 Related Resources
 
 - **[Development Guide](../docs/DEVELOPMENT.md)** - Complete development setup
-- **[Contribution Guidelines](../CONTRIBUTING.md)** - How to contribute to ChemML
+- **[Contribution Guidelines](../CONTRIBUTING.md)** - How to contribute to QeMLflow
 - **[Testing Documentation](../tests/README.md)** - Testing framework and guidelines
 - **[CI/CD Documentation](../.github/workflows/)** - Continuous integration setup
 

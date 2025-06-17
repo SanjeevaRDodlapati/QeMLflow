@@ -5,46 +5,46 @@
     "overall": "failure",
     "workflows": [
       {
-        "name": "ChemML CI/CD Pipeline",
+        "name": "QeMLflow CI/CD Pipeline",
         "state": "active",
         "path": ".github/workflows/ci-cd.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/ci-cd.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/ci-cd.yml"
       },
       {
         "name": "CI/CD Pipeline",
         "state": "active",
         "path": ".github/workflows/ci.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/ci.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/ci.yml"
       },
       {
         "name": "Dependency Updates",
         "state": "active",
         "path": ".github/workflows/dependencies.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/dependencies.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/dependencies.yml"
       },
       {
         "name": "Documentation",
         "state": "active",
         "path": ".github/workflows/docs.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/docs.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/docs.yml"
       },
       {
         "name": "Automated Monitoring",
         "state": "active",
         "path": ".github/workflows/monitoring.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/monitoring.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/monitoring.yml"
       },
       {
         "name": "Release",
         "state": "active",
         "path": ".github/workflows/release.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/release.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/release.yml"
       },
       {
         "name": "Simple Test Workflow",
         "state": "active",
         "path": ".github/workflows/simple-test.yml",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/blob/main/.github/workflows/simple-test.yml"
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/.github/workflows/simple-test.yml"
       }
     ],
     "recent_runs": [
@@ -52,7 +52,7 @@
         "name": "Simple Test Workflow",
         "status": "success",
         "created_at": "2025-06-16T07:38:17Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674750171",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674750171",
         "head_branch": "main",
         "event": "push"
       },
@@ -60,7 +60,7 @@
         "name": "Automated Monitoring",
         "status": "failure",
         "created_at": "2025-06-16T07:38:17Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674750181",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674750181",
         "head_branch": "main",
         "event": "push"
       },
@@ -68,15 +68,15 @@
         "name": "Documentation",
         "status": "failure",
         "created_at": "2025-06-16T07:38:17Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674750174",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674750174",
         "head_branch": "main",
         "event": "push"
       },
       {
-        "name": "ChemML CI/CD Pipeline",
+        "name": "QeMLflow CI/CD Pipeline",
         "status": "failure",
         "created_at": "2025-06-16T07:38:17Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674750173",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674750173",
         "head_branch": "main",
         "event": "push"
       },
@@ -84,15 +84,15 @@
         "name": "Simple Test Workflow",
         "status": "success",
         "created_at": "2025-06-16T07:36:58Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674725094",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674725094",
         "head_branch": "main",
         "event": "push"
       },
       {
-        "name": "ChemML CI/CD Pipeline",
+        "name": "QeMLflow CI/CD Pipeline",
         "status": "failure",
         "created_at": "2025-06-16T07:36:58Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674725078",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674725078",
         "head_branch": "main",
         "event": "push"
       },
@@ -100,7 +100,7 @@
         "name": "Documentation",
         "status": "failure",
         "created_at": "2025-06-16T07:36:58Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674725089",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674725089",
         "head_branch": "main",
         "event": "push"
       },
@@ -108,15 +108,15 @@
         "name": "Automated Monitoring",
         "status": "failure",
         "created_at": "2025-06-16T07:36:58Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674725081",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674725081",
         "head_branch": "main",
         "event": "push"
       },
       {
-        "name": "ChemML CI/CD Pipeline",
+        "name": "QeMLflow CI/CD Pipeline",
         "status": "failure",
         "created_at": "2025-06-16T07:30:43Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674605173",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674605173",
         "head_branch": "main",
         "event": "push"
       },
@@ -124,7 +124,7 @@
         "name": "CI/CD Pipeline",
         "status": "failure",
         "created_at": "2025-06-16T07:30:43Z",
-        "html_url": "https://github.com/SanjeevaRDodlapati/ChemML/actions/runs/15674605188",
+        "html_url": "https://github.com/SanjeevaRDodlapati/QeMLflow/actions/runs/15674605188",
         "head_branch": "main",
         "event": "push"
       }
@@ -133,7 +133,7 @@
   },
   "documentation": {
     "overall": "failure",
-    "url": "https://sanjeevardodlapati.github.io/ChemML/",
+    "url": "https://sanjeevardodlapati.github.io/QeMLflow/",
     "response_time": 0.09,
     "status_code": 404,
     "content_checks": {},

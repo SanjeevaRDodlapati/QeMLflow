@@ -1,5 +1,5 @@
 """
-ChemML Performance Optimization Tool
+QeMLflow Performance Optimization Tool
 Analyzes and optimizes import patterns, configuration loading, and other performance bottlenecks.
 """
 
@@ -29,7 +29,7 @@ def measure_time(func):
 
 
 class ImportProfiler:
-    """Profiles import times for ChemML modules."""
+    """Profiles import times for QeMLflow modules."""
 
     def __init__(self):
         self.import_times = {}
@@ -45,26 +45,26 @@ class ImportProfiler:
             self.failed_imports.append((module_name, str(e)))
             return False
 
-    def profile_chemml_imports(self) -> Dict[str, float]:
-        """Profile all ChemML module imports."""
-        chemml_modules = [
-            "chemml",
-            "chemml.core",
-            "chemml.core.data",
-            "chemml.core.models",
-            "chemml.core.evaluation",
-            "chemml.research",
-            "chemml.research.drug_discovery",
-            "chemml.integrations",
-            "chemml.config",
-            "chemml.utils",
-            "chemml.notebooks",
+    def profile_qemlflow_imports(self) -> Dict[str, float]:
+        """Profile all QeMLflow module imports."""
+        qemlflow_modules = [
+            "qemlflow",
+            "qemlflow.core",
+            "qemlflow.core.data",
+            "qemlflow.core.models",
+            "qemlflow.core.evaluation",
+            "qemlflow.research",
+            "qemlflow.research.drug_discovery",
+            "qemlflow.integrations",
+            "qemlflow.config",
+            "qemlflow.utils",
+            "qemlflow.notebooks",
         ]
 
-        print("🔍 Profiling ChemML imports...")
+        print("🔍 Profiling QeMLflow imports...")
         results = {}
 
-        for module in chemml_modules:
+        for module in qemlflow_modules:
             success, import_time = self.profile_import(module)
             if success:
                 results[module] = import_time
@@ -112,9 +112,9 @@ class ConfigPerformanceProfiler:
     def profile_config_loading(self) -> Dict[str, Any]:
         """Profile configuration loading time."""
         try:
-            from chemml.config import unified_config
+            from qemlflow.config import unified_config
 
-            config = unified_config.ChemMLConfig()
+            config = unified_config.QeMLflowConfig()
             return config.to_dict()
         except Exception as e:
             return {"error": str(e)}
@@ -160,7 +160,7 @@ class ConfigPerformanceProfiler:
 
 
 class MemoryProfiler:
-    """Profiles memory usage of ChemML operations."""
+    """Profiles memory usage of QeMLflow operations."""
 
     def get_memory_usage(self) -> Dict[str, float]:
         """Get current memory usage information."""
@@ -212,7 +212,7 @@ class MemoryProfiler:
 
 def create_optimization_report() -> Dict[str, Any]:
     """Create a comprehensive performance optimization report."""
-    print("🚀 ChemML Performance Analysis")
+    print("🚀 QeMLflow Performance Analysis")
     print("=" * 50)
 
     report = {
@@ -223,11 +223,11 @@ def create_optimization_report() -> Dict[str, Any]:
 
     # Import profiling
     import_profiler = ImportProfiler()
-    chemml_imports = import_profiler.profile_chemml_imports()
+    qemlflow_imports = import_profiler.profile_qemlflow_imports()
     external_imports = import_profiler.profile_external_dependencies()
 
     report["results"]["import_performance"] = {
-        "chemml_modules": chemml_imports,
+        "qemlflow_modules": qemlflow_imports,
         "external_dependencies": external_imports,
         "slow_imports": {k: v for k, v in external_imports.items() if v > 1.0},
         "failed_imports": import_profiler.failed_imports,
@@ -302,10 +302,10 @@ def print_optimization_report(report: Dict[str, Any]):
 
     # Import performance summary
     import_perf = results.get("import_performance", {})
-    chemml_total = sum(import_perf.get("chemml_modules", {}).values())
+    qemlflow_total = sum(import_perf.get("qemlflow_modules", {}).values())
     external_total = sum(import_perf.get("external_dependencies", {}).values())
 
-    print(f"⏱️  Total ChemML import time: {chemml_total:.3f}s")
+    print(f"⏱️  Total QeMLflow import time: {qemlflow_total:.3f}s")
     print(f"⏱️  Total external import time: {external_total:.3f}s")
 
     slow_count = len(import_perf.get("slow_imports", {}))
@@ -332,7 +332,7 @@ def print_optimization_report(report: Dict[str, Any]):
 
 def main():
     """Main function."""
-    parser = argparse.ArgumentParser(description="ChemML Performance Optimization")
+    parser = argparse.ArgumentParser(description="QeMLflow Performance Optimization")
     parser.add_argument(
         "--save-report", action="store_true", help="Save detailed report to JSON file"
     )

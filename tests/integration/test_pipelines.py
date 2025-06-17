@@ -1,5 +1,5 @@
 """
-Integration tests for ChemML pipelines and workflows.
+Integration tests for QeMLflow pipelines and workflows.
 
 Tests end-to-end functionality and component integration.
 """
@@ -14,7 +14,7 @@ import pytest
 
 # Import all modules for integration testing
 try:
-    from chemml.research.drug_discovery.properties import (
+    from qemlflow.research.drug_discovery.properties import (
         predict_properties,
         train_property_model,
     )
@@ -142,7 +142,7 @@ class TestEndToEndPipelines:
             y_train = sample_molecular_data["activity"].values
 
             # Step 2: Train QSAR model
-            from chemml.research.drug_discovery.qsar import (
+            from qemlflow.research.drug_discovery.qsar import (
                 build_qsar_model,
                 predict_activity,
             )

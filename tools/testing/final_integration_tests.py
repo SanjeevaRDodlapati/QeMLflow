@@ -14,10 +14,10 @@ def test_drug_discovery_workflow():
     print("🧬 Testing Complete Drug Discovery Workflow...")
     
     try:
-        from chemml.core.data_processing import ChemMLDataLoader, process_smiles
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
-        from chemml.core.models import create_rf_model
-        from chemml.core.utils import validate_input
+        from qemlflow.core.data_processing import QeMLflowDataLoader, process_smiles
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.models import create_rf_model
+        from qemlflow.core.utils import validate_input
         
         # 1. Prepare drug-like molecules dataset
         drug_molecules = [
@@ -90,9 +90,9 @@ def test_chemical_analysis_pipeline():
     print("\n🧪 Testing Chemical Analysis Pipeline...")
     
     try:
-        from chemml.core.data_processing import process_smiles
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
-        from chemml.core.models import create_linear_model
+        from qemlflow.core.data_processing import process_smiles
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.models import create_linear_model
         
         # Chemical analysis dataset
         chemicals = [
@@ -146,8 +146,8 @@ def test_molecular_similarity_analysis():
     print("\n🔬 Testing Molecular Similarity Analysis...")
     
     try:
-        from chemml.core.data_processing import process_smiles
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.data_processing import process_smiles
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
         
         # Set of structurally related molecules
         similar_molecules = [
@@ -201,9 +201,9 @@ def test_data_pipeline_robustness():
     print("\n🛡️  Testing Data Pipeline Robustness...")
     
     try:
-        from chemml.core.data_processing import ChemMLDataLoader, process_smiles
-        from chemml.core.preprocessing import extract_basic_molecular_descriptors
-        from chemml.core.utils import validate_input
+        from qemlflow.core.data_processing import QeMLflowDataLoader, process_smiles
+        from qemlflow.core.preprocessing import extract_basic_molecular_descriptors
+        from qemlflow.core.utils import validate_input
         
         # Create challenging dataset with various edge cases
         challenging_dataset = [
@@ -270,7 +270,7 @@ def test_data_pipeline_robustness():
 
 def run_final_integration_tests():
     """Run all final integration tests."""
-    print("🎯 ChemML Final Integration Tests - Real World Use Cases")
+    print("🎯 QeMLflow Final Integration Tests - Real World Use Cases")
     print("=" * 60)
     
     tests = [
@@ -301,10 +301,10 @@ def run_final_integration_tests():
     print(f"   📈 Success Rate: {success_rate:.1f}%")
     
     if success_rate == 100:
-        print("   🏆 PERFECT! ChemML is ready for production use!")
+        print("   🏆 PERFECT! QeMLflow is ready for production use!")
         print("   🚀 All real-world workflows work flawlessly!")
     elif success_rate >= 75:
-        print("   ✅ EXCELLENT! ChemML is production-ready!")
+        print("   ✅ EXCELLENT! QeMLflow is production-ready!")
         print("   🎉 Most real-world scenarios work perfectly!")
     else:
         print("   ⚠️  Some integration issues remain.")

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/reports/PHASE_3_PROGRESS_REPORT/">
+        <link rel="canonical" href="https://qemlflow.io/reports/PHASE_3_PROGRESS_REPORT/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Phase 3 Implementation Progress Report - ChemML Documentation</title>
+        <title>QeMLflow Phase 3 Implementation Progress Report - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-phase-3-implementation-progress-report" class="md-skip">
+        <a href="#qemlflow-phase-3-implementation-progress-report" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Phase 3 Implementation Progress Report
+              QeMLflow Phase 3 Implementation Progress Report
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -684,29 +684,29 @@
 
 
 
-<h1 id="chemml-phase-3-implementation-progress-report">ChemML Phase 3 Implementation Progress Report<a class="headerlink" href="#chemml-phase-3-implementation-progress-report" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-phase-3-implementation-progress-report">QeMLflow Phase 3 Implementation Progress Report<a class="headerlink" href="#qemlflow-phase-3-implementation-progress-report" title="Permanent link">&para;</a></h1>
 <h2 id="completed-enhancements">✅ Completed Enhancements<a class="headerlink" href="#completed-enhancements" title="Permanent link">&para;</a></h2>
 <h3 id="1-api-consistency-improvements">1. API Consistency Improvements<a class="headerlink" href="#1-api-consistency-improvements" title="Permanent link">&para;</a></h3>
 <h4 id="error-handling-standardization">Error Handling Standardization<a class="headerlink" href="#error-handling-standardization" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Fixed 7 bare except clauses</strong> across core modules:</li>
-<li><code>src/chemml/research/generative.py</code> (Line 631)</li>
-<li><code>src/chemml/core/models.py</code> (Line 90)</li>
-<li><code>src/chemml/core/evaluation.py</code> (Line 278)</li>
-<li><code>src/chemml/core/recommendations.py</code> (Line 245)</li>
-<li><code>src/chemml/core/data.py</code> (Lines 295, 494)</li>
+<li><code>src/qemlflow/research/generative.py</code> (Line 631)</li>
+<li><code>src/qemlflow/core/models.py</code> (Line 90)</li>
+<li><code>src/qemlflow/core/evaluation.py</code> (Line 278)</li>
+<li><code>src/qemlflow/core/recommendations.py</code> (Line 245)</li>
+<li><code>src/qemlflow/core/data.py</code> (Lines 295, 494)</li>
 <li>
-<p><code>src/chemml/config/unified_config.py</code> (Line 223)</p>
+<p><code>src/qemlflow/config/unified_config.py</code> (Line 223)</p>
 </li>
 <li>
-<p><strong>Created comprehensive exception hierarchy</strong> (<code>src/chemml/core/exceptions.py</code>):</p>
+<p><strong>Created comprehensive exception hierarchy</strong> (<code>src/qemlflow/core/exceptions.py</code>):</p>
 </li>
-<li><code>ChemMLError</code> - Base exception with details support</li>
-<li><code>ChemMLDataError</code> - Data validation failures</li>
-<li><code>ChemMLModelError</code> - Model operation failures</li>
-<li><code>ChemMLConfigurationError</code> - Configuration issues</li>
-<li><code>ChemMLDependencyError</code> - Missing dependencies</li>
-<li><code>ChemMLFeaturizationError</code> - Molecular featurization failures</li>
+<li><code>QeMLflowError</code> - Base exception with details support</li>
+<li><code>QeMLflowDataError</code> - Data validation failures</li>
+<li><code>QeMLflowModelError</code> - Model operation failures</li>
+<li><code>QeMLflowConfigurationError</code> - Configuration issues</li>
+<li><code>QeMLflowDependencyError</code> - Missing dependencies</li>
+<li><code>QeMLflowFeaturizationError</code> - Molecular featurization failures</li>
 <li>And 5 additional specialized exceptions</li>
 </ul>
 <h4 id="parameter-naming-analysis">Parameter Naming Analysis<a class="headerlink" href="#parameter-naming-analysis" title="Permanent link">&para;</a></h4>
@@ -732,7 +732,7 @@
 <li>Automated bare except clause fixing using AST transformations</li>
 <li>Parameter naming inconsistency detection</li>
 <li>Type annotation analysis and suggestions</li>
-<li>Successfully processed all ChemML source files</li>
+<li>Successfully processed all QeMLflow source files</li>
 </ul>
 <h4 id="parameter-standardization-tool-toolsparameter_standardizationpy">Parameter Standardization Tool (<code>tools/parameter_standardization.py</code>)<a class="headerlink" href="#parameter-standardization-tool-toolsparameter_standardizationpy" title="Permanent link">&para;</a></h4>
 <ul>
@@ -750,7 +750,7 @@
 </ul>
 <h4 id="performance-optimization-tool-toolsperformance_optimizerpy">Performance Optimization Tool (<code>tools/performance_optimizer.py</code>)<a class="headerlink" href="#performance-optimization-tool-toolsperformance_optimizerpy" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Import time profiling (ChemML main import: 26.6s)</li>
+<li>Import time profiling (QeMLflow main import: 26.6s)</li>
 <li>Configuration loading benchmarks</li>
 <li>Memory usage analysis</li>
 <li>Optimization recommendations generation</li>
@@ -769,12 +769,12 @@
 <ul>
 <li>Structured error handling with contextual details</li>
 <li>Convenience functions for common error patterns</li>
-<li>Integration with existing ChemML modules</li>
+<li>Integration with existing QeMLflow modules</li>
 <li>Clear hierarchy for different error types</li>
 </ul>
 <h4 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Identified main performance bottleneck (26s ChemML import)</li>
+<li>Identified main performance bottleneck (26s QeMLflow import)</li>
 <li>External dependencies well-optimized (sub-second imports)</li>
 <li>Configuration system performing efficiently</li>
 <li>Memory usage baseline established (932.4 MB)</li>
@@ -843,7 +843,7 @@ Phase 3: API Standardization        🚧 IN PROGRESS (60% complete)
 <li><strong>18 low-coverage files</strong> prioritized for type annotation improvement</li>
 <li><strong>73.6% type coverage</strong> - Good baseline with clear improvement path</li>
 </ul>
-<p>The ChemML codebase now has robust infrastructure, comprehensive analysis tools, and a clear roadmap for continued improvement. All major technical debt has been identified and prioritized, with automated tools available for ongoing maintenance and enhancement.</p>
+<p>The QeMLflow codebase now has robust infrastructure, comprehensive analysis tools, and a clear roadmap for continued improvement. All major technical debt has been identified and prioritized, with automated tools available for ongoing maintenance and enhancement.</p>
 
 
 

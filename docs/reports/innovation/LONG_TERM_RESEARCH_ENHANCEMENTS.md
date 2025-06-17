@@ -1,8 +1,8 @@
-# 🧬 ChemML Long-Term Research Enhancement Roadmap
+# 🧬 QeMLflow Long-Term Research Enhancement Roadmap
 
 ## 🎯 **Vision: Next-Generation Molecular Intelligence Framework**
 
-This document outlines advanced research enhancements to transform ChemML into a cutting-edge molecular intelligence platform for personal research exploration. These enhancements focus on pushing the boundaries of computational chemistry, machine learning, and molecular discovery.
+This document outlines advanced research enhancements to transform QeMLflow into a cutting-edge molecular intelligence platform for personal research exploration. These enhancements focus on pushing the boundaries of computational chemistry, machine learning, and molecular discovery.
 
 ---
 
@@ -17,7 +17,7 @@ Enable massive-scale molecular simulations and ML training across heterogeneous 
 
 **Distributed Training Framework:**
 ```python
-# src/chemml/distributed/molecular_cluster.py
+# src/qemlflow/distributed/molecular_cluster.py
 class MolecularComputeCluster:
     def __init__(self, compute_nodes: List[ComputeNode]):
         self.nodes = compute_nodes
@@ -42,7 +42,7 @@ class MolecularComputeCluster:
 
 **Federated Learning for Molecular Data:**
 ```python
-# src/chemml/distributed/federated_learning.py
+# src/qemlflow/distributed/federated_learning.py
 class FederatedMolecularLearning:
     def __init__(self, research_datasets: List[Dataset]):
         self.datasets = research_datasets
@@ -81,7 +81,7 @@ Leverage quantum computing for molecular problems that are intractable on classi
 
 **Quantum Molecular Embeddings:**
 ```python
-# src/chemml/quantum/molecular_embeddings.py
+# src/qemlflow/quantum/molecular_embeddings.py
 class QuantumMolecularEmbeddings:
     def __init__(self, quantum_backend: str = "qiskit_aer"):
         self.quantum_circuit = QuantumCircuit()
@@ -105,7 +105,7 @@ class QuantumMolecularEmbeddings:
 
 **Hybrid Quantum-Classical Models:**
 ```python
-# src/chemml/quantum/hybrid_models.py
+# src/qemlflow/quantum/hybrid_models.py
 class QuantumEnhancedPredictor:
     def __init__(self, quantum_layers: int = 4, classical_layers: int = 6):
         self.quantum_net = QuantumNeuralNetwork(quantum_layers)
@@ -143,7 +143,7 @@ Create a self-directing AI system that autonomously designs, evaluates, and synt
 
 **Autonomous Research Agent:**
 ```python
-# src/chemml/autonomous/discovery_agent.py
+# src/qemlflow/autonomous/discovery_agent.py
 class MolecularDiscoveryAgent:
     def __init__(self, research_objective: str):
         self.objective = research_objective
@@ -172,7 +172,7 @@ class MolecularDiscoveryAgent:
 
 **Self-Improving Models:**
 ```python
-# src/chemml/autonomous/self_improvement.py
+# src/qemlflow/autonomous/self_improvement.py
 class SelfImprovingPredictor:
     def __init__(self, base_model: Any):
         self.model = base_model
@@ -211,7 +211,7 @@ Seamlessly integrate quantum mechanical, molecular dynamics, and ML predictions 
 
 **Multi-Scale Predictor:**
 ```python
-# src/chemml/multiscale/integrated_modeling.py
+# src/qemlflow/multiscale/integrated_modeling.py
 class MultiScaleMolecularPredictor:
     def __init__(self):
         self.quantum_level = QuantumMechanicalCalculator()
@@ -238,7 +238,7 @@ class MultiScaleMolecularPredictor:
 
 **Scale-Bridging ML Models:**
 ```python
-# src/chemml/multiscale/scale_bridging.py
+# src/qemlflow/multiscale/scale_bridging.py
 class ScaleBridgingNetwork:
     def __init__(self, scales: List[str]):
         self.scales = scales  # ['quantum', 'atomistic', 'mesoscale', 'continuum']
@@ -276,7 +276,7 @@ Provide comprehensive uncertainty quantification and reliability assessment for 
 
 **Epistemic Uncertainty Quantification:**
 ```python
-# src/chemml/uncertainty/epistemic.py
+# src/qemlflow/uncertainty/epistemic.py
 class EpistemicUncertaintyQuantifier:
     def __init__(self, model_ensemble: List[Any]):
         self.ensemble = model_ensemble
@@ -303,7 +303,7 @@ class EpistemicUncertaintyQuantifier:
 
 **Conformal Prediction for Molecules:**
 ```python
-# src/chemml/uncertainty/conformal.py
+# src/qemlflow/uncertainty/conformal.py
 class MolecularConformalPredictor:
     def __init__(self, base_predictor: Any, confidence_level: float = 0.95):
         self.predictor = base_predictor
@@ -342,7 +342,7 @@ Build a comprehensive molecular knowledge system that can reason about chemical 
 
 **Molecular Knowledge Graph:**
 ```python
-# src/chemml/knowledge/molecular_kg.py
+# src/qemlflow/knowledge/molecular_kg.py
 class MolecularKnowledgeGraph:
     def __init__(self):
         self.entities = {}  # molecules, reactions, properties, assays
@@ -368,7 +368,7 @@ class MolecularKnowledgeGraph:
 
 **Causal Discovery in Molecular Data:**
 ```python
-# src/chemml/knowledge/causal_discovery.py
+# src/qemlflow/knowledge/causal_discovery.py
 class MolecularCausalDiscovery:
     def __init__(self, causal_method: str = "pc_algorithm"):
         self.method = causal_method
@@ -490,7 +490,7 @@ class MolecularCausalDiscovery:
 ### **Current Architecture Enhancement**
 
 ```
-ChemML Core Framework
+QeMLflow Core Framework
 ├── Distributed Computing Layer
 │   ├── Cluster Management
 │   ├── Task Scheduling
@@ -564,7 +564,7 @@ ChemML Core Framework
 
 ## 🎯 **Conclusion: Transformative Research Platform**
 
-These long-term enhancements will transform ChemML into a **next-generation molecular intelligence platform** that enables breakthrough research impossible with current tools. The combination of distributed computing, quantum enhancement, autonomous discovery, multi-scale modeling, advanced uncertainty quantification, and knowledge integration creates a synergistic system that amplifies research capabilities exponentially.
+These long-term enhancements will transform QeMLflow into a **next-generation molecular intelligence platform** that enables breakthrough research impossible with current tools. The combination of distributed computing, quantum enhancement, autonomous discovery, multi-scale modeling, advanced uncertainty quantification, and knowledge integration creates a synergistic system that amplifies research capabilities exponentially.
 
 **Key Transformations:**
 - From manual to autonomous molecular discovery

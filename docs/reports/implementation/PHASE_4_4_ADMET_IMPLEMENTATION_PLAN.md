@@ -2,7 +2,7 @@
 
 ## 📋 Executive Summary
 
-**Phase 4.4 Objective**: Develop **Bootcamp 04: ADMET & Drug Safety Prediction** as the fourth installment in the ChemML educational platform, focusing on **Absorption, Distribution, Metabolism, Excretion, and Toxicity** prediction using advanced machine learning and computational methods.
+**Phase 4.4 Objective**: Develop **Bootcamp 04: ADMET & Drug Safety Prediction** as the fourth installment in the QeMLflow educational platform, focusing on **Absorption, Distribution, Metabolism, Excretion, and Toxicity** prediction using advanced machine learning and computational methods.
 
 ## 🎯 Bootcamp 04 Overview
 
@@ -248,7 +248,7 @@ By completing Bootcamp 04, participants will:
 
 ### **Platform Integration**
 - **Seamless Continuity**: Natural progression from Bootcamp 03
-- **Technology Stack**: Consistent with ChemML architecture
+- **Technology Stack**: Consistent with QeMLflow architecture
 - **Assessment Quality**: Rigorous evaluation with career guidance
 - **Industry Standards**: Alignment with current pharmaceutical practices
 
@@ -260,9 +260,9 @@ By completing Bootcamp 04, participants will:
 2. **Comprehensive Assessment Framework** - 4 industry-aligned challenges
 3. **Production-Grade Code Implementation** - Enterprise-ready ADMET systems
 4. **Professional Certification Program** - Career progression validation
-5. **Integration with ChemML Platform** - Seamless educational continuity
+5. **Integration with QeMLflow Platform** - Seamless educational continuity
 
-**Phase 4.4 represents the next major milestone in establishing ChemML as the premier educational platform for computational drug discovery, with specific focus on the critical domain of drug safety and ADMET prediction.**
+**Phase 4.4 represents the next major milestone in establishing QeMLflow as the premier educational platform for computational drug discovery, with specific focus on the critical domain of drug safety and ADMET prediction.**
 
 ---
 

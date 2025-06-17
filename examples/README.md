@@ -1,13 +1,13 @@
-# ChemML Examples
+# QeMLflow Examples
 
-**Comprehensive examples and demonstrations for ChemML integration framework**
+**Comprehensive examples and demonstrations for QeMLflow integration framework**
 
 ---
 
 ## 🚀 Quick Start
 
-**New to ChemML?** Start here:
-1. **[Basic Integration](quickstart/basic_integration.py)** - Your first ChemML integration
+**New to QeMLflow?** Start here:
+1. **[Basic Integration](quickstart/basic_integration.py)** - Your first QeMLflow integration
 2. **[Simple Workflow](quickstart/simple_workflow.py)** - End-to-end example
 3. **[Integration Guide](../docs/integrations/README.md)** - Complete documentation
 
@@ -40,10 +40,10 @@
 
 ## 📊 Example Complexity Levels
 
-### 🌱 **Beginner** (New to ChemML)
+### 🌱 **Beginner** (New to QeMLflow)
 ```python
 # basic_integration.py - Start here!
-from chemml.integrations import get_manager
+from qemlflow.integrations import get_manager
 
 manager = get_manager()
 model = manager.get_adapter("my_model")
@@ -53,7 +53,7 @@ result = model.predict(data)
 ### 🔬 **Intermediate** (Familiar with basics)
 ```python
 # Advanced features with monitoring
-from chemml.integrations.core import PerformanceMonitor
+from qemlflow.integrations.core import PerformanceMonitor
 
 monitor = PerformanceMonitor()
 with monitor.track_performance():
@@ -113,8 +113,8 @@ pipeline = Pipeline([
 
 ### **Requirements**
 ```bash
-# Core ChemML installation
-pip install chemml
+# Core QeMLflow installation
+pip install qemlflow
 
 # For specific examples, install additional dependencies:
 pip install torch torchvision  # For PyTorch models
@@ -223,7 +223,7 @@ python validate_examples.py
 
 ## 🔗 Related Resources
 
-- **[Documentation](../docs/)** - Complete ChemML documentation
+- **[Documentation](../docs/)** - Complete QeMLflow documentation
 - **[Notebooks](../notebooks/)** - Interactive learning materials
 - **[API Reference](../docs/REFERENCE.md)** - Detailed API documentation
 - **[Integration Guide](../docs/integrations/README.md)** - Model integration guide

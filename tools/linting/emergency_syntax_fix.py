@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Emergency Syntax Fix for ChemML
+Emergency Syntax Fix for QeMLflow
 ===============================
 
 A minimal emergency fix to restore basic syntax validity so that 
@@ -64,9 +64,9 @@ def emergency_syntax_fix(file_path: Path) -> bool:
 
 def main():
     """Apply emergency fix to the known problematic file."""
-    file_path = Path("/Users/sanjeev/Downloads/Repos/ChemML/src/chemml/integrations/adapters/__init__.py")
+    file_path = Path("/Users/sanjeev/Downloads/Repos/QeMLflow/src/qemlflow/integrations/adapters/__init__.py")
     
-    print("🚨 Emergency Syntax Fix for ChemML")
+    print("🚨 Emergency Syntax Fix for QeMLflow")
     print("==================================")
     print(f"🔧 Processing: {file_path}")
     

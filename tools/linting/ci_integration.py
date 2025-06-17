@@ -1,5 +1,5 @@
 """
-CI/CD Integration Script for ChemML Linting Framework
+CI/CD Integration Script for QeMLflow Linting Framework
 ===================================================
 
 This script provides CI/CD integration for the linting framework,
@@ -250,11 +250,11 @@ class CILintingIntegration:
 
         # Set CI environment variables for downstream tools
         if status == "PASS":
-            print("export CHEMML_LINTING_STATUS=pass")
-            print("export CHEMML_HEALTH_SCORE=" + str(summary.get("health_score", 0)))
+            print("export QEMLFLOW_LINTING_STATUS=pass")
+            print("export QEMLFLOW_HEALTH_SCORE=" + str(summary.get("health_score", 0)))
         else:
-            print("export CHEMML_LINTING_STATUS=fail")
-            print("export CHEMML_FAILED_GATES=" + ",".join(failed_gates))
+            print("export QEMLFLOW_LINTING_STATUS=fail")
+            print("export QEMLFLOW_FAILED_GATES=" + ",".join(failed_gates))
 
     def run_pre_commit_check(self) -> bool:
         """Run pre-commit checks."""
@@ -303,7 +303,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="CI/CD integration for ChemML linting framework"
+        description="CI/CD integration for QeMLflow linting framework"
     )
     parser.add_argument(
         "--check", action="store_true", help="Run comprehensive quality check"

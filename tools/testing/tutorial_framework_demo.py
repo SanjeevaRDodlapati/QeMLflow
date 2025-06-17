@@ -1,5 +1,5 @@
 """
-ChemML Tutorial Framework Demonstration
+QeMLflow Tutorial Framework Demonstration
 ======================================
 
 This script demonstrates the new tutorial framework capabilities including:
@@ -16,7 +16,7 @@ import warnings
 
 import numpy as np
 
-from src.chemml.tutorials import (
+from src.qemlflow.tutorials import (
     EducationalDatasets,
     EnvironmentManager,
     LearningAssessment,
@@ -30,8 +30,8 @@ from src.chemml.tutorials import (
 
 
 def main():
-    """Demonstrate the ChemML tutorial framework."""
-    print("🧪 ChemML Tutorial Framework Demonstration")
+    """Demonstrate the QeMLflow tutorial framework."""
+    print("🧪 QeMLflow Tutorial Framework Demonstration")
     print("=" * 60)
 
     # 1. Environment Setup and Checking
@@ -181,7 +181,7 @@ def main():
     )
     print("🧬 Visualization: ✅ Operational")
 
-    print("\n🎉 ChemML Tutorial Framework is ready for educational use!")
+    print("\n🎉 QeMLflow Tutorial Framework is ready for educational use!")
     print("\n💡 Next steps:")
     print("   • Explore notebooks/learning/fundamentals/ for tutorial examples")
     print("   • Use the tutorial framework in your own educational content")

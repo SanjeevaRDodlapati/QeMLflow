@@ -1,5 +1,5 @@
 """
-ChemML Scripts Comparison Analysis
+QeMLflow Scripts Comparison Analysis
 =================================
 
 This script demonstrates the dramatic improvements achieved through the
@@ -56,16 +56,16 @@ def analyze_scripts():
 
     enhanced_files = ["day_01_enhanced.py"]
 
-    # Note: chemml_common has been integrated into the main framework
+    # Note: qemlflow_common has been integrated into the main framework
     framework_files = [
-        "src/chemml/__init__.py",
-        "src/chemml/config/environment.py",
-        "src/chemml/core/base_runner.py",
-        "src/chemml/integrations/experiment_tracking.py",
-        "src/chemml/assessment/framework.py",
+        "src/qemlflow/__init__.py",
+        "src/qemlflow/config/environment.py",
+        "src/qemlflow/core/base_runner.py",
+        "src/qemlflow/integrations/experiment_tracking.py",
+        "src/qemlflow/assessment/framework.py",
     ]
 
-    print("🔍 ChemML Scripts Enhancement Analysis")
+    print("🔍 QeMLflow Scripts Enhancement Analysis")
     print("=" * 80)
 
     # Analyze original scripts

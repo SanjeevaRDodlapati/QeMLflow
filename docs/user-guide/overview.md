@@ -1,10 +1,10 @@
 # User Guide Overview
 
-Welcome to the ChemML User Guide. This comprehensive guide covers all aspects of using ChemML for molecular machine learning.
+Welcome to the QeMLflow User Guide. This comprehensive guide covers all aspects of using QeMLflow for molecular machine learning.
 
-## What is ChemML?
+## What is QeMLflow?
 
-ChemML is a quantum-enhanced molecular machine learning framework designed for:
+QeMLflow is a quantum-enhanced molecular machine learning framework designed for:
 
 - **Molecular Property Prediction**
 - **Drug Discovery and Design**
@@ -42,16 +42,16 @@ ChemML is a quantum-enhanced molecular machine learning framework designed for:
 
 ### Quick Installation
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### Basic Usage
 ```python
-import chemml
-from chemml.models import AutoMLRegressor
+import qemlflow
+from qemlflow.models import AutoMLRegressor
 
 # Load data
-molecules, properties = chemml.datasets.load_sample_molecules()
+molecules, properties = qemlflow.datasets.load_sample_molecules()
 
 # Train model
 model = AutoMLRegressor()
@@ -86,10 +86,10 @@ This user guide is organized into the following sections:
 ## Key Features
 
 ### AutoML Capabilities
-ChemML provides state-of-the-art AutoML for molecular data:
+QeMLflow provides state-of-the-art AutoML for molecular data:
 
 ```python
-from chemml.models import AutoMLRegressor
+from qemlflow.models import AutoMLRegressor
 
 model = AutoMLRegressor(
     time_budget=300,  # 5 minutes
@@ -103,7 +103,7 @@ model = AutoMLRegressor(
 Comprehensive molecular representation methods:
 
 ```python
-from chemml.preprocessing import MolecularDescriptors
+from qemlflow.preprocessing import MolecularDescriptors
 
 # Morgan fingerprints
 morgan_desc = MolecularDescriptors(descriptor_type='morgan')
@@ -119,7 +119,7 @@ combined_desc = MolecularDescriptors(descriptor_type='combined')
 Built-in experiment management:
 
 ```python
-from chemml.monitoring import ExperimentTracker
+from qemlflow.monitoring import ExperimentTracker
 
 with ExperimentTracker(project="drug-discovery") as tracker:
     model.fit(X_train, y_train)
@@ -130,22 +130,22 @@ with ExperimentTracker(project="drug-discovery") as tracker:
 ## Configuration
 
 ### Global Configuration
-ChemML can be configured globally:
+QeMLflow can be configured globally:
 
 ```python
-import chemml
+import qemlflow
 
 # Set global configuration
-chemml.config.set_n_jobs(4)           # Use 4 CPU cores
-chemml.config.enable_gpu(True)        # Enable GPU acceleration
-chemml.config.set_memory_limit(8192)  # 8GB memory limit
+qemlflow.config.set_n_jobs(4)           # Use 4 CPU cores
+qemlflow.config.enable_gpu(True)        # Enable GPU acceleration
+qemlflow.config.set_memory_limit(8192)  # 8GB memory limit
 ```
 
 ### Environment Variables
 ```bash
-export CHEMML_CONFIG_PATH="./config.yaml"
-export CHEMML_DATA_DIR="./data"
-export CHEMML_CACHE_DIR="./cache"
+export QEMLFLOW_CONFIG_PATH="./config.yaml"
+export QEMLFLOW_DATA_DIR="./data"
+export QEMLFLOW_CACHE_DIR="./cache"
 export WANDB_API_KEY="your_wandb_key"
 ```
 
@@ -158,7 +158,7 @@ export WANDB_API_KEY="your_wandb_key"
 4. **Validation strategy** - Use cross-validation for robust evaluation
 
 ### Model Selection
-1. **Start with AutoML** - Let ChemML find the best models
+1. **Start with AutoML** - Let QeMLflow find the best models
 2. **Try ensemble methods** - Often better than single models
 3. **Consider domain knowledge** - Use chemical intuition
 4. **Validate thoroughly** - Use appropriate metrics and validation sets
@@ -216,12 +216,12 @@ promising_compounds = screen_compounds(
 - **[Basic Tutorial](../getting-started/basic-tutorial.md)** - Step-by-step tutorial
 - **[API Reference](../api/core.md)** - Detailed API documentation
 - **[Examples](../examples/basic.md)** - Practical examples
-- **[GitHub Issues](https://github.com/SanjeevaRDodlapati/ChemML/issues)** - Report bugs or ask questions
+- **[GitHub Issues](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)** - Report bugs or ask questions
 
 ## Contributing
 
-ChemML is an open-source project. We welcome contributions:
+QeMLflow is an open-source project. We welcome contributions:
 
 - **[Contributing Guide](../development/contributing.md)** - How to contribute
-- **[GitHub Repository](https://github.com/SanjeevaRDodlapati/ChemML)** - Source code
-- **[Discussions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)** - Community discussions
+- **[GitHub Repository](https://github.com/SanjeevaRDodlapati/QeMLflow)** - Source code
+- **[Discussions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)** - Community discussions

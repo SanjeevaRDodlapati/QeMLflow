@@ -1,5 +1,5 @@
 """
-Utility Functions for ChemML Tutorials
+Utility Functions for QeMLflow Tutorials
 =====================================
 
 Utility functions and helpers to enhance educational experiences in computational chemistry and machine learning tutorials.
@@ -236,7 +236,7 @@ def create_progress_dashboard(
 def setup_logging(
     log_level: str = "INFO",
     log_file: Optional[str] = None,
-    tutorial_name: str = "chemml_tutorial",
+    tutorial_name: str = "qemlflow_tutorial",
 ) -> logging.Logger:
     """
     Setup logging for tutorial sessions.
@@ -250,7 +250,7 @@ def setup_logging(
         logging.Logger: Configured logger instance
     """
     # Create logger
-    logger = logging.getLogger(f"chemml.tutorials.{tutorial_name}")
+    logger = logging.getLogger(f"qemlflow.tutorials.{tutorial_name}")
     logger.setLevel(getattr(logging, log_level.upper()))
 
     # Remove existing handlers to avoid duplicates
@@ -407,7 +407,7 @@ def export_session_data(
     """
     if filename is None:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        filename = f"chemml_tutorial_session_data_{timestamp}.json"
+        filename = f"qemlflow_tutorial_session_data_{timestamp}.json"
 
     # Ensure .json extension
     if not filename.endswith(".json"):
@@ -601,7 +601,7 @@ def demonstrate_integration(
     show_quantum_integration: bool = True,
 ) -> Dict[str, Dict[str, Any]]:
     """
-    Demonstrate integration between tutorial framework and main ChemML modules.
+    Demonstrate integration between tutorial framework and main QeMLflow modules.
 
     Args:
         tutorial_data: Tutorial dataset object
@@ -616,7 +616,7 @@ def demonstrate_integration(
 
     if show_core_integration:
         try:
-            from chemml.core import featurizers, models, utils
+            from qemlflow.core import featurizers, models, utils
 
             integration_status["core"] = {
                 "available": True,
@@ -630,7 +630,7 @@ def demonstrate_integration(
 
     if show_research_integration:
         try:
-            from chemml.research import drug_discovery, generative
+            from qemlflow.research import drug_discovery, generative
 
             integration_status["research"] = {
                 "available": True,
@@ -644,7 +644,7 @@ def demonstrate_integration(
 
     if show_quantum_integration:
         try:
-            from chemml.research import modern_quantum, quantum
+            from qemlflow.research import modern_quantum, quantum
 
             integration_status["quantum"] = {
                 "available": True,

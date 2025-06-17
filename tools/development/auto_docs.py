@@ -1,5 +1,5 @@
 """
-ChemML Auto-Documentation Generator
+QeMLflow Auto-Documentation Generator
 =================================
 
 Automatically generates comprehensive API documentation with examples.
@@ -19,7 +19,7 @@ class APIDocGenerator:
     """Automatically generate comprehensive API documentation."""
 
     def __init__(
-        self, source_dir: str = "src/chemml", output_dir: str = "docs/api_auto"
+        self, source_dir: str = "src/qemlflow", output_dir: str = "docs/api_auto"
     ):
         self.source_dir = Path(source_dir)
         self.output_dir = Path(output_dir)
@@ -31,7 +31,7 @@ class APIDocGenerator:
 
     def scan_and_document(self) -> Dict[str, Any]:
         """Scan codebase and generate comprehensive documentation."""
-        print("🔍 Scanning ChemML codebase for API documentation...")
+        print("🔍 Scanning QeMLflow codebase for API documentation...")
 
         # Discover all Python modules
         modules = self._discover_modules()
@@ -377,13 +377,13 @@ class APIDocGenerator:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChemML API Documentation</title>
+    <title>QeMLflow API Documentation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>🧬 ChemML API Documentation</h1>
+            <h1>🧬 QeMLflow API Documentation</h1>
             <p>Comprehensive, auto-generated API reference</p>
         </header>
 
@@ -405,7 +405,7 @@ class APIDocGenerator:
         <div class="navigation-grid">
             <a href="modules.html" class="nav-card">
                 <h3>📦 Modules</h3>
-                <p>Browse all ChemML modules and their organization</p>
+                <p>Browse all QeMLflow modules and their organization</p>
             </a>
             <a href="functions.html" class="nav-card">
                 <h3>🔧 Functions</h3>
@@ -444,7 +444,7 @@ class APIDocGenerator:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title} - ChemML API</title>
+    <title>{title} - QeMLflow API</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -734,9 +734,9 @@ class APIDocGenerator:
 if __name__ == "__main__":
     import argparse
 
-    parser = argparse.ArgumentParser(description="Generate ChemML API documentation")
+    parser = argparse.ArgumentParser(description="Generate QeMLflow API documentation")
     parser.add_argument(
-        "--source", default="src/chemml", help="Source directory to scan"
+        "--source", default="src/qemlflow", help="Source directory to scan"
     )
     parser.add_argument(
         "--output", default="docs/api_auto", help="Output directory for documentation"

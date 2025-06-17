@@ -1,4 +1,4 @@
-Progress Tracking Dashboard for ChemML Learning Journey
+Progress Tracking Dashboard for QeMLflow Learning Journey
 
 This module provides interactive widgets and visualizations for tracking
 learning progress across the computational drug discovery program.

@@ -1,5 +1,5 @@
 """
-ChemML Safe Quick Wins Implementation
+QeMLflow Safe Quick Wins Implementation
 
 This script implements safe, targeted improvements to boost codebase health:
 1. Remove unused imports (using autoflake)
@@ -32,7 +32,7 @@ class SafeQuickWinsFixer:
 
     def run_safe_fixes(self):
         """Run safe quick win fixes."""
-        print("🛡️ ChemML Safe Quick Wins Implementation")
+        print("🛡️ QeMLflow Safe Quick Wins Implementation")
         print("=" * 50)
 
         # Skip files that commonly have syntax issues
@@ -42,7 +42,7 @@ class SafeQuickWinsFixer:
             ".pytest_cache",
             "build",
             "site",
-            "chemml_env",
+            "qemlflow_env",
         ]
 
         fixes = [
@@ -73,7 +73,7 @@ class SafeQuickWinsFixer:
 
         try:
             # Run autoflake on specific directories
-            directories = ["src/chemml", "tools", "examples"]
+            directories = ["src/qemlflow", "tools", "examples"]
             count = 0
 
             for directory in directories:
@@ -129,7 +129,7 @@ class SafeQuickWinsFixer:
             return self._count_black_changes()
 
         try:
-            directories = ["src/chemml", "tools", "examples"]
+            directories = ["src/qemlflow", "tools", "examples"]
             count = 0
 
             for directory in directories:
@@ -180,7 +180,7 @@ class SafeQuickWinsFixer:
             return self._count_isort_changes()
 
         try:
-            directories = ["src/chemml", "tools", "examples"]
+            directories = ["src/qemlflow", "tools", "examples"]
             count = 0
 
             for directory in directories:
@@ -236,7 +236,7 @@ class SafeQuickWinsFixer:
 
         # Target specific file types in specific directories
         patterns = [
-            "src/chemml/**/*.py",
+            "src/qemlflow/**/*.py",
             "tools/**/*.py",
             "examples/**/*.py",
             "*.md",
@@ -290,7 +290,7 @@ class SafeQuickWinsFixer:
         """Validate that all Python files have correct syntax."""
         print(f"\n🔍 Validating syntax...")
 
-        python_files = list(self.base_dir.glob("src/chemml/**/*.py"))
+        python_files = list(self.base_dir.glob("src/qemlflow/**/*.py"))
         errors = 0
 
         for file_path in python_files[:10]:  # Check first 10 files
@@ -319,7 +319,7 @@ class SafeQuickWinsFixer:
                     "autoflake",
                     "--check",
                     "--recursive",
-                    str(self.base_dir / "src/chemml"),
+                    str(self.base_dir / "src/qemlflow"),
                 ],
                 capture_output=True,
                 text=True,
@@ -342,7 +342,7 @@ class SafeQuickWinsFixer:
                     "black",
                     "--check",
                     "--diff",
-                    str(self.base_dir / "src/chemml"),
+                    str(self.base_dir / "src/qemlflow"),
                 ],
                 capture_output=True,
                 text=True,
@@ -365,7 +365,7 @@ class SafeQuickWinsFixer:
                     "isort",
                     "--check-only",
                     "--diff",
-                    str(self.base_dir / "src/chemml"),
+                    str(self.base_dir / "src/qemlflow"),
                 ],
                 capture_output=True,
                 text=True,
@@ -412,7 +412,7 @@ class SafeQuickWinsFixer:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="ChemML Safe Quick Wins Implementation"
+        description="QeMLflow Safe Quick Wins Implementation"
     )
     parser.add_argument(
         "--dry-run", action="store_true", help="Preview changes without applying them"

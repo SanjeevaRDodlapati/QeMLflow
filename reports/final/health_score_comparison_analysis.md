@@ -1,4 +1,4 @@
-# Health Score Comparison Report - ChemML Codebase
+# Health Score Comparison Report - QeMLflow Codebase
 
 ## Summary
 
@@ -12,7 +12,7 @@ I found and ran the main health check calculation file in your codebase: `tools/
 **Components Analyzed:**
 - ✅ System Information (Platform, Python version)
 - ✅ Python Environment (Virtual env, pip version)
-- ⚠️ ChemML Installation (Core working, preprocessing missing)
+- ⚠️ QeMLflow Installation (Core working, preprocessing missing)
 - ❌ Dependencies (Missing scikit-learn, transformers)
 - ❌ Integration System (Import errors)
 - ✅ Performance (Good import/computation times)
@@ -88,8 +88,8 @@ score = max(0, 100 - total_weighted_issues)
 
 ### ✅ Strengths
 1. **System Compatibility**: macOS, Python 3.11.2, 64-bit architecture
-2. **Virtual Environment**: Properly configured chemml_env
-3. **Core ChemML**: v0.2.0 successfully loaded with enhanced features
+2. **Virtual Environment**: Properly configured qemlflow_env
+3. **Core QeMLflow**: v0.2.0 successfully loaded with enhanced features
 4. **Key Libraries**: numpy, pandas, matplotlib, rdkit, torch all working
 5. **Performance**: Fast import times (0.000s) and computation (0.010s)
 
@@ -97,11 +97,11 @@ score = max(0, 100 - total_weighted_issues)
 1. **Missing Dependencies**:
    - scikit-learn (core ML library)
    - transformers (for NLP/ML models)
-   - chemml.preprocessing module import failure
+   - qemlflow.preprocessing module import failure
 
 2. **Integration System Failure**:
    ```
-   cannot import name 'get_manager' from 'chemml.integrations'
+   cannot import name 'get_manager' from 'qemlflow.integrations'
    ```
 
 3. **Security Vulnerabilities**: 78 issues detected by bandit including:
@@ -111,7 +111,7 @@ score = max(0, 100 - total_weighted_issues)
    - Weak MD5 hash usage
 
 ### ⚠️ Warnings
-1. **Configuration**: Missing chemml_config.yaml and advanced_config.yaml
+1. **Configuration**: Missing qemlflow_config.yaml and advanced_config.yaml
 2. **Security Tools**: safety and pip-audit not available
 3. **Package Updates**: Outdated package check timed out
 
@@ -125,7 +125,7 @@ pip install scikit-learn transformers safety pip-audit
 ### 2. Fix Integration System
 The integration system import failure needs investigation in:
 ```
-src/chemml/integrations/__init__.py
+src/qemlflow/integrations/__init__.py
 ```
 
 ### 3. Address Security Issues
@@ -135,7 +135,7 @@ src/chemml/integrations/__init__.py
 - Replace MD5 with SHA-256 for security purposes
 
 ### 4. Create Configuration Files
-- Create `config/chemml_config.yaml`
+- Create `config/qemlflow_config.yaml`
 - Create `config/advanced_config.yaml` 
 - Set up model registry properly
 

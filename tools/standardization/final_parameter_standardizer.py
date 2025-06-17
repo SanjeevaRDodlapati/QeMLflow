@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Set, Tuple
 class FinalParameterStandardizer:
     """Complete parameter standardization with intelligent patterns"""
 
-    def __init__(self, src_path: str = "src/chemml"):
+    def __init__(self, src_path: str = "src/qemlflow"):
         self.src_path = Path(src_path)
 
         # Comprehensive standardization rules

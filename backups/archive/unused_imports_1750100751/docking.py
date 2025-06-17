@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery - Molecular Docking Module
+QeMLflow Drug Discovery - Molecular Docking Module
 ===============================================
 
 Professional molecular docking and structure-based drug design tools.

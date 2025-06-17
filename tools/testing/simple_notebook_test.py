@@ -120,7 +120,7 @@ class SimpleNotebookValidator:
                 analysis["problematic"].append(imp)
             elif base_imp in self.quantum_libs:
                 analysis["quantum"].append(imp)
-            elif base_imp in ["chemml", "src"]:
+            elif base_imp in ["qemlflow", "src"]:
                 analysis["local"].append(imp)
             else:
                 analysis["standard"].append(imp)

@@ -1,4 +1,4 @@
-# ChemML Codebase Functionality Verification - COMPLETE ✅
+# QeMLflow Codebase Functionality Verification - COMPLETE ✅
 
 **Date**: June 16, 2025  
 **Status**: 🎉 **FULLY FUNCTIONAL** - All critical issues resolved  
@@ -27,20 +27,20 @@
 
 **Verification**:
 ```python
-from chemml.integrations.adapters.base import model_adapters
+from qemlflow.integrations.adapters.base import model_adapters
 # ✅ Import successful - no more circular import errors
 ```
 
 ### 2. Missing Model Class ✅
-**Problem**: `ImportError: cannot import name 'Model' from 'chemml.core.models'`
+**Problem**: `ImportError: cannot import name 'Model' from 'qemlflow.core.models'`
 **Solution**:
-- Added `Model = BaseModel` alias in `chemml.core.models.py`
+- Added `Model = BaseModel` alias in `qemlflow.core.models.py`
 - Updated `__all__` exports to include `"Model"`
 - Ensures backward compatibility for code expecting a generic Model class
 
 **Verification**:
 ```python
-from chemml.core.models import Model, BaseModel
+from qemlflow.core.models import Model, BaseModel
 # ✅ Both imports work, Model is an alias for BaseModel
 ```
 
@@ -48,8 +48,8 @@ from chemml.core.models import Model, BaseModel
 
 ### Core Functionality ✅
 ```python
-✅ ChemML package imports successfully
-✅ ChemMLPipeline creates and works with chemistry data
+✅ QeMLflow package imports successfully
+✅ QeMLflowPipeline creates and works with chemistry data
 ✅ Model creation (RF, Linear, SVM) works
 ✅ Data processing and featurization works
 ✅ Pipeline workflow end-to-end works
@@ -79,7 +79,7 @@ from chemml.core.models import Model, BaseModel
 **After**: Clean root with organized structure:
 
 ```
-ChemML/
+QeMLflow/
 ├── 📁 .config/          # All configuration files
 ├── 📁 .artifacts/       # Build outputs and generated files  
 ├── 📁 .temp/           # Temporary and cache files
@@ -124,7 +124,7 @@ ChemML/
 2. **Testing**: Pytest working with comprehensive test suite  
 3. **Documentation**: MkDocs building documentation successfully
 4. **Version Control**: Pre-commit hooks configured and working
-5. **Development**: All core and extended ChemML features accessible
+5. **Development**: All core and extended QeMLflow features accessible
 
 ### Example Development Commands ✅
 ```bash
@@ -157,7 +157,7 @@ pre-commit run --all-files  ✅
    - Tool compatibility maintained
 
 3. **Ensure all tools, core, and extended functions work**: ✅ COMPLETE
-   - Core ChemML features: ✅ Working
+   - Core QeMLflow features: ✅ Working
    - Extended/integration features: ✅ Working  
    - Development tools: ✅ Working
    - Example scripts: ✅ Working
@@ -181,7 +181,7 @@ pre-commit run --all-files  ✅
 - ✅ Development workflow is fully functional
 - ✅ Codebase is ready for continued development and production use
 
-**The ChemML codebase is now:**
+**The QeMLflow codebase is now:**
 - 🏗️ **Well-organized** with clean structure
 - 🔧 **Fully functional** from core to advanced features  
 - 📊 **Quality-monitored** with comprehensive linting

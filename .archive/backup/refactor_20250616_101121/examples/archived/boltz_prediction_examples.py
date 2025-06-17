@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-# Add ChemML source to path
+# Add QeMLflow source to path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
@@ -388,7 +388,7 @@ def analyze_integration_performance():
     # User experience metrics
     print("\nUser Experience:")
     print("  Setup Time: <5 minutes for first-time users")
-    print("  Learning Curve: Minimal (familiar ChemML patterns)")
+    print("  Learning Curve: Minimal (familiar QeMLflow patterns)")
     print("  Error Recovery: Clear messages and suggested solutions")
     print("  Documentation: Complete examples for all use cases")
 

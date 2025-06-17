@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Comprehensive Integration Test for ChemML Enhancements
+Comprehensive Integration Test for QeMLflow Enhancements
 ====================================================
 
 Tests Phase 1, 2, and 3 implementations to ensure all features work together.
@@ -26,7 +26,7 @@ def test_phase_1_infrastructure():
 
     # Test enhanced registry
     try:
-        from chemml.integrations.core.advanced_registry import AdvancedModelRegistry
+        from qemlflow.integrations.core.advanced_registry import AdvancedModelRegistry
 
         registry = AdvancedModelRegistry()
         print("✅ Advanced registry loaded successfully")
@@ -95,17 +95,17 @@ def test_phase_2_user_experience():
 
     # Test enhanced error handling
     try:
-        from chemml.utils.enhanced_error_handling import ChemMLError, debug_context
+        from qemlflow.utils.enhanced_error_handling import QeMLflowError, debug_context
 
         # Test custom error
         try:
-            raise ChemMLError(
+            raise QeMLflowError(
                 "Test error message",
                 context="Test Context",
                 solutions=["Solution 1", "Solution 2"],
                 error_code="TEST_ERROR",
             )
-        except ChemMLError as e:
+        except QeMLflowError as e:
             if "Test error message" in str(e) and "TEST_ERROR" in str(e):
                 print("✅ Enhanced error handling working")
             else:
@@ -121,13 +121,13 @@ def test_phase_2_user_experience():
 
     # Test enhanced UI
     try:
-        from chemml.utils.enhanced_ui import chemml_interface, quick_start
+        from qemlflow.utils.enhanced_ui import qemlflow_interface, quick_start
 
         # Test interface
-        interface = chemml_interface
+        interface = qemlflow_interface
         quick_guide = quick_start()
 
-        if "ChemML" in quick_guide:
+        if "QeMLflow" in quick_guide:
             print("✅ Enhanced UI interface working")
         else:
             print("❌ Enhanced UI not generating proper output")
@@ -152,7 +152,7 @@ def test_phase_3_advanced_features():
 
     # Test AutoML optimizer
     try:
-        from chemml.advanced.ml_optimizer import AutoMLOptimizer, ModelAnalytics
+        from qemlflow.advanced.ml_optimizer import AutoMLOptimizer, ModelAnalytics
 
         # Generate sample data
         np.random.seed(42)
@@ -183,7 +183,7 @@ def test_phase_3_advanced_features():
 
     # Test enterprise monitoring
     try:
-        from chemml.enterprise.monitoring import MetricsCollector, MonitoringDashboard
+        from qemlflow.enterprise.monitoring import MetricsCollector, MonitoringDashboard
 
         # Test monitoring setup
         dashboard = MonitoringDashboard()
@@ -219,9 +219,9 @@ def test_integration_workflow():
 
     try:
         # Import all major components
-        from chemml.advanced.ml_optimizer import AutoMLOptimizer
-        from chemml.enterprise.monitoring import MonitoringDashboard
-        from chemml.utils.enhanced_error_handling import (
+        from qemlflow.advanced.ml_optimizer import AutoMLOptimizer
+        from qemlflow.enterprise.monitoring import MonitoringDashboard
+        from qemlflow.utils.enhanced_error_handling import (
             debug_context,
             global_performance_monitor,
         )
@@ -332,7 +332,7 @@ def test_health_score_improvement():
 
 def main():
     """Run comprehensive integration tests."""
-    print("🧬 ChemML Comprehensive Enhancement Testing")
+    print("🧬 QeMLflow Comprehensive Enhancement Testing")
     print("=" * 50)
     print(f"Python: {sys.version}")
     print(f"Test started: {time.strftime('%Y-%m-%d %H:%M:%S')}")
@@ -354,7 +354,7 @@ def main():
     print("-" * 20)
     if integration_success:
         print("✅ All phases working together successfully")
-        print("🎯 ChemML enhancements are production-ready")
+        print("🎯 QeMLflow enhancements are production-ready")
     else:
         print("⚠️ Some integration issues detected")
         print("🔧 Additional debugging may be needed")

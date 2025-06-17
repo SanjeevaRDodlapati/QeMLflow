@@ -1,0 +1,67 @@
+"""
+Core ChemML functionality - essential modules for chemistry ML workflows.
+
+This module contains the fundamental building blocks:
+- featurizers: Molecular feature extraction
+- models: Machine learning models for chemistry
+- data: Data processing and handling utilities
+- evaluation: Model evaluation and metrics
+- utils: Common utilities and helpers
+"""
+
+# Import lazy loading utilities
+from ..utils.lazy_imports import lazy_import
+
+# Core modules - import directly (these should be fast)
+from . import data, evaluation, featurizers, models, utils
+
+# Essential functions for immediate use
+from .data import load_sample_data, quick_clean, quick_split
+from .evaluation import quick_classification_eval, quick_regression_eval
+from .featurizers import morgan_fingerprints, molecular_descriptors, comprehensive_features
+from .models import create_rf_model, create_linear_model, create_svm_model, compare_models
+
+# Lazy import for advanced features that may have heavy dependencies
+_ensemble_advanced = lazy_import('chemml.core.ensemble_advanced')
+_monitoring = lazy_import('chemml.core.monitoring')
+_recommendations = lazy_import('chemml.core.recommendations')
+_workflow_optimizer = lazy_import('chemml.core.workflow_optimizer')
+
+# Provide lazy access to advanced features
+def get_adaptive_ensemble():
+    """Get AdaptiveEnsemble class (lazy loaded)."""
+    return _ensemble_advanced.AdaptiveEnsemble
+
+def get_monitoring_dashboard():
+    """Get PerformanceDashboard class (lazy loaded)."""
+    return _monitoring.PerformanceDashboard
+
+def get_model_recommender():
+    """Get ModelRecommendationEngine class (lazy loaded)."""
+    return _recommendations.ModelRecommendationEngine
+
+__all__ = [
+    # Core modules
+    "featurizers",
+    "models",
+    "data",
+    "evaluation",
+    "utils",
+    # Essential functions
+    "morgan_fingerprints",
+    "molecular_descriptors",
+    "comprehensive_features",
+    "create_rf_model",
+    "create_linear_model",
+    "create_svm_model",
+    "compare_models",
+    "load_sample_data",
+    "quick_clean",
+    "quick_split",
+    "quick_classification_eval",
+    "quick_regression_eval",
+    # Lazy accessor functions
+    "get_adaptive_ensemble",
+    "get_monitoring_dashboard",
+    "get_model_recommender",
+]

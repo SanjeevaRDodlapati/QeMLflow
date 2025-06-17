@@ -6,7 +6,7 @@ This script validates the core functionality that the bootcamp notebooks depend 
 without requiring notebook execution. It tests:
 
 1. Core library imports
-2. ChemML module availability
+2. QeMLflow module availability
 3. Dataset loading capabilities
 4. Model training workflows
 
@@ -31,7 +31,7 @@ class BootcampValidator:
         self.verbose = verbose
         self.results = {
             "core_libraries": {},
-            "chemml_modules": {},
+            "qemlflow_modules": {},
             "quantum_libraries": {},
             "ml_workflows": {},
             "data_processing": {},
@@ -80,36 +80,36 @@ class BootcampValidator:
 
         return self.results["core_libraries"]
 
-    def validate_chemml_modules(self):
-        """Test ChemML module structure and imports"""
-        self.log("Testing ChemML Module Structure...")
+    def validate_qemlflow_modules(self):
+        """Test QeMLflow module structure and imports"""
+        self.log("Testing QeMLflow Module Structure...")
 
         # Test new hybrid architecture
-        chemml_modules = [
-            "chemml.core.featurizers",
-            "chemml.core.data",
-            "chemml.research.quantum",
-            "chemml.integrations.deepchem_integration",
+        qemlflow_modules = [
+            "qemlflow.core.featurizers",
+            "qemlflow.core.data",
+            "qemlflow.research.quantum",
+            "qemlflow.integrations.deepchem_integration",
         ]
 
-        for module in chemml_modules:
+        for module in qemlflow_modules:
             success, mod = self.test_import(module)
-            self.results["chemml_modules"][module] = success
+            self.results["qemlflow_modules"][module] = success
 
         # Test legacy module integration
         try:
-            from chemml.core.data import (
+            from qemlflow.core.data import (
                 enhanced_property_prediction,
                 legacy_molecular_cleaning,
             )
 
             self.log("Legacy integration functions available", "SUCCESS")
-            self.results["chemml_modules"]["legacy_integration"] = True
+            self.results["qemlflow_modules"]["legacy_integration"] = True
         except ImportError:
             self.log("Legacy integration not available", "ERROR")
-            self.results["chemml_modules"]["legacy_integration"] = False
+            self.results["qemlflow_modules"]["legacy_integration"] = False
 
-        return self.results["chemml_modules"]
+        return self.results["qemlflow_modules"]
 
     def validate_quantum_libraries(self):
         """Test quantum computing libraries for Days 6-7"""
@@ -214,7 +214,7 @@ class BootcampValidator:
 
         # Run all validation tests
         self.validate_core_libraries()
-        self.validate_chemml_modules()
+        self.validate_qemlflow_modules()
         self.validate_quantum_libraries()
         self.validate_ml_workflows()
         self.validate_data_processing()
@@ -269,10 +269,10 @@ def main():
 
     args = parser.parse_args()
 
-    # Add ChemML to path if needed
-    chemml_path = Path(__file__).parent / "src"
-    if chemml_path.exists():
-        sys.path.insert(0, str(chemml_path))
+    # Add QeMLflow to path if needed
+    qemlflow_path = Path(__file__).parent / "src"
+    if qemlflow_path.exists():
+        sys.path.insert(0, str(qemlflow_path))
 
     validator = BootcampValidator(verbose=args.verbose)
     success_rate = validator.run_validation()

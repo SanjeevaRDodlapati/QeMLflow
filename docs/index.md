@@ -1,10 +1,10 @@
-# ChemML Documentation
+# QeMLflow Documentation
 
-Welcome to the **ChemML** documentation - a quantum-enhanced molecular machine learning framework.
+Welcome to the **QeMLflow** documentation - a quantum-enhanced molecular machine learning framework.
 
 ## Quick Start
 
-ChemML is a comprehensive Python package for molecular machine learning, featuring:
+QeMLflow is a comprehensive Python package for molecular machine learning, featuring:
 
 - **Quantum-Enhanced Algorithms**: Integration with quantum computing frameworks
 - **Advanced ML Models**: State-of-the-art machine learning for molecular property prediction
@@ -15,23 +15,23 @@ ChemML is a comprehensive Python package for molecular machine learning, featuri
 ## Installation
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 For development installation:
 
 ```bash
-git clone https://github.com/SanjeevaRDodlapati/ChemML.git
-cd ChemML
+git clone https://github.com/SanjeevaRDodlapati/QeMLflow.git
+cd QeMLflow
 pip install -e .
 ```
 
 ## Quick Example
 
 ```python
-import chemml
-from chemml.datasets import load_sample_molecules
-from chemml.models import AutoMLRegressor
+import qemlflow
+from qemlflow.datasets import load_sample_molecules
+from qemlflow.models import AutoMLRegressor
 
 # Load sample data
 molecules, properties = load_sample_molecules()
@@ -48,11 +48,11 @@ predictions = model.predict(new_molecules)
 
 ### Core Modules
 
-- **`chemml.preprocessing`**: Molecular preprocessing and feature engineering
-- **`chemml.models`**: Machine learning models and AutoML
-- **`chemml.quantum`**: Quantum computing integration
-- **`chemml.ensemble`**: Ensemble methods and model combination
-- **`chemml.monitoring`**: Experiment tracking and model monitoring
+- **`qemlflow.preprocessing`**: Molecular preprocessing and feature engineering
+- **`qemlflow.models`**: Machine learning models and AutoML
+- **`qemlflow.quantum`**: Quantum computing integration
+- **`qemlflow.ensemble`**: Ensemble methods and model combination
+- **`qemlflow.monitoring`**: Experiment tracking and model monitoring
 
 ### Key Capabilities
 
@@ -74,10 +74,10 @@ predictions = model.predict(new_molecules)
 
 ## Community & Support
 
-- **GitHub**: [SanjeevaRDodlapati/ChemML](https://github.com/SanjeevaRDodlapati/ChemML)
-- **Issues**: [Report bugs or request features](https://github.com/SanjeevaRDodlapati/ChemML/issues)
-- **Discussions**: [Community discussions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
+- **GitHub**: [SanjeevaRDodlapati/QeMLflow](https://github.com/SanjeevaRDodlapati/QeMLflow)
+- **Issues**: [Report bugs or request features](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
+- **Discussions**: [Community discussions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
 
 ## License
 
-ChemML is released under the MIT License. See [LICENSE](https://github.com/SanjeevaRDodlapati/ChemML/blob/main/LICENSE) for details.
+QeMLflow is released under the MIT License. See [LICENSE](https://github.com/SanjeevaRDodlapati/QeMLflow/blob/main/LICENSE) for details.

@@ -1,12 +1,12 @@
-# 🚀 ChemML Quick Start Guide
+# 🚀 QeMLflow Quick Start Guide
 
 **Get started with computational molecular modeling and quantum machine learning in 15 minutes!**
 
 ---
 
-## 🎯 Welcome to ChemML
+## 🎯 Welcome to QeMLflow
 
-ChemML is your gateway to computational drug discovery, combining machine learning and quantum computing for molecular modeling. This guide gets you running with your first molecular ML model in minutes.
+QeMLflow is your gateway to computational drug discovery, combining machine learning and quantum computing for molecular modeling. This guide gets you running with your first molecular ML model in minutes.
 
 ### 🏃‍♂️ Quick Start Options
 
@@ -23,12 +23,12 @@ ChemML is your gateway to computational drug discovery, combining machine learni
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ChemML.git
-cd ChemML
+git clone https://github.com/yourusername/QeMLflow.git
+cd QeMLflow
 
 # Create and activate environment
-python -m venv chemml_env
-source chemml_env/bin/activate  # On Windows: chemml_env\Scripts\activate
+python -m venv qemlflow_env
+source qemlflow_env/bin/activate  # On Windows: qemlflow_env\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -63,10 +63,10 @@ python day_01_ml_cheminformatics_final.py
 
 ```python
 # Import and explore the framework
-from chemml_common import ChemMLConfig, LibraryManager
+from qemlflow_common import QeMLflowConfig, LibraryManager
 
 # Check your setup
-config = ChemMLConfig()
+config = QeMLflowConfig()
 lib_manager = LibraryManager()
 
 print(f"Output directory: {config.output_dir}")
@@ -121,12 +121,12 @@ For experienced ML engineers who want immediate access.
 
 ```bash
 # Professional installation
-git clone https://github.com/yourusername/ChemML.git
-cd ChemML
+git clone https://github.com/yourusername/QeMLflow.git
+cd QeMLflow
 
 # Production environment
-python -m venv chemml_prod
-source chemml_prod/bin/activate
+python -m venv qemlflow_prod
+source qemlflow_prod/bin/activate
 
 # Full installation with optional dependencies
 pip install -r requirements.txt
@@ -134,7 +134,7 @@ pip install -r requirements-dev.txt  # Optional: for development
 
 # Verify complete setup
 python -c "
-from chemml_common import *
+from qemlflow_common import *
 print('✅ Framework ready')
 print('✅ All components loaded')
 "
@@ -144,7 +144,7 @@ print('✅ All components loaded')
 
 ```python
 # Start building immediately
-from chemml_common import ChemMLConfig, LibraryManager, BaseRunner
+from qemlflow_common import QeMLflowConfig, LibraryManager, BaseRunner
 
 class MyMolecularMLProject(BaseRunner):
     def setup(self):
@@ -175,7 +175,7 @@ result = project.run()
 ## 🌟 What You'll Achieve
 
 ### After 15 Minutes
-- ✅ ChemML environment running
+- ✅ QeMLflow environment running
 - ✅ First molecular ML model trained
 - ✅ Understanding of framework basics
 - ✅ Confidence to explore further
@@ -201,9 +201,9 @@ result = project.run()
 **Environment Issues:**
 ```bash
 # Reset environment
-rm -rf chemml_env
-python -m venv chemml_env
-source chemml_env/bin/activate
+rm -rf qemlflow_env
+python -m venv qemlflow_env
+source qemlflow_env/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -225,7 +225,7 @@ pip install --user -r requirements.txt
 
 - **[User Guide](USER_GUIDE.md)** - Comprehensive usage guide
 - **[Troubleshooting](REFERENCE.md#troubleshooting)** - Common solutions
-- **[GitHub Issues](https://github.com/yourusername/ChemML/issues)** - Get help from community
+- **[GitHub Issues](https://github.com/yourusername/QeMLflow/issues)** - Get help from community
 
 ### 💬 Community Support
 
@@ -246,7 +246,7 @@ pip install --user -r requirements.txt
 ### For Experienced Users
 1. **Explore Advanced Topics** - Check [Learning Paths](LEARNING_PATHS.md)
 2. **Build Custom Solutions** - Use the framework for your projects
-3. **Contribute** - Help improve ChemML for everyone
+3. **Contribute** - Help improve QeMLflow for everyone
 4. **Deploy Production** - Scale your models to production
 
 ### For Researchers

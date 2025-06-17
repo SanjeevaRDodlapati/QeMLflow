@@ -1,8 +1,8 @@
-Standalone Boltz Integration for ChemML
+Standalone Boltz Integration for QeMLflow
 =======================================
 
 This is a working demonstration of integrating the Boltz biomolecular
-interaction model into ChemML, showing the integration framework in action.
+interaction model into QeMLflow, showing the integration framework in action.
 """
 
 import json
@@ -23,7 +23,7 @@ class StandaloneBoltzAdapter:
     """
     Standalone Boltz adapter demonstrating integration framework.
 
-    This class shows how external models can be integrated into ChemML
+    This class shows how external models can be integrated into QeMLflow
     using the adapter pattern and unified API design.
     """
 
@@ -36,7 +36,7 @@ class StandaloneBoltzAdapter:
     ):
         """Initialize Boltz adapter."""
         self.cache_dir = (
-            Path(cache_dir) if cache_dir else Path.home() / ".chemml" / "boltz"
+            Path(cache_dir) if cache_dir else Path.home() / ".qemlflow" / "boltz"
         )
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 

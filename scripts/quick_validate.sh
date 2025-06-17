@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ChemML Enhanced Quick Validation
+# QeMLflow Enhanced Quick Validation
 # Comprehensive health check with improved error handling and reporting
 
 set -euo pipefail  # Exit on any error, undefined variable, or pipe failure
@@ -16,7 +16,7 @@ NC='\033[0m' # No Color
 LOG_FILE="logs/quick_validation_$(date +%Y%m%d_%H%M%S).log"
 TIMEOUT=300  # 5 minutes timeout for operations
 
-echo -e "${BLUE}🚀 ChemML Enhanced Quick Validation${NC}"
+echo -e "${BLUE}🚀 QeMLflow Enhanced Quick Validation${NC}"
 echo -e "${BLUE}⏱️  Expected time: ~3-5 minutes${NC}"
 echo "============================================"
 
@@ -34,7 +34,7 @@ handle_error() {
     echo -e "${RED}❌ Error occurred (exit code: $exit_code)${NC}" | tee -a "$LOG_FILE"
     echo -e "${YELLOW}💡 Check the log file for details: $LOG_FILE${NC}"
     echo -e "${YELLOW}💡 Common solutions:${NC}"
-    echo -e "${YELLOW}   • Activate virtual environment: source chemml_env/bin/activate${NC}"
+    echo -e "${YELLOW}   • Activate virtual environment: source qemlflow_env/bin/activate${NC}"
     echo -e "${YELLOW}   • Install dependencies: pip install -r requirements.txt${NC}"
     echo -e "${YELLOW}   • Check Python version: python --version${NC}"
     exit $exit_code
@@ -62,7 +62,7 @@ log "Starting enhanced quick validation..."
 # 1. Environment check
 echo -e "${BLUE}🔍 Checking environment...${NC}"
 python --version | tee -a "$LOG_FILE"
-pip list | grep -E "(chemml|rdkit|numpy|pandas|sklearn)" | tee -a "$LOG_FILE" || true
+pip list | grep -E "(qemlflow|rdkit|numpy|pandas|sklearn)" | tee -a "$LOG_FILE" || true
 
 # 2. Enhanced core import test
 echo -e "${BLUE}📦 Testing core imports...${NC}"
@@ -72,19 +72,19 @@ import time
 start_time = time.time()
 
 try:
-    import chemml
-    print(f'✅ ChemML imported successfully in {time.time() - start_time:.2f}s')
+    import qemlflow
+    print(f'✅ QeMLflow imported successfully in {time.time() - start_time:.2f}s')
     
     # Test lazy loading
     print('🔄 Testing lazy loading...')
-    _ = chemml.core
+    _ = qemlflow.core
     print('✅ Core module loaded')
     
     # Test essential functions
     print('🧪 Testing essential functions...')
-    hasattr(chemml, 'load_sample_data')
-    hasattr(chemml, 'morgan_fingerprints') 
-    hasattr(chemml, 'create_rf_model')
+    hasattr(qemlflow, 'load_sample_data')
+    hasattr(qemlflow, 'morgan_fingerprints') 
+    hasattr(qemlflow, 'create_rf_model')
     print('✅ Essential functions available')
     
 except Exception as e:
@@ -95,14 +95,14 @@ except Exception as e:
 # 3. Quick functionality test
 echo -e "${BLUE}⚡ Testing core functionality...${NC}"
 run_with_timeout $TIMEOUT python -c "
-import chemml
+import qemlflow
 import numpy as np
 
 print('🧪 Testing molecular fingerprints...')
 # Test with simple SMILES
 test_smiles = ['CCO', 'CCC', 'C1CCCCC1']
 try:
-    fps = chemml.morgan_fingerprints(test_smiles)
+    fps = qemlflow.morgan_fingerprints(test_smiles)
     print(f'✅ Generated fingerprints: {fps.shape}')
 except Exception as e:
     print(f'⚠️  Fingerprint generation failed: {e}')
@@ -114,7 +114,7 @@ try:
     y = np.random.randint(0, 2, 10)
     
     # Test if the function exists and can be called
-    model_func = chemml.create_rf_model
+    model_func = qemlflow.create_rf_model
     print('✅ RF model function available')
     
     # Try creating a simple model
@@ -131,23 +131,23 @@ except Exception as e:
 echo -e "${BLUE}🧪 Running basic tests...${NC}"
 run_with_timeout $TIMEOUT python -c "
 # Simple functionality test instead of full pytest
-print('🧪 Testing basic ChemML functionality...')
+print('🧪 Testing basic QeMLflow functionality...')
 try:
-    import chemml
+    import qemlflow
     
     # Test data loading
     print('📊 Testing data functions...')
-    data_module = chemml.core.data
+    data_module = qemlflow.core.data
     print('✅ Data module accessible')
     
     # Test model functions
     print('🤖 Testing model functions...')
-    models_module = chemml.core.models  
+    models_module = qemlflow.core.models  
     print('✅ Models module accessible')
     
     # Test evaluation functions
     print('📈 Testing evaluation functions...')
-    eval_module = chemml.core.evaluation
+    eval_module = qemlflow.core.evaluation
     print('✅ Evaluation module accessible')
     
     print('✅ All basic functionality tests passed')

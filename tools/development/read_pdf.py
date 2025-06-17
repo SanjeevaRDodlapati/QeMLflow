@@ -32,7 +32,7 @@ def extract_pdf_text(pdf_path):
 
 
 if __name__ == "__main__":
-    pdf_path = "/Users/sanjeevadodlapati/Downloads/Repos/ChemML/docs/assets/7DayRoadmap_MLforChemistry.pdf"
+    pdf_path = "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/docs/assets/7DayRoadmap_MLforChemistry.pdf"
 
     if Path(pdf_path).exists():
         print(f"Reading PDF: {pdf_path}")

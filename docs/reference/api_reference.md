@@ -1,8 +1,8 @@
-# API Reference for ChemML
+# API Reference for QeMLflow
 
 ## Overview
 
-This document provides an API reference for the ChemML project, detailing the functions and classes available in the various modules. The ChemML project focuses on machine learning and quantum computing techniques for molecular modeling and drug design.
+This document provides an API reference for the QeMLflow project, detailing the functions and classes available in the various modules. The QeMLflow project focuses on machine learning and quantum computing techniques for molecular modeling and drug design.
 
 ## Modules
 

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/FRAMEWORK_INTEGRATION_GUIDE/">
+        <link rel="canonical" href="https://qemlflow.io/FRAMEWORK_INTEGRATION_GUIDE/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>ChemML Framework Integration Guide - ChemML Documentation</title>
+        <title>QeMLflow Framework Integration Guide - QeMLflow Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chemml-framework-integration-guide" class="md-skip">
+        <a href="#qemlflow-framework-integration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,13 +100,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ChemML Framework Integration Guide
+              QeMLflow Framework Integration Guide
             
           </span>
         </div>
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href=".." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -750,12 +750,12 @@
 
 
 
-<h1 id="chemml-framework-integration-guide">ChemML Framework Integration Guide<a class="headerlink" href="#chemml-framework-integration-guide" title="Permanent link">&para;</a></h1>
+<h1 id="qemlflow-framework-integration-guide">QeMLflow Framework Integration Guide<a class="headerlink" href="#qemlflow-framework-integration-guide" title="Permanent link">&para;</a></h1>
 <p><strong>Updated for New Categorical Organization (June 2025)</strong></p>
 <hr />
 <h2 id="new-framework-structure">📁 <strong>New Framework Structure</strong><a class="headerlink" href="#new-framework-structure" title="Permanent link">&para;</a></h2>
 <h3 id="organized-by-scientific-domain"><strong>Organized by Scientific Domain</strong><a class="headerlink" href="#organized-by-scientific-domain" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>chemml.integrations/
+<div class="codehilite"><pre><span></span><code>qemlflow.integrations/
 ├── core/                    # Framework infrastructure
 ├── adapters/
 │   ├── molecular/          # Protein/molecular models
@@ -810,7 +810,7 @@
 
 <h3 id="after-framework-integration"><strong>After: Framework Integration</strong><a class="headerlink" href="#after-framework-integration" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Framework provides one-line solutions:</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">morgan_fingerprints</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">morgan_fingerprints</span>
 
 <span class="c1"># Single function call replaces entire custom class</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">morgan_fingerprints</span><span class="p">(</span><span class="n">smiles_list</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span>
@@ -828,7 +828,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">record_activity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">activity</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span> <span class="o">...</span>
 
 <span class="c1"># REPLACE WITH: Framework assessment</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">LearningAssessment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">LearningAssessment</span>
 <span class="n">assessment</span> <span class="o">=</span> <span class="n">LearningAssessment</span><span class="p">(</span><span class="n">student_id</span><span class="o">=</span><span class="s2">&quot;demo&quot;</span><span class="p">,</span> <span class="n">section</span><span class="o">=</span><span class="s2">&quot;fundamentals&quot;</span><span class="p">)</span>
 </code></pre></div>
 
@@ -839,7 +839,7 @@
     <span class="o">...</span>
 
 <span class="c1"># REPLACE WITH: Framework featurizers</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">molecular_descriptors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">molecular_descriptors</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">molecular_descriptors</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
 </code></pre></div>
 
@@ -850,7 +850,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">train_and_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="o">...</span>
 
 <span class="c1"># REPLACE WITH: Framework models</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_rf_model</span><span class="p">,</span> <span class="n">compare_models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_rf_model</span><span class="p">,</span> <span class="n">compare_models</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">create_rf_model</span><span class="p">()</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 </code></pre></div>
@@ -865,8 +865,8 @@
 <span class="p">)</span>
 
 <span class="c1"># NEW: Simple framework imports</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">assessment</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.tutorials</span><span class="w"> </span><span class="kn">import</span> <span class="n">assessment</span>
 </code></pre></div>
 
 <h3 id="step-3-simplify-code-logic"><strong>Step 3: Simplify Code Logic</strong><a class="headerlink" href="#step-3-simplify-code-logic" title="Permanent link">&para;</a></h3>
@@ -885,7 +885,7 @@
     <span class="n">results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_metrics</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
 <span class="c1"># NEW: Framework pipeline (5 lines)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">evaluation</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">featurizers</span><span class="o">.</span><span class="n">molecular_descriptors</span><span class="p">(</span><span class="n">molecules</span><span class="p">)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">quick_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
 <span class="n">model_results</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">compare_models</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
@@ -895,7 +895,7 @@
 <h2 id="integration-templates">🎯 <strong>Integration Templates</strong><a class="headerlink" href="#integration-templates" title="Permanent link">&para;</a></h2>
 <h3 id="template-1-basic-ml-workflow"><strong>Template 1: Basic ML Workflow</strong><a class="headerlink" href="#template-1-basic-ml-workflow" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Framework-integrated ML workflow</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">evaluation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">evaluation</span>
 
 <span class="c1"># Load data</span>
 <span class="n">molecules</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">load_sample_data</span><span class="p">(</span><span class="s1">&#39;molecular_properties&#39;</span><span class="p">)</span>
@@ -917,8 +917,8 @@
 
 <h3 id="template-2-drug-discovery-pipeline"><strong>Template 2: Drug Discovery Pipeline</strong><a class="headerlink" href="#template-2-drug-discovery-pipeline" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Framework-integrated drug discovery</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">admet</span><span class="p">,</span> <span class="n">docking</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">admet</span><span class="p">,</span> <span class="n">docking</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.integrations</span><span class="w"> </span><span class="kn">import</span> <span class="n">pipeline</span>
 
 <span class="c1"># Initialize pipeline</span>
 <span class="n">drug_pipeline</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">DrugDiscoveryPipeline</span><span class="p">()</span>
@@ -936,8 +936,8 @@
 
 <h3 id="template-3-deep-learning-for-molecules"><strong>Template 3: Deep Learning for Molecules</strong><a class="headerlink" href="#template-3-deep-learning-for-molecules" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Framework-integrated deep learning</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_gnn_model</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">graph_features</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_gnn_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core.featurizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">graph_features</span>
 
 <span class="c1"># Convert to graph representation</span>
 <span class="n">graph_data</span> <span class="o">=</span> <span class="n">graph_features</span><span class="p">(</span><span class="n">smiles_list</span><span class="p">,</span> <span class="n">representation</span><span class="o">=</span><span class="s1">&#39;graph&#39;</span><span class="p">)</span>
@@ -1025,7 +1025,7 @@
 <li>[ ] Remove obsolete custom code</li>
 </ul>
 <hr />
-<p>This guide provides the roadmap for transforming ChemML notebooks from redundant custom implementations to professional, framework-integrated educational experiences.</p>
+<p>This guide provides the roadmap for transforming QeMLflow notebooks from redundant custom implementations to professional, framework-integrated educational experiences.</p>
 
 
 

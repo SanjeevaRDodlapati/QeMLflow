@@ -20,7 +20,7 @@ You've identified a **critical discrepancy** in the linting reports. Here's what
 During investigation, I found **critical syntax errors** in the codebase:
 
 ```python
-# File: src/chemml/integrations/adapters/__init__.py
+# File: src/qemlflow/integrations/adapters/__init__.py
 def list_adapters_by_category(category: str):
     """List available adapters for a specific category."""
 
@@ -76,7 +76,7 @@ $ flake8 src/
 ```
 
 ### **Syntax Errors Found:**
-- **File**: `src/chemml/integrations/adapters/__init__.py`
+- **File**: `src/qemlflow/integrations/adapters/__init__.py`
 - **Issues**: Multiple `return` statements outside functions (lines 25, 30, 38, 45, 62, 87, 112, 123, 135)
 - **Impact**: Prevents all linting tools from running
 

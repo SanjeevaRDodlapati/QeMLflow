@@ -1,13 +1,13 @@
 """
-ChemML DeepChem Integration
+QeMLflow DeepChem Integration
 ==========================
 
 Seamless integration with DeepChem library.
-Provides wrappers and utilities for using DeepChem models with ChemML.
+Provides wrappers and utilities for using DeepChem models with QeMLflow.
 
 Key Features:
 - DeepChem model wrappers with consistent APIs
-- Data format conversions between ChemML and DeepChem
+- Data format conversions between QeMLflow and DeepChem
 - Hybrid workflows combining custom and DeepChem featurizers
 - Model ensemble capabilities
 """
@@ -27,7 +27,7 @@ except ImportError:
 
 class DeepChemModelWrapper:
     """
-    Wrapper for DeepChem models to provide consistent ChemML interface.
+    Wrapper for DeepChem models to provide consistent QeMLflow interface.
     """
 
     def __init__(self, model_type: str = "multitask_regressor", **kwargs) -> None:
@@ -126,29 +126,29 @@ class DeepChemModelWrapper:
 
 class HybridFeaturizer:
     """
-    Combine ChemML custom featurizers with DeepChem featurizers.
+    Combine QeMLflow custom featurizers with DeepChem featurizers.
     """
 
     def __init__(
-        self, chemml_featurizers: List = None, deepchem_featurizers: List = None
+        self, qemlflow_featurizers: List = None, deepchem_featurizers: List = None
     ):
         """
         Initialize hybrid featurizer.
 
         Args:
-            chemml_featurizers: List of ChemML featurizer instances
+            qemlflow_featurizers: List of QeMLflow featurizer instances
             deepchem_featurizers: List of DeepChem featurizer instances
         """
         if not HAS_DEEPCHEM:
             warnings.warn(
-                "DeepChem not available. Only ChemML featurizers will be used."
+                "DeepChem not available. Only QeMLflow featurizers will be used."
             )
 
         # Set up default featurizers if none provided
-        if chemml_featurizers is None:
+        if qemlflow_featurizers is None:
             from ..core.featurizers import DescriptorCalculator, MorganFingerprint
 
-            chemml_featurizers = [
+            qemlflow_featurizers = [
                 MorganFingerprint(radius=2, n_bits=1024),
                 DescriptorCalculator(["MolWt", "LogP", "TPSA"]),
             ]
@@ -161,12 +161,12 @@ class HybridFeaturizer:
                 dc.feat.RDKitDescriptors(),
             ]
 
-        self.chemml_featurizers = chemml_featurizers or []
+        self.qemlflow_featurizers = qemlflow_featurizers or []
         self.deepchem_featurizers = deepchem_featurizers or []
 
     def featurize(self, smiles_list: List[str]) -> np.ndarray:
         """
-        Generate combined features using both ChemML and DeepChem featurizers.
+        Generate combined features using both QeMLflow and DeepChem featurizers.
 
         Args:
             smiles_list: List of SMILES strings
@@ -176,8 +176,8 @@ class HybridFeaturizer:
         """
         all_features = []
 
-        # ChemML featurizers
-        for featurizer in self.chemml_featurizers:
+        # QeMLflow featurizers
+        for featurizer in self.qemlflow_featurizers:
             features = featurizer.featurize(smiles_list)
             all_features.append(features)
 
@@ -258,11 +258,11 @@ def create_deepchem_dataset(
         os.unlink(temp_file)
 
 
-def deepchem_to_chemml_format(
+def deepchem_to_qemlflow_format(
     dataset: "dc.data.Dataset",
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
-    Convert DeepChem dataset to ChemML format.
+    Convert DeepChem dataset to QeMLflow format.
 
     Args:
         dataset: DeepChem dataset
@@ -396,7 +396,7 @@ __all__ = [
     "DeepChemModelWrapper",
     "HybridFeaturizer",
     "create_deepchem_dataset",
-    "deepchem_to_chemml_format",
+    "deepchem_to_qemlflow_format",
     "create_deepchem_model_ensemble",
     "benchmark_deepchem_featurizers",
     "quick_deepchem_model",

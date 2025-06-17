@@ -1,4 +1,4 @@
-# ChemML Project Organization
+# QeMLflow Project Organization
 
 **Updated:** 2025-06-16 09:14:02
 

@@ -1,4 +1,4 @@
-# 🚨 CRITICAL INTEGRATION ANALYSIS: ChemML Framework vs Notebooks
+# 🚨 CRITICAL INTEGRATION ANALYSIS: QeMLflow Framework vs Notebooks
 
 **Date:** June 15, 2025
 **Status:** MAJOR INTEGRATION ISSUES IDENTIFIED
@@ -7,7 +7,7 @@
 
 ## 📊 **EXECUTIVE SUMMARY**
 
-**CRITICAL FINDING:** Only **4 out of 14 bootcamp notebooks** (29%) actually use the main `src/chemml` framework, despite having comprehensive functionality available. This represents a **massive integration failure** that undermines the entire educational platform.
+**CRITICAL FINDING:** Only **4 out of 14 bootcamp notebooks** (29%) actually use the main `src/qemlflow` framework, despite having comprehensive functionality available. This represents a **massive integration failure** that undermines the entire educational platform.
 
 ---
 
@@ -60,7 +60,7 @@ class CustomADMETPredictor:
 
 ```python
 # ✅ Framework (AVAILABLE): Production-ready
-from chemml.research.drug_discovery.admet import ADMETPredictor
+from qemlflow.research.drug_discovery.admet import ADMETPredictor
 predictor = ADMETPredictor()
 results = predictor.predict_admet_properties(smiles_list)
 # 2 lines vs 200+ lines!
@@ -72,11 +72,11 @@ results = predictor.predict_admet_properties(smiles_list)
 
 | Module | Available Classes/Functions | Notebook Usage |
 |--------|----------------------------|----------------|
-| `chemml.research.drug_discovery.admet` | ADMETPredictor, DrugLikenessAssessor, ToxicityPredictor | ❌ None |
-| `chemml.core.preprocessing.protein_preparation` | ProteinPreparationPipeline | ❌ None |
-| `chemml.research.drug_discovery.qsar` | QSARModeling, CrossValidation | ❌ None |
-| `chemml.research.quantum` | VQESimulator, QuantumFeatures | ❌ None |
-| `chemml.core.featurizers` | MolecularDescriptors, Fingerprints | ❌ Minimal |
+| `qemlflow.research.drug_discovery.admet` | ADMETPredictor, DrugLikenessAssessor, ToxicityPredictor | ❌ None |
+| `qemlflow.core.preprocessing.protein_preparation` | ProteinPreparationPipeline | ❌ None |
+| `qemlflow.research.drug_discovery.qsar` | QSARModeling, CrossValidation | ❌ None |
+| `qemlflow.research.quantum` | VQESimulator, QuantumFeatures | ❌ None |
+| `qemlflow.core.featurizers` | MolecularDescriptors, Fingerprints | ❌ Minimal |
 
 ### **3. Maintenance Nightmare**
 
@@ -127,7 +127,7 @@ class CustomADMETPredictor:
 ### **After Integration (Framework Usage):**
 ```python
 # ✅ Framework integration
-from chemml.research.drug_discovery.admet import ADMETPredictor
+from qemlflow.research.drug_discovery.admet import ADMETPredictor
 predictor = ADMETPredictor()
 results = predictor.predict_admet_properties(smiles_list)
 
@@ -158,12 +158,12 @@ results = predictor.predict_admet_properties(smiles_list)
 
 **Priority 2 - Molecular Docking:**
 - **Current**: Custom docking classes (300+ lines)
-- **Framework**: `chemml.core.preprocessing.protein_preparation`
+- **Framework**: `qemlflow.core.preprocessing.protein_preparation`
 - **Target**: Replace with framework integration
 
 **Priority 3 - Quantum Chemistry:**
 - **Current**: Custom quantum implementations
-- **Framework**: `chemml.research.quantum` module
+- **Framework**: `qemlflow.research.quantum` module
 - **Target**: Use validated quantum algorithms
 
 ### **Phase 2: Complete Integration (Next)**
@@ -198,9 +198,9 @@ results = predictor.predict_admet_properties(smiles_list)
 ### **AFTER: Framework Integration**
 ```python
 # ✅ notebooks/learning/bootcamp/05_admet_drug_safety_INTEGRATED.ipynb
-from chemml.research.drug_discovery.admet import ADMETPredictor, DrugLikenessAssessor
-from chemml.core.utils.visualization import create_admet_dashboard
-from chemml.tutorials import assessment
+from qemlflow.research.drug_discovery.admet import ADMETPredictor, DrugLikenessAssessor
+from qemlflow.core.utils.visualization import create_admet_dashboard
+from qemlflow.tutorials import assessment
 
 # 3 lines replace 400+ lines!
 # 95% code reduction with better functionality
@@ -247,7 +247,7 @@ from chemml.tutorials import assessment
 
 ## 🎯 **CONCLUSION**
 
-**The ChemML educational platform suffers from a critical integration failure. While the `src/chemml` framework provides world-class, production-ready implementations, the educational notebooks largely ignore this framework and reimplement functionality poorly.**
+**The QeMLflow educational platform suffers from a critical integration failure. While the `src/qemlflow` framework provides world-class, production-ready implementations, the educational notebooks largely ignore this framework and reimplement functionality poorly.**
 
 **IMMEDIATE ACTION REQUIRED:**
 1. **Integrate all bootcamp notebooks** with the main framework
@@ -255,11 +255,11 @@ from chemml.tutorials import assessment
 3. **Establish integration standards** for future development
 4. **Create migration documentation** for users
 
-**With proper integration, ChemML can become the premier educational platform for computational chemistry, providing students with both excellent learning materials AND production-ready skills.**
+**With proper integration, QeMLflow can become the premier educational platform for computational chemistry, providing students with both excellent learning materials AND production-ready skills.**
 
 **Time to Complete Integration: 2 weeks**
 **Impact: Transform from fragmented to world-class integrated platform** 🌟
 
 ---
 
-*This analysis reveals the path to making ChemML a truly integrated, professional educational ecosystem.* ✨
+*This analysis reveals the path to making QeMLflow a truly integrated, professional educational ecosystem.* ✨

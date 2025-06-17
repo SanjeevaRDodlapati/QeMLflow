@@ -37,7 +37,7 @@ class TestMolecularOptimization(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.molecular_optimization import (
+            from qemlflow.research.drug_discovery.molecular_optimization import (
                 BayesianOptimizer,
                 GeneticAlgorithmOptimizer,
                 MolecularOptimizer,
@@ -101,7 +101,7 @@ class TestADMET(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.admet import (
+            from qemlflow.research.drug_discovery.admet import (
                 ADMETPredictor,
                 DrugLikenessAssessor,
                 ToxicityPredictor,
@@ -155,7 +155,7 @@ class TestScreening(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.screening import (
+            from qemlflow.research.drug_discovery.screening import (
                 PharmacophoreScreener,
                 SimilarityScreener,
                 VirtualScreener,
@@ -189,7 +189,7 @@ class TestProperties(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.properties import (
+            from qemlflow.research.drug_discovery.properties import (
                 MolecularPropertyPredictor,
                 TrainedPropertyModel,
                 predict_properties,
@@ -220,7 +220,7 @@ class TestGeneration(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.generation import (
+            from qemlflow.research.drug_discovery.generation import (
                 FragmentBasedGenerator,
                 MolecularGenerator,
                 generate_molecular_structures,
@@ -263,7 +263,7 @@ class TestQSAR(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures"""
         try:
-            from chemml.research.drug_discovery.qsar import (
+            from qemlflow.research.drug_discovery.qsar import (
                 ActivityPredictor,
                 DescriptorCalculator,
                 QSARModel,
@@ -318,7 +318,7 @@ class TestModuleIntegration(unittest.TestCase):
     def test_main_module_imports(self):
         """Test that main drug_discovery module imports work"""
         try:
-            from chemml.research import drug_discovery
+            from qemlflow.research import drug_discovery
 
             # Test key classes are available
             self.assertTrue(hasattr(drug_discovery, "MolecularOptimizer"))
@@ -333,7 +333,7 @@ class TestModuleIntegration(unittest.TestCase):
     def test_backward_compatibility(self):
         """Test backward compatibility imports"""
         try:
-            from chemml.research.drug_discovery import (
+            from qemlflow.research.drug_discovery import (
                 ADMETPredictor,
                 MolecularGenerator,
                 MolecularOptimizer,

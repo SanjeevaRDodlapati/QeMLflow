@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional
 
 
 class ProductionPolishTool:
-    """Tool to polish ChemML for production readiness."""
+    """Tool to polish QeMLflow for production readiness."""
 
     def __init__(self):
         self.improvements = {
@@ -69,13 +69,13 @@ class ProductionPolishTool:
         workflow_test_path = (
             Path(__file__).parent.parent
             / "src"
-            / "chemml"
+            / "qemlflow"
             / "utils"
             / "workflow_validator.py"
         )
 
         workflow_content = '''"""
-ChemML Workflow Validator
+QeMLflow Workflow Validator
 Comprehensive real-world workflow testing and validation.
 """
 
@@ -84,7 +84,7 @@ import warnings
 from typing import Dict, List, Any, Optional, Tuple
 
 class WorkflowValidator:
-    """Validates common ChemML workflows."""
+    """Validates common QeMLflow workflows."""
 
     def __init__(self):
         self.results = {}
@@ -180,13 +180,13 @@ workflow_validator = WorkflowValidator()
         edge_case_path = (
             Path(__file__).parent.parent
             / "src"
-            / "chemml"
+            / "qemlflow"
             / "utils"
             / "edge_case_handler.py"
         )
 
         edge_case_content = '''"""
-ChemML Edge Case Handler
+QeMLflow Edge Case Handler
 Robust handling of edge cases and boundary conditions.
 """
 
@@ -195,7 +195,7 @@ from typing import Any, Optional, Union, List
 import warnings
 
 class EdgeCaseHandler:
-    """Handles edge cases robustly across ChemML."""
+    """Handles edge cases robustly across QeMLflow."""
 
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -288,15 +288,15 @@ edge_case_handler = EdgeCaseHandler()
         # Create comprehensive API documentation
         api_doc_path = Path(__file__).parent.parent / "docs" / "API_COMPLETE.md"
 
-        api_content = """# 📚 ChemML Complete API Reference
+        api_content = """# 📚 QeMLflow Complete API Reference
 
 ## **🚀 Quick Start**
 
 ```python
-import chemml
+import qemlflow
 
 # Lightning-fast imports (< 0.1s)
-print(f"ChemML version: {chemml.__version__}")
+print(f"QeMLflow version: {qemlflow.__version__}")
 
 # Core functionality available immediately
 # Heavy modules loaded only when needed (lazy loading)
@@ -318,14 +318,14 @@ print(f"ChemML version: {chemml.__version__}")
 ## **🏗️ Architecture Overview**
 
 ### **Core Modules**
-- `chemml.core` - Core functionality and exceptions
-- `chemml.utils` - Utilities and helper functions
-- `chemml.datasets` - Data handling and preprocessing
-- `chemml.features` - Feature engineering
-- `chemml.models` - Machine learning models
+- `qemlflow.core` - Core functionality and exceptions
+- `qemlflow.utils` - Utilities and helper functions
+- `qemlflow.datasets` - Data handling and preprocessing
+- `qemlflow.features` - Feature engineering
+- `qemlflow.models` - Machine learning models
 
 ### **Smart Import System**
-ChemML uses intelligent lazy loading:
+QeMLflow uses intelligent lazy loading:
 - Common functions available immediately
 - Heavy dependencies loaded only when needed
 - Zero performance penalty for unused features
@@ -334,12 +334,12 @@ ChemML uses intelligent lazy loading:
 
 ## **🔧 Core API**
 
-### **chemml.core**
+### **qemlflow.core**
 
 #### **Exception Handling**
 ```python
-from chemml.core.exceptions import (
-    ChemMLError,           # Base exception
+from qemlflow.core.exceptions import (
+    QeMLflowError,           # Base exception
     DataError,             # Data-related errors
     ModelError,            # Model-related errors
     CompatibilityError     # Compatibility issues
@@ -348,7 +348,7 @@ from chemml.core.exceptions import (
 
 #### **Configuration**
 ```python
-from chemml.core.config import get_config, set_config
+from qemlflow.core.config import get_config, set_config
 
 # Get current configuration
 config = get_config()
@@ -365,14 +365,14 @@ set_config('performance.lazy_loading', True)
 ```python
 # Data loading with robust error handling
 try:
-    data = chemml.load_data('path/to/data.csv')
-except chemml.DataError as e:
+    data = qemlflow.load_data('path/to/data.csv')
+except qemlflow.DataError as e:
     print(f"Data loading failed: {e}")
 ```
 
 ### **Edge Case Handling**
 ```python
-from chemml.utils.edge_case_handler import edge_case_handler
+from qemlflow.utils.edge_case_handler import edge_case_handler
 
 # Validate data before processing
 valid, message = edge_case_handler.handle_empty_data(data)
@@ -386,7 +386,7 @@ if not valid:
 
 ### **Real-World Workflows**
 ```python
-from chemml.utils.workflow_validator import workflow_validator
+from qemlflow.utils.workflow_validator import workflow_validator
 
 # Validate complete workflow
 results = workflow_validator.run_comprehensive_workflow_test()
@@ -398,21 +398,21 @@ print(f"Workflow score: {results['overall_score']}/100")
 ## **🎯 Best Practices**
 
 ### **Performance Optimization**
-1. **Import only what you need** - ChemML's lazy loading handles the rest
+1. **Import only what you need** - QeMLflow's lazy loading handles the rest
 2. **Use edge case handlers** - Robust error handling built-in
 3. **Validate workflows** - Built-in validation tools available
 4. **Monitor performance** - Built-in profiling capabilities
 
 ### **Error Handling**
 ```python
-import chemml
+import qemlflow
 
 try:
-    # Your ChemML code here
-    result = chemml.some_function()
-except chemml.ChemMLError as e:
-    # ChemML-specific error handling
-    print(f"ChemML error: {e}")
+    # Your QeMLflow code here
+    result = qemlflow.some_function()
+except qemlflow.QeMLflowError as e:
+    # QeMLflow-specific error handling
+    print(f"QeMLflow error: {e}")
 except Exception as e:
     # General error handling
     print(f"Unexpected error: {e}")
@@ -420,9 +420,9 @@ except Exception as e:
 
 ### **Memory Management**
 ```python
-# ChemML automatically handles memory efficiently
+# QeMLflow automatically handles memory efficiently
 # For large datasets, chunking is handled automatically
-large_data = chemml.load_large_dataset('huge_file.csv')
+large_data = qemlflow.load_large_dataset('huge_file.csv')
 # Memory management handled internally
 ```
 
@@ -447,12 +447,12 @@ large_data = chemml.load_large_dataset('huge_file.csv')
 ## **📞 Support & Migration**
 
 ### **Getting Help**
-- Check built-in documentation: `help(chemml.function_name)`
+- Check built-in documentation: `help(qemlflow.function_name)`
 - Use workflow validators for testing
 - Leverage edge case handlers for robustness
 
 ### **Migration from Older Versions**
-ChemML maintains backward compatibility while offering new features:
+QeMLflow maintains backward compatibility while offering new features:
 - Old APIs continue to work
 - New optimized paths available
 - Gradual migration supported
@@ -476,21 +476,21 @@ ChemML maintains backward compatibility while offering new features:
 
         quick_start_path = Path(__file__).parent.parent / "docs" / "QUICK_START.md"
 
-        quick_start_content = """# ⚡ ChemML Quick Start Guide
+        quick_start_content = """# ⚡ QeMLflow Quick Start Guide
 
 ## **🎯 Get Started in 30 Seconds**
 
 ### **1. Lightning-Fast Import**
 ```python
-import chemml  # Takes < 0.1 seconds!
-print(f"ChemML {chemml.__version__} ready!")
+import qemlflow  # Takes < 0.1 seconds!
+print(f"QeMLflow {qemlflow.__version__} ready!")
 ```
 
 ### **2. Verify Performance**
 ```python
 import time
 start = time.time()
-import chemml
+import qemlflow
 end = time.time()
 print(f"Import time: {end-start:.3f}s")  # Should be < 0.1s
 ```
@@ -500,9 +500,9 @@ print(f"Import time: {end-start:.3f}s")  # Should be < 0.1s
 # Core functionality available immediately
 try:
     # Your chemistry/ML workflow here
-    print("ChemML is ready for your chemistry workflows!")
-except chemml.ChemMLError as e:
-    print(f"ChemML handled error gracefully: {e}")
+    print("QeMLflow is ready for your chemistry workflows!")
+except qemlflow.QeMLflowError as e:
+    print(f"QeMLflow handled error gracefully: {e}")
 ```
 
 ---
@@ -511,20 +511,20 @@ except chemml.ChemMLError as e:
 
 ### **Data Processing Pipeline**
 ```python
-import chemml
+import qemlflow
 
 # Load and validate data
 try:
-    data = chemml.load_data('molecules.csv')
+    data = qemlflow.load_data('molecules.csv')
     print("Data loaded successfully!")
-except chemml.DataError as e:
+except qemlflow.DataError as e:
     print(f"Data issue handled: {e}")
 ```
 
 ### **Feature Engineering**
 ```python
 # Feature calculation (lazy-loaded when needed)
-features = chemml.calculate_features(molecules)
+features = qemlflow.calculate_features(molecules)
 print(f"Calculated {len(features)} features")
 ```
 
@@ -534,7 +534,7 @@ print(f"Calculated {len(features)} features")
 from sklearn.ensemble import RandomForestRegressor
 
 model = RandomForestRegressor()
-# ChemML features work seamlessly with sklearn
+# QeMLflow features work seamlessly with sklearn
 model.fit(features, target_values)
 ```
 
@@ -549,15 +549,15 @@ If imports are slow:
 import sys
 print(sys.path)
 
-# Verify ChemML installation
-import chemml
-print(chemml.__file__)
+# Verify QeMLflow installation
+import qemlflow
+print(qemlflow.__file__)
 ```
 
 ### **Memory Issues**
 ```python
-# ChemML handles memory automatically
-from chemml.utils.edge_case_handler import edge_case_handler
+# QeMLflow handles memory automatically
+from qemlflow.utils.edge_case_handler import edge_case_handler
 
 # Automatic memory management for large datasets
 memory_config = edge_case_handler.handle_memory_constraints(
@@ -570,7 +570,7 @@ print(memory_config)
 ### **Dependency Issues**
 ```python
 # Check for missing dependencies
-from chemml.utils.edge_case_handler import edge_case_handler
+from qemlflow.utils.edge_case_handler import edge_case_handler
 
 available, msg = edge_case_handler.handle_missing_dependencies('rdkit')
 print(f"RDKit status: {msg}")
@@ -582,7 +582,7 @@ print(f"RDKit status: {msg}")
 
 ### **Built-in Validation**
 ```python
-from chemml.utils.workflow_validator import workflow_validator
+from qemlflow.utils.workflow_validator import workflow_validator
 
 # Validate your complete workflow
 results = workflow_validator.run_comprehensive_workflow_test()
@@ -598,8 +598,8 @@ else:
 import time
 start = time.time()
 
-# Your ChemML operations
-result = chemml.some_heavy_operation()
+# Your QeMLflow operations
+result = qemlflow.some_heavy_operation()
 
 duration = time.time() - start
 print(f"Operation completed in {duration:.3f}s")
@@ -623,7 +623,7 @@ print(f"Operation completed in {duration:.3f}s")
 - **Validation Tools**: Workflow and edge case validators
 - **Performance Tips**: Use lazy loading and built-in optimizations
 
-**ChemML**: Production-ready chemistry + machine learning
+**QeMLflow**: Production-ready chemistry + machine learning
 **Performance**: Sub-100ms imports, enterprise-grade reliability
 """
 
@@ -639,7 +639,7 @@ print(f"Operation completed in {duration:.3f}s")
 
         # Test 1: Check workflow validator exists and works
         try:
-            from src.chemml.utils.workflow_validator import workflow_validator
+            from src.qemlflow.utils.workflow_validator import workflow_validator
 
             result = workflow_validator.run_comprehensive_workflow_test()
             if result["overall_score"] >= 85:
@@ -659,7 +659,7 @@ print(f"Operation completed in {duration:.3f}s")
 
         # Test 2: Check edge case handler exists and works
         try:
-            from src.chemml.utils.edge_case_handler import edge_case_handler
+            from src.qemlflow.utils.edge_case_handler import edge_case_handler
 
             valid, msg = edge_case_handler.handle_empty_data([])
             validation_results.append(
@@ -757,7 +757,7 @@ print(f"Operation completed in {duration:.3f}s")
 - ✅ **Documentation**: Complete API and quick-start guides
 
 #### **Ready for Controlled Alpha** 🚀
-With 92/100 score, ChemML is ready for:
+With 92/100 score, QeMLflow is ready for:
 1. **Internal alpha testing** with controlled user group
 2. **Performance validation** in real scenarios
 3. **Feedback collection** for final improvements
@@ -800,7 +800,7 @@ With 92/100 score, ChemML is ready for:
 - **Complete documentation** with quick-start guides
 - **API stability** with backward compatibility
 
-**ChemML is now ready for controlled production usage!**
+**QeMLflow is now ready for controlled production usage!**
 
 ---
 

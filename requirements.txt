@@ -1,4 +1,4 @@
-# ChemML Dependencies - Updated for Modern Compatibility
+# QeMLflow Dependencies - Updated for Modern Compatibility
 # =======================================================
 
 # Core ML and Scientific Computing

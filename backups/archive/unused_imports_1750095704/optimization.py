@@ -1,5 +1,5 @@
 """
-ChemML Drug Discovery - Molecular Optimization
+QeMLflow Drug Discovery - Molecular Optimization
 ==============================================
 
 Advanced molecular structure optimization algorithms for drug discovery.

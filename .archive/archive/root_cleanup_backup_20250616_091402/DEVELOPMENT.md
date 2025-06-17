@@ -1,4 +1,4 @@
-# ChemML Development Guide
+# QeMLflow Development Guide
 
 ## Quick Start
 
@@ -26,14 +26,14 @@ python quick_dev.py notebook
 ### 📊 Performance Monitoring
 
 ```python
-from chemml.core.monitoring import show_performance_dashboard
+from qemlflow.core.monitoring import show_performance_dashboard
 show_performance_dashboard()
 ```
 
 ### 🤖 Model Recommendations
 
 ```python
-from chemml.core.recommendations import recommend_model
+from qemlflow.core.recommendations import recommend_model
 
 # Get model recommendation
 recommendation = recommend_model(

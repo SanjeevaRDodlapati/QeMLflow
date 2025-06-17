@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Quick Status Checker for ChemML GitHub Workflows
+Quick Status Checker for QeMLflow GitHub Workflows
 ===============================================
 
 Simple script to check if our fixes worked and workflows are passing.
@@ -8,7 +8,7 @@ Simple script to check if our fixes worked and workflows are passing.
 
 
 def main():
-    print("🔧 ChemML Workflow Fixes Applied")
+    print("🔧 QeMLflow Workflow Fixes Applied")
     print("=" * 50)
 
     print("✅ FIXES IMPLEMENTED:")
@@ -26,10 +26,10 @@ def main():
     print("   • Release workflow should complete")
 
     print("\n📊 CHECK STATUS:")
-    print("   1. Visit: https://github.com/SanjeevaRDodlapati/ChemML/actions")
+    print("   1. Visit: https://github.com/SanjeevaRDodlapati/QeMLflow/actions")
     print("   2. Look for green checkmarks on recent workflows")
-    print("   3. Check docs: https://sanjeevardodlapati.github.io/ChemML/")
-    print("   4. Verify release: https://github.com/SanjeevaRDodlapati/ChemML/releases")
+    print("   3. Check docs: https://sanjeevardodlapati.github.io/QeMLflow/")
+    print("   4. Verify release: https://github.com/SanjeevaRDodlapati/QeMLflow/releases")
 
     print("\n🎯 CURRENT TAGS:")
     try:
@@ -47,7 +47,7 @@ def main():
     except Exception:
         print("   Could not retrieve tags")
 
-    print("\n🚀 ChemML is now properly configured for production!")
+    print("\n🚀 QeMLflow is now properly configured for production!")
     print("   All workflow issues should be resolved.")
 
 

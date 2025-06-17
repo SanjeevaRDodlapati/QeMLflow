@@ -300,7 +300,7 @@ class ProductionDeploymentManager:
 - 🌟 **Empowers Career Advancement** with validated competencies and clear progression
 - 🔬 **Advances the Field** through innovative methodologies and best practices
 
-The completion of **Bootcamp 03** marks a significant milestone in the ChemML educational framework, providing learners with the knowledge, skills, and confidence to tackle the most challenging problems in computational drug discovery.
+The completion of **Bootcamp 03** marks a significant milestone in the QeMLflow educational framework, providing learners with the knowledge, skills, and confidence to tackle the most challenging problems in computational drug discovery.
 
 **🚀 Ready to continue the journey with advanced specializations and cutting-edge innovations!**
 

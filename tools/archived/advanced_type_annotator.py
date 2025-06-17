@@ -1,6 +1,6 @@
 """
 Advanced Type Annotation Enhancement Tool
-Automatically adds type annotations to ChemML functions based on context analysis.
+Automatically adds type annotations to QeMLflow functions based on context analysis.
 """
 
 import argparse
@@ -289,17 +289,17 @@ def main():
     if args.target_files:
         target_files = args.target_files
     else:
-        # Find Python files in src/chemml
-        src_dir = Path("src/chemml")
+        # Find Python files in src/qemlflow
+        src_dir = Path("src/qemlflow")
         target_files = list(src_dir.rglob("*.py"))
 
         if args.low_coverage_only:
             # Filter to low-coverage files (would need previous analysis)
             low_coverage_files = [
-                "src/chemml/core/utils.py",
-                "src/chemml/research/generative.py",
-                "src/chemml/research/quantum.py",
-                "src/chemml/integrations/pipeline.py",
+                "src/qemlflow/core/utils.py",
+                "src/qemlflow/research/generative.py",
+                "src/qemlflow/research/quantum.py",
+                "src/qemlflow/integrations/pipeline.py",
             ]
             target_files = [f for f in target_files if str(f) in low_coverage_files]
 

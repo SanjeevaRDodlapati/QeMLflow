@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://chemml.io/getting_started/quick_start/">
+        <link rel="canonical" href="https://qemlflow.io/getting_started/quick_start/">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Quick Start Guide - ChemML Documentation</title>
+        <title>Quick Start Guide - QeMLflow Documentation</title>
       
     
     
@@ -86,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ChemML Documentation" class="md-header__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-header__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ChemML Documentation
+            QeMLflow Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -184,13 +184,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ChemML Documentation" class="md-nav__button md-logo" aria-label="ChemML Documentation" data-md-component="logo">
+    <a href="../.." title="QeMLflow Documentation" class="md-nav__button md-logo" aria-label="QeMLflow Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    ChemML Documentation
+    QeMLflow Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -577,25 +577,25 @@
 
 
 <h1 id="quick-start-guide">Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permanent link">&para;</a></h1>
-<p>Welcome to ChemML! This guide will get you up and running in minutes.</p>
+<p>Welcome to QeMLflow! This guide will get you up and running in minutes.</p>
 <h2 id="5-minute-quick-start">🏃‍♂️ 5-Minute Quick Start<a class="headerlink" href="#5-minute-quick-start" title="Permanent link">&para;</a></h2>
 <h3 id="1-installation">1. Installation<a class="headerlink" href="#1-installation" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>chemml
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>qemlflow
 </code></pre></div>
 
 <h3 id="2-your-first-prediction">2. Your First Prediction<a class="headerlink" href="#2-your-first-prediction" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Load sample data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">load_sample_data</span><span class="p">(</span><span class="s2">&quot;molecules&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">load_sample_data</span><span class="p">(</span><span class="s2">&quot;molecules&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s2"> molecules&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generate features</span>
-<span class="n">features</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">morgan_fingerprints</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">smiles</span><span class="p">)</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">morgan_fingerprints</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">smiles</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated </span><span class="si">{</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> molecular features&quot;</span><span class="p">)</span>
 
 <span class="c1"># Train a model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">create_rf_model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">create_rf_model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model trained successfully!&quot;</span><span class="p">)</span>
 
 <span class="c1"># Make predictions</span>
@@ -605,14 +605,14 @@
 
 <h3 id="3-evaluate-results">3. Evaluate Results<a class="headerlink" href="#3-evaluate-results" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Quick evaluation</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">chemml</span><span class="o">.</span><span class="n">quick_classification_eval</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">quick_classification_eval</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">targets</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model accuracy: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cross-validation score: </span><span class="si">{</span><span class="n">results</span><span class="o">.</span><span class="n">cv_score</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="common-use-cases">🎯 Common Use Cases<a class="headerlink" href="#common-use-cases" title="Permanent link">&para;</a></h2>
 <h3 id="molecular-property-prediction">Molecular Property Prediction<a class="headerlink" href="#molecular-property-prediction" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">featurizers</span><span class="p">,</span> <span class="n">models</span>
 
 <span class="c1"># Generate descriptors</span>
 <span class="n">descriptors</span> <span class="o">=</span> <span class="n">featurizers</span><span class="o">.</span><span class="n">molecular_descriptors</span><span class="p">(</span><span class="n">smiles_list</span><span class="p">)</span>
@@ -626,7 +626,7 @@
 </code></pre></div>
 
 <h3 id="drug-discovery-screening">Drug Discovery Screening<a class="headerlink" href="#drug-discovery-screening" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreening</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.drug_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">VirtualScreening</span>
 
 <span class="c1"># Setup virtual screening</span>
 <span class="n">screener</span> <span class="o">=</span> <span class="n">VirtualScreening</span><span class="p">(</span>
@@ -644,7 +644,7 @@
 </code></pre></div>
 
 <h3 id="materials-property-optimization">Materials Property Optimization<a class="headerlink" href="#materials-property-optimization" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">chemml.research.materials_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaterialsOptimizer</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qemlflow.research.materials_discovery</span><span class="w"> </span><span class="kn">import</span> <span class="n">MaterialsOptimizer</span>
 
 <span class="c1"># Define optimization problem</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">MaterialsOptimizer</span><span class="p">(</span>
@@ -663,23 +663,23 @@
 
 <h2 id="configuration">🔧 Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <h3 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">chemml</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">qemlflow</span>
 
 <span class="c1"># Configure for your environment</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;sklearn&quot;</span><span class="p">)</span>  <span class="c1"># or &quot;xgboost&quot;, &quot;tensorflow&quot;</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># parallel processing</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># speed up repeated operations</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_backend</span><span class="p">(</span><span class="s2">&quot;sklearn&quot;</span><span class="p">)</span>  <span class="c1"># or &quot;xgboost&quot;, &quot;tensorflow&quot;</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># parallel processing</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_caching</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># speed up repeated operations</span>
 </code></pre></div>
 
 <h3 id="performance-tuning">Performance Tuning<a class="headerlink" href="#performance-tuning" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enable fast mode for production</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
 
 <span class="c1"># Use GPU acceleration (if available)</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">enable_gpu</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Set memory limits</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="s2">&quot;8GB&quot;</span><span class="p">)</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_memory_limit</span><span class="p">(</span><span class="s2">&quot;8GB&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 <h2 id="troubleshooting">❓ Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
@@ -693,14 +693,14 @@ pip<span class="w"> </span>install<span class="w"> </span>rdkit-pypi
 
 <p><strong>Memory errors with large datasets</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Use batch processing</span>
-<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">chemml</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">batch_iterator</span><span class="p">(</span><span class="n">large_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">qemlflow</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">batch_iterator</span><span class="p">(</span><span class="n">large_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">process_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
 </code></pre></div>
 
 <p><strong>Slow performance</strong></p>
 <div class="codehilite"><pre><span></span><code><span class="c1"># Enable performance optimizations</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
-<span class="n">chemml</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># use all CPU cores</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">enable_fast_mode</span><span class="p">()</span>
+<span class="n">qemlflow</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># use all CPU cores</span>
 </code></pre></div>
 
 <h2 id="next-steps">🚀 Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -714,7 +714,7 @@ pip<span class="w"> </span>install<span class="w"> </span>rdkit-pypi
 <ul>
 <li>Start with sample data to understand the workflow</li>
 <li>Use built-in validation functions to check your results</li>
-<li>Leverage ChemML's caching for faster repeated operations</li>
+<li>Leverage QeMLflow's caching for faster repeated operations</li>
 <li>Check the documentation for optimization tips</li>
 <li>Join our community discussions for help and best practices</li>
 </ul>

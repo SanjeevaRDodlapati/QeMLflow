@@ -35,11 +35,11 @@
       "latest_filetype": "wheel"
     },
     {
-      "name": "chemml",
+      "name": "qemlflow",
       "version": "0.2.0",
       "latest_version": "1.3",
       "latest_filetype": "wheel",
-      "editable_project_location": "/Users/sanjeevadodlapati/Downloads/Repos/ChemML"
+      "editable_project_location": "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow"
     },
     {
       "name": "coverage",

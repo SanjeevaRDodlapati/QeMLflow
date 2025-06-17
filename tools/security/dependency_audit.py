@@ -1,5 +1,5 @@
 """
-Enhanced Dependency Management for ChemML
+Enhanced Dependency Management for QeMLflow
 =========================================
 
 Comprehensive dependency validation, security scanning, and conflict resolution.
@@ -45,7 +45,7 @@ class DependencyAuditor:
 
     def run_full_audit(self) -> Dict[str, Any]:
         """Run comprehensive dependency audit."""
-        print("🔒 ChemML Dependency Security Audit")
+        print("🔒 QeMLflow Dependency Security Audit")
         print("=" * 50)
 
         # Check tool availability
@@ -396,7 +396,7 @@ class DependencyAuditor:
 
 def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(description="ChemML Dependency Security Auditor")
+    parser = argparse.ArgumentParser(description="QeMLflow Dependency Security Auditor")
     parser.add_argument(
         "--scan-vulnerabilities",
         action="store_true",

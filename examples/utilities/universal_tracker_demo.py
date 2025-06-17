@@ -1,5 +1,5 @@
 """
-ChemML Universal Tracker Demo
+QeMLflow Universal Tracker Demo
 ============================
 
 This script demonstrates the one-command wandb integration across different usage patterns.
@@ -10,9 +10,9 @@ import time
 
 import numpy as np
 
-# ChemML experiment tracking with fallbacks
+# QeMLflow experiment tracking with fallbacks
 try:
-    from chemml.integrations.experiment_tracking import setup_wandb_tracking
+    from qemlflow.integrations.experiment_tracking import setup_wandb_tracking
 
     HAS_TRACKING = True
 except ImportError:
@@ -287,7 +287,7 @@ def demo_global_tracking():
 
 def main():
     """Run all demos."""
-    print("ChemML Universal Tracker Demo")
+    print("QeMLflow Universal Tracker Demo")
     print("=" * 40)
     print("Testing different usage patterns for one-command wandb integration")
 

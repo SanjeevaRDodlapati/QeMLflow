@@ -12,14 +12,14 @@ from typing import List, Tuple
 def test_core_module_imports() -> Tuple[bool, str]:
     """Test core module imports are working."""
     try:
-        from chemml.research.drug_discovery.admet import ADMETPredictor
-        from chemml.research.drug_discovery.generation import MolecularGenerator
-        from chemml.research.drug_discovery.molecular_optimization import (
+        from qemlflow.research.drug_discovery.admet import ADMETPredictor
+        from qemlflow.research.drug_discovery.generation import MolecularGenerator
+        from qemlflow.research.drug_discovery.molecular_optimization import (
             MolecularOptimizer,
         )
-        from chemml.research.drug_discovery.properties import MolecularPropertyPredictor
-        from chemml.research.drug_discovery.qsar import DescriptorCalculator
-        from chemml.research.drug_discovery.screening import VirtualScreener
+        from qemlflow.research.drug_discovery.properties import MolecularPropertyPredictor
+        from qemlflow.research.drug_discovery.qsar import DescriptorCalculator
+        from qemlflow.research.drug_discovery.screening import VirtualScreener
 
         return True, "All core modular imports successful"
     except Exception as e:
@@ -30,7 +30,7 @@ def test_backward_compatibility() -> Tuple[bool, str]:
     """Test that backward compatibility is maintained."""
     try:
         # Test main module imports still work
-        from chemml.research.drug_discovery import (
+        from qemlflow.research.drug_discovery import (
             ADMETPredictor,
             MolecularGenerator,
             MolecularOptimizer,
@@ -51,13 +51,13 @@ def test_individual_modules() -> List[Tuple[str, bool, str]]:
     modules_to_test = [
         (
             "molecular_optimization",
-            "chemml.research.drug_discovery.molecular_optimization",
+            "qemlflow.research.drug_discovery.molecular_optimization",
         ),
-        ("admet", "chemml.research.drug_discovery.admet"),
-        ("screening", "chemml.research.drug_discovery.screening"),
-        ("properties", "chemml.research.drug_discovery.properties"),
-        ("generation", "chemml.research.drug_discovery.generation"),
-        ("qsar", "chemml.research.drug_discovery.qsar"),
+        ("admet", "qemlflow.research.drug_discovery.admet"),
+        ("screening", "qemlflow.research.drug_discovery.screening"),
+        ("properties", "qemlflow.research.drug_discovery.properties"),
+        ("generation", "qemlflow.research.drug_discovery.generation"),
+        ("qsar", "qemlflow.research.drug_discovery.qsar"),
     ]
 
     for module_name, import_path in modules_to_test:
@@ -77,27 +77,27 @@ def test_function_imports() -> List[Tuple[str, bool, str]]:
     function_tests = [
         (
             "predict_properties",
-            "from chemml.research.drug_discovery.properties import predict_properties",
+            "from qemlflow.research.drug_discovery.properties import predict_properties",
         ),
         (
             "predict_admet_properties",
-            "from chemml.research.drug_discovery.admet import predict_admet_properties",
+            "from qemlflow.research.drug_discovery.admet import predict_admet_properties",
         ),
         (
             "perform_virtual_screening",
-            "from chemml.research.drug_discovery.screening import perform_virtual_screening",
+            "from qemlflow.research.drug_discovery.screening import perform_virtual_screening",
         ),
         (
             "build_qsar_model",
-            "from chemml.research.drug_discovery.qsar import build_qsar_model",
+            "from qemlflow.research.drug_discovery.qsar import build_qsar_model",
         ),
         (
             "generate_molecular_structures",
-            "from chemml.research.drug_discovery.generation import generate_molecular_structures",
+            "from qemlflow.research.drug_discovery.generation import generate_molecular_structures",
         ),
         (
             "optimize_molecule",
-            "from chemml.research.drug_discovery.molecular_optimization import optimize_molecule",
+            "from qemlflow.research.drug_discovery.molecular_optimization import optimize_molecule",
         ),
     ]
 

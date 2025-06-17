@@ -1,5 +1,5 @@
 """
-Comprehensive metrics utilities for ChemML evaluations.
+Comprehensive metrics utilities for QeMLflow evaluations.
 
 This module provides evaluation metrics for various machine learning tasks
 """

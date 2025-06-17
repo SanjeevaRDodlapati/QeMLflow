@@ -1,10 +1,10 @@
 #!/bin/bash
-# ChemML Bootcamp Environment Setup Script
-# File: setup_chemml_bootcamp.sh
+# QeMLflow Bootcamp Environment Setup Script
+# File: setup_qemlflow_bootcamp.sh
 
 set -e  # Exit on any error
 
-echo "🚀 ChemML Bootcamp Environment Setup"
+echo "🚀 QeMLflow Bootcamp Environment Setup"
 echo "===================================="
 
 # Colors for output
@@ -95,9 +95,9 @@ check_requirements() {
 
 # Create conda environment
 create_environment() {
-    print_info "Creating ChemML bootcamp environment..."
+    print_info "Creating QeMLflow bootcamp environment..."
 
-    ENV_NAME="chemml_bootcamp"
+    ENV_NAME="qemlflow_bootcamp"
 
     # Check if environment already exists
     if conda env list | grep -q "^${ENV_NAME} "; then
@@ -212,9 +212,9 @@ create_configs() {
 
     # Create bootcamp configuration
     cat > bootcamp_config.yaml << 'EOF'
-# ChemML Bootcamp Configuration
+# QeMLflow Bootcamp Configuration
 bootcamp:
-  name: "ChemML QuickStart Bootcamp"
+  name: "QeMLflow QuickStart Bootcamp"
   version: "1.0.0"
   duration_days: 7
 
@@ -274,7 +274,7 @@ EOF
     # Create Jupyter configuration
     mkdir -p ~/.jupyter
     cat > ~/.jupyter/jupyter_lab_config.py << 'EOF'
-# Jupyter Lab Configuration for ChemML Bootcamp
+# Jupyter Lab Configuration for QeMLflow Bootcamp
 
 c.ServerApp.ip = '0.0.0.0'
 c.ServerApp.port = 8888
@@ -352,19 +352,19 @@ create_launcher() {
 
     cat > start_bootcamp.sh << 'EOF'
 #!/bin/bash
-# ChemML Bootcamp Launcher
+# QeMLflow Bootcamp Launcher
 
-echo "🚀 Starting ChemML Bootcamp"
+echo "🚀 Starting QeMLflow Bootcamp"
 echo "=========================="
 
 # Activate conda environment
 if command -v conda &> /dev/null; then
     echo "Activating conda environment..."
     eval "$(conda shell.bash hook)"
-    conda activate chemml_bootcamp
-elif [[ -f "chemml_env/bin/activate" ]]; then
+    conda activate qemlflow_bootcamp
+elif [[ -f "qemlflow_env/bin/activate" ]]; then
     echo "Activating virtual environment..."
-    source chemml_env/bin/activate
+    source qemlflow_env/bin/activate
 else
     echo "❌ No environment found. Please run setup first."
     exit 1
@@ -399,7 +399,7 @@ verify_installation() {
     cat > verify_install.py << 'EOF'
 #!/usr/bin/env python3
 """
-ChemML Bootcamp Installation Verification
+QeMLflow Bootcamp Installation Verification
 """
 
 import sys
@@ -425,7 +425,7 @@ def check_package(package_name, import_name=None, optional=False):
         return False
 
 def main():
-    print("🔍 ChemML Bootcamp Installation Verification")
+    print("🔍 QeMLflow Bootcamp Installation Verification")
     print("=" * 50)
 
     # Check Python version
@@ -465,7 +465,7 @@ def main():
     print("\n" + "=" * 50)
     if all_required:
         print("🎉 Installation verification successful!")
-        print("🚀 Ready to start the ChemML Bootcamp!")
+        print("🚀 Ready to start the QeMLflow Bootcamp!")
     else:
         print("❌ Some required packages are missing")
         print("Please run the setup script again or install manually")
@@ -497,17 +497,17 @@ create_documentation() {
     print_info "Creating helpful documentation..."
 
     cat > BOOTCAMP_QUICKSTART.md << 'EOF'
-# ChemML Bootcamp Quick Start Guide
+# QeMLflow Bootcamp Quick Start Guide
 
 ## Getting Started
 
 ### 1. Activate Environment
 ```bash
 # If using conda
-conda activate chemml_bootcamp
+conda activate qemlflow_bootcamp
 
 # If using the setup script's virtual environment
-source chemml_env/bin/activate
+source qemlflow_env/bin/activate
 ```
 
 ### 2. Start Jupyter Lab
@@ -666,7 +666,7 @@ python -c "import deepchem; print('DeepChem OK')"
 - Network with other graduates
 - Consider advanced certifications
 
-Good luck with your ChemML journey! 🚀🧪
+Good luck with your QeMLflow journey! 🚀🧪
 EOF
 
     print_status "Documentation created (BOOTCAMP_QUICKSTART.md)"
@@ -674,7 +674,7 @@ EOF
 
 # Main execution function
 main() {
-    echo "Starting ChemML Bootcamp setup process..."
+    echo "Starting QeMLflow Bootcamp setup process..."
     echo "This will take approximately 10-20 minutes depending on your internet connection."
     echo ""
 
@@ -688,16 +688,16 @@ main() {
     create_documentation
 
     echo ""
-    echo "🎉 ChemML Bootcamp Setup Complete!"
+    echo "🎉 QeMLflow Bootcamp Setup Complete!"
     echo "=================================="
-    print_status "Environment created: chemml_bootcamp"
+    print_status "Environment created: qemlflow_bootcamp"
     print_status "Launcher script: ./start_bootcamp.sh"
     print_status "Quick start guide: ./BOOTCAMP_QUICKSTART.md"
     echo ""
     echo "🚀 To get started:"
     echo "   1. ./start_bootcamp.sh"
     echo "   2. Open: notebooks/quickstart_bootcamp/day_01_ml_cheminformatics_project.ipynb"
-    echo "   3. Begin your ChemML journey!"
+    echo "   3. Begin your QeMLflow journey!"
     echo ""
     print_info "For troubleshooting, see BOOTCAMP_QUICKSTART.md"
 }

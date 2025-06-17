@@ -1,5 +1,5 @@
 """
-Sample data generators for ChemML tests.
+Sample data generators for QeMLflow tests.
 
 Provides utilities to generate test datasets for molecular machine learning.
 """

@@ -1,0 +1,335 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chemml"
+version = "0.2.0"
+description = "Quantum-Enhanced Molecular Machine Learning Framework"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "ChemML Contributors", email = "chemml@example.com"}
+]
+maintainers = [
+    {name = "ChemML Maintainers", email = "chemml@example.com"}
+]
+keywords = [
+    "machine-learning",
+    "quantum-computing",
+    "drug-discovery",
+    "cheminformatics",
+    "molecular-modeling"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+requires-python = ">=3.8"
+dependencies = [
+    # Core ML and Scientific Computing
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "scipy>=1.10.0",
+    "scikit-learn>=1.3.0",
+
+    # Deep Learning Frameworks (Updated for compatibility)
+    "tensorflow>=2.16.0,<2.17.0",  # Avoid experimental warnings
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+
+    # Cheminformatics and Drug Discovery
+    "rdkit>=2023.3.1",
+    "deepchem>=2.8.0",
+    "biopython>=1.81",
+
+    # Quantum Computing (Stable modern versions)
+    "qiskit>=1.0.0",  # Use stable 1.0+ instead of prereleases
+    "qiskit-aer>=0.13.0",
+    "pennylane>=0.32.0",
+
+    # Visualization
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.15.0",
+
+    # Utilities
+    "tqdm>=4.64.0",
+    "pyyaml>=6.0",
+    "click>=8.1.0",
+]
+
+[project.optional-dependencies]
+# Development dependencies
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.3.0",
+    "pytest-mock>=3.11.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.5.0",
+    "pre-commit>=3.3.0",
+    "coverage>=7.2.0",
+]
+
+# Documentation dependencies
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-rtd-theme>=1.3.0",
+    "myst-parser>=2.0.0",
+    "sphinx-autodoc-typehints>=1.24.0",
+    "nbsphinx>=0.9.0",
+]
+
+# Enhanced quantum computing dependencies
+quantum = [
+    "qiskit-nature>=0.7.0",
+    "qiskit-optimization>=0.6.0",
+    "cirq>=1.2.0",
+    "pennylane-qiskit>=0.32.0",
+    "pyscf>=2.3.0",  # Classical quantum chemistry
+]
+
+# Enhanced molecular simulation dependencies
+molecular = [
+    "openmm>=8.0.0",
+    "mdtraj>=1.9.8",
+    "pymol-open-source>=2.5.0",
+    "nglview>=3.0.3",
+    "py3Dmol>=2.0.0",
+]
+
+# DeepChem optional dependencies (reduces warnings)
+deeplearning = [
+    "dgl>=1.1.0",  # Deep Graph Library
+    "transformers>=4.21.0",  # Hugging Face Transformers
+    "lightning>=2.0.0",  # PyTorch Lightning
+    "jax>=0.4.0",  # JAX for advanced ML
+    "jaxlib>=0.4.0",  # JAX backend
+    "torch-geometric>=2.3.0",  # PyTorch Geometric
+]
+
+# MLOps and experiment tracking
+mlops = [
+    "mlflow>=2.5.0",
+    "wandb>=0.15.0",
+    "optuna>=3.2.0",
+    "tensorboard>=2.13.0",
+]
+
+# Additional molecular packages
+molecular-viz = [
+    "pymol-open-source>=2.5.0",
+    "py3Dmol>=1.8.0",
+    "chembl-webresource-client>=0.10.0",
+]
+
+# GPU acceleration packages
+gpu = [
+    "cupy-cuda11x>=10.0.0",
+    "tensorflow-gpu>=2.8.0",
+]
+
+# Complete installation (all optional dependencies)
+all = [
+    "chemml[dev,docs,quantum,molecular,deeplearning,mlops,molecular-viz,gpu]"
+]
+
+[project.urls]
+Homepage = "https://github.com/chemml/chemml"
+Documentation = "https://chemml.readthedocs.io"
+Repository = "https://github.com/chemml/chemml.git"
+Issues = "https://github.com/chemml/chemml/issues"
+Changelog = "https://github.com/chemml/chemml/blob/main/CHANGELOG.md"
+
+[project.scripts]
+chemml-train = "chemml.cli:train"
+chemml-predict = "chemml.cli:predict"
+chemml-bootcamp = "chemml.bootcamp:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yml", "*.yaml", "*.json", "*.csv", "*.txt"]
+
+# Testing Configuration
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html:htmlcov",
+    "--cov-report=xml",
+    "--cov-fail-under=85",
+    "--tb=short",
+]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+    "gpu: marks tests that require GPU",
+    "quantum: marks tests that require quantum simulators",
+    "expensive: marks tests that are computationally expensive",
+    "notebook: marks tests that run notebooks",
+]
+filterwarnings = [
+    "error",
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::FutureWarning:tensorflow.*",
+    "ignore::FutureWarning:deepchem.*",
+]
+
+# Code Formatting with Black
+[tool.black]
+line-length = 88
+target-version = ["py38", "py39", "py310", "py311"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | chemml_env
+)/
+'''
+
+# Import Sorting with isort
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 88
+skip = ["chemml_env", ".venv", "venv", "build", "dist"]
+known_first_party = ["chemml", "src"]
+known_third_party = [
+    "numpy", "pandas", "scipy", "sklearn", "matplotlib", "seaborn",
+    "tensorflow", "torch", "qiskit", "rdkit", "deepchem", "pytest"
+]
+
+# Type Checking with mypy
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "rdkit.*",
+    "deepchem.*",
+    "qiskit.*",
+    "pennylane.*",
+    "cirq.*",
+    "openmm.*",
+    "mdtraj.*",
+    "pymol.*",
+    "py3Dmol.*",
+]
+ignore_missing_imports = true
+
+# Coverage Configuration
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/chemml_env/*",
+    "*/venv/*",
+    "*/build/*",
+    "*/dist/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+show_missing = true
+skip_covered = false
+precision = 2
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+# Flake8 Configuration (in setup.cfg format for compatibility)
+[tool.flake8]
+max-line-length = 88
+extend-ignore = [
+    "E203",  # whitespace before ':' (conflicts with black)
+    "E501",  # line too long (handled by black)
+    "W503",  # line break before binary operator
+    "W504",  # line break after binary operator
+]
+exclude = [
+    ".git",
+    "__pycache__",
+    "chemml_env",
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    ".eggs",
+    "*.egg",
+]
+per-file-ignores = [
+    "__init__.py:F401",  # imported but unused
+    "tests/*:S101",      # use of assert
+]
+
+# Bandit Security Linting
+[tool.bandit]
+exclude_dirs = ["tests", "chemml_env", ".venv", "venv"]
+skips = ["B101", "B601"]  # Skip assert_used and shell_injection_process_start in tests

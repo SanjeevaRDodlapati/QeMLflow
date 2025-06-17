@@ -74,7 +74,7 @@ class AdvancedModelRegistry:
         if registry_path:
             self.registry_path = Path(registry_path)
         else:
-            self.registry_path = Path.home() / ".chemml" / "model_registry.json"
+            self.registry_path = Path.home() / ".qemlflow" / "model_registry.json"
 
         self.registry_path.parent.mkdir(parents=True, exist_ok=True)
 

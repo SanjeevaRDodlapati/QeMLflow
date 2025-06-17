@@ -2,7 +2,7 @@
 
 ## 📋 Executive Summary
 
-**Phase 4.5 Objective**: Develop **Bootcamp 05: Quantum Chemistry & Electronic Structure Prediction** as the fifth installment in the ChemML educational platform, focusing on **advanced quantum mechanical modeling**, **electronic structure calculations**, and **quantum machine learning** for molecular property prediction and materials discovery.
+**Phase 4.5 Objective**: Develop **Bootcamp 05: Quantum Chemistry & Electronic Structure Prediction** as the fifth installment in the QeMLflow educational platform, focusing on **advanced quantum mechanical modeling**, **electronic structure calculations**, and **quantum machine learning** for molecular property prediction and materials discovery.
 
 ## 🎯 Bootcamp 05 Overview
 

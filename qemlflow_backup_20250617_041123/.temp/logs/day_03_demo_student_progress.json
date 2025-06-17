@@ -1,0 +1,129 @@
+{
+  "student": "demo_student",
+  "day": 3,
+  "activities": [
+    {
+      "activity": "start_section_protein_preparation",
+      "data": {
+        "section": "protein_preparation",
+        "start_time": "2025-06-13T18:48:14.823594"
+      },
+      "timestamp": "2025-06-13 18:48:14.823612"
+    },
+    {
+      "activity": "end_section_protein_preparation",
+      "data": {
+        "section": "protein_preparation",
+        "end_time": "2025-06-13T18:48:15.218671",
+        "duration_minutes": 0.006584616666666667
+      },
+      "timestamp": "2025-06-13 18:48:15.218687"
+    },
+    {
+      "activity": "start_section_ligand_preparation",
+      "data": {
+        "section": "ligand_preparation",
+        "start_time": "2025-06-13T18:48:15.218824"
+      },
+      "timestamp": "2025-06-13 18:48:15.218828"
+    },
+    {
+      "activity": "end_section_ligand_preparation",
+      "data": {
+        "section": "ligand_preparation",
+        "end_time": "2025-06-13T18:48:15.220706",
+        "duration_minutes": 3.1366666666666666e-05
+      },
+      "timestamp": "2025-06-13 18:48:15.220720"
+    },
+    {
+      "activity": "start_section_molecular_docking",
+      "data": {
+        "section": "molecular_docking",
+        "start_time": "2025-06-13T18:48:15.220874"
+      },
+      "timestamp": "2025-06-13 18:48:15.220879"
+    },
+    {
+      "activity": "end_section_molecular_docking",
+      "data": {
+        "section": "molecular_docking",
+        "end_time": "2025-06-13T18:48:15.221081",
+        "duration_minutes": 3.45e-06
+      },
+      "timestamp": "2025-06-13 18:48:15.221088"
+    },
+    {
+      "activity": "start_section_analysis",
+      "data": {
+        "section": "analysis",
+        "start_time": "2025-06-13T18:48:15.221200"
+      },
+      "timestamp": "2025-06-13 18:48:15.221204"
+    },
+    {
+      "activity": "end_section_analysis",
+      "data": {
+        "section": "analysis",
+        "end_time": "2025-06-13T18:48:15.221354",
+        "duration_minutes": 2.5666666666666665e-06
+      },
+      "timestamp": "2025-06-13 18:48:15.221361"
+    },
+    {
+      "activity": "start_section_virtual_screening",
+      "data": {
+        "section": "virtual_screening",
+        "start_time": "2025-06-13T18:48:15.221463"
+      },
+      "timestamp": "2025-06-13 18:48:15.221467"
+    },
+    {
+      "activity": "end_section_virtual_screening",
+      "data": {
+        "section": "virtual_screening",
+        "end_time": "2025-06-13T18:48:15.221558",
+        "duration_minutes": 1.5833333333333333e-06
+      },
+      "timestamp": "2025-06-13 18:48:15.221562"
+    }
+  ],
+  "sections": {
+    "protein_preparation": {
+      "start_time": "2025-06-13T18:48:14.823594",
+      "end_time": "2025-06-13T18:48:15.218671",
+      "duration_minutes": 0.006584616666666667
+    },
+    "ligand_preparation": {
+      "start_time": "2025-06-13T18:48:15.218824",
+      "end_time": "2025-06-13T18:48:15.220706",
+      "duration_minutes": 3.1366666666666666e-05
+    },
+    "molecular_docking": {
+      "start_time": "2025-06-13T18:48:15.220874",
+      "end_time": "2025-06-13T18:48:15.221081",
+      "duration_minutes": 3.45e-06
+    },
+    "analysis": {
+      "start_time": "2025-06-13T18:48:15.221200",
+      "end_time": "2025-06-13T18:48:15.221354",
+      "duration_minutes": 2.5666666666666665e-06
+    },
+    "virtual_screening": {
+      "start_time": "2025-06-13T18:48:15.221463",
+      "end_time": "2025-06-13T18:48:15.221558",
+      "duration_minutes": 1.5833333333333333e-06
+    }
+  },
+  "summary": {
+    "overall_progress": 1.0,
+    "section_durations": {
+      "protein_preparation": 0.006584616666666667,
+      "ligand_preparation": 3.1366666666666666e-05,
+      "molecular_docking": 3.45e-06,
+      "analysis": 2.5666666666666665e-06,
+      "virtual_screening": 1.5833333333333333e-06
+    },
+    "total_time_minutes": 0.0073326
+  }
+}

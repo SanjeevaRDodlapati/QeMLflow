@@ -12,7 +12,7 @@ from typing import Any, Dict, List
 
 
 class CodebaseRealityCheck:
-    """Comprehensive analysis of ChemML's actual core framework completion."""
+    """Comprehensive analysis of QeMLflow's actual core framework completion."""
 
     def __init__(self):
         self.project_root = Path(__file__).parent.parent
@@ -49,7 +49,7 @@ class CodebaseRealityCheck:
 
     def analyze_core_framework(self):
         """Analyze core framework modules and their actual capabilities."""
-        core_path = self.project_root / "src" / "chemml" / "core"
+        core_path = self.project_root / "src" / "qemlflow" / "core"
 
         print("🔧 ANALYZING CORE FRAMEWORK...")
 
@@ -71,7 +71,7 @@ class CodebaseRealityCheck:
 
     def analyze_research_modules(self):
         """Analyze research modules and their capabilities."""
-        research_path = self.project_root / "src" / "chemml" / "research"
+        research_path = self.project_root / "src" / "qemlflow" / "research"
 
         print("\n🔬 ANALYZING RESEARCH MODULES...")
 
@@ -170,9 +170,9 @@ class CodebaseRealityCheck:
                     source = "".join(cell.get("source", []))
 
                     # Count framework imports
-                    if "from chemml" in source or "import chemml" in source:
-                        framework_imports += source.count("from chemml") + source.count(
-                            "import chemml"
+                    if "from qemlflow" in source or "import qemlflow" in source:
+                        framework_imports += source.count("from qemlflow") + source.count(
+                            "import qemlflow"
                         )
 
                     # Estimate custom code (rough heuristic)
@@ -181,9 +181,9 @@ class CodebaseRealityCheck:
                         if (
                             line.strip()
                             and not line.strip().startswith("#")
-                            and not line.strip().startswith("from chemml")
-                            and not line.strip().startswith("import chemml")
-                            and "chemml" not in line
+                            and not line.strip().startswith("from qemlflow")
+                            and not line.strip().startswith("import qemlflow")
+                            and "qemlflow" not in line
                         ):
                             custom_code_lines += 1
 

@@ -1,5 +1,5 @@
 """
-ChemML Integration Testing Suite
+QeMLflow Integration Testing Suite
 Comprehensive testing for Phase 5 enhancements.
 """
 
@@ -12,8 +12,8 @@ import warnings
 from typing import Any, Dict, List, Optional
 
 
-class ChemMLTestSuite:
-    """Comprehensive test suite for ChemML enhancements."""
+class QeMLflowTestSuite:
+    """Comprehensive test suite for QeMLflow enhancements."""
 
     def __init__(self):
         self.results = {
@@ -32,7 +32,7 @@ class ChemMLTestSuite:
 
         # Clear any cached imports
         modules_to_clear = [
-            mod for mod in sys.modules.keys() if mod.startswith("chemml")
+            mod for mod in sys.modules.keys() if mod.startswith("qemlflow")
         ]
         for mod in modules_to_clear:
             del sys.modules[mod]
@@ -40,17 +40,17 @@ class ChemMLTestSuite:
         # Test main import
         start_time = time.time()
         try:
-            import chemml
+            import qemlflow
 
             end_time = time.time()
             import_time = end_time - start_time
 
-            print(f"✅ ChemML import: {import_time:.3f}s")
+            print(f"✅ QeMLflow import: {import_time:.3f}s")
 
             # Test that core functions work
             test_results = {}
             try:
-                _data = chemml.load_sample_data()
+                _data = qemlflow.load_sample_data()
                 test_results["load_sample_data"] = True
                 print("✅ load_sample_data working")
             except Exception as e:
@@ -58,7 +58,7 @@ class ChemMLTestSuite:
                 print(f"❌ load_sample_data failed: {e}")
 
             try:
-                _fps = chemml.morgan_fingerprints(["CCO"])
+                _fps = qemlflow.morgan_fingerprints(["CCO"])
                 test_results["morgan_fingerprints"] = True
                 print("✅ morgan_fingerprints working (lazy)")
             except Exception as e:
@@ -87,11 +87,11 @@ class ChemMLTestSuite:
         print("-" * 30)
 
         try:
-            import chemml
+            import qemlflow
 
             # Test that research and integrations are lazy-loaded
-            research_available = chemml.research.is_available()
-            integrations_available = chemml.integrations.is_available()
+            research_available = qemlflow.research.is_available()
+            integrations_available = qemlflow.integrations.is_available()
 
             print(f"✅ Research module lazy-loaded: {research_available}")
             print(f"✅ Integrations module lazy-loaded: {integrations_available}")
@@ -101,7 +101,7 @@ class ChemMLTestSuite:
 
             try:
                 # This should trigger lazy loading
-                _model = chemml.create_rf_model()
+                _model = qemlflow.create_rf_model()
                 lazy_tests["create_rf_model"] = True
                 print("✅ create_rf_model (lazy) working")
             except Exception as e:
@@ -218,15 +218,15 @@ class ChemMLTestSuite:
 
         try:
             # Test custom exceptions
-            from chemml.core.exceptions import ChemMLDataError, ChemMLError
+            from qemlflow.core.exceptions import QeMLflowDataError, QeMLflowError
 
             print("✅ Custom exceptions imported successfully")
 
             # Test that exceptions work properly
             try:
-                raise ChemMLDataError("Test error", {"test": "data"})
-            except ChemMLDataError as e:
-                print("✅ ChemMLDataError working correctly")
+                raise QeMLflowDataError("Test error", {"test": "data"})
+            except QeMLflowDataError as e:
+                print("✅ QeMLflowDataError working correctly")
                 error_with_details = "Details:" in str(e)
                 print(f"✅ Error details included: {error_with_details}")
 
@@ -257,16 +257,16 @@ class ChemMLTestSuite:
                 output = result.stdout
 
                 # Check for success indicators
-                chemml_working = "ChemML initialized successfully!" in output
+                qemlflow_working = "QeMLflow initialized successfully!" in output
                 config_working = "Config" in output and "✅" in output
 
-                print(f"✅ ChemML initialization: {chemml_working}")
+                print(f"✅ QeMLflow initialization: {qemlflow_working}")
                 print(f"✅ Configuration system: {config_working}")
 
-                overall_health = chemml_working and config_working
+                overall_health = qemlflow_working and config_working
 
                 return {
-                    "chemml_initialization": chemml_working,
+                    "qemlflow_initialization": qemlflow_working,
                     "config_system": config_working,
                     "overall_health": overall_health,
                     "health_grade": "A" if overall_health else "C",
@@ -279,7 +279,7 @@ class ChemMLTestSuite:
 
     def run_comprehensive_tests(self) -> Dict[str, Any]:
         """Run all tests and generate comprehensive report."""
-        print("🧪 ChemML Phase 5 Integration Testing")
+        print("🧪 QeMLflow Phase 5 Integration Testing")
         print("=" * 50)
 
         # Run all test categories
@@ -361,7 +361,7 @@ def main():
     """Main testing function."""
     import argparse
 
-    parser = argparse.ArgumentParser(description="ChemML Integration Testing")
+    parser = argparse.ArgumentParser(description="QeMLflow Integration Testing")
     parser.add_argument(
         "--save-report", action="store_true", help="Save detailed JSON report"
     )
@@ -372,7 +372,7 @@ def main():
     # Suppress warnings for cleaner output
     warnings.filterwarnings("ignore")
 
-    test_suite = ChemMLTestSuite()
+    test_suite = QeMLflowTestSuite()
 
     if args.quick:
         # Quick tests only

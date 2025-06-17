@@ -1,4 +1,4 @@
-# ChemML Next Steps Action Plan
+# QeMLflow Next Steps Action Plan
 
 ## 🎯 **Immediate Actions Available**
 
@@ -12,7 +12,7 @@ git push origin v0.2.0-test
 
 ### **Option 2: Documentation Site Setup**
 - GitHub Pages will be automatically deployed from the main branch
-- Documentation site will be available at: https://sanjeevardodlapati.github.io/ChemML/
+- Documentation site will be available at: https://sanjeevardodlapati.github.io/QeMLflow/
 - MkDocs Material theme with professional navigation
 
 ### **Option 3: Release Management**
@@ -36,4 +36,4 @@ git push origin v0.2.0
 ✅ **Comprehensive documentation**
 ✅ **Automated quality assurance**
 
-**The ChemML project is now ready for production use and community contributions.**
+**The QeMLflow project is now ready for production use and community contributions.**

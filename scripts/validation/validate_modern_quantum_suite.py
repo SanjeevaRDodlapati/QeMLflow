@@ -1,5 +1,5 @@
 """
-Modern Quantum Suite Validation for ChemML Bootcamp
+Modern Quantum Suite Validation for QeMLflow Bootcamp
 ==================================================
 
 Validates that all Day 6/7 bootcamp notebooks work with the modern quantum suite.
@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-# Add ChemML to path
+# Add QeMLflow to path
 sys.path.append("src")
 
 
@@ -24,7 +24,7 @@ def test_modern_quantum_imports():
     print("🧪 Testing Modern Quantum Suite Imports...")
 
     try:
-        from chemml.research.modern_quantum import (
+        from qemlflow.research.modern_quantum import (
             HardwareEfficientAnsatz,
             ModernQAOA,
             ModernVQE,
@@ -91,7 +91,7 @@ def test_quantum_functionality():
     print("⚡ Testing Core Quantum Functionality...")
 
     try:
-        from chemml.research.modern_quantum import (
+        from qemlflow.research.modern_quantum import (
             HardwareEfficientAnsatz,
             ModernVQE,
             MolecularHamiltonianBuilder,
@@ -107,7 +107,7 @@ def test_quantum_functionality():
         print(f"✅ VQE test passed: Energy = {result['ground_state_energy']:.6f}")
 
         # Test quantum feature map
-        from chemml.research.modern_quantum import QuantumFeatureMap
+        from qemlflow.research.modern_quantum import QuantumFeatureMap
 
         feature_map = QuantumFeatureMap(2)
         test_data = [[0.1, 0.2], [0.3, 0.4]]
@@ -141,7 +141,7 @@ def validate_notebook_structure(notebook_path: str) -> Dict[str, Any]:
 
         for cell in code_cells:
             source = "".join(cell["source"])
-            if "chemml.research.modern_quantum" in source or "ModernVQE" in source:
+            if "qemlflow.research.modern_quantum" in source or "ModernVQE" in source:
                 modern_quantum_usage = True
             if "qiskit_algorithms" in source or "BaseSampler" in source:
                 legacy_quantum_usage = True
@@ -161,7 +161,7 @@ def validate_notebook_structure(notebook_path: str) -> Dict[str, Any]:
 
 def main():
     """Main validation routine."""
-    print("🎯 ChemML Modern Quantum Suite Validation")
+    print("🎯 QeMLflow Modern Quantum Suite Validation")
     print("=" * 50)
 
     # Test 1: Basic imports

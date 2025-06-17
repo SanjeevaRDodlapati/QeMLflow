@@ -1,5 +1,5 @@
 """
-Advanced Code Quality Improvement Tool for ChemML
+Advanced Code Quality Improvement Tool for QeMLflow
 ================================================
 
 This tool provides advanced code quality improvements beyond basic linting:
@@ -382,7 +382,7 @@ class CodeQualityEnhancer:
     def print_quality_report(self, report: Dict):
         """Print formatted quality report."""
         print("\n" + "=" * 80)
-        print("🏆 ChemML Advanced Code Quality Report")
+        print("🏆 QeMLflow Advanced Code Quality Report")
         print("=" * 80)
 
         summary = report["summary"]
@@ -443,7 +443,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Advanced code quality improvement tool for ChemML"
+        description="Advanced code quality improvement tool for QeMLflow"
     )
     parser.add_argument(
         "--complexity", action="store_true", help="Analyze function complexity"

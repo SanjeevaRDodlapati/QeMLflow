@@ -1,5 +1,5 @@
 """
-ChemML API Standardization Tool
+QeMLflow API Standardization Tool
 Fixes common API inconsistencies including bare except clauses and parameter naming.
 """
 
@@ -153,7 +153,7 @@ def find_missing_type_annotations(filepath: str) -> List[Dict]:
 
 def main():
     """Main function to run API standardization."""
-    parser = argparse.ArgumentParser(description="ChemML API Standardization Tool")
+    parser = argparse.ArgumentParser(description="QeMLflow API Standardization Tool")
     parser.add_argument(
         "--fix-except", action="store_true", help="Fix bare except clauses"
     )
@@ -177,15 +177,15 @@ def main():
     if args.target_files:
         target_files = args.target_files
     else:
-        # Find all Python files in src/chemml
-        src_dir = Path("src/chemml")
+        # Find all Python files in src/qemlflow
+        src_dir = Path("src/qemlflow")
         if src_dir.exists():
             target_files = list(src_dir.rglob("*.py"))
         else:
-            print("❌ src/chemml directory not found")
+            print("❌ src/qemlflow directory not found")
             return
 
-    print("🔧 ChemML API Standardization")
+    print("🔧 QeMLflow API Standardization")
     print("=" * 40)
 
     total_fixes = 0

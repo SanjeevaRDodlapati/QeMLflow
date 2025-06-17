@@ -1,20 +1,20 @@
 # Quick Start Guide
 
-Get up and running with ChemML in minutes!
+Get up and running with QeMLflow in minutes!
 
 ## Installation
 
 ### Standard Installation
 
 ```bash
-pip install chemml
+pip install qemlflow
 ```
 
 ### Development Installation
 
 ```bash
-git clone https://github.com/SanjeevaRDodlapati/ChemML.git
-cd ChemML
+git clone https://github.com/SanjeevaRDodlapati/QeMLflow.git
+cd QeMLflow
 pip install -e ".[dev]"
 ```
 
@@ -29,13 +29,13 @@ pip install -r requirements-core.txt
 ## Verify Installation
 
 ```python
-import chemml
-print(f"ChemML version: {chemml.__version__}")
+import qemlflow
+print(f"QeMLflow version: {qemlflow.__version__}")
 
 # Test basic functionality
-from chemml.preprocessing import MolecularDescriptors
+from qemlflow.preprocessing import MolecularDescriptors
 desc = MolecularDescriptors()
-print("✅ ChemML installed successfully!")
+print("✅ QeMLflow installed successfully!")
 ```
 
 ## First Example
@@ -43,9 +43,9 @@ print("✅ ChemML installed successfully!")
 ### 1. Basic Molecular Property Prediction
 
 ```python
-import chemml
-from chemml.models import AutoMLRegressor
-from chemml.preprocessing import MolecularDescriptors
+import qemlflow
+from qemlflow.models import AutoMLRegressor
+from qemlflow.preprocessing import MolecularDescriptors
 
 # Sample SMILES strings
 smiles = [
@@ -77,16 +77,16 @@ print(f"Predicted boiling point: {prediction[0]:.1f}°C")
 ### 2. Advanced Workflow with Monitoring
 
 ```python
-import chemml
-from chemml.datasets import load_sample_molecules
-from chemml.models import EnsembleRegressor
-from chemml.monitoring import ExperimentTracker
+import qemlflow
+from qemlflow.datasets import load_sample_molecules
+from qemlflow.models import EnsembleRegressor
+from qemlflow.monitoring import ExperimentTracker
 
 # Load sample dataset
 molecules, properties = load_sample_molecules()
 
 # Initialize experiment tracking
-tracker = ExperimentTracker(project="chemml-quickstart")
+tracker = ExperimentTracker(project="qemlflow-quickstart")
 
 # Create ensemble model
 model = EnsembleRegressor(
@@ -113,13 +113,13 @@ print(f"Model R² score: {score:.3f}")
 ### Environment Variables
 
 ```bash
-# Optional: Configure ChemML
-export CHEMML_CONFIG_PATH="./my_config.yaml"
-export CHEMML_DATA_DIR="./data"
-export CHEMML_CACHE_DIR="./cache"
+# Optional: Configure QeMLflow
+export QEMLFLOW_CONFIG_PATH="./my_config.yaml"
+export QEMLFLOW_DATA_DIR="./data"
+export QEMLFLOW_CACHE_DIR="./cache"
 
 # Optional: Enable GPU acceleration
-export CHEMML_GPU=true
+export QEMLFLOW_GPU=true
 
 # Optional: Experiment tracking
 export WANDB_API_KEY="your_wandb_key"
@@ -127,7 +127,7 @@ export WANDB_API_KEY="your_wandb_key"
 
 ### Configuration File
 
-Create `chemml_config.yaml`:
+Create `qemlflow_config.yaml`:
 
 ```yaml
 environment: development
@@ -152,12 +152,12 @@ visualization:
 
 experiment_tracking:
   enabled: true
-  default_project: "chemml-experiments"
+  default_project: "qemlflow-experiments"
 ```
 
 ## Next Steps
 
-1. **[User Guide](../user-guide/overview.md)** - Learn about all ChemML features
+1. **[User Guide](../user-guide/overview.md)** - Learn about all QeMLflow features
 2. **[Examples](../examples/basic.md)** - See more detailed examples
 3. **[API Reference](../api/core.md)** - Explore the complete API
 4. **[Notebooks](../examples/notebooks.md)** - Interactive Jupyter examples
@@ -165,6 +165,6 @@ experiment_tracking:
 ## Need Help?
 
 - 📖 Check the [User Guide](../user-guide/overview.md)
-- 💬 Join [GitHub Discussions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
-- 🐛 Report issues on [GitHub](https://github.com/SanjeevaRDodlapati/ChemML/issues)
+- 💬 Join [GitHub Discussions](https://github.com/SanjeevaRDodlapati/QeMLflow/discussions)
+- 🐛 Report issues on [GitHub](https://github.com/SanjeevaRDodlapati/QeMLflow/issues)
 - 📧 Contact the maintainers

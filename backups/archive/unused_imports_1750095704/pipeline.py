@@ -1,5 +1,5 @@
 """
-ChemML Integration Pipelines
+QeMLflow Integration Pipelines
 ===========================
 
 Advanced pipeline components for external model integration workflows.
@@ -38,7 +38,7 @@ class ScreeningResults:
 
 
 class DrugDiscoveryPipeline:
-    """Complete drug discovery pipeline integrating all ChemML components."""
+    """Complete drug discovery pipeline integrating all QeMLflow components."""
 
     def __init__(
         self,

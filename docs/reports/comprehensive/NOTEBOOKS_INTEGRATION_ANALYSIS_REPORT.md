@@ -1,4 +1,4 @@
-# ChemML Notebooks Learning Directory - Comprehensive Analysis & Integration Report
+# QeMLflow Notebooks Learning Directory - Comprehensive Analysis & Integration Report
 
 ## 📊 Executive Summary
 
@@ -28,11 +28,11 @@ notebooks/learning/
 ### Main Codebase Alignment Analysis
 
 **Core Modules Available:**
-- `src/chemml/core/featurizers.py` (660 lines) - Modern molecular featurization
-- `src/chemml/core/data.py` (641 lines) - Data processing utilities
-- `src/chemml/core/models.py` - ML model interfaces
-- `src/chemml/research/drug_discovery/qsar.py` (767 lines) - QSAR modeling
-- `src/chemml/integrations/deepchem_integration.py` (406 lines) - DeepChem wrappers
+- `src/qemlflow/core/featurizers.py` (660 lines) - Modern molecular featurization
+- `src/qemlflow/core/data.py` (641 lines) - Data processing utilities
+- `src/qemlflow/core/models.py` - ML model interfaces
+- `src/qemlflow/research/drug_discovery/qsar.py` (767 lines) - QSAR modeling
+- `src/qemlflow/integrations/deepchem_integration.py` (406 lines) - DeepChem wrappers
 
 ## 🚨 Critical Issues Identified
 
@@ -47,7 +47,7 @@ notebooks/learning/
 
 ### 2. **API Inconsistency and Import Chaos**
 
-**Problem**: Notebooks use inconsistent import patterns and don't leverage the unified ChemML APIs.
+**Problem**: Notebooks use inconsistent import patterns and don't leverage the unified QeMLflow APIs.
 
 **Current Pattern (Inconsistent)**:
 ```python
@@ -58,12 +58,12 @@ import deepchem as dc
 # ... then reimplementing functionality
 ```
 
-**Should Be (Using ChemML APIs)**:
+**Should Be (Using QeMLflow APIs)**:
 ```python
-# Clean ChemML imports
-from chemml.core import featurizers, data, models
-from chemml.integrations import deepchem_integration
-from chemml.research.drug_discovery import qsar
+# Clean QeMLflow imports
+from qemlflow.core import featurizers, data, models
+from qemlflow.integrations import deepchem_integration
+from qemlflow.research.drug_discovery import qsar
 ```
 
 ### 3. **Poor Modular Integration**
@@ -151,9 +151,9 @@ def calculate_descriptors(molecules, smiles_list):
 
 **New Modular Approach**:
 ```python
-# Clean integration with ChemML core
-from chemml.core.featurizers import DescriptorCalculator
-from chemml.core.data import MolecularDataProcessor
+# Clean integration with QeMLflow core
+from qemlflow.core.featurizers import DescriptorCalculator
+from qemlflow.core.data import MolecularDataProcessor
 
 # Use core modules
 processor = MolecularDataProcessor()
@@ -173,8 +173,8 @@ descriptors = featurizer.featurize(molecules_df['mol'])
 
 ```python
 # New streamlined approach
-from chemml.integrations.deepchem_integration import DeepChemModelWrapper
-from chemml.core.data import prepare_dataset_for_deepchem
+from qemlflow.integrations.deepchem_integration import DeepChemModelWrapper
+from qemlflow.core.data import prepare_dataset_for_deepchem
 
 # Clean workflow demonstration
 wrapper = DeepChemModelWrapper(model_type='multitask_regressor')
@@ -192,7 +192,7 @@ results = wrapper.train_and_evaluate(dataset)
 **New**: Demonstrate advanced QSAR capabilities
 
 ```python
-from chemml.research.drug_discovery.qsar import QSARModel, ActivityPredictor
+from qemlflow.research.drug_discovery.qsar import QSARModel, ActivityPredictor
 
 # Advanced QSAR modeling
 qsar_model = QSARModel(model_type='ensemble')
@@ -221,7 +221,7 @@ results = predictor.predict_and_explain(new_molecules)
 **New Structure**:
 ```
 fundamentals/
-├── 01_chemml_core_intro.ipynb          # Core modules introduction
+├── 01_qemlflow_core_intro.ipynb          # Core modules introduction
 ├── 02_molecular_featurization.ipynb   # Featurizers deep dive
 └── 03_data_processing.ipynb           # Data module showcase
 
@@ -241,17 +241,17 @@ advanced/
 
 #### 4.1 Unified Import Patterns
 
-**Create ChemML Learning API**:
+**Create QeMLflow Learning API**:
 ```python
 # New unified learning imports
-from chemml.tutorials import (
+from qemlflow.tutorials import (
     load_tutorial_data,
     setup_learning_environment,
     create_interactive_demo
 )
-from chemml.core import featurizers, data, models, evaluation
-from chemml.research import drug_discovery, quantum, generative
-from chemml.integrations import deepchem_integration, experiment_tracking
+from qemlflow.core import featurizers, data, models, evaluation
+from qemlflow.research import drug_discovery, quantum, generative
+from qemlflow.integrations import deepchem_integration, experiment_tracking
 ```
 
 #### 4.2 Interactive Component Integration
@@ -259,7 +259,7 @@ from chemml.integrations import deepchem_integration, experiment_tracking
 **Add Tutorial-Specific Utils**:
 ```python
 # Tutorial utilities for better learning experience
-from chemml.tutorials.utils import (
+from qemlflow.tutorials.utils import (
     visualize_molecules,
     interactive_parameter_tuning,
     progress_tracking,
@@ -336,7 +336,7 @@ from chemml.tutorials.utils import (
 ### Code Quality Metrics
 - [ ] Reduce total notebook lines by 60%+
 - [ ] Achieve <10% code redundancy
-- [ ] 100% use of ChemML core APIs
+- [ ] 100% use of QeMLflow core APIs
 - [ ] Zero import inconsistencies
 
 ### Educational Metrics
@@ -384,7 +384,7 @@ from chemml.tutorials.utils import (
 
 ## 📝 Conclusion
 
-The analysis reveals significant opportunities to transform the ChemML learning experience from a collection of disconnected, redundant tutorials into a cohesive, modular learning system that showcases the power of the new hybrid architecture.
+The analysis reveals significant opportunities to transform the QeMLflow learning experience from a collection of disconnected, redundant tutorials into a cohesive, modular learning system that showcases the power of the new hybrid architecture.
 
 **Key Findings**:
 - **67% code reduction possible** through modular integration
@@ -398,4 +398,4 @@ This transformation will not only improve the learning experience but also serve
 
 ---
 
-*This report establishes the foundation for transforming ChemML's educational materials into a world-class modular learning system that truly showcases the power of the hybrid architecture.*
+*This report establishes the foundation for transforming QeMLflow's educational materials into a world-class modular learning system that truly showcases the power of the hybrid architecture.*

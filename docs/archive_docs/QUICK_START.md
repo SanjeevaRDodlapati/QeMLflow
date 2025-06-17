@@ -1,18 +1,18 @@
-# ⚡ ChemML Quick Start Guide
+# ⚡ QeMLflow Quick Start Guide
 
 ## **🎯 Get Started in 30 Seconds**
 
 ### **1. Lightning-Fast Import**
 ```python
-import chemml  # Takes < 0.1 seconds!
-print(f"ChemML {chemml.__version__} ready!")
+import qemlflow  # Takes < 0.1 seconds!
+print(f"QeMLflow {qemlflow.__version__} ready!")
 ```
 
 ### **2. Verify Performance**
 ```python
 import time
 start = time.time()
-import chemml
+import qemlflow
 end = time.time()
 print(f"Import time: {end-start:.3f}s")  # Should be < 0.1s
 ```
@@ -22,9 +22,9 @@ print(f"Import time: {end-start:.3f}s")  # Should be < 0.1s
 # Core functionality available immediately
 try:
     # Your chemistry/ML workflow here
-    print("ChemML is ready for your chemistry workflows!")
-except chemml.ChemMLError as e:
-    print(f"ChemML handled error gracefully: {e}")
+    print("QeMLflow is ready for your chemistry workflows!")
+except qemlflow.QeMLflowError as e:
+    print(f"QeMLflow handled error gracefully: {e}")
 ```
 
 ---
@@ -33,20 +33,20 @@ except chemml.ChemMLError as e:
 
 ### **Data Processing Pipeline**
 ```python
-import chemml
+import qemlflow
 
 # Load and validate data
 try:
-    data = chemml.load_data('molecules.csv')
+    data = qemlflow.load_data('molecules.csv')
     print("Data loaded successfully!")
-except chemml.DataError as e:
+except qemlflow.DataError as e:
     print(f"Data issue handled: {e}")
 ```
 
 ### **Feature Engineering**
 ```python
 # Feature calculation (lazy-loaded when needed)
-features = chemml.calculate_features(molecules)
+features = qemlflow.calculate_features(molecules)
 print(f"Calculated {len(features)} features")
 ```
 
@@ -56,7 +56,7 @@ print(f"Calculated {len(features)} features")
 from sklearn.ensemble import RandomForestRegressor
 
 model = RandomForestRegressor()
-# ChemML features work seamlessly with sklearn
+# QeMLflow features work seamlessly with sklearn
 model.fit(features, target_values)
 ```
 
@@ -71,15 +71,15 @@ If imports are slow:
 import sys
 print(sys.path)
 
-# Verify ChemML installation
-import chemml
-print(chemml.__file__)
+# Verify QeMLflow installation
+import qemlflow
+print(qemlflow.__file__)
 ```
 
 ### **Memory Issues**
 ```python
-# ChemML handles memory automatically
-from chemml.utils.edge_case_handler import edge_case_handler
+# QeMLflow handles memory automatically
+from qemlflow.utils.edge_case_handler import edge_case_handler
 
 # Automatic memory management for large datasets
 memory_config = edge_case_handler.handle_memory_constraints(
@@ -92,7 +92,7 @@ print(memory_config)
 ### **Dependency Issues**
 ```python
 # Check for missing dependencies
-from chemml.utils.edge_case_handler import edge_case_handler
+from qemlflow.utils.edge_case_handler import edge_case_handler
 
 available, msg = edge_case_handler.handle_missing_dependencies('rdkit')
 print(f"RDKit status: {msg}")
@@ -104,7 +104,7 @@ print(f"RDKit status: {msg}")
 
 ### **Built-in Validation**
 ```python
-from chemml.utils.workflow_validator import workflow_validator
+from qemlflow.utils.workflow_validator import workflow_validator
 
 # Validate your complete workflow
 results = workflow_validator.run_comprehensive_workflow_test()
@@ -120,8 +120,8 @@ else:
 import time
 start = time.time()
 
-# Your ChemML operations
-result = chemml.some_heavy_operation()
+# Your QeMLflow operations
+result = qemlflow.some_heavy_operation()
 
 duration = time.time() - start
 print(f"Operation completed in {duration:.3f}s")
@@ -145,5 +145,5 @@ print(f"Operation completed in {duration:.3f}s")
 - **Validation Tools**: Workflow and edge case validators
 - **Performance Tips**: Use lazy loading and built-in optimizations
 
-**ChemML**: Production-ready chemistry + machine learning
+**QeMLflow**: Production-ready chemistry + machine learning
 **Performance**: Sub-100ms imports, enterprise-grade reliability

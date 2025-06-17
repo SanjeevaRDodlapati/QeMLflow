@@ -4,7 +4,7 @@ Enterprise Monitoring and Dashboard System
 =========================================
 
 Phase 3 implementation: Real-time monitoring, dashboards, and enterprise
-features for ChemML.
+features for QeMLflow.
 
 Features:
 - Real-time performance monitoring
@@ -15,7 +15,7 @@ Features:
 - Enterprise security features
 
 Usage:
-    from chemml.enterprise.monitoring import MonitoringDashboard, SystemMonitor
+    from qemlflow.enterprise.monitoring import MonitoringDashboard, SystemMonitor
 
     monitor = SystemMonitor()
     dashboard = MonitoringDashboard()
@@ -429,7 +429,7 @@ class AnalyticsDashboard:
         user_insights = self.generate_user_insights()
 
         lines = [
-            "📊 ChemML Enterprise Analytics Report",
+            "📊 QeMLflow Enterprise Analytics Report",
             "=" * 45,
             f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
             "",
@@ -489,7 +489,7 @@ class MonitoringDashboard:
         self, collection_interval: float = 60.0, auto_reports: bool = False
     ):
         """Start comprehensive monitoring."""
-        print("🚀 Starting ChemML Enterprise Monitoring")
+        print("🚀 Starting QeMLflow Enterprise Monitoring")
         print("=" * 40)
 
         # Start metrics collection
@@ -598,7 +598,7 @@ class MonitoringDashboard:
 
 
 if __name__ == "__main__":
-    print("🏢 ChemML Enterprise Monitoring Test")
+    print("🏢 QeMLflow Enterprise Monitoring Test")
 
     # Create and start monitoring dashboard
     dashboard = MonitoringDashboard()

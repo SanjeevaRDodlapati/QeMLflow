@@ -1,5 +1,5 @@
 """
-Comprehensive visualization utilities for ChemML.
+Comprehensive visualization utilities for QeMLflow.
 
 This module provides plotting and visualization functions for molecular data,
 machine learning models, and chemical analysis results.

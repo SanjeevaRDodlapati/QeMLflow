@@ -3,7 +3,7 @@ Enhanced Error Handling and User Experience
 ==========================================
 
 Phase 2 implementation: Improved error messages, debugging tools,
-and user-friendly interfaces for ChemML.
+and user-friendly interfaces for QeMLflow.
 
 Features:
 - Contextual error messages with solutions
@@ -13,7 +13,7 @@ Features:
 - Performance monitoring and alerts
 
 Usage:
-    from chemml.utils.enhanced_error_handling import ChemMLError, debug_context
+    from qemlflow.utils.enhanced_error_handling import QeMLflowError, debug_context
 
     with debug_context("Model Training"):
         # Your code here
@@ -28,8 +28,8 @@ import traceback
 import warnings
 from contextlib import contextmanager
 from pathlib import Path
-class ChemMLError(Exception):
-    """Enhanced ChemML error with context and solutions."""
+class QeMLflowError(Exception):
+    """Enhanced QeMLflow error with context and solutions."""
 
     def __init__(
         self,
@@ -51,7 +51,7 @@ class ChemMLError(Exception):
 
     def _format_error_message(self) -> str:
         """Format comprehensive error message."""
-        lines = [f"🚨 ChemML Error in {self.context}", "=" * 50, f"❌ {self.message}"]
+        lines = [f"🚨 QeMLflow Error in {self.context}", "=" * 50, f"❌ {self.message}"]
 
         if self.error_code:
             lines.append(f"🔍 Error Code: {self.error_code}")
@@ -96,7 +96,7 @@ class ErrorRecovery:
                 except ImportError as e:
                     if package_name in str(e):
                         install_cmd = install_command or f"pip install {package_name}"
-                        raise ChemMLError(
+                        raise QeMLflowError(
                             f"Missing required dependency: {package_name}",
                             context="Dependency Check",
                             solutions=[
@@ -123,7 +123,7 @@ class ErrorRecovery:
                 return func(*args, **kwargs)
             except FileNotFoundError as e:
                 filename = str(e).split("'")[1] if "'" in str(e) else "unknown"
-                raise ChemMLError(
+                raise QeMLflowError(
                     f"Required file not found: {filename}",
                     context="File Access",
                     solutions=[
@@ -148,7 +148,7 @@ class ErrorRecovery:
                 return func(*args, **kwargs)
             except (KeyError, ValueError) as e:
                 if "config" in str(e).lower():
-                    raise ChemMLError(
+                    raise QeMLflowError(
                         f"Configuration error: {e}",
                         context="Configuration",
                         solutions=[
@@ -235,7 +235,7 @@ class DebugContext:
     def __init__(self, context_name: str, verbose: bool = False):
         self.context_name = context_name
         self.verbose = verbose
-        self.logger = logging.getLogger(f"chemml.debug.{context_name}")
+        self.logger = logging.getLogger(f"qemlflow.debug.{context_name}")
         self.performance_monitor = PerformanceMonitor()
 
     def __enter__(self):
@@ -285,12 +285,12 @@ def enhance_function_errors(context: str = None):
             try:
                 with debug_context(context or func.__name__):
                     return func(*args, **kwargs)
-            except ChemMLError:
-                # Re-raise ChemML errors as-is
+            except QeMLflowError:
+                # Re-raise QeMLflow errors as-is
                 raise
             except Exception as e:
-                # Convert other exceptions to ChemMLError
-                raise ChemMLError(
+                # Convert other exceptions to QeMLflowError
+                raise QeMLflowError(
                     f"Error in {func.__name__}: {e}",
                     context=context or func.__name__,
                     solutions=[
@@ -319,7 +319,7 @@ class UserExperienceEnhancer:
         exc_type, exc_val, exc_tb = exc_info
 
         lines = [
-            "🔍 ChemML Debug Information",
+            "🔍 QeMLflow Debug Information",
             "=" * 40,
             f"Error Type: {exc_type.__name__}",
             f"Error Message: {exc_val}",
@@ -401,16 +401,16 @@ def setup_enhanced_logging(level: str = "INFO", log_file: Optional[str] = None):
         ],
     )
 
-    # Set ChemML-specific loggers
-    chemml_logger = logging.getLogger("chemml")
-    chemml_logger.setLevel(getattr(logging, level.upper()))
+    # Set QeMLflow-specific loggers
+    qemlflow_logger = logging.getLogger("qemlflow")
+    qemlflow_logger.setLevel(getattr(logging, level.upper()))
 
 
 if __name__ == "__main__":
     # Example usage
     setup_enhanced_logging("DEBUG")
 
-    print("🧪 ChemML Enhanced Error Handling Test")
+    print("🧪 QeMLflow Enhanced Error Handling Test")
 
     # Test debug context
     with debug_context("Test Context", verbose=True):

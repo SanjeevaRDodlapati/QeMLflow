@@ -3,7 +3,7 @@ External Model Integration Manager
 =================================
 
 High-level interface for integrating external models from research papers
-and GitHub repositories into ChemML workflows.
+and GitHub repositories into QeMLflow workflows.
 
 Features:
 - One-line model integration
@@ -49,7 +49,7 @@ except ImportError:
 
 class ExternalModelManager:
     """
-    Central manager for integrating external models into ChemML.
+    Central manager for integrating external models into QeMLflow.
 
     This class provides a simple interface for integrating models from
     research publications, GitHub repositories, and model hubs with
@@ -66,7 +66,7 @@ class ExternalModelManager:
         self.cache_dir = (
             Path(cache_dir)
             if cache_dir
-            else Path.home() / ".chemml" / "external_models"
+            else Path.home() / ".qemlflow" / "external_models"
         )
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -281,7 +281,7 @@ class ExternalModelManager:
 
         print("Integrating Boltz biomolecular interaction model...")
 
-        # Configure Boltz with ChemML settings
+        # Configure Boltz with QeMLflow settings
         boltz_config = {
             "cache_dir": str(self.cache_dir / "boltz"),
             "use_msa_server": kwargs.get("use_msa_server", True),

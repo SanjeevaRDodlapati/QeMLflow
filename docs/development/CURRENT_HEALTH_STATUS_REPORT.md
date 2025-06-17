@@ -1,4 +1,4 @@
-# ChemML Health Status Report - Current State Analysis
+# QeMLflow Health Status Report - Current State Analysis
 
 **Date**: June 16, 2025 12:37 PM  
 **Assessment Type**: Urgent Health Review  
@@ -51,9 +51,9 @@ python tools/linting/targeted_fixer.py --focus=formatting
 
 #### **A. High-Complexity Functions (58 issues)**
 Priority files needing refactoring:
-- `src/chemml/research/drug_discovery_legacy.py` 
-- `src/chemml/core/pipeline.py`
-- `src/chemml/integrations/core/pipeline.py`
+- `src/qemlflow/research/drug_discovery_legacy.py` 
+- `src/qemlflow/core/pipeline.py`
+- `src/qemlflow/integrations/core/pipeline.py`
 
 **Action**: Break down functions with cyclomatic complexity > 15
 

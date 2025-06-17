@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Automated Unused Import Remover for ChemML
+Automated Unused Import Remover for QeMLflow
 ==========================================
 
 Safely removes unused imports (F401 errors) using AST analysis.
@@ -47,9 +47,9 @@ class UnusedImportRemover:
             "tensorflow",
             "sklearn",
             "rdkit",
-            # ChemML core imports
-            "chemml",
-            "ChemMLError",
+            # QeMLflow core imports
+            "qemlflow",
+            "QeMLflowError",
             # Special imports that create side effects
             "__version__",
             "__all__",

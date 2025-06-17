@@ -1,6 +1,6 @@
-# 🏗️ ChemML Codebase Structure Guide
+# 🏗️ QeMLflow Codebase Structure Guide
 
-**Current architecture overview for developers working with the ChemML modular structure**
+**Current architecture overview for developers working with the QeMLflow modular structure**
 
 *Last updated: June 2025 | Reflects the implemented modular reorganization*
 
@@ -9,7 +9,7 @@
 ## 🎯 **Quick Navigation**
 
 ```
-src/chemml/
+src/qemlflow/
 ├── core/                    # 🧩 Core framework components
 ├── research/                # 🔬 Research & experimental modules
 ├── integrations/            # 🔗 External library integrations
@@ -49,7 +49,7 @@ src/chemml/
 
 ## 📁 **Detailed Module Breakdown**
 
-### **🧩 `src/chemml/core/`** - Framework Foundation
+### **🧩 `src/qemlflow/core/`** - Framework Foundation
 
 **Purpose:** Essential components used across all research modules
 
@@ -76,12 +76,12 @@ core/
 
 **Key Classes:**
 - `HybridMolecularFeaturizer` - Combines RDKit + DeepChem features
-- `ChemMLBaseModel` - Base class for all models
+- `QeMLflowBaseModel` - Base class for all models
 - `MolecularDataset` - Standardized molecular data handling
 
 ---
 
-### **🔬 `src/chemml/research/`** - Research & Experimental
+### **🔬 `src/qemlflow/research/`** - Research & Experimental
 
 **Purpose:** Advanced models and specialized research workflows
 
@@ -111,7 +111,7 @@ research/
 
 ---
 
-### **🔗 `src/chemml/integrations/`** - External Integrations
+### **🔗 `src/qemlflow/integrations/`** - External Integrations
 
 **Purpose:** Interfaces to external libraries and services
 
@@ -126,7 +126,7 @@ integrations/
 
 ---
 
-### **📚 `src/chemml/tutorials/`** - Learning Materials
+### **📚 `src/qemlflow/tutorials/`** - Learning Materials
 
 **Purpose:** Educational content as first-class modules
 
@@ -144,22 +144,22 @@ tutorials/
 
 ### **Quick Start - Basic Usage**
 ```python
-from chemml.core.featurizers import HybridMolecularFeaturizer
-from chemml.core.models import ChemMLClassifier
-from chemml.research.drug_discovery import QSARPipeline
+from qemlflow.core.featurizers import HybridMolecularFeaturizer
+from qemlflow.core.models import QeMLflowClassifier
+from qemlflow.research.drug_discovery import QSARPipeline
 ```
 
 ### **Research - Advanced Usage**
 ```python
-from chemml.research.quantum import VQEMolecularOrbitals
-from chemml.research.drug_discovery.generation import MolecularVAE
-from chemml.integrations.qiskit_interface import QuantumCircuitBuilder
+from qemlflow.research.quantum import VQEMolecularOrbitals
+from qemlflow.research.drug_discovery.generation import MolecularVAE
+from qemlflow.integrations.qiskit_interface import QuantumCircuitBuilder
 ```
 
 ### **Production - Deployment Ready**
 ```python
-from chemml.core.evaluation import ModelEvaluator
-from chemml.core.data import MolecularDataset
+from qemlflow.core.evaluation import ModelEvaluator
+from qemlflow.core.data import MolecularDataset
 ```
 
 ---
@@ -192,13 +192,13 @@ Level 4: tutorials/         # May import from all levels
 
 ## 🚀 **Migration from Legacy Code**
 
-If you're updating old ChemML code:
+If you're updating old QeMLflow code:
 
 | Old Import | New Import |
 |------------|------------|
-| `from chemml.drug_design import *` | `from chemml.research.drug_discovery import *` |
-| `from chemml.utils import *` | `from chemml.core.utils import *` |
-| `from chemml.models import *` | `from chemml.core.models import *` |
+| `from qemlflow.drug_design import *` | `from qemlflow.research.drug_discovery import *` |
+| `from qemlflow.utils import *` | `from qemlflow.core.utils import *` |
+| `from qemlflow.models import *` | `from qemlflow.core.models import *` |
 
 **Migration Script:** Use `scripts/migration/migrate_to_hybrid_architecture.py`
 
@@ -207,7 +207,7 @@ If you're updating old ChemML code:
 ## 🔧 **Developer Guidelines**
 
 ### **Adding New Models:**
-1. Inherit from `ChemMLBaseModel` in `core/models.py`
+1. Inherit from `QeMLflowBaseModel` in `core/models.py`
 2. Add to appropriate submodule (`classical/` or `quantum/`)
 3. Include unit tests in `tests/unit/`
 4. Update module `__init__.py` exports

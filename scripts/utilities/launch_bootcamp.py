@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ChemML Bootcamp Launcher
+QeMLflow Bootcamp Launcher
 =======================
 
 Simple launcher script that validates the environment and guides users
@@ -52,9 +52,9 @@ class BootcampLauncher:
 
         return all_good
 
-    def check_chemml_modules(self):
-        """Check ChemML modules"""
-        print("\n🔍 Checking ChemML modules...")
+    def check_qemlflow_modules(self):
+        """Check QeMLflow modules"""
+        print("\n🔍 Checking QeMLflow modules...")
 
         try:
             # Add src to path
@@ -63,15 +63,15 @@ class BootcampLauncher:
                 sys.path.insert(0, str(src_path))
 
             # Test imports
-            from chemml.core.data import legacy_molecular_cleaning
-            from chemml.core.featurizers import MorganFingerprint
+            from qemlflow.core.data import legacy_molecular_cleaning
+            from qemlflow.core.featurizers import MorganFingerprint
 
-            print("   ✅ ChemML hybrid architecture")
-            self.environment_status["chemml"] = True
+            print("   ✅ QeMLflow hybrid architecture")
+            self.environment_status["qemlflow"] = True
             return True
         except ImportError as e:
-            print(f"   ❌ ChemML modules - {e}")
-            self.environment_status["chemml"] = False
+            print(f"   ❌ QeMLflow modules - {e}")
+            self.environment_status["qemlflow"] = False
             return False
 
     def check_quantum_environment(self):
@@ -127,7 +127,7 @@ class BootcampLauncher:
 
         # Always available tutorials
         print("\n✅ CORE TUTORIALS (Always Available):")
-        if self.environment_status.get("chemml", False):
+        if self.environment_status.get("qemlflow", False):
             print("   📖 notebooks/tutorials/01_basic_cheminformatics.ipynb")
             print("      → Enhanced with hybrid architecture demo")
             print("   📖 notebooks/tutorials/03_deepchem_drug_discovery.ipynb")
@@ -194,7 +194,7 @@ class BootcampLauncher:
 
     def launch(self, fix_quantum=False, quick_test=False):
         """Main launcher logic"""
-        print("🎯 ChemML Bootcamp Environment Launcher")
+        print("🎯 QeMLflow Bootcamp Environment Launcher")
         print("=" * 60)
 
         if quick_test:
@@ -208,16 +208,16 @@ class BootcampLauncher:
 
         # Check environment components
         core_ok = self.check_core_environment()
-        chemml_ok = self.check_chemml_modules()
+        qemlflow_ok = self.check_qemlflow_modules()
         quantum_ok = self.check_quantum_environment()
 
         # Summary
         print("\n🎯 ENVIRONMENT STATUS:")
         print(f"   Core Libraries: {'✅ Ready' if core_ok else '❌ Issues'}")
-        print(f"   ChemML Modules: {'✅ Ready' if chemml_ok else '❌ Issues'}")
+        print(f"   QeMLflow Modules: {'✅ Ready' if qemlflow_ok else '❌ Issues'}")
         print(f"   Quantum Setup:  {'✅ Ready' if quantum_ok else '⚠️ Partial'}")
 
-        overall_score = sum([core_ok, chemml_ok, quantum_ok]) / 3 * 100
+        overall_score = sum([core_ok, qemlflow_ok, quantum_ok]) / 3 * 100
         print(f"   Overall: {overall_score:.0f}% Ready")
 
         # Provide recommendations
@@ -235,7 +235,7 @@ class BootcampLauncher:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Launch ChemML Bootcamp")
+    parser = argparse.ArgumentParser(description="Launch QeMLflow Bootcamp")
     parser.add_argument(
         "--fix-quantum", action="store_true", help="Attempt to fix quantum environment"
     )

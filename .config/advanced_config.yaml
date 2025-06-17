@@ -1,4 +1,4 @@
-# ChemML Advanced Configuration
+# QeMLflow Advanced Configuration
 # ============================
 # This configuration file shows the flexible backend selection
 # for distributed training, hyperparameter optimization, and monitoring
@@ -52,7 +52,7 @@ hyperparameter_optimization:
 
   # Optuna-specific settings
   optuna:
-    study_name: "chemml_optimization"
+    study_name: "qemlflow_optimization"
     storage: "sqlite:///optuna_studies.db"  # Can use PostgreSQL/MySQL for distributed
     pruning:
       enabled: true
@@ -82,11 +82,11 @@ performance_monitoring:
     mlflow:
       enabled: true
       tracking_uri: "sqlite:///mlruns.db"  # Can use remote server
-      experiment_name: "chemml_experiments"
+      experiment_name: "qemlflow_experiments"
 
     wandb:
       enabled: true
-      project: "chemml-research"
+      project: "qemlflow-research"
       entity: "your-wandb-username"
 
     tensorboard:
@@ -205,7 +205,7 @@ uncertainty:
 logging:
   level: "INFO"  # DEBUG, INFO, WARNING, ERROR
   format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  file: "./chemml.log"
+  file: "./qemlflow.log"
   max_file_size_mb: 100
   backup_count: 5
 

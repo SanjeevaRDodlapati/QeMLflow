@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Functions - ChemML API</title>
+    <title>Functions - QeMLflow API</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,19 +19,19 @@
         <div class="content">
 
             <div class="api-item">
-                <h3 class="api-name">🔧 _setup_chemml</h3>
+                <h3 class="api-name">🔧 _setup_qemlflow</h3>
                 <div class="api-meta">
                     <span class="module-name"></span>
 
                 </div>
                 <div class="api-signature">
-                    <code>_setup_chemml()</code>
+                    <code>_setup_qemlflow()</code>
                     <span class="return-type">→ Any</span>
                 </div>
                 <div class="api-description">
-                    Setup ChemML with sensible defaults.
+                    Setup QeMLflow with sensible defaults.
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>result = _setup_chemml()</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>result = _setup_qemlflow()</code></pre></div>
             </div>
 
             <div class="api-item">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="api-signature">
                     <code>get_config()</code>
-                    <span class="return-type">→ ChemMLConfig</span>
+                    <span class="return-type">→ QeMLflowConfig</span>
                 </div>
                 <div class="api-description">
                     Get the global configuration instance.
@@ -138,7 +138,7 @@
                 </div>
                 <div class="api-signature">
                     <code>get_paths(self)</code>
-                    <span class="return-type">→ ChemMLPaths</span>
+                    <span class="return-type">→ QeMLflowPaths</span>
                 </div>
                 <div class="api-description">
                     Get structured paths object.
@@ -3036,7 +3036,7 @@ Args:
                     <span class="return-type">→ Any</span>
                 </div>
                 <div class="api-description">
-                    Create standard ChemML project directory structure.
+                    Create standard QeMLflow project directory structure.
 
 Args:
     base_path: Base directory path
@@ -5427,7 +5427,7 @@ Returns:
                     <span class="return-type">→ logging.Logger</span>
                 </div>
                 <div class="api-description">
-                    Setup logging configuration for ChemML.
+                    Setup logging configuration for QeMLflow.
 
 Args:
     level: Logging level ('DEBUG', 'INFO', 'WARNING', 'ERROR')
@@ -5725,17 +5725,17 @@ predictions = model.plot_predictions_vs_actual(X_test)</code></pre></div>
 
                 </div>
                 <div class="api-signature">
-                    <code>__init__(self, chemml_featurizers: List, deepchem_featurizers: List)</code>
+                    <code>__init__(self, qemlflow_featurizers: List, deepchem_featurizers: List)</code>
                     <span class="return-type">→ Any</span>
                 </div>
                 <div class="api-description">
                     Initialize hybrid featurizer.
 
 Args:
-    chemml_featurizers: List of ChemML featurizer instances
+    qemlflow_featurizers: List of QeMLflow featurizer instances
     deepchem_featurizers: List of DeepChem featurizer instances
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>result = __init__(self=..., chemml_featurizers=..., deepchem_featurizers=...)</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>result = __init__(self=..., qemlflow_featurizers=..., deepchem_featurizers=...)</code></pre></div>
             </div>
 
             <div class="api-item">
@@ -5827,17 +5827,17 @@ result = deepchem_molecular_transformer(smiles)</code></pre></div>
             </div>
 
             <div class="api-item">
-                <h3 class="api-name">🔧 deepchem_to_chemml_format</h3>
+                <h3 class="api-name">🔧 deepchem_to_qemlflow_format</h3>
                 <div class="api-meta">
                     <span class="module-name">integrations.deepchem_integration</span>
 
                 </div>
                 <div class="api-signature">
-                    <code>deepchem_to_chemml_format(dataset: 'dc.data.Dataset')</code>
+                    <code>deepchem_to_qemlflow_format(dataset: 'dc.data.Dataset')</code>
                     <span class="return-type">→ Tuple[np.ndarray, np.ndarray]</span>
                 </div>
                 <div class="api-description">
-                    Convert DeepChem dataset to ChemML format.
+                    Convert DeepChem dataset to QeMLflow format.
 
 Args:
     dataset: DeepChem dataset
@@ -5845,7 +5845,7 @@ Args:
 Returns:
     Tuple of (features, labels)
                 </div>
-                <div class='api-examples'><h4>Examples:</h4><pre><code>result = deepchem_to_chemml_format(dataset=...)</code></pre></div>
+                <div class='api-examples'><h4>Examples:</h4><pre><code>result = deepchem_to_qemlflow_format(dataset=...)</code></pre></div>
             </div>
 
             <div class="api-item">
@@ -5877,7 +5877,7 @@ predictions = model.evaluate(X_test)</code></pre></div>
                     <span class="return-type">→ np.ndarray</span>
                 </div>
                 <div class="api-description">
-                    Generate combined features using both ChemML and DeepChem featurizers.
+                    Generate combined features using both QeMLflow and DeepChem featurizers.
 
 Args:
     smiles_list: List of SMILES strings
@@ -11247,7 +11247,7 @@ Returns:
                     <span class="return-type">→ Union[pd.DataFrame, Dict[str, Any]]</span>
                 </div>
                 <div class="api-description">
-                    Load educational datasets for ChemML tutorials.
+                    Load educational datasets for QeMLflow tutorials.
 
 Args:
     dataset_name: Name of the dataset to load
@@ -11271,7 +11271,7 @@ Returns:
                     <span class="return-type">→ Dict[str, Any]</span>
                 </div>
                 <div class="api-description">
-                    Setup the learning environment for ChemML tutorials.
+                    Setup the learning environment for QeMLflow tutorials.
 
 This function configures logging, plotting style, random seeds,
 and checks available dependencies for a consistent tutorial experience.
@@ -13249,7 +13249,7 @@ Returns:
                     <span class="return-type">→ Dict[str, Dict[str, Any]]</span>
                 </div>
                 <div class="api-description">
-                    Demonstrate integration between tutorial framework and main ChemML modules.
+                    Demonstrate integration between tutorial framework and main QeMLflow modules.
 
 Args:
     tutorial_data: Tutorial dataset object

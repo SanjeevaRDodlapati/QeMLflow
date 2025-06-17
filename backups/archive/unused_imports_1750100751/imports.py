@@ -1,8 +1,8 @@
 """
-ChemML Standardized Import Patterns
+QeMLflow Standardized Import Patterns
 ==================================
 
-Provides standardized import utilities and patterns for consistent ChemML usage.
+Provides standardized import utilities and patterns for consistent QeMLflow usage.
 This module helps ensure consistent imports across examples, tutorials, and user code.
 """
 
@@ -113,40 +113,40 @@ class ImportManager:
 _import_manager = ImportManager()
 
 
-def setup_chemml_imports() -> ImportManager:
-    """Setup standard ChemML imports with fallbacks."""
+def setup_qemlflow_imports() -> ImportManager:
+    """Setup standard QeMLflow imports with fallbacks."""
 
-    # Core ChemML imports (required)
-    _import_manager.register_import("chemml", "chemml", required=True)
+    # Core QeMLflow imports (required)
+    _import_manager.register_import("qemlflow", "qemlflow", required=True)
 
     # Preprocessing
     _import_manager.register_import(
         "MoleculePreprocessor",
-        "chemml.preprocessing.MoleculePreprocessor",
+        "qemlflow.preprocessing.MoleculePreprocessor",
         fallback=None,
         warning_message="⚠️  MoleculePreprocessor not available. Some preprocessing features disabled.",
     )
 
     # Models
     _import_manager.register_import(
-        "ChemMLModel",
-        "chemml.models.ChemMLModel",
+        "QeMLflowModel",
+        "qemlflow.models.QeMLflowModel",
         fallback=None,
-        warning_message="⚠️  ChemMLModel not available. Using basic model fallbacks.",
+        warning_message="⚠️  QeMLflowModel not available. Using basic model fallbacks.",
     )
 
     # Visualization
     _import_manager.register_import(
-        "ChemMLVisualizer",
-        "chemml.visualization.ChemMLVisualizer",
+        "QeMLflowVisualizer",
+        "qemlflow.visualization.QeMLflowVisualizer",
         fallback=None,
-        warning_message="⚠️  ChemMLVisualizer not available. Basic matplotlib fallbacks will be used.",
+        warning_message="⚠️  QeMLflowVisualizer not available. Basic matplotlib fallbacks will be used.",
     )
 
     # Experiment tracking
     _import_manager.register_import(
         "setup_wandb_tracking",
-        "chemml.integrations.experiment_tracking.setup_wandb_tracking",
+        "qemlflow.integrations.experiment_tracking.setup_wandb_tracking",
         fallback=lambda *args, **kwargs: print(
             "📝 Mock experiment tracking (tracking disabled)"
         ),
@@ -198,7 +198,7 @@ def setup_chemml_imports() -> ImportManager:
 
 def get_standard_imports() -> Dict[str, Any]:
     """Get dictionary of standard imports for use in notebooks/scripts."""
-    manager = setup_chemml_imports()
+    manager = setup_qemlflow_imports()
 
     imports = {}
     for name in manager.import_registry.keys():
@@ -210,13 +210,13 @@ def get_standard_imports() -> Dict[str, Any]:
 
 def create_import_cell_code() -> str:
     """Generate code for a standard import cell."""
-    return """# ChemML Standard Imports
+    return """# QeMLflow Standard Imports
 import warnings
 
 warnings.filterwarnings('ignore')
 
 # Get standardized imports
-from chemml.utils.imports import get_standard_imports
+from qemlflow.utils.imports import get_standard_imports
 
 imports = get_standard_imports()
 
@@ -224,12 +224,12 @@ imports = get_standard_imports()
 np = imports.get('numpy')
 pd = imports.get('pandas')
 plt = imports.get('matplotlib')
-chemml = imports.get('chemml')
+qemlflow = imports.get('qemlflow')
 
-# ChemML components
+# QeMLflow components
 MoleculePreprocessor = imports.get('MoleculePreprocessor')
-ChemMLModel = imports.get('ChemMLModel')
-ChemMLVisualizer = imports.get('ChemMLVisualizer')
+QeMLflowModel = imports.get('QeMLflowModel')
+QeMLflowVisualizer = imports.get('QeMLflowVisualizer')
 setup_wandb_tracking = imports.get('setup_wandb_tracking')
 
 # Optional scientific libraries
@@ -238,7 +238,7 @@ rdkit = imports.get('rdkit')
 deepchem = imports.get('deepchem')
 
 # Display import status
-print(f"🧪 ChemML {chemml.__version__ if chemml else 'N/A'} imports ready")
+print(f"🧪 QeMLflow {qemlflow.__version__ if qemlflow else 'N/A'} imports ready")
 print(f"📊 Available: {len([v for v in imports.values() if v is not None])}/{len(imports)} modules")"""
 
 
@@ -251,7 +251,7 @@ def create_fallback_helpers() -> Any:
         class MockPreprocessor:
             def fit_transform(self, data) -> List[Any]:
                 print(
-                    "⚠️  Using mock preprocessor - install ChemML preprocessing for real functionality"
+                    "⚠️  Using mock preprocessor - install QeMLflow preprocessing for real functionality"
                 )
                 # Return dummy data
                 if hasattr(data, "__len__"):
@@ -266,7 +266,7 @@ def create_fallback_helpers() -> Any:
         class MockModel:
             def fit(self, X, y) -> None:
                 print(
-                    "⚠️  Using mock model - install ChemML models for real functionality"
+                    "⚠️  Using mock model - install QeMLflow models for real functionality"
                 )
 
             def predict(self, X) -> List[Any]:
@@ -326,7 +326,7 @@ def print_import_status() -> None:
     """Print status of all imports."""
     status = _import_manager.get_import_status()
 
-    print("ChemML Import Status")
+    print("QeMLflow Import Status")
     print("=" * 40)
 
     if status["successful"]:

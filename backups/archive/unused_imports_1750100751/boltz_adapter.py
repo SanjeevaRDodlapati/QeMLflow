@@ -1,9 +1,9 @@
 """
-Boltz Model Integration for ChemML
+Boltz Model Integration for QeMLflow
 ==================================
 
 Specialized adapter for integrating Boltz biomolecular interaction models
-into the ChemML framework. Boltz is a state-of-the-art model for protein
+into the QeMLflow framework. Boltz is a state-of-the-art model for protein
 structure prediction and binding affinity prediction.
 
 Repository: https://github.com/jwohlwend/boltz
@@ -27,7 +27,7 @@ import yaml
 try:
     from ...core.external_models import ExternalModelWrapper
 except ImportError:
-    from chemml.integrations.core.external_models import ExternalModelWrapper
+    from qemlflow.integrations.core.external_models import ExternalModelWrapper
 
 
 class BoltzAdapter(ExternalModelWrapper):
@@ -64,7 +64,7 @@ class BoltzAdapter(ExternalModelWrapper):
         )
 
         self.cache_dir = (
-            Path(cache_dir) if cache_dir else Path.home() / ".chemml" / "boltz"
+            Path(cache_dir) if cache_dir else Path.home() / ".qemlflow" / "boltz"
         )
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
@@ -556,7 +556,7 @@ class BoltzAdapter(ExternalModelWrapper):
 # Convenience wrapper for easy integration
 class BoltzModel(ExternalModelWrapper):
     """
-    High-level wrapper for Boltz model integration into ChemML workflows.
+    High-level wrapper for Boltz model integration into QeMLflow workflows.
     """
 
     def __init__(self, **kwargs):
@@ -570,7 +570,7 @@ class BoltzModel(ExternalModelWrapper):
 
     def predict(self, X, task="structure_prediction", **kwargs):
         """
-        ChemML-compatible predict method.
+        QeMLflow-compatible predict method.
 
         Args:
             X: Input data (sequences, SMILES, etc.)
@@ -580,7 +580,7 @@ class BoltzModel(ExternalModelWrapper):
         Returns:
             Prediction results
         """
-        # Convert ChemML inputs to Boltz format
+        # Convert QeMLflow inputs to Boltz format
         if isinstance(X, pd.DataFrame):
             input_data = self._dataframe_to_boltz_input(X)
         elif isinstance(X, str):

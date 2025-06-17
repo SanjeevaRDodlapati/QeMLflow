@@ -1,6 +1,6 @@
 """
 Type Annotation Enhancement Tool
-Adds missing type annotations to ChemML functions.
+Adds missing type annotations to QeMLflow functions.
 """
 
 import argparse
@@ -371,7 +371,7 @@ def main():
     """Main function."""
     parser = argparse.ArgumentParser(description="Type Annotation Analysis")
     parser.add_argument(
-        "--src-dir", default="src/chemml", help="Source directory to analyze"
+        "--src-dir", default="src/qemlflow", help="Source directory to analyze"
     )
     parser.add_argument(
         "--save-report", action="store_true", help="Save detailed report to JSON file"

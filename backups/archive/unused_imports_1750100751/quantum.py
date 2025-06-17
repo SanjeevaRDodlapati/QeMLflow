@@ -1,5 +1,5 @@
 """
-Quantum Computing Integration for ChemML Tutorials
+Quantum Computing Integration for QeMLflow Tutorials
 =================================================
 
 Educational quantum computing modules for chemistry applications.
@@ -779,7 +779,7 @@ def get_quantum_tutorial_overview() -> str:
     status = check_quantum_requirements()
 
     overview = """
-    🌌 ChemML Quantum Computing Tutorials
+    🌌 QeMLflow Quantum Computing Tutorials
     =====================================
 
     Available Tutorials:

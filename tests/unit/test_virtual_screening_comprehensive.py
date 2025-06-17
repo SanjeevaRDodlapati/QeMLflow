@@ -14,7 +14,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from chemml.research.drug_discovery.screening import (
+from qemlflow.research.drug_discovery.screening import (
     Chem,
     ImportError:,
     PharmacophoreScreener,
