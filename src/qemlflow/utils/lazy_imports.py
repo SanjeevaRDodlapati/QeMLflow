@@ -1,4 +1,4 @@
-from typing import Dict\nfrom typing import Optional\nfrom typing import Callable\n"""
+"""
 QeMLflow Lazy Loading Module
 Implements smart lazy loading for heavy dependencies to improve import performance.
 """

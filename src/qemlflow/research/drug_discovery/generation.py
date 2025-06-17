@@ -1,4 +1,4 @@
-from typing import List\nfrom typing import Optional\n"""
+"""
 Molecular Generation Module
 ==========================
 

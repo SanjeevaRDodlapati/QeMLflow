@@ -1,4 +1,4 @@
-from typing import Dict\nfrom typing import List\nfrom typing import Any\n"""
+"""
 Advanced Materials Discovery Module
 
 This module provides comprehensive tools for AI-driven materials design,

@@ -1,4 +1,4 @@
-from typing import Dict\nfrom typing import List\n"""
+"""
 Environmental Chemistry AI Module
 
 This module provides comprehensive tools for environmental monitoring,

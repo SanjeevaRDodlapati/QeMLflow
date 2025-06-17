@@ -1,4 +1,4 @@
-from typing import Dict\nfrom typing import List\nfrom typing import Optional\n"""
+"""
 QeMLflow Notebook Integration Templates
 ====================================
 

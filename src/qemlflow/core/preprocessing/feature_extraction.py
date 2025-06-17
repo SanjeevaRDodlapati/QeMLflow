@@ -1,4 +1,4 @@
-from typing import Dict\nfrom typing import List\nfrom typing import Optional\nfrom typing import Union\n"""
+"""
 Feature extraction utilities for molecular data processing.
 
 This module provides functions for extracting molecular descriptors,

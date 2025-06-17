@@ -1,4 +1,4 @@
-from typing import Dict\n"""
+"""
 QeMLflow Workflow Validator
 Comprehensive real-world workflow testing and validation.
 """
