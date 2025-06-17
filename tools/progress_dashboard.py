@@ -53,7 +53,7 @@ class ProgressTracker:
             "notes": notes,
             "status": "completed",
         }
-        self.progress_data["checkpoints"][f"week_{week:02d}"] = checkpoint_data
+        self.progress_data["checkpoints"][f"week_{week:2d}"] = checkpoint_data
 
     def update_competency_score(self, area, score, evidence=""):
         """Update competency score for a specific area."""
@@ -228,7 +228,7 @@ class ProgressTracker:
         grid_html = "<div style='display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 20px;'>"
 
         for week in range(1, 13):
-            week_key = f"week_{week:02d}"
+            week_key = f"week_{week:2d}"
             status = (
                 "completed"
                 if week_key in self.progress_data["checkpoints"]
@@ -260,7 +260,7 @@ class ProgressTracker:
         weeks = list(range(1, 13))
         time_spent = [
             self.progress_data["checkpoints"]
-            .get(f"week_{w:02d}", {})
+            .get(f"week_{w:2d}", {})
             .get("time_spent_minutes", 0)
             / 60
             for w in weeks
@@ -456,8 +456,8 @@ def create_sample_progress_tracker():
     tracker.progress_data["portfolio_projects"]["Multi-Target QSAR"] = {
         "status": "In Progress",
         "progress_percentage": 35,
-        "start_date": "2025-06-01",
-        "expected_completion": "2025-08-15",
+        "start_date": "2025-6-1",
+        "expected_completion": "2025-8-15",
     }
 
     return tracker
@@ -467,3 +467,4 @@ if __name__ == "__main__":
     tracker = create_sample_progress_tracker()
     dashboard = tracker.create_progress_dashboard()
     display(dashboard)
+"""

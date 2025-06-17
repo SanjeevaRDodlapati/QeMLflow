@@ -116,3 +116,6 @@ reports/*.json
 *.tar.gz
 chemml_env/
 qemlflow_env/
+# Migration validation
+tools/validation/migration_validation_report.json
+tools/migration/broken_files_backup/

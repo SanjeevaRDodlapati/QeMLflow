@@ -6,7 +6,7 @@ Advanced drug discovery algorithms and workflows.
 Modular implementation for better maintainability.
 
 Sub-modules:
-- optimization: Molecular optimization using Bayesian, genetic, and other algorithms
+    - optimization: Molecular optimization using Bayesian, genetic, and other algorithms
 - admet: ADMET property prediction and drug-likeness assessment
 - screening: Virtual screening workflows
 - properties: Property prediction models
@@ -97,4 +97,4 @@ from .screening import PharmacophoreScreener, SimilarityScreener, VirtualScreene
 "build_qsar_model",
 "predict_activity",
 "validate_qsar_model",
-]
+"""

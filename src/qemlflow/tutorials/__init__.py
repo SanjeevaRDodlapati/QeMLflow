@@ -6,14 +6,14 @@ A comprehensive framework for creating interactive and progressive learning expe
 in computational chemistry and machine learning.
 
 This module provides the foundation for all QeMLflow tutorials, including:
-- Learning assessment and progress tracking
+    - Learning assessment and progress tracking
 - Interactive components and widgets
 - Educational data management
 - Environment setup and validation
 - Visualization and demonstration tools
 
 Key Components:
-- LearningAssessment: Track student progress and understanding
+    - LearningAssessment: Track student progress and understanding
 - ProgressTracker: Monitor learning activities and time spent
 - EnvironmentManager: Setup and validate tutorial environments
 - EducationalDatasets: Curated datasets for learning
@@ -112,4 +112,4 @@ from .widgets import (
 "create_quantum_ml_demo",
 "check_quantum_requirements",
 "get_quantum_tutorial_overview",
-]
+"""
