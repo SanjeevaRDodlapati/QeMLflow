@@ -119,3 +119,12 @@ qemlflow_env/
 # Migration validation
 tools/validation/migration_validation_report.json
 tools/migration/broken_files_backup/
+# Post-migration cleanup
+tools/validation/ml_test_outputs/
+tools/validation/*_report.json
+**/*.tmp
+**/*.temp
+reports/temp/
+
+# Generated documentation (use 'mkdocs build' to recreate)
+/site/

@@ -1,6 +1,0 @@
-# QeMLflow Dependencies
-numpy>=1.19.0
-pandas>=1.2.0
-scikit-learn>=0.24.0
-# For QeMLflow quantum features
-qiskit>=0.30.0
