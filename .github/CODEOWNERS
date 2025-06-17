@@ -1,0 +1,60 @@
+# QeMLflow Code Ownership Rules
+# This file defines who owns which parts of the codebase for PR review requirements
+
+# Global fallback - all files require at least one review
+* @qemlflow-maintainers
+
+# CORE FILES - Require 2+ reviewers (most critical)
+# Framework entry points and core modules
+src/qemlflow/__init__.py @qemlflow-core-team @qemlflow-lead-maintainer
+src/qemlflow/core/ @qemlflow-core-team @qemlflow-lead-maintainer
+
+# Configuration and build files
+setup.py @qemlflow-core-team @qemlflow-lead-maintainer
+pyproject.toml @qemlflow-core-team @qemlflow-lead-maintainer
+requirements-core.txt @qemlflow-core-team @qemlflow-lead-maintainer
+.gitignore @qemlflow-core-team @qemlflow-maintainers
+
+# Core configuration
+src/qemlflow/config/ @qemlflow-core-team @qemlflow-lead-maintainer
+
+# MIDDLE LAYER FILES - Require 1+ reviewer
+# Research and integration modules
+src/qemlflow/research/ @qemlflow-research-team
+src/qemlflow/integrations/ @qemlflow-integration-team
+src/qemlflow/enterprise/ @qemlflow-enterprise-team
+src/qemlflow/advanced/ @qemlflow-advanced-team
+
+# Testing infrastructure
+tests/ @qemlflow-qa-team @qemlflow-maintainers
+
+# Development tools and scripts
+tools/ @qemlflow-devops-team @qemlflow-maintainers
+scripts/ @qemlflow-devops-team @qemlflow-maintainers
+
+# CI/CD and workflows
+.github/ @qemlflow-devops-team @qemlflow-lead-maintainer
+docker-compose.yml @qemlflow-devops-team @qemlflow-maintainers
+Dockerfile @qemlflow-devops-team @qemlflow-maintainers
+
+# OUTER LAYER FILES - Optional review
+# Documentation (can be freely modified)
+docs/ @qemlflow-docs-team
+*.md @qemlflow-docs-team
+
+# Examples and learning materials
+examples/ @qemlflow-community-team
+notebooks/ @qemlflow-community-team
+
+# Data and reports
+data/ @qemlflow-data-team
+reports/ @qemlflow-community-team
+
+# SPECIAL PROTECTION FILES - Always require core team review
+CRITICAL_FILES.md @qemlflow-core-team @qemlflow-lead-maintainer
+.qemlflow-protection.yaml @qemlflow-core-team @qemlflow-lead-maintainer
+tools/maintenance/file_classifier.py @qemlflow-core-team @qemlflow-lead-maintainer
+
+# SECURITY AND COMPLIANCE
+.github/workflows/file-protection.yml @qemlflow-security-team @qemlflow-lead-maintainer
+.git/hooks/pre-commit-protection @qemlflow-security-team @qemlflow-lead-maintainer

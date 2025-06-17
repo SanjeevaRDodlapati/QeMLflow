@@ -1,0 +1,29 @@
+protection_levels:
+  core:
+    permissions: '444'
+    require_review: true
+    min_reviewers: 2
+    require_tests: true
+    description: Critical files - maximum protection
+  middle:
+    permissions: '644'
+    require_review: true
+    min_reviewers: 1
+    require_tests: true
+    description: Important files - moderate protection
+  outer:
+    permissions: '664'
+    require_review: false
+    min_reviewers: 0
+    require_tests: false
+    description: Flexible files - minimal protection
+monitoring:
+  enabled: true
+  alerts: true
+  backup_on_change: true
+  log_all_changes: true
+emergency:
+  bypass_protection: false
+  emergency_contacts:
+  - qemlflow-emergency@example.com
+  escalation_timeout: 3600

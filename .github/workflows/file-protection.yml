@@ -1,0 +1,43 @@
+name: 🛡️ File Protection Monitor
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  file-protection-audit:
+    runs-on: ubuntu-latest
+    name: File Protection Audit
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+        
+    - name: Run file protection audit
+      run: |
+        echo "🛡️ Running QeMLflow File Protection Audit"
+        python tools/maintenance/file_classifier.py --audit
+        
+    - name: Apply file protection
+      run: |
+        echo "🔧 Applying file protection"
+        python tools/maintenance/file_classifier.py --protect
+        
+    - name: Verify protection status
+      run: |
+        echo "✅ Verifying protection status"
+        python tools/maintenance/file_classifier.py --audit
