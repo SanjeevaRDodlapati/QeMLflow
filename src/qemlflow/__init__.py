@@ -6,7 +6,7 @@ Ultra-optimized for sub-5s imports
 # Minimal essential imports only
 import sys
 import warnings
-from typing import Any
+from typing import Any, Optional, Dict, List, Union
 
 # Fast warning suppression
 warnings.filterwarnings("ignore", category=DeprecationWarning)

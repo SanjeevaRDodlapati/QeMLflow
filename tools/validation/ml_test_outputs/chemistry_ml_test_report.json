@@ -1,0 +1,177 @@
+{
+  "summary": {
+    "total_tests": 7,
+    "passed": 7,
+    "failed": 0,
+    "success_rate": 100.0,
+    "status": "\ud83c\udf89 EXCELLENT",
+    "timestamp": "2025-06-17T13:13:42.214952"
+  },
+  "detailed_results": {
+    "Molecular Data Simulation": {
+      "success": true,
+      "details": {
+        "molecules_simulated": 1000,
+        "molecular_descriptors": 9,
+        "properties_calculated": [
+          "bioactivity",
+          "solubility"
+        ],
+        "statistics": {
+          "avg_molecular_weight": 251.29,
+          "avg_logP": 2.46,
+          "active_compounds": 334,
+          "inactive_compounds": 666
+        }
+      }
+    },
+    "QSAR Classification": {
+      "success": true,
+      "details": {
+        "accuracy": 0.605,
+        "auc_roc": 0.4551,
+        "training_samples": 800,
+        "test_samples": 200,
+        "top_features": [
+          [
+            "polar_surface_area",
+            0.16703586301377973
+          ],
+          [
+            "logP",
+            0.16308883760268342
+          ],
+          [
+            "molecular_weight",
+            0.15848080510601678
+          ]
+        ],
+        "model_type": "RandomForest"
+      }
+    },
+    "Property Prediction": {
+      "success": true,
+      "details": {
+        "rmse": 0.51,
+        "r2_score": 0.1146,
+        "mse": 0.2601,
+        "training_samples": 800,
+        "test_samples": 200,
+        "top_features": [
+          [
+            "logP",
+            0.4767258194712378
+          ],
+          [
+            "polar_surface_area",
+            0.10275362548128529
+          ],
+          [
+            "num_atoms",
+            0.09742981844824034
+          ]
+        ],
+        "property": "solubility"
+      }
+    },
+    "Descriptor Analysis": {
+      "success": true,
+      "details": {
+        "descriptors_analyzed": 8,
+        "high_correlations": [],
+        "lipinski_violations": 280,
+        "drug_like_compounds": 720,
+        "descriptor_ranges": {
+          "molecular_weight": {
+            "mean": 251.29,
+            "std": 49.36,
+            "min": 59.77,
+            "max": 395.84
+          },
+          "logP": {
+            "mean": 2.46,
+            "std": 1.18,
+            "min": -0.94,
+            "max": 6.06
+          },
+          "num_atoms": {
+            "mean": 29.92,
+            "std": 11.58,
+            "min": "10",
+            "max": "49"
+          },
+          "num_bonds": {
+            "mean": 34.63,
+            "std": 14.15,
+            "min": "10",
+            "max": "59"
+          },
+          "num_rings": {
+            "mean": 2.02,
+            "std": 1.44,
+            "min": "0",
+            "max": "4"
+          },
+          "polar_surface_area": {
+            "mean": 80.33,
+            "std": 29.74,
+            "min": -32.44,
+            "max": 174.48
+          },
+          "num_hbd": {
+            "mean": 3.58,
+            "std": 2.34,
+            "min": "0",
+            "max": "7"
+          },
+          "num_hba": {
+            "mean": 4.55,
+            "std": 2.89,
+            "min": "0",
+            "max": "9"
+          }
+        }
+      }
+    },
+    "Molecular Fingerprint Simulation": {
+      "success": true,
+      "details": {
+        "morgan_fingerprints": [
+          1000,
+          2048
+        ],
+        "maccs_fingerprints": [
+          1000,
+          166
+        ],
+        "avg_morgan_bits": 102.76,
+        "avg_maccs_bits": 33.33,
+        "avg_tanimoto_similarity": 0.0253,
+        "similarity_calculations": 4950
+      }
+    },
+    "Virtual Screening Simulation": {
+      "success": true,
+      "details": {
+        "query_molecule": "3",
+        "total_screened": 1000,
+        "enrichment_factor_top100": 0.87,
+        "enrichment_factor_top500": 0.94,
+        "hits_in_top100": 29,
+        "hits_in_top500": 157,
+        "avg_similarity": 0.0454
+      }
+    },
+    "Chemical Space Analysis": {
+      "success": true,
+      "details": {
+        "pca_components": 3,
+        "explained_variance_pc1": 0.1442,
+        "explained_variance_pc2": 0.1299,
+        "cumulative_variance_3pc": 0.4037,
+        "tsne_sample_size": 500,
+        "plot_saved": "/Users/sanjeev/Downloads/Repos/QeMLflow/tools/validation/ml_test_outputs/chemical_space_analysis.png"
+      }
+    }
+  }
+}

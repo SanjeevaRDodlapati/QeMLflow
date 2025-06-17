@@ -23,7 +23,7 @@ import numpy as np
 import pandas as pd
 
 try:
-    from typing import Callable
+    from typing import Callable, Optional, List, Dict, Any
 
     import matplotlib.pyplot as plt
     from qiskit import QuantumCircuit
