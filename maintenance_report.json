@@ -1,16 +1,16 @@
 {
-  "timestamp": 1750203001.1164212,
+  "timestamp": 1750208511.295795,
   "summary": {
     "total_tasks": 4,
-    "successful_tasks": 2,
-    "failed_tasks": 2
+    "successful_tasks": 3,
+    "failed_tasks": 1
   },
   "tasks": [
     {
       "task": "syntax_check",
       "success": true,
       "details": "Quick Syntax Check Results:\nFiles checked: 20\nSyntax errors found: 0\n\u2705 No syntax errors found!\n",
-      "timestamp": 1750203000.95963
+      "timestamp": 1750208511.139665
     },
     {
       "task": "import_fixes",
@@ -46,12 +46,10 @@
         "src/qemlflow/core/workflow_optimizer.py",
         "src/qemlflow/core/data.py",
         "src/qemlflow/core/utils/metrics.py",
-        "src/qemlflow/core/utils/molecular_utils.py",
         "src/qemlflow/core/utils/visualization.py",
         "src/qemlflow/core/utils/ml_utils.py",
         "src/qemlflow/core/utils/quantum_utils.py",
         "src/qemlflow/core/utils/io_utils.py",
-        "src/qemlflow/core/common/config.py",
         "src/qemlflow/core/common/errors.py",
         "src/qemlflow/core/common/performance.py",
         "src/qemlflow/core/preprocessing/feature_extraction.py",
@@ -89,21 +87,21 @@
         "src/qemlflow/tutorials/data.py",
         "src/qemlflow/notebooks/integration.py"
       ],
-      "count": 72,
-      "timestamp": 1750203001.110105
+      "count": 70,
+      "timestamp": 1750208511.2866461
     },
     {
       "task": "git_cleanup",
-      "success": false,
-      "error": "[Errno 13] Permission denied: '/Users/sanjeev/Downloads/Repos/QeMLflow/.gitignore'",
-      "timestamp": 1750203001.110528
+      "success": true,
+      "message": "Updated .gitignore",
+      "timestamp": 1750208511.28741
     },
     {
       "task": "basic_linting",
       "success": false,
       "output": "",
       "errors": "",
-      "timestamp": 1750203001.1164029
+      "timestamp": 1750208511.295774
     }
   ]
 }
