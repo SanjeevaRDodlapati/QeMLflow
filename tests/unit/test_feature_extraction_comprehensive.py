@@ -52,7 +52,7 @@ except ImportError:
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # Import the feature_extraction module
-from src.data_processing.feature_extraction import (
+from qemlflow.core.preprocessing.feature_extraction import (
     _calculate_single_fingerprint,
     _estimate_property,
     _extract_basic_descriptors,
@@ -876,7 +876,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
     def test_feature_extraction_imports(self):
         """Test that feature extraction module imports correctly."""
         # Test module-level imports
-        from src.data_processing.feature_extraction import (
+        from qemlflow.core.preprocessing.feature_extraction import (
             calculate_properties,
             extract_descriptors,
             extract_features,
@@ -889,7 +889,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
 
     def test_dependency_availability_flags(self):
         """Test dependency availability flags."""
-        from src.data_processing import feature_extraction
+        from qemlflow.core.preprocessing import feature_extraction
 
         # Test that availability flags exist
         self.assertTrue(hasattr(feature_extraction, "RDKIT_AVAILABLE"))

@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src.utils.io_utils import (
+from qemlflow.core.utils.io_utils import (
     ConfigManager,
     DataLoader,
     FileManager,

@@ -11,7 +11,7 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import pandas as pd
 
-from src.utils.molecular_utils import (
+from qemlflow.core.utils.molecular_utils import (
     Chem,
     LipinskiFilter,
     MolecularDescriptors,
@@ -196,7 +196,7 @@ class TestStructuralAlerts(unittest.TestCase):
 
     def setUp(self):
         try:
-            from src.utils.molecular_utils import StructuralAlerts
+            from qemlflow.core.utils.molecular_utils import StructuralAlerts
 
             self.alerts = StructuralAlerts()
             self.available = True
@@ -237,7 +237,7 @@ class TestSimilarityCalculator(unittest.TestCase):
 
     def setUp(self):
         try:
-            from src.utils.molecular_utils import SimilarityCalculator
+            from qemlflow.core.utils.molecular_utils import SimilarityCalculator
 
             self.calculator = SimilarityCalculator()
             self.available = True
@@ -286,7 +286,7 @@ class TestMolecularVisualization(unittest.TestCase):
 
     def setUp(self):
         try:
-            from src.utils.molecular_utils import MolecularVisualization
+            from qemlflow.core.utils.molecular_utils import MolecularVisualization
 
             self.viz = MolecularVisualization()
             self.available = True

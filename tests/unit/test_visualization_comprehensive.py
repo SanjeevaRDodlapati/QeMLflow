@@ -64,8 +64,8 @@ except ImportError:
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 
 # Import the visualization module
-from src.utils.visualization import *
-from src.utils.visualization import (
+from qemlflow.core.utils.visualization import *
+from qemlflow.core.utils.visualization import (
     Chem,
     ChemicalSpaceVisualizer,
     ModelVisualizer,
