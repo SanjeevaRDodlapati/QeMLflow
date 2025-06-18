@@ -115,17 +115,19 @@ class QeMLflowConfig:
 
     def _apply_environment_overrides(self):
         """Apply environment variable overrides."""
-        self.environment = os.getenv("QEMLFLOW_ENV", self.environment)
+        self.environment = os.getenv("QEMLFLOW_ENV") or self.environment
         self.debug_mode = (
             os.getenv("QEMLFLOW_DEBUG", str(self.debug_mode)).lower() == "true"
         )
-        self.log_level = os.getenv("QEMLFLOW_LOG_LEVEL", self.log_level)
+        self.log_level = os.getenv("QEMLFLOW_LOG_LEVEL") or self.log_level
         if os.getenv("WANDB_API_KEY"):
             self.experiment_tracking.wandb_api_key = os.getenv("WANDB_API_KEY")
         if os.getenv("QEMLFLOW_MODEL_TYPE"):
-            self.models.default_model_type = os.getenv("QEMLFLOW_MODEL_TYPE")
-        self.data_directory = os.getenv("QEMLFLOW_DATA_DIR", self.data_directory)
-        self.cache_directory = os.getenv("QEMLFLOW_CACHE_DIR", self.cache_directory)
+            model_type = os.getenv("QEMLFLOW_MODEL_TYPE")
+            if model_type:
+                self.models.default_model_type = model_type
+        self.data_directory = os.getenv("QEMLFLOW_DATA_DIR") or self.data_directory
+        self.cache_directory = os.getenv("QEMLFLOW_CACHE_DIR") or self.cache_directory
         self.enable_gpu_acceleration = (
             os.getenv("QEMLFLOW_GPU", str(self.enable_gpu_acceleration)).lower()
             == "true"
