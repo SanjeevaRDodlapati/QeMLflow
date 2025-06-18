@@ -5,6 +5,7 @@ This module provides comprehensive tools for AI-driven materials design,
 property prediction, and synthesis planning.
 """
 
+from typing import Dict, List, Optional, Union, Any, Tuple
 import numpy as np
 import pandas as pd
 import torch
@@ -14,6 +15,7 @@ from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
 
 
 class MaterialsPropertyPredictor:
