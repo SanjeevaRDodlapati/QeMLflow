@@ -184,7 +184,6 @@ class IncrementalRefactor:
                     or line_stripped.startswith("from ")
                     and " import " in line_stripped
                 ):
-
                     if line_stripped in seen_imports:
                         # Skip duplicate import
                         fixes += 1
@@ -310,9 +309,7 @@ class IncrementalRefactor:
                 if len(files_to_fix) >= max_files:
                     break
 
-            print(
-                f"\n🔍 Processing {issue_type} issues in {len(files_to_fix)} files..."
-            )
+            print(f"\n🔍 Processing {issue_type} issues in {len(files_to_fix)} files...")
 
             for file_path in files_to_fix:
                 if not file_path.exists():
