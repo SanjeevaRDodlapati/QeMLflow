@@ -10,10 +10,7 @@ theme:
 
 nav:
   - Home: index.md
-  - Getting Started:
-    - Installation: getting-started/installation.md
-    - Quick Start: getting-started/quick-start.md
-    - Basic Tutorial: getting-started/basic-tutorial.md
+  - Getting Started: QUICK_START.md
   - User Guide: USER_GUIDE.md
   - API Reference: REFERENCE.md
 
