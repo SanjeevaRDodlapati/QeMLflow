@@ -16,10 +16,8 @@ import pytest
 
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
-from drug_design.property_prediction import *
-from drug_design.property_prediction import (
+from qemlflow.research.drug_discovery.properties import (
     RDKIT_AVAILABLE,
-    Chem,
     MolecularPropertyPredictor,
     TrainedPropertyModel,
     calculate_metrics,
@@ -29,10 +27,18 @@ from drug_design.property_prediction import (
     normalize_data,
     predict_properties,
     preprocess_data,
-    rdkit,
-    sklearn,
     train_property_model,
 )
+
+try:
+    import sklearn
+    from rdkit import Chem
+
+    SKLEARN_AVAILABLE = True
+except ImportError:
+    Chem = None
+    sklearn = None
+    SKLEARN_AVAILABLE = False
 
 
 class TestMolecularPropertyPredictorInit:

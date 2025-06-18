@@ -15,14 +15,20 @@ import pandas as pd
 import pytest
 
 from qemlflow.research.drug_discovery.screening import (
-    Chem,
     PharmacophoreScreener,
     SimilarityScreener,
     VirtualScreener,
     calculate_screening_metrics,
     perform_virtual_screening,
-    rdkit,
 )
+
+try:
+    from rdkit import Chem
+
+    RDKIT_AVAILABLE = True
+except ImportError:
+    Chem = None
+    RDKIT_AVAILABLE = False
 
 
 class TestVirtualScreener(unittest.TestCase):
@@ -207,10 +213,10 @@ class TestSimilarityScreener(unittest.TestCase):
         """Test fingerprint calculation with RDKit available"""
         screener = SimilarityScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
-            with patch("src.drug_design.virtual_screening.Chem") as mock_chem:
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.research.drug_discovery.screening.Chem") as mock_chem:
                 with patch(
-                    "src.drug_design.virtual_screening.rdMolDescriptors"
+                    "qemlflow.research.drug_discovery.screening.rdMolDescriptors"
                 ) as mock_desc:
                     mock_mol = MagicMock()
                     mock_chem.MolFromSmiles.return_value = mock_mol
@@ -225,7 +231,7 @@ class TestSimilarityScreener(unittest.TestCase):
         """Test fingerprint calculation without RDKit"""
         screener = SimilarityScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", False):
             fp = screener._calculate_fingerprint("CCO")
             self.assertIsInstance(fp, int)  # Should return hash
 
@@ -233,8 +239,8 @@ class TestSimilarityScreener(unittest.TestCase):
         """Test fingerprint calculation with invalid SMILES"""
         screener = SimilarityScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
-            with patch("src.drug_design.virtual_screening.Chem") as mock_chem:
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.research.drug_discovery.screening.Chem") as mock_chem:
                 mock_chem.MolFromSmiles.return_value = None
 
                 fp = screener._calculate_fingerprint("invalid_smiles")
@@ -244,9 +250,9 @@ class TestSimilarityScreener(unittest.TestCase):
         """Test similarity calculation with RDKit"""
         screener = SimilarityScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
             with patch(
-                "src.drug_design.virtual_screening.TanimotoSimilarity"
+                "qemlflow.research.drug_discovery.screening.TanimotoSimilarity"
             ) as mock_tanimoto:
                 mock_tanimoto.return_value = 0.85
 
@@ -257,7 +263,7 @@ class TestSimilarityScreener(unittest.TestCase):
         """Test similarity calculation without RDKit"""
         screener = SimilarityScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", False):
             similarity = screener._calculate_similarity(123456, 123456)
             self.assertEqual(similarity, 1.0)  # Same hash should give 1.0
 
@@ -322,10 +328,10 @@ class TestPharmacophoreScreener(unittest.TestCase):
         """Test pharmacophore score calculation with RDKit"""
         screener = PharmacophoreScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
-            with patch("src.drug_design.virtual_screening.Chem") as mock_chem:
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.research.drug_discovery.screening.Chem") as mock_chem:
                 with patch(
-                    "src.drug_design.virtual_screening.rdMolDescriptors"
+                    "qemlflow.research.drug_discovery.screening.rdMolDescriptors"
                 ) as mock_desc:
                     mock_mol = MagicMock()
                     mock_chem.MolFromSmiles.return_value = mock_mol
@@ -341,7 +347,7 @@ class TestPharmacophoreScreener(unittest.TestCase):
         """Test pharmacophore score calculation without RDKit"""
         screener = PharmacophoreScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", False):
             score = screener._calculate_pharmacophore_score("CCO")
             self.assertGreater(score, 0.0)
             self.assertLessEqual(score, 1.0)
@@ -350,8 +356,8 @@ class TestPharmacophoreScreener(unittest.TestCase):
         """Test pharmacophore score calculation with invalid SMILES"""
         screener = PharmacophoreScreener()
 
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
-            with patch("src.drug_design.virtual_screening.Chem") as mock_chem:
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.research.drug_discovery.screening.Chem") as mock_chem:
                 mock_chem.MolFromSmiles.return_value = None
 
                 score = screener._calculate_pharmacophore_score("invalid_smiles")
@@ -428,7 +434,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         """Test perform_virtual_screening error handling"""
         # Test with invalid reference compounds that might cause errors
         with patch(
-            "src.drug_design.virtual_screening.VirtualScreener"
+            "qemlflow.research.drug_discovery.screening.VirtualScreener"
         ) as mock_screener_class:
             mock_screener = MagicMock()
             mock_screener.screen_library.side_effect = Exception("Test error")
@@ -662,8 +668,8 @@ class TestErrorHandlingAndEdgeCases(unittest.TestCase):
         screener = VirtualScreener()
 
         # Mock molecular objects
-        with patch("src.drug_design.virtual_screening.RDKIT_AVAILABLE", True):
-            with patch("src.drug_design.virtual_screening.Chem") as mock_chem:
+        with patch("qemlflow.research.drug_discovery.screening.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.research.drug_discovery.screening.Chem") as mock_chem:
                 mock_mol = MagicMock()
                 mock_chem.MolToSmiles.return_value = "CCO"
 

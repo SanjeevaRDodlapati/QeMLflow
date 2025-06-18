@@ -48,7 +48,6 @@ __all__ = [
     "predict_admet_properties",
     "assess_drug_likeness",
     "apply_admet_filters",
-    "calculate_drug_likeness_score",
     "predict_toxicity",
     # Screening
     "VirtualScreener",

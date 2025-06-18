@@ -15,19 +15,26 @@ import pytest
 
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
-from models.quantum_ml.quantum_circuits import (
-    QISKIT_AVAILABLE,
-    QuantumCircuit,
-    QuantumMLCircuit,
+from qemlflow.research.quantum import HAS_QISKIT as QISKIT_AVAILABLE
+from qemlflow.research.quantum import (
+    QuantumChemistrySimulator,
+    QuantumMolecularEncoder,
+    QuantumNeuralNetwork,
+    check_quantum_dependencies,
+    estimate_quantum_advantage,
 )
 
-# Try to import additional classes if available
 try:
-    from models.quantum_ml.quantum_circuits import transpile
+    from qiskit import QuantumCircuit, transpile
 
     TRANSPILE_AVAILABLE = True
 except ImportError:
+    QuantumCircuit = None
+    transpile = None
     TRANSPILE_AVAILABLE = False
+
+# Create alias for backward compatibility
+QuantumMLCircuit = QuantumNeuralNetwork
 
 # Flag for extended functions (placeholder for compatibility)
 EXTENDED_FUNCTIONS_AVAILABLE = False
@@ -451,7 +458,7 @@ class TestQuantumCircuitTranspilation:
             mock_transpile.return_value = circuit
 
             try:
-                from models.quantum_ml.quantum_circuits import transpile
+                from qiskit import transpile
 
                 optimized_circuit = transpile(circuit)
 

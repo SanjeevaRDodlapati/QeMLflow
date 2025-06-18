@@ -16,9 +16,8 @@ import pytest
 
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
-from data_processing.molecular_preprocessing import (
+from qemlflow.core.preprocessing.molecular_preprocessing import (
     RDKIT_AVAILABLE,
-    Chem,
     clean_data,
     clean_molecular_data,
     filter_by_molecular_properties,
@@ -26,12 +25,16 @@ from data_processing.molecular_preprocessing import (
     handle_missing_values,
     normalize_data,
     preprocess_molecular_data,
-    rdkit,
     remove_invalid_molecules,
     standardize_molecules,
     standardize_smiles,
     validate_smiles_column,
 )
+
+try:
+    from rdkit import Chem
+except ImportError:
+    Chem = None
 
 
 class TestCleanData:

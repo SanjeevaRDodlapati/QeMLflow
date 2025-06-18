@@ -17,10 +17,9 @@ import pytest
 
 # Import the module under test
 sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
-from utils.molecular_utils import (
+from qemlflow.core.utils.molecular_utils import (
     PY3DMOL_AVAILABLE,
     RDKIT_AVAILABLE,
-    Chem,
     LipinskiFilter,
     MolecularDescriptors,
     MolecularVisualization,
@@ -39,7 +38,6 @@ from utils.molecular_utils import (
     get_molecular_formula,
     mol_to_smiles,
     neutralize_molecule,
-    rdkit,
     remove_salts,
     smiles_to_mol,
     standardize_molecule,
@@ -47,6 +45,11 @@ from utils.molecular_utils import (
     validate_molecule,
     validate_smiles,
 )
+
+try:
+    from rdkit import Chem
+except ImportError:
+    Chem = None
 
 
 class TestMolecularDescriptors:
@@ -1253,7 +1256,7 @@ class TestCrossModuleCompatibility:
 
     def test_molecular_utils_imports(self):
         """Test that all expected functions and classes are importable"""
-        from utils.molecular_utils import (
+        from qemlflow.core.utils.molecular_utils import (
             LipinskiFilter,
             MolecularDescriptors,
             MolecularVisualization,
@@ -1291,7 +1294,10 @@ class TestCrossModuleCompatibility:
 
     def test_availability_flags(self):
         """Test dependency availability flags"""
-        from utils.molecular_utils import PY3DMOL_AVAILABLE, RDKIT_AVAILABLE
+        from qemlflow.core.utils.molecular_utils import (
+            PY3DMOL_AVAILABLE,
+            RDKIT_AVAILABLE,
+        )
 
         # Flags should be boolean
         assert isinstance(RDKIT_AVAILABLE, bool)

@@ -18,16 +18,21 @@ import pandas as pd
 import pytest
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "..", "src"))
-from drug_design.molecular_generation import (
-    Chem,
+from qemlflow.research.drug_discovery.generation import (
     FragmentBasedGenerator,
     MolecularGenerator,
     generate_diverse_library,
     generate_molecular_structures,
     optimize_structure,
-    rdkit,
     save_generated_structures,
 )
+
+try:
+    from rdkit import Chem
+
+    RDKIT_AVAILABLE = True
+except ImportError:
+    RDKIT_AVAILABLE = False
 
 
 class TestMolecularGenerator:

@@ -66,7 +66,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 # Import the visualization module
 from qemlflow.core.utils.visualization import *
 from qemlflow.core.utils.visualization import (
-    Chem,
     ChemicalSpaceVisualizer,
     ModelVisualizer,
     MolecularVisualizer,
@@ -74,9 +73,21 @@ from qemlflow.core.utils.visualization import (
     plot_feature_importance,
     plot_model_performance,
     plot_molecular_structure,
-    rdkit,
-    sklearn,
 )
+
+try:
+    from rdkit import Chem
+
+    RDKIT_AVAILABLE = True
+except ImportError:
+    RDKIT_AVAILABLE = False
+
+try:
+    import sklearn
+
+    SKLEARN_AVAILABLE = True
+except ImportError:
+    SKLEARN_AVAILABLE = False
 
 
 class TestMolecularVisualizer(unittest.TestCase):
@@ -451,7 +462,9 @@ class TestStandaloneFunctions(unittest.TestCase):
         self.temp_dir = tempfile.mkdtemp()
         self.sample_smiles = "CCO"
 
-    @patch("qemlflow.core.utils.visualization.MolecularVisualizer.plot_molecular_structure")
+    @patch(
+        "qemlflow.core.utils.visualization.MolecularVisualizer.plot_molecular_structure"
+    )
     def test_plot_molecular_structure_function(self, mock_method):
         """Test standalone plot_molecular_structure function."""
         mock_method.return_value = "test_result"
@@ -501,7 +514,9 @@ class TestDashboardCreation(unittest.TestCase):
     @patch(
         "qemlflow.core.utils.visualization.MolecularVisualizer.plot_molecular_properties_distribution"
     )
-    @patch("qemlflow.core.utils.visualization.ChemicalSpaceVisualizer.plot_chemical_space_pca")
+    @patch(
+        "qemlflow.core.utils.visualization.ChemicalSpaceVisualizer.plot_chemical_space_pca"
+    )
     @patch("pathlib.Path.mkdir")
     def test_create_dashboard_plots_with_data(
         self, mock_mkdir, mock_chemical_space, mock_properties
@@ -664,7 +679,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
 
     def test_dependency_availability_flags(self):
         """Test dependency availability flags."""
-        from src.utils import visualization
+        from qemlflow.core.utils import visualization
 
         # Test that availability flags exist
         self.assertTrue(hasattr(visualization, "MATPLOTLIB_AVAILABLE"))
