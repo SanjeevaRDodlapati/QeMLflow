@@ -72,10 +72,8 @@ class TestMolecularGenerator:
         mock_mol = Mock()
         mock_mol.GetNumAtoms.return_value = 10
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.Descriptors"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.Descriptors"
         ) as mock_desc, patch.object(
             generator, "drug_fragments", ["c1ccccc1"]
         ), patch.object(
@@ -124,22 +122,20 @@ class TestMolecularGenerator:
         )
         assert result == "complex_molecule"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_is_valid_drug_like_without_rdkit(self):
         """Test drug-likeness check without RDKit."""
         generator = MolecularGenerator()
         assert generator._is_valid_drug_like("CCO") is True
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_is_valid_drug_like_valid_molecule(self):
         """Test drug-likeness check for valid molecule."""
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.Descriptors"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.Descriptors"
         ) as mock_desc:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_desc.MolWt.return_value = 300.0
@@ -150,16 +146,14 @@ class TestMolecularGenerator:
             result = generator._is_valid_drug_like("CCO")
             assert result is True
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_is_valid_drug_like_invalid_molecule(self):
         """Test drug-likeness check for invalid molecule (fails Lipinski's Rule)."""
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.Descriptors"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.Descriptors"
         ) as mock_desc:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_desc.MolWt.return_value = 600.0  # Too heavy
@@ -170,29 +164,29 @@ class TestMolecularGenerator:
             result = generator._is_valid_drug_like("large_molecule")
             assert result is False
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_is_valid_drug_like_invalid_smiles(self):
         """Test drug-likeness check for invalid SMILES."""
         generator = MolecularGenerator()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolFromSmiles.return_value = None
 
             result = generator._is_valid_drug_like("invalid_smiles")
             assert result is False
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_is_valid_drug_like_exception_handling(self):
         """Test drug-likeness check with exception handling."""
         generator = MolecularGenerator()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
-            mock_chem.MolFromSmiles.side_effect = ValueError("Test error")
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
+            mock_chem.MolFromSmiles.side_effect = Exception("Test error")
 
             result = generator._is_valid_drug_like("CCO")
-            assert result is False  # Should return False when exception occurs
+            assert result is False
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_generate_similar_molecules_without_rdkit(self):
         """Test similar molecule generation without RDKit."""
         generator = MolecularGenerator()
@@ -200,17 +194,15 @@ class TestMolecularGenerator:
         assert len(result) == 5
         assert all(mol == "CCO" for mol in result)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_similar_molecules_with_rdkit(self):
         """Test similar molecule generation with RDKit."""
         generator = MolecularGenerator()
         mock_mol = Mock()
         mock_fp = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.GetMorganFingerprintAsBitVect"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.GetMorganFingerprintAsBitVect"
         ) as mock_fp_gen:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_chem.MolToSmiles.return_value = "CCO_modified"
@@ -225,14 +217,14 @@ class TestMolecularGenerator:
             )
             assert isinstance(result, list)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_similar_molecules_invalid_reference(self):
         """Test similar molecule generation with invalid reference."""
         generator = MolecularGenerator()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("logging.warning") as mock_warning:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "logging.warning"
+        ) as mock_warning:
             mock_chem.MolFromSmiles.return_value = None
 
             result = generator.generate_similar_molecules(
@@ -241,22 +233,22 @@ class TestMolecularGenerator:
             assert result == []
             mock_warning.assert_called_once()
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_generate_variation_without_rdkit(self):
         """Test molecule variation generation without RDKit."""
         generator = MolecularGenerator()
         result = generator._generate_variation("CCO")
         assert result == "CCO"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_variation_with_rdkit(self):
         """Test molecule variation generation with RDKit."""
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("random.choice") as mock_choice:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "random.choice"
+        ) as mock_choice:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_chem.MolToSmiles.return_value = "modified_CCO"
 
@@ -267,36 +259,34 @@ class TestMolecularGenerator:
             result = generator._generate_variation("CCO")
             assert result == "modified_CCO"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_variation_invalid_smiles(self):
         """Test molecule variation with invalid SMILES."""
         generator = MolecularGenerator()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolFromSmiles.return_value = None
 
             result = generator._generate_variation("invalid")
             assert result == "invalid"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_variation_exception_handling(self):
         """Test molecule variation with exception handling."""
         generator = MolecularGenerator()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
-            mock_chem.MolFromSmiles.side_effect = ValueError("Test error")
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
+            mock_chem.MolFromSmiles.side_effect = Exception("Test error")
 
             result = generator._generate_variation("CCO")
-            assert (
-                result == "CCO"
-            )  # Should return original SMILES when exception occurs
+            assert result == "CCO"
 
     def test_add_methyl_group(self):
         """Test adding methyl group to molecule."""
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "CCO"
             mock_chem.MolFromSmiles.return_value = mock_mol
 
@@ -308,7 +298,7 @@ class TestMolecularGenerator:
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "FF"  # No carbon
 
             result = generator._add_methyl_group(mock_mol)
@@ -320,7 +310,7 @@ class TestMolecularGenerator:
         mock_mol = Mock()
         mock_new_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "c1ccccc1"
             mock_chem.MolFromSmiles.return_value = mock_new_mol
 
@@ -332,7 +322,7 @@ class TestMolecularGenerator:
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "CCO"  # No benzene
 
             result = generator._add_fluorine(mock_mol)
@@ -352,7 +342,7 @@ class TestMolecularGenerator:
         mock_mol = Mock()
         mock_new_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "c1ccccc1"
             mock_chem.MolFromSmiles.return_value = mock_new_mol
 
@@ -364,20 +354,20 @@ class TestMolecularGenerator:
         generator = MolecularGenerator()
         mock_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolToSmiles.return_value = "CCO"  # No benzene
 
             result = generator._add_hydroxyl_group(mock_mol)
             assert result == mock_mol
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_calculate_tanimoto_similarity_without_rdkit(self):
         """Test Tanimoto similarity calculation without RDKit."""
         generator = MolecularGenerator()
         result = generator._calculate_tanimoto_similarity(None, None)
         assert result == 0.5
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_calculate_tanimoto_similarity_with_rdkit(self):
         """Test Tanimoto similarity calculation with RDKit."""
         generator = MolecularGenerator()
@@ -412,7 +402,7 @@ class TestFragmentBasedGenerator:
         assert len(fragments) > 0
         assert all(isinstance(frag, str) for frag in fragments)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_generate_from_fragments_without_rdkit(self):
         """Test fragment-based generation without RDKit."""
         generator = FragmentBasedGenerator()
@@ -424,17 +414,15 @@ class TestFragmentBasedGenerator:
             assert len(result) == 3
             assert all("CCO.c1ccccc1" == mol for mol in result)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_from_fragments_with_rdkit_success(self):
         """Test fragment-based generation with RDKit (successful)."""
         generator = FragmentBasedGenerator()
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("random.randint", return_value=1), patch(
-            "random.sample", return_value=["CCO"]
-        ):
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "random.randint", return_value=1
+        ), patch("random.sample", return_value=["CCO"]):
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_chem.MolToSmiles.return_value = "CCO"
 
@@ -442,33 +430,29 @@ class TestFragmentBasedGenerator:
             assert len(result) == 2
             assert all(mol == "CCO" for mol in result)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_from_fragments_with_rdkit_failure(self):
         """Test fragment-based generation with RDKit (failed conversion)."""
         generator = FragmentBasedGenerator()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("random.randint", return_value=1), patch(
-            "random.sample", return_value=["invalid"]
-        ):
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "random.randint", return_value=1
+        ), patch("random.sample", return_value=["invalid"]):
             mock_chem.MolFromSmiles.return_value = None
 
             result = generator.generate_from_fragments(num_molecules=2)
             assert len(result) == 2
             assert all(mol == "invalid" for mol in result)
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_generate_from_fragments_with_rdkit_exception(self):
         """Test fragment-based generation with RDKit exception."""
         generator = FragmentBasedGenerator()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("random.randint", return_value=1), patch(
-            "random.sample", return_value=["CCO"]
-        ):
-            mock_chem.MolFromSmiles.side_effect = ValueError("Test error")
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "random.randint", return_value=1
+        ), patch("random.sample", return_value=["CCO"]):
+            mock_chem.MolFromSmiles.side_effect = Exception("Test error")
 
             result = generator.generate_from_fragments(num_molecules=2)
             assert len(result) == 2
@@ -500,7 +484,7 @@ class TestStandaloneFunctions:
     def test_generate_molecular_structures_default_model_random(self):
         """Test generation with default model and random type."""
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class:
             mock_generator = Mock()
             mock_generator.generate_random_smiles.return_value = ["CCO", "CCC"]
@@ -515,7 +499,7 @@ class TestStandaloneFunctions:
     def test_generate_molecular_structures_fragment_based(self):
         """Test generation with fragment-based type."""
         with patch(
-            "qemlflow.research.drug_discovery.generation.FragmentBasedGenerator"
+            "drug_design.molecular_generation.FragmentBasedGenerator"
         ) as mock_frag_class:
             mock_fragment_gen = Mock()
             mock_fragment_gen.generate_from_fragments.return_value = ["c1ccccc1", "CCO"]
@@ -545,21 +529,19 @@ class TestStandaloneFunctions:
         with pytest.raises(ValueError, match="Structure cannot be empty"):
             optimize_structure("   ")  # Whitespace only
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False)
     def test_optimize_structure_without_rdkit(self):
         """Test structure optimization without RDKit."""
         result = optimize_structure("CCO")
         assert result == "CCO"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_optimize_structure_drug_likeness_high_mw(self):
         """Test structure optimization for drug-likeness with high molecular weight."""
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.Descriptors"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.Descriptors"
         ) as mock_desc:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_desc.MolWt.return_value = 600.0  # High molecular weight
@@ -569,15 +551,13 @@ class TestStandaloneFunctions:
             )
             assert result == "large_molecule"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_optimize_structure_drug_likeness_low_mw(self):
         """Test structure optimization for drug-likeness with acceptable molecular weight."""
         mock_mol = Mock()
 
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch(
-            "qemlflow.research.drug_discovery.generation.Descriptors"
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "drug_design.molecular_generation.Descriptors"
         ) as mock_desc:
             mock_chem.MolFromSmiles.return_value = mock_mol
             mock_desc.MolWt.return_value = 300.0  # Acceptable molecular weight
@@ -585,32 +565,32 @@ class TestStandaloneFunctions:
             result = optimize_structure("CCO", optimization_target="drug_likeness")
             assert result == "CCO"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_optimize_structure_other_target(self):
         """Test structure optimization for other targets."""
         mock_mol = Mock()
 
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolFromSmiles.return_value = mock_mol
 
             result = optimize_structure("CCO", optimization_target="other_property")
             assert result == "CCO"
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_optimize_structure_invalid_smiles(self):
         """Test structure optimization with invalid SMILES."""
-        with patch("qemlflow.research.drug_discovery.generation.Chem") as mock_chem:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem:
             mock_chem.MolFromSmiles.return_value = None
 
             with pytest.raises(ValueError, match="Invalid SMILES string"):
                 optimize_structure("invalid_smiles")
 
-    @patch("qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", True)
+    @patch("drug_design.molecular_generation.RDKIT_AVAILABLE", True)
     def test_optimize_structure_exception_handling(self):
         """Test structure optimization with exception handling."""
-        with patch(
-            "qemlflow.research.drug_discovery.generation.Chem"
-        ) as mock_chem, patch("logging.warning") as mock_warning:
+        with patch("drug_design.molecular_generation.Chem") as mock_chem, patch(
+            "logging.warning"
+        ) as mock_warning:
             mock_chem.MolFromSmiles.side_effect = Exception("Test error")
 
             with pytest.raises(ValueError, match="Cannot optimize structure"):
@@ -682,7 +662,7 @@ class TestStandaloneFunctions:
         seed_molecules = ["CCO", "CCC"]
 
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class:
             mock_generator = Mock()
             mock_generator.generate_similar_molecules.return_value = [
@@ -704,7 +684,7 @@ class TestStandaloneFunctions:
         seed_molecules = ["CCO", "CCC", "c1ccccc1"]
 
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class, patch("random.sample") as mock_sample:
             mock_generator = Mock()
             mock_generator.generate_similar_molecules.return_value = [
@@ -731,7 +711,7 @@ class TestIntegrationScenarios:
     def test_complete_generation_workflow(self):
         """Test complete molecular generation workflow."""
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class:
             mock_generator = Mock()
             mock_generator.generate_random_smiles.return_value = ["CCO", "CCC"]
@@ -769,9 +749,7 @@ class TestIntegrationScenarios:
         ):
             fragments = fragment_gen.generate_from_fragments(num_molecules=1)
 
-            with patch(
-                "qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False
-            ):
+            with patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False):
                 optimized = optimize_structure(fragments[0])
                 assert optimized == fragments[0]
 
@@ -784,9 +762,7 @@ class TestErrorHandling:
         generator = MolecularGenerator()
 
         # Test with very large max_atoms
-        with patch(
-            "qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False
-        ):
+        with patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False):
             result = generator.generate_random_smiles(num_molecules=1, max_atoms=1000)
             assert len(result) == 1
 
@@ -795,9 +771,7 @@ class TestErrorHandling:
         generator = MolecularGenerator()
 
         # Test with very high similarity threshold
-        with patch(
-            "qemlflow.research.drug_discovery.generation.RDKIT_AVAILABLE", False
-        ):
+        with patch("drug_design.molecular_generation.RDKIT_AVAILABLE", False):
             result = generator.generate_similar_molecules(
                 "CCO", num_molecules=5, similarity_threshold=0.99
             )
@@ -821,7 +795,7 @@ class TestPerformance:
     def test_large_scale_generation(self):
         """Test generation of large numbers of molecules."""
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class:
             mock_generator = Mock()
             mock_generator.generate_random_smiles.return_value = ["CCO"] * 1000
@@ -837,7 +811,7 @@ class TestPerformance:
         seed_molecules = ["CCO"] * 100  # Large seed set
 
         with patch(
-            "qemlflow.research.drug_discovery.generation.MolecularGenerator"
+            "drug_design.molecular_generation.MolecularGenerator"
         ) as mock_gen_class:
             mock_generator = Mock()
             mock_generator.generate_similar_molecules.return_value = []
