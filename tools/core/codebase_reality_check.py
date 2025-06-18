@@ -171,9 +171,9 @@ class CodebaseRealityCheck:
 
                     # Count framework imports
                     if "from qemlflow" in source or "import qemlflow" in source:
-                        framework_imports += source.count("from qemlflow") + source.count(
-                            "import qemlflow"
-                        )
+                        framework_imports += source.count(
+                            "from qemlflow"
+                        ) + source.count("import qemlflow")
 
                     # Estimate custom code (rough heuristic)
                     lines = source.split("\n")
@@ -227,7 +227,9 @@ class CodebaseRealityCheck:
             status = (
                 "✅"
                 if coverage_percent >= 70
-                else "⚠️" if coverage_percent >= 40 else "❌"
+                else "⚠️"
+                if coverage_percent >= 40
+                else "❌"
             )
             print(
                 f"   {status} {capability}: {coverage_percent:.0f}% coverage ({coverage['found']}/{len(requirements)})"

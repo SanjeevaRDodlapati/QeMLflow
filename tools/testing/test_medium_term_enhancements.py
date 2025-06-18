@@ -15,7 +15,10 @@ def test_workflow_optimizer():
     print("🔧 Testing Workflow Optimizer...")
 
     try:
-        from qemlflow.core.workflow_optimizer import WorkflowOptimizer, optimize_workflow
+        from qemlflow.core.workflow_optimizer import (
+            WorkflowOptimizer,
+            optimize_workflow,
+        )
 
         # Create sample molecular data
         sample_smiles = ["CCO", "CCC", "CCCO", "CC(C)O"]

@@ -29,6 +29,7 @@ def _get_model_adapters():
         SklearnModelAdapter,
         TorchModelAdapter,
     )
+
     return {
         "HuggingFaceModelAdapter": HuggingFaceModelAdapter,
         "ModelZooAdapter": ModelZooAdapter,
@@ -184,9 +185,7 @@ class ExternalModelManager:
         print(f"✅ Successfully integrated model '{model_name}' from {repo_url}")
         return model
 
-    def integrate_from_huggingface(
-        self, model_name: str, **kwargs
-    ) -> Any:
+    def integrate_from_huggingface(self, model_name: str, **kwargs) -> Any:
         """
         Integrate a model from Hugging Face.
 
@@ -581,7 +580,7 @@ class ExternalModelManager:
 
 
 # Global manager instance
-#_global_manager = None
+# _global_manager = None
 
 
 def get_manager() -> ExternalModelManager:

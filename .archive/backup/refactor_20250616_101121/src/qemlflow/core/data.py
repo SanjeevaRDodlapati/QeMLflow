@@ -503,7 +503,9 @@ def enhanced_property_prediction() -> Union[pd.DataFrame, np.ndarray]:
     Integrates legacy drug design functionality with new architecture.
     """
     try:
-        from qemlflow.research.drug_discovery.properties import MolecularPropertyPredictor
+        from qemlflow.research.drug_discovery.properties import (
+            MolecularPropertyPredictor,
+        )
 
         return MolecularPropertyPredictor()
     except ImportError as e:

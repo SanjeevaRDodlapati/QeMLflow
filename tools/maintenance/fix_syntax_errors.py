@@ -75,7 +75,6 @@ class SyntaxErrorFixer:
                         and i + 1 < len(lines)
                         and lines[i + 1].strip().startswith('"""')
                     ):
-
                         # Find the end of this docstring
                         docstring_start = i + 1
                         docstring_end = None

@@ -28,7 +28,12 @@ from sklearn.metrics import (
     r2_score,
     roc_auc_score,
 )
-from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_val_score, train_test_split
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    cross_val_score,
+    train_test_split,
+)
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 # Import base model from core
@@ -53,7 +58,6 @@ except ImportError:
     HAS_LIGHTGBM = False
 
 try:
-
     HAS_CATBOOST = True
 except ImportError:
     HAS_CATBOOST = False

@@ -59,9 +59,9 @@ class WorkflowOptimizer:
                     molecules, target_property
                 )
                 analysis["recommended_models"] = model_rec
-            analysis["optimization_suggestions"] = (
-                self._generate_optimization_suggestions(analysis)
-            )
+            analysis[
+                "optimization_suggestions"
+            ] = self._generate_optimization_suggestions(analysis)
             return analysis
 
     def compare_workflows(

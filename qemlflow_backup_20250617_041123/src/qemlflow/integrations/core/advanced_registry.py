@@ -594,7 +594,7 @@ class AdvancedModelRegistry:
 
 
 # Global instance
-#_advanced_registry = None
+# _advanced_registry = None
 
 
 def get_advanced_registry() -> AdvancedModelRegistry:

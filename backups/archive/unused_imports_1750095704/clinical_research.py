@@ -366,10 +366,10 @@ class RegulatoryComplianceFramework:
         validation_report["compliance_checks"] = self._perform_compliance_checks(
             model, X_val, risk_level
         )
-        validation_report["recommendations"] = (
-            self._generate_compliance_recommendations(
-                validation_report["compliance_checks"], risk_level
-            )
+        validation_report[
+            "recommendations"
+        ] = self._generate_compliance_recommendations(
+            validation_report["compliance_checks"], risk_level
         )
         validation_report["compliance_score"] = self._calculate_compliance_score(
             validation_report["compliance_checks"]

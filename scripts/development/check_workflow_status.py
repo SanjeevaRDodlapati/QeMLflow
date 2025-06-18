@@ -29,7 +29,9 @@ def main():
     print("   1. Visit: https://github.com/SanjeevaRDodlapati/QeMLflow/actions")
     print("   2. Look for green checkmarks on recent workflows")
     print("   3. Check docs: https://sanjeevardodlapati.github.io/QeMLflow/")
-    print("   4. Verify release: https://github.com/SanjeevaRDodlapati/QeMLflow/releases")
+    print(
+        "   4. Verify release: https://github.com/SanjeevaRDodlapati/QeMLflow/releases"
+    )
 
     print("\n🎯 CURRENT TAGS:")
     try:

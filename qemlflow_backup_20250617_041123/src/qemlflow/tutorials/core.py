@@ -195,7 +195,6 @@ def _check_jupyter_environment() -> bool:
 def _check_interactive_support() -> bool:
     """Check if interactive widgets are supported."""
     try:
-
         return True
     except ImportError:
         return False

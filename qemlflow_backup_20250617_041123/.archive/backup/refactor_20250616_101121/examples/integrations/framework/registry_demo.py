@@ -259,9 +259,7 @@ def demo_performance_integration(manager, registry):
             benchmark_results = monitor.benchmark_operation(
                 lambda: registry.list_models(), iterations=5
             )
-            print(
-                f"   📊 Average time: {benchmark_results.get('avg_time', 'N/A'):.3f}s"
-            )
+            print(f"   📊 Average time: {benchmark_results.get('avg_time', 'N/A'):.3f}s")
             print(f"   📊 Min time: {benchmark_results.get('min_time', 'N/A'):.3f}s")
             print(f"   📊 Max time: {benchmark_results.get('max_time', 'N/A'):.3f}s")
         except Exception:

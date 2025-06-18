@@ -201,7 +201,6 @@ class QeMLflowDataLoader:
 
         # Handle compressed files
         if url.endswith(".gz"):
-
             content = gzip.decompress(response.content)
             df = pd.read_csv(pd.io.common.StringIO(content.decode("utf-8")))
         else:
@@ -854,7 +853,6 @@ class IntelligentDataSplitter:
             Tuple of (train_indices, test_indices)
         """
         try:
-
             # Handle continuous targets by binning
             stratify_target = targets
             if targets.dtype in ["float64", "float32"]:

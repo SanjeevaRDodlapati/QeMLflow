@@ -128,9 +128,7 @@ class Phase6Completion:
                     coverage = float(coverage_str)
                     break
 
-            print(
-                f"✅ Added {total_annotations} annotations, coverage: {coverage:.1f}%"
-            )
+            print(f"✅ Added {total_annotations} annotations, coverage: {coverage:.1f}%")
             return coverage
 
         except Exception:

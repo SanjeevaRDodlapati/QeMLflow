@@ -218,7 +218,9 @@ def main():
     if not scripts_dir.exists():
         print_error("Organized scripts directory not found!")
         print_error(f"Expected location: {scripts_dir}")
-        print_info("Please ensure you're running this from the QeMLflow root directory.")
+        print_info(
+            "Please ensure you're running this from the QeMLflow root directory."
+        )
         return
 
     # List available days

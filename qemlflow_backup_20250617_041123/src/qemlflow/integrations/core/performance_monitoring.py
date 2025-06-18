@@ -270,7 +270,7 @@ class IntegrationMetrics:
             operation: Type of operation (integration, prediction, training)
             input_size: Size of input data
         """
-#_operation_id = f"{model_name}_{operation}_{int(time.time())}"
+        # _operation_id = f"{model_name}_{operation}_{int(time.time())}"
 
         # Record start metrics
         start_time = time.time()
@@ -391,8 +391,7 @@ class IntegrationMetrics:
         ]
 
         if len(recent_metrics) < 10:
-
-                return "stable"
+            return "stable"
 
         # Split into two halves and compare average performance
         mid = len(recent_metrics) // 2

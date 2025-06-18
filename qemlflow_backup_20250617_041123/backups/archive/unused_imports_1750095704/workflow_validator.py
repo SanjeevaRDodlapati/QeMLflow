@@ -4,6 +4,8 @@ Comprehensive real-world workflow testing and validation.
 """
 
 import time
+
+
 class WorkflowValidator:
     """Validates common ChemML workflows."""
 
@@ -70,7 +72,9 @@ class WorkflowValidator:
             "status": (
                 "excellent"
                 if overall_score >= 90
-                else "good" if overall_score >= 80 else "needs_work"
+                else "good"
+                if overall_score >= 80
+                else "needs_work"
             ),
         }
 

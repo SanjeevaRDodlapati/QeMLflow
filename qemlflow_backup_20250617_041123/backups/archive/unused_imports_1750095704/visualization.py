@@ -35,7 +35,6 @@ except ImportError:
     RDKIT_AVAILABLE = False
 
 try:
-
     PLOTLY_AVAILABLE = True
 except ImportError:
     logging.warning("Plotly not available. Interactive plots will be limited.")

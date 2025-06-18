@@ -27,6 +27,8 @@ import time
 import traceback
 import warnings
 from contextlib import contextmanager
+
+
 class ChemMLError(Exception):
     """Enhanced ChemML error with context and solutions."""
 

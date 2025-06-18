@@ -247,6 +247,7 @@ class HealthChecker:
         try:
             # Simple import test first
             from qemlflow.integrations import get_manager
+
             integration_info["manager_available"] = True
             print("   ✅ Integration system imports successfully")
             integration_info["status"] = "good"
@@ -376,9 +377,7 @@ class HealthChecker:
                 if result.stdout:
                     safety_data = json.loads(result.stdout)
                     security_info["vulnerabilities"].extend(safety_data)
-                    print(
-                        f"   📊 Safety scan: {len(safety_data)} vulnerabilities found"
-                    )
+                    print(f"   📊 Safety scan: {len(safety_data)} vulnerabilities found")
                 else:
                     print("   ✅ Safety scan: no vulnerabilities found")
             except Exception as e:

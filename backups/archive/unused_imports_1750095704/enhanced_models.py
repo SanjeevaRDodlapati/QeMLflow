@@ -53,7 +53,6 @@ except ImportError:
     HAS_LIGHTGBM = False
 
 try:
-
     HAS_CATBOOST = True
 except ImportError:
     HAS_CATBOOST = False

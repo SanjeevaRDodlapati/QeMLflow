@@ -270,7 +270,9 @@ if __name__ == "__main__":
         print(
             "1. Check GitHub Actions: https://github.com/SanjeevaRDodlapati/QeMLflow/actions"
         )
-        print("2. Monitor documentation: https://sanjeevardodlapati.github.io/QeMLflow/")
+        print(
+            "2. Monitor documentation: https://sanjeevardodlapati.github.io/QeMLflow/"
+        )
         print("3. Review release workflow results")
         print("4. Consider creating official v0.2.0 release")
 

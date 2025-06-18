@@ -35,9 +35,9 @@ def __getattr__(name: str) -> Any:
                 return globals()[name]
         except (ImportError, AttributeError):
             continue
-    
+
     raise AttributeError(f"module '{__name__}' has no attribute '{name}'")
 
 
 # Version info
-#__version__ = "0.2.0"
+# __version__ = "0.2.0"

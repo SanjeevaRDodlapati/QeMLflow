@@ -28,6 +28,8 @@ import traceback
 import warnings
 from contextlib import contextmanager
 from pathlib import Path
+
+
 class ChemMLError(Exception):
     """Enhanced ChemML error with context and solutions."""
 

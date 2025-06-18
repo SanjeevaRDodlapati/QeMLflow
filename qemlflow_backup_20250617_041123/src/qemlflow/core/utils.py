@@ -409,14 +409,14 @@ def time_function(func: Any) -> Any:
 def validate_input(data: Any, data_type: Optional[str] = None) -> bool:
     """
     Validate input data for ChemML operations.
-    
+
     Parameters:
     -----------
     data : Any
         Input data to validate
     data_type : Optional[str]
         Expected data type ('dict', 'list', 'pandas', 'numpy')
-        
+
     Returns:
     --------
     bool
@@ -424,7 +424,7 @@ def validate_input(data: Any, data_type: Optional[str] = None) -> bool:
     """
     if data is None:
         return False
-        
+
     if data_type == "dict" and not isinstance(data, dict):
         return False
     elif data_type == "list" and not isinstance(data, list):
@@ -433,13 +433,13 @@ def validate_input(data: Any, data_type: Optional[str] = None) -> bool:
         return False
     elif data_type == "numpy" and not isinstance(data, np.ndarray):
         return False
-        
+
     return True
 
 
 __all__ = [
     "setup_logging",
-    "check_environment", 
+    "check_environment",
     "print_environment_report",
     "get_sample_data",
     "validate_smiles",

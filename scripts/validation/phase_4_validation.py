@@ -17,7 +17,9 @@ def test_core_module_imports() -> Tuple[bool, str]:
         from qemlflow.research.drug_discovery.molecular_optimization import (
             MolecularOptimizer,
         )
-        from qemlflow.research.drug_discovery.properties import MolecularPropertyPredictor
+        from qemlflow.research.drug_discovery.properties import (
+            MolecularPropertyPredictor,
+        )
         from qemlflow.research.drug_discovery.qsar import DescriptorCalculator
         from qemlflow.research.drug_discovery.screening import VirtualScreener
 

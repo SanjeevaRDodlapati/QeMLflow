@@ -154,7 +154,9 @@ class QeMLflowTestSuite:
                 grade = (
                     "A"
                     if overall_coverage >= 90
-                    else "B" if overall_coverage >= 75 else "C"
+                    else "B"
+                    if overall_coverage >= 75
+                    else "C"
                 )
 
                 return {
@@ -198,7 +200,9 @@ class QeMLflowTestSuite:
                 grade = (
                     "A"
                     if suggestions_count < 10
-                    else "B" if suggestions_count < 30 else "C"
+                    else "B"
+                    if suggestions_count < 30
+                    else "C"
                 )
 
                 return {
@@ -286,9 +290,9 @@ class QeMLflowTestSuite:
         self.results["import_performance"] = self.test_import_performance()
         self.results["lazy_loading"] = self.test_lazy_loading()
         self.results["type_annotations"] = self.test_type_annotations()
-        self.results["parameter_standardization"] = (
-            self.test_parameter_standardization()
-        )
+        self.results[
+            "parameter_standardization"
+        ] = self.test_parameter_standardization()
         self.results["error_handling"] = self.test_error_handling()
         self.results["overall_health"] = self.test_overall_health()
 

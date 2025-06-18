@@ -220,9 +220,9 @@ class QuantumChemistryTutorial:
         if RDKIT_AVAILABLE:
             mol = Chem.MolFromSmiles(molecule_smiles)
             if mol is not None:
-                simulation_data["components"]["molecule_info"] = (
-                    self._extract_molecule_info(mol)
-                )
+                simulation_data["components"][
+                    "molecule_info"
+                ] = self._extract_molecule_info(mol)
             else:
                 simulation_data["components"][
                     "error"

@@ -18,6 +18,7 @@ import warnings
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Type, Union
 
+
 # Lazy import to break circular dependency
 def _get_model_adapters():
     from ..adapters.base.model_adapters import (
@@ -27,6 +28,7 @@ def _get_model_adapters():
         SklearnModelAdapter,
         TorchModelAdapter,
     )
+
     return {
         "HuggingFaceModelAdapter": HuggingFaceModelAdapter,
         "ModelZooAdapter": ModelZooAdapter,
@@ -34,6 +36,7 @@ def _get_model_adapters():
         "SklearnModelAdapter": SklearnModelAdapter,
         "TorchModelAdapter": TorchModelAdapter,
     }
+
 
 # Import new advanced features
 from .automated_testing import create_adapter_test_suite, quick_adapter_test
@@ -179,9 +182,7 @@ class ExternalModelManager:
         print(f"✅ Successfully integrated model '{model_name}' from {repo_url}")
         return model
 
-    def integrate_from_huggingface(
-        self, model_name: str, **kwargs
-    ) -> Any:
+    def integrate_from_huggingface(self, model_name: str, **kwargs) -> Any:
         """
         Integrate a model from Hugging Face.
 

@@ -84,7 +84,7 @@ def get_manager():
     """Get the external model manager instance."""
     try:
         from .core.integration_manager import get_manager as _get_manager
-        
+
         return _get_manager()
     except ImportError:
         return None
