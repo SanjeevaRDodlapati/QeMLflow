@@ -6,6 +6,7 @@ including physicochemical properties, ADMET parameters, and trained models.
 """
 
 import sys
+import unittest
 from typing import Dict, List, Optional, Tuple
 from unittest.mock import MagicMock, Mock, call, patch
 
@@ -906,7 +907,7 @@ class TestErrorHandling:
             predictor.predict_property("CCO", "test_prop")
 
 
-class TestPerformance:
+class TestPerformance(unittest.TestCase):
     """Test performance and scalability"""
 
     def test_large_descriptor_calculation(self):
