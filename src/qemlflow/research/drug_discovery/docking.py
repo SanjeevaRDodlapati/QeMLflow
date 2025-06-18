@@ -7,6 +7,7 @@ Professional molecular docking and structure-based drug design tools.
 
 import warnings
 from dataclasses import dataclass
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd

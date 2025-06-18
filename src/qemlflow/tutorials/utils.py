@@ -333,7 +333,7 @@ def create_learning_assessment_summary(assessment_results: List[Dict[str, Any]])
     durations = [
         result.get("duration_seconds", 0) / 60 for result in assessment_results
     ]
-#_completion_rates = [
+    completion_rates = [
         result.get("completion_rate", 0) for result in assessment_results
     ]
 

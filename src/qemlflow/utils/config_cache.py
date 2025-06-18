@@ -276,8 +276,8 @@ class ConfigurationCache:
 
 
 # Global cache instance
-# _global_cache = None
-# _cache_lock = threading.Lock()
+_global_cache = None
+_cache_lock = threading.Lock()
 
 
 def get_config_cache(

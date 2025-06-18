@@ -13,7 +13,9 @@ Key Features:
 """
 
 import warnings
+from typing import Any, Dict, List, Optional, Tuple, Union
 
+import numpy as np
 from sklearn.base import BaseEstimator, ClassifierMixin, RegressorMixin
 from sklearn.ensemble import (
     BaggingClassifier,
@@ -58,7 +60,6 @@ except ImportError:
     HAS_LIGHTGBM = False
 
 try:
-
     HAS_CATBOOST = True
 except ImportError:
     HAS_CATBOOST = False

@@ -14,9 +14,18 @@ Key Features:
 
 import warnings
 from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
+
+try:
+    import matplotlib.pyplot as plt
+
+    MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    MATPLOTLIB_AVAILABLE = False
+    warnings.warn("matplotlib not available. Some plotting features will be limited.")
 
 try:
     import ipywidgets as widgets

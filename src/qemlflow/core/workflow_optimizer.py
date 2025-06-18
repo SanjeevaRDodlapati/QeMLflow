@@ -7,6 +7,7 @@ Analyzes data patterns and suggests optimal processing pipelines.
 """
 
 import warnings
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import pandas as pd
@@ -58,9 +59,9 @@ class WorkflowOptimizer:
                     molecules, target_property
                 )
                 analysis["recommended_models"] = model_rec
-            analysis["optimization_suggestions"] = (
-                self._generate_optimization_suggestions(analysis)
-            )
+            analysis[
+                "optimization_suggestions"
+            ] = self._generate_optimization_suggestions(analysis)
             return analysis
 
     def compare_workflows(

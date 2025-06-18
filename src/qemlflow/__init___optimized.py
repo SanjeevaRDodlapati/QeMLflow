@@ -11,8 +11,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", message=".*experimental_relax_shapes.*")
 
-# __version__ = "0.2.0"
-# __author__ = "QeMLflow Team"
+__version__ = "0.2.0"
+__author__ = "QeMLflow Team"
 
 from qemlflow.core.data import load_sample_data, quick_clean, quick_split
 from qemlflow.core.evaluation import quick_classification_eval, quick_regression_eval
@@ -21,8 +21,8 @@ from qemlflow.core.evaluation import quick_classification_eval, quick_regression
 from qemlflow.utils.lazy_imports import lazy_import
 
 # Lazy imports for everything else
-# _core_featurizers = lazy_import("qemlflow.core.featurizers")
-# _core_models = lazy_import("qemlflow.core.models")
+_core_featurizers = lazy_import("qemlflow.core.featurizers")
+_core_models = lazy_import("qemlflow.core.models")
 research = lazy_import("qemlflow.research")
 integrations = lazy_import("qemlflow.integrations")
 
