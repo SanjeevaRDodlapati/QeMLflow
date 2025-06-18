@@ -1,4 +1,4 @@
-name: ChemML CI/CD Pipeline
+name: QeMLflow CI/CD Pipeline
 
 on:
   push:

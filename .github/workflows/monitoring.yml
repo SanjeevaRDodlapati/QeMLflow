@@ -50,7 +50,7 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
-          const title = '🚨 ChemML System Monitoring Alert - Critical Issues Detected';
+          const title = '🚨 QeMLflow System Monitoring Alert - Critical Issues Detected';
           const body = `## Automated Monitoring Alert
 
           **Status**: Critical issues detected during automated monitoring
@@ -59,11 +59,11 @@ jobs:
           **Run**: ${{ github.run_id }}
 
           ### Issues Detected
-          The automated monitoring system has detected critical issues with the ChemML infrastructure.
+          The automated monitoring system has detected critical issues with the QeMLflow infrastructure.
 
           ### Quick Links
           - [GitHub Actions](${{ github.server_url }}/${{ github.repository }}/actions)
-          - [Documentation Site](https://sanjeevardodlapati.github.io/ChemML/)
+          - [Documentation Site](https://sanjeevardodlapati.github.io/QeMLflow/)
           - [Monitoring Results](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
           ### Next Steps
@@ -73,7 +73,7 @@ jobs:
           4. Address any workflow or deployment issues
 
           ---
-          *This issue was automatically created by the ChemML monitoring system.*`;
+          *This issue was automatically created by the QeMLflow monitoring system.*`;
 
           // Check if issue already exists
           const issues = await github.rest.issues.listForRepo({
@@ -84,7 +84,7 @@ jobs:
           });
 
           const existingIssue = issues.data.find(issue =>
-            issue.title.includes('ChemML System Monitoring Alert')
+            issue.title.includes('QeMLflow System Monitoring Alert')
           );
 
           if (!existingIssue) {

@@ -74,7 +74,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: ChemML v${{ steps.changelog.outputs.version }}
+        release_name: QeMLflow v${{ steps.changelog.outputs.version }}
         body: ${{ steps.changelog.outputs.CHANGELOG }}
         draft: false
         prerelease: false

@@ -1,7 +1,7 @@
 # QeMLflow: Advanced Machine Learning for Chemistry
 
-[![CI Status](https://github.com/hachmannlab/qemlflow/workflows/CI/badge.svg)](https://github.com/hachmannlab/qemlflow/actions)
-[![Coverage](https://codecov.io/gh/hachmannlab/qemlflow/branch/main/graph/badge.svg)](https://codecov.io/gh/hachmannlab/qemlflow)
+[![CI Status](https://github.com/SanjeevaRDodlapati/ChemML/workflows/CI/badge.svg)](https://github.com/SanjeevaRDodlapati/ChemML/actions)
+[![Coverage](https://codecov.io/gh/SanjeevaRDodlapati/ChemML/branch/main/graph/badge.svg)](https://codecov.io/gh/SanjeevaRDodlapati/ChemML)
 [![License: BSD](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
@@ -57,7 +57,7 @@ pip install qemlflow
 
 ### Development Installation
 ```bash
-git clone https://github.com/hachmannlab/qemlflow.git
+git clone https://github.com/SanjeevaRDodlapati/ChemML.git
 cd qemlflow
 pip install -e ".[dev]"
 ```
@@ -125,7 +125,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 ```bash
 # Clone and setup development environment
-git clone https://github.com/hachmannlab/qemlflow.git
+git clone https://github.com/SanjeevaRDodlapati/ChemML.git
 cd qemlflow
 make dev-install  # Sets up environment and pre-commit hooks
 ```
@@ -169,7 +169,7 @@ If you use QeMLflow in your research, please cite:
   title={QeMLflow: Machine Learning for Chemistry},
   author={Hachmann Lab},
   year={2024},
-  url={https://github.com/hachmannlab/qemlflow}
+  url={https://github.com/SanjeevaRDodlapati/ChemML}
 }
 ```
 
@@ -179,8 +179,8 @@ QeMLflow is released under the BSD 3-Clause License. See [LICENSE](LICENSE) for 
 
 ## 🆘 Support
 
-- **Issues**: [GitHub Issues](https://github.com/hachmannlab/qemlflow/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/hachmannlab/qemlflow/discussions)
+- **Issues**: [GitHub Issues](https://github.com/SanjeevaRDodlapati/ChemML/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/SanjeevaRDodlapati/ChemML/discussions)
 - **Documentation**: [https://qemlflow.readthedocs.io](https://qemlflow.readthedocs.io)
 
 ---
