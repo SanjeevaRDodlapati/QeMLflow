@@ -106,11 +106,11 @@ jobs:
         if pip install -e ".[dev]"; then
           echo "✅ Full installation successful"
         else
-          echo "⚠️ Full installation failed, trying basic install..."
-          if pip install -e .; then
-            echo "✅ Basic installation successful"
+          echo "⚠️ Full installation failed, trying minimal requirements..."
+          if pip install -r requirements-minimal.txt && pip install -e . --no-deps; then
+            echo "✅ Minimal installation successful"
           else
-            echo "❌ Basic installation failed, installing minimal dependencies..."
+            echo "❌ Minimal installation failed, installing basic dependencies..."
             pip install numpy pandas matplotlib seaborn pytest
           fi
         fi
