@@ -46,9 +46,9 @@ class TestMolecularDescriptors(unittest.TestCase):
             self.skipTest("RDKit not available")
 
         # Use mock if RDKit not available
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol:
-                with patch("src.utils.molecular_utils.Descriptors") as mock_desc:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol:
+                with patch("qemlflow.core.utils.molecular_utils.Descriptors") as mock_desc:
                     # Setup mock
                     mock_mol.return_value = MagicMock()
                     mock_desc.MolWt.return_value = 180.16
@@ -87,10 +87,10 @@ class TestMolecularDescriptors(unittest.TestCase):
         if not self.available:
             self.skipTest("RDKit not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol:
-                with patch("src.utils.molecular_utils.Descriptors") as mock_desc:
-                    with patch("src.utils.molecular_utils.Lipinski") as mock_lipinski:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol:
+                with patch("qemlflow.core.utils.molecular_utils.Descriptors") as mock_desc:
+                    with patch("qemlflow.core.utils.molecular_utils.Lipinski") as mock_lipinski:
                         # Setup mock
                         mock_mol.return_value = MagicMock()
                         mock_desc.MolWt.return_value = 180.16
@@ -118,9 +118,9 @@ class TestMolecularDescriptors(unittest.TestCase):
         if not self.available:
             self.skipTest("RDKit not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             with patch(
-                "src.utils.molecular_utils.rdFingerprintGenerator"
+                "qemlflow.core.utils.molecular_utils.rdFingerprintGenerator"
             ) as mock_fp_gen:
                 # Setup mock
                 mock_gen = MagicMock()
@@ -155,9 +155,9 @@ class TestLipinskiFilter(unittest.TestCase):
         if not self.available:
             self.skipTest("RDKit not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             with patch(
-                "src.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors"
+                "qemlflow.core.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors"
             ) as mock_calc:
                 # Setup mock for drug-like molecule
                 mock_calc.return_value = {"mw": 250.0, "logp": 2.5, "hbd": 2, "hba": 4}
@@ -174,9 +174,9 @@ class TestLipinskiFilter(unittest.TestCase):
         if not self.available:
             self.skipTest("RDKit not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             with patch(
-                "src.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors"
+                "qemlflow.core.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors"
             ) as mock_calc:
                 # Setup mock for non-drug-like molecule
                 mock_calc.return_value = {
@@ -211,7 +211,7 @@ class TestStructuralAlerts(unittest.TestCase):
         if not self.available:
             self.skipTest("StructuralAlerts not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             # Test with mock molecule
             mol = MagicMock()
             alerts = self.alerts.check_pains_alerts(mol)
@@ -225,7 +225,7 @@ class TestStructuralAlerts(unittest.TestCase):
         if not self.available:
             self.skipTest("StructuralAlerts not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             # Test with mock molecule
             mol = MagicMock()
             alerts = self.alerts.check_brenk_alerts(mol)
@@ -302,7 +302,7 @@ class TestMolecularVisualization(unittest.TestCase):
         if not self.available:
             self.skipTest("MolecularVisualization not available")
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             mol = MagicMock()
             # Should not raise an exception
             self.viz.draw_molecule_2d(mol)
@@ -316,7 +316,7 @@ class TestMolecularVisualization(unittest.TestCase):
         if not self.available:
             self.skipTest("MolecularVisualization not available")
 
-        with patch("src.utils.molecular_utils.PY3DMOL_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", True):
             mol = MagicMock()
             # Should not raise an exception
             self.viz.draw_molecule_3d(mol)
@@ -328,9 +328,9 @@ class TestStandaloneFunctions(unittest.TestCase):
     def test_standardize_smiles_basic(self):
         """Test SMILES standardization."""
         # Test with mock
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
-                with patch("src.utils.molecular_utils.Chem.MolToSmiles") as mock_mol_to:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+                with patch("qemlflow.core.utils.molecular_utils.Chem.MolToSmiles") as mock_mol_to:
                     mock_mol_from.return_value = MagicMock()
                     mock_mol_to.return_value = "CCO"
 
@@ -339,8 +339,8 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_standardize_smiles_invalid(self):
         """Test SMILES standardization with invalid input."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = None
 
                 result = standardize_smiles("invalid_smiles")
@@ -348,10 +348,10 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_calculate_molecular_properties_basic(self):
         """Test molecular properties calculation."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 with patch(
-                    "src.utils.molecular_utils.MolecularDescriptors.calculate_basic_descriptors"
+                    "qemlflow.core.utils.molecular_utils.MolecularDescriptors.calculate_basic_descriptors"
                 ) as mock_calc:
                     mock_mol_from.return_value = MagicMock()
                     mock_calc.return_value = {"mw": 46.07, "logp": -0.31}
@@ -362,8 +362,8 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_calculate_molecular_properties_invalid(self):
         """Test molecular properties calculation with invalid input."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = None
 
                 result = calculate_molecular_properties("invalid_smiles")
@@ -371,9 +371,9 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_generate_conformers_basic(self):
         """Test conformer generation."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
-                with patch("src.utils.molecular_utils.Chem.AddHs") as mock_add_hs:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+                with patch("qemlflow.core.utils.molecular_utils.Chem.AddHs") as mock_add_hs:
                     mock_mol = MagicMock()
                     mock_mol_from.return_value = mock_mol
                     mock_add_hs.return_value = mock_mol
@@ -383,8 +383,8 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_generate_conformers_invalid(self):
         """Test conformer generation with invalid input."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = None
 
                 result = generate_conformers("invalid_smiles")
@@ -392,8 +392,8 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_validate_molecule_valid(self):
         """Test molecule validation with valid SMILES."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = MagicMock()
 
                 result = validate_molecule("CCO")
@@ -401,14 +401,14 @@ class TestStandaloneFunctions(unittest.TestCase):
 
     def test_validate_molecule_invalid(self):
         """Test molecule validation with invalid SMILES."""
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = None
 
                 result = validate_molecule("invalid_smiles")
                 self.assertFalse(result)
 
-    @patch("src.utils.molecular_utils.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False)
     def test_functions_without_rdkit(self):
         """Test functions when RDKit is not available."""
         result = standardize_smiles("CCO")
@@ -476,8 +476,8 @@ class TestPerformance(unittest.TestCase):
         """Test processing of multiple SMILES."""
         smiles_list = ["CCO", "CCC", "CCCC", "CCCCC"] * 25  # 100 SMILES
 
-        with patch("src.utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("src.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles") as mock_mol_from:
                 mock_mol_from.return_value = MagicMock()
 
                 # Should process efficiently

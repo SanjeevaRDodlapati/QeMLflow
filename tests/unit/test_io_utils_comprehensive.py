@@ -75,7 +75,7 @@ class TestDataLoader(unittest.TestCase):
             mock_chem.MolToSmiles.return_value = "CCO"
             mock_chem.SDMolSupplier.return_value = [mock_mol]
 
-            with patch("src.utils.io_utils.Chem", mock_chem):
+            with patch("qemlflow.core.utils.io_utils.Chem", mock_chem):
                 result = self.loader.load_sdf("test.sdf")
 
                 self.assertEqual(len(result), 1)
@@ -124,7 +124,7 @@ class TestDataLoader(unittest.TestCase):
             mock_record.seq = "MKTAYIAKQRQISFVKSHFSRQLEERLGLIEVQAPILSRVGDGTQDNLSGAEKAVQVKVKALPDAQFEVVHSLAKWKR"
             mock_seqio.parse.return_value = [mock_record]
 
-            with patch("src.utils.io_utils.SeqIO", mock_seqio):
+            with patch("qemlflow.core.utils.io_utils.SeqIO", mock_seqio):
                 result = self.loader.load_protein_fasta("test.fasta")
 
                 self.assertEqual(len(result), 1)
@@ -160,7 +160,7 @@ class TestDataLoader(unittest.TestCase):
             mock_activity_client.filter.return_value = mock_activities
             mock_client.activity = mock_activity_client
 
-            with patch("src.utils.io_utils.new_client", mock_client):
+            with patch("qemlflow.core.utils.io_utils.new_client", mock_client):
                 result = self.loader.load_chembl_data("CHEMBL123")
 
                 self.assertEqual(len(result), 2)

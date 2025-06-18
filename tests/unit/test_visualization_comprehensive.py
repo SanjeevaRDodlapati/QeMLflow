@@ -1,5 +1,5 @@
 """
-Comprehensive test suite for src.utils.visualization module.
+Comprehensive test suite for qemlflow.core.utils.visualization module.
 
 This test suite provides extensive coverage for all visualization functionality including:
 - MolecularVisualizer class (molecular structure plotting, multi-molecule grids, property distributions)
@@ -92,10 +92,10 @@ class TestMolecularVisualizer(unittest.TestCase):
             "CC(C)O",
         ]  # Ethanol, Acetic acid, Isopropanol
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.rdDepictor")
-    @patch("src.utils.visualization.Draw")
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.rdDepictor")
+    @patch("qemlflow.core.utils.visualization.Draw")
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_molecular_structure_with_rdkit(
         self, mock_chem, mock_draw, mock_depictor
     ):
@@ -114,10 +114,10 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_draw.MolToImage.assert_called_once()
         mock_img.show.assert_called_once()
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", False)
     def test_plot_molecular_structure_without_rdkit(self):
         """Test molecular structure plotting without RDKit."""
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             result = MolecularVisualizer.plot_molecular_structure(self.sample_smiles)
 
             self.assertIsNone(result)
@@ -125,9 +125,9 @@ class TestMolecularVisualizer(unittest.TestCase):
                 "RDKit not available for molecular visualization"
             )
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Draw")
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Draw")
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_molecular_structure_with_filename(self, mock_chem, mock_draw):
         """Test molecular structure plotting with file output."""
         mock_mol = Mock()
@@ -143,21 +143,21 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_img.save.assert_called_once_with(filename)
         self.assertEqual(result, filename)
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_molecular_structure_invalid_smiles(self, mock_chem):
         """Test molecular structure plotting with invalid SMILES."""
         mock_chem.MolFromSmiles.return_value = None
 
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             result = MolecularVisualizer.plot_molecular_structure("INVALID")
 
             self.assertIsNone(result)
             mock_warning.assert_called_with("Invalid SMILES: INVALID")
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Draw")
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Draw")
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_multiple_molecules_with_rdkit(self, mock_chem, mock_draw):
         """Test multiple molecule plotting with RDKit available."""
         # Setup mocks
@@ -174,9 +174,9 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_draw.MolsToGridImage.assert_called_once()
         mock_img.show.assert_called_once()
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Draw")
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Draw")
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_multiple_molecules_with_titles(self, mock_chem, mock_draw):
         """Test multiple molecule plotting with custom titles."""
         mock_mols = [Mock() for _ in self.sample_smiles_list]
@@ -193,13 +193,13 @@ class TestMolecularVisualizer(unittest.TestCase):
         call_args = mock_draw.MolsToGridImage.call_args
         self.assertIn("legends", call_args.kwargs)
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_multiple_molecules_no_valid_mols(self, mock_chem):
         """Test multiple molecule plotting with no valid molecules."""
         mock_chem.MolFromSmiles.return_value = None
 
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             result = MolecularVisualizer.plot_multiple_molecules(
                 ["INVALID1", "INVALID2"]
             )
@@ -207,8 +207,8 @@ class TestMolecularVisualizer(unittest.TestCase):
             self.assertIsNone(result)
             mock_warning.assert_called_with("No valid molecules to display")
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_molecular_properties_distribution_with_matplotlib(self, mock_plt):
         """Test molecular properties distribution plotting with matplotlib."""
         # Create sample data
@@ -230,12 +230,12 @@ class TestMolecularVisualizer(unittest.TestCase):
         mock_plt.subplots.assert_called_once()
         self.assertEqual(len(mock_axes), 2)
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", False)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", False)
     def test_plot_molecular_properties_distribution_without_matplotlib(self):
         """Test molecular properties distribution plotting without matplotlib."""
         df = pd.DataFrame({"MW": [46.07, 60.05, 60.10]})
 
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             MolecularVisualizer.plot_molecular_properties_distribution(df, ["MW"])
 
             mock_warning.assert_called_with("Matplotlib not available for plotting")
@@ -254,8 +254,8 @@ class TestModelVisualizer(unittest.TestCase):
             "accuracy": [0.6, 0.7, 0.8, 0.85, 0.9],
         }
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_feature_importance_with_matplotlib(self, mock_plt):
         """Test feature importance plotting with matplotlib."""
         mock_plt.figure.return_value = Mock()
@@ -271,10 +271,10 @@ class TestModelVisualizer(unittest.TestCase):
         mock_plt.xlabel.assert_called_once()
         mock_plt.title.assert_called_once()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", False)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", False)
     def test_plot_feature_importance_without_matplotlib(self):
         """Test feature importance plotting without matplotlib."""
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             ModelVisualizer.plot_feature_importance(
                 self.sample_importances, self.sample_feature_names
             )
@@ -293,8 +293,8 @@ class TestModelVisualizer(unittest.TestCase):
                 np.array([0.1, 0.2]), ["feat1", "feat2", "feat3"]
             )
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_model_performance_with_matplotlib(self, mock_plt):
         """Test model performance plotting with matplotlib."""
         mock_fig = Mock()
@@ -307,8 +307,8 @@ class TestModelVisualizer(unittest.TestCase):
         mock_plt.suptitle.assert_called_once()
         mock_plt.tight_layout.assert_called_once()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_model_performance_single_metric(self, mock_plt):
         """Test model performance plotting with single metric."""
         mock_axes = Mock()
@@ -319,8 +319,8 @@ class TestModelVisualizer(unittest.TestCase):
 
         mock_plt.subplots.assert_called_once()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_predictions_vs_actual_with_matplotlib(self, mock_plt):
         """Test predictions vs actual plotting with matplotlib."""
         y_true = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
@@ -336,8 +336,8 @@ class TestModelVisualizer(unittest.TestCase):
             mock_plt.ylabel.assert_called_once()
             mock_plt.title.assert_called_once()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_confusion_matrix_with_matplotlib(self, mock_plt):
         """Test confusion matrix plotting with matplotlib."""
         y_true = np.array([0, 1, 2, 0, 1, 2])
@@ -355,8 +355,8 @@ class TestModelVisualizer(unittest.TestCase):
             mock_plt.colorbar.assert_called_once()
             mock_plt.title.assert_called_once()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_plot_confusion_matrix_without_labels(self, mock_plt):
         """Test confusion matrix plotting without custom labels."""
         y_true = np.array([0, 1, 0, 1])
@@ -380,11 +380,11 @@ class TestChemicalSpaceVisualizer(unittest.TestCase):
             {"SMILES": ["CCO", "CC(=O)O", "CC(C)O", "CCCC"], "Activity": [1, 0, 1, 0]}
         )
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
-    @patch("src.utils.visualization.Descriptors")
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.Descriptors")
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_plot_chemical_space_pca_with_rdkit_matplotlib(
         self, mock_chem, mock_descriptors, mock_plt
     ):
@@ -424,20 +424,20 @@ class TestChemicalSpaceVisualizer(unittest.TestCase):
             mock_plt.ylabel.assert_called_once()
             mock_plt.title.assert_called_once()
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", False)
     def test_plot_chemical_space_pca_without_rdkit(self):
         """Test chemical space PCA plotting without RDKit."""
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             ChemicalSpaceVisualizer.plot_chemical_space_pca(self.sample_df)
 
             mock_warning.assert_called_with(
                 "RDKit not available for descriptor calculation"
             )
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", False)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", False)
     def test_plot_chemical_space_pca_without_matplotlib(self):
         """Test chemical space PCA plotting without matplotlib."""
-        with patch("src.utils.visualization.logging.warning") as mock_warning:
+        with patch("qemlflow.core.utils.visualization.logging.warning") as mock_warning:
             ChemicalSpaceVisualizer.plot_chemical_space_pca(self.sample_df)
 
             mock_warning.assert_called_with("Matplotlib not available for plotting")
@@ -451,7 +451,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         self.temp_dir = tempfile.mkdtemp()
         self.sample_smiles = "CCO"
 
-    @patch("src.utils.visualization.MolecularVisualizer.plot_molecular_structure")
+    @patch("qemlflow.core.utils.visualization.MolecularVisualizer.plot_molecular_structure")
     def test_plot_molecular_structure_function(self, mock_method):
         """Test standalone plot_molecular_structure function."""
         mock_method.return_value = "test_result"
@@ -461,7 +461,7 @@ class TestStandaloneFunctions(unittest.TestCase):
         mock_method.assert_called_once_with(self.sample_smiles, None)
         self.assertEqual(result, "test_result")
 
-    @patch("src.utils.visualization.ModelVisualizer.plot_feature_importance")
+    @patch("qemlflow.core.utils.visualization.ModelVisualizer.plot_feature_importance")
     def test_plot_feature_importance_function(self, mock_method):
         """Test standalone plot_feature_importance function."""
         importances = np.array([0.1, 0.2, 0.3])
@@ -473,7 +473,7 @@ class TestStandaloneFunctions(unittest.TestCase):
             importances, features, "Feature Importance", None
         )
 
-    @patch("src.utils.visualization.ModelVisualizer.plot_model_performance")
+    @patch("qemlflow.core.utils.visualization.ModelVisualizer.plot_model_performance")
     def test_plot_model_performance_function(self, mock_method):
         """Test standalone plot_model_performance function."""
         history = {"loss": [1.0, 0.5]}
@@ -499,9 +499,9 @@ class TestDashboardCreation(unittest.TestCase):
         )
 
     @patch(
-        "src.utils.visualization.MolecularVisualizer.plot_molecular_properties_distribution"
+        "qemlflow.core.utils.visualization.MolecularVisualizer.plot_molecular_properties_distribution"
     )
-    @patch("src.utils.visualization.ChemicalSpaceVisualizer.plot_chemical_space_pca")
+    @patch("qemlflow.core.utils.visualization.ChemicalSpaceVisualizer.plot_chemical_space_pca")
     @patch("pathlib.Path.mkdir")
     def test_create_dashboard_plots_with_data(
         self, mock_mkdir, mock_chemical_space, mock_properties
@@ -528,7 +528,7 @@ class TestDashboardCreation(unittest.TestCase):
         self.assertIsInstance(created_plots, dict)
         self.assertEqual(len(created_plots), 0)
 
-    @patch("src.utils.visualization.logging.error")
+    @patch("qemlflow.core.utils.visualization.logging.error")
     def test_create_dashboard_plots_error_handling(self, mock_error):
         """Test dashboard creation error handling."""
         # Force an error by passing invalid data
@@ -546,8 +546,8 @@ class TestIntegrationScenarios(unittest.TestCase):
         """Set up test fixtures."""
         self.temp_dir = tempfile.mkdtemp()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
     def test_complete_visualization_workflow(self):
         """Test complete visualization workflow."""
         # Create sample data
@@ -556,7 +556,7 @@ class TestIntegrationScenarios(unittest.TestCase):
         )
 
         with patch.multiple(
-            "src.utils.visualization",
+            "qemlflow.core.utils.visualization",
             MolecularVisualizer=Mock(),
             ModelVisualizer=Mock(),
             ChemicalSpaceVisualizer=Mock(),
@@ -567,7 +567,7 @@ class TestIntegrationScenarios(unittest.TestCase):
             # Verify it returns a dictionary
             self.assertIsInstance(plots, dict)
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
     def test_model_evaluation_visualization_pipeline(self):
         """Test model evaluation visualization pipeline."""
         # Sample model evaluation data
@@ -578,7 +578,7 @@ class TestIntegrationScenarios(unittest.TestCase):
         features = ["feat1", "feat2", "feat3"]
 
         with patch.multiple(
-            "src.utils.visualization.ModelVisualizer",
+            "qemlflow.core.utils.visualization.ModelVisualizer",
             plot_predictions_vs_actual=Mock(),
             plot_model_performance=Mock(),
             plot_feature_importance=Mock(),
@@ -601,27 +601,27 @@ class TestErrorHandling(unittest.TestCase):
         """Set up test fixtures."""
         self.temp_dir = tempfile.mkdtemp()
 
-    @patch("src.utils.visualization.RDKIT_AVAILABLE", True)
-    @patch("src.utils.visualization.Chem")
+    @patch("qemlflow.core.utils.visualization.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.Chem")
     def test_molecular_visualization_error_handling(self, mock_chem):
         """Test error handling in molecular visualization."""
         # Simulate RDKit error
         mock_chem.MolFromSmiles.side_effect = Exception("RDKit error")
 
-        with patch("src.utils.visualization.logging.error") as mock_error:
+        with patch("qemlflow.core.utils.visualization.logging.error") as mock_error:
             result = MolecularVisualizer.plot_molecular_structure("CCO")
 
             self.assertIsNone(result)
             mock_error.assert_called()
 
-    @patch("src.utils.visualization.MATPLOTLIB_AVAILABLE", True)
-    @patch("src.utils.visualization.plt")
+    @patch("qemlflow.core.utils.visualization.MATPLOTLIB_AVAILABLE", True)
+    @patch("qemlflow.core.utils.visualization.plt")
     def test_matplotlib_error_handling(self, mock_plt):
         """Test error handling in matplotlib operations."""
         # Simulate matplotlib error
         mock_plt.figure.side_effect = Exception("Matplotlib error")
 
-        with patch("src.utils.visualization.logging.error") as mock_error:
+        with patch("qemlflow.core.utils.visualization.logging.error") as mock_error:
             ModelVisualizer.plot_feature_importance(np.array([0.1, 0.2]), ["f1", "f2"])
 
             mock_error.assert_called()
@@ -651,7 +651,7 @@ class TestCrossModuleCompatibility(unittest.TestCase):
     def test_visualization_imports(self):
         """Test that visualization module imports correctly."""
         # Test module-level imports
-        from src.utils.visualization import (
+        from qemlflow.core.utils.visualization import (
             ChemicalSpaceVisualizer,
             ModelVisualizer,
             MolecularVisualizer,
@@ -720,7 +720,7 @@ class TestPerformance(unittest.TestCase):
 
         # Test that it doesn't raise memory errors
         try:
-            with patch("src.utils.visualization.MolecularVisualizer"):
+            with patch("qemlflow.core.utils.visualization.MolecularVisualizer"):
                 create_dashboard_plots(large_df, self.temp_dir)
         except MemoryError:
             self.fail("Large dataset caused memory error")
@@ -737,7 +737,7 @@ class TestPerformance(unittest.TestCase):
 
         # Should handle large feature sets gracefully
         try:
-            with patch("src.utils.visualization.ModelVisualizer"):
+            with patch("qemlflow.core.utils.visualization.ModelVisualizer"):
                 plot_feature_importance(importances, features)
         except Exception:
             # Exceptions are okay for this performance test

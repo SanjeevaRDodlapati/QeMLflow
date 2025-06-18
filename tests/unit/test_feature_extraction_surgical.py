@@ -14,18 +14,18 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
     def test_line_86_mol_object_handling(self):
         """Test line 86: mol object handling in calculate_properties."""
-        from src.data_processing.feature_extraction import calculate_properties
+        from qemlflow.core.preprocessing.feature_extraction import calculate_properties
 
         # Create a mock that behaves like a Mol object
         mock_mol = Mock()
         mock_mol.GetNumAtoms.return_value = 3  # This makes hasattr return True
 
-        with patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True):
             with patch(
-                "src.data_processing.feature_extraction.Chem.MolFromSmiles"
+                "qemlflow.core.preprocessing.feature_extraction.Chem.MolFromSmiles"
             ) as mock_from_smiles:
                 with patch(
-                    "src.data_processing.feature_extraction.Descriptors"
+                    "qemlflow.core.preprocessing.feature_extraction.Descriptors"
                 ) as mock_desc:
                     # Configure mocks
                     mock_desc.MolWt.return_value = 46.07
@@ -43,7 +43,7 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
     def test_line_164_basic_descriptors(self):
         """Test line 164: basic descriptors implementation."""
-        from src.data_processing.feature_extraction import _extract_basic_descriptors
+        from qemlflow.core.preprocessing.feature_extraction import _extract_basic_descriptors
 
         # This function should always work and hit line 164
         result = _extract_basic_descriptors(["CCO", "CC"])
@@ -54,7 +54,7 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
     def test_lines_236_245_basic_fingerprints(self):
         """Test lines 236-245: basic fingerprints implementation."""
-        from src.data_processing.feature_extraction import _extract_basic_fingerprints
+        from qemlflow.core.preprocessing.feature_extraction import _extract_basic_fingerprints
 
         # This should hit the basic fingerprints implementation
         result = _extract_basic_fingerprints(["CCO"], n_bits=32)
@@ -64,7 +64,7 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
     def test_line_420_unknown_property(self):
         """Test line 420: unknown property estimation."""
-        from src.data_processing.feature_extraction import _estimate_property
+        from qemlflow.core.preprocessing.feature_extraction import _estimate_property
 
         # Test with unknown property - should hit line 420
         result = _estimate_property("CCO", "unknown_property")
@@ -73,7 +73,7 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
     def test_lines_563_571_581_legacy_empty(self):
         """Test lines 563, 571, 581: legacy functions with empty data."""
-        from src.data_processing.feature_extraction import (
+        from qemlflow.core.preprocessing.feature_extraction import (
             calculate_logP,
             calculate_molecular_weight,
             calculate_num_rotatable_bonds,
@@ -81,7 +81,7 @@ class TestFeatureExtractionSurgical(unittest.TestCase):
 
         # Mock empty results to hit the else branches
         with patch(
-            "src.data_processing.feature_extraction.calculate_properties"
+            "qemlflow.core.preprocessing.feature_extraction.calculate_properties"
         ) as mock_calc:
             # Empty molecular_weight - hits line 563
             mock_calc.return_value = pd.DataFrame(

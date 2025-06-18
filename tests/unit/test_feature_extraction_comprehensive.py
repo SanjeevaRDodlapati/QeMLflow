@@ -1,5 +1,5 @@
 """
-Comprehensive test suite for src.data_processing.feature_extraction module.
+Comprehensive test suite for qemlflow.core.preprocessing.feature_extraction module.
 
 This test suite provides extensive coverage for all feature extraction functionality including:
 - extract_descriptors function (RDKit, Mordred, basic descriptors)
@@ -93,8 +93,8 @@ class TestExtractDescriptors(unittest.TestCase):
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), 0)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction._extract_rdkit_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_rdkit_descriptors")
     def test_extract_descriptors_rdkit(self, mock_rdkit_extract):
         """Test extract_descriptors with RDKit available."""
         mock_df = pd.DataFrame({"MolWt": [46.07], "MolLogP": [-0.31]})
@@ -105,8 +105,8 @@ class TestExtractDescriptors(unittest.TestCase):
         mock_rdkit_extract.assert_called_once_with(self.sample_smiles)
         pd.testing.assert_frame_equal(result, mock_df)
 
-    @patch("src.data_processing.feature_extraction.MORDRED_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction._extract_mordred_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.MORDRED_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_mordred_descriptors")
     def test_extract_descriptors_mordred(self, mock_mordred_extract):
         """Test extract_descriptors with Mordred available."""
         mock_df = pd.DataFrame({"ABC": [1.0], "XYZ": [2.0]})
@@ -117,7 +117,7 @@ class TestExtractDescriptors(unittest.TestCase):
         mock_mordred_extract.assert_called_once_with(self.sample_smiles)
         pd.testing.assert_frame_equal(result, mock_df)
 
-    @patch("src.data_processing.feature_extraction._extract_basic_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_basic_descriptors")
     def test_extract_descriptors_basic(self, mock_basic_extract):
         """Test extract_descriptors with basic descriptors."""
         mock_df = pd.DataFrame({"num_atoms": [3], "num_carbons": [2]})
@@ -128,8 +128,8 @@ class TestExtractDescriptors(unittest.TestCase):
         mock_basic_extract.assert_called_once_with(self.sample_smiles)
         pd.testing.assert_frame_equal(result, mock_df)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
-    @patch("src.data_processing.feature_extraction._extract_basic_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_basic_descriptors")
     def test_extract_descriptors_fallback_to_basic(self, mock_basic_extract):
         """Test extract_descriptors fallback to basic when RDKit unavailable."""
         mock_df = pd.DataFrame({"num_atoms": [3]})
@@ -147,8 +147,8 @@ class TestDescriptorExtractors(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_descriptors_with_rdkit(self, mock_chem, mock_descriptors):
         """Test RDKit descriptor extraction with RDKit available."""
         # Setup mocks
@@ -171,7 +171,7 @@ class TestDescriptorExtractors(unittest.TestCase):
         self.assertIn("MolWt", result.columns)
         self.assertIn("MolLogP", result.columns)
 
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_descriptors_invalid_smiles(self, mock_chem):
         """Test RDKit descriptor extraction with invalid SMILES."""
         mock_chem.MolFromSmiles.return_value = None
@@ -183,14 +183,14 @@ class TestDescriptorExtractors(unittest.TestCase):
         # Should have NaN values for invalid molecules
         self.assertTrue(result.iloc[0].isna().all())
 
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_descriptors_mol_objects(self, mock_chem):
         """Test RDKit descriptor extraction with Mol objects."""
         mock_mol = Mock()
         mock_mol.GetNumAtoms.return_value = 3  # Mock method to identify as Mol object
 
         with patch(
-            "src.data_processing.feature_extraction.Descriptors"
+            "qemlflow.core.preprocessing.feature_extraction.Descriptors"
         ) as mock_descriptors:
             mock_descriptors.MolWt.return_value = 46.07
             mock_descriptors.MolLogP.return_value = -0.31
@@ -205,9 +205,9 @@ class TestDescriptorExtractors(unittest.TestCase):
             self.assertIsInstance(result, pd.DataFrame)
             self.assertEqual(len(result), 1)
 
-    @patch("src.data_processing.feature_extraction.Calculator")
-    @patch("src.data_processing.feature_extraction.descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Calculator")
+    @patch("qemlflow.core.preprocessing.feature_extraction.descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_mordred_descriptors(
         self, mock_chem, mock_descriptors, mock_calculator
     ):
@@ -264,9 +264,9 @@ class TestCalculateProperties(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_properties_with_rdkit(self, mock_chem, mock_descriptors):
         """Test property calculation with RDKit available."""
         mock_mol = Mock()
@@ -288,8 +288,8 @@ class TestCalculateProperties(unittest.TestCase):
         for col in expected_columns:
             self.assertIn(col, result.columns)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
-    @patch("src.data_processing.feature_extraction._estimate_property")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction._estimate_property")
     def test_calculate_properties_without_rdkit(self, mock_estimate):
         """Test property calculation without RDKit."""
         mock_estimate.side_effect = [
@@ -314,7 +314,7 @@ class TestCalculateProperties(unittest.TestCase):
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), 0)
 
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_properties_invalid_smiles(self, mock_chem):
         """Test property calculation with invalid SMILES."""
         mock_chem.MolFromSmiles.return_value = None
@@ -334,8 +334,8 @@ class TestExtractFeatures(unittest.TestCase):
         self.sample_smiles = ["CCO", "CC(=O)O"]
         self.sample_df = pd.DataFrame({"SMILES": self.sample_smiles})
 
-    @patch("src.data_processing.feature_extraction.extract_descriptors")
-    @patch("src.data_processing.feature_extraction.extract_fingerprints")
+    @patch("qemlflow.core.preprocessing.feature_extraction.extract_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.extract_fingerprints")
     def test_extract_features_from_list(self, mock_fingerprints, mock_descriptors):
         """Test feature extraction from SMILES list."""
         mock_descriptors.return_value = pd.DataFrame({"desc1": [1.0, 2.0]})
@@ -349,7 +349,7 @@ class TestExtractFeatures(unittest.TestCase):
         mock_descriptors.assert_called_once()
         mock_fingerprints.assert_called_once()
 
-    @patch("src.data_processing.feature_extraction.extract_descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.extract_descriptors")
     def test_extract_features_from_dataframe(self, mock_descriptors):
         """Test feature extraction from DataFrame."""
         mock_descriptors.return_value = pd.DataFrame({"desc1": [1.0, 2.0]})
@@ -362,7 +362,7 @@ class TestExtractFeatures(unittest.TestCase):
     def test_extract_features_default_types(self):
         """Test extract_features with default feature types."""
         with patch(
-            "src.data_processing.feature_extraction.extract_descriptors"
+            "qemlflow.core.preprocessing.feature_extraction.extract_descriptors"
         ) as mock_desc:
             mock_desc.return_value = pd.DataFrame({"desc1": [1.0, 2.0]})
 
@@ -383,8 +383,8 @@ class TestExtractFingerprints(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction._extract_rdkit_fingerprints")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_rdkit_fingerprints")
     def test_extract_fingerprints_with_rdkit(self, mock_rdkit_fp):
         """Test fingerprint extraction with RDKit available."""
         mock_df = pd.DataFrame({"fp_0": [1, 0], "fp_1": [0, 1]})
@@ -395,8 +395,8 @@ class TestExtractFingerprints(unittest.TestCase):
         mock_rdkit_fp.assert_called_once_with(self.sample_smiles, "morgan", 2048)
         pd.testing.assert_frame_equal(result, mock_df)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
-    @patch("src.data_processing.feature_extraction._extract_basic_fingerprints")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_basic_fingerprints")
     def test_extract_fingerprints_without_rdkit(self, mock_basic_fp):
         """Test fingerprint extraction without RDKit."""
         mock_df = pd.DataFrame({"fp_0": [1, 0], "fp_1": [0, 1]})
@@ -423,7 +423,7 @@ class TestFingerprintExtractors(unittest.TestCase):
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
     @patch("rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_fingerprints_morgan(self, mock_chem, mock_morgan):
         """Test RDKit Morgan fingerprint extraction."""
         mock_mol = Mock()
@@ -441,7 +441,7 @@ class TestFingerprintExtractors(unittest.TestCase):
         self.assertEqual(len(result.columns), 4)
 
     @patch("rdkit.Chem.rdMolDescriptors.GetMACCSKeysFingerprint")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_fingerprints_maccs(self, mock_chem, mock_maccs):
         """Test RDKit MACCS fingerprint extraction."""
         mock_mol = Mock()
@@ -463,7 +463,7 @@ class TestFingerprintExtractors(unittest.TestCase):
     @patch(
         "rdkit.Chem.rdMolDescriptors.GetHashedTopologicalTorsionFingerprintAsBitVect"
     )
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_fingerprints_topological(self, mock_chem, mock_topo):
         """Test RDKit topological fingerprint extraction."""
         mock_mol = Mock()
@@ -479,7 +479,7 @@ class TestFingerprintExtractors(unittest.TestCase):
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result.columns), 4)
 
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_rdkit_fingerprints_invalid_smiles(self, mock_chem):
         """Test RDKit fingerprint extraction with invalid SMILES."""
         mock_chem.MolFromSmiles.return_value = None
@@ -510,7 +510,7 @@ class TestGenerateFingerprints(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction._calculate_single_fingerprint")
+    @patch("qemlflow.core.preprocessing.feature_extraction._calculate_single_fingerprint")
     def test_generate_fingerprints_single_molecule(self, mock_single_fp):
         """Test fingerprint generation for single molecule."""
         mock_fp = np.array([1, 0, 1, 0])
@@ -521,7 +521,7 @@ class TestGenerateFingerprints(unittest.TestCase):
         np.testing.assert_array_equal(result, mock_fp)
         mock_single_fp.assert_called_once_with("CCO", "morgan", 4, 2)
 
-    @patch("src.data_processing.feature_extraction._calculate_single_fingerprint")
+    @patch("qemlflow.core.preprocessing.feature_extraction._calculate_single_fingerprint")
     def test_generate_fingerprints_multiple_molecules(self, mock_single_fp):
         """Test fingerprint generation for multiple molecules."""
         mock_fp1 = np.array([1, 0, 1, 0])
@@ -535,9 +535,9 @@ class TestGenerateFingerprints(unittest.TestCase):
         np.testing.assert_array_equal(result[0], mock_fp1)
         np.testing.assert_array_equal(result[1], mock_fp2)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
     @patch("rdkit.Chem.rdMolDescriptors.GetMorganFingerprintAsBitVect")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_single_fingerprint_with_rdkit(self, mock_chem, mock_rdmol):
         """Test single fingerprint calculation with RDKit."""
         mock_mol = Mock()
@@ -552,7 +552,7 @@ class TestGenerateFingerprints(unittest.TestCase):
         self.assertIsInstance(result, np.ndarray)
         self.assertEqual(len(result), 4)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
     def test_calculate_single_fingerprint_without_rdkit(self):
         """Test single fingerprint calculation without RDKit."""
         result = _calculate_single_fingerprint("CCO", "morgan", 8, 2)
@@ -570,7 +570,7 @@ class TestExtractStructuralFeatures(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_smiles = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction._extract_single_structural_features")
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_single_structural_features")
     def test_extract_structural_features_single_molecule(self, mock_single_features):
         """Test structural feature extraction for single molecule."""
         mock_features = {"num_rings": 0, "num_atoms": 3}
@@ -582,7 +582,7 @@ class TestExtractStructuralFeatures(unittest.TestCase):
         self.assertEqual(len(result), 1)
         mock_single_features.assert_called_once_with("CCO", ["rings", "atoms"])
 
-    @patch("src.data_processing.feature_extraction._extract_single_structural_features")
+    @patch("qemlflow.core.preprocessing.feature_extraction._extract_single_structural_features")
     def test_extract_structural_features_multiple_molecules(self, mock_single_features):
         """Test structural feature extraction for multiple molecules."""
         mock_features1 = {"num_rings": 0, "num_atoms": 3}
@@ -604,9 +604,9 @@ class TestExtractStructuralFeatures(unittest.TestCase):
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), 1)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_single_structural_features_with_rdkit(
         self, mock_chem, mock_descriptors
     ):
@@ -628,7 +628,7 @@ class TestExtractStructuralFeatures(unittest.TestCase):
         self.assertIn("num_rings", result)
         self.assertIn("num_atoms", result)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
     def test_extract_single_structural_features_without_rdkit(self):
         """Test single structural feature extraction without RDKit."""
         result = _extract_single_structural_features("CCO", ["rings", "atoms"])
@@ -638,7 +638,7 @@ class TestExtractStructuralFeatures(unittest.TestCase):
         for value in result.values():
             self.assertIsInstance(value, (int, float))
 
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_extract_single_structural_features_invalid_smiles(self, mock_chem):
         """Test single structural feature extraction with invalid SMILES."""
         mock_chem.MolFromSmiles.return_value = None
@@ -657,9 +657,9 @@ class TestLegacyFunctions(unittest.TestCase):
         """Set up test fixtures."""
         self.sample_molecular_data = ["CCO", "CC(=O)O"]
 
-    @patch("src.data_processing.feature_extraction.calculate_molecular_weight")
-    @patch("src.data_processing.feature_extraction.calculate_logP")
-    @patch("src.data_processing.feature_extraction.calculate_num_rotatable_bonds")
+    @patch("qemlflow.core.preprocessing.feature_extraction.calculate_molecular_weight")
+    @patch("qemlflow.core.preprocessing.feature_extraction.calculate_logP")
+    @patch("qemlflow.core.preprocessing.feature_extraction.calculate_num_rotatable_bonds")
     def test_extract_molecular_descriptors_legacy(
         self, mock_rot_bonds, mock_logp, mock_mw
     ):
@@ -678,9 +678,9 @@ class TestLegacyFunctions(unittest.TestCase):
             self.assertIn("logP", descriptor)
             self.assertIn("num_rotatable_bonds", descriptor)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_molecular_weight_with_rdkit(self, mock_chem, mock_descriptors):
         """Test molecular weight calculation with RDKit."""
         mock_mol = Mock()
@@ -693,8 +693,8 @@ class TestLegacyFunctions(unittest.TestCase):
         mock_chem.MolFromSmiles.assert_called_once_with("CCO")
         mock_descriptors.MolWt.assert_called_once_with(mock_mol)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False)
-    @patch("src.data_processing.feature_extraction._estimate_property")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.feature_extraction._estimate_property")
     def test_calculate_molecular_weight_without_rdkit(self, mock_estimate):
         """Test molecular weight calculation without RDKit."""
         mock_estimate.return_value = 46.0
@@ -705,9 +705,9 @@ class TestLegacyFunctions(unittest.TestCase):
         # Function calls calculate_properties which calls _estimate_property for all 6 properties
         self.assertEqual(mock_estimate.call_count, 6)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_logp_with_rdkit(self, mock_chem, mock_descriptors):
         """Test LogP calculation with RDKit."""
         mock_mol = Mock()
@@ -718,9 +718,9 @@ class TestLegacyFunctions(unittest.TestCase):
 
         self.assertEqual(result, -0.31)
 
-    @patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True)
-    @patch("src.data_processing.feature_extraction.Descriptors")
-    @patch("src.data_processing.feature_extraction.Chem")
+    @patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.feature_extraction.Descriptors")
+    @patch("qemlflow.core.preprocessing.feature_extraction.Chem")
     def test_calculate_num_rotatable_bonds_with_rdkit(
         self, mock_chem, mock_descriptors
     ):
@@ -773,7 +773,7 @@ class TestIntegrationScenarios(unittest.TestCase):
     def test_complete_feature_extraction_workflow(self):
         """Test complete feature extraction workflow."""
         with patch.multiple(
-            "src.data_processing.feature_extraction",
+            "qemlflow.core.preprocessing.feature_extraction",
             extract_descriptors=Mock(return_value=pd.DataFrame({"desc1": [1, 2, 3]})),
             extract_fingerprints=Mock(return_value=pd.DataFrame({"fp1": [1, 0, 1]})),
             extract_structural_features=Mock(
@@ -799,7 +799,7 @@ class TestIntegrationScenarios(unittest.TestCase):
         df = pd.DataFrame({"SMILES": self.sample_smiles, "target": [1, 0, 1]})
 
         with patch(
-            "src.data_processing.feature_extraction.extract_descriptors"
+            "qemlflow.core.preprocessing.feature_extraction.extract_descriptors"
         ) as mock_desc:
             mock_desc.return_value = pd.DataFrame({"MW": [46, 60, 60]})
 
@@ -825,7 +825,7 @@ class TestErrorHandling(unittest.TestCase):
         mixed_smiles = ["CCO", "INVALID", "CC(=O)O"]
 
         with patch(
-            "src.data_processing.feature_extraction._extract_basic_descriptors"
+            "qemlflow.core.preprocessing.feature_extraction._extract_basic_descriptors"
         ) as mock_basic:
             mock_df = pd.DataFrame({"desc1": [1.0, np.nan, 2.0]})
             mock_basic.return_value = mock_df
@@ -838,7 +838,7 @@ class TestErrorHandling(unittest.TestCase):
     def test_fingerprint_extraction_with_errors(self):
         """Test fingerprint extraction with problematic inputs."""
         with patch(
-            "src.data_processing.feature_extraction._extract_basic_fingerprints"
+            "qemlflow.core.preprocessing.feature_extraction._extract_basic_fingerprints"
         ) as mock_basic:
             mock_df = pd.DataFrame({"fp_0": [1, 0], "fp_1": [0, 1]})
             mock_basic.return_value = mock_df
@@ -933,7 +933,7 @@ class TestPerformance(unittest.TestCase):
     def test_large_dataset_descriptor_extraction(self):
         """Test descriptor extraction with large datasets."""
         with patch(
-            "src.data_processing.feature_extraction._extract_basic_descriptors"
+            "qemlflow.core.preprocessing.feature_extraction._extract_basic_descriptors"
         ) as mock_basic:
             mock_df = pd.DataFrame({"desc1": list(range(100))})
             mock_basic.return_value = mock_df
@@ -948,7 +948,7 @@ class TestPerformance(unittest.TestCase):
     def test_large_dataset_fingerprint_extraction(self):
         """Test fingerprint extraction with large datasets."""
         with patch(
-            "src.data_processing.feature_extraction._extract_basic_fingerprints"
+            "qemlflow.core.preprocessing.feature_extraction._extract_basic_fingerprints"
         ) as mock_basic:
             # Create mock fingerprint matrix
             mock_df = pd.DataFrame(np.random.randint(0, 2, size=(100, 10)))
@@ -963,7 +963,7 @@ class TestPerformance(unittest.TestCase):
     def test_high_dimensional_fingerprints(self):
         """Test fingerprint extraction with high dimensionality."""
         with patch(
-            "src.data_processing.feature_extraction._extract_basic_fingerprints"
+            "qemlflow.core.preprocessing.feature_extraction._extract_basic_fingerprints"
         ) as mock_basic:
             # Create high-dimensional fingerprint
             mock_df = pd.DataFrame(np.random.randint(0, 2, size=(10, 4096)))
