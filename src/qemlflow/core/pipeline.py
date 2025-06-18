@@ -74,7 +74,6 @@ except ImportError:
     HAS_WANDB = False
 
 try:
-
     HAS_MLFLOW = True
 except ImportError:
     HAS_MLFLOW = False
@@ -352,13 +351,11 @@ class QeMLflowPipeline:
 
         # Add advanced models if available
         try:
-
             default_models.append(("xgboost", "xgb", {}))
         except ImportError:
             pass
 
         try:
-
             default_models.append(("automl", "automl", {"n_trials": 20}))
         except ImportError:
             pass

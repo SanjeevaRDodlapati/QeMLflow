@@ -10,9 +10,16 @@ from pathlib import Path
 from typing import Literal, Optional
 
 try:
-    from pydantic import BaseSettings, Field, validator
+    from pydantic import BaseSettings, Field
 
     PYDANTIC_AVAILABLE = True
+
+    # Try to import validator (v1) or field_validator (v2)
+    try:
+        from pydantic import validator
+    except ImportError:
+        from pydantic import field_validator as validator
+
 except ImportError:
     PYDANTIC_AVAILABLE = False
 

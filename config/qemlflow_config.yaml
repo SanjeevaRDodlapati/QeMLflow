@@ -1,0 +1,52 @@
+cache_directory: cache
+data_directory: data
+debug_mode: false
+enable_auto_optimization: true
+enable_distributed_computing: false
+enable_gpu_acceleration: true
+enable_telemetry: true
+environment: development
+experiment_tracking:
+  auto_log_artifacts: true
+  auto_log_metrics: true
+  default_project: qemlflow-experiments
+  enabled: true
+  tags: []
+  wandb_api_key: null
+log_level: INFO
+models:
+  auto_feature_scaling: true
+  default_model_type: random_forest
+  memory_limit_gb: null
+  n_jobs: -1
+  random_state: 42
+  validation_split: 0.2
+notebooks:
+  auto_save_outputs: true
+  auto_setup: true
+  display_warnings: false
+  progress_tracking: true
+  template_directory: notebooks/templates
+preprocessing:
+  default_descriptor_type: morgan
+  fingerprint_bits: 2048
+  fingerprint_radius: 2
+  handle_missing: impute
+  include_3d_descriptors: false
+  normalize_features: true
+quantum:
+  default_backend: qiskit_aer
+  enabled: true
+  max_qubits: 16
+  optimization_level: 1
+  shots: 1024
+visualization:
+  color_palette: viridis
+  default_backend: matplotlib
+  dpi: 100
+  figure_size:
+  - 10
+  - 6
+  plot_directory: plots
+  save_plots: false
+  style: seaborn-v0_8

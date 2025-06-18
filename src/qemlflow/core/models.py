@@ -334,7 +334,7 @@ if HAS_TORCH:
             X_train_tensor = torch.FloatTensor(X_train)
             y_train_tensor = torch.FloatTensor(y_train.reshape(-1, 1))
             X_val_tensor = torch.FloatTensor(X_val)
-#_y_val_tensor = torch.FloatTensor(y_val.reshape(-1, 1))
+            # _y_val_tensor = torch.FloatTensor(y_val.reshape(-1, 1))
             optimizer = torch.optim.Adam(self.parameters(), lr=learning_rate)
             criterion = (
                 nn.MSELoss()

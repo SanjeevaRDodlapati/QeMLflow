@@ -201,7 +201,6 @@ class QeMLflowDataLoader:
 
         # Handle compressed files
         if url.endswith(".gz"):
-
             content = gzip.decompress(response.content)
             df = pd.read_csv(pd.io.common.StringIO(content.decode("utf-8")))
         else:
@@ -858,7 +857,6 @@ class IntelligentDataSplitter:
             Tuple of (train_indices, test_indices)
         """
         try:
-
             # Handle continuous targets by binning
             stratify_target = targets
             if targets.dtype in ["float64", "float32"]:
@@ -881,17 +879,19 @@ class IntelligentDataSplitter:
             )
 
 
-def process_smiles(smiles_list: List[str], sanitize: bool = True) -> List[Optional[str]]:
+def process_smiles(
+    smiles_list: List[str], sanitize: bool = True
+) -> List[Optional[str]]:
     """
     Process a list of SMILES strings for chemical analysis.
-    
+
     Parameters:
     -----------
     smiles_list : List[str]
         List of SMILES strings to process
     sanitize : bool, default=True
         Whether to sanitize molecules using RDKit
-        
+
     Returns:
     --------
     List[Optional[str]]
@@ -899,7 +899,7 @@ def process_smiles(smiles_list: List[str], sanitize: bool = True) -> List[Option
     """
     if not HAS_RDKIT:
         raise ImportError("RDKit is required for SMILES processing")
-    
+
     processed = []
     for smiles in smiles_list:
         try:
@@ -907,17 +907,17 @@ def process_smiles(smiles_list: List[str], sanitize: bool = True) -> List[Option
             if mol is None:
                 processed.append(None)
                 continue
-                
+
             if sanitize:
                 Chem.SanitizeMol(mol)
                 processed_smiles = Chem.MolToSmiles(mol)
             else:
                 processed_smiles = smiles
-                
+
             processed.append(processed_smiles)
         except Exception:
             processed.append(None)
-            
+
     return processed
 
 

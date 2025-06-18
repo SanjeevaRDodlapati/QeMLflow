@@ -24,7 +24,10 @@ def __getattr__(name):
             "create_ensemble_model",
         ),
         "create_automl_model": ("qemlflow.core.enhanced_models", "create_automl_model"),
-        "create_xgboost_model": ("qemlflow.core.enhanced_models", "create_xgboost_model"),
+        "create_xgboost_model": (
+            "qemlflow.core.enhanced_models",
+            "create_xgboost_model",
+        ),
         "create_lightgbm_model": (
             "qemlflow.core.enhanced_models",
             "create_lightgbm_model",

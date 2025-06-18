@@ -16,11 +16,18 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 def run_command(cmd, description):
     """Run a command and print results"""
     print(f"\n🔧 {description}")
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd='/Users/sanjeev/Downloads/Repos/QeMLflow')
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            capture_output=True,
+            text=True,
+            cwd="/Users/sanjeev/Downloads/Repos/QeMLflow",
+        )
         if result.stdout:
             print(f"✅ Success: {result.stdout.strip()}")
         if result.stderr and result.returncode != 0:
@@ -30,10 +37,11 @@ def run_command(cmd, description):
         print(f"❌ Error: {e}")
         return False
 
+
 def test_imports():
     """Test critical imports to verify fixes"""
     print("\n🧪 Testing critical imports...")
-    test_script = '''
+    test_script = """
 import sys
 sys.path.insert(0, "src")
 try:
@@ -51,28 +59,33 @@ try:
         print(f"❌ materials_discovery: {e}")
 except Exception as e:
     print(f"❌ QeMLflow main import: {e}")
-'''
+"""
     return run_command(f'python -c "{test_script}"', "Testing imports")
+
 
 def main():
     """Main fix process"""
     print("🚨 Emergency Fix for GitHub Actions Workflow Failures")
     print("=" * 60)
-    
+
     # Test current state
     if test_imports():
         print("\n✅ All imports are working!")
     else:
         print("\n❌ Import issues detected")
-    
+
     # Git operations
     print("\n📝 Committing fixes...")
     run_command("git add -A", "Staging all changes")
-    run_command('git commit --no-verify -m "fix: resolve critical GitHub Actions workflow failures\n\n- Fixed missing typing imports in research modules\n- Resolved syntax errors preventing package imports\n- Added comprehensive import fixes\n- All critical modules now load successfully"', "Committing fixes")
+    run_command(
+        'git commit --no-verify -m "fix: resolve critical GitHub Actions workflow failures\n\n- Fixed missing typing imports in research modules\n- Resolved syntax errors preventing package imports\n- Added comprehensive import fixes\n- All critical modules now load successfully"',
+        "Committing fixes",
+    )
     run_command("git push origin main", "Pushing fixes to trigger successful workflows")
-    
+
     print("\n🎯 Workflow fixes completed!")
     print("GitHub Actions should now run successfully.")
+
 
 if __name__ == "__main__":
     main()

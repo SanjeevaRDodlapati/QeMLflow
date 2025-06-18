@@ -16,29 +16,29 @@ from pathlib import Path
 def diagnose_terminal_issues():
     """Diagnose potential terminal problems"""
     print("🔧 TERMINAL DIAGNOSTIC REPORT")
-    print("="*40)
-    
+    print("=" * 40)
+
     # Check current working directory
     try:
         cwd = os.getcwd()
         print(f"✅ Current directory: {cwd}")
     except Exception as e:
         print(f"❌ Directory issue: {e}")
-    
+
     # Check environment variables
-    important_vars = ['PATH', 'SHELL', 'TERM', 'PWD']
+    important_vars = ["PATH", "SHELL", "TERM", "PWD"]
     for var in important_vars:
-        value = os.environ.get(var, 'NOT SET')
+        value = os.environ.get(var, "NOT SET")
         print(f"📝 {var}: {value[:100]}...")
-    
+
     # Check if we can execute basic commands
     basic_commands = [
-        ('python', ['python', '--version']),
-        ('git', ['git', '--version']),
-        ('ls', ['ls', '-la']),
-        ('pwd', ['pwd'])
+        ("python", ["python", "--version"]),
+        ("git", ["git", "--version"]),
+        ("ls", ["ls", "-la"]),
+        ("pwd", ["pwd"]),
     ]
-    
+
     print("\n🧪 Testing basic commands:")
     for name, cmd in basic_commands:
         try:
@@ -51,29 +51,29 @@ def diagnose_terminal_issues():
             print(f"⏰ {name}: timed out")
         except Exception as e:
             print(f"❌ {name}: {e}")
-    
+
     # Check process info
     print(f"\n📊 Process info:")
     print(f"   PID: {os.getpid()}")
     print(f"   Python executable: {sys.executable}")
     print(f"   Python version: {sys.version}")
-    
+
 
 def suggest_terminal_fixes():
     """Suggest fixes for common terminal issues"""
     print("\n🛠️ SUGGESTED TERMINAL FIXES:")
-    print("="*40)
-    
+    print("=" * 40)
+
     fixes = [
         "1. Try using absolute paths instead of relative paths",
         "2. Check if any background processes are hanging",
-        "3. Verify file permissions on repository directory", 
+        "3. Verify file permissions on repository directory",
         "4. Clear terminal environment variables if corrupted",
         "5. Use file operations instead of shell commands when possible",
         "6. Add explicit timeouts to subprocess calls",
-        "7. Check disk space and memory availability"
+        "7. Check disk space and memory availability",
     ]
-    
+
     for fix in fixes:
         print(f"   {fix}")
 
@@ -81,8 +81,8 @@ def suggest_terminal_fixes():
 def test_workarounds():
     """Test alternative approaches that might work better"""
     print("\n🔄 TESTING WORKAROUNDS:")
-    print("="*40)
-    
+    print("=" * 40)
+
     # Test file operations
     try:
         test_file = Path("/tmp/terminal_test.txt")
@@ -92,22 +92,27 @@ def test_workarounds():
         print("✅ File operations: Working")
     except Exception as e:
         print(f"❌ File operations: {e}")
-    
+
     # Test Python subprocess with timeout
     try:
-        result = subprocess.run(['echo', 'test'], capture_output=True, text=True, timeout=2)
+        result = subprocess.run(
+            ["echo", "test"], capture_output=True, text=True, timeout=2
+        )
         print(f"✅ Subprocess with timeout: {result.stdout.strip()}")
     except Exception as e:
         print(f"❌ Subprocess with timeout: {e}")
-    
+
     # Test direct Python execution
     try:
         import tempfile
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False) as f:
+
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
             f.write('print("Direct Python execution works")')
             temp_script = f.name
-        
-        result = subprocess.run([sys.executable, temp_script], capture_output=True, text=True, timeout=5)
+
+        result = subprocess.run(
+            [sys.executable, temp_script], capture_output=True, text=True, timeout=5
+        )
         os.unlink(temp_script)
         print(f"✅ Direct Python execution: {result.stdout.strip()}")
     except Exception as e:
@@ -117,8 +122,8 @@ def test_workarounds():
 def create_robust_command_runner():
     """Create a more robust command execution function"""
     print("\n🔨 CREATING ROBUST COMMAND RUNNER")
-    print("="*40)
-    
+    print("=" * 40)
+
     runner_code = '''
 def robust_run_command(cmd, timeout=30, use_shell=True):
     """More robust command execution with multiple fallback strategies"""
@@ -154,7 +159,7 @@ def robust_run_command(cmd, timeout=30, use_shell=True):
     print("🚨 All strategies failed")
     return None
 '''
-    
+
     # Save to file for future use
     runner_file = Path("robust_command_runner.py")
     runner_file.write_text(runner_code)
@@ -166,8 +171,8 @@ if __name__ == "__main__":
     suggest_terminal_fixes()
     test_workarounds()
     create_robust_command_runner()
-    
+
     print("\n🎯 TERMINAL DIAGNOSTIC COMPLETE")
-    print("="*40)
+    print("=" * 40)
     print("Review the output above to identify terminal issues.")
     print("Use the suggested fixes and workarounds as needed.")

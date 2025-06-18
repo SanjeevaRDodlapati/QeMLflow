@@ -10,45 +10,43 @@ import subprocess
 import sys
 from pathlib import Path
 
+
 def run_git_command(cmd, check=True):
     """Run git command safely"""
     try:
         result = subprocess.run(
-            cmd,
-            shell=True,
-            capture_output=True,
-            text=True,
-            cwd=Path.cwd()
+            cmd, shell=True, capture_output=True, text=True, cwd=Path.cwd()
         )
-        
+
         if check and result.returncode != 0:
             print(f"❌ Git command failed: {cmd}")
             print(f"Error: {result.stderr}")
             return False
-        
+
         print(f"✅ Git command success: {cmd}")
         if result.stdout.strip():
             print(f"Output: {result.stdout.strip()}")
         return True
-        
+
     except Exception as e:
         print(f"❌ Git command error: {e}")
         return False
+
 
 def commit_workflow_fixes():
     """Commit all workflow fixes"""
     print("🚀 COMMITTING WORKFLOW FIXES")
     print("=" * 40)
-    
+
     # Check git status
     if not run_git_command("git status --porcelain"):
         return False
-    
+
     # Add all changes
     print("\n📦 Adding all changes...")
     if not run_git_command("git add -A"):
         return False
-    
+
     # Create comprehensive commit message
     commit_message = """fix: resolve GitHub Actions workflow failures with comprehensive typing and syntax fixes
 
@@ -74,7 +72,7 @@ def commit_workflow_fixes():
 🚀 RESULT: GitHub Actions workflows should now pass successfully!
 
 Co-authored-by: QeMLflow-AI-Assistant <ai@qemlflow.dev>"""
-    
+
     # Commit with comprehensive message
     print("\n💾 Committing changes...")
     cmd = f'git commit -m "{commit_message}"'
@@ -84,16 +82,17 @@ Co-authored-by: QeMLflow-AI-Assistant <ai@qemlflow.dev>"""
         cmd = f'git commit --no-verify -m "{commit_message}"'
         if not run_git_command(cmd):
             return False
-    
+
     # Push to origin
     print("\n🌐 Pushing to origin...")
     if not run_git_command("git push origin main"):
         return False
-    
+
     print("\n🎉 WORKFLOW FIXES SUCCESSFULLY COMMITTED AND PUSHED!")
     print("🔍 Monitor GitHub Actions for workflow success!")
-    
+
     return True
+
 
 def create_status_report():
     """Create final status report"""
@@ -137,24 +136,25 @@ def create_status_report():
 
 **Status: WORKFLOW FAILURES RESOLVED ✅**
 """
-    
+
     with open("WORKFLOW_FIX_REPORT.md", "w") as f:
         f.write(report)
-    
+
     print("📋 Status report created: WORKFLOW_FIX_REPORT.md")
+
 
 if __name__ == "__main__":
     try:
         success = commit_workflow_fixes()
         create_status_report()
-        
+
         if success:
             print("\n🎉 ALL WORKFLOW FIXES COMPLETED SUCCESSFULLY!")
             sys.exit(0)
         else:
             print("\n⚠️ Some issues occurred during commit process.")
             sys.exit(1)
-            
+
     except Exception as e:
         print(f"\n🚨 UNEXPECTED ERROR: {e}")
         sys.exit(1)
