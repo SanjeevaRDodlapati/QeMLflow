@@ -106,7 +106,9 @@ class QeMLflowConfig(BaseSettings):
 
     # WandB settings
     wandb_enabled: bool = Field(True, env="QEMLFLOW_WANDB_ENABLED")
-    wandb_project_name: str = Field("qemlflow-experiments", env="QEMLFLOW_WANDB_PROJECT")
+    wandb_project_name: str = Field(
+        "qemlflow-experiments", env="QEMLFLOW_WANDB_PROJECT"
+    )
     wandb_entity: Optional[str] = Field(None, env="QEMLFLOW_WANDB_ENTITY")
     wandb_api_key: Optional[str] = Field(None, env="QEMLFLOW_WANDB_API_KEY")
     wandb_auto_login: bool = Field(True, env="QEMLFLOW_WANDB_AUTO_LOGIN")
@@ -163,7 +165,7 @@ def get_config() -> QeMLflowConfig:
     """Get the global configuration instance."""
     global _config
     if _config is None:
-        # _config = QeMLflowConfig()
+        _config = QeMLflowConfig()
         _config.ensure_directories()
     return _config
 
@@ -171,13 +173,11 @@ def get_config() -> QeMLflowConfig:
 def update_config(**kwargs) -> None:
     """Update the global configuration."""
     global _config
-    # _config = QeMLflowConfig(**kwargs)
+    _config = QeMLflowConfig(**kwargs)
     _config.ensure_directories()
 
 
 def reset_config() -> None:
     """Reset the global configuration to defaults."""
     global _config
-
-
-# _config = None
+    _config = None

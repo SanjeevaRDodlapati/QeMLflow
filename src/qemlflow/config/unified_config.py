@@ -127,7 +127,8 @@ class QeMLflowConfig:
         self.data_directory = os.getenv("QEMLFLOW_DATA_DIR", self.data_directory)
         self.cache_directory = os.getenv("QEMLFLOW_CACHE_DIR", self.cache_directory)
         self.enable_gpu_acceleration = (
-            os.getenv("QEMLFLOW_GPU", str(self.enable_gpu_acceleration)).lower() == "true"
+            os.getenv("QEMLFLOW_GPU", str(self.enable_gpu_acceleration)).lower()
+            == "true"
         )
         self.enable_distributed_computing = (
             os.getenv(
@@ -252,9 +253,7 @@ def get_config() -> QeMLflowConfig:
 def set_config(config: QeMLflowConfig):
     """Set the global QeMLflow configuration."""
     global _global_config
-
-
-# _global_config = config
+    _global_config = config
 
 
 def load_config() -> QeMLflowConfig:
