@@ -1,0 +1,66 @@
+name: Gradual CI Test
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-imports:
+    runs-on: ubuntu-latest
+    name: Test Import Collection
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install minimal dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest numpy pandas
+
+    - name: Test basic import
+      run: |
+        cd src && python -c "import qemlflow; print('✅ QeMLflow basic import successful')"
+
+    - name: Test pytest collection
+      run: |
+        echo "Testing pytest collection capability..."
+        pytest tests/unit/ --collect-only -q || echo "Collection failed but continuing"
+
+    - name: Test few basic tests
+      run: |
+        echo "Running a few basic tests..."
+        pytest tests/unit/test_molecular_utils_extended.py::TestMolecularDescriptors::test_calculate_basic_descriptors -v || echo "Test failed but continuing"
+
+  test-with-dependencies:
+    runs-on: ubuntu-latest
+    name: Test with More Dependencies
+    needs: test-imports
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install core dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest numpy pandas scikit-learn matplotlib seaborn
+        # Try to install with basic dependencies, skip RDKit for now
+        pip install -e . || echo "Full install failed, continuing with basic setup"
+
+    - name: Test collection with dependencies
+      run: |
+        pytest tests/unit/ --collect-only -q | tail -5
+
+    - name: Run small test subset
+      run: |
+        pytest tests/unit/test_molecular_utils_extended.py::TestMolecularDescriptors -v
