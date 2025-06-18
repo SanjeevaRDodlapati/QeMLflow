@@ -19,24 +19,18 @@ from drug_design.property_prediction import *
 from drug_design.property_prediction import (
     RDKIT_AVAILABLE,
     Chem,
-    ImportError:,
     MolecularPropertyPredictor,
     TrainedPropertyModel,
     calculate_metrics,
     evaluate_model,
     evaluate_property_predictions,
-    except,
-    from,
     handle_missing_values,
-    import,
     normalize_data,
-    pass,
     predict_properties,
     preprocess_data,
     rdkit,
     sklearn,
     train_property_model,
-    try:,
 )
 
 

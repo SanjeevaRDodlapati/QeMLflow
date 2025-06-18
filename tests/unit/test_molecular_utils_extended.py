@@ -13,21 +13,15 @@ import pandas as pd
 
 from src.utils.molecular_utils import (
     Chem,
-    ImportError:,
     LipinskiFilter,
     MolecularDescriptors,
     MolecularVisualization,
     SimilarityCalculator,
     StructuralAlerts,
     calculate_molecular_properties,
-    except,
-    from,
     generate_conformers,
-    import,
-    pass,
     rdkit,
     standardize_smiles,
-    try:,
     validate_molecule,
 )
 

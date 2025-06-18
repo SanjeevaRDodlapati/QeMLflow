@@ -13,17 +13,9 @@ import pandas as pd
 
 from qemlflow.research.drug_discovery.admet import (
     ADMETPredictor,
-    Chem,
-    ImportError:,
     apply_admet_filters,
     assess_drug_likeness,
-    except,
-    from,
-    import,
-    pass,
     predict_admet_properties,
-    rdkit,
-    try:,
 )
 
 

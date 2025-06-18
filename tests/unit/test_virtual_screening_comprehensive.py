@@ -16,18 +16,12 @@ import pytest
 
 from qemlflow.research.drug_discovery.screening import (
     Chem,
-    ImportError:,
     PharmacophoreScreener,
     SimilarityScreener,
     VirtualScreener,
     calculate_screening_metrics,
-    except,
-    from,
-    import,
-    pass,
     perform_virtual_screening,
     rdkit,
-    try:,
 )
 
 
