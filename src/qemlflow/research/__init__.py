@@ -10,7 +10,7 @@ __all__ = ["List", "Dict", "Optional", "Union", "Any"]
 # Core eager imports (lightweight only)
 from .clinical_research import *
 from .drug_discovery import *
-from .drug_discovery_legacy import *
+# from .drug_discovery_legacy import *  # Temporarily disabled due to import issues
 from .environmental_chemistry import *
 
 # Lazy loading registry
