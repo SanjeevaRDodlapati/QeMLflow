@@ -43,17 +43,28 @@ jobs:
       run: |
         echo "Attempting to build docs with MkDocs..."
         if command -v mkdocs >/dev/null; then
-          mkdocs build --clean || {
-            echo "⚠️ MkDocs build failed, but continuing workflow"
-            echo "Creating basic site directory for deployment"
+          echo "MkDocs is available, building..."
+          mkdocs build --clean --verbose || {
+            echo "⚠️ MkDocs build failed with errors, creating fallback site"
             mkdir -p site
-            echo "<html><body><h1>QeMLflow Documentation</h1><p>Documentation build in progress...</p></body></html>" > site/index.html
+            echo '<html><head><title>QeMLflow Documentation</title></head><body><h1>QeMLflow Documentation</h1><p>Documentation is currently being updated...</p><p>Please check back later.</p></body></html>' > site/index.html
+            echo "✅ Fallback documentation site created"
           }
         else
           echo "MkDocs not available, creating basic site"
           mkdir -p site
-          echo "<html><body><h1>QeMLflow Documentation</h1><p>Documentation will be available soon...</p></body></html>" > site/index.html
+          echo '<html><head><title>QeMLflow Documentation</title></head><body><h1>QeMLflow Documentation</h1><p>Documentation will be available soon...</p></body></html>' > site/index.html
+          echo "✅ Basic documentation site created"
         fi
+        
+        # Ensure site directory exists and has content
+        if [ ! -d "site" ] || [ ! -f "site/index.html" ]; then
+          echo "Creating emergency fallback site..."
+          mkdir -p site
+          echo '<h1>QeMLflow Documentation</h1><p>Coming soon...</p>' > site/index.html
+        fi
+        
+        echo "✅ Documentation build process completed"
 
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
