@@ -45,57 +45,20 @@ jobs:
         path: logs/monitoring_*.json
         retention-days: 30
 
-    - name: Create Issue on Critical Failure
+    # - name: Create Issue on Critical Failure
+    #   if: steps.monitor.outcome == 'failure'
+    #   uses: actions/github-script@v6
+    #   with:
+    #     script: |
+    #       # Issue creation disabled due to permissions
+    #       console.log('Would create monitoring issue, but permissions not available')
+
+    - name: Log Critical Failure
       if: steps.monitor.outcome == 'failure'
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const title = '🚨 QeMLflow System Monitoring Alert - Critical Issues Detected';
-          const body = `## Automated Monitoring Alert
-
-          **Status**: Critical issues detected during automated monitoring
-          **Timestamp**: ${new Date().toISOString()}
-          **Workflow**: ${{ github.workflow }}
-          **Run**: ${{ github.run_id }}
-
-          ### Issues Detected
-          The automated monitoring system has detected critical issues with the QeMLflow infrastructure.
-
-          ### Quick Links
-          - [GitHub Actions](${{ github.server_url }}/${{ github.repository }}/actions)
-          - [Documentation Site](https://sanjeevardodlapati.github.io/QeMLflow/)
-          - [Monitoring Results](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
-
-          ### Next Steps
-          1. Check the monitoring results artifact
-          2. Review failed GitHub Actions workflows
-          3. Verify documentation site deployment
-          4. Address any workflow or deployment issues
-
-          ---
-          *This issue was automatically created by the QeMLflow monitoring system.*`;
-
-          // Check if issue already exists
-          const issues = await github.rest.issues.listForRepo({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            state: 'open',
-            labels: 'monitoring,automated'
-          });
-
-          const existingIssue = issues.data.find(issue =>
-            issue.title.includes('QeMLflow System Monitoring Alert')
-          );
-
-          if (!existingIssue) {
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title: title,
-              body: body,
-              labels: ['monitoring', 'automated', 'critical']
-            });
-          }
+      run: |
+        echo "🚨 CRITICAL: Monitoring detected issues!"
+        echo "📋 Check the monitoring results artifact for details"
+        echo "🔗 Manual review required at: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
     - name: Comment on Success
       if: steps.monitor.outcome == 'success'
