@@ -216,7 +216,7 @@ class QeMLflowDataLoader:
 
         initial_count = len(df)
 
-        def is_valid_smiles(smiles):
+        def is_valid_smiles(smiles) -> bool:
             if pd.isna(smiles) or smiles == "":
                 return False
             mol = Chem.MolFromSmiles(str(smiles))
@@ -922,13 +922,13 @@ def process_smiles(
 
 
 # Convenience functions for quick access
-def load_chemical_dataset(dataset_name: str, **kwargs):
+def load_chemical_dataset(dataset_name: str, **kwargs) -> Any:
     """Load a chemical dataset quickly."""
     loader = QeMLflowDataLoader()
     return loader.load_dataset(dataset_name, **kwargs)
 
 
-def preprocess_chemical_data(df, smiles_column="smiles", target_columns=None):
+def preprocess_chemical_data(df, smiles_column="smiles", target_columns=None) -> Any:
     """Preprocess chemical data quickly."""
     preprocessor = AdvancedDataPreprocessor()
     return preprocessor.create_preprocessing_pipeline(df, smiles_column, target_columns)
@@ -941,7 +941,7 @@ def split_chemical_data(
     test_size=0.2,
     val_size=0.1,
     **kwargs,
-):
+) -> Tuple[Any, ...]:
     """Split chemical data with different strategies."""
     splitter = IntelligentDataSplitter()
 

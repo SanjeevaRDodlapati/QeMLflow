@@ -22,33 +22,62 @@ ensure_reproducibility = getattr(utils_module, "ensure_reproducibility", None)
 configure_warnings = getattr(utils_module, "configure_warnings", None)
 
 # Import from individual utility modules
+# Explicit imports for better namespace control and IDE support
 try:
-    from .io_utils import *
+    from .io_utils import (
+        export_results,
+        import_external_data,
+        load_molecular_data,
+        save_molecular_data,
+    )
 except ImportError:
     pass
 
 try:
-    from .molecular_utils import *
+    from .molecular_utils import (
+        calculate_molecular_weight,
+        get_atom_counts,
+        standardize_molecule,
+        validate_smiles,
+    )
 except ImportError:
     pass
 
 try:
-    from .ml_utils import *
+    from .ml_utils import (
+        cross_validate_model,
+        optimize_hyperparameters,
+        scale_features,
+        split_dataset,
+    )
 except ImportError:
     pass
 
 try:
-    from .metrics import *
+    from .metrics import (
+        calculate_mae,
+        calculate_r2,
+        calculate_rmse,
+        classification_metrics,
+    )
 except ImportError:
     pass
 
 try:
-    from .quantum_utils import *
+    from .quantum_utils import (
+        execute_quantum_algorithm,
+        prepare_quantum_circuit,
+        quantum_feature_map,
+    )
 except ImportError:
     pass
 
 try:
-    from .visualization import *
+    from .visualization import (
+        create_correlation_matrix,
+        plot_molecular_properties,
+        visualize_model_performance,
+    )
 except ImportError:
     pass
 

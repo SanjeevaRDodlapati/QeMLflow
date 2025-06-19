@@ -475,7 +475,7 @@ if HAS_TORCH:
 
             self.scaler = StandardScaler()
 
-        def forward(self, x):
+        def forward(self, x) -> torch.Tensor:
             """Forward pass."""
             # Reshape for 1D conv: (batch_size, 1, features)
             x = x.unsqueeze(1)
@@ -662,7 +662,7 @@ class AutoMLModel(BaseModel):
     def _create_objective(self, X: np.ndarray, y: np.ndarray, metric: str):
         """Create optimization objective function."""
 
-        def objective(trial):
+        def objective(trial) -> float:
             # Suggest model type
             model_type = trial.suggest_categorical("model_type", self.model_types)
 

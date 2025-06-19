@@ -288,7 +288,7 @@ class ResultsExporter:
 
     def export_smiles_list(
         self, smiles_list: List[str], filename: str, include_index: bool = True
-    ):
+    ) -> None:
         """Export list of SMILES to file"""
         filepath = self.output_dir / filename
 
@@ -307,7 +307,7 @@ class ResultsExporter:
         descriptors: pd.DataFrame,
         smiles_column: str = "SMILES",
         filename: str = "molecular_descriptors.csv",
-    ):
+    ) -> None:
         """Save molecular descriptors with SMILES"""
         filepath = self.output_dir / filename
         descriptors.to_csv(filepath, index=False)

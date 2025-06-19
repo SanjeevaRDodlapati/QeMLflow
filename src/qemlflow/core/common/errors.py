@@ -48,7 +48,7 @@ def handle_exceptions(
     exceptions: tuple = (Exception,),
     log_errors: bool = True,
     reraise: bool = False,
-):
+) -> Callable[[F], F]:
     """
     Decorator for graceful exception handling with logging.
 
@@ -196,7 +196,7 @@ def retry_on_failure(
     delay: float = 1.0,
     backoff: float = 2.0,
     exceptions: tuple = (RetryableError,),
-):
+) -> Callable[[F], F]:
     """
     Decorator to retry functions on specific exceptions.
 
@@ -209,7 +209,7 @@ def retry_on_failure(
 
     def decorator(func: F) -> F:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
             import time
 
             current_delay = delay

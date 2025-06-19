@@ -108,7 +108,7 @@ class PerformanceMonitor:
 
 def monitor_performance(
     log_threshold: float = 5.0, memory_threshold: float = 500.0, enabled: bool = True
-):
+) -> Callable[[F], F]:
     """
     Decorator to monitor function performance.
 

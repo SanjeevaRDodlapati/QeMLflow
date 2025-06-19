@@ -634,7 +634,7 @@ def recommend_model(molecules, target_property, **kwargs) -> Any:
     return engine.recommend_best_model(molecules, target_property, **kwargs)
 
 
-def compare_models(molecules, target_property, models=None):
+def compare_models(molecules, target_property, models=None) -> Any:
     """Quick model comparison function."""
     engine = ModelRecommendationEngine()
     return engine.compare_models(molecules, target_property, models)

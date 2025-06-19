@@ -330,7 +330,7 @@ def batch_process_molecules(
     return pd.DataFrame(results)
 
 
-def smiles_to_mol(smiles: str):
+def smiles_to_mol(smiles: str) -> Optional[Union[Any, Dict[str, Any]]]:
     """
     Convert SMILES string to molecule object.
 

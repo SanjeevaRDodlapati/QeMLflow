@@ -457,7 +457,7 @@ class PerformanceDashboard:
 
     def start_monitoring(
         self, interval_seconds: int = 60, duration_minutes: Optional[int] = None
-    ):
+    ) -> None:
         """Start continuous performance monitoring."""
         print(
             f"🚀 Starting QeMLflow performance monitoring (interval: {interval_seconds}s)"

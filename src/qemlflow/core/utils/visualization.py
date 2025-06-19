@@ -159,7 +159,7 @@ class MolecularVisualizer:
         molecules_df: pd.DataFrame,
         properties: List[str],
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot distribution of molecular properties.
 
@@ -216,7 +216,7 @@ class ModelVisualizer:
         title: str = "Feature Importance",
         top_n: int = 20,
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot feature importance from a trained model.
 
@@ -275,7 +275,7 @@ class ModelVisualizer:
         history: Dict[str, List[float]],
         title: str = "Model Performance",
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot training history and model performance.
 
@@ -323,7 +323,7 @@ class ModelVisualizer:
         y_pred: np.ndarray,
         title: str = "Predictions vs Actual",
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot predicted vs actual values for regression.
 
@@ -382,7 +382,7 @@ class ModelVisualizer:
         labels: Optional[List[str]] = None,
         title: str = "Confusion Matrix",
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot confusion matrix for classification.
 
@@ -441,7 +441,7 @@ class ChemicalSpaceVisualizer:
         color_column: Optional[str] = None,
         title: str = "Chemical Space (PCA)",
         filename: Optional[str] = None,
-    ):
+    ) -> None:
         """
         Plot chemical space using PCA of molecular descriptors.
 
@@ -553,7 +553,7 @@ def plot_feature_importance(
     feature_names: List[str],
     title: str = "Feature Importance",
     filename: Optional[str] = None,
-):
+) -> None:
     """
     Convenience function to plot feature importance.
 
@@ -572,7 +572,7 @@ def plot_model_performance(
     history: Dict[str, List[float]],
     title: str = "Model Performance",
     filename: Optional[str] = None,
-):
+) -> None:
     """
     Convenience function to plot model performance.
 
