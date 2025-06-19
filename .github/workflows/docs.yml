@@ -21,10 +21,10 @@ jobs:
     continue-on-error: true  # Don't fail workflow if docs build has issues
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v4
       with:
         python-version: 3.11
 
@@ -38,7 +38,7 @@ jobs:
         # Skip QeMLflow dependencies for docs build
 
     - name: Setup Pages
-      uses: actions/configure-pages@v5
+      uses: actions/configure-pages@v3
 
     - name: Build with MkDocs
       run: |
@@ -68,7 +68,7 @@ jobs:
         echo "✅ Documentation build process completed"
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v2
       with:
         path: ./site
 
@@ -83,4 +83,4 @@ jobs:
     steps:
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v2
