@@ -2,25 +2,25 @@
 # Core dependencies only - no heavy ML/chemical libraries
 
 # Essential scientific computing
-numpy>=1.24.0
-pandas>=2.0.0
-scipy>=1.10.0
-scikit-learn>=1.3.0
+numpy>=1.20.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
 
 # Basic visualization 
-matplotlib>=3.7.0
-seaborn>=0.12.0
+matplotlib>=3.3.0
+seaborn>=0.11.0
 
 # Testing
-pytest>=7.4.0
-pytest-cov>=4.1.0
+pytest>=6.0.0
+pytest-cov>=3.0.0
 
 # Utilities
-tqdm>=4.64.0
-pyyaml>=6.0
-click>=8.1.0
+tqdm>=4.60.0
+pyyaml>=5.4.0
+click>=8.0.0
 
-# Code quality
-black>=23.0.0
-isort>=5.12.0
-flake8>=6.0.0
+# Code quality (optional in CI)
+black>=22.0.0
+isort>=5.10.0
+flake8>=4.0.0
