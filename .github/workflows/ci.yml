@@ -44,7 +44,7 @@ jobs:
         pip install -e ".[dev]" || pip install -e . || echo "Package installation failed, continuing with available tools"
 
     - name: Run pre-commit hooks
-      uses: pre-commit/action@v4.0.0
+      uses: pre-commit/action@v3.0.0
       continue-on-error: true  # Don't fail the entire workflow if pre-commit has issues
 
     - name: Run linting
