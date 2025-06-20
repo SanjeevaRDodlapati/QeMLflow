@@ -1,4 +1,4 @@
-# QeMLflow Dependencies - Updated for Modern Compatibility
+# QeMLflow Dependencies - Updated for Modern Compatibility (PyMOL Optional)
 # =======================================================
 
 # Core ML and Scientific Computing
@@ -19,7 +19,7 @@ ray[tune]>=2.5.0             # Hyperparameter optimization
 ray[train]>=2.5.0            # Distributed training
 horovod>=0.28.0              # Multi-GPU/multi-node training
 dask[distributed]>=2023.5.0  # Alternative distributed computing
-# pytorch-lightning>=2.1.0     # High-level PyTorch training (not currently used)
+pytorch-lightning>=2.1.0     # High-level PyTorch training
 tensorflow-probability>=0.22.0  # Probabilistic programming
 
 # HYPERPARAMETER OPTIMIZATION - Advanced Algorithms
@@ -76,7 +76,7 @@ langchain>=0.0.340          # LLM application framework
 
 # DeepChem Optional Dependencies (to reduce warnings)
 dgl>=1.1.0  # Deep Graph Library
-# lightning>=2.0.0  # PyTorch Lightning (renamed from pytorch-lightning, not currently used)
+lightning>=2.0.0  # PyTorch Lightning (renamed from pytorch-lightning)
 jax>=0.4.0  # JAX for advanced ML
 jaxlib>=0.4.0  # JAX backend
 torch-geometric>=2.3.0  # PyTorch Geometric
@@ -124,7 +124,7 @@ pytest-cov>=4.1.0
 black>=23.0.0
 isort>=5.12.0
 joblib>=1.1.0
-mypy>=1.6.0
+mypy>=1.7.0
 bandit>=1.7.5                # Security scanning
 vulture>=2.7                 # Dead code detection
 flake8>=6.1.0                # Core linting

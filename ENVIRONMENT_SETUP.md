@@ -80,7 +80,38 @@ pip install -e .
 pre-commit install
 ```
 
-### **Step 6: Verify Installation**
+### **Step 6: Optional - Install PyMOL for Molecular Visualization**
+
+PyMOL is not available via pip and requires conda or system installation:
+
+#### **Option A: Via Conda (Recommended)**
+```bash
+# Install conda if not already available
+# Download from https://docs.conda.io/en/latest/miniconda.html
+
+# Install PyMOL
+conda install -c conda-forge pymol-open-source
+
+# Or create a conda environment with PyMOL
+conda create -n qemlflow-pymol python=3.12
+conda activate qemlflow-pymol
+conda install -c conda-forge pymol-open-source
+```
+
+#### **Option B: Via System Package Manager (macOS)**
+```bash
+# Using Homebrew
+brew install pymol
+
+# Using MacPorts
+sudo port install pymol
+```
+
+#### **Option C: Manual Installation**
+- Download PyMOL from the official website: https://pymol.org/
+- Follow platform-specific installation instructions
+
+### **Step 7: Verify Installation**
 ```bash
 # Run quick test
 python -c "import qemlflow; print('✅ Installation successful!')"
