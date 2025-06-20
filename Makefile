@@ -1,14 +1,20 @@
 # ChemML Development Makefile
 # Provides convenient commands for development workflow
 
-.PHONY: help install install-dev test test-fast test-coverage lint format type-check security clean build docs serve-docs pre-commit setup-dev
+.PHONY: help install install-dev test test-fast test-coverage lint format type-check security clean build docs serve-docs pre-commit setup-dev setup-env clean-env recreate-env validate-env
 
 # Default target
 help:
 	@echo "ChemML Development Commands:"
 	@echo "=========================="
-	@echo "Setup & Installation:"
+	@echo "Environment Setup:"
+	@echo "  setup-env          - Create virtual environment only"
 	@echo "  setup-dev          - Complete development environment setup"
+	@echo "  clean-env          - Remove virtual environment"
+	@echo "  recreate-env       - Clean and recreate environment"
+	@echo "  validate-env       - Validate environment setup"
+	@echo ""
+	@echo "Installation:"
 	@echo "  install            - Install package in development mode"
 	@echo "  install-dev        - Install with development dependencies"
 	@echo ""
@@ -48,8 +54,28 @@ BANDIT := bandit
 PRECOMMIT := pre-commit
 
 # Setup and Installation
-setup-dev: install-dev pre-commit
+setup-env:
+	@echo "🌍 Setting up QeMLflow development environment..."
+	@if [ ! -d "venv" ]; then \
+		echo "Creating virtual environment..."; \
+		python3 -m venv venv; \
+	fi
+	@echo "Upgrading pip and core tools..."
+	@venv/bin/pip install --upgrade pip setuptools wheel
+	@echo "✅ Virtual environment ready!"
+	@echo "To activate: source venv/bin/activate"
+
+setup-dev: setup-env
+	@echo "Installing development dependencies..."
+	@venv/bin/pip install -e ".[dev,docs,quantum,molecular]"
+	@echo "Setting up pre-commit hooks..."
+	@venv/bin/pre-commit install
 	@echo "✅ Development environment setup complete!"
+	@echo ""
+	@echo "🚀 Next steps:"
+	@echo "  1. Activate environment: source venv/bin/activate"
+	@echo "  2. Verify installation: python -c 'import qemlflow; print(\"✅ Success!\")'"
+	@echo "  3. Run tests: make test-fast"
 
 install:
 	$(PIP) install -e .
@@ -57,6 +83,18 @@ install:
 install-dev:
 	$(PIP) install -e ".[dev,docs,quantum,molecular]"
 	@echo "✅ Development dependencies installed"
+
+clean-env:
+	@echo "🧹 Cleaning up virtual environment..."
+	@rm -rf venv/
+	@echo "✅ Virtual environment removed"
+
+recreate-env: clean-env setup-dev
+	@echo "✅ Virtual environment recreated!"
+
+validate-env:
+	@echo "🔍 Validating development environment..."
+	@python scripts/validate_environment.py
 
 # Testing
 test:
