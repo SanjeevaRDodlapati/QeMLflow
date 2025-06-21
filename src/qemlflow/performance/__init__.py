@@ -8,8 +8,10 @@ and performance monitoring capabilities.
 import functools
 import gc
 import hashlib
+import json
 import logging
 import pickle
+import psutil
 import threading
 import time
 from abc import ABC, abstractmethod
@@ -18,10 +20,18 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
-import json
-import psutil
+
+import yaml
 
 logger = logging.getLogger(__name__)
+
+# Export public API
+__all__ = [
+    'CacheStats', 'PerformanceMetrics', 'CacheBackend', 'MemoryCache', 'FileCache',
+    'CacheManager', 'PerformanceOptimizer', 'PerformanceMonitor', 'PerformanceManager',
+    'initialize_performance_system', 'get_performance_manager', 'shutdown_performance_system',
+    'cached', 'optimized', 'cache'
+]
 
 
 @dataclass
@@ -456,25 +466,28 @@ class CacheManager:
     
     def _parse_size(self, size_str: str) -> int:
         """Parse size string to bytes."""
-        size_str = size_str.upper()
+        size_str = size_str.strip().upper()
         multipliers = {
-            'B': 1,
-            'KB': 1024,
-            'MB': 1024**2,
+            'TB': 1024**4,
             'GB': 1024**3,
-            'TB': 1024**4
+            'MB': 1024**2,
+            'KB': 1024,
+            'B': 1
         }
         
+        # Check each suffix in order (longest first to avoid partial matches)
         for suffix, multiplier in multipliers.items():
             if size_str.endswith(suffix):
-                number = float(size_str[:-len(suffix)])
-                return int(number * multiplier)
+                number_str = size_str[:-len(suffix)].strip()
+                if number_str:
+                    number = float(number_str)
+                    return int(number * multiplier)
         
         # Default to bytes if no suffix
-        return int(size_str)
+        return int(float(size_str))
 
 
-def cache(cache_manager: CacheManager, cache_type: str = 'memory', 
+def cache(cache_manager: 'CacheManager', cache_type: str = 'memory', 
           ttl: Optional[int] = None, key_func: Optional[Callable] = None):
     """Cache decorator."""
     def decorator(func: Callable) -> Callable:
@@ -770,8 +783,11 @@ class PerformanceManager:
         if config_path and Path(config_path).exists():
             try:
                 with open(config_path, 'r') as f:
-                    import yaml
-                    return yaml.safe_load(f) or {}
+                    loaded_config = yaml.safe_load(f) or {}
+                    # Handle nested performance config structure
+                    if 'performance' in loaded_config:
+                        return loaded_config['performance']
+                    return loaded_config
             except Exception as e:
                 self.logger.warning(f"Failed to load config from {config_path}: {e}")
         
