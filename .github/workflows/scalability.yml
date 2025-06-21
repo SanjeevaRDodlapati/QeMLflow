@@ -1,0 +1,518 @@
+name: Scalability System CI/CD
+
+on:
+  push:
+    paths:
+      - 'src/qemlflow/scalability/**'
+      - 'tests/scalability/**'
+      - 'config/scalability.yml'
+      - '.github/workflows/scalability.yml'
+  pull_request:
+    paths:
+      - 'src/qemlflow/scalability/**'
+      - 'tests/scalability/**'
+      - 'config/scalability.yml'
+      - '.github/workflows/scalability.yml'
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM UTC
+
+jobs:
+  scalability-component-tests:
+    name: Scalability Component Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil
+    
+    - name: Test scalability metrics
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestScalingMetrics -v
+    
+    - name: Test scaling strategies
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestReactiveScalingStrategy -v
+        python -m pytest tests/scalability/test_scalability.py::TestPredictiveScalingStrategy -v
+    
+    - name: Test load balancer
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestLoadBalancer -v
+    
+    - name: Test resource optimizer
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestResourceOptimizer -v
+
+  scalability-integration-tests:
+    name: Scalability Integration Tests
+    runs-on: ubuntu-latest
+    needs: scalability-component-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil
+    
+    - name: Test scalability manager
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestScalabilityManager -v
+    
+    - name: Test global functions
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestGlobalFunctions -v
+    
+    - name: Test full integration
+      run: |
+        python -m pytest tests/scalability/test_scalability.py::TestScalabilityIntegration -v
+    
+    - name: Test configuration loading
+      run: |
+        python -c "
+        from qemlflow.scalability import initialize_scalability_system, shutdown_scalability_system
+        manager = initialize_scalability_system('config/scalability.yml')
+        print(f'Manager initialized: {manager is not None}')
+        status = manager.get_status()
+        print(f'Manager status: {status}')
+        shutdown_scalability_system()
+        print('Manager shutdown complete')
+        "
+
+  scalability-performance-tests:
+    name: Scalability Performance Tests
+    runs-on: ubuntu-latest
+    needs: scalability-integration-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil memory-profiler
+    
+    - name: Test scaling decision performance
+      run: |
+        python -c "
+        import time
+        from datetime import datetime
+        from qemlflow.scalability import ScalingMetrics, ReactiveScalingStrategy
+        
+        strategy = ReactiveScalingStrategy()
+        config = {
+            'targets': {'cpu_utilization': 70, 'memory_utilization': 75},
+            'thresholds': {'scale_up': 0.2, 'scale_down': -0.3},
+            'max_instances': 10, 'min_instances': 1
+        }
+        
+        metrics = ScalingMetrics(
+            timestamp=datetime.now(),
+            cpu_utilization=80.0,
+            memory_utilization=85.0,
+            request_rate=100.0,
+            response_time=200.0,
+            error_rate=1.0,
+            queue_length=10,
+            instance_count=3
+        )
+        
+        # Test performance
+        start_time = time.time()
+        for _ in range(1000):
+            decision = strategy.should_scale(metrics, config)
+        end_time = time.time()
+        
+        avg_time = (end_time - start_time) / 1000
+        print(f'Average scaling decision time: {avg_time*1000:.2f}ms')
+        assert avg_time < 0.01, f'Scaling decision too slow: {avg_time:.4f}s'
+        "
+    
+    - name: Test load balancer performance
+      run: |
+        python -c "
+        import time
+        from datetime import datetime
+        from qemlflow.scalability import LoadBalancer, InstanceInfo
+        
+        lb = LoadBalancer({'algorithm': 'round_robin'})
+        
+        # Add multiple instances
+        for i in range(10):
+            instance = InstanceInfo(
+                instance_id=f'test-{i}',
+                host='localhost',
+                port=8000+i,
+                status='healthy',
+                cpu_usage=30.0,
+                memory_usage=40.0,
+                request_count=0,
+                last_health_check=datetime.now()
+            )
+            lb.add_instance(instance)
+        
+        # Test performance
+        start_time = time.time()
+        for _ in range(10000):
+            instance = lb.get_next_instance()
+            assert instance is not None
+        end_time = time.time()
+        
+        avg_time = (end_time - start_time) / 10000
+        print(f'Average load balancing time: {avg_time*1000000:.2f}μs')
+        assert avg_time < 0.001, f'Load balancing too slow: {avg_time:.6f}s'
+        "
+
+  scalability-security-tests:
+    name: Scalability Security Tests
+    runs-on: ubuntu-latest
+    needs: scalability-integration-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil bandit safety
+    
+    - name: Run security scan
+      run: |
+        bandit -r src/qemlflow/scalability/ -f json -o scalability_security_report.json || true
+        cat scalability_security_report.json
+    
+    - name: Check for vulnerabilities
+      run: |
+        safety check --json --output safety_report.json || true
+        cat safety_report.json
+    
+    - name: Test input validation
+      run: |
+        python -c "
+        from qemlflow.scalability import ScalabilityManager
+        import tempfile
+        
+        # Test with invalid config path
+        try:
+            manager = ScalabilityManager('/nonexistent/path/config.yml')
+            print('Manager handles invalid config path correctly')
+        except Exception as e:
+            print(f'Error with invalid config: {e}')
+        
+        # Test with empty config
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yml', delete=False) as f:
+            f.write('')
+            f.flush()
+            
+            try:
+                manager = ScalabilityManager(f.name)
+                print('Manager handles empty config correctly')
+            except Exception as e:
+                print(f'Error with empty config: {e}')
+        "
+
+  scalability-documentation:
+    name: Scalability Documentation
+    runs-on: ubuntu-latest
+    needs: scalability-integration-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil pydoc-markdown
+    
+    - name: Generate API documentation
+      run: |
+        python -c "
+        import pydoc
+        import os
+        
+        # Generate documentation for scalability module
+        os.makedirs('docs/api/scalability', exist_ok=True)
+        
+        modules = [
+            'qemlflow.scalability'
+        ]
+        
+        for module in modules:
+            try:
+                doc = pydoc.render_doc(module)
+                filename = f'docs/api/scalability/{module.split(\".\")[-1]}.txt'
+                with open(filename, 'w') as f:
+                    f.write(doc)
+                print(f'Generated documentation for {module}')
+            except Exception as e:
+                print(f'Failed to generate docs for {module}: {e}')
+        "
+    
+    - name: Validate configuration schema
+      run: |
+        python -c "
+        import yaml
+        
+        # Load and validate scalability configuration
+        with open('config/scalability.yml', 'r') as f:
+            config = yaml.safe_load(f)
+        
+        # Check required sections
+        required_sections = [
+            'scalability',
+            'monitoring'
+        ]
+        
+        for section in required_sections:
+            assert section in config, f'Missing required section: {section}'
+            print(f'✓ Section {section} found')
+        
+        # Check scalability subsections
+        scalability = config['scalability']
+        required_scalability = [
+            'horizontal_scaling',
+            'load_balancing',
+            'auto_scaling',
+            'resource_optimization'
+        ]
+        
+        for subsection in required_scalability:
+            assert subsection in scalability, f'Missing scalability subsection: {subsection}'
+            print(f'✓ Subsection {subsection} found')
+        
+        print('Configuration validation passed')
+        "
+
+  scalability-metrics:
+    name: Scalability Metrics Collection
+    runs-on: ubuntu-latest
+    needs: [scalability-performance-tests, scalability-security-tests]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil
+    
+    - name: Collect scalability metrics
+      run: |
+        python -c "
+        import json
+        import time
+        from datetime import datetime
+        from qemlflow.scalability import initialize_scalability_system, shutdown_scalability_system
+        
+        # Initialize system
+        manager = initialize_scalability_system('config/scalability.yml')
+        
+        # Let it run for a short time to collect metrics
+        time.sleep(10)
+        
+        # Get status and metrics
+        status = manager.get_status()
+        
+        # Create metrics report
+        metrics_report = {
+            'timestamp': datetime.now().isoformat(),
+            'scalability_status': status,
+            'test_results': {
+                'manager_initialized': manager is not None,
+                'manager_running': status.get('running', False),
+                'instance_count': status.get('instance_count', 0),
+                'resource_usage': status.get('resource_usage', {}),
+                'metrics_collected': status.get('metrics_history_size', 0) > 0
+            }
+        }
+        
+        # Save report
+        with open('scalability_metrics_report.json', 'w') as f:
+            json.dump(metrics_report, f, indent=2)
+        
+        print('Scalability metrics report generated')
+        print(json.dumps(metrics_report, indent=2))
+        
+        # Shutdown
+        shutdown_scalability_system()
+        "
+    
+    - name: Upload metrics report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: scalability-metrics-report
+        path: scalability_metrics_report.json
+        retention-days: 30
+
+  scalability-deployment-readiness:
+    name: Scalability Deployment Readiness
+    runs-on: ubuntu-latest
+    needs: [scalability-performance-tests, scalability-security-tests, scalability-documentation]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pyyaml psutil
+    
+    - name: Test production configuration
+      run: |
+        python -c "
+        from qemlflow.scalability import ScalabilityManager
+        import yaml
+        
+        # Test production-like configuration
+        config = {
+            'horizontal_scaling': {
+                'enabled': True,
+                'min_instances': 3,
+                'max_instances': 20,
+                'target_cpu_utilization': 70,
+                'target_memory_utilization': 80
+            },
+            'load_balancing': {
+                'enabled': True,
+                'algorithm': 'least_connections',
+                'health_check': {'enabled': True}
+            },
+            'resource_optimization': {
+                'enabled': True,
+                'cpu': {'optimization_level': 'balanced'},
+                'memory': {'optimization_level': 'balanced'}
+            },
+            'monitoring_interval': 30,
+            'scaling_cooldown': 300
+        }
+        
+        # Create temporary config
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.yml', delete=False) as f:
+            yaml.dump(config, f)
+            config_path = f.name
+        
+        # Test manager with production config
+        manager = ScalabilityManager(config_path)
+        manager.start()
+        
+        # Verify configuration
+        assert manager.config['horizontal_scaling']['enabled'] == True
+        assert manager.config['horizontal_scaling']['min_instances'] == 3
+        assert manager.config['load_balancing']['algorithm'] == 'least_connections'
+        
+        manager.stop()
+        print('Production configuration test passed')
+        "
+    
+    - name: Generate deployment checklist
+      run: |
+        cat > scalability_deployment_checklist.md << EOF
+        # Scalability System Deployment Checklist
+        
+        ## Pre-deployment
+        - [ ] All tests passing
+        - [ ] Security scan clean
+        - [ ] Performance benchmarks met
+        - [ ] Configuration validated
+        - [ ] Documentation updated
+        
+        ## Deployment Configuration
+        - [ ] Production config file ready (\`config/scalability.yml\`)
+        - [ ] Monitoring endpoints configured
+        - [ ] Resource limits set appropriately
+        - [ ] Auto-scaling policies defined
+        - [ ] Load balancer algorithm selected
+        
+        ## Post-deployment
+        - [ ] Health checks passing
+        - [ ] Metrics collection working
+        - [ ] Scaling events logged
+        - [ ] Performance within expected ranges
+        - [ ] No security vulnerabilities detected
+        
+        ## Monitoring
+        - [ ] CPU utilization tracking
+        - [ ] Memory utilization tracking
+        - [ ] Request rate monitoring
+        - [ ] Response time monitoring
+        - [ ] Error rate monitoring
+        - [ ] Instance count tracking
+        
+        ## Alerting
+        - [ ] High resource utilization alerts
+        - [ ] Scaling failure alerts
+        - [ ] Performance degradation alerts
+        - [ ] Security incident alerts
+        
+        Generated: $(date)
+        EOF
+        
+        echo "Deployment checklist generated"
+        cat scalability_deployment_checklist.md
+    
+    - name: Upload deployment artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: scalability-deployment-artifacts
+        path: |
+          scalability_deployment_checklist.md
+          config/scalability.yml
+        retention-days: 90

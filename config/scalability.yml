@@ -1,0 +1,229 @@
+# QeMLflow Scalability Configuration
+# Horizontal scaling, load balancing, and resource optimization settings
+
+scalability:
+  # Horizontal Scaling Configuration
+  horizontal_scaling:
+    enabled: true
+    min_instances: 1
+    max_instances: 10
+    target_cpu_utilization: 70
+    target_memory_utilization: 80
+    scale_up_cooldown: 300  # seconds
+    scale_down_cooldown: 600  # seconds
+    
+    # Scaling triggers
+    triggers:
+      - name: "cpu_high"
+        metric: "cpu_utilization"
+        threshold: 75
+        duration: 300
+        action: "scale_up"
+      - name: "memory_high"
+        metric: "memory_utilization"
+        threshold: 85
+        duration: 300
+        action: "scale_up"
+      - name: "queue_length"
+        metric: "task_queue_length"
+        threshold: 100
+        duration: 180
+        action: "scale_up"
+      - name: "cpu_low"
+        metric: "cpu_utilization"
+        threshold: 30
+        duration: 900
+        action: "scale_down"
+      - name: "memory_low"
+        metric: "memory_utilization"
+        threshold: 40
+        duration: 900
+        action: "scale_down"
+  
+  # Load Balancing Configuration
+  load_balancing:
+    enabled: true
+    algorithm: "round_robin"  # round_robin, least_connections, weighted_round_robin
+    health_check:
+      enabled: true
+      endpoint: "/health"
+      interval: 30
+      timeout: 10
+      healthy_threshold: 2
+      unhealthy_threshold: 3
+    
+    # Session affinity
+    session_affinity:
+      enabled: false
+      cookie_name: "qemlflow_session"
+      ttl: 3600
+    
+    # Load balancer settings
+    settings:
+      connection_timeout: 30
+      request_timeout: 300
+      max_connections_per_instance: 1000
+      retry_attempts: 3
+      retry_backoff: 1
+  
+  # Auto-scaling Policies
+  auto_scaling:
+    enabled: true
+    policies:
+      - name: "predictive_scaling"
+        type: "predictive"
+        enabled: true
+        lookback_window: 7200  # 2 hours
+        prediction_window: 1800  # 30 minutes
+        confidence_threshold: 0.8
+      
+      - name: "reactive_scaling"
+        type: "reactive"
+        enabled: true
+        metrics:
+          - name: "cpu_utilization"
+            weight: 0.4
+            target: 70
+          - name: "memory_utilization"
+            weight: 0.3
+            target: 75
+          - name: "request_rate"
+            weight: 0.2
+            target: 100
+          - name: "response_time"
+            weight: 0.1
+            target: 500  # ms
+      
+      - name: "scheduled_scaling"
+        type: "scheduled"
+        enabled: false
+        schedules:
+          - name: "business_hours"
+            cron: "0 8 * * 1-5"  # 8 AM weekdays
+            min_instances: 3
+            max_instances: 8
+          - name: "off_hours"
+            cron: "0 18 * * 1-5"  # 6 PM weekdays
+            min_instances: 1
+            max_instances: 4
+  
+  # Resource Optimization
+  resource_optimization:
+    enabled: true
+    
+    # CPU optimization
+    cpu:
+      optimization_level: "balanced"  # conservative, balanced, aggressive
+      thread_pool_size: "auto"  # auto, or specific number
+      process_affinity: false
+      frequency_scaling: true
+    
+    # Memory optimization
+    memory:
+      optimization_level: "balanced"
+      garbage_collection: "auto"
+      buffer_pool_size: "auto"
+      cache_size_limit: "1GB"
+      memory_mapping: true
+    
+    # I/O optimization
+    io:
+      optimization_level: "balanced"
+      async_io: true
+      batch_size: 100
+      connection_pooling: true
+      max_connections: 100
+    
+    # Resource limits
+    limits:
+      max_cpu_per_instance: "4"
+      max_memory_per_instance: "8GB"
+      max_disk_io: "100MB/s"
+      max_network_io: "1GB/s"
+  
+  # Distributed Computing
+  distributed_computing:
+    enabled: true
+    
+    # Task distribution
+    task_distribution:
+      strategy: "workload_aware"  # round_robin, least_loaded, workload_aware
+      task_queue_size: 1000
+      worker_pool_size: "auto"
+      task_timeout: 3600
+    
+    # Data partitioning
+    data_partitioning:
+      enabled: true
+      strategy: "hash"  # hash, range, random
+      partition_size: "100MB"
+      replication_factor: 2
+    
+    # Communication
+    communication:
+      protocol: "grpc"  # grpc, http, tcp
+      compression: true
+      encryption: true
+      heartbeat_interval: 60
+
+# Monitoring and Metrics
+monitoring:
+  scalability_metrics:
+    enabled: true
+    collection_interval: 30
+    retention_days: 30
+    
+    metrics:
+      - "instance_count"
+      - "cpu_utilization"
+      - "memory_utilization"
+      - "network_io"
+      - "disk_io"
+      - "request_rate"
+      - "response_time"
+      - "error_rate"
+      - "queue_length"
+      - "throughput"
+    
+    alerts:
+      - name: "high_cpu_utilization"
+        condition: "cpu_utilization > 90"
+        duration: 300
+        severity: "warning"
+      - name: "high_memory_utilization"
+        condition: "memory_utilization > 95"
+        duration: 180
+        severity: "critical"
+      - name: "scaling_failure"
+        condition: "scaling_operation_failed"
+        duration: 0
+        severity: "critical"
+
+# Environment-specific overrides
+environments:
+  development:
+    scalability:
+      horizontal_scaling:
+        min_instances: 1
+        max_instances: 2
+      resource_optimization:
+        memory:
+          cache_size_limit: "256MB"
+  
+  staging:
+    scalability:
+      horizontal_scaling:
+        min_instances: 2
+        max_instances: 5
+      resource_optimization:
+        memory:
+          cache_size_limit: "512MB"
+  
+  production:
+    scalability:
+      horizontal_scaling:
+        min_instances: 3
+        max_instances: 20
+      resource_optimization:
+        memory:
+          cache_size_limit: "2GB"
