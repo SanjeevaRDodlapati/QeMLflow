@@ -1,0 +1,38 @@
+{
+  "validation_id": "902d3339-bbaf-4f3a-a569-95c0b92eb16b",
+  "timestamp": "2025-06-21T11:13:59.106145+00:00",
+  "validation_type": "cross_validation",
+  "method": "kfold",
+  "dataset_name": "",
+  "model_name": "",
+  "n_folds": 3,
+  "random_state": null,
+  "stratify": false,
+  "scores": [
+    0.9411764705882353,
+    0.9411764705882353,
+    0.9375
+  ],
+  "mean_score": 0.9399509803921569,
+  "std_score": 0.001733104855849375,
+  "min_score": 0.9375,
+  "max_score": 0.9411764705882353,
+  "detailed_metrics": {
+    "accuracy_mean": 0.9411764705882352,
+    "accuracy_std": 0.04802921064280742,
+    "precision_macro_mean": 0.9391534391534391,
+    "precision_macro_std": 0.04597393438355231,
+    "recall_macro_mean": 0.9515151515151515,
+    "recall_macro_std": 0.040881022918884964,
+    "f1_macro_mean": 0.9398911273911273,
+    "f1_macro_std": 0.0482202229186343
+  },
+  "statistical_tests": {},
+  "execution_time": 0.045877933502197266,
+  "memory_usage": 0.0,
+  "status": "completed",
+  "error_message": "",
+  "environment_hash": "",
+  "data_hash": "",
+  "model_hash": ""
+}
