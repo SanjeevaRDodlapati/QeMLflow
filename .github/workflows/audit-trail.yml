@@ -1,0 +1,506 @@
+name: Audit Trail System Infrastructure
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/reproducibility/audit_trail.py'
+      - 'config/audit_trail.yml'
+      - 'tests/reproducibility/test_audit_trail.py'
+      - '.github/workflows/audit-trail.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/reproducibility/audit_trail.py'
+      - 'config/audit_trail.yml'
+      - 'tests/reproducibility/test_audit_trail.py'
+      - '.github/workflows/audit-trail.yml'
+  schedule:
+    # Run daily at 3 AM UTC to validate audit trail system
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      test_scope:
+        description: 'Test scope (basic, comprehensive, compliance)'
+        required: false
+        default: 'comprehensive'
+        type: choice
+        options:
+          - basic
+          - comprehensive
+          - compliance
+
+env:
+  PYTHON_VERSION: '3.11'
+  AUDIT_BASE_DIR: 'test_audit_logs'
+  QEMLFLOW_LOG_LEVEL: 'DEBUG'
+
+jobs:
+  audit-trail-validation:
+    name: Validate Audit Trail System
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+        test-scenario:
+          - 'basic-functionality'
+          - 'data-lineage'
+          - 'workflow-tracking'
+          - 'compliance-reporting'
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      
+      - name: Create Virtual Environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          echo "VIRTUAL_ENV=$VIRTUAL_ENV" >> $GITHUB_ENV
+          echo "$VIRTUAL_ENV/bin" >> $GITHUB_PATH
+      
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip setuptools wheel
+          pip install -e ".[dev,test]"
+          pip install pytest-xdist pytest-cov pytest-benchmark psutil
+      
+      - name: Validate Configuration
+        run: |
+          python -c "
+          import yaml
+          import sys
+          from pathlib import Path
+          
+          config_path = Path('config/audit_trail.yml')
+          if not config_path.exists():
+              print('ERROR: Audit trail config not found')
+              sys.exit(1)
+          
+          with open(config_path) as f:
+              config = yaml.safe_load(f)
+          
+          required_sections = ['storage', 'logging', 'data_lineage', 'workflow_tracking', 'compliance', 'security']
+          missing = [s for s in required_sections if s not in config]
+          if missing:
+              print(f'ERROR: Missing config sections: {missing}')
+              sys.exit(1)
+          
+          print('✅ Configuration validation passed')
+          "
+      
+      - name: Test Basic Functionality
+        if: matrix.test-scenario == 'basic-functionality'
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_audit_event_creation \
+                 tests/reproducibility/test_audit_trail.py::test_audit_manager_initialization \
+                 tests/reproducibility/test_audit_trail.py::test_event_logging \
+                 -v --tb=short --durations=10
+      
+      - name: Test Data Lineage
+        if: matrix.test-scenario == 'data-lineage'
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_data_lineage_tracking \
+                 tests/reproducibility/test_audit_trail.py::test_lineage_tree_generation \
+                 tests/reproducibility/test_audit_trail.py::test_parent_child_relationships \
+                 -v --tb=short --durations=10
+      
+      - name: Test Workflow Tracking
+        if: matrix.test-scenario == 'workflow-tracking'
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_workflow_management \
+                 tests/reproducibility/test_audit_trail.py::test_workflow_steps \
+                 tests/reproducibility/test_audit_trail.py::test_workflow_dependencies \
+                 -v --tb=short --durations=10
+      
+      - name: Test Compliance Reporting
+        if: matrix.test-scenario == 'compliance-reporting'
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_compliance_report_generation \
+                 tests/reproducibility/test_audit_trail.py::test_audit_event_integrity \
+                 tests/reproducibility/test_audit_trail.py::test_regulatory_compliance \
+                 -v --tb=short --durations=10
+      
+      - name: Integration Test with Experiment Tracking
+        run: |
+          python -c "
+          from src.qemlflow.reproducibility.audit_trail import AuditTrailManager, audit_trail
+          from src.qemlflow.reproducibility.experiment_tracking import ExperimentTracker
+          import tempfile
+          from pathlib import Path
+          
+          # Test integration
+          with tempfile.TemporaryDirectory() as tmp_dir:
+              audit_manager = AuditTrailManager(audit_dir=tmp_dir + '/audit')
+              exp_tracker = ExperimentTracker(base_dir=tmp_dir + '/experiments')
+              
+              # Start workflow
+              workflow_id = audit_manager.start_workflow('integration_test_workflow')
+              
+              # Create experiment with audit tracking
+              exp_id = exp_tracker.start_experiment('audited_experiment', 'Test with audit trail')
+              
+              # Log audit event for experiment start
+              audit_manager.log_event(
+                  action='experiment_started',
+                  resource='audited_experiment',
+                  resource_type='experiment',
+                  resource_id=exp_id
+              )
+              
+              # Add workflow step
+              step_id = audit_manager.add_workflow_step(
+                  'parameter_logging',
+                  parameters={'learning_rate': 0.01}
+              )
+              
+              # Log parameters (this would be audited)
+              exp_tracker.log_parameter('learning_rate', 0.01)
+              exp_tracker.log_metric('accuracy', 0.95)
+              
+              # Complete workflow step
+              audit_manager.complete_workflow_step(step_id, 'completed')
+              
+              # End experiment
+              exp_tracker.end_experiment()
+              
+              # Generate compliance report
+              report = audit_manager.generate_compliance_report()
+              
+              assert report['summary']['total_events'] > 0
+              print('✅ Integration test passed')
+          "
+      
+      - name: Security and Compliance Validation
+        if: github.event.inputs.test_scope == 'compliance' || github.event_name == 'schedule'
+        run: |
+          python -c "
+          from src.qemlflow.reproducibility.audit_trail import AuditTrailManager, AuditEvent
+          import tempfile
+          import json
+          import hashlib
+          
+          with tempfile.TemporaryDirectory() as tmp_dir:
+              audit_manager = AuditTrailManager(audit_dir=tmp_dir)
+              
+              # Test event integrity
+              event_id = audit_manager.log_event(
+                  action='test_security_event',
+                  resource='sensitive_data',
+                  resource_type='data',
+                  compliance_tags=['GDPR', '21_CFR_11']
+              )
+              
+              # Verify event was logged
+              events = audit_manager._load_events_in_range()
+              assert len(events) > 0
+              
+              # Verify checksum integrity
+              for event_data in events:
+                  if event_data.get('event_id') == event_id:
+                      # Recreate event and verify checksum
+                      event = AuditEvent.from_dict(event_data)
+                      original_checksum = event_data.get('checksum')
+                      event.checksum = ''  # Reset checksum
+                      event.__post_init__()  # Recalculate
+                      assert event.checksum == original_checksum, 'Checksum verification failed'
+                      break
+              
+              # Test compliance report generation
+              report = audit_manager.generate_compliance_report()
+              assert 'compliance_metrics' in report
+              assert 'violations' in report
+              
+              print('✅ Security and compliance validation passed')
+          "
+      
+      - name: Performance Benchmark
+        if: github.event.inputs.test_scope == 'comprehensive' || github.event_name == 'schedule'
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_performance_benchmarks \
+                 --benchmark-only --benchmark-sort=mean \
+                 --benchmark-min-rounds=5 \
+                 -v
+      
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: audit-trail-results-${{ matrix.python-version }}-${{ matrix.test-scenario }}
+          path: |
+            test_audit_logs/
+            logs/
+            .coverage
+          retention-days: 7
+
+  compliance-validation:
+    name: Regulatory Compliance Validation
+    runs-on: ubuntu-latest
+    needs: audit-trail-validation
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[dev,test]"
+      
+      - name: Validate GxP Compliance
+        run: |
+          python -c "
+          import yaml
+          from pathlib import Path
+          
+          config_path = Path('config/audit_trail.yml')
+          with open(config_path) as f:
+              config = yaml.safe_load(f)
+          
+          compliance = config.get('compliance', {})
+          standards = compliance.get('standards', [])
+          
+          # Check required GxP standards
+          required_standards = ['GxP', '21_CFR_11']
+          for standard in required_standards:
+              assert standard in standards, f'Missing compliance standard: {standard}'
+          
+          # Check audit requirements
+          audit_req = compliance.get('audit_requirements', {})
+          assert audit_req.get('data_integrity', False), 'Data integrity auditing required'
+          assert audit_req.get('user_authentication', False), 'User authentication auditing required'
+          assert audit_req.get('time_stamping', False), 'Time stamping required'
+          
+          print('✅ GxP compliance validation passed')
+          "
+      
+      - name: Validate Data Retention Policies
+        run: |
+          python -c "
+          import yaml
+          from pathlib import Path
+          
+          config_path = Path('config/audit_trail.yml')
+          with open(config_path) as f:
+              config = yaml.safe_load(f)
+          
+          storage = config.get('storage', {})
+          retention = storage.get('retention', {})
+          
+          # Check retention periods meet regulatory requirements
+          default_days = retention.get('default_days', 0)
+          assert default_days >= 2555, f'Retention period too short: {default_days} days (need 7 years)'
+          
+          # Check archival policy
+          archive_days = retention.get('archive_after_days', 0)
+          assert archive_days > 0, 'Archival policy required'
+          
+          print('✅ Data retention policy validation passed')
+          "
+
+  integration-testing:
+    name: Cross-Module Integration Testing
+    runs-on: ubuntu-latest
+    needs: audit-trail-validation
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -e ".[dev,test]"
+      
+      - name: Test Integration with Environment Determinism
+        run: |
+          python -c "
+          from src.qemlflow.reproducibility.audit_trail import AuditTrailManager
+          from src.qemlflow.reproducibility.environment import get_environment_manager
+          import tempfile
+          
+          with tempfile.TemporaryDirectory() as tmp_dir:
+              audit_manager = AuditTrailManager(audit_dir=tmp_dir)
+              env_manager = get_environment_manager()
+              
+              # Capture environment with audit tracking
+              audit_manager.log_event(
+                  action='environment_capture_started',
+                  resource='current_environment',
+                  resource_type='environment'
+              )
+              
+              env_fingerprint = env_manager.capture_environment()
+              
+              audit_manager.log_event(
+                  action='environment_capture_completed',
+                  resource='current_environment',
+                  resource_type='environment',
+                  metadata={'fingerprint': env_fingerprint.fingerprint_hash}
+              )
+              
+              # Verify audit events were created
+              events = audit_manager._load_events_in_range()
+              assert len(events) >= 2, 'Expected at least 2 audit events'
+              
+              print('✅ Environment determinism integration passed')
+          "
+      
+      - name: Test Full Reproducibility Pipeline
+        run: |
+          python -c "
+          from src.qemlflow.reproducibility.audit_trail import AuditTrailManager, audit_workflow
+          from src.qemlflow.reproducibility.experiment_tracking import ExperimentTracker
+          from src.qemlflow.reproducibility.environment import get_environment_manager
+          import tempfile
+          import numpy as np
+          
+          with tempfile.TemporaryDirectory() as tmp_dir:
+              # Initialize all systems
+              audit_manager = AuditTrailManager(audit_dir=tmp_dir + '/audit')
+              exp_tracker = ExperimentTracker(base_dir=tmp_dir + '/experiments')
+              env_manager = get_environment_manager()
+              
+              # Full reproducibility pipeline with audit trail
+              with audit_workflow('full_reproducibility_pipeline', audit_manager) as (audit_mgr, workflow_id):
+                  
+                  # Step 1: Environment capture
+                  step1_id = audit_mgr.add_workflow_step('environment_capture')
+                  env_fp = env_manager.capture_environment()
+                  audit_mgr.complete_workflow_step(step1_id, 'completed')
+                  
+                  # Step 2: Experiment setup
+                  step2_id = audit_mgr.add_workflow_step('experiment_setup')
+                  exp_id = exp_tracker.start_experiment('audited_ml_experiment')
+                  audit_mgr.complete_workflow_step(step2_id, 'completed')
+                  
+                  # Step 3: Data generation and lineage
+                  step3_id = audit_mgr.add_workflow_step('data_generation')
+                  data = np.random.seed(42); np.random.rand(100, 10)
+                  data_lineage = audit_mgr.track_data_lineage(
+                      'synthetic_data_001',
+                      'Synthetic ML Dataset',
+                      transformation='numpy.random.rand',
+                      transformation_params={'shape': [100, 10], 'seed': 42}
+                  )
+                  audit_mgr.complete_workflow_step(step3_id, 'completed')
+                  
+                  # Step 4: Model training simulation
+                  step4_id = audit_mgr.add_workflow_step('model_training', 
+                                                        parameters={'learning_rate': 0.01})
+                  exp_tracker.log_parameter('learning_rate', 0.01)
+                  exp_tracker.log_metric('accuracy', 0.95)
+                  audit_mgr.complete_workflow_step(step4_id, 'completed')
+                  
+                  # Step 5: Results validation
+                  step5_id = audit_mgr.add_workflow_step('results_validation')
+                  exp_tracker.end_experiment()
+                  audit_mgr.complete_workflow_step(step5_id, 'completed')
+              
+              # Generate compliance report
+              report = audit_mgr.generate_compliance_report()
+              
+              # Validate full pipeline
+              assert report['summary']['total_events'] > 10, 'Expected multiple audit events'
+              assert len(audit_mgr.workflow_steps) == 5, 'Expected 5 workflow steps'
+              assert len(audit_mgr.data_lineage) == 1, 'Expected 1 data lineage entry'
+              
+              print('✅ Full reproducibility pipeline test passed')
+          "
+
+  deployment-readiness:
+    name: Deployment Readiness Check
+    runs-on: ubuntu-latest
+    needs: [audit-trail-validation, compliance-validation, integration-testing]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Validate Production Configuration
+        run: |
+          python -c "
+          import yaml
+          from pathlib import Path
+          
+          config_path = Path('config/audit_trail.yml')
+          with open(config_path) as f:
+              config = yaml.safe_load(f)
+          
+          # Check production readiness
+          storage = config.get('storage', {})
+          assert storage.get('retention', {}).get('default_days', 0) >= 2555, 'Retention policy insufficient'
+          
+          security = config.get('security', {})
+          assert security.get('encryption', {}).get('enabled', False), 'Encryption should be enabled'
+          assert security.get('integrity', {}).get('enabled', False), 'Integrity checking required'
+          
+          compliance = config.get('compliance', {})
+          assert compliance.get('audit_requirements', {}).get('data_integrity', False), 'Data integrity required'
+          
+          print('✅ Production configuration validation passed')
+          "
+      
+      - name: Performance Requirements Check
+        run: |
+          pytest tests/reproducibility/test_audit_trail.py::test_performance_requirements \
+                 --benchmark-only -v
+      
+      - name: Create Deployment Summary
+        run: |
+          echo "## Audit Trail System Deployment Summary" > deployment-summary.md
+          echo "" >> deployment-summary.md
+          echo "### ✅ All Tests Passed" >> deployment-summary.md
+          echo "- Basic functionality validated" >> deployment-summary.md
+          echo "- Data lineage tracking operational" >> deployment-summary.md
+          echo "- Workflow tracking functional" >> deployment-summary.md
+          echo "- Compliance reporting implemented" >> deployment-summary.md
+          echo "- Security and integrity verified" >> deployment-summary.md
+          echo "- Cross-module integration confirmed" >> deployment-summary.md
+          echo "- Performance requirements met" >> deployment-summary.md
+          echo "" >> deployment-summary.md
+          echo "### Compliance Standards" >> deployment-summary.md
+          echo "- ✅ GxP (Good Practice)" >> deployment-summary.md
+          echo "- ✅ 21 CFR Part 11 (FDA)" >> deployment-summary.md
+          echo "- ✅ GDPR compliance ready" >> deployment-summary.md
+          echo "- ✅ ISO 27001 compatible" >> deployment-summary.md
+          echo "" >> deployment-summary.md
+          echo "### Configuration" >> deployment-summary.md
+          echo "- Storage: Local with 7-year retention" >> deployment-summary.md
+          echo "- Security: Encryption and integrity checking enabled" >> deployment-summary.md
+          echo "- Compliance: Full audit trail with tamper detection" >> deployment-summary.md
+          echo "- Performance: Asynchronous processing with caching" >> deployment-summary.md
+          echo "" >> deployment-summary.md
+          echo "**Status: Ready for Production Deployment** 🚀" >> deployment-summary.md
+      
+      - name: Upload Deployment Summary
+        uses: actions/upload-artifact@v3
+        with:
+          name: audit-trail-deployment-summary
+          path: deployment-summary.md
+          retention-days: 30

@@ -1,0 +1,3220 @@
+{
+  "checksum": "85299ea0a88e1b590aa64a519617c7318160796143945aa46f3323b694169ecc",
+  "generated_at": "2025-06-20T22:37:27.069930",
+  "installation_order": [
+    "absl-py",
+    "alembic",
+    "annotated-types",
+    "anyio",
+    "appdirs",
+    "appnope",
+    "argon2-cffi-bindings",
+    "arrow",
+    "asttokens",
+    "astunparse",
+    "async-lru",
+    "attrs",
+    "autocommand",
+    "autograd",
+    "autoray",
+    "babel",
+    "backports.tarfile",
+    "beautifulsoup4",
+    "blinker",
+    "boolean-py",
+    "cachecontrol",
+    "cachetools",
+    "certifi",
+    "cftime",
+    "charset-normalizer",
+    "click",
+    "cloudpickle",
+    "colorlog",
+    "comm",
+    "contourpy",
+    "cryptography",
+    "cycler",
+    "cyclonedx-python-lib",
+    "databricks-sdk",
+    "debugpy",
+    "decorator",
+    "defusedxml",
+    "dill",
+    "docker",
+    "executing",
+    "fastapi",
+    "fastjsonschema",
+    "filelock",
+    "flask",
+    "flatbuffers",
+    "fonttools",
+    "fqdn",
+    "fsspec",
+    "gast",
+    "gitdb",
+    "gitpython",
+    "google-auth",
+    "graphene",
+    "graphql-core",
+    "graphql-relay",
+    "greenlet",
+    "grpcio",
+    "h11",
+    "h5py",
+    "idna",
+    "importlib-metadata",
+    "inflect",
+    "iniconfig",
+    "ipywidgets",
+    "isoduration",
+    "isort",
+    "itsdangerous",
+    "jaraco.context",
+    "jedi",
+    "jinja2",
+    "joblib",
+    "json5",
+    "jsonpointer",
+    "jsonschema",
+    "jsonschema-specifications",
+    "jupyter-client",
+    "jupyter-core",
+    "jupyter-lsp",
+    "jupyter-server",
+    "jupyter-server-terminals",
+    "jupyterlab-pygments",
+    "jupyterlab-server",
+    "jupyterlab-widgets",
+    "kiwisolver",
+    "libclang",
+    "license-expression",
+    "mako",
+    "markdown",
+    "markdown-it-py",
+    "markupsafe",
+    "marshmallow",
+    "matplotlib",
+    "mccabe",
+    "mdurl",
+    "mistune",
+    "ml-dtypes",
+    "mlflow",
+    "mlflow-skinny",
+    "more-itertools",
+    "mpmath",
+    "msgpack",
+    "mypy-extensions",
+    "namex",
+    "narwhals",
+    "nbclient",
+    "nbformat",
+    "nest-asyncio",
+    "networkx",
+    "notebook",
+    "notebook-shim",
+    "numpy",
+    "opentelemetry-api",
+    "opentelemetry-sdk",
+    "opentelemetry-semantic-conventions",
+    "opt-einsum",
+    "optree",
+    "overrides",
+    "packageurl-python",
+    "packaging",
+    "pandas",
+    "pandocfilters",
+    "parso",
+    "pathspec",
+    "pbr",
+    "pennylane-lightning",
+    "pexpect",
+    "pillow",
+    "pip-api",
+    "pip-audit",
+    "platformdirs",
+    "pluggy",
+    "prometheus-client",
+    "protobuf",
+    "psutil",
+    "ptyprocess",
+    "pure-eval",
+    "py-serializable",
+    "py3dmol",
+    "pyarrow",
+    "pyasn1",
+    "pyasn1-modules",
+    "pycodestyle",
+    "pycparser",
+    "pydantic",
+    "pydantic-core",
+    "pyflakes",
+    "pygments",
+    "pyparsing",
+    "python-dateutil",
+    "python-json-logger",
+    "pytz",
+    "pyyaml",
+    "pyzmq",
+    "qemlflow",
+    "qiskit-aer",
+    "referencing",
+    "regex",
+    "requests",
+    "rfc3986-validator",
+    "rich",
+    "rpds-py",
+    "rsa",
+    "ruamel-yaml-clib",
+    "ruamel.yaml",
+    "rustworkx",
+    "safety-schemas",
+    "scikit-learn",
+    "scipy",
+    "scipy-openblas32",
+    "seaborn",
+    "send2trash",
+    "setproctitle",
+    "shellingham",
+    "six",
+    "smmap",
+    "sniffio",
+    "sortedcontainers",
+    "soupsieve",
+    "sqlalchemy",
+    "sqlparse",
+    "starlette",
+    "stevedore",
+    "sympy",
+    "tenacity",
+    "tensorboard",
+    "tensorboard-data-server",
+    "tensorflow-io-gcs-filesystem",
+    "termcolor",
+    "terminado",
+    "threadpoolctl",
+    "tinycss2",
+    "toml",
+    "tomli",
+    "tomlkit",
+    "tornado",
+    "tqdm",
+    "traitlets",
+    "typeguard",
+    "typer",
+    "types-python-dateutil",
+    "typing-extensions",
+    "typing-inspection",
+    "tzdata",
+    "uri-template",
+    "urllib3",
+    "uvicorn",
+    "wcwidth",
+    "webcolors",
+    "webencodings",
+    "websocket-client",
+    "werkzeug",
+    "widgetsnbextension",
+    "wrapt",
+    "zipp",
+    "argon2-cffi",
+    "authlib",
+    "biopython",
+    "bleach",
+    "cffi",
+    "diastatic-malt",
+    "dparse",
+    "google-pasta",
+    "gunicorn",
+    "httpcore",
+    "httpx",
+    "ipykernel",
+    "ipython-pygments-lexers",
+    "jaraco.functools",
+    "jupyterlab",
+    "keras",
+    "matplotlib-inline",
+    "mdtraj",
+    "nbconvert",
+    "netcdf4",
+    "nltk",
+    "openmm",
+    "optuna",
+    "pip-requirements-parser",
+    "plotly",
+    "prompt-toolkit",
+    "qiskit",
+    "rdkit",
+    "rfc3339-validator",
+    "sentry-sdk",
+    "stack-data",
+    "tensorflow",
+    "torch",
+    "torchvision",
+    "wandb",
+    "deepchem",
+    "ipython",
+    "jaraco.text",
+    "jupyter-events",
+    "pennylane",
+    "safety",
+    "jaraco.collections",
+    "jupyter-console",
+    "jupyter"
+  ],
+  "packages": {
+    "absl-py": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.3.0"
+    },
+    "alembic": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "SQLAlchemy>=1.4.0",
+        "Mako",
+        "typing-extensions>=4.12"
+      ],
+      "version": "1.16.2"
+    },
+    "annotated-types": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "0.7.0"
+    },
+    "anyio": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [
+        "idna>=2.8",
+        "sniffio>=1.1",
+        "typing_extensions>=4.5;"
+      ],
+      "version": "4.9.0"
+    },
+    "appdirs": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.4.4"
+    },
+    "appnope": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.1.4"
+    },
+    "argon2-cffi": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "argon2-cffi-bindings"
+      ],
+      "version": "25.1.0"
+    },
+    "argon2-cffi-bindings": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "cffi>=1.0.1"
+      ],
+      "version": "21.2.0"
+    },
+    "arrow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "python-dateutil>=2.7.0",
+        "types-python-dateutil>=2.8.10"
+      ],
+      "version": "1.3.0"
+    },
+    "asttokens": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.0.0"
+    },
+    "astunparse": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "wheel<1.0,>=0.23.0",
+        "six<2.0,>=1.6.1"
+      ],
+      "version": "1.6.3"
+    },
+    "async-lru": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "2.0.5"
+    },
+    "attrs": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "25.3.0"
+    },
+    "authlib": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "cryptography"
+      ],
+      "version": "1.6.0"
+    },
+    "autocommand": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.2.2"
+    },
+    "autograd": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "numpy<3"
+      ],
+      "version": "1.8.0"
+    },
+    "autoray": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.7.1"
+    },
+    "babel": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "2.17.0"
+    },
+    "backports.tarfile": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.2.0"
+    },
+    "beautifulsoup4": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "soupsieve>1.2",
+        "typing-extensions>=4.0.0"
+      ],
+      "version": "4.13.4"
+    },
+    "biopython": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [
+        "numpy"
+      ],
+      "version": "1.85"
+    },
+    "bleach": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "webencodings"
+      ],
+      "version": "6.2.0"
+    },
+    "blinker": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "1.9.0"
+    },
+    "boolean-py": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "5.0"
+    },
+    "cachecontrol": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "requests>=2.16.0",
+        "msgpack<2.0.0,>=0.5.2"
+      ],
+      "version": "0.14.3"
+    },
+    "cachetools": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "5.5.2"
+    },
+    "certifi": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2025.6.15"
+    },
+    "cffi": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "pycparser"
+      ],
+      "version": "1.17.1"
+    },
+    "cftime": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy>1.13.3;"
+      ],
+      "version": "1.6.4.post1"
+    },
+    "charset-normalizer": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.4.2"
+    },
+    "click": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "8.1.8"
+    },
+    "cloudpickle": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "3.1.1"
+    },
+    "colorlog": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "6.9.0"
+    },
+    "comm": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "traitlets>=4"
+      ],
+      "version": "0.2.2"
+    },
+    "contourpy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy>=1.23"
+      ],
+      "version": "1.3.2"
+    },
+    "cryptography": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "cffi>=1.14;"
+      ],
+      "version": "45.0.4"
+    },
+    "cycler": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.12.1"
+    },
+    "cyclonedx-python-lib": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "license-expression<31,>=30",
+        "packageurl-python<2,>=0.11",
+        "py-serializable<3.0.0,>=2.0.0",
+        "sortedcontainers<3.0.0,>=2.4.0"
+      ],
+      "version": "9.1.0"
+    },
+    "databricks-sdk": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "requests<3,>=2.28.1",
+        "google-auth~=2.0"
+      ],
+      "version": "0.57.0"
+    },
+    "debugpy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.8.14"
+    },
+    "decorator": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "5.2.1"
+    },
+    "deepchem": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "joblib",
+        "numpy>=1.21",
+        "pandas",
+        "scikit-learn",
+        "sympy",
+        "scipy>=1.10.1",
+        "rdkit"
+      ],
+      "version": "2.8.0"
+    },
+    "defusedxml": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.7.1"
+    },
+    "diastatic-malt": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "astunparse",
+        "gast",
+        "termcolor"
+      ],
+      "version": "2.15.2"
+    },
+    "dill": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.4.0"
+    },
+    "docker": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "requests>=2.26.0",
+        "urllib3>=1.26.0"
+      ],
+      "version": "7.1.0"
+    },
+    "dparse": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "packaging"
+      ],
+      "version": "0.6.4"
+    },
+    "executing": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.2.0"
+    },
+    "fastapi": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "starlette<0.47.0,>=0.40.0",
+        "pydantic!=1.8,!=1.8.1,!=2.0.0,!=2.0.1,!=2.1.0,<3.0.0,>=1.7.4",
+        "typing-extensions>=4.8.0"
+      ],
+      "version": "0.115.13"
+    },
+    "fastjsonschema": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.21.1"
+    },
+    "filelock": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "3.16.1"
+    },
+    "flask": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "blinker>=1.9.0",
+        "click>=8.1.3",
+        "itsdangerous>=2.2.0",
+        "jinja2>=3.1.2",
+        "markupsafe>=2.1.1",
+        "werkzeug>=3.1.0"
+      ],
+      "version": "3.1.1"
+    },
+    "flatbuffers": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "25.2.10"
+    },
+    "fonttools": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "4.58.4"
+    },
+    "fqdn": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.5.1"
+    },
+    "fsspec": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2025.5.1"
+    },
+    "gast": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.6.0"
+    },
+    "gitdb": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "smmap<6,>=3.0.1"
+      ],
+      "version": "4.0.12"
+    },
+    "gitpython": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "gitdb<5,>=4.0.1"
+      ],
+      "version": "3.1.44"
+    },
+    "google-auth": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "cachetools<6.0,>=2.0.0",
+        "pyasn1-modules>=0.2.1",
+        "rsa<5,>=3.1.4"
+      ],
+      "version": "2.40.3"
+    },
+    "google-pasta": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "six"
+      ],
+      "version": "0.2.0"
+    },
+    "graphene": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "graphql-core<3.3,>=3.1",
+        "graphql-relay<3.3,>=3.1",
+        "python-dateutil<3,>=2.7.0",
+        "typing-extensions<5,>=4.7.1"
+      ],
+      "version": "3.4.3"
+    },
+    "graphql-core": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "3.2.6"
+    },
+    "graphql-relay": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "graphql-core<3.3,>=3.2"
+      ],
+      "version": "3.2.0"
+    },
+    "greenlet": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.2.3"
+    },
+    "grpcio": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.73.0"
+    },
+    "gunicorn": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "packaging"
+      ],
+      "version": "23.0.0"
+    },
+    "h11": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.16.0"
+    },
+    "h5py": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "numpy>=1.19.3"
+      ],
+      "version": "3.14.0"
+    },
+    "httpcore": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "certifi",
+        "h11>=0.16"
+      ],
+      "version": "1.0.9"
+    },
+    "httpx": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "anyio",
+        "certifi",
+        "httpcore==1.*",
+        "idna"
+      ],
+      "version": "0.28.1"
+    },
+    "idna": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.10"
+    },
+    "importlib-metadata": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "zipp>=3.20"
+      ],
+      "version": "8.7.0"
+    },
+    "inflect": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "more-itertools>=8.5.0",
+        "typeguard>=4.0.1"
+      ],
+      "version": "7.3.1"
+    },
+    "iniconfig": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.1.0"
+    },
+    "ipykernel": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "appnope;",
+        "comm>=0.1.1",
+        "debugpy>=1.6.5",
+        "ipython>=7.23.1",
+        "jupyter-client>=6.1.12",
+        "jupyter-core!=5.0.*,>=4.12",
+        "matplotlib-inline>=0.1",
+        "nest-asyncio",
+        "packaging",
+        "psutil",
+        "pyzmq>=24",
+        "tornado>=6.1",
+        "traitlets>=5.4.0"
+      ],
+      "version": "6.29.5"
+    },
+    "ipython": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "decorator",
+        "ipython-pygments-lexers",
+        "jedi>=0.16",
+        "matplotlib-inline",
+        "pexpect>4.3;",
+        "prompt_toolkit<3.1.0,>=3.0.41",
+        "pygments>=2.4.0",
+        "stack_data",
+        "traitlets>=5.13.0",
+        "typing_extensions>=4.6;"
+      ],
+      "version": "9.3.0"
+    },
+    "ipython-pygments-lexers": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "pygments"
+      ],
+      "version": "1.1.1"
+    },
+    "ipywidgets": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "comm>=0.1.3",
+        "ipython>=6.1.0",
+        "traitlets>=4.3.1",
+        "widgetsnbextension~=4.0.14",
+        "jupyterlab_widgets~=3.0.15"
+      ],
+      "version": "8.1.7"
+    },
+    "isoduration": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "arrow>=0.15.0"
+      ],
+      "version": "20.11.0"
+    },
+    "isort": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "6.0.1"
+    },
+    "itsdangerous": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.2.0"
+    },
+    "jaraco.collections": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "jaraco.text"
+      ],
+      "version": "5.1.0"
+    },
+    "jaraco.context": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "backports.tarfile;"
+      ],
+      "version": "5.3.0"
+    },
+    "jaraco.functools": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "more-itertools"
+      ],
+      "version": "4.0.1"
+    },
+    "jaraco.text": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "jaraco.functools",
+        "jaraco.context>=4.1",
+        "autocommand",
+        "inflect",
+        "more-itertools"
+      ],
+      "version": "3.12.1"
+    },
+    "jedi": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "parso<0.9.0,>=0.8.4"
+      ],
+      "version": "0.19.2"
+    },
+    "jinja2": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "MarkupSafe>=2.0"
+      ],
+      "version": "3.1.6"
+    },
+    "joblib": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.5.1"
+    },
+    "json5": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.12.0"
+    },
+    "jsonpointer": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.0.0"
+    },
+    "jsonschema": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "attrs>=22.2.0",
+        "jsonschema-specifications>=2023.03.6",
+        "referencing>=0.28.4",
+        "rpds-py>=0.7.1"
+      ],
+      "version": "4.24.0"
+    },
+    "jsonschema-specifications": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "referencing>=0.31.0"
+      ],
+      "version": "2025.4.1"
+    },
+    "jupyter": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "notebook",
+        "jupyter-console",
+        "nbconvert",
+        "ipykernel",
+        "ipywidgets",
+        "jupyterlab"
+      ],
+      "version": "1.1.1"
+    },
+    "jupyter-client": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "jupyter-core!=5.0.*,>=4.12",
+        "python-dateutil>=2.8.2",
+        "pyzmq>=23.0",
+        "tornado>=6.2",
+        "traitlets>=5.3"
+      ],
+      "version": "8.6.3"
+    },
+    "jupyter-console": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "ipykernel>=6.14",
+        "ipython",
+        "jupyter-client>=7.0.0",
+        "jupyter-core!=5.0.*,>=4.12",
+        "prompt-toolkit>=3.0.30",
+        "pygments",
+        "pyzmq>=17",
+        "traitlets>=5.4"
+      ],
+      "version": "6.6.3"
+    },
+    "jupyter-core": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "platformdirs>=2.5",
+        "traitlets>=5.3"
+      ],
+      "version": "5.8.1"
+    },
+    "jupyter-events": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "jsonschema[format-nongpl]>=4.18.0",
+        "packaging",
+        "python-json-logger>=2.0.4",
+        "pyyaml>=5.3",
+        "referencing",
+        "rfc3339-validator",
+        "rfc3986-validator>=0.1.1",
+        "traitlets>=5.3"
+      ],
+      "version": "0.12.0"
+    },
+    "jupyter-lsp": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "jupyter-server>=1.1.2"
+      ],
+      "version": "2.2.5"
+    },
+    "jupyter-server": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "anyio>=3.1.0",
+        "argon2-cffi>=21.1",
+        "jinja2>=3.0.3",
+        "jupyter-client>=7.4.4",
+        "jupyter-core!=5.0.*,>=4.12",
+        "jupyter-events>=0.11.0",
+        "jupyter-server-terminals>=0.4.4",
+        "nbconvert>=6.4.4",
+        "nbformat>=5.3.0",
+        "overrides>=5.0",
+        "packaging>=22.0",
+        "prometheus-client>=0.9",
+        "pyzmq>=24",
+        "send2trash>=1.8.2",
+        "terminado>=0.8.3",
+        "tornado>=6.2.0",
+        "traitlets>=5.6.0",
+        "websocket-client>=1.7"
+      ],
+      "version": "2.16.0"
+    },
+    "jupyter-server-terminals": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "terminado>=0.8.3"
+      ],
+      "version": "0.5.3"
+    },
+    "jupyterlab": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "async-lru>=1.0.0",
+        "httpx>=0.25.0",
+        "ipykernel>=6.5.0",
+        "jinja2>=3.0.3",
+        "jupyter-core",
+        "jupyter-lsp>=2.0.0",
+        "jupyter-server<3,>=2.4.0",
+        "jupyterlab-server<3,>=2.27.1",
+        "notebook-shim>=0.2",
+        "packaging",
+        "setuptools>=41.1.0",
+        "tornado>=6.2.0",
+        "traitlets"
+      ],
+      "version": "4.4.3"
+    },
+    "jupyterlab-pygments": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.3.0"
+    },
+    "jupyterlab-server": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "babel>=2.10",
+        "jinja2>=3.0.3",
+        "json5>=0.9.0",
+        "jsonschema>=4.18.0",
+        "jupyter-server<3,>=1.21",
+        "packaging>=21.3",
+        "requests>=2.31"
+      ],
+      "version": "2.27.3"
+    },
+    "jupyterlab-widgets": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.0.15"
+    },
+    "keras": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "absl-py",
+        "numpy",
+        "rich",
+        "namex",
+        "h5py",
+        "optree",
+        "ml-dtypes",
+        "packaging"
+      ],
+      "version": "3.10.0"
+    },
+    "kiwisolver": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.4.8"
+    },
+    "libclang": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "18.1.1"
+    },
+    "license-expression": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [
+        "boolean.py>=4.0"
+      ],
+      "version": "30.4.1"
+    },
+    "mako": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "MarkupSafe>=0.9.2"
+      ],
+      "version": "1.3.10"
+    },
+    "markdown": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.8.2"
+    },
+    "markdown-it-py": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "mdurl~=0.1"
+      ],
+      "version": "3.0.0"
+    },
+    "markupsafe": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.0.2"
+    },
+    "marshmallow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "4.0.0"
+    },
+    "matplotlib": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "contourpy>=1.0.1",
+        "cycler>=0.10",
+        "fonttools>=4.22.0",
+        "kiwisolver>=1.3.1",
+        "numpy>=1.23",
+        "packaging>=20.0",
+        "pillow>=8",
+        "pyparsing>=2.3.1",
+        "python-dateutil>=2.7"
+      ],
+      "version": "3.10.3"
+    },
+    "matplotlib-inline": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "traitlets"
+      ],
+      "version": "0.1.7"
+    },
+    "mccabe": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.7.0"
+    },
+    "mdtraj": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [
+        "numpy<3,>=1.25.0",
+        "scipy",
+        "pyparsing",
+        "packaging",
+        "netCDF4"
+      ],
+      "version": "1.10.3"
+    },
+    "mdurl": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.1.2"
+    },
+    "mistune": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "3.1.3"
+    },
+    "ml-dtypes": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy>1.20",
+        "numpy>=1.21.2;",
+        "numpy>=1.23.3;"
+      ],
+      "version": "0.3.2"
+    },
+    "mlflow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "mlflow-skinny==3.1.0",
+        "Flask<4",
+        "alembic!=1.10.0,<2",
+        "docker<8,>=4.0.0",
+        "graphene<4",
+        "gunicorn<24;",
+        "matplotlib<4",
+        "numpy<3",
+        "pandas<3",
+        "pyarrow<21,>=4.0.0",
+        "scikit-learn<2",
+        "scipy<2",
+        "sqlalchemy<3,>=1.4.0"
+      ],
+      "version": "3.1.0"
+    },
+    "mlflow-skinny": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "cachetools<7,>=5.0.0",
+        "click<9,>=7.0",
+        "cloudpickle<4",
+        "databricks-sdk<1,>=0.20.0",
+        "fastapi<1",
+        "gitpython<4,>=3.1.9",
+        "importlib_metadata!=4.7.0,<9,>=3.7.0",
+        "opentelemetry-api<3,>=1.9.0",
+        "opentelemetry-sdk<3,>=1.9.0",
+        "packaging<26",
+        "protobuf<7,>=3.12.0",
+        "pydantic<3,>=1.10.8",
+        "pyyaml<7,>=5.1",
+        "requests<3,>=2.17.3",
+        "sqlparse<1,>=0.4.0",
+        "typing-extensions<5,>=4.0.0",
+        "uvicorn<1"
+      ],
+      "version": "3.1.0"
+    },
+    "more-itertools": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "10.3.0"
+    },
+    "mpmath": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.3.0"
+    },
+    "msgpack": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.1.1"
+    },
+    "mypy-extensions": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.1.0"
+    },
+    "namex": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.1.0"
+    },
+    "narwhals": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.43.1"
+    },
+    "nbclient": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "jupyter-client>=6.1.12",
+        "jupyter-core!=5.0.*,>=4.12",
+        "nbformat>=5.1",
+        "traitlets>=5.4"
+      ],
+      "version": "0.10.2"
+    },
+    "nbconvert": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "beautifulsoup4",
+        "bleach[css]!=5.0.0",
+        "defusedxml",
+        "jinja2>=3.0",
+        "jupyter-core>=4.7",
+        "jupyterlab-pygments",
+        "markupsafe>=2.0",
+        "mistune<4,>=2.0.3",
+        "nbclient>=0.5.0",
+        "nbformat>=5.7",
+        "packaging",
+        "pandocfilters>=1.4.1",
+        "pygments>=2.4.1",
+        "traitlets>=5.1"
+      ],
+      "version": "7.16.6"
+    },
+    "nbformat": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "fastjsonschema>=2.15",
+        "jsonschema>=2.6",
+        "jupyter-core!=5.0.*,>=4.12",
+        "traitlets>=5.1"
+      ],
+      "version": "5.10.4"
+    },
+    "nest-asyncio": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.6.0"
+    },
+    "netcdf4": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "cftime",
+        "certifi",
+        "numpy"
+      ],
+      "version": "1.7.2"
+    },
+    "networkx": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.5"
+    },
+    "nltk": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "click",
+        "joblib",
+        "regex>=2021.8.3",
+        "tqdm"
+      ],
+      "version": "3.9.1"
+    },
+    "notebook": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "jupyter-server<3,>=2.4.0",
+        "jupyterlab-server<3,>=2.27.1",
+        "jupyterlab<4.5,>=4.4.3",
+        "notebook-shim<0.3,>=0.2",
+        "tornado>=6.2.0"
+      ],
+      "version": "7.4.3"
+    },
+    "notebook-shim": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "jupyter-server<3,>=1.8"
+      ],
+      "version": "0.2.4"
+    },
+    "numpy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.26.4"
+    },
+    "openmm": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "numpy"
+      ],
+      "version": "8.3.0"
+    },
+    "opentelemetry-api": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "importlib-metadata<8.8.0,>=6.0",
+        "typing-extensions>=4.5.0"
+      ],
+      "version": "1.34.1"
+    },
+    "opentelemetry-sdk": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "opentelemetry-api==1.34.1",
+        "opentelemetry-semantic-conventions==0.55b1",
+        "typing-extensions>=4.5.0"
+      ],
+      "version": "1.34.1"
+    },
+    "opentelemetry-semantic-conventions": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "opentelemetry-api==1.34.1",
+        "typing-extensions>=4.5.0"
+      ],
+      "version": "0.55b1"
+    },
+    "opt-einsum": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "3.4.0"
+    },
+    "optree": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "typing-extensions>=4.6.0"
+      ],
+      "version": "0.16.0"
+    },
+    "optuna": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "alembic>=1.5.0",
+        "colorlog",
+        "numpy",
+        "packaging>=20.0",
+        "sqlalchemy>=1.4.2",
+        "tqdm",
+        "PyYAML"
+      ],
+      "version": "4.4.0"
+    },
+    "overrides": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "7.7.0"
+    },
+    "packageurl-python": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.17.1"
+    },
+    "packaging": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "25.0"
+    },
+    "pandas": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy>=1.23.2;",
+        "python-dateutil>=2.8.2",
+        "pytz>=2020.1",
+        "tzdata>=2022.7"
+      ],
+      "version": "2.3.0"
+    },
+    "pandocfilters": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.5.1"
+    },
+    "parso": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.8.4"
+    },
+    "pathspec": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.12.1"
+    },
+    "pbr": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "setuptools"
+      ],
+      "version": "6.1.1"
+    },
+    "pennylane": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy",
+        "scipy",
+        "networkx",
+        "rustworkx>=0.14.0",
+        "autograd",
+        "tomlkit",
+        "appdirs",
+        "autoray>=0.6.11",
+        "cachetools",
+        "pennylane-lightning>=0.41",
+        "requests",
+        "typing-extensions",
+        "packaging",
+        "diastatic-malt"
+      ],
+      "version": "0.41.1"
+    },
+    "pennylane-lightning": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "pennylane>=0.41",
+        "scipy-openblas32>=0.3.26"
+      ],
+      "version": "0.41.1"
+    },
+    "pexpect": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "ptyprocess>=0.5"
+      ],
+      "version": "4.9.0"
+    },
+    "pillow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "11.2.1"
+    },
+    "pip-api": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "pip"
+      ],
+      "version": "0.0.34"
+    },
+    "pip-audit": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "CacheControl[filecache]>=0.13.0",
+        "cyclonedx-python-lib<10,>=5",
+        "packaging>=23.0.0",
+        "pip-api>=0.0.28",
+        "pip-requirements-parser>=32.0.0",
+        "requests>=2.31.0",
+        "rich>=12.4",
+        "toml>=0.10",
+        "platformdirs>=4.2.0"
+      ],
+      "version": "2.9.0"
+    },
+    "pip-requirements-parser": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "packaging",
+        "pyparsing"
+      ],
+      "version": "32.0.1"
+    },
+    "platformdirs": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "4.3.8"
+    },
+    "plotly": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "narwhals>=1.15.1",
+        "packaging"
+      ],
+      "version": "6.1.2"
+    },
+    "pluggy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.6.0"
+    },
+    "prometheus-client": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.22.1"
+    },
+    "prompt-toolkit": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "wcwidth"
+      ],
+      "version": "3.0.51"
+    },
+    "protobuf": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "4.25.8"
+    },
+    "psutil": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "6.1.1"
+    },
+    "ptyprocess": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.7.0"
+    },
+    "pure-eval": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.2.3"
+    },
+    "py-serializable": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "defusedxml<0.8.0,>=0.7.1"
+      ],
+      "version": "2.0.0"
+    },
+    "py3dmol": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.5.0"
+    },
+    "pyarrow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "20.0.0"
+    },
+    "pyasn1": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.6.1"
+    },
+    "pyasn1-modules": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "pyasn1<0.7.0,>=0.6.1"
+      ],
+      "version": "0.4.2"
+    },
+    "pycodestyle": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.14.0"
+    },
+    "pycparser": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.22"
+    },
+    "pydantic": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "annotated-types>=0.6.0",
+        "pydantic-core==2.23.4",
+        "typing-extensions>=4.6.1;"
+      ],
+      "version": "2.9.2"
+    },
+    "pydantic-core": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "typing-extensions!=4.7.0,>=4.6.0"
+      ],
+      "version": "2.23.4"
+    },
+    "pyflakes": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.4.0"
+    },
+    "pygments": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.19.1"
+    },
+    "pyparsing": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "3.2.3"
+    },
+    "python-dateutil": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "six>=1.5"
+      ],
+      "version": "2.9.0.post0"
+    },
+    "python-json-logger": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "3.3.0"
+    },
+    "pytz": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2025.2"
+    },
+    "pyyaml": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "6.0.2"
+    },
+    "pyzmq": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "27.0.0"
+    },
+    "qemlflow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "numpy>=1.24.0",
+        "pandas>=2.0.0",
+        "scipy>=1.10.0",
+        "scikit-learn>=1.3.0",
+        "tensorflow<2.17.0,>=2.16.0",
+        "torch>=2.0.0",
+        "torchvision>=0.15.0",
+        "rdkit>=2023.3.1",
+        "deepchem>=2.8.0",
+        "biopython>=1.81",
+        "qiskit>=1.0.0",
+        "qiskit-aer>=0.13.0",
+        "pennylane>=0.32.0",
+        "matplotlib>=3.7.0",
+        "seaborn>=0.12.0",
+        "plotly>=5.15.0",
+        "tqdm>=4.64.0",
+        "pyyaml>=6.0",
+        "click>=8.1.0"
+      ],
+      "version": "0.2.0"
+    },
+    "qiskit": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "rustworkx>=0.15.0",
+        "numpy<3,>=1.17",
+        "scipy>=1.5",
+        "dill>=0.3",
+        "stevedore>=3.0.0",
+        "typing-extensions"
+      ],
+      "version": "2.1.0"
+    },
+    "qiskit-aer": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "qiskit>=1.1.0",
+        "numpy>=1.16.3",
+        "scipy>=1.0",
+        "psutil>=5",
+        "python-dateutil>=2.8.0"
+      ],
+      "version": "0.17.1"
+    },
+    "rdkit": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy",
+        "Pillow"
+      ],
+      "version": "2025.3.3"
+    },
+    "referencing": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "attrs>=22.2.0",
+        "rpds-py>=0.7.0",
+        "typing-extensions>=4.4.0;"
+      ],
+      "version": "0.36.2"
+    },
+    "regex": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2024.11.6"
+    },
+    "requests": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "charset_normalizer<4,>=2",
+        "idna<4,>=2.5",
+        "urllib3<3,>=1.21.1",
+        "certifi>=2017.4.17"
+      ],
+      "version": "2.32.4"
+    },
+    "rfc3339-validator": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "six"
+      ],
+      "version": "0.1.4"
+    },
+    "rfc3986-validator": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.1.1"
+    },
+    "rich": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "markdown-it-py>=2.2.0",
+        "pygments<3.0.0,>=2.13.0"
+      ],
+      "version": "14.0.0"
+    },
+    "rpds-py": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.25.1"
+    },
+    "rsa": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "pyasn1>=0.1.3"
+      ],
+      "version": "4.9.1"
+    },
+    "ruamel-yaml-clib": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.2.12"
+    },
+    "ruamel.yaml": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "ruamel.yaml.clib>=0.2.7;"
+      ],
+      "version": "0.18.14"
+    },
+    "rustworkx": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [
+        "numpy<3,>=1.16.0"
+      ],
+      "version": "0.16.0"
+    },
+    "safety": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "authlib>=1.2.0",
+        "click<8.2.0,>=8.0.2",
+        "dparse>=0.6.4",
+        "filelock~=3.16.1",
+        "httpx",
+        "jinja2>=3.1.0",
+        "marshmallow>=3.15.0",
+        "nltk>=3.9",
+        "packaging>=21.0",
+        "psutil~=6.1.0",
+        "pydantic<2.10.0,>=2.6.0",
+        "requests",
+        "ruamel-yaml>=0.17.21",
+        "safety-schemas==0.0.14",
+        "setuptools>=65.5.1",
+        "tenacity",
+        "tomlkit",
+        "typer>=0.12.1",
+        "typing-extensions>=4.7.1"
+      ],
+      "version": "3.5.2"
+    },
+    "safety-schemas": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "dparse>=0.6.4",
+        "packaging>=21.0",
+        "pydantic<2.10.0,>=2.6.0",
+        "ruamel-yaml>=0.17.21",
+        "typing-extensions>=4.7.1"
+      ],
+      "version": "0.0.14"
+    },
+    "scikit-learn": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy>=1.22.0",
+        "scipy>=1.8.0",
+        "joblib>=1.2.0",
+        "threadpoolctl>=3.1.0"
+      ],
+      "version": "1.7.0"
+    },
+    "scipy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy<2.5,>=1.23.5"
+      ],
+      "version": "1.15.3"
+    },
+    "scipy-openblas32": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "0.3.29.265.1"
+    },
+    "seaborn": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy!=1.24.0,>=1.20",
+        "pandas>=1.2",
+        "matplotlib!=3.6.1,>=3.4"
+      ],
+      "version": "0.13.2"
+    },
+    "send2trash": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1\r"
+      },
+      "requires": [],
+      "version": "1.8.3"
+    },
+    "sentry-sdk": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "urllib3>=1.26.11",
+        "certifi"
+      ],
+      "version": "2.30.0"
+    },
+    "setproctitle": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "1.3.6"
+    },
+    "shellingham": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.5.4"
+    },
+    "six": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.17.0"
+    },
+    "smmap": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "5.0.2"
+    },
+    "sniffio": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1\r"
+      },
+      "requires": [],
+      "version": "1.3.1"
+    },
+    "sortedcontainers": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.4.0"
+    },
+    "soupsieve": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.7"
+    },
+    "sqlalchemy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "greenlet>=1;",
+        "typing-extensions>=4.6.0"
+      ],
+      "version": "2.0.41"
+    },
+    "sqlparse": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "0.5.3"
+    },
+    "stack-data": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "executing>=1.2.0",
+        "asttokens>=2.1.0",
+        "pure-eval"
+      ],
+      "version": "0.6.3"
+    },
+    "starlette": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "anyio<5,>=3.6.2"
+      ],
+      "version": "0.46.2"
+    },
+    "stevedore": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "pbr>=2.0.0"
+      ],
+      "version": "5.4.1"
+    },
+    "sympy": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "mpmath<1.4,>=1.1.0"
+      ],
+      "version": "1.14.0"
+    },
+    "tenacity": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "9.1.2"
+    },
+    "tensorboard": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "absl-py>=0.4",
+        "grpcio>=1.48.2",
+        "markdown>=2.6.8",
+        "numpy>=1.12.0",
+        "protobuf!=4.24.0,>=3.19.6",
+        "setuptools>=41.0.0",
+        "six>1.9",
+        "tensorboard-data-server<0.8.0,>=0.7.0",
+        "werkzeug>=1.0.1"
+      ],
+      "version": "2.16.2"
+    },
+    "tensorboard-data-server": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.7.2"
+    },
+    "tensorflow": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "absl-py>=1.0.0",
+        "astunparse>=1.6.0",
+        "flatbuffers>=23.5.26",
+        "gast!=0.5.0,!=0.5.1,!=0.5.2,>=0.2.1",
+        "google-pasta>=0.1.1",
+        "h5py>=3.10.0",
+        "libclang>=13.0.0",
+        "ml-dtypes~=0.3.1",
+        "opt-einsum>=2.3.2",
+        "packaging",
+        "protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<5.0.0dev,>=3.20.3",
+        "requests<3,>=2.21.0",
+        "setuptools",
+        "six>=1.12.0",
+        "termcolor>=1.1.0",
+        "typing-extensions>=3.6.6",
+        "wrapt>=1.11.0",
+        "grpcio<2.0,>=1.24.3",
+        "tensorboard<2.17,>=2.16",
+        "keras>=3.0.0",
+        "tensorflow-io-gcs-filesystem>=0.23.1;",
+        "numpy<2.0.0,>=1.23.5;"
+      ],
+      "version": "2.16.2"
+    },
+    "tensorflow-io-gcs-filesystem": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.37.1"
+    },
+    "termcolor": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.1.0"
+    },
+    "terminado": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "ptyprocess;",
+        "tornado>=6.1.0"
+      ],
+      "version": "0.18.1"
+    },
+    "threadpoolctl": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.6.0"
+    },
+    "tinycss2": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "webencodings>=0.4"
+      ],
+      "version": "1.4.0"
+    },
+    "toml": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.10.2"
+    },
+    "tomli": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "2.0.1"
+    },
+    "tomlkit": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "0.13.3"
+    },
+    "torch": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "filelock",
+        "typing-extensions>=4.8.0",
+        "sympy",
+        "networkx",
+        "jinja2",
+        "fsspec"
+      ],
+      "version": "2.2.2"
+    },
+    "torchvision": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "numpy",
+        "torch==2.2.2",
+        "pillow!=8.3.*,>=5.3.0"
+      ],
+      "version": "0.17.2"
+    },
+    "tornado": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "6.5.1"
+    },
+    "tqdm": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "4.67.1"
+    },
+    "traitlets": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [],
+      "version": "5.14.3"
+    },
+    "typeguard": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "typing-extensions>=4.10.0"
+      ],
+      "version": "4.3.0"
+    },
+    "typer": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [
+        "click>=8.0.0",
+        "typing-extensions>=3.7.4.3",
+        "shellingham>=1.3.0",
+        "rich>=10.11.0"
+      ],
+      "version": "0.16.0"
+    },
+    "types-python-dateutil": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.9.0.20250516"
+    },
+    "typing-extensions": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "4.14.0"
+    },
+    "typing-inspection": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "typing-extensions>=4.12.0"
+      ],
+      "version": "0.4.1"
+    },
+    "tzdata": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2025.2"
+    },
+    "uri-template": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.3.0"
+    },
+    "urllib3": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "2.5.0"
+    },
+    "uvicorn": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [
+        "click>=7.0",
+        "h11>=0.8"
+      ],
+      "version": "0.34.3"
+    },
+    "wandb": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "click!=8.0.0,>=7.1",
+        "gitpython!=3.1.29,>=1.0.0",
+        "packaging",
+        "platformdirs",
+        "protobuf!=4.21.0,!=5.28.0,<7,>=3.19.0;",
+        "psutil>=5.0.0",
+        "pydantic<3",
+        "pyyaml",
+        "requests<3,>=2.0.0",
+        "sentry-sdk>=2.0.0",
+        "setproctitle",
+        "typing-extensions<5,>=4.8"
+      ],
+      "version": "0.20.1"
+    },
+    "wcwidth": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "0.2.13"
+    },
+    "webcolors": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "24.11.1"
+    },
+    "webencodings": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.0"
+      },
+      "requires": [],
+      "version": "0.5.1"
+    },
+    "websocket-client": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.1"
+      },
+      "requires": [],
+      "version": "1.8.0"
+    },
+    "werkzeug": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.3"
+      },
+      "requires": [
+        "MarkupSafe>=2.1.1"
+      ],
+      "version": "3.1.3"
+    },
+    "widgetsnbextension": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "4.0.14"
+    },
+    "wrapt": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.2"
+      },
+      "requires": [],
+      "version": "1.17.2"
+    },
+    "zipp": {
+      "installer": "pip",
+      "metadata": {
+        "has_record": true,
+        "summary": "Metadata-Version: 2.4"
+      },
+      "requires": [],
+      "version": "3.23.0"
+    }
+  },
+  "platform_requirements": {
+    "architecture": "64bit",
+    "platform": "Darwin",
+    "python_version": "3.11.6"
+  },
+  "version": "1.0.0"
+}

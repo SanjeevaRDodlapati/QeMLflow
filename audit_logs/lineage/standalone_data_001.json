@@ -1,0 +1,20 @@
+{
+  "data_id": "standalone_data_001",
+  "name": "Standalone Test Data",
+  "path": "",
+  "checksum": "",
+  "size": 0,
+  "created_at": "2025-06-21T10:46:09.889179+00:00",
+  "parent_data": [],
+  "child_data": [],
+  "transformation": "",
+  "transformation_params": {},
+  "transformation_code": "",
+  "creator": "sanjeevadodlapati",
+  "purpose": "",
+  "quality_score": 1.0,
+  "validation_status": "pending",
+  "sensitivity_level": "public",
+  "retention_policy": "",
+  "compliance_tags": []
+}
