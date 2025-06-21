@@ -6,6 +6,19 @@ from pathlib import Path
 src_dir = Path(__file__).parent.parent / "src"
 if str(src_dir) not in sys.path:
     sys.path.insert(0, str(src_dir))
+
+# Configure matplotlib for testing BEFORE any other imports
+os.environ['MPLBACKEND'] = 'Agg'
+os.environ['TESTING'] = '1'
+
+try:
+    import matplotlib
+    matplotlib.use('Agg', force=True)
+    import matplotlib.pyplot as plt
+    plt.ioff()  # Turn off interactive mode
+    plt.rcParams['figure.max_open_warning'] = 0
+except ImportError:
+    pass
 """
 Pytest configuration and shared fixtures for QeMLflow tests.
 
@@ -307,3 +320,26 @@ except ImportError:
 skip_if_no_qiskit = pytest.mark.skipif(
     not QISKIT_AVAILABLE, reason="Qiskit not available"
 )
+
+# Matplotlib figure management for testing
+@pytest.fixture(autouse=True)
+def auto_close_figures():
+    """Automatically close matplotlib figures after each test."""
+    yield
+    try:
+        import matplotlib.pyplot as plt
+        plt.close('all')
+    except ImportError:
+        pass
+
+
+@pytest.fixture
+def figure_manager():
+    """Provide a figure manager for tests that create multiple figures."""
+    try:
+        from qemlflow.testing.matplotlib_config import FigureManager
+        manager = FigureManager()
+        yield manager
+        manager.close_all_figures()
+    except ImportError:
+        yield None

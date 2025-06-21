@@ -189,7 +189,7 @@ class ModernVQE(QuantumAlgorithmBase):
         plt.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        plt.show()
+        safe_show()
 
 
 class ModernQAOA(QuantumAlgorithmBase):
@@ -562,7 +562,7 @@ class QuantumChemistryWorkflow:
         plt.title("H₂ Molecule Potential Energy Surface")
         plt.legend()
         plt.grid(True, alpha=0.3)
-        plt.show()
+        safe_show()
 
 
 # Export main classes and functions

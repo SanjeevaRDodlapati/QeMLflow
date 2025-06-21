@@ -215,7 +215,7 @@ except Exception as e:
     plt.xlabel("True Values")
     plt.ylabel("Predictions")
     plt.title("Model Predictions")
-    plt.show()"""
+    safe_show()"""
         )
 
         # Summary

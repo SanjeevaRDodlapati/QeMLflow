@@ -6,6 +6,8 @@ machine learning models, and chemical analysis results.
 """
 
 import logging
+import os
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -21,9 +23,51 @@ try:
     # Set default style
     plt.style.use("default")
     sns.set_palette("husl")
+    
+    # Configure for testing environments
+    if ('pytest' in sys.modules or 
+        'unittest' in sys.modules or 
+        os.environ.get('TESTING', '').lower() in ('1', 'true')):
+        plt.ioff()  # Non-interactive mode for testing
+        plt.rcParams['figure.max_open_warning'] = 0
+        
 except ImportError:
     logging.warning("Matplotlib/Seaborn not available. Visualization will be limited.")
     MATPLOTLIB_AVAILABLE = False
+
+
+def safe_show(fig=None, save_path=None):
+    """Safe replacement for safe_show() that auto-closes figures in testing."""
+    if not MATPLOTLIB_AVAILABLE:
+        return
+        
+    try:
+        if save_path:
+            if fig:
+                fig.savefig(save_path, bbox_inches='tight', dpi=100)
+            else:
+                plt.savefig(save_path, bbox_inches='tight', dpi=100)
+        
+        # Check if we're in a testing environment
+        is_testing = ('pytest' in sys.modules or 
+                     'unittest' in sys.modules or 
+                     os.environ.get('TESTING', '').lower() in ('1', 'true'))
+        
+        if not is_testing:
+            if fig:
+                fig.show()
+            else:
+                safe_show()
+                
+    finally:
+        # Always close figures in testing, optionally in production
+        if ('pytest' in sys.modules or 
+            'unittest' in sys.modules or 
+            os.environ.get('TESTING', '').lower() in ('1', 'true')):
+            if fig:
+                plt.close(fig)
+            else:
+                plt.close()
 
 try:
     from rdkit import Chem
@@ -200,7 +244,7 @@ class MolecularVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Property distribution plot saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting property distributions: {e}")
@@ -265,7 +309,7 @@ class ModelVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Feature importance plot saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting feature importance: {e}")
@@ -312,7 +356,7 @@ class ModelVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Model performance plot saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting model performance: {e}")
@@ -370,7 +414,7 @@ class ModelVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Predictions plot saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting predictions: {e}")
@@ -425,7 +469,7 @@ class ModelVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Confusion matrix saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting confusion matrix: {e}")
@@ -526,7 +570,7 @@ class ChemicalSpaceVisualizer:
                 plt.savefig(filename, dpi=300, bbox_inches="tight")
                 logging.info(f"Chemical space plot saved to {filename}")
             else:
-                plt.show()
+                safe_show()
 
         except Exception as e:
             logging.error(f"Error plotting chemical space: {e}")

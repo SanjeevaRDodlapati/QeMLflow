@@ -387,7 +387,7 @@ def create_concept_mastery_heatmap(concept_data: Dict[str, List[float]]) -> Any:
     plt.xlabel("Learning Sessions")
     plt.ylabel("Concepts")
     plt.tight_layout()
-    plt.show()
+    safe_show()
 
     return plt.gcf()
 

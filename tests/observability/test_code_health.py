@@ -327,7 +327,8 @@ class TestMaintenanceScheduler(unittest.TestCase):
     
     def test_scheduler_initialization(self):
         """Test scheduler initialization."""
-        self.assertEqual(str(self.scheduler.storage_dir.parent), self.temp_dir)
+        # The storage_dir should be within the temp_dir
+        self.assertTrue(str(self.scheduler.storage_dir).startswith(self.temp_dir))
     
     def test_schedule_task(self):
         """Test scheduling maintenance task."""

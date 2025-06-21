@@ -1,0 +1,138 @@
+# QeMLflow Security Configuration
+# Production-grade security hardening settings
+
+security:
+  # Security vulnerability scanning
+  scanning:
+    enabled: true
+    schedule: "0 2 * * *"  # Daily at 2 AM
+    tools:
+      safety: true        # Python package vulnerability scanning
+      bandit: true        # Code security analysis
+      dependency_check: true
+    
+  # Authentication and authorization
+  authentication:
+    enabled: false        # Set to true in production
+    type: "token"         # Options: token, oauth, ldap
+    token_length: 32
+    token_expiry: 86400   # 24 hours in seconds
+    require_auth_for:
+      - "api_access"
+      - "admin_functions"
+      - "sensitive_data"
+    
+  # SSL/TLS configuration
+  ssl:
+    enabled: false        # Set to true in production
+    cert_file: "certs/server.crt"
+    key_file: "certs/server.key"
+    ca_file: "certs/ca.crt"
+    check_hostname: true
+    verify_mode: "CERT_REQUIRED"
+    ciphers: "ECDHE+AESGCM:ECDHE+CHACHA20:DHE+AESGCM:DHE+CHACHA20:!aNULL:!MD5:!DSS"
+    protocols:
+      - "TLSv1.2"
+      - "TLSv1.3"
+    
+  # Security monitoring and intrusion detection
+  monitoring:
+    enabled: true
+    log_level: "INFO"
+    alert_thresholds:
+      failed_auth_attempts: 5      # Per hour
+      unusual_access_patterns: 10   # Per hour
+      resource_abuse: 3            # Per hour
+    monitoring_types:
+      - "authentication"
+      - "access_patterns"
+      - "resource_usage"
+      - "file_access"
+      - "network_activity"
+    
+  # Compliance validation
+  compliance:
+    enabled: true
+    standards:
+      - "general"         # General security best practices
+      - "pci"            # PCI DSS (if handling payment data)
+      - "hipaa"          # HIPAA (if handling health data)
+    validation_schedule: "0 4 * * 0"  # Weekly on Sunday at 4 AM
+    auto_remediate: false
+    
+  # Security policies
+  policies:
+    password_policy:
+      min_length: 12
+      require_uppercase: true
+      require_lowercase: true
+      require_numbers: true
+      require_special_chars: true
+      max_age_days: 90
+      
+    session_policy:
+      timeout_minutes: 30
+      max_concurrent_sessions: 5
+      secure_cookies: true
+      
+    access_policy:
+      max_login_attempts: 3
+      lockout_duration_minutes: 15
+      require_2fa: false
+      
+    data_policy:
+      encrypt_at_rest: true
+      encrypt_in_transit: true
+      data_retention_days: 365
+      secure_deletion: true
+      
+  # Security headers for web interfaces
+  headers:
+    content_security_policy: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'"
+    strict_transport_security: "max-age=31536000; includeSubDomains"
+    x_frame_options: "DENY"
+    x_content_type_options: "nosniff"
+    x_xss_protection: "1; mode=block"
+    referrer_policy: "strict-origin-when-cross-origin"
+    
+  # Security logging
+  logging:
+    enabled: true
+    log_file: "logs/security.log"
+    log_rotation: "daily"
+    log_retention_days: 90
+    include_source_ip: true
+    include_user_agent: true
+    include_request_headers: true
+    
+  # Backup and recovery security
+  backup_security:
+    encrypt_backups: true
+    backup_verification: true
+    secure_backup_location: true
+    backup_access_control: true
+    
+  # Development vs Production settings
+  environment:
+    development:
+      authentication:
+        enabled: false
+      ssl:
+        enabled: false
+      monitoring:
+        log_level: "DEBUG"
+        
+    production:
+      authentication:
+        enabled: true
+        type: "oauth"
+        require_2fa: true
+      ssl:
+        enabled: true
+        verify_mode: "CERT_REQUIRED"
+      monitoring:
+        log_level: "WARNING"
+        alert_thresholds:
+          failed_auth_attempts: 3
+          unusual_access_patterns: 5
+          resource_abuse: 2

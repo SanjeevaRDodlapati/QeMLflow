@@ -52,6 +52,34 @@ try:
 except ImportError:
     RDKIT_AVAILABLE = False
 
+# Import safe_show for automatic figure management in testing
+try:
+    from qemlflow.testing.matplotlib_config import safe_show
+except ImportError:
+    def safe_show(fig=None, save_path=None):
+        import matplotlib.pyplot as plt
+        if save_path:
+            if fig:
+                fig.savefig(save_path, bbox_inches='tight', dpi=100)
+            else:
+                plt.savefig(save_path, bbox_inches='tight', dpi=100)
+        else:
+            if fig:
+                fig.show()
+            else:
+                plt.show()
+        
+        # Auto-close in testing environments
+        import os
+        import sys
+        if ('pytest' in sys.modules or 
+            'unittest' in sys.modules or 
+            os.environ.get('TESTING', '').lower() in ('1', 'true')):
+            if fig:
+                plt.close(fig)
+            else:
+                plt.close()
+
 
 class InteractiveAssessment:
     """
@@ -483,7 +511,7 @@ class ProgressDashboard:
         plt.xlabel("Session Number")
         plt.ylabel("Time (minutes)")
         plt.grid(True, alpha=0.3)
-        plt.show()
+        safe_show()
 
         return plt.gcf()
 
@@ -525,7 +553,7 @@ class ProgressDashboard:
         ax.set_xticklabels(concepts)
         ax.set_ylim(0, 1)
         ax.set_title("Concept Mastery Overview", y=1.08)
-        plt.show()
+        safe_show()
 
         return fig
 
@@ -567,7 +595,7 @@ class ProgressDashboard:
         plt.ylabel("Score")
         plt.ylim(0, 1)
         plt.grid(True, alpha=0.3)
-        plt.show()
+        safe_show()
 
         return plt.gcf()
 
@@ -744,7 +772,7 @@ class MolecularVisualizationWidget:
             axes[i].tick_params(axis="x", rotation=45)
 
         plt.tight_layout()
-        plt.show()
+        safe_show()
 
 
 # Convenience functions for easy widget creation

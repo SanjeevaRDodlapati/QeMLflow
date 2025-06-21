@@ -303,7 +303,7 @@ class QuantumChemistryTutorial:
                 if MATPLOTLIB_AVAILABLE:
                     try:
                         # _fig = circuit_drawer(circuit, output="mpl", style="clifford")
-                        plt.show()
+                        safe_show()
                     except Exception:
                         print("Circuit visualization not available")
 
