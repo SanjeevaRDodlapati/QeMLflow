@@ -1,0 +1,61 @@
+# 🧪 Development Environment Configuration
+# Optimized for development and debugging
+
+application:
+  debug: true
+  log_level: "DEBUG"
+
+security:
+  authentication:
+    enabled: false
+  
+  encryption:
+    data_at_rest: false
+    data_in_transit: false
+  
+  session:
+    secure_cookies: false
+
+database:
+  url: "sqlite:///development.db"
+  echo: true
+
+performance:
+  workers: 1
+  max_connections: 50
+  
+  cache:
+    enabled: false
+    backend: "memory"
+
+monitoring:
+  logging:
+    format: "text"
+    level: "DEBUG"
+    retention_days: 3
+
+resources:
+  memory:
+    limit: "512MB"
+  
+  cpu:
+    limit: "0.5"
+
+scientific:
+  experiment_tracking:
+    auto_log: false
+  
+  quantum:
+    simulator: true
+
+features:
+  new_ui: true
+  experimental_algorithms: true
+
+# Development-specific settings
+development:
+  hot_reload: true
+  auto_restart: true
+  profiling: true
+  debug_toolbar: true
+  mock_external_apis: true

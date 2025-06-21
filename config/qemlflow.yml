@@ -1,0 +1,105 @@
+# 🔧 QeMLflow Base Configuration
+# Default configuration settings for all environments
+
+application:
+  name: "QeMLflow Enterprise Platform"
+  version: "2.0.0"
+  debug: false
+  log_level: "INFO"
+
+security:
+  authentication:
+    enabled: true
+    method: "oauth2"
+    token_expiry: 3600
+  
+  authorization:
+    rbac_enabled: false
+    default_role: "user"
+    admin_users: []
+  
+  encryption:
+    data_at_rest: false
+    data_in_transit: true
+    algorithm: "AES-256-GCM"
+  
+  session:
+    secure_cookies: true
+    same_site: "strict"
+    max_age: 3600
+
+database:
+  url: "sqlite:///qemlflow.db"
+  echo: false
+  pool_size: 5
+
+performance:
+  workers: 2
+  max_connections: 100
+  timeout: 30
+  keep_alive: 2
+  
+  cache:
+    enabled: false
+    backend: "memory"
+    ttl: 3600
+    max_size: "100MB"
+  
+  optimizations:
+    lazy_loading: true
+    connection_pooling: false
+    query_caching: false
+    static_file_caching: false
+
+monitoring:
+  metrics:
+    enabled: true
+    port: 8080
+    path: "/metrics"
+  
+  health_checks:
+    enabled: true
+    interval: 30
+    timeout: 10
+  
+  logging:
+    format: "text"
+    level: "INFO"
+    rotation: "daily"
+    max_size: "100MB"
+    retention_days: 7
+
+resources:
+  memory:
+    limit: "1GB"
+    warning_threshold: 0.8
+  
+  cpu:
+    limit: "1.0"
+    warning_threshold: 0.8
+  
+  disk:
+    limit: "5GB"
+    warning_threshold: 0.9
+
+scientific:
+  experiment_tracking:
+    enabled: true
+    backend: "mlflow"
+    auto_log: true
+  
+  model_optimization:
+    parallel_training: false
+    gpu_acceleration: false
+    memory_optimization: true
+  
+  quantum:
+    enabled: false
+    backend: "qiskit"
+    simulator: true
+
+features:
+  new_ui: false
+  advanced_analytics: false
+  experimental_algorithms: false
+  api_v2: false
