@@ -1,0 +1,424 @@
+# 🐳 Enterprise-Grade Docker Compose for QeMLflow Scientific Computing Platform
+# Multi-environment orchestration with security, monitoring, and scalability
+
+version: '3.8'
+
+# =============================================================================
+# ENTERPRISE SERVICES ARCHITECTURE
+# =============================================================================
+services:
+
+  # ---------------------------------------------------------------------------
+  # 🔒 PRODUCTION ENVIRONMENT (Security-Hardened)
+  # ---------------------------------------------------------------------------
+  qemlflow-production:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: production
+      args:
+        - BUILD_ENV=production
+        - SECURITY_SCAN=enabled
+    image: qemlflow:production-latest
+    container_name: qemlflow-prod
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+      - apparmor:docker-default
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=100m
+      - /var/log:noexec,nosuid,size=50m
+    volumes:
+      - qemlflow-prod-data:/app/data:ro
+      - qemlflow-prod-logs:/app/logs:rw
+      - qemlflow-prod-config:/app/config:ro
+    environment:
+      - PRODUCTION=1
+      - PYTHONPATH=/app/src
+      - LOG_LEVEL=INFO
+      - ENVIRONMENT=production
+      - SECURITY_MODE=enterprise
+    networks:
+      - qemlflow-prod-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import src; print('Production health check passed')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    cap_drop:
+      - ALL
+    cap_add:
+      - CAP_NET_BIND_SERVICE
+
+  # ---------------------------------------------------------------------------
+  # 🔒 DISTROLESS PRODUCTION (Maximum Security)
+  # ---------------------------------------------------------------------------
+  qemlflow-distroless:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: distroless-production
+    image: qemlflow:distroless-latest
+    container_name: qemlflow-distroless
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=50m
+    volumes:
+      - qemlflow-prod-data:/app/data:ro
+      - qemlflow-prod-config:/app/config:ro
+    environment:
+      - PRODUCTION=1
+      - PYTHONPATH=/app/src
+      - SECURITY_MODE=maximum
+    networks:
+      - qemlflow-secure-network
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    cap_drop:
+      - ALL
+
+  # ---------------------------------------------------------------------------
+  # 🧪 DEVELOPMENT ENVIRONMENT (Full Tooling)
+  # ---------------------------------------------------------------------------
+  qemlflow-development:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: development
+    image: qemlflow:dev-latest
+    container_name: qemlflow-dev
+    volumes:
+      - .:/app:cached
+      - qemlflow-dev-cache:/home/qemlflow/.cache:rw
+      - qemlflow-dev-vscode:/home/qemlflow/.vscode-server:rw
+    environment:
+      - DEVELOPMENT=1
+      - PYTHONPATH=/app/src
+      - LOG_LEVEL=DEBUG
+      - ENVIRONMENT=development
+    networks:
+      - qemlflow-dev-network
+    working_dir: /app
+    command: bash
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '4.0'
+    ports:
+      - "8000:8000"  # Documentation server
+      - "5000:5000"  # Development API
+
+  # ---------------------------------------------------------------------------
+  # 🧪 TESTING ENVIRONMENT (Isolated & Reproducible)
+  # ---------------------------------------------------------------------------
+  qemlflow-testing:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: testing
+    image: qemlflow:test-latest
+    container_name: qemlflow-test
+    volumes:
+      - qemlflow-test-results:/app/test-results:rw
+      - qemlflow-test-coverage:/app/coverage-reports:rw
+      - qemlflow-test-cache:/home/qemlflow/.cache:rw
+    environment:
+      - TESTING=1
+      - PYTHONPATH=/app/src
+      - CI=true
+      - COVERAGE_CORE=sysmon
+    networks:
+      - qemlflow-test-network
+    command: >
+      bash -c "
+        echo '🧪 Running comprehensive test suite...' &&
+        python -m pytest tests/ -v 
+          --cov=src 
+          --cov-report=html:/app/coverage-reports 
+          --cov-report=xml:/app/coverage-reports/coverage.xml
+          --junitxml=/app/test-results/junit.xml
+          --benchmark-only
+          --benchmark-sort=mean
+      "
+    deploy:
+      resources:
+        limits:
+          memory: 3G
+          cpus: '3.0'
+
+  # ---------------------------------------------------------------------------
+  # 📊 JUPYTER NOTEBOOK ENVIRONMENT (Secure Research)
+  # ---------------------------------------------------------------------------
+  qemlflow-notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: notebook
+    image: qemlflow:notebook-latest
+    container_name: qemlflow-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks:rw
+      - ./data:/app/data:rw
+      - qemlflow-notebook-cache:/home/qemlflow/.cache:rw
+      - qemlflow-notebook-config:/home/qemlflow/.jupyter:rw
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=qemlflow-secure-token
+      - JUPYTER_BASE_URL=/lab
+      - ENVIRONMENT=research
+    networks:
+      - qemlflow-research-network
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '1.0'
+
+  # ---------------------------------------------------------------------------
+  # 📊 DOCUMENTATION SERVER (Enterprise Docs)
+  # ---------------------------------------------------------------------------
+  qemlflow-docs:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: development
+    image: qemlflow:docs-latest
+    container_name: qemlflow-docs
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./docs:/app/docs:ro
+      - qemlflow-docs-cache:/home/qemlflow/.cache:rw
+    environment:
+      - ENVIRONMENT=documentation
+    networks:
+      - qemlflow-public-network
+    working_dir: /app
+    command: mkdocs serve --dev-addr=0.0.0.0:8000 --strict
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: '1.0'
+
+  # ---------------------------------------------------------------------------
+  # 🔍 SECURITY SCANNER (Continuous Monitoring)
+  # ---------------------------------------------------------------------------
+  qemlflow-security:
+    build:
+      context: .
+      dockerfile: Dockerfile.enterprise
+      target: security-scanner
+    image: qemlflow:security-latest
+    container_name: qemlflow-security
+    volumes:
+      - qemlflow-security-reports:/app/security-reports:rw
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - SECURITY_SCAN_MODE=comprehensive
+      - SCAN_TARGET=all-images
+    networks:
+      - qemlflow-security-network
+    command: >
+      bash -c "
+        echo '🔍 Running security scans...' &&
+        safety check --json --output /app/security-reports/safety-latest.json &&
+        bandit -r src/ -f json -o /app/security-reports/bandit-latest.json &&
+        pip-audit --desc --output /app/security-reports/pip-audit-latest.json --format json &&
+        echo '✅ Security scans completed'
+      "
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '2.0'
+
+  # ---------------------------------------------------------------------------
+  # 📈 MONITORING & OBSERVABILITY (Enterprise Metrics)
+  # ---------------------------------------------------------------------------
+  qemlflow-monitoring:
+    image: prom/prometheus:latest
+    container_name: qemlflow-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - qemlflow-monitoring-data:/prometheus:rw
+    networks:
+      - qemlflow-monitoring-network
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+
+# =============================================================================
+# ENTERPRISE VOLUME MANAGEMENT
+# =============================================================================
+volumes:
+  # Production volumes (persistent)
+  qemlflow-prod-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/production
+  qemlflow-prod-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./logs/production
+  qemlflow-prod-config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./config/production
+
+  # Development volumes (performance optimized)
+  qemlflow-dev-cache:
+    driver: local
+  qemlflow-dev-vscode:
+    driver: local
+
+  # Testing volumes (isolated)
+  qemlflow-test-results:
+    driver: local
+  qemlflow-test-coverage:
+    driver: local
+  qemlflow-test-cache:
+    driver: local
+
+  # Research volumes (flexible)
+  qemlflow-notebook-cache:
+    driver: local
+  qemlflow-notebook-config:
+    driver: local
+
+  # Documentation volumes
+  qemlflow-docs-cache:
+    driver: local
+
+  # Security volumes
+  qemlflow-security-reports:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./reports/security
+
+  # Monitoring volumes
+  qemlflow-monitoring-data:
+    driver: local
+
+# =============================================================================
+# ENTERPRISE NETWORK ARCHITECTURE
+# =============================================================================
+networks:
+  # Production network (isolated, secure)
+  qemlflow-prod-network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.1.0/24
+
+  # Secure network (maximum isolation)
+  qemlflow-secure-network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.2.0/24
+
+  # Development network (flexible)
+  qemlflow-dev-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.10.0/24
+
+  # Testing network (isolated)
+  qemlflow-test-network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.20.0/24
+
+  # Research network (external access)
+  qemlflow-research-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.30.0/24
+
+  # Public network (documentation)
+  qemlflow-public-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.40.0/24
+
+  # Security network (monitoring)
+  qemlflow-security-network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.20.50.0/24
+
+  # Monitoring network (observability)
+  qemlflow-monitoring-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.60.0/24
+
+# =============================================================================
+# ENTERPRISE DEPLOYMENT PROFILES
+# =============================================================================
+
+# To use specific profiles:
+# docker-compose --profile production up -d    # Production only
+# docker-compose --profile development up -d   # Development only
+# docker-compose --profile research up -d      # Research environment
+# docker-compose --profile security up -d      # Security monitoring
+# docker-compose --profile monitoring up -d    # Full monitoring stack

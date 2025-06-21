@@ -1,0 +1,84 @@
+# 📊 Prometheus Configuration for QeMLflow Container Monitoring
+# Enterprise-grade observability and metrics collection
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'qemlflow-enterprise'
+    environment: 'production'
+
+# Rule files for alerting
+rule_files:
+  - "alert_rules.yml"
+  - "recording_rules.yml"
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+# Scrape configurations for container monitoring
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Docker container metrics
+  - job_name: 'docker-containers'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 15s
+    scrape_timeout: 10s
+
+  # QeMLflow application metrics
+  - job_name: 'qemlflow-production'
+    static_configs:
+      - targets: ['qemlflow-production:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # QeMLflow development metrics
+  - job_name: 'qemlflow-development'
+    static_configs:
+      - targets: ['qemlflow-development:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Jupyter notebook metrics
+  - job_name: 'qemlflow-jupyter'
+    static_configs:
+      - targets: ['qemlflow-jupyter:8888']
+    metrics_path: '/metrics'
+    scrape_interval: 60s
+    scrape_timeout: 15s
+
+  # Node exporter for host metrics
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+
+  # Security metrics from container scans
+  - job_name: 'security-metrics'
+    static_configs:
+      - targets: ['qemlflow-security:9091']
+    metrics_path: '/security-metrics'
+    scrape_interval: 300s  # Every 5 minutes
+
+# Remote write configuration for long-term storage
+remote_write:
+  - url: "http://remote-storage:9201/api/v1/write"
+    queue_config:
+      max_samples_per_send: 1000
+      max_shards: 200
+      capacity: 2500
