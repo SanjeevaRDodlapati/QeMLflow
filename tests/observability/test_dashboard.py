@@ -284,7 +284,7 @@ class TestChartGenerator(unittest.TestCase):
         }
         
         # Mock PLOTLY_AVAILABLE as False
-        with patch('src.qemlflow.observability.dashboard.PLOTLY_AVAILABLE', False):
+        with patch('qemlflow.observability.dashboard.PLOTLY_AVAILABLE', False):
             result = self.chart_generator.generate_chart(widget, data)
         
         self.assertIn("test_chart.png", result)

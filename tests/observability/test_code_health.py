@@ -398,9 +398,9 @@ class TestCodeHealthDashboard(unittest.TestCase):
         self.assertIsNotNone(self.dashboard.complexity_analyzer)
         self.assertIsNotNone(self.dashboard.maintenance_scheduler)
     
-    @patch('src.qemlflow.observability.code_health.TechnicalDebtAnalyzer')
-    @patch('src.qemlflow.observability.code_health.CodeQualityAnalyzer')
-    @patch('src.qemlflow.observability.code_health.ComplexityAnalyzer')
+    @patch('qemlflow.observability.code_health.TechnicalDebtAnalyzer')
+    @patch('qemlflow.observability.code_health.CodeQualityAnalyzer')
+    @patch('qemlflow.observability.code_health.ComplexityAnalyzer')
     def test_analyze_code_health(self, mock_complexity, mock_quality, mock_debt):
         """Test analyzing code health."""
         # Mock analyzers

@@ -296,9 +296,9 @@ class TestPerformanceMonitor:
             assert monitor.is_monitoring is False
             assert isinstance(monitor.metrics_collector, MetricsCollector)
     
-    @patch('src.qemlflow.observability.monitoring.psutil.cpu_percent')
-    @patch('src.qemlflow.observability.monitoring.psutil.virtual_memory')
-    @patch('src.qemlflow.observability.monitoring.psutil.disk_usage')
+    @patch('qemlflow.observability.monitoring.psutil.cpu_percent')
+    @patch('qemlflow.observability.monitoring.psutil.virtual_memory')
+    @patch('qemlflow.observability.monitoring.psutil.disk_usage')
     def test_collect_system_metrics(self, mock_disk, mock_memory, mock_cpu):
         """Test system metrics collection."""
         # Mock system metrics
@@ -395,7 +395,7 @@ class TestMonitorDecorator:
     def test_monitor_performance_decorator(self):
         """Test monitor_performance decorator."""
         # Mock the global monitor
-        with patch('src.qemlflow.observability.monitoring.get_performance_monitor') as mock_get_monitor:
+        with patch('qemlflow.observability.monitoring.get_performance_monitor') as mock_get_monitor:
             mock_monitor = Mock()
             mock_get_monitor.return_value = mock_monitor
             
@@ -471,9 +471,9 @@ class TestGlobalInstances:
 class TestIntegration:
     """Integration tests for monitoring system."""
     
-    @patch('src.qemlflow.observability.monitoring.psutil.cpu_percent')
-    @patch('src.qemlflow.observability.monitoring.psutil.virtual_memory')
-    @patch('src.qemlflow.observability.monitoring.psutil.disk_usage')
+    @patch('qemlflow.observability.monitoring.psutil.cpu_percent')
+    @patch('qemlflow.observability.monitoring.psutil.virtual_memory')
+    @patch('qemlflow.observability.monitoring.psutil.disk_usage')
     def test_full_monitoring_workflow(self, mock_disk, mock_memory, mock_cpu):
         """Test complete monitoring workflow."""
         # Mock system metrics

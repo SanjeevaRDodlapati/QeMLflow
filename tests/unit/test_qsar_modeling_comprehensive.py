@@ -1258,11 +1258,11 @@ class TestCrossModuleCompatibility(unittest.TestCase):
 
     def test_availability_flags(self):
         """Test availability flags are properly set"""
-        from src.drug_design import qsar_modeling
+        from qemlflow.research.drug_discovery import qsar
 
         # These should be boolean values
-        self.assertIsInstance(qsar_modeling.RDKIT_AVAILABLE, bool)
-        self.assertIsInstance(qsar_modeling.MORDRED_AVAILABLE, bool)
+        self.assertIsInstance(qsar.RDKIT_AVAILABLE, bool)
+        self.assertIsInstance(qsar.MORDRED_AVAILABLE, bool)
 
     def test_numpy_pandas_integration(self):
         """Test integration with numpy and pandas"""

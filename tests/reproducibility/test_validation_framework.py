@@ -241,7 +241,7 @@ class TestCrossValidator:
         self.model = LogisticRegression(random_state=42)
         self.validator = CrossValidator()
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_kfold_validation(self, mock_log):
         """Test k-fold cross-validation."""
         result = self.validator.validate(
@@ -262,7 +262,7 @@ class TestCrossValidator:
         # Check audit logging
         assert mock_log.call_count >= 2  # start and completion
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_stratified_validation(self, mock_log):
         """Test stratified cross-validation."""
         result = self.validator.validate(
@@ -276,7 +276,7 @@ class TestCrossValidator:
         assert result.status == "completed"
         assert len(result.scores) == 3
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_timeseries_validation(self, mock_log):
         """Test time series cross-validation."""
         result = self.validator.validate(
@@ -289,7 +289,7 @@ class TestCrossValidator:
         assert result.status == "completed"
         assert len(result.scores) == 3
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_invalid_cv_method(self, mock_log):
         """Test invalid cross-validation method."""
         result = self.validator.validate(
@@ -300,7 +300,7 @@ class TestCrossValidator:
         assert result.status == "failed"
         assert "Unknown CV method" in result.error_message
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_detailed_metrics(self, mock_log):
         """Test detailed metrics calculation."""
         result = self.validator.validate(
@@ -330,7 +330,7 @@ class TestBenchmarkTester:
         self.model = LogisticRegression(random_state=42)
         self.tester = BenchmarkTester()
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_classification_benchmark(self, mock_log):
         """Test classification benchmark."""
         result = self.tester.validate(
@@ -451,7 +451,7 @@ class TestValidationFramework:
         """Cleanup test environment."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_run_cross_validation(self, mock_log):
         """Test running cross-validation."""
         result = self.framework.run_cross_validation(
@@ -468,7 +468,7 @@ class TestValidationFramework:
         result_files = list(Path(self.temp_dir).glob("validation_*.json"))
         assert len(result_files) == 1
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_run_benchmark(self, mock_log):
         """Test running benchmark."""
         X_train, X_test, y_train, y_test = train_test_split(
@@ -498,7 +498,7 @@ class TestValidationFramework:
         assert result.validation_type == "statistical"
         assert len(self.framework.validation_results) == 1
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_comprehensive_validation(self, mock_log):
         """Test comprehensive validation suite."""
         report = self.framework.run_comprehensive_validation(
@@ -598,7 +598,7 @@ class TestContinuousValidator:
         assert len(self.continuous_validator.validation_queue) == 1
         assert self.continuous_validator.validation_queue[0] == task_config
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_execute_validation_task(self, mock_log):
         """Test executing validation task."""
         task_config = {
@@ -632,7 +632,7 @@ class TestStandaloneAPI:
         )
         self.model = LogisticRegression(random_state=42)
     
-    @patch('src.qemlflow.reproducibility.validation_framework.get_validation_framework')
+    @patch('qemlflow.reproducibility.validation_framework.get_validation_framework')
     def test_validate_model_cross_validation(self, mock_get_framework):
         """Test validate_model function with cross-validation."""
         mock_framework = Mock()
@@ -648,7 +648,7 @@ class TestStandaloneAPI:
         assert result == mock_result
         mock_framework.run_cross_validation.assert_called_once()
     
-    @patch('src.qemlflow.reproducibility.validation_framework.get_validation_framework')
+    @patch('qemlflow.reproducibility.validation_framework.get_validation_framework')
     def test_validate_model_comprehensive(self, mock_get_framework):
         """Test validate_model function with comprehensive validation."""
         mock_framework = Mock()
@@ -672,7 +672,7 @@ class TestStandaloneAPI:
                 validation_type="invalid_type"
             )
     
-    @patch('src.qemlflow.reproducibility.validation_framework.get_validation_framework')
+    @patch('qemlflow.reproducibility.validation_framework.get_validation_framework')
     def test_run_benchmark_test(self, mock_get_framework):
         """Test run_benchmark_test function."""
         mock_framework = Mock()
@@ -691,7 +691,7 @@ class TestStandaloneAPI:
         assert result == mock_result
         mock_framework.run_benchmark.assert_called_once()
     
-    @patch('src.qemlflow.reproducibility.validation_framework.get_validation_framework')
+    @patch('qemlflow.reproducibility.validation_framework.get_validation_framework')
     def test_generate_validation_report(self, mock_get_framework):
         """Test generate_validation_report function."""
         mock_framework = Mock()
@@ -760,7 +760,7 @@ class TestIntegration:
         """Cleanup integration test environment."""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
     
-    @patch('src.qemlflow.reproducibility.validation_framework.log_audit_event')
+    @patch('qemlflow.reproducibility.validation_framework.log_audit_event')
     def test_end_to_end_classification_validation(self, mock_log):
         """Test end-to-end classification validation."""
         framework = ValidationFramework(results_dir=self.temp_dir)
