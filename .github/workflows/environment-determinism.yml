@@ -1,0 +1,551 @@
+name: Environment Determinism
+
+on:
+  push:
+    branches: [main, develop, 'feature/*']
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    # Run daily to check for environment drift
+    - cron: '0 6 * * *'
+
+env:
+  PYTHON_VERSION: '3.9'
+  NODE_VERSION: '18'
+
+jobs:
+  environment-fingerprinting:
+    name: Environment Fingerprinting
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Create environment fingerprint
+        run: |
+          python -c "
+          from qemlflow.reproducibility import capture_environment
+          import json
+          
+          fingerprint = capture_environment()
+          
+          # Save fingerprint
+          with open('environment_fingerprint_${{ matrix.os }}_py${{ matrix.python-version }}.json', 'w') as f:
+              json.dump(fingerprint.to_dict(), f, indent=2)
+          
+          print(f'Environment fingerprint created for ${{ matrix.os }} Python ${{ matrix.python-version }}')
+          print(f'Fingerprint hash: {fingerprint.fingerprint_hash}')
+          print(f'Python version: {fingerprint.python_version}')
+          print(f'Platform: {fingerprint.platform_info[\"system\"]}')
+          print(f'Total packages: {len(fingerprint.packages)}')
+          "
+      
+      - name: Generate exact requirements
+        run: |
+          python -c "
+          from qemlflow.reproducibility import generate_requirements
+          
+          # Generate exact requirements for this environment
+          content = generate_requirements('requirements-exact-${{ matrix.os }}-py${{ matrix.python-version }}.txt')
+          print('Generated exact requirements file')
+          print(f'Requirements file size: {len(content)} characters')
+          "
+      
+      - name: Upload environment artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment-fingerprints-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: |
+            environment_fingerprint_*.json
+            requirements-exact-*.txt
+          retention-days: 30
+
+  environment-validation:
+    name: Environment Validation
+    runs-on: ubuntu-latest
+    needs: environment-fingerprinting
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Download environment fingerprints
+        uses: actions/download-artifact@v3
+        with:
+          path: ./artifacts
+      
+      - name: Validate environment consistency
+        run: |
+          python -c "
+          import os
+          import json
+          from pathlib import Path
+          from qemlflow.reproducibility import EnvironmentFingerprint, validate_fingerprint, ValidationLevel
+          
+          # Load all fingerprints
+          fingerprints = {}
+          artifacts_dir = Path('artifacts')
+          
+          for artifact_dir in artifacts_dir.iterdir():
+              if artifact_dir.is_dir():
+                  for fp_file in artifact_dir.glob('environment_fingerprint_*.json'):
+                      with open(fp_file, 'r') as f:
+                          fp_data = json.load(f)
+                          fingerprint = EnvironmentFingerprint.from_dict(fp_data)
+                          fingerprints[fp_file.stem] = fingerprint
+          
+          print(f'Loaded {len(fingerprints)} environment fingerprints')
+          
+          # Compare fingerprints across platforms for same Python version
+          validation_results = []
+          
+          # Group by Python version
+          by_python_version = {}
+          for name, fp in fingerprints.items():
+              py_version = fp.python_version
+              if py_version not in by_python_version:
+                  by_python_version[py_version] = []
+              by_python_version[py_version].append((name, fp))
+          
+          # Validate consistency within each Python version
+          for py_version, fps in by_python_version.items():
+              print(f'\nValidating Python {py_version} environments:')
+              
+              if len(fps) > 1:
+                  # Use first fingerprint as reference
+                  reference_name, reference_fp = fps[0]
+                  print(f'  Using {reference_name} as reference')
+                  
+                  for name, fp in fps[1:]:
+                      print(f'  Validating {name} against reference...')
+                      
+                      report = validate_fingerprint(reference_fp, ValidationLevel.LENIENT)
+                      
+                      print(f'    Validation result: {report.overall_status.value}')
+                      print(f'    Total checks: {report.statistics[\"total_checks\"]}')
+                      print(f'    Warnings: {report.statistics[\"warnings\"]}')
+                      print(f'    Failures: {report.statistics[\"failed\"]}')
+                      
+                      if report.overall_status.value != 'passed':
+                          for issue in report.issues:
+                              if issue.severity.value in ['warning', 'failed']:
+                                  print(f'      [{issue.severity.value.upper()}] {issue.category}: {issue.message}')
+                      
+                      validation_results.append({
+                          'reference': reference_name,
+                          'target': name,
+                          'status': report.overall_status.value,
+                          'issues': len([i for i in report.issues if i.severity.value in ['warning', 'failed']])
+                      })
+          
+          # Save validation results
+          with open('environment_validation_results.json', 'w') as f:
+              json.dump(validation_results, f, indent=2)
+          
+          print(f'\nValidation complete. Results saved to environment_validation_results.json')
+          "
+      
+      - name: Upload validation results
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment-validation-results
+          path: environment_validation_results.json
+          retention-days: 30
+
+  deterministic-installation:
+    name: Deterministic Installation Test
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Test deterministic installation
+        run: |
+          # Create a fresh virtual environment
+          python -m venv test_env
+          source test_env/bin/activate
+          
+          # Install basic dependencies
+          pip install --upgrade pip setuptools wheel
+          
+          # Install QeMLflow
+          pip install -e .
+          
+          python -c "
+          import tempfile
+          import json
+          from pathlib import Path
+          from qemlflow.reproducibility import (
+              capture_environment, 
+              create_installation_plan,
+              create_lockfile,
+              install_from_lockfile
+          )
+          
+          print('Testing deterministic installation workflow...')
+          
+          # Capture current environment
+          fingerprint = capture_environment()
+          print(f'Captured environment with {len(fingerprint.packages)} packages')
+          
+          # Create installation plan
+          plan = create_installation_plan(fingerprint, include_dev=False)
+          print(f'Created installation plan with {len(plan.packages)} packages')
+          print(f'Installation order: {plan.installation_order[:5]}...')  # Show first 5
+          
+          # Create lockfile
+          lockfile_path = 'test_lockfile.json'
+          create_lockfile(fingerprint, lockfile_path, include_dev=False)
+          print(f'Created lockfile: {lockfile_path}')
+          
+          # Verify lockfile integrity
+          with open(lockfile_path, 'r') as f:
+              lockfile_data = json.load(f)
+          
+          print(f'Lockfile version: {lockfile_data[\"version\"]}')
+          print(f'Packages in lockfile: {len(lockfile_data[\"packages\"])}')
+          print(f'Installation order length: {len(lockfile_data[\"installation_order\"])}')
+          print(f'Lockfile checksum: {lockfile_data[\"checksum\"][:16]}...')
+          
+          print('Deterministic installation test completed successfully!')
+          "
+
+  environment-drift-detection:
+    name: Environment Drift Detection
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Check for environment drift
+        run: |
+          python -c "
+          import os
+          import json
+          from datetime import datetime, timedelta
+          from pathlib import Path
+          from qemlflow.reproducibility import capture_environment, ValidationLevel
+          
+          print('Checking for environment drift...')
+          
+          # Capture current environment
+          current_fp = capture_environment()
+          print(f'Current environment hash: {current_fp.fingerprint_hash}')
+          
+          # Look for reference fingerprint (from main branch or last known good)
+          reference_file = 'environments/reference_environment.json'
+          
+          if Path(reference_file).exists():
+              print(f'Found reference environment file: {reference_file}')
+              
+              # Load reference fingerprint
+              with open(reference_file, 'r') as f:
+                  ref_data = json.load(f)
+              
+              from qemlflow.reproducibility import EnvironmentFingerprint, validate_fingerprint
+              reference_fp = EnvironmentFingerprint.from_dict(ref_data)
+              
+              print(f'Reference environment hash: {reference_fp.fingerprint_hash}')
+              
+              # Check if fingerprints match
+              if current_fp.fingerprint_hash == reference_fp.fingerprint_hash:
+                  print('✅ No environment drift detected')
+              else:
+                  print('⚠️  Environment drift detected!')
+                  
+                  # Perform detailed validation
+                  report = validate_fingerprint(reference_fp, ValidationLevel.MODERATE)
+                  
+                  print(f'Validation status: {report.overall_status.value}')
+                  print(f'Issues found: {len(report.issues)}')
+                  
+                  # Show critical issues
+                  critical_issues = [i for i in report.issues if i.severity.value == 'failed']
+                  if critical_issues:
+                      print('Critical issues:')
+                      for issue in critical_issues[:5]:  # Show first 5
+                          print(f'  - {issue.category}: {issue.message}')
+                  
+                  # Save drift report
+                  drift_report = {
+                      'timestamp': datetime.now().isoformat(),
+                      'reference_hash': reference_fp.fingerprint_hash,
+                      'current_hash': current_fp.fingerprint_hash,
+                      'validation_report': report.to_dict()
+                  }
+                  
+                  with open('environment_drift_report.json', 'w') as f:
+                      json.dump(drift_report, f, indent=2)
+                  
+                  print('Drift report saved to environment_drift_report.json')
+                  
+                  # Exit with error to trigger alerts
+                  exit(1)
+          else:
+              print(f'No reference environment file found at {reference_file}')
+              print('Creating new reference environment...')
+              
+              # Create reference environment file
+              os.makedirs('environments', exist_ok=True)
+              with open(reference_file, 'w') as f:
+                  json.dump(current_fp.to_dict(), f, indent=2)
+              
+              print(f'Reference environment created: {reference_file}')
+          "
+      
+      - name: Upload drift report
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: environment-drift-report
+          path: environment_drift_report.json
+          retention-days: 30
+      
+      - name: Create issue for environment drift
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read drift report if it exists
+            let driftDetails = '';
+            try {
+              const report = JSON.parse(fs.readFileSync('environment_drift_report.json', 'utf8'));
+              const validationReport = report.validation_report;
+              
+              driftDetails = `
+              **Drift Detection Details:**
+              - Reference Hash: \`${report.reference_hash}\`
+              - Current Hash: \`${report.current_hash}\`
+              - Validation Status: ${validationReport.overall_status}
+              - Issues Found: ${validationReport.statistics.failed} failed, ${validationReport.statistics.warnings} warnings
+              
+              **Critical Issues:**
+              ${validationReport.issues
+                .filter(issue => issue.severity === 'failed')
+                .slice(0, 5)
+                .map(issue => `- **${issue.category}**: ${issue.message}`)
+                .join('\n')}
+              `;
+            } catch (e) {
+              driftDetails = 'Could not read drift report details.';
+            }
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Environment Drift Detected',
+              body: `
+              Environment drift has been detected in the scheduled check.
+              
+              ${driftDetails}
+              
+              **Action Required:**
+              1. Review the environment drift report in the workflow artifacts
+              2. Update dependencies if needed
+              3. Regenerate reference environment fingerprint
+              4. Consider updating requirements files
+              
+              **Workflow Run:** ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
+              `,
+              labels: ['environment', 'drift-detection', 'ci-cd']
+            });
+
+  cross-platform-compatibility:
+    name: Cross-Platform Compatibility
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Test cross-platform environment features
+        run: |
+          python -c "
+          from qemlflow.reproducibility import (
+              capture_environment,
+              ValidationLevel,
+              validate_fingerprint
+          )
+          
+          print('Testing cross-platform environment features on ${{ matrix.os }}...')
+          
+          # Capture environment
+          fingerprint = capture_environment()
+          
+          print(f'Platform: {fingerprint.platform_info[\"system\"]}')
+          print(f'Architecture: {fingerprint.platform_info[\"architecture\"]}')
+          print(f'Python Implementation: {fingerprint.platform_info[\"python_implementation\"]}')
+          print(f'Total packages: {len(fingerprint.packages)}')
+          
+          # Test validation with self (should pass)
+          report = validate_fingerprint(fingerprint, ValidationLevel.STRICT)
+          
+          if report.overall_status.value == 'passed':
+              print('✅ Self-validation passed')
+          else:
+              print('❌ Self-validation failed')
+              for issue in report.issues:
+                  if issue.severity.value != 'passed':
+                      print(f'  - {issue.message}')
+              exit(1)
+          
+          print('Cross-platform compatibility test completed successfully!')
+          "
+
+  performance-benchmarks:
+    name: Performance Benchmarks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
+      
+      - name: Run environment determinism benchmarks
+        run: |
+          python -c "
+          import time
+          import json
+          from qemlflow.reproducibility import (
+              capture_environment,
+              create_installation_plan,
+              ValidationLevel,
+              validate_fingerprint
+          )
+          
+          print('Running environment determinism performance benchmarks...')
+          
+          benchmarks = {}
+          
+          # Benchmark environment capture
+          start_time = time.time()
+          fingerprint = capture_environment()
+          capture_time = time.time() - start_time
+          benchmarks['environment_capture_seconds'] = round(capture_time, 3)
+          
+          print(f'Environment capture: {capture_time:.3f}s')
+          
+          # Benchmark installation plan creation
+          start_time = time.time()
+          plan = create_installation_plan(fingerprint)
+          plan_time = time.time() - start_time
+          benchmarks['installation_plan_seconds'] = round(plan_time, 3)
+          
+          print(f'Installation plan creation: {plan_time:.3f}s')
+          
+          # Benchmark validation
+          start_time = time.time()
+          report = validate_fingerprint(fingerprint, ValidationLevel.MODERATE)
+          validation_time = time.time() - start_time
+          benchmarks['validation_seconds'] = round(validation_time, 3)
+          
+          print(f'Environment validation: {validation_time:.3f}s')
+          
+          # Additional metrics
+          benchmarks['total_packages'] = len(fingerprint.packages)
+          benchmarks['fingerprint_hash_length'] = len(fingerprint.fingerprint_hash)
+          benchmarks['installation_order_length'] = len(plan.installation_order)
+          
+          # Save benchmarks
+          with open('performance_benchmarks.json', 'w') as f:
+              json.dump(benchmarks, f, indent=2)
+          
+          print('Performance benchmarks:')
+          for metric, value in benchmarks.items():
+              print(f'  {metric}: {value}')
+          
+          # Performance assertions
+          assert capture_time < 10.0, f'Environment capture too slow: {capture_time}s'
+          assert plan_time < 5.0, f'Installation plan creation too slow: {plan_time}s'
+          assert validation_time < 5.0, f'Validation too slow: {validation_time}s'
+          
+          print('All performance benchmarks passed!')
+          "
+      
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-benchmarks
+          path: performance_benchmarks.json
+          retention-days: 30

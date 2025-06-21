@@ -1,0 +1,187 @@
+# QeMLflow Environment Determinism Configuration
+# This file configures how environment determinism is enforced across the project
+
+environment_determinism:
+  # Validation strictness level
+  # Options: strict, moderate, lenient
+  validation_level: "moderate"
+  
+  # Automatic environment fingerprinting
+  auto_capture: true
+  auto_capture_frequency: "daily"  # daily, weekly, manual
+  
+  # Fingerprint storage
+  fingerprint_storage:
+    enabled: true
+    directory: "environments/"
+    retention_days: 90
+    compression: true
+  
+  # Exact dependency pinning
+  dependency_pinning:
+    enabled: true
+    pin_all_packages: true
+    exclude_packages:
+      - "pip"
+      - "setuptools" 
+      - "wheel"
+      - "pkg-resources"
+    
+    # Development packages handling
+    include_dev_packages: false
+    dev_requirements_file: "requirements-dev.txt"
+    
+    # Requirements file generation
+    generate_exact_requirements: true
+    requirements_files:
+      exact: "requirements-exact.txt"
+      core: "requirements-core.txt"
+      minimal: "requirements-minimal.txt"
+      optional: "requirements-optional.txt"
+  
+  # Deterministic installation
+  deterministic_install:
+    enabled: true
+    use_lockfiles: true
+    lockfile_format: "json"  # json, yaml
+    verify_checksums: true
+    
+    # Installation options
+    pip_options:
+      - "--no-deps"
+      - "--force-reinstall"
+      - "--compile"
+      - "--no-binary=:all:"
+    
+    # Caching
+    cache_enabled: true
+    cache_directory: "~/.qemlflow/pip_cache"
+    cache_retention_days: 30
+  
+  # Environment validation
+  validation:
+    enabled: true
+    validate_on_startup: true
+    validate_before_experiments: true
+    
+    # Validation checks
+    checks:
+      python_version: true
+      platform_compatibility: true
+      package_versions: true
+      environment_variables: true
+      system_requirements: false
+    
+    # Auto-fixing
+    auto_fix:
+      enabled: false  # Manual approval required for production
+      dry_run_first: true
+      backup_before_fix: true
+    
+    # Reporting
+    generate_reports: true
+    report_format: "json"  # json, yaml, html
+    report_directory: "reports/environment/"
+  
+  # Reproducible environments
+  environment_creation:
+    enabled: true
+    use_virtual_environments: true
+    environment_prefix: "qemlflow_env_"
+    
+    # Environment isolation
+    strict_isolation: true
+    inherit_system_packages: false
+    
+    # Conda integration
+    conda_support: true
+    prefer_conda_forge: true
+    conda_env_prefix: "qemlflow_conda_"
+  
+  # Cross-platform compatibility
+  cross_platform:
+    enabled: true
+    
+    # Platform-specific handling
+    platform_specific_packages:
+      windows:
+        - "pywin32"
+        - "wmi"
+      macos:
+        - "pyobjc-core"
+      linux:
+        - "python-dbus"
+    
+    # Binary package handling
+    binary_compatibility_check: true
+    prefer_source_distributions: true
+  
+  # CI/CD integration
+  ci_integration:
+    enabled: true
+    
+    # Environment validation in CI
+    validate_in_ci: true
+    fail_on_validation_error: true
+    
+    # Artifact generation
+    generate_environment_artifacts: true
+    artifacts:
+      - "environment_fingerprint.json"
+      - "requirements-exact.txt"
+      - "lockfile.json"
+      - "validation_report.json"
+  
+  # Monitoring and alerting
+  monitoring:
+    enabled: true
+    
+    # Drift detection
+    detect_environment_drift: true
+    drift_threshold: 0.05  # 5% package changes
+    
+    # Alerting
+    alert_on_drift: true
+    alert_channels:
+      - "log"
+      - "email"
+    
+    # Metrics collection
+    collect_metrics: true
+    metrics_retention_days: 30
+
+# Logging configuration for environment determinism
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # File logging
+  file_logging:
+    enabled: true
+    log_file: "logs/environment_determinism.log"
+    max_size_mb: 10
+    backup_count: 5
+    rotation: "time"  # time, size
+  
+  # Structured logging
+  structured_logging:
+    enabled: true
+    format: "json"
+    include_context: true
+
+# Security settings
+security:
+  # Package verification
+  verify_package_signatures: true
+  check_known_vulnerabilities: true
+  
+  # Trusted sources
+  trusted_package_sources:
+    - "https://pypi.org/simple/"
+    - "https://conda.anaconda.org/"
+  
+  # Hash verification
+  verify_package_hashes: true
+  hash_algorithms:
+    - "sha256"
+    - "sha512"
