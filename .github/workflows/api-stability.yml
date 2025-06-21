@@ -1,0 +1,341 @@
+name: API Stability & Versioning
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+jobs:
+  api-compatibility:
+    name: API Compatibility Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for version comparison
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest pytest-cov
+      
+      - name: Create API snapshot
+        run: |
+          python -c "
+          from src.qemlflow.api import get_api_snapshot
+          import glob
+          
+          snapshot = get_api_snapshot()
+          modules = glob.glob('src/qemlflow/**/*.py', recursive=True)
+          modules = [m for m in modules if not m.endswith('__init__.py')]
+          
+          snapshot.create_snapshot('current', modules, 'CI/CD snapshot')
+          "
+      
+      - name: Compare with previous version
+        if: github.event_name == 'pull_request'
+        run: |
+          python -c "
+          from src.qemlflow.api import get_api_snapshot
+          
+          snapshot = get_api_snapshot()
+          snapshots = snapshot.list_snapshots()
+          
+          if len(snapshots) >= 2:
+              latest = snapshots[-1]['version']
+              previous = snapshots[-2]['version']
+              comparison = snapshot.compare_snapshots(previous, latest)
+              
+              if comparison:
+                  print(f'API Changes: {comparison[\"total_changes\"]}')
+                  print(f'Breaking Changes: {comparison[\"breaking_changes\"]}')
+                  
+                  if comparison['breaking_changes'] > 0:
+                      print('WARNING: Breaking changes detected!')
+                      exit(1)
+              else:
+                  print('No comparison possible')
+          else:
+              print('Not enough snapshots for comparison')
+          "
+      
+      - name: Run API compatibility tests
+        run: |
+          python -m pytest tests/api/ -v --tb=short
+      
+      - name: Generate compatibility report
+        run: |
+          python -c "
+          from src.qemlflow.api import get_regression_runner
+          
+          runner = get_regression_runner()
+          report = runner.run_full_regression_suite()
+          
+          print('=== API Compatibility Report ===')
+          print(f'Overall Status: {report.get(\"overall_status\", \"UNKNOWN\")}')
+          
+          api_compat = report.get('api_compatibility', {})
+          if api_compat:
+              print(f'API Compatibility Rate: {api_compat.get(\"compatibility_rate\", 0):.1f}%')
+          
+          func_compat = report.get('functional_compatibility', {})
+          if func_compat:
+              print(f'Functional Test Success Rate: {func_compat.get(\"overall_success_rate\", 0):.1f}%')
+          "
+      
+      - name: Archive API snapshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-snapshots
+          path: api_snapshots/
+
+  version-management:
+    name: Version Management
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      
+      - name: Validate version format
+        run: |
+          python -c "
+          from src.qemlflow.api import get_version, parse_version
+          
+          current_version = get_version()
+          print(f'Current version: {current_version}')
+          
+          # Validate semantic version format
+          try:
+              version_obj = parse_version(current_version)
+              print(f'Version components: {version_obj.major}.{version_obj.minor}.{version_obj.patch}')
+              print('✓ Version format is valid')
+          except Exception as e:
+              print(f'✗ Invalid version format: {e}')
+              exit(1)
+          "
+      
+      - name: Check version consistency
+        run: |
+          python -c "
+          import json
+          from pathlib import Path
+          from src.qemlflow.api import get_version
+          
+          current_version = get_version()
+          
+          # Check setup.py version
+          setup_py = Path('setup.py')
+          if setup_py.exists():
+              setup_content = setup_py.read_text()
+              if current_version not in setup_content:
+                  print(f'WARNING: Version {current_version} not found in setup.py')
+          
+          # Check pyproject.toml version
+          pyproject = Path('pyproject.toml')
+          if pyproject.exists():
+              pyproject_content = pyproject.read_text()
+              if current_version not in pyproject_content:
+                  print(f'WARNING: Version {current_version} not found in pyproject.toml')
+          
+          print(f'Version consistency check completed for {current_version}')
+          "
+      
+      - name: Auto-bump version on release
+        if: github.event_name == 'release'
+        run: |
+          python -c "
+          from src.qemlflow.api import get_version_manager, VersionType
+          
+          manager = get_version_manager()
+          current = manager.current_version
+          
+          # Determine bump type based on release tag
+          tag = '${{ github.event.release.tag_name }}'
+          
+          if 'major' in tag.lower() or 'breaking' in tag.lower():
+              bump_type = VersionType.MAJOR
+          elif 'minor' in tag.lower() or 'feature' in tag.lower():
+              bump_type = VersionType.MINOR
+          else:
+              bump_type = VersionType.PATCH
+          
+          new_version = manager.bump_version(bump_type)
+          print(f'Version bumped from {current} to {new_version}')
+          "
+
+  deprecation-check:
+    name: Deprecation Policy Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      
+      - name: Check deprecation status
+        run: |
+          python -c "
+          from src.qemlflow.api import get_deprecation_status
+          
+          status = get_deprecation_status()
+          
+          print('=== Deprecation Status Report ===')
+          print(f'Total deprecations: {status[\"total_deprecations\"]}')
+          
+          for level, count in status['by_level'].items():
+              if count > 0:
+                  print(f'{level.upper()}: {count}')
+          
+          if status['approaching_removal']:
+              print(f'WARNING: {len(status[\"approaching_removal\"])} deprecations approaching removal')
+              for item in status['approaching_removal']:
+                  print(f'  - {item}')
+          
+          print(f'Total warnings issued: {status[\"active_warnings\"]}')
+          "
+      
+      - name: Cleanup obsolete deprecations
+        run: |
+          python -c "
+          from src.qemlflow.api import get_deprecation_manager
+          
+          manager = get_deprecation_manager()
+          removed_count = manager.cleanup_removed_deprecations()
+          
+          if removed_count > 0:
+              print(f'Cleaned up {removed_count} obsolete deprecation records')
+          else:
+              print('No obsolete deprecations found')
+          "
+
+  backward-compatibility:
+    name: Backward Compatibility Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install pytest
+      
+      - name: Run regression tests
+        run: |
+          python -m pytest tests/compatibility/ -v --tb=short
+      
+      - name: Generate compatibility matrix
+        run: |
+          python -c "
+          from src.qemlflow.api import get_compatibility_matrix
+          
+          matrix = get_compatibility_matrix()
+          report = matrix.generate_compatibility_report()
+          
+          print('=== Backward Compatibility Report ===')
+          print(f'Overall success rate: {report[\"overall_success_rate\"]:.1f}%')
+          print(f'Total tests: {report[\"total_tests\"]}')
+          print(f'Passed: {report[\"passed_tests\"]}')
+          print(f'Failed: {report[\"failed_tests\"]}')
+          
+          for version, stats in report['version_compatibility'].items():
+              print(f'{version}: {stats[\"success_rate\"]:.1f}% ({stats[\"passed\"]}/{stats[\"total_tests\"]})')
+          "
+      
+      - name: Archive compatibility reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: compatibility-reports
+          path: |
+            compatibility_matrix.json
+            deprecations.json
+
+  documentation:
+    name: API Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      
+      - name: Generate API documentation
+        run: |
+          python -c "
+          from src.qemlflow.api import version_info, get_deprecation_status
+          import json
+          from pathlib import Path
+          
+          # Generate API documentation
+          api_docs = {
+              'version_info': version_info(),
+              'deprecation_status': get_deprecation_status(),
+              'compatibility_features': [
+                  'Semantic versioning',
+                  'API compatibility testing',
+                  'Deprecation management',
+                  'Backward compatibility testing'
+              ]
+          }
+          
+          docs_dir = Path('docs/api')
+          docs_dir.mkdir(parents=True, exist_ok=True)
+          
+          with open(docs_dir / 'api_status.json', 'w') as f:
+              json.dump(api_docs, f, indent=2, default=str)
+          
+          print('API documentation generated')
+          "
+      
+      - name: Upload documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-documentation
+          path: docs/api/
