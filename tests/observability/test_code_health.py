@@ -388,7 +388,7 @@ class TestCodeHealthDashboard(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures."""
         self.temp_dir = tempfile.mkdtemp()
-        self.dashboard = CodeHealthDashboard(self.temp_dir)
+        self.dashboard = CodeHealthDashboard(self.temp_dir, f"{self.temp_dir}/code_health")
     
     def test_dashboard_initialization(self):
         """Test dashboard initialization."""

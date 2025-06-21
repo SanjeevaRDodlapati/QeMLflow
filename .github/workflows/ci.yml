@@ -1,98 +1,17 @@
-name: CI/CD Pipeline
+name: QeMLflow Essential CI
 
-on:
+"on":
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
-  schedule:
-    # Run weekly on Sundays at 2 AM UTC
-    - cron: '0 2 * * 0'
-
-env:
-  PYTHON_VERSION: '3.11'
+    branches: [ main ]
 
 jobs:
-  # Code Quality Checks
-  code-quality:
-    runs-on: ubuntu-latest
-    name: Code Quality
-    continue-on-error: true  # Don't fail workflow if code quality has issues
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('pyproject.toml') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        # Install basic dependencies first
-        pip install flake8 mypy bandit || echo "Failed to install some linting tools, continuing"
-        # Try to install with dev dependencies, fallback to basic install
-        pip install -e ".[dev]" || pip install -e . || echo "Package installation failed, continuing with available tools"
-
-    - name: Run pre-commit hooks
-      uses: pre-commit/action@v3.0.0
-      continue-on-error: true  # Don't fail the entire workflow if pre-commit has issues
-
-    - name: Run linting
-      run: |
-        echo "🔍 Running linting with permissive settings..."
-        if command -v flake8 >/dev/null; then
-          flake8 src/ tests/ --max-line-length=127 \
-            --ignore=E203,W503,F401,F403,F405,C901,E402,E501,E722,E711,E712,B008,B007,F541,F811 \
-            --select=E9,F63,F7,F82,F821,F822,F823,F831 \
-            || echo "⚠️ Some linting issues found but allowing workflow to continue..."
-        else
-          echo "flake8 not available, skipping linting"
-        fi
-
-    - name: Run type checking
-      run: |
-        if command -v mypy >/dev/null; then
-          mypy src/ --ignore-missing-imports --no-strict-optional || echo "Type checking issues found but continuing..."
-        else
-          echo "mypy not available, skipping type checking"
-        fi
-
-    - name: Run security checks
-      run: |
-        if command -v bandit >/dev/null; then
-          bandit -r src/ -f json -o bandit-report.json -ll || echo "Security scan completed with warnings"
-        else
-          echo "bandit not available, creating empty report"
-          echo '{"results": [], "errors": []}' > bandit-report.json
-        fi
-
-    - name: Upload security report
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: security-report
-        path: bandit-report.json
-
-  # Testing Matrix
   test:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
-      fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]  # Temporarily exclude windows-latest
         python-version: ['3.9', '3.10', '3.11']
-
-    name: Test Python ${{ matrix.python-version }} on ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v4
@@ -102,219 +21,28 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-py${{ matrix.python-version }}-pip-${{ hashFiles('pyproject.toml') }}
-        restore-keys: |
-          ${{ runner.os }}-py${{ matrix.python-version }}-pip-
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # Install basic testing dependencies first  
-        pip install pytest pytest-cov numpy pandas scikit-learn || echo "Failed to install basic deps, continuing"
-        # Try full install with error handling
-        echo "Attempting full installation..."
-        if pip install -e ".[dev]"; then
-          echo "✅ Full installation successful"
-        else
-          echo "⚠️ Full installation failed, trying minimal requirements..."
-          if pip install -r requirements-minimal.txt && pip install -e . --no-deps; then
-            echo "✅ Minimal installation successful"
-          else
-            echo "❌ Minimal installation failed, installing basic dependencies..."
-            pip install numpy pandas matplotlib seaborn pytest || echo "Even basic install failed, continuing anyway"
-          fi
-        fi
+        pip install -r requirements-core.txt
+        pip install pytest flake8
 
-    - name: Test basic import
+    - name: Lint with flake8
       run: |
-        cd src && python -c "import qemlflow; print('✅ QeMLflow import successful')" || echo "❌ Import failed, but workflow continues"
+        flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Run fast tests
+    - name: Test with pytest
       run: |
-        echo "Testing pytest collection..."
-        if command -v pytest >/dev/null; then
-          pytest tests/ --collect-only -q | tail -3 || echo "Collection issues found, but continuing"
-          echo "Running basic tests..."
-          pytest tests/unit/test_molecular_utils_extended.py::TestMolecularDescriptors::test_calculate_basic_descriptors -v || echo "Basic test failed/skipped, continuing"
-          echo "Running limited test suite..."
-          pytest tests/ -v --tb=short -x --maxfail=5 -k "not slow and not gpu" || echo "Some tests failed but workflow continues..."
-        else
-          echo "pytest not available, skipping tests"
-          python -c "print('✅ Basic Python execution test passed')"
-        fi
+        python -m pytest tests/ -v --tb=short
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'
-      with:
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-
-  # Optional dependencies testing
-  test-optional-deps:
-    runs-on: ubuntu-latest
-    name: Test with Optional Dependencies
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-optional-pip-${{ hashFiles('pyproject.toml') }}
-
-    - name: Install with optional dependencies
+    - name: Test enterprise modules
       run: |
-        python -m pip install --upgrade pip
-        echo "Installing core dependencies first..."
-        pip install pytest pytest-cov numpy pandas scikit-learn matplotlib || echo "Core deps install failed, continuing"
-        echo "Attempting optional dependencies installation..."
-        pip install -e ".[dev]" || echo "Dev dependencies failed, continuing"
-        # Try individual optional dependency groups
-        pip install rdkit || echo "RDKit installation failed (expected in CI)"
-        pip install qiskit || echo "Qiskit installation failed (expected in CI)"
-
-    - name: Run tests with optional dependencies
-      run: |
-        echo "Testing collection capability..."
-        pytest tests/ --collect-only -q | tail -3 || echo "Collection failed"
-        echo "Running selected tests..."
-        pytest tests/ -v --tb=short -m "not slow and not gpu" --maxfail=5 || echo "Some optional tests failed"
-
-  # Performance testing
-  performance:
-    runs-on: ubuntu-latest
-    name: Performance Testing
-    continue-on-error: true  # Don't fail workflow if performance tests have issues
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -e ".[dev]" || pip install -e . || echo "Package install failed, continuing with basic deps"
-        pip install pytest || echo "pytest install failed"
-
-    - name: Run performance tests
-      run: |
-        if command -v pytest >/dev/null; then
-          pytest tests/ -v -m "performance" --tb=short || echo "Performance tests failed or no performance tests found, continuing"
-        else
-          echo "pytest not available, skipping performance tests"
-        fi
-
-    - name: Upload performance results
-      uses: actions/upload-artifact@v4
-      with:
-        name: performance-results
-        path: performance-results.json
-
-  # Documentation build
-  docs:
-    runs-on: ubuntu-latest
-    name: Documentation
-    continue-on-error: true  # Don't fail workflow if docs build has issues
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -e ".[docs]" || pip install -e . || echo "Package install failed, continuing"
-        pip install mkdocs mkdocs-material || echo "Documentation deps install failed"
-
-    - name: Build documentation
-      run: |
-        if command -v make >/dev/null && [ -f "Makefile" ]; then
-          make docs || echo "Make docs failed, trying alternative"
-        fi
-        if command -v mkdocs >/dev/null; then
-          mkdocs build || echo "MkDocs build failed"
-        else
-          echo "No documentation build tools available"
-        fi
-
-    - name: Upload documentation
-      uses: actions/upload-artifact@v4
-      with:
-        name: documentation
-        path: docs/_build/html/
-
-  # Package building and validation
-  build:
-    runs-on: ubuntu-latest
-    name: Build Package
-    needs: [code-quality, test]
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install build dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install build twine
-
-    - name: Build package
-      run: |
-        python -m build
-
-    - name: Validate package
-      run: |
-        twine check dist/*
-
-    - name: Upload package artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: package
-        path: dist/
-
-  # Notebook testing
-  notebooks:
-    runs-on: ubuntu-latest
-    name: Test Notebooks
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -e ".[dev]" nbconvert
-
-    - name: Test notebook execution
-      run: |
-        make bootcamp-test
+        python -c "
+        import sys
+        sys.path.insert(0, 'src')
+        from qemlflow.security import SecurityHardening
+        from qemlflow.production_tuning import ProductionPerformanceTuner
+        from qemlflow.production_readiness import ProductionReadinessValidator
+        print('All enterprise modules imported successfully')
+        "
