@@ -1,0 +1,111 @@
+{
+  "analysis_timestamp": "2025-06-21T14:03:46.062850+00:00",
+  "analysis_duration_seconds": 37.80297493934631,
+  "project_overview": {
+    "total_files": 419,
+    "total_lines_of_code": 171278,
+    "total_source_lines": 130625,
+    "average_file_size": 408.7780429594272,
+    "average_complexity": 0.0,
+    "average_maintainability_index": 0,
+    "code_to_comment_ratio": 3.2131699997540157
+  },
+  "technical_debt": {
+    "total_items": 2257,
+    "total_estimated_hours": 3775.5,
+    "by_severity": {
+      "medium": 1361,
+      "low": 742,
+      "high": 154
+    },
+    "by_type": {
+      "maintainability": 1439,
+      "code_smell": 804,
+      "bug_risk": 14
+    },
+    "critical_items": [],
+    "debt_density": 7.165079365079365
+  },
+  "code_quality": {
+    "total_files_analyzed": 419,
+    "average_pylint_score": 0.0,
+    "average_maintainability_index": 0.0,
+    "files_with_code_smells": 0,
+    "high_complexity_files": 0,
+    "large_files": 139
+  },
+  "complexity_analysis": {
+    "total_functions_analyzed": 6424,
+    "complexity_distribution": {
+      "B": 779,
+      "A": 5484,
+      "C": 149,
+      "D": 9,
+      "E": 3
+    },
+    "maintainability_distribution": {
+      "fair": 316,
+      "good": 1186,
+      "excellent": 4890,
+      "poor": 32
+    },
+    "high_complexity_functions": [
+      {
+        "file_path": "tools/maintenance/final_cleanup.py",
+        "function_name": "main",
+        "class_name": "",
+        "cyclomatic_complexity": 36,
+        "cognitive_complexity": 59,
+        "nesting_depth": 5,
+        "lines_of_code": 139,
+        "parameter_count": 0,
+        "local_variables": 0,
+        "complexity_rank": "E",
+        "maintainability_rating": "poor"
+      },
+      {
+        "file_path": "tools/archived/advanced_type_completion.py",
+        "function_name": "infer_return_type",
+        "class_name": "AdvancedTypeAnnotator",
+        "cyclomatic_complexity": 39,
+        "cognitive_complexity": 129,
+        "nesting_depth": 10,
+        "lines_of_code": 74,
+        "parameter_count": 3,
+        "local_variables": 0,
+        "complexity_rank": "E",
+        "maintainability_rating": "poor"
+      },
+      {
+        "file_path": "tools/validation/final_migration_report.py",
+        "function_name": "generate_final_report",
+        "class_name": "",
+        "cyclomatic_complexity": 31,
+        "cognitive_complexity": 43,
+        "nesting_depth": 4,
+        "lines_of_code": 301,
+        "parameter_count": 0,
+        "local_variables": 0,
+        "complexity_rank": "E",
+        "maintainability_rating": "poor"
+      }
+    ],
+    "average_cyclomatic_complexity": 3.0163449564134495,
+    "average_cognitive_complexity": 3.1721668742216687
+  },
+  "maintenance_plan": {
+    "scheduled_tasks": 2,
+    "completed_tasks": 0,
+    "due_soon": 0,
+    "overdue": 0,
+    "total_estimated_hours": 618.0,
+    "newly_scheduled": 2,
+    "due_tasks": []
+  },
+  "recommendations": [
+    "Plan refactoring sprints to address 154 high-priority debt items",
+    "Improve code quality - over 20% of files have low quality scores",
+    "Consider breaking down 139 large files",
+    "Refactor 3 highly complex functions"
+  ]
+}

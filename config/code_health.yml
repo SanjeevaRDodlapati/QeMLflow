@@ -1,0 +1,249 @@
+---
+# QeMLflow Code Health Configuration
+# This file configures code health metrics tracking, technical debt analysis,
+# and maintenance scheduling for enterprise-grade code maintainability.
+
+# Technical Debt Analysis Configuration
+technical_debt:
+  # Debt comment patterns to detect
+  comment_patterns:
+    TODO:
+      type: "maintainability"
+      severity: "low"
+      estimated_hours: 0.5
+    
+    FIXME:
+      type: "bug_risk"
+      severity: "medium"
+      estimated_hours: 1.0
+    
+    HACK:
+      type: "code_smell"
+      severity: "medium"
+      estimated_hours: 1.5
+    
+    XXX:
+      type: "code_smell"
+      severity: "high"
+      estimated_hours: 2.0
+    
+    TEMP:
+      type: "maintainability"
+      severity: "medium"
+      estimated_hours: 1.0
+    
+    NOTE:
+      type: "maintainability"
+      severity: "low"
+      estimated_hours: 0.25
+  
+  # Code smell detection thresholds
+  code_smells:
+    long_method_lines: 50
+    large_class_lines: 500
+    long_parameter_list: 5
+    complex_method_complexity: 10
+    high_coupling_imports: 20
+    low_cohesion_maintainability: 20
+  
+  # Files to skip during analysis
+  skip_patterns:
+    - "**/__pycache__/**"
+    - "**/venv/**"
+    - "**/env/**"
+    - "**/node_modules/**"
+    - "**/.git/**"
+    - "**/*.pyc"
+    - "**/migrations/**"
+    - "**/tests/fixtures/**"
+
+# Code Quality Metrics Configuration
+code_quality:
+  # Quality thresholds
+  thresholds:
+    min_maintainability_index: 20
+    max_cyclomatic_complexity: 10
+    min_pylint_score: 7.0
+    min_test_coverage: 80.0
+    max_duplicated_lines: 3
+  
+  # Quality ranking
+  complexity_ranks:
+    - { min: 1, max: 5, rank: "A", description: "Low complexity" }
+    - { min: 6, max: 10, rank: "B", description: "Moderate complexity" }
+    - { min: 11, max: 20, rank: "C", description: "High complexity" }
+    - { min: 21, max: 30, rank: "D", description: "Very high complexity" }
+    - { min: 31, max: 40, rank: "E", description: "Extremely high complexity" }
+    - { min: 41, max: 999, rank: "F", description: "Unmaintainable complexity" }
+  
+  # Maintainability ratings
+  maintainability_ratings:
+    - { min: 85, max: 100, rating: "excellent", description: "Excellent maintainability" }
+    - { min: 70, max: 84, rating: "good", description: "Good maintainability" }
+    - { min: 50, max: 69, rating: "fair", description: "Fair maintainability" }
+    - { min: 0, max: 49, rating: "poor", description: "Poor maintainability" }
+
+# Complexity Analysis Configuration
+complexity_analysis:
+  # Complexity thresholds
+  thresholds:
+    cyclomatic_complexity:
+      low: 5
+      medium: 10
+      high: 15
+      critical: 20
+    
+    cognitive_complexity:
+      low: 5
+      medium: 10
+      high: 15
+      critical: 25
+    
+    nesting_depth:
+      low: 3
+      medium: 5
+      high: 7
+      critical: 10
+  
+  # Function size limits
+  function_size:
+    max_lines: 50
+    max_parameters: 5
+    max_local_variables: 10
+
+# Maintenance Scheduling Configuration
+maintenance:
+  # Task scheduling preferences
+  scheduling:
+    default_lead_time_days: 7
+    default_due_time_days: 14
+    urgent_lead_time_days: 1
+    urgent_due_time_days: 3
+  
+  # Task prioritization
+  priority_rules:
+    critical_severity_debt: "critical"
+    high_severity_debt: "high"
+    security_issues: "critical"
+    performance_issues: "high"
+    dependency_updates: "medium"
+    refactoring: "low"
+  
+  # Automated task creation
+  automation:
+    create_tasks_for_debt: true
+    create_dependency_update_tasks: true
+    create_security_patch_tasks: true
+    min_debt_items_for_task: 3
+    min_debt_hours_for_task: 2.0
+  
+  # Maintenance windows
+  maintenance_windows:
+    - day: "sunday"
+      start_time: "02:00"
+      duration_hours: 4
+      types: ["dependency_update", "security_patch"]
+    
+    - day: "saturday"
+      start_time: "10:00"
+      duration_hours: 8
+      types: ["refactoring", "cleanup"]
+
+# Dashboard Configuration
+dashboard:
+  # Report generation
+  reports:
+    save_location: "code_health"
+    keep_history_days: 90
+    generate_summary: true
+    generate_trends: true
+  
+  # Visualization settings
+  visualization:
+    chart_types:
+      - "debt_trend"
+      - "quality_metrics"
+      - "complexity_heatmap"
+      - "maintenance_schedule"
+    
+    colors:
+      excellent: "#28a745"
+      good: "#ffc107"
+      fair: "#fd7e14"
+      poor: "#dc3545"
+      critical: "#6f42c1"
+  
+  # Alerting thresholds
+  alerts:
+    critical_debt_threshold: 10
+    quality_decline_threshold: 0.1
+    complexity_increase_threshold: 2.0
+    overdue_tasks_threshold: 5
+  
+  # Export formats
+  export:
+    formats: ["json", "csv", "html"]
+    include_raw_data: true
+    include_recommendations: true
+
+# Integration Configuration
+integration:
+  # CI/CD integration
+  ci_cd:
+    fail_build_on_critical_debt: false
+    fail_build_on_quality_decline: false
+    comment_on_pr: true
+    generate_status_checks: true
+  
+  # External tools
+  tools:
+    enable_pylint: true
+    enable_radon: true
+    enable_bandit: false
+    enable_mypy: true
+    enable_black: true
+    enable_isort: true
+  
+  # Notification channels
+  notifications:
+    channels:
+      - type: "file"
+        path: "code_health/notifications.log"
+      - type: "stdout"
+        enabled: true
+    
+    events:
+      - "critical_debt_detected"
+      - "quality_threshold_breached"
+      - "maintenance_task_overdue"
+      - "analysis_completed"
+
+# Analysis Configuration
+analysis:
+  # Performance settings
+  performance:
+    max_file_size_mb: 10
+    analysis_timeout_seconds: 300
+    parallel_analysis: true
+    max_workers: 4
+  
+  # File inclusion patterns
+  include_patterns:
+    - "**/*.py"
+    - "**/*.js"
+    - "**/*.ts"
+    - "**/*.java"
+    - "**/*.cpp"
+    - "**/*.c"
+    - "**/*.cs"
+    - "**/*.go"
+    - "**/*.rs"
+    - "**/*.php"
+  
+  # Analysis depth
+  depth:
+    analyze_dependencies: true
+    analyze_imports: true
+    analyze_complexity: true
+    analyze_duplication: false
+    analyze_security: false

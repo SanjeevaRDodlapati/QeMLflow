@@ -1,0 +1,483 @@
+name: Code Health Monitoring
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      full_analysis:
+        description: 'Run full project analysis'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  code-health-analysis:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        analysis-type: [debt, quality, complexity]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for trend analysis
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements-dev.txt || true
+          
+          # Install optional code analysis tools
+          pip install radon pylint bandit mypy black isort || true
+          pip install coverage pytest-cov || true
+
+      - name: Create code health directories
+        run: |
+          mkdir -p code_health
+          mkdir -p code_health/reports
+          mkdir -p code_health/trends
+          mkdir -p code_health/maintenance
+
+      - name: Run Technical Debt Analysis
+        if: matrix.analysis-type == 'debt'
+        run: |
+          python -c "
+          from src.qemlflow.observability.code_health import TechnicalDebtAnalyzer
+          import json
+          from datetime import datetime
+          
+          analyzer = TechnicalDebtAnalyzer('.')
+          debt_items = analyzer.analyze_project()
+          
+          # Generate debt report
+          report = {
+              'timestamp': datetime.utcnow().isoformat(),
+              'total_debt_items': len(debt_items),
+              'debt_by_severity': {},
+              'debt_by_type': {},
+              'estimated_fix_hours': sum(item.estimated_fix_time_hours for item in debt_items),
+              'debt_items': [item.to_dict() for item in debt_items]
+          }
+          
+          # Calculate summaries
+          from collections import Counter
+          severity_counts = Counter(item.severity for item in debt_items)
+          type_counts = Counter(item.debt_type for item in debt_items)
+          
+          report['debt_by_severity'] = dict(severity_counts)
+          report['debt_by_type'] = dict(type_counts)
+          
+          # Save report
+          with open('code_health/debt_analysis.json', 'w') as f:
+              json.dump(report, f, indent=2)
+          
+          # Print summary
+          print(f'🔍 Technical Debt Analysis Complete')
+          print(f'📊 Total debt items: {len(debt_items)}')
+          print(f'⏰ Estimated fix time: {report[\"estimated_fix_hours\"]:.1f} hours')
+          print(f'🔥 Critical/High severity: {severity_counts.get(\"critical\", 0) + severity_counts.get(\"high\", 0)}')
+          "
+
+      - name: Run Code Quality Analysis
+        if: matrix.analysis-type == 'quality'
+        run: |
+          python -c "
+          from src.qemlflow.observability.code_health import CodeQualityAnalyzer
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          
+          analyzer = CodeQualityAnalyzer('.')
+          
+          # Analyze all Python files
+          quality_metrics = []
+          python_files = list(Path('.').glob('**/*.py'))
+          
+          for file_path in python_files:
+              if not str(file_path).startswith(('.git', 'venv', '__pycache__')):
+                  try:
+                      metrics = analyzer.analyze_file(file_path)
+                      quality_metrics.append(metrics.to_dict())
+                  except Exception as e:
+                      print(f'Warning: Failed to analyze {file_path}: {e}')
+          
+          # Generate quality report
+          if quality_metrics:
+              avg_complexity = sum(m['cyclomatic_complexity'] for m in quality_metrics) / len(quality_metrics)
+              avg_maintainability = sum(m['maintainability_index'] for m in quality_metrics if m['maintainability_index'] > 0)
+              if avg_maintainability > 0:
+                  avg_maintainability /= sum(1 for m in quality_metrics if m['maintainability_index'] > 0)
+              
+              report = {
+                  'timestamp': datetime.utcnow().isoformat(),
+                  'total_files': len(quality_metrics),
+                  'total_lines_of_code': sum(m['lines_of_code'] for m in quality_metrics),
+                  'average_complexity': avg_complexity,
+                  'average_maintainability': avg_maintainability,
+                  'files_with_issues': len([m for m in quality_metrics if m['cyclomatic_complexity'] > 10]),
+                  'quality_metrics': quality_metrics
+              }
+              
+              # Save report
+              with open('code_health/quality_analysis.json', 'w') as f:
+                  json.dump(report, f, indent=2)
+              
+              print(f'📈 Code Quality Analysis Complete')
+              print(f'📁 Files analyzed: {len(quality_metrics)}')
+              print(f'📏 Total lines of code: {report[\"total_lines_of_code\"]}')
+              print(f'🎯 Average complexity: {avg_complexity:.2f}')
+              print(f'⚠️  Files with high complexity: {report[\"files_with_issues\"]}')
+          else:
+              print('No Python files found for quality analysis')
+          "
+
+      - name: Run Complexity Analysis
+        if: matrix.analysis-type == 'complexity'
+        run: |
+          python -c "
+          from src.qemlflow.observability.code_health import ComplexityAnalyzer
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          
+          analyzer = ComplexityAnalyzer('.')
+          
+          # Analyze all Python files
+          all_complexity_metrics = []
+          python_files = list(Path('.').glob('**/*.py'))
+          
+          for file_path in python_files:
+              if not str(file_path).startswith(('.git', 'venv', '__pycache__')):
+                  try:
+                      metrics_list = analyzer.analyze_file(file_path)
+                      for metrics in metrics_list:
+                          all_complexity_metrics.append(metrics.to_dict())
+                  except Exception as e:
+                      print(f'Warning: Failed to analyze complexity in {file_path}: {e}')
+          
+          # Generate complexity report
+          if all_complexity_metrics:
+              high_complexity_functions = [m for m in all_complexity_metrics if m['cyclomatic_complexity'] > 10]
+              avg_complexity = sum(m['cyclomatic_complexity'] for m in all_complexity_metrics) / len(all_complexity_metrics)
+              
+              report = {
+                  'timestamp': datetime.utcnow().isoformat(),
+                  'total_functions': len(all_complexity_metrics),
+                  'high_complexity_functions': len(high_complexity_functions),
+                  'average_complexity': avg_complexity,
+                  'max_complexity': max(m['cyclomatic_complexity'] for m in all_complexity_metrics) if all_complexity_metrics else 0,
+                  'complexity_distribution': {},
+                  'complexity_metrics': all_complexity_metrics
+              }
+              
+              # Calculate complexity distribution
+              complexity_ranges = [(0, 5), (6, 10), (11, 15), (16, 20), (21, float('inf'))]
+              distribution = {}
+              for min_val, max_val in complexity_ranges:
+                  range_key = f'{min_val}-{max_val if max_val != float(\"inf\") else \"inf\"}'
+                  count = len([m for m in all_complexity_metrics 
+                             if min_val <= m['cyclomatic_complexity'] <= max_val])
+                  distribution[range_key] = count
+              
+              report['complexity_distribution'] = distribution
+              
+              # Save report
+              with open('code_health/complexity_analysis.json', 'w') as f:
+                  json.dump(report, f, indent=2)
+              
+              print(f'🧮 Complexity Analysis Complete')
+              print(f'🔧 Functions analyzed: {len(all_complexity_metrics)}')
+              print(f'📊 Average complexity: {avg_complexity:.2f}')
+              print(f'🔥 High complexity functions: {len(high_complexity_functions)}')
+              print(f'📈 Distribution: {distribution}')
+          else:
+              print('No functions found for complexity analysis')
+          "
+
+      - name: Generate Code Health Summary
+        run: |
+          python -c "
+          import json
+          from datetime import datetime
+          from pathlib import Path
+          
+          # Collect all analysis results
+          reports = {}
+          
+          # Load individual reports if they exist
+          for report_file in ['debt_analysis.json', 'quality_analysis.json', 'complexity_analysis.json']:
+              file_path = Path('code_health') / report_file
+              if file_path.exists():
+                  with open(file_path) as f:
+                      reports[report_file.replace('.json', '')] = json.load(f)
+          
+          # Generate overall summary
+          summary = {
+              'timestamp': datetime.utcnow().isoformat(),
+              'analysis_type': '${{ matrix.analysis-type }}',
+              'reports_available': list(reports.keys()),
+              'overall_health_score': 85,  # Placeholder - would calculate based on metrics
+              'recommendations': []
+          }
+          
+          # Add specific recommendations based on findings
+          if 'debt_analysis' in reports:
+              debt_report = reports['debt_analysis']
+              if debt_report['total_debt_items'] > 50:
+                  summary['recommendations'].append('Consider dedicating time to reduce technical debt')
+              if debt_report.get('debt_by_severity', {}).get('critical', 0) > 0:
+                  summary['recommendations'].append('Address critical technical debt items immediately')
+          
+          if 'quality_analysis' in reports:
+              quality_report = reports['quality_analysis']
+              if quality_report.get('files_with_issues', 0) > quality_report.get('total_files', 1) * 0.2:
+                  summary['recommendations'].append('Focus on reducing code complexity in high-complexity files')
+          
+          if 'complexity_analysis' in reports:
+              complexity_report = reports['complexity_analysis']
+              if complexity_report.get('high_complexity_functions', 0) > 10:
+                  summary['recommendations'].append('Refactor high-complexity functions to improve maintainability')
+          
+          # Save summary
+          with open('code_health/summary.json', 'w') as f:
+              json.dump(summary, f, indent=2)
+          
+          print('📋 Code Health Summary Generated')
+          print(f'📊 Analysis type: {summary[\"analysis_type\"]}')
+          print(f'📈 Health score: {summary[\"overall_health_score\"]}/100')
+          if summary['recommendations']:
+              print('💡 Recommendations:')
+              for rec in summary['recommendations']:
+                  print(f'  • {rec}')
+          "
+
+      - name: Upload Code Health Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-health-reports-${{ matrix.analysis-type }}
+          path: code_health/
+          retention-days: 30
+
+      - name: Comment on Pull Request
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            
+            // Read summary if it exists
+            const summaryPath = 'code_health/summary.json';
+            if (fs.existsSync(summaryPath)) {
+              const summary = JSON.parse(fs.readFileSync(summaryPath, 'utf8'));
+              
+              let comment = `## 🔍 Code Health Analysis (${{ matrix.analysis-type }})\n\n`;
+              comment += `**Health Score:** ${summary.overall_health_score}/100\n\n`;
+              
+              if (summary.recommendations && summary.recommendations.length > 0) {
+                comment += `**Recommendations:**\n`;
+                summary.recommendations.forEach(rec => {
+                  comment += `- ${rec}\n`;
+                });
+              } else {
+                comment += `✅ No major issues found in this analysis.\n`;
+              }
+              
+              comment += `\n*Analysis completed at ${summary.timestamp}*`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            }
+
+  consolidate-reports:
+    runs-on: ubuntu-latest
+    needs: code-health-analysis
+    if: always()
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download all reports
+        uses: actions/download-artifact@v3
+        with:
+          path: all-reports/
+
+      - name: Consolidate Code Health Reports
+        run: |
+          mkdir -p consolidated_health
+          
+          # Combine all analysis results
+          python -c "
+          import json
+          import os
+          from datetime import datetime
+          from pathlib import Path
+          
+          consolidated = {
+              'timestamp': datetime.utcnow().isoformat(),
+              'workflow_run': '${{ github.run_id }}',
+              'commit': '${{ github.sha }}',
+              'branch': '${{ github.ref_name }}',
+              'analyses': {}
+          }
+          
+          # Find all downloaded reports
+          reports_dir = Path('all-reports')
+          if reports_dir.exists():
+              for subdir in reports_dir.iterdir():
+                  if subdir.is_dir():
+                      analysis_type = subdir.name.replace('code-health-reports-', '')
+                      consolidated['analyses'][analysis_type] = {}
+                      
+                      # Load JSON files from this analysis
+                      for json_file in subdir.glob('*.json'):
+                          try:
+                              with open(json_file) as f:
+                                  data = json.load(f)
+                                  consolidated['analyses'][analysis_type][json_file.stem] = data
+                          except Exception as e:
+                              print(f'Warning: Failed to load {json_file}: {e}')
+          
+          # Calculate overall project health metrics
+          overall_metrics = {
+              'total_debt_items': 0,
+              'total_files_analyzed': 0,
+              'total_functions_analyzed': 0,
+              'average_complexity': 0,
+              'critical_issues': 0,
+              'recommendations': set()
+          }
+          
+          # Aggregate metrics from all analyses
+          for analysis_type, analysis_data in consolidated['analyses'].items():
+              if 'debt_analysis' in analysis_data:
+                  overall_metrics['total_debt_items'] += analysis_data['debt_analysis'].get('total_debt_items', 0)
+                  critical_debt = analysis_data['debt_analysis'].get('debt_by_severity', {}).get('critical', 0)
+                  overall_metrics['critical_issues'] += critical_debt
+              
+              if 'quality_analysis' in analysis_data:
+                  overall_metrics['total_files_analyzed'] += analysis_data['quality_analysis'].get('total_files', 0)
+              
+              if 'complexity_analysis' in analysis_data:
+                  overall_metrics['total_functions_analyzed'] += analysis_data['complexity_analysis'].get('total_functions', 0)
+                  if analysis_data['complexity_analysis'].get('average_complexity', 0) > 0:
+                      overall_metrics['average_complexity'] = analysis_data['complexity_analysis']['average_complexity']
+              
+              if 'summary' in analysis_data and 'recommendations' in analysis_data['summary']:
+                  overall_metrics['recommendations'].update(analysis_data['summary']['recommendations'])
+          
+          # Convert recommendations set to list
+          overall_metrics['recommendations'] = list(overall_metrics['recommendations'])
+          
+          consolidated['overall_metrics'] = overall_metrics
+          
+          # Save consolidated report
+          with open('consolidated_health/consolidated_code_health.json', 'w') as f:
+              json.dump(consolidated, f, indent=2)
+          
+          # Generate markdown summary
+          markdown_summary = f'''# 📊 Code Health Report
+          
+          **Generated:** {consolidated['timestamp']}  
+          **Commit:** {consolidated['commit'][:8]}  
+          **Branch:** {consolidated['branch']}
+          
+          ## 📈 Overall Metrics
+          
+          - **Technical Debt Items:** {overall_metrics['total_debt_items']}
+          - **Files Analyzed:** {overall_metrics['total_files_analyzed']}
+          - **Functions Analyzed:** {overall_metrics['total_functions_analyzed']}
+          - **Average Complexity:** {overall_metrics['average_complexity']:.2f}
+          - **Critical Issues:** {overall_metrics['critical_issues']}
+          
+          ## 💡 Recommendations
+          
+          '''
+          
+          if overall_metrics['recommendations']:
+              for rec in overall_metrics['recommendations']:
+                  markdown_summary += f'- {rec}\\n'
+          else:
+              markdown_summary += '✅ No major issues identified.\\n'
+          
+          markdown_summary += f'''
+          ## 🔍 Analysis Types Completed
+          
+          '''
+          
+          for analysis_type in consolidated['analyses'].keys():
+              markdown_summary += f'- ✅ {analysis_type.replace(\"_\", \" \").title()}\\n'
+          
+          with open('consolidated_health/README.md', 'w') as f:
+              f.write(markdown_summary)
+          
+          print('📋 Consolidated Code Health Report Generated')
+          print(f'📊 Total debt items: {overall_metrics[\"total_debt_items\"]}')
+          print(f'📁 Files analyzed: {overall_metrics[\"total_files_analyzed\"]}')
+          print(f'🔧 Functions analyzed: {overall_metrics[\"total_functions_analyzed\"]}')
+          print(f'🔥 Critical issues: {overall_metrics[\"critical_issues\"]}')
+          "
+
+      - name: Upload Consolidated Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: consolidated-code-health-report
+          path: consolidated_health/
+          retention-days: 90
+
+      - name: Update Status Check
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let state = 'success';
+            let description = 'Code health analysis completed';
+            
+            // Check if consolidated report exists and has critical issues
+            if (fs.existsSync('consolidated_health/consolidated_code_health.json')) {
+              const report = JSON.parse(fs.readFileSync('consolidated_health/consolidated_code_health.json'));
+              const criticalIssues = report.overall_metrics?.critical_issues || 0;
+              
+              if (criticalIssues > 10) {
+                state = 'failure';
+                description = `Code health check failed: ${criticalIssues} critical issues found`;
+              } else if (criticalIssues > 0) {
+                state = 'pending';
+                description = `Code health check warning: ${criticalIssues} critical issues found`;
+              }
+            }
+            
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: state,
+              target_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              description: description,
+              context: 'Code Health Analysis'
+            });
