@@ -1,0 +1,212 @@
+# Resource Management Configuration
+# Configuration for QeMLflow's enterprise-grade resource management system
+
+# Memory Management Configuration
+memory:
+  # Enable memory profiling and optimization
+  profiling_enabled: true
+  optimization_enabled: true
+  auto_cleanup: true
+  
+  # Memory thresholds (percentage)
+  auto_gc_threshold: 80.0
+  memory_warning_threshold: 85.0
+  memory_critical_threshold: 95.0
+  
+  # Memory monitoring settings
+  cleanup_interval_seconds: 300  # 5 minutes
+  trace_limit: 25
+  enable_tracemalloc: true
+
+# Compute Resource Configuration
+compute:
+  # CPU optimization settings
+  cpu_monitoring_enabled: true
+  cpu_monitoring_interval: 1.0
+  
+  # GPU management (if available)
+  gpu_monitoring_enabled: true
+  gpu_memory_allocation_strategy: "most_free"
+  
+  # Workload optimization
+  workload_types:
+    cpu_bound:
+      worker_count_multiplier: 1.0  # Use physical cores
+    io_bound:
+      worker_count_multiplier: 2.0  # Use 2x logical cores
+    mixed:
+      worker_count_multiplier: 1.5  # Balanced approach
+  
+  # Performance thresholds
+  cpu_warning_threshold: 80.0
+  cpu_critical_threshold: 95.0
+  load_warning_multiplier: 1.5  # Warning when load > 1.5 * core_count
+
+# Auto-Scaling Configuration
+scaling:
+  # Enable auto-scaling
+  enabled: true
+  
+  # Default scaling policy
+  default_policy:
+    min_instances: 1
+    max_instances: 10
+    target_cpu_percent: 70.0
+    target_memory_percent: 80.0
+    scale_up_cooldown_seconds: 300    # 5 minutes
+    scale_down_cooldown_seconds: 600  # 10 minutes
+  
+  # Load balancing
+  load_balancer:
+    strategy: "round_robin"  # round_robin, least_connections, weighted_round_robin, fastest_response
+    health_check_interval: 30
+    consecutive_failure_threshold: 3
+  
+  # Scaling triggers
+  triggers:
+    - metric_name: "cpu_percent"
+      threshold_up: 80.0
+      threshold_down: 60.0
+      duration_seconds: 60
+      enabled: true
+    
+    - metric_name: "memory_percent"
+      threshold_up: 85.0
+      threshold_down: 65.0
+      duration_seconds: 60
+      enabled: true
+
+# Resource Monitoring Configuration
+monitoring:
+  # Enable monitoring
+  enabled: true
+  
+  # Monitoring intervals
+  monitoring_interval_seconds: 10.0
+  data_retention_hours: 24
+  
+  # Alert configuration
+  alerting:
+    enabled: true
+    alert_history_limit: 1000
+    suppression_interval_seconds: 300  # 5 minutes
+    
+    # Default alert thresholds
+    thresholds:
+      cpu_percent:
+        warning: 80.0
+        critical: 95.0
+      
+      memory_percent:
+        warning: 85.0
+        critical: 95.0
+      
+      disk_usage_percent:
+        warning: 80.0
+        critical: 90.0
+      
+      load_average:
+        warning: 5.0
+        critical: 10.0
+    
+    # Alert handlers
+    handlers:
+      - type: "log"
+        enabled: true
+        log_level: "warning"
+      
+      - type: "email"
+        enabled: false
+        smtp_server: "localhost"
+        smtp_port: 587
+        recipients: []
+      
+      - type: "webhook"
+        enabled: false
+        url: ""
+        headers: {}
+  
+  # Dashboard configuration
+  dashboard:
+    enabled: true
+    update_interval_seconds: 30
+    export_format: "html"  # html, json
+    export_path: "reports/resource_dashboard.html"
+
+# Resource Optimization Profiles
+optimization_profiles:
+  # Development profile - lighter monitoring, more permissive thresholds
+  development:
+    memory:
+      auto_gc_threshold: 90.0
+      memory_warning_threshold: 90.0
+    compute:
+      cpu_warning_threshold: 90.0
+    monitoring:
+      monitoring_interval_seconds: 30.0
+      alerting:
+        enabled: false
+  
+  # Production profile - aggressive monitoring and optimization
+  production:
+    memory:
+      auto_gc_threshold: 75.0
+      memory_warning_threshold: 80.0
+      memory_critical_threshold: 90.0
+    compute:
+      cpu_warning_threshold: 70.0
+      cpu_critical_threshold: 85.0
+    scaling:
+      default_policy:
+        target_cpu_percent: 60.0
+        target_memory_percent: 70.0
+    monitoring:
+      monitoring_interval_seconds: 5.0
+      data_retention_hours: 72
+  
+  # Testing profile - minimal resource usage
+  testing:
+    memory:
+      auto_cleanup: false
+      profiling_enabled: false
+    compute:
+      cpu_monitoring_enabled: false
+      gpu_monitoring_enabled: false
+    scaling:
+      enabled: false
+    monitoring:
+      enabled: false
+
+# Integration Settings
+integration:
+  # Prometheus metrics export
+  prometheus:
+    enabled: false
+    port: 8000
+    metrics_path: "/metrics"
+  
+  # Grafana dashboard
+  grafana:
+    enabled: false
+    dashboard_uid: "qemlflow-resources"
+  
+  # Cloud provider integration
+  cloud:
+    provider: null  # aws, gcp, azure
+    auto_scaling_groups: []
+    monitoring_services: []
+
+# Logging Configuration for Resource Management
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/resource_management.log"
+  max_size_mb: 100
+  backup_count: 5
+  
+  # Component-specific logging
+  components:
+    memory: "INFO"
+    compute: "INFO"
+    scaling: "INFO"
+    monitoring: "WARNING"  # Only warnings and errors for monitoring to reduce noise

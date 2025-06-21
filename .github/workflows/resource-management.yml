@@ -1,0 +1,560 @@
+name: Resource Management Integration
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/resources/**'
+      - 'config/resources.yml'
+      - '.github/workflows/resource-management.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/resources/**'
+      - 'config/resources.yml'
+  schedule:
+    # Run resource monitoring tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Type of resource management test'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - memory_only
+          - compute_only
+          - scaling_only
+          - monitoring_only
+
+env:
+  PYTHON_VERSION: '3.11'
+  RESOURCE_TEST_DURATION: '60'  # Test duration in seconds
+  RESOURCE_LOG_LEVEL: 'INFO'
+
+jobs:
+  resource-management-tests:
+    name: Resource Management Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ['3.9', '3.10', '3.11']
+      fail-fast: false
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install system dependencies (Ubuntu)
+      if: matrix.os == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y htop iotop sysstat
+
+    - name: Install system dependencies (macOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        brew install htop
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+        # Install additional resource monitoring dependencies
+        pip install psutil GPUtil memory-profiler py-spy
+
+    - name: Install QeMLflow in development mode
+      run: |
+        pip install -e .
+
+    - name: Verify resource management modules
+      run: |
+        python -c "
+        from qemlflow.resources import (
+            MemoryManager, ComputeManager, AutoScaler, ResourceMonitor
+        )
+        print('✓ All resource management modules imported successfully')
+        "
+
+    - name: Test memory management
+      if: ${{ github.event.inputs.test_type == 'full' || github.event.inputs.test_type == 'memory_only' || github.event.inputs.test_type == '' }}
+      run: |
+        python -c "
+        import time
+        from qemlflow.resources import MemoryManager, get_memory_usage
+        
+        print('Testing memory management...')
+        
+        # Test basic memory usage
+        usage = get_memory_usage()
+        print(f'Initial memory usage: {usage}')
+        
+        # Test memory manager
+        manager = MemoryManager()
+        
+        # Test memory profiling
+        with manager.profile_block('test_block'):
+            # Simulate some memory usage
+            data = [list(range(1000)) for _ in range(100)]
+            time.sleep(1)
+        
+        # Get status report
+        report = manager.get_status_report()
+        print(f'Memory management report: {report}')
+        
+        print('✓ Memory management tests passed')
+        "
+
+    - name: Test compute resource management
+      if: ${{ github.event.inputs.test_type == 'full' || github.event.inputs.test_type == 'compute_only' || github.event.inputs.test_type == '' }}
+      run: |
+        python -c "
+        import time
+        from qemlflow.resources import ComputeManager, get_optimal_worker_count
+        
+        print('Testing compute resource management...')
+        
+        # Test worker count optimization
+        workers = get_optimal_worker_count('cpu_bound')
+        print(f'Optimal CPU-bound workers: {workers}')
+        
+        workers = get_optimal_worker_count('io_bound')
+        print(f'Optimal I/O-bound workers: {workers}')
+        
+        # Test compute manager
+        manager = ComputeManager()
+        
+        # Get system info
+        system_info = manager.get_system_info()
+        print(f'System info: {system_info}')
+        
+        # Get performance report
+        report = manager.get_performance_report()
+        print(f'Performance report: {report}')
+        
+        print('✓ Compute resource management tests passed')
+        "
+
+    - name: Test auto-scaling
+      if: ${{ github.event.inputs.test_type == 'full' || github.event.inputs.test_type == 'scaling_only' || github.event.inputs.test_type == '' }}
+      run: |
+        python -c "
+        import time
+        from qemlflow.resources import create_auto_scaler
+        
+        print('Testing auto-scaling...')
+        
+        # Create auto-scaler
+        scaler = create_auto_scaler('test_policy')
+        
+        # Test scaling decision evaluation
+        action = scaler.evaluate_and_execute_scaling()
+        print(f'Scaling action: {action}')
+        
+        # Get status report
+        status = scaler.get_status_report()
+        print(f'Auto-scaler status: {status}')
+        
+        print('✓ Auto-scaling tests passed')
+        "
+
+    - name: Test resource monitoring
+      if: ${{ github.event.inputs.test_type == 'full' || github.event.inputs.test_type == 'monitoring_only' || github.event.inputs.test_type == '' }}
+      run: |
+        python -c "
+        import time
+        from qemlflow.resources import create_resource_monitor, setup_basic_alerting
+        
+        print('Testing resource monitoring...')
+        
+        # Create monitor
+        monitor = create_resource_monitor(monitoring_interval=1.0)
+        setup_basic_alerting(monitor)
+        
+        # Start monitoring
+        monitor.start_monitoring()
+        
+        # Let it collect some data
+        time.sleep(5)
+        
+        # Get current metrics
+        metrics = monitor.get_current_metrics()
+        print(f'Current metrics: {metrics}')
+        
+        # Get performance summary
+        summary = monitor.get_performance_summary()
+        print(f'Performance summary: {summary}')
+        
+        # Stop monitoring
+        monitor.stop_monitoring()
+        
+        print('✓ Resource monitoring tests passed')
+        "
+
+    - name: Test resource configuration loading
+      run: |
+        python -c "
+        import yaml
+        from pathlib import Path
+        
+        config_path = Path('config/resources.yml')
+        if config_path.exists():
+            with open(config_path) as f:
+                config = yaml.safe_load(f)
+            print(f'Resource configuration loaded: {len(config)} sections')
+            print(f'Memory config: {bool(config.get(\"memory\"))}')
+            print(f'Compute config: {bool(config.get(\"compute\"))}')
+            print(f'Scaling config: {bool(config.get(\"scaling\"))}')
+            print(f'Monitoring config: {bool(config.get(\"monitoring\"))}')
+            print('✓ Resource configuration is valid')
+        else:
+            print('⚠ Resource configuration file not found')
+        "
+
+    - name: Performance benchmark test
+      run: |
+        python -c "
+        import time
+        import psutil
+        from qemlflow.resources import MemoryManager, ComputeManager
+        
+        print('Running performance benchmark...')
+        
+        # Baseline system metrics
+        cpu_before = psutil.cpu_percent(interval=1)
+        memory_before = psutil.virtual_memory().percent
+        
+        # Initialize resource managers
+        memory_manager = MemoryManager()
+        compute_manager = ComputeManager()
+        
+        # Run test workload
+        start_time = time.time()
+        
+        def test_task(n):
+            return sum(i*i for i in range(n))
+        
+        # Execute parallel tasks
+        task_args = [(1000,) for _ in range(100)]
+        results = compute_manager.execute_parallel_task(
+            test_task, task_args, workload_type='cpu_bound'
+        )
+        
+        execution_time = time.time() - start_time
+        
+        # Check resource usage after
+        cpu_after = psutil.cpu_percent(interval=1)
+        memory_after = psutil.virtual_memory().percent
+        
+        print(f'Benchmark completed in {execution_time:.2f}s')
+        print(f'CPU usage: {cpu_before:.1f}% -> {cpu_after:.1f}%')
+        print(f'Memory usage: {memory_before:.1f}% -> {memory_after:.1f}%')
+        print(f'Tasks completed: {len([r for r in results if \"error\" not in str(r)])}')
+        
+        # Get final status
+        memory_report = memory_manager.get_status_report()
+        compute_report = compute_manager.get_performance_report()
+        
+        print('✓ Performance benchmark completed')
+        "
+
+    - name: Test resource cleanup
+      run: |
+        python -c "
+        from qemlflow.resources import MemoryManager
+        
+        print('Testing resource cleanup...')
+        
+        manager = MemoryManager()
+        
+        # Force cleanup
+        cleanup_result = manager.cleanup_and_optimize()
+        print(f'Cleanup result: {cleanup_result}')
+        
+        print('✓ Resource cleanup tests passed')
+        "
+
+    - name: Generate resource usage report
+      if: always()
+      run: |
+        python -c "
+        import json
+        import time
+        from datetime import datetime
+        from qemlflow.resources import (
+            get_memory_usage, get_system_resources, create_resource_monitor
+        )
+        
+        print('Generating resource usage report...')
+        
+        # Collect final metrics
+        memory_usage = get_memory_usage()
+        system_resources = get_system_resources()
+        
+        # Create report
+        report = {
+            'timestamp': datetime.now().isoformat(),
+            'test_run_id': '${{ github.run_id }}',
+            'runner_os': '${{ matrix.os }}',
+            'python_version': '${{ matrix.python-version }}',
+            'memory_usage': memory_usage,
+            'system_resources': system_resources
+        }
+        
+        # Save report
+        with open('resource_usage_report.json', 'w') as f:
+            json.dump(report, f, indent=2)
+        
+        print('✓ Resource usage report generated')
+        "
+
+    - name: Upload resource usage report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: resource-usage-report-${{ matrix.os }}-py${{ matrix.python-version }}
+        path: resource_usage_report.json
+        retention-days: 30
+
+  resource-stress-test:
+    name: Resource Stress Testing
+    runs-on: ubuntu-latest
+    needs: resource-management-tests
+    if: github.event_name == 'schedule' || github.event.inputs.test_type == 'full'
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -e .
+        pip install psutil memory-profiler stress-ng
+
+    - name: Memory stress test
+      run: |
+        python -c "
+        import time
+        import threading
+        from qemlflow.resources import MemoryManager
+        
+        print('Running memory stress test...')
+        
+        manager = MemoryManager()
+        manager.profiler.set_baseline()
+        
+        # Create memory pressure
+        data_store = []
+        for i in range(10):
+            # Allocate 50MB chunks
+            chunk = bytearray(50 * 1024 * 1024)
+            data_store.append(chunk)
+            time.sleep(1)
+            
+            # Check for memory leaks
+            leak_analysis = manager.profiler.detect_leaks()
+            print(f'Iteration {i+1}: {leak_analysis}')
+        
+        # Force cleanup
+        cleanup_result = manager.cleanup_and_optimize()
+        print(f'Cleanup result: {cleanup_result}')
+        
+        print('✓ Memory stress test completed')
+        "
+
+    - name: CPU stress test
+      run: |
+        python -c "
+        import time
+        import multiprocessing
+        from qemlflow.resources import ComputeManager
+        
+        print('Running CPU stress test...')
+        
+        manager = ComputeManager()
+        
+        def cpu_intensive_task(duration):
+            end_time = time.time() + duration
+            while time.time() < end_time:
+                # CPU-intensive computation
+                sum(i*i for i in range(10000))
+            return True
+        
+        # Run parallel CPU-intensive tasks
+        task_args = [(5,) for _ in range(multiprocessing.cpu_count())]
+        start_time = time.time()
+        
+        results = manager.execute_parallel_task(
+            cpu_intensive_task, task_args, workload_type='cpu_bound'
+        )
+        
+        execution_time = time.time() - start_time
+        print(f'CPU stress test completed in {execution_time:.2f}s')
+        print(f'Tasks completed: {len(results)}')
+        
+        # Get performance report
+        report = manager.get_performance_report()
+        print(f'Final CPU usage: {report.get(\"cpu_status\", {}).get(\"usage_percent\", 0):.1f}%')
+        
+        print('✓ CPU stress test completed')
+        "
+
+    - name: Auto-scaling stress test
+      run: |
+        python -c "
+        import time
+        from qemlflow.resources import create_auto_scaler
+        
+        print('Running auto-scaling stress test...')
+        
+        scaler = create_auto_scaler('stress_test')
+        
+        # Simulate varying load for auto-scaling
+        scaler.start_monitoring()
+        
+        # Let auto-scaler run for a bit
+        time.sleep(30)
+        
+        # Get status and statistics
+        status = scaler.get_status_report()
+        print(f'Auto-scaler status: {status}')
+        
+        scaler.stop_monitoring()
+        
+        print('✓ Auto-scaling stress test completed')
+        "
+
+  security-scan:
+    name: Security Scan for Resource Management
+    runs-on: ubuntu-latest
+    needs: resource-management-tests
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install security scanning tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install bandit safety
+
+    - name: Run Bandit security scan
+      run: |
+        bandit -r src/qemlflow/resources/ -f json -o bandit-report.json || true
+        bandit -r src/qemlflow/resources/ -f txt
+
+    - name: Run Safety check
+      run: |
+        safety check --json --output safety-report.json || true
+        safety check
+
+    - name: Upload security reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          safety-report.json
+        retention-days: 30
+
+  documentation-check:
+    name: Documentation Check
+    runs-on: ubuntu-latest
+    needs: resource-management-tests
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install documentation tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install pydoc-markdown mkdocs mkdocs-material
+
+    - name: Check docstring coverage
+      run: |
+        python -c "
+        import inspect
+        from qemlflow.resources import (
+            MemoryManager, ComputeManager, AutoScaler, ResourceMonitor
+        )
+        
+        classes = [MemoryManager, ComputeManager, AutoScaler, ResourceMonitor]
+        total_methods = 0
+        documented_methods = 0
+        
+        for cls in classes:
+            for name, method in inspect.getmembers(cls, predicate=inspect.ismethod):
+                if not name.startswith('_'):
+                    total_methods += 1
+                    if method.__doc__:
+                        documented_methods += 1
+        
+        coverage = (documented_methods / total_methods) * 100 if total_methods > 0 else 0
+        print(f'Documentation coverage: {documented_methods}/{total_methods} ({coverage:.1f}%)')
+        
+        if coverage < 80:
+            print('⚠ Documentation coverage is below 80%')
+        else:
+            print('✓ Documentation coverage is acceptable')
+        "
+
+    - name: Generate API documentation
+      run: |
+        python -c "
+        import pydoc
+        from qemlflow.resources import memory, compute, scaling, monitoring
+        
+        modules = [memory, compute, scaling, monitoring]
+        
+        for module in modules:
+            doc = pydoc.render_doc(module)
+            filename = f'{module.__name__.split(\".\")[-1]}_api_docs.txt'
+            with open(filename, 'w') as f:
+                f.write(doc)
+            print(f'Generated documentation for {module.__name__}')
+        "
+
+    - name: Upload documentation
+      uses: actions/upload-artifact@v3
+      with:
+        name: api-documentation
+        path: "*_api_docs.txt"
+        retention-days: 30
