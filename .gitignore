@@ -145,4 +145,5 @@ reports/temp/
 
 # Generated documentation (use 'mkdocs build' to recreate)
 /site/
-\n# Automated maintenance
+\n# Automated maintenancedeployment_status_report.json
+temp_import_test.py
