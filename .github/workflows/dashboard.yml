@@ -1,0 +1,465 @@
+name: Dashboard & Reporting
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/observability/dashboard.py'
+      - 'tests/observability/test_dashboard.py'
+      - 'config/dashboard.yml'
+      - '.github/workflows/dashboard.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/observability/dashboard.py'
+      - 'tests/observability/test_dashboard.py'
+      - 'config/dashboard.yml'
+  schedule:
+    # Run daily at 02:00 UTC for dashboard health checks
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      test_level:
+        description: 'Test level to run'
+        required: false
+        default: 'comprehensive'
+        type: choice
+        options:
+        - 'basic'
+        - 'comprehensive'
+        - 'performance'
+
+jobs:
+  dashboard-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11]
+        dashboard-component: [
+          'data-sources',
+          'chart-generation', 
+          'trend-analysis',
+          'report-generation',
+          'dashboard-management'
+        ]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y graphviz
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-dashboard-${{ hashFiles('requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-dashboard-
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        
+        # Dashboard-specific dependencies
+        pip install plotly>=5.0.0
+        pip install jinja2>=3.0.0
+        pip install pandas>=1.5.0
+        pip install matplotlib>=3.5.0
+        pip install seaborn>=0.11.0
+    
+    - name: Run dashboard component tests
+      run: |
+        case "${{ matrix.dashboard-component }}" in
+          "data-sources")
+            python -m pytest tests/observability/test_dashboard.py::TestMonitoringDataSource -v
+            ;;
+          "chart-generation")
+            python -m pytest tests/observability/test_dashboard.py::TestChartGenerator -v
+            ;;
+          "trend-analysis")
+            python -m pytest tests/observability/test_dashboard.py::TestTrendAnalyzer -v
+            ;;
+          "report-generation")
+            python -m pytest tests/observability/test_dashboard.py::TestReportGenerator -v
+            ;;
+          "dashboard-management")
+            python -m pytest tests/observability/test_dashboard.py::TestDashboardManager -v
+            ;;
+        esac
+    
+    - name: Generate component test report
+      if: always()
+      run: |
+        mkdir -p test-reports
+        python -m pytest tests/observability/test_dashboard.py \
+          --junitxml=test-reports/dashboard-${{ matrix.dashboard-component }}-junit.xml \
+          --html=test-reports/dashboard-${{ matrix.dashboard-component }}-report.html \
+          --self-contained-html || true
+    
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: dashboard-test-results-${{ matrix.python-version }}-${{ matrix.dashboard-component }}
+        path: test-reports/
+
+  dashboard-integration:
+    runs-on: ubuntu-latest
+    needs: dashboard-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install plotly jinja2 pandas matplotlib seaborn
+    
+    - name: Run full dashboard integration tests
+      run: |
+        python -m pytest tests/observability/test_dashboard.py -v \
+          --cov=src/qemlflow/observability/dashboard \
+          --cov-report=xml \
+          --cov-report=html \
+          --cov-report=term-missing
+    
+    - name: Test dashboard configuration validation
+      run: |
+        python -c "
+        import yaml
+        import sys
+        from pathlib import Path
+        
+        config_file = Path('config/dashboard.yml')
+        if not config_file.exists():
+            print('Dashboard config file not found!')
+            sys.exit(1)
+            
+        try:
+            with open(config_file) as f:
+                config = yaml.safe_load(f)
+            
+            # Validate required sections
+            required_sections = ['dashboard', 'data_sources', 'widgets', 'dashboards', 'reporting']
+            for section in required_sections:
+                if section not in config:
+                    print(f'Missing required section: {section}')
+                    sys.exit(1)
+            
+            print('Dashboard configuration is valid!')
+        except Exception as e:
+            print(f'Configuration validation failed: {e}')
+            sys.exit(1)
+        "
+    
+    - name: Test dashboard system initialization
+      run: |
+        python -c "
+        import tempfile
+        import sys
+        from pathlib import Path
+        
+        # Add src to path
+        sys.path.insert(0, 'src')
+        
+        try:
+            from qemlflow.observability.dashboard import initialize_dashboard_system, shutdown_dashboard_system
+            
+            # Test initialization
+            with tempfile.TemporaryDirectory() as temp_dir:
+                manager = initialize_dashboard_system(temp_dir)
+                
+                # Verify initialization
+                assert manager is not None
+                assert 'monitoring' in manager.data_sources
+                assert Path(temp_dir).exists()
+                
+                # Test shutdown
+                shutdown_dashboard_system()
+                
+            print('Dashboard system initialization test passed!')
+            
+        except Exception as e:
+            print(f'Dashboard initialization test failed: {e}')
+            sys.exit(1)
+        "
+    
+    - name: Generate test coverage badge
+      if: always()
+      run: |
+        pip install coverage-badge
+        coverage-badge -o coverage-dashboard.svg
+    
+    - name: Upload coverage reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: dashboard-coverage-report
+        path: |
+          htmlcov/
+          coverage.xml
+          coverage-dashboard.svg
+
+  dashboard-performance:
+    runs-on: ubuntu-latest
+    needs: dashboard-tests
+    if: github.event.inputs.test_level == 'performance' || github.event.inputs.test_level == 'comprehensive'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install plotly jinja2 pandas matplotlib seaborn
+        pip install memory-profiler psutil
+    
+    - name: Run dashboard performance tests
+      run: |
+        python -c "
+        import time
+        import sys
+        import tempfile
+        from pathlib import Path
+        
+        sys.path.insert(0, 'src')
+        
+        from qemlflow.observability.dashboard import (
+            DashboardManager, DashboardWidget, MonitoringDataSource
+        )
+        
+        # Performance test: Dashboard creation and widget management
+        print('Running dashboard performance tests...')
+        
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manager = DashboardManager(temp_dir)
+            
+            # Test 1: Dashboard creation performance
+            start_time = time.time()
+            for i in range(100):
+                manager.create_dashboard(f'dashboard_{i}', f'Dashboard {i}')
+            creation_time = time.time() - start_time
+            
+            print(f'Created 100 dashboards in {creation_time:.3f}s')
+            assert creation_time < 5.0, f'Dashboard creation too slow: {creation_time}s'
+            
+            # Test 2: Widget addition performance
+            start_time = time.time()
+            for i in range(50):
+                widget = DashboardWidget(f'widget_{i}', 'chart', f'Chart {i}')
+                manager.add_widget('dashboard_0', widget)
+            widget_time = time.time() - start_time
+            
+            print(f'Added 50 widgets in {widget_time:.3f}s')
+            assert widget_time < 2.0, f'Widget addition too slow: {widget_time}s'
+            
+            # Test 3: Data source query performance
+            data_source = MonitoringDataSource(temp_dir)
+            
+            # Create test data
+            import json
+            test_data = []
+            for i in range(1000):
+                test_data.append({
+                    'timestamp': f'2023-01-01T{i//60:02d}:{i%60:02d}:00Z',
+                    'value': i % 100
+                })
+            
+            metric_file = Path(temp_dir) / 'test_metric.json'
+            with open(metric_file, 'w') as f:
+                json.dump(test_data, f)
+            
+            start_time = time.time()
+            for i in range(10):
+                result = data_source.get_data({
+                    'metric_type': 'test_metric',
+                    'time_range': '1h',
+                    'aggregation': 'avg'
+                })
+            query_time = time.time() - start_time
+            
+            print(f'Executed 10 data queries in {query_time:.3f}s')
+            assert query_time < 1.0, f'Data queries too slow: {query_time}s'
+            
+        print('All performance tests passed!')
+        "
+    
+    - name: Dashboard memory usage test
+      run: |
+        python -c "
+        import sys
+        import tempfile
+        import psutil
+        import os
+        
+        sys.path.insert(0, 'src')
+        
+        from qemlflow.observability.dashboard import DashboardManager, DashboardWidget
+        
+        print('Testing dashboard memory usage...')
+        
+        process = psutil.Process(os.getpid())
+        initial_memory = process.memory_info().rss / 1024 / 1024  # MB
+        
+        with tempfile.TemporaryDirectory() as temp_dir:
+            manager = DashboardManager(temp_dir)
+            
+            # Create multiple dashboards with widgets
+            for i in range(50):
+                manager.create_dashboard(f'dashboard_{i}', f'Dashboard {i}')
+                for j in range(10):
+                    widget = DashboardWidget(f'widget_{i}_{j}', 'chart', f'Chart {i}-{j}')
+                    manager.add_widget(f'dashboard_{i}', widget)
+        
+        final_memory = process.memory_info().rss / 1024 / 1024  # MB
+        memory_used = final_memory - initial_memory
+        
+        print(f'Memory usage: {memory_used:.2f} MB')
+        assert memory_used < 100, f'Memory usage too high: {memory_used:.2f} MB'
+        
+        print('Memory usage test passed!')
+        "
+
+  dashboard-security:
+    runs-on: ubuntu-latest
+    needs: dashboard-tests
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install security scanning tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install bandit safety
+    
+    - name: Run Bandit security scan on dashboard module
+      run: |
+        bandit -r src/qemlflow/observability/dashboard.py -f json -o bandit-dashboard-report.json || true
+        bandit -r src/qemlflow/observability/dashboard.py
+    
+    - name: Run Safety check for dashboard dependencies
+      run: |
+        pip install plotly jinja2 pandas matplotlib seaborn
+        safety check --json --output safety-dashboard-report.json || true
+        safety check
+    
+    - name: Upload security reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: dashboard-security-reports
+        path: |
+          bandit-dashboard-report.json
+          safety-dashboard-report.json
+
+  dashboard-docs:
+    runs-on: ubuntu-latest
+    needs: dashboard-integration
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    
+    - name: Install documentation dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install sphinx sphinx-rtd-theme pydoc-markdown
+    
+    - name: Generate dashboard API documentation
+      run: |
+        mkdir -p docs/api/dashboard
+        python -c "
+        import sys
+        sys.path.insert(0, 'src')
+        
+        import pydoc
+        from qemlflow.observability import dashboard
+        
+        # Generate documentation
+        pydoc.writedoc('qemlflow.observability.dashboard')
+        print('Dashboard API documentation generated!')
+        "
+    
+    - name: Validate dashboard configuration schema
+      run: |
+        python -c "
+        import yaml
+        from pathlib import Path
+        
+        config_file = Path('config/dashboard.yml')
+        with open(config_file) as f:
+            config = yaml.safe_load(f)
+        
+        # Check for required dashboard configurations
+        required_keys = [
+            'dashboard.storage_dir',
+            'data_sources.monitoring',
+            'widgets.defaults',
+            'dashboards.system_overview',
+            'reporting.enabled',
+            'trend_analysis.enabled'
+        ]
+        
+        def get_nested_value(data, key_path):
+            keys = key_path.split('.')
+            value = data
+            for key in keys:
+                if key in value:
+                    value = value[key]
+                else:
+                    return None
+            return value
+        
+        missing_keys = []
+        for key in required_keys:
+            if get_nested_value(config, key) is None:
+                missing_keys.append(key)
+        
+        if missing_keys:
+            print(f'Missing configuration keys: {missing_keys}')
+            exit(1)
+        
+        print('Dashboard configuration schema validation passed!')
+        "
+    
+    - name: Upload documentation
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: dashboard-documentation
+        path: |
+          docs/api/dashboard/
+          qemlflow.observability.dashboard.html

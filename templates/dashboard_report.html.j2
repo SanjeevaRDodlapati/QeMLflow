@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background-color: #f4f4f4; padding: 20px; border-radius: 5px; }
+        .metric { margin: 10px 0; padding: 10px; border-left: 3px solid #007cba; }
+        .chart { margin: 20px 0; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Dashboard Report</h1>
+        <p>Generated on: {{ timestamp }}</p>
+    </div>
+    
+    <h2>Summary</h2>
+    <div class="metric">
+        <strong>Total Metrics:</strong> {{ metrics|length if metrics else 0 }}
+    </div>
+    
+    {% if metrics %}
+    <h2>Metrics</h2>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+            <th>Status</th>
+        </tr>
+        {% for metric in metrics %}
+        <tr>
+            <td>{{ metric.name }}</td>
+            <td>{{ metric.value }}</td>
+            <td>{{ metric.status or 'N/A' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    
+    {% if charts %}
+    <h2>Charts</h2>
+    {% for chart in charts %}
+    <div class="chart">
+        <h3>{{ chart.title }}</h3>
+        <img src="{{ chart.path }}" alt="{{ chart.title }}" style="max-width: 100%;">
+    </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
