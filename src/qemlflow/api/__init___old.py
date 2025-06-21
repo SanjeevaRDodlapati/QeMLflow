@@ -52,6 +52,8 @@ from .backward_compatibility import (
     register_compatibility_test,
     check_version_compatibility
 )
+
+from .deprecation import (
     DeprecationPolicy,
     deprecated,
     deprecate_function,

@@ -46,6 +46,13 @@ try:
 except ImportError:
     WIDGETS_AVAILABLE = False
 
+# Import safe_show for matplotlib handling
+try:
+    from qemlflow.testing.matplotlib_config import safe_show
+except ImportError:
+    def safe_show():
+        pass
+
 # Set up seaborn style for better plots
 sns.set_style("whitegrid")
 plt.rcParams["figure.figsize"] = (10, 6)

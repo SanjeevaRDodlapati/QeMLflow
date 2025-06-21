@@ -19,6 +19,13 @@ Compatible: Qiskit 2.0+
 import warnings
 from abc import ABC, abstractmethod
 
+# Import safe_show for matplotlib handling
+try:
+    from qemlflow.testing.matplotlib_config import safe_show
+except ImportError:
+    def safe_show():
+        pass
+
 import numpy as np
 import pandas as pd
 
