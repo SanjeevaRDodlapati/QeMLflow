@@ -1,0 +1,141 @@
+# QeMLflow Observability Configuration
+
+# Monitoring Configuration
+monitoring:
+  # Metrics collection settings
+  metrics:
+    storage_dir: "metrics_data"
+    max_data_points: 10000
+    collection_interval_seconds: 30
+    cleanup_days: 30
+  
+  # System monitoring thresholds
+  system:
+    cpu_warning_threshold: 80.0
+    cpu_critical_threshold: 95.0
+    memory_warning_threshold: 85.0
+    memory_critical_threshold: 95.0
+    disk_warning_threshold: 85.0
+    disk_critical_threshold: 95.0
+  
+  # Application monitoring
+  application:
+    response_time_warning_ms: 1000.0
+    response_time_critical_ms: 2000.0
+    error_rate_warning_percent: 5.0
+    error_rate_critical_percent: 10.0
+
+# Alerting Configuration  
+alerting:
+  # Alert storage
+  storage_dir: "alerts"
+  
+  # Default alert rules
+  default_rules:
+    - name: "High CPU Usage"
+      metric: "system.cpu_percent"
+      condition: "gt"
+      threshold: 80.0
+      duration_seconds: 300
+      severity: "warning"
+      enabled: true
+    
+    - name: "Critical CPU Usage"
+      metric: "system.cpu_percent"
+      condition: "gt"
+      threshold: 95.0
+      duration_seconds: 180
+      severity: "critical"
+      enabled: true
+    
+    - name: "High Memory Usage"
+      metric: "system.memory_percent"
+      condition: "gt"
+      threshold: 85.0
+      duration_seconds: 300
+      severity: "warning"
+      enabled: true
+    
+    - name: "Critical Memory Usage"
+      metric: "system.memory_percent"
+      condition: "gt"
+      threshold: 95.0
+      duration_seconds: 180
+      severity: "critical"
+      enabled: true
+    
+    - name: "High Response Time"
+      metric: "application.response_time_ms"
+      condition: "gt"
+      threshold: 2000.0
+      duration_seconds: 300
+      severity: "warning"
+      enabled: true
+    
+    - name: "High Error Rate"
+      metric: "application.error_rate"
+      condition: "gt"
+      threshold: 5.0
+      duration_seconds: 180
+      severity: "critical"
+      enabled: true
+
+  # Notification channels
+  notifications:
+    email:
+      enabled: false
+      smtp_server: "localhost"
+      smtp_port: 587
+      username: ""
+      password: ""
+      from_email: "noreply@qemlflow.org"
+      use_tls: true
+    
+    slack:
+      enabled: false
+      webhook_url: ""
+      channel: "#alerts"
+    
+    webhook:
+      enabled: false
+      url: ""
+      headers:
+        Content-Type: "application/json"
+
+# Health Checks Configuration
+health_checks:
+  # System health checks
+  system:
+    enabled: true
+    cpu_warning: 80.0
+    cpu_critical: 95.0
+    memory_warning: 85.0
+    memory_critical: 95.0
+    disk_warning: 85.0
+    disk_critical: 95.0
+  
+  # Database health checks
+  database:
+    enabled: false
+    timeout_seconds: 10
+    
+  # Service health checks
+  services:
+    enabled: false
+    timeout_seconds: 5
+    endpoints: []
+
+# User Experience Monitoring
+ux_monitoring:
+  enabled: true
+  track_page_loads: true
+  track_user_interactions: true
+  track_errors: true
+  sampling_rate: 1.0  # 100% sampling
+  
+# Performance Budgets
+performance_budgets:
+  api_response_time_ms: 1000
+  memory_usage_mb: 1024
+  cpu_usage_percent: 80
+  error_rate_percent: 1.0

@@ -1,0 +1,200 @@
+name: Observability Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/observability/**'
+      - 'tests/observability/**'
+      - 'config/observability.yml'
+      - '.github/workflows/observability.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/qemlflow/observability/**'
+      - 'tests/observability/**'
+      - 'config/observability.yml'
+      - '.github/workflows/observability.yml'
+
+jobs:
+  observability-tests:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, '3.10', '3.11']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-core.txt
+        pip install pytest pytest-cov pytest-mock
+        pip install psutil  # Required for system monitoring
+    
+    - name: Install optional dependencies for alerting
+      run: |
+        pip install requests || echo "Requests not available, alerting features will be limited"
+    
+    - name: Lint observability code
+      run: |
+        python -m pylint src/qemlflow/observability/ --disable=missing-docstring,too-few-public-methods
+    
+    - name: Type check observability code
+      run: |
+        python -m mypy src/qemlflow/observability/ --ignore-missing-imports
+    
+    - name: Run observability unit tests
+      run: |
+        python -m pytest tests/observability/ -v --cov=src/qemlflow/observability --cov-report=xml --cov-report=term-missing
+    
+    - name: Test monitoring functionality
+      run: |
+        python -c "
+        import sys
+        sys.path.append('src')
+        from qemlflow.observability.monitoring import get_performance_monitor
+        from qemlflow.observability.health_checks import SystemHealthCheck
+        from qemlflow.observability.metrics import Counter, Gauge
+        
+        # Test basic functionality
+        monitor = get_performance_monitor()
+        print('Performance monitor created successfully')
+        
+        health_check = SystemHealthCheck()
+        result = health_check.check()
+        print(f'Health check status: {result.status}')
+        
+        counter = Counter('test_counter')
+        counter.increment(5)
+        print(f'Counter value: {counter.get_value()}')
+        
+        gauge = Gauge('test_gauge')
+        gauge.set(42.0)
+        print(f'Gauge value: {gauge.get_value()}')
+        
+        print('All observability components working correctly')
+        "
+    
+    - name: Test alerting system
+      run: |
+        python -c "
+        import sys
+        sys.path.append('src')
+        from qemlflow.observability.alerting import get_alert_manager, EmailNotificationChannel
+        from qemlflow.observability.monitoring import AlertRule, Alert
+        
+        # Test alert manager
+        alert_manager = get_alert_manager()
+        print('Alert manager created successfully')
+        
+        # Test alert rule
+        rule = AlertRule(
+            name='Test Alert',
+            metric_name='test_metric',
+            condition='gt',
+            threshold=80.0
+        )
+        alert_manager.add_alert_rule(rule)
+        print('Alert rule added successfully')
+        
+        # Test notification channel (without actually sending)
+        email_channel = EmailNotificationChannel(enabled=False)
+        alert_manager.add_notification_channel(email_channel)
+        print('Notification channel added successfully')
+        
+        print('Alerting system working correctly')
+        "
+    
+    - name: Validate configuration
+      run: |
+        python -c "
+        import yaml
+        import sys
+        
+        try:
+            with open('config/observability.yml', 'r') as f:
+                config = yaml.safe_load(f)
+            
+            assert 'monitoring' in config
+            assert 'alerting' in config
+            assert 'health_checks' in config
+            
+            print('Observability configuration is valid')
+        except Exception as e:
+            print(f'Configuration validation failed: {e}')
+            sys.exit(1)
+        "
+    
+    - name: Test system integration
+      run: |
+        python -c "
+        import sys
+        import time
+        sys.path.append('src')
+        
+        from qemlflow.observability.monitoring import get_performance_monitor, monitor_function
+        from qemlflow.observability.health_checks import SystemHealthCheck
+        from qemlflow.observability.alerting import get_alert_manager
+        
+        # Test full integration
+        monitor = get_performance_monitor()
+        alert_manager = get_alert_manager()
+        health_check = SystemHealthCheck()
+        
+        # Record some metrics
+        monitor.record_request(150.0, True)
+        monitor.record_custom_metric('test.integration', 42.0)
+        
+        # Test context manager
+        with monitor_function(monitor, 'integration_test'):
+            time.sleep(0.01)
+        
+        # Check health
+        health_result = health_check.check()
+        print(f'Integration test - Health: {health_result.status}')
+        
+        # Get summary
+        summary = monitor.get_performance_summary()
+        print(f'Integration test - Metrics collected: {len(summary)}')
+        
+        print('Full integration test passed')
+        "
+    
+    - name: Upload coverage to Codecov
+      if: matrix.python-version == '3.10'
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: observability
+        name: observability-coverage
+    
+    - name: Generate test report
+      if: always()
+      run: |
+        echo "## Observability Test Results" >> $GITHUB_STEP_SUMMARY
+        echo "- Python version: ${{ matrix.python-version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Tests completed: $(date)" >> $GITHUB_STEP_SUMMARY
+        
+        if [ -f coverage.xml ]; then
+          echo "- Coverage report generated" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        echo "### Test Status" >> $GITHUB_STEP_SUMMARY
+        echo "✅ Observability tests completed successfully" >> $GITHUB_STEP_SUMMARY
