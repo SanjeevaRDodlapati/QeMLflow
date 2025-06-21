@@ -25,7 +25,7 @@ except ImportError:
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
 try:
-    from utils.metrics import (
+    from qemlflow.core.utils.metrics import (
         ClassificationMetrics,
         MolecularMetrics,
         RegressionMetrics,
@@ -54,7 +54,7 @@ class TestClassificationMetrics:
         y_pred = np.array([0, 1, 0, 0, 1, 1, 1, 1])
         y_prob = np.array([0.1, 0.9, 0.3, 0.2, 0.8, 0.7, 0.9, 0.8])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             metrics = ClassificationMetrics.calculate_all_metrics(
                 y_true, y_pred, y_prob
             )
@@ -76,7 +76,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 1, 0, 1])
         y_pred = np.array([0, 1, 0, 0, 1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", False):
             metrics = ClassificationMetrics.calculate_all_metrics(y_true, y_pred)
 
             assert "accuracy" in metrics
@@ -93,7 +93,7 @@ class TestClassificationMetrics:
         y_pred = np.array([1, 1, 0, 1, 1])
         y_prob = np.array([0.9, 0.8, 0.3, 0.9, 0.8])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             metrics = ClassificationMetrics.calculate_all_metrics(
                 y_true, y_pred, y_prob
             )
@@ -109,7 +109,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 2, 0, 1, 2, 1, 2])
         y_pred = np.array([0, 1, 1, 0, 2, 2, 1, 2])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             metrics = ClassificationMetrics.calculate_all_metrics(y_true, y_pred)
 
             assert "accuracy" in metrics
@@ -123,7 +123,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 1, 0, 1, 0])
         y_pred = np.array([0, 1, 0, 0, 1, 1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             result = ClassificationMetrics.confusion_matrix_metrics(y_true, y_pred)
 
             assert "confusion_matrix" in result
@@ -141,7 +141,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 1, 0])
         y_pred = np.array([0, 1, 0, 1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", False):
             result = ClassificationMetrics.confusion_matrix_metrics(y_true, y_pred)
 
             assert "confusion_matrix" in result
@@ -152,7 +152,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 2, 0, 1, 2])
         y_pred = np.array([0, 1, 1, 0, 2, 2])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             result = ClassificationMetrics.confusion_matrix_metrics(y_true, y_pred)
 
             assert "confusion_matrix" in result
@@ -166,7 +166,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 0, 1])
         y_pred = np.array([0, 1, 0, 1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             result = ClassificationMetrics.confusion_matrix_metrics(y_true, y_pred)
 
             assert result["sensitivity"] == 1.0
@@ -176,7 +176,7 @@ class TestClassificationMetrics:
         y_true = np.array([0, 1, 0, 1])
         y_pred = np.array([1, 0, 1, 0])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             result = ClassificationMetrics.confusion_matrix_metrics(y_true, y_pred)
 
             assert result["sensitivity"] == 0.0
@@ -191,7 +191,7 @@ class TestRegressionMetrics:
         y_true = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
         y_pred = np.array([1.1, 1.9, 3.2, 3.8, 5.1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             metrics = RegressionMetrics.calculate_all_metrics(y_true, y_pred)
 
             assert "mse" in metrics
@@ -213,7 +213,7 @@ class TestRegressionMetrics:
         y_true = np.array([1.0, 2.0, 3.0, 4.0, 5.0])
         y_pred = np.array([1.1, 1.9, 3.2, 3.8, 5.1])
 
-        with patch("utils.metrics.SKLEARN_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", False):
             metrics = RegressionMetrics.calculate_all_metrics(y_true, y_pred)
 
             assert "mse" in metrics
@@ -275,7 +275,7 @@ class TestMolecularMetrics:
         smiles1 = "CCO"  # Ethanol
         smiles2 = "CCO"  # Same molecule
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             similarity = MolecularMetrics.tanimoto_similarity(smiles1, smiles2)
 
             assert similarity == 1.0  # Identical molecules should have similarity 1.0
@@ -285,7 +285,7 @@ class TestMolecularMetrics:
         smiles1 = "CCO"  # Ethanol
         smiles2 = "CCCO"  # Propanol
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             similarity = MolecularMetrics.tanimoto_similarity(smiles1, smiles2)
 
             assert 0.0 <= similarity <= 1.0
@@ -296,7 +296,7 @@ class TestMolecularMetrics:
         smiles1 = "CCO"
         smiles2 = "CCCO"
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", False):
             similarity = MolecularMetrics.tanimoto_similarity(smiles1, smiles2)
 
             assert similarity == 0.5  # Should return default value
@@ -306,7 +306,7 @@ class TestMolecularMetrics:
         smiles1 = "INVALID_SMILES"
         smiles2 = "CCO"
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             similarity = MolecularMetrics.tanimoto_similarity(smiles1, smiles2)
 
             assert similarity == 0.0  # Should return 0 for invalid SMILES
@@ -316,7 +316,7 @@ class TestMolecularMetrics:
         smiles1 = "CCO"
         smiles2 = "CCCO"
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             # Test Morgan fingerprints
             similarity_morgan = MolecularMetrics.tanimoto_similarity(
                 smiles1, smiles2, fingerprint_type="morgan"
@@ -335,7 +335,7 @@ class TestMolecularMetrics:
         smiles1 = "CCO"
         smiles2 = "CCCO"
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             similarity = MolecularMetrics.tanimoto_similarity(
                 smiles1, smiles2, fingerprint_type="unsupported"
             )
@@ -346,7 +346,7 @@ class TestMolecularMetrics:
         """Test diversity metrics calculation with RDKit available."""
         smiles_list = ["CCO", "CCCO", "CCCCO", "CC(C)O"]
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             diversity = MolecularMetrics.diversity_metrics(smiles_list)
 
             assert "mean_pairwise_similarity" in diversity
@@ -364,7 +364,7 @@ class TestMolecularMetrics:
         """Test diversity metrics fallback when RDKit not available."""
         smiles_list = ["CCO", "CCCO", "CCCCO"]
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", False):
             diversity = MolecularMetrics.diversity_metrics(smiles_list)
 
             assert diversity["mean_pairwise_similarity"] == 0.5
@@ -385,7 +385,7 @@ class TestMolecularMetrics:
         """Test diversity metrics with invalid molecules."""
         smiles_list = ["INVALID", "ALSO_INVALID", "CCO"]
 
-        with patch("utils.metrics.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.RDKIT_AVAILABLE", True):
             diversity = MolecularMetrics.diversity_metrics(smiles_list)
 
             # Should handle invalid molecules gracefully
@@ -788,13 +788,13 @@ class TestIntegrationScenarios:
         y_pred = np.array([0, 1, 0, 1, 1])
 
         # Test with sklearn available
-        with patch("utils.metrics.SKLEARN_AVAILABLE", True):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", True):
             metrics_sklearn = ClassificationMetrics.calculate_all_metrics(
                 y_true, y_pred
             )
 
         # Test without sklearn
-        with patch("utils.metrics.SKLEARN_AVAILABLE", False):
+        with patch("qemlflow.core.utils.metrics.SKLEARN_AVAILABLE", False):
             metrics_fallback = ClassificationMetrics.calculate_all_metrics(
                 y_true, y_pred
             )

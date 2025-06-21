@@ -33,7 +33,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
                     # Import the module to trigger the exception handling
                     import importlib
 
-                    import src.data_processing.feature_extraction
+                    import qemlflow.core.preprocessing.feature_extraction
 
                     importlib.reload(src.data_processing.feature_extraction)
                 except SyntaxError:
@@ -41,13 +41,13 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_calculate_properties_mol_object_input(self):
         """Test line 86: Handle Mol object input in calculate_properties."""
-        from src.data_processing.feature_extraction import calculate_properties
+        from qemlflow.core.preprocessing.feature_extraction import calculate_properties
 
         # Create a mock Mol object with GetNumAtoms method
         mock_mol = Mock()
         mock_mol.GetNumAtoms.return_value = 3
 
-        with patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True):
             with patch(
                 "src.data_processing.feature_extraction.Descriptors"
             ) as mock_desc:
@@ -66,7 +66,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_extract_basic_descriptors_implementation(self):
         """Test line 164: Basic descriptors extraction fallback."""
-        from src.data_processing.feature_extraction import _extract_basic_descriptors
+        from qemlflow.core.preprocessing.feature_extraction import _extract_basic_descriptors
 
         basic_result = _extract_basic_descriptors(self.sample_smiles)
 
@@ -80,7 +80,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_extract_basic_fingerprints(self):
         """Test lines 236-245: Basic fingerprints implementation."""
-        from src.data_processing.feature_extraction import _extract_basic_fingerprints
+        from qemlflow.core.preprocessing.feature_extraction import _extract_basic_fingerprints
 
         fp_result = _extract_basic_fingerprints(self.sample_smiles, n_bits=64)
 
@@ -94,9 +94,9 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_extract_rdkit_fingerprints_fallback(self):
         """Test lines 288-292: RDKit fingerprints fallback to topological."""
-        from src.data_processing.feature_extraction import _extract_rdkit_fingerprints
+        from qemlflow.core.preprocessing.feature_extraction import _extract_rdkit_fingerprints
 
-        with patch("src.data_processing.feature_extraction.Chem") as mock_chem:
+        with patch("qemlflow.core.preprocessing.feature_extraction.Chem") as mock_chem:
             mock_mol = Mock()
             mock_chem.MolFromSmiles.return_value = mock_mol
 
@@ -116,13 +116,13 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_calculate_single_fingerprint_mol_object(self):
         """Test lines 362-370: Single fingerprint calculation with Mol object."""
-        from src.data_processing.feature_extraction import _calculate_single_fingerprint
+        from qemlflow.core.preprocessing.feature_extraction import _calculate_single_fingerprint
 
         # Create mock Mol object that has GetNumAtoms method
         mock_mol = Mock()
         mock_mol.GetNumAtoms.return_value = 3
 
-        with patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True):
             with patch(
                 "src.data_processing.feature_extraction.rdMolDescriptors"
             ) as mock_rdmol:
@@ -138,9 +138,9 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_calculate_single_fingerprint_invalid_mol(self):
         """Test line 384: Handle invalid molecule input."""
-        from src.data_processing.feature_extraction import _calculate_single_fingerprint
+        from qemlflow.core.preprocessing.feature_extraction import _calculate_single_fingerprint
 
-        with patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", True):
             # Test with invalid input that can't be converted to Mol (line 384)
             invalid_result = _calculate_single_fingerprint(None, "morgan", 4, 2)
 
@@ -151,9 +151,9 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_calculate_single_fingerprint_maccs_without_rdkit(self):
         """Test lines 394, 397-400: MACCS fingerprint without RDKit."""
-        from src.data_processing.feature_extraction import _calculate_single_fingerprint
+        from qemlflow.core.preprocessing.feature_extraction import _calculate_single_fingerprint
 
-        with patch("src.data_processing.feature_extraction.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.preprocessing.feature_extraction.RDKIT_AVAILABLE", False):
             # Test MACCS without RDKit (line 394)
             maccs_result = _calculate_single_fingerprint("CCO", "maccs", 167, 2)
 
@@ -168,7 +168,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_estimate_property_unknown_property(self):
         """Test line 420: Handle unknown property in estimation."""
-        from src.data_processing.feature_extraction import _estimate_property
+        from qemlflow.core.preprocessing.feature_extraction import _estimate_property
 
         # Test with unknown property to trigger default case (line 420)
         unknown_result = _estimate_property("CCO", "unknown_property")
@@ -178,7 +178,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_legacy_functions_empty_properties(self):
         """Test lines 555, 563, 571, 581, 586-589: Legacy function edge cases."""
-        from src.data_processing.feature_extraction import (
+        from qemlflow.core.preprocessing.feature_extraction import (
             calculate_logP,
             calculate_molecular_weight,
             calculate_num_rotatable_bonds,
@@ -213,7 +213,7 @@ class TestFeatureExtractionHighImpact(unittest.TestCase):
 
     def test_legacy_functions_with_values(self):
         """Test lines 586-589: Legacy functions returning values."""
-        from src.data_processing.feature_extraction import (
+        from qemlflow.core.preprocessing.feature_extraction import (
             calculate_logP,
             calculate_molecular_weight,
             calculate_num_rotatable_bonds,

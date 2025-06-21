@@ -13,7 +13,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 
-from src.qemlflow.observability.maintenance import (
+from qemlflow.observability.maintenance import (
     MaintenanceTask,
     MaintenanceResult,
     SystemHealth,

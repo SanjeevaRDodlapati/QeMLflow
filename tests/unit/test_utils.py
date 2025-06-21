@@ -15,12 +15,12 @@ import pytest
 
 # Import modules under test
 try:
-    from src.utils.io_utils import (
+    from qemlflow.core.utils.io_utils import (
         export_results,
         load_molecular_data,
         save_molecular_data,
     )
-    from src.utils.metrics import (
+    from qemlflow.core.utils.metrics import (
         accuracy,
         f1_score,
         mean_squared_error,
@@ -28,19 +28,19 @@ try:
         r_squared,
         recall,
     )
-    from src.utils.ml_utils import evaluate_model, normalize_features, split_data
-    from src.utils.molecular_utils import (
+    from qemlflow.core.utils.ml_utils import evaluate_model, normalize_features, split_data
+    from qemlflow.core.utils.molecular_utils import (
         calculate_similarity,
         filter_molecules_by_properties,
         mol_to_smiles,
         smiles_to_mol,
     )
-    from src.utils.quantum_utils import (
+    from qemlflow.core.utils.quantum_utils import (
         apply_quantum_gate,
         create_quantum_circuit,
         measure_quantum_state,
     )
-    from src.utils.visualization import (
+    from qemlflow.core.utils.visualization import (
         plot_feature_importance,
         plot_model_performance,
         plot_molecular_structure,

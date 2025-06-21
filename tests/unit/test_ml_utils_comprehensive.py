@@ -21,7 +21,7 @@ from sklearn import *
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "src"))
 
 try:
-    from utils.ml_utils import (
+    from qemlflow.core.utils.ml_utils import (
         CrossValidator,
         DatasetSplitter,
         FeatureScaler,
@@ -383,7 +383,7 @@ class TestCrossValidator:
         self.mock_model.fit = Mock()
         self.mock_model.predict = Mock(return_value=np.random.choice([0, 1], 10))
 
-    @patch("utils.ml_utils.cross_val_score")
+    @patch("qemlflow.core.utils.ml_utils.cross_val_score")
     def test_cross_validate_model_classification(self, mock_cv_score):
         """Test cross-validation for classification."""
         mock_scores = np.array([0.8, 0.85, 0.9])
@@ -407,7 +407,7 @@ class TestCrossValidator:
         # Should have used StratifiedKFold for classification
         mock_cv_score.assert_called_once()
 
-    @patch("utils.ml_utils.cross_val_score")
+    @patch("qemlflow.core.utils.ml_utils.cross_val_score")
     def test_cross_validate_model_regression(self, mock_cv_score):
         """Test cross-validation for regression."""
         mock_scores = np.array([0.7, 0.75, 0.8])
@@ -910,7 +910,7 @@ class TestIntegrationScenarios:
 
         # Cross-validation with best model
         cv = CrossValidator(cv_folds=3, scoring="accuracy")
-        with patch("utils.ml_utils.cross_val_score") as mock_cv_score:
+        with patch("qemlflow.core.utils.ml_utils.cross_val_score") as mock_cv_score:
             mock_cv_score.return_value = np.array([0.85, 0.9, 0.88])
             cv_results = cv.cross_validate_model(
                 result["best_estimator"], X_train_norm, y_train

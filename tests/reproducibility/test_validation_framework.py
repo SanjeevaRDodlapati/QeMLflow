@@ -18,7 +18,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
 # Import the modules to test
-from src.qemlflow.reproducibility.validation_framework import (
+from qemlflow.reproducibility.validation_framework import (
     ValidationResult,
     BenchmarkResult, 
     ValidationReport,

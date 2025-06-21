@@ -12,13 +12,13 @@ import pytest
 
 # Import modules under test
 try:
-    from src.data_processing.feature_extraction import (
+    from qemlflow.core.preprocessing.feature_extraction import (
         calculate_properties,
         extract_descriptors,
         extract_structural_features,
         generate_fingerprints,
     )
-    from src.data_processing.molecular_preprocessing import (
+    from qemlflow.core.preprocessing.molecular_preprocessing import (
         clean_data,
         filter_by_properties,
         normalize_data,

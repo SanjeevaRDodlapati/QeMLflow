@@ -12,7 +12,7 @@ import unittest
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-from src.qemlflow.observability.usage_analytics import (
+from qemlflow.observability.usage_analytics import (
     UsageEvent,
     PerformanceMetrics,
     UserBehaviorPattern,

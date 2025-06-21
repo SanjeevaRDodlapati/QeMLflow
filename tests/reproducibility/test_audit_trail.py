@@ -19,7 +19,7 @@ from unittest import TestCase
 
 import pytest
 
-from src.qemlflow.reproducibility.audit_trail import (
+from qemlflow.reproducibility.audit_trail import (
     AuditEvent,
     DataLineage,
     WorkflowStep,

@@ -57,12 +57,12 @@ class TestMolecularDescriptors:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 MolecularDescriptors()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_calculate_basic_descriptors(self, mock_descriptors):
         """Test basic descriptors calculation"""
         # Setup mocks
@@ -99,9 +99,9 @@ class TestMolecularDescriptors:
         assert descriptors["hbd"] == 5
         assert descriptors["hba"] == 6
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Descriptors")
-    @patch("utils.molecular_utils.Lipinski")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.Lipinski")
     def test_calculate_lipinski_descriptors(self, mock_lipinski, mock_descriptors):
         """Test Lipinski descriptors calculation"""
         mock_mol = Mock()
@@ -117,8 +117,8 @@ class TestMolecularDescriptors:
         assert descriptors["hbd"] == 2
         assert descriptors["hba"] == 4
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.rdFingerprintGenerator")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.rdFingerprintGenerator")
     def test_calculate_morgan_fingerprint(self, mock_fp_gen):
         """Test Morgan fingerprint calculation"""
         mock_mol = Mock()
@@ -147,11 +147,11 @@ class TestLipinskiFilter:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 LipinskiFilter()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_init_with_rdkit(self):
         """Test initialization when RDKit is available"""
         filter_strict = LipinskiFilter(strict=True)
@@ -160,8 +160,8 @@ class TestLipinskiFilter:
         filter_nonstrict = LipinskiFilter(strict=False)
         assert filter_nonstrict.strict is False
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors")
     def test_passes_lipinski_strict_mode(self, mock_calc_descriptors):
         """Test Lipinski filtering in strict mode"""
         lipinski_filter = LipinskiFilter(strict=True)
@@ -187,8 +187,8 @@ class TestLipinskiFilter:
 
         assert lipinski_filter.passes_lipinski(mock_mol) is False
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.MolecularDescriptors.calculate_lipinski_descriptors")
     def test_passes_lipinski_non_strict_mode(self, mock_calc_descriptors):
         """Test Lipinski filtering in non-strict mode"""
         lipinski_filter = LipinskiFilter(strict=False)
@@ -214,8 +214,8 @@ class TestLipinskiFilter:
 
         assert lipinski_filter.passes_lipinski(mock_mol) is False
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_filter_molecules(self, mock_chem):
         """Test filtering a list of SMILES"""
         lipinski_filter = LipinskiFilter(strict=False)
@@ -245,12 +245,12 @@ class TestSMILESProcessor:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 SMILESProcessor()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_canonicalize_smiles(self, mock_chem):
         """Test SMILES canonicalization"""
         mock_mol = Mock()
@@ -263,8 +263,8 @@ class TestSMILESProcessor:
         mock_chem.MolToSmiles.assert_called_once_with(mock_mol, canonical=True)
         assert result == "CCO"
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_canonicalize_smiles_invalid(self, mock_chem):
         """Test SMILES canonicalization with invalid SMILES"""
         mock_chem.MolFromSmiles.return_value = None
@@ -273,8 +273,8 @@ class TestSMILESProcessor:
 
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_is_valid_smiles(self, mock_chem):
         """Test SMILES validation"""
         # Valid SMILES
@@ -289,8 +289,8 @@ class TestSMILESProcessor:
         mock_chem.MolFromSmiles.side_effect = Exception("Error")
         assert SMILESProcessor.is_valid_smiles("CCO") is False
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_smiles_to_mol(self, mock_chem):
         """Test SMILES to Mol conversion"""
         mock_mol = Mock()
@@ -301,7 +301,7 @@ class TestSMILESProcessor:
         mock_chem.MolFromSmiles.assert_called_once_with("CCO")
         assert result == mock_mol
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_process_smiles_list(self):
         """Test processing a list of SMILES"""
         processor = SMILESProcessor()
@@ -327,11 +327,11 @@ class TestMoleculeVisualizer:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 MoleculeVisualizer()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     @patch("rdkit.Chem.Draw")
     def test_view_2d(self, mock_draw):
         """Test 2D visualization"""
@@ -344,17 +344,17 @@ class TestMoleculeVisualizer:
         mock_draw.MolToImage.assert_called_once_with(mock_mol, size=(400, 400))
         assert result == mock_image
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.PY3DMOL_AVAILABLE", False)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", False)
     def test_view_3d_without_py3dmol(self):
         """Test 3D visualization without py3Dmol"""
         result = MoleculeVisualizer.view_3d("CCO")
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.PY3DMOL_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
-    @patch("utils.molecular_utils.py3Dmol")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.py3Dmol")
     def test_view_3d_with_py3dmol(self, mock_py3dmol, mock_chem):
         """Test 3D visualization with py3Dmol"""
         mock_mol = Mock()
@@ -383,8 +383,8 @@ class TestMoleculeVisualizer:
 class TestStandaloneFunctions:
     """Test standalone utility functions"""
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_calculate_drug_likeness_score(self, mock_descriptors):
         """Test drug-likeness score calculation"""
         mock_mol = Mock()
@@ -404,8 +404,8 @@ class TestStandaloneFunctions:
         # Should pass all 8 criteria
         assert score == 1.0
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_calculate_drug_likeness_score_poor_molecule(self, mock_descriptors):
         """Test drug-likeness score for a poor molecule"""
         mock_mol = Mock()
@@ -427,14 +427,14 @@ class TestStandaloneFunctions:
 
     def test_calculate_drug_likeness_score_without_rdkit(self):
         """Test drug-likeness calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 calculate_drug_likeness_score(Mock())
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
-    @patch("utils.molecular_utils.MolecularDescriptors")
-    @patch("utils.molecular_utils.LipinskiFilter")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.MolecularDescriptors")
+    @patch("qemlflow.core.utils.molecular_utils.LipinskiFilter")
     def test_batch_process_molecules(
         self, mock_filter_class, mock_descriptors_class, mock_chem
     ):
@@ -470,12 +470,12 @@ class TestStandaloneFunctions:
 
     def test_batch_process_molecules_without_rdkit(self):
         """Test batch processing without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 batch_process_molecules(["CCO"])
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_smiles_to_mol_with_rdkit(self, mock_chem):
         """Test SMILES to Mol conversion with RDKit"""
         mock_mol = Mock()
@@ -488,7 +488,7 @@ class TestStandaloneFunctions:
 
     def test_smiles_to_mol_without_rdkit(self):
         """Test SMILES to Mol conversion without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = smiles_to_mol("CCO")
 
             assert isinstance(result, dict)
@@ -500,8 +500,8 @@ class TestStandaloneFunctions:
         result = mol_to_smiles("CCO")
         assert result == "CCO"
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_mol_to_smiles_with_mol_object(self, mock_chem):
         """Test Mol to SMILES conversion with Mol object"""
         mock_mol = Mock()
@@ -518,8 +518,8 @@ class TestStandaloneFunctions:
         result = mol_to_smiles(mock_mol)
         assert result == "CCO"
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_validate_smiles_with_rdkit(self, mock_chem):
         """Test SMILES validation with RDKit"""
         mock_chem.MolFromSmiles.return_value = Mock()
@@ -530,14 +530,14 @@ class TestStandaloneFunctions:
 
     def test_validate_smiles_without_rdkit(self):
         """Test SMILES validation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             assert validate_smiles("CCO") is True
             assert validate_smiles("") is False
             assert validate_smiles("   ") is False
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.smiles_to_mol")
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.smiles_to_mol")
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_calculate_molecular_weight_with_rdkit(
         self, mock_descriptors, mock_smiles_to_mol
     ):
@@ -554,14 +554,14 @@ class TestStandaloneFunctions:
 
     def test_calculate_molecular_weight_without_rdkit(self):
         """Test molecular weight calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = calculate_molecular_weight("CCO")
             # Should return length * 8.0 = 3 * 8.0 = 24.0
             assert result == 24.0
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.smiles_to_mol")
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.smiles_to_mol")
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_calculate_logp_with_rdkit(self, mock_descriptors, mock_smiles_to_mol):
         """Test LogP calculation with RDKit"""
         mock_mol = Mock()
@@ -576,14 +576,14 @@ class TestStandaloneFunctions:
 
     def test_calculate_logp_without_rdkit(self):
         """Test LogP calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = calculate_logp("CCO")
             # Should calculate based on atom counts
             assert isinstance(result, float)
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.smiles_to_mol")
-    @patch("utils.molecular_utils.rdMolDescriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.smiles_to_mol")
+    @patch("qemlflow.core.utils.molecular_utils.rdMolDescriptors")
     def test_get_molecular_formula_with_rdkit(
         self, mock_mol_descriptors, mock_smiles_to_mol
     ):
@@ -600,16 +600,16 @@ class TestStandaloneFunctions:
 
     def test_get_molecular_formula_without_rdkit(self):
         """Test molecular formula calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = get_molecular_formula("CCO")
             # Should return rough estimation
             assert isinstance(result, str)
             assert "C" in result
             assert "H" in result
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.smiles_to_mol")
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.smiles_to_mol")
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_standardize_molecule_with_rdkit(self, mock_chem, mock_smiles_to_mol):
         """Test molecule standardization with RDKit"""
         mock_mol = Mock()
@@ -624,14 +624,14 @@ class TestStandaloneFunctions:
 
     def test_standardize_molecule_without_rdkit(self):
         """Test molecule standardization without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = standardize_molecule("C(C)O")
             assert result == "C(C)O"  # Should return as-is
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.smiles_to_mol")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.smiles_to_mol")
     @patch("rdkit.Chem.SaltRemover")
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_remove_salts_with_rdkit(
         self, mock_chem, mock_salt_remover, mock_smiles_to_mol
     ):
@@ -654,7 +654,7 @@ class TestStandaloneFunctions:
 
     def test_remove_salts_without_rdkit(self):
         """Test salt removal without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = remove_salts("CCO.Cl")
             assert result == "CCO.Cl"  # Should return as-is
 
@@ -664,8 +664,8 @@ class TestStandaloneFunctions:
         # Should apply simple pattern replacements
         assert isinstance(result, str)
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.rdFingerprintGenerator")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.rdFingerprintGenerator")
     @patch("rdkit.DataStructs")
     def test_calculate_similarity_with_rdkit(self, mock_datastructs, mock_fp_gen):
         """Test similarity calculation with RDKit"""
@@ -678,7 +678,7 @@ class TestStandaloneFunctions:
         mock_generator.GetFingerprint.side_effect = [mock_fp1, mock_fp2]
         mock_datastructs.TanimotoSimilarity.return_value = 0.75
 
-        with patch("utils.molecular_utils.Chem") as mock_chem:
+        with patch("qemlflow.core.utils.molecular_utils.Chem") as mock_chem:
             mock_mol1 = Mock()
             mock_mol2 = Mock()
             mock_chem.MolFromSmiles.side_effect = [mock_mol1, mock_mol2]
@@ -690,13 +690,13 @@ class TestStandaloneFunctions:
 
     def test_calculate_similarity_without_rdkit(self):
         """Test similarity calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = calculate_similarity("CCO", "CC(C)O")
             assert 0.0 <= result <= 1.0
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
-    @patch("utils.molecular_utils.Descriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.Descriptors")
     def test_filter_molecules_by_properties(self, mock_descriptors, mock_chem):
         """Test molecular property filtering"""
         # Setup mocks for two molecules
@@ -721,7 +721,7 @@ class TestStandaloneFunctions:
 
     def test_filter_molecules_by_properties_without_rdkit(self):
         """Test molecular property filtering without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             molecules = ["CCO", "CC(C)O"]
             filtered = filter_molecules_by_properties(molecules)
 
@@ -733,8 +733,8 @@ class TestStandaloneFunctions:
 class TestNewStandaloneFunctions:
     """Test additional standalone functions"""
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_standardize_smiles_with_rdkit(self, mock_chem):
         """Test SMILES standardization with RDKit"""
         mock_mol = Mock()
@@ -749,7 +749,7 @@ class TestNewStandaloneFunctions:
 
     def test_standardize_smiles_without_rdkit(self):
         """Test SMILES standardization without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = standardize_smiles("CCO")
             assert result is None
 
@@ -758,9 +758,9 @@ class TestNewStandaloneFunctions:
         assert standardize_smiles("") is None
         assert standardize_smiles(None) is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
-    @patch("utils.molecular_utils.MolecularDescriptors")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.MolecularDescriptors")
     def test_calculate_molecular_properties_with_rdkit(
         self, mock_descriptors, mock_chem
     ):
@@ -781,7 +781,7 @@ class TestNewStandaloneFunctions:
 
     def test_calculate_molecular_properties_without_rdkit(self):
         """Test molecular properties calculation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = calculate_molecular_properties("CCO")
             assert result is None
 
@@ -793,8 +793,8 @@ class TestNewStandaloneFunctions:
         result = calculate_molecular_properties(None)
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_generate_conformers_with_rdkit(self, mock_chem):
         """Test conformer generation with RDKit"""
         mock_mol = Mock()
@@ -811,7 +811,7 @@ class TestNewStandaloneFunctions:
 
     def test_generate_conformers_without_rdkit(self):
         """Test conformer generation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             result = generate_conformers("CCO")
             assert result is None
 
@@ -823,8 +823,8 @@ class TestNewStandaloneFunctions:
         result = generate_conformers(None)
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_validate_molecule_with_rdkit(self, mock_chem):
         """Test molecule validation with RDKit"""
         mock_chem.MolFromSmiles.return_value = Mock()
@@ -835,7 +835,7 @@ class TestNewStandaloneFunctions:
 
     def test_validate_molecule_without_rdkit(self):
         """Test molecule validation without RDKit"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             assert validate_molecule("CCO") is False
 
     def test_validate_molecule_empty_input(self):
@@ -849,18 +849,18 @@ class TestStructuralAlerts:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 StructuralAlerts()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_init_with_rdkit(self):
         """Test initialization when RDKit is available"""
         alerts = StructuralAlerts()
         assert alerts is not None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_check_pains_alerts(self, mock_chem):
         """Test PAINS alerts checking"""
         alerts = StructuralAlerts()
@@ -873,8 +873,8 @@ class TestStructuralAlerts:
         assert len(result) == 1
         assert "nitro" in result[0]
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_check_pains_alerts_clean_molecule(self, mock_chem):
         """Test PAINS alerts for clean molecule"""
         alerts = StructuralAlerts()
@@ -886,8 +886,8 @@ class TestStructuralAlerts:
 
         assert len(result) == 0
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_check_brenk_alerts(self, mock_chem):
         """Test Brenk alerts checking"""
         alerts = StructuralAlerts()
@@ -900,7 +900,7 @@ class TestStructuralAlerts:
         assert len(result) == 1
         assert "azide" in result[0]
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_check_alerts_with_mock_object(self):
         """Test alerts checking with mock molecule object"""
         alerts = StructuralAlerts()
@@ -988,17 +988,17 @@ class TestMolecularVisualization:
 
     def test_init_without_rdkit(self):
         """Test initialization when RDKit is not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="RDKit is required"):
                 MolecularVisualization()
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_init_with_rdkit(self):
         """Test initialization when RDKit is available"""
         viz = MolecularVisualization()
         assert viz is not None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     @patch("rdkit.Chem.Draw")
     def test_draw_molecule_2d_with_rdkit(self, mock_draw):
         """Test 2D molecule drawing with RDKit"""
@@ -1013,7 +1013,7 @@ class TestMolecularVisualization:
         mock_draw.MolToImage.assert_called_once_with(mock_mol, size=(400, 400))
         assert result == mock_image
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False)
     def test_draw_molecule_2d_without_rdkit(self):
         """Test 2D molecule drawing without RDKit"""
         # Since init requires RDKit, this tests the method behavior
@@ -1024,8 +1024,8 @@ class TestMolecularVisualization:
         result = viz.draw_molecule_2d(mock_mol)
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.PY3DMOL_AVAILABLE", False)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", False)
     def test_draw_molecule_3d_without_py3dmol(self):
         """Test 3D molecule drawing without py3Dmol"""
         viz = MolecularVisualization()
@@ -1034,8 +1034,8 @@ class TestMolecularVisualization:
         result = viz.draw_molecule_3d(mock_mol)
         assert result is None
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.PY3DMOL_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", True)
     def test_draw_molecule_3d_with_py3dmol(self):
         """Test 3D molecule drawing with py3Dmol"""
         viz = MolecularVisualization()
@@ -1050,7 +1050,7 @@ class TestMolecularVisualization:
 class TestIntegrationScenarios:
     """Test integration scenarios combining multiple components"""
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_complete_molecule_analysis_workflow(self):
         """Test complete molecule analysis workflow"""
         # Test workflow: SMILES processing -> descriptor calculation -> filtering
@@ -1071,8 +1071,8 @@ class TestIntegrationScenarios:
         assert len(result["valid"]) == 1
         assert result["canonical"][0] == "CCO"
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_similarity_analysis_workflow(self, mock_chem):
         """Test molecular similarity analysis workflow"""
         # Test calculation of similarities between multiple molecules
@@ -1084,7 +1084,7 @@ class TestIntegrationScenarios:
         mock_chem.MolFromSmiles.side_effect = mock_mols
 
         # Mock similarity calculation
-        with patch("utils.molecular_utils.calculate_similarity", return_value=0.6):
+        with patch("qemlflow.core.utils.molecular_utils.calculate_similarity", return_value=0.6):
             similarities = []
             for i in range(len(molecules)):
                 for j in range(i + 1, len(molecules)):
@@ -1094,7 +1094,7 @@ class TestIntegrationScenarios:
         assert len(similarities) == 3  # 3 choose 2 = 3 pairs
         assert all(sim == 0.6 for sim in similarities)
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_comprehensive_property_calculation(self):
         """Test comprehensive molecular property calculation"""
         # Test calculation of multiple properties for a molecule
@@ -1105,7 +1105,7 @@ class TestIntegrationScenarios:
         with patch(
             "utils.molecular_utils.calculate_molecular_weight", return_value=46.07
         ):
-            with patch("utils.molecular_utils.calculate_logp", return_value=-0.31):
+            with patch("qemlflow.core.utils.molecular_utils.calculate_logp", return_value=-0.31):
                 with patch(
                     "utils.molecular_utils.get_molecular_formula", return_value="C2H6O"
                 ):
@@ -1128,8 +1128,8 @@ class TestIntegrationScenarios:
 class TestErrorHandling:
     """Test error handling and edge cases"""
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
-    @patch("utils.molecular_utils.Chem")
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.Chem")
     def test_invalid_smiles_handling(self, mock_chem):
         """Test handling of invalid SMILES strings"""
         # Test various invalid SMILES inputs
@@ -1151,8 +1151,8 @@ class TestErrorHandling:
 
     def test_fallback_behavior_without_dependencies(self):
         """Test fallback behavior when dependencies are not available"""
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", False):
-            with patch("utils.molecular_utils.PY3DMOL_AVAILABLE", False):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", False):
+            with patch("qemlflow.core.utils.molecular_utils.PY3DMOL_AVAILABLE", False):
                 # Test functions that should work without RDKit
                 result = smiles_to_mol("CCO")
                 assert isinstance(result, dict)
@@ -1163,7 +1163,7 @@ class TestErrorHandling:
                 result = validate_smiles("CCO")
                 assert result is True
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_exception_handling_in_calculations(self):
         """Test exception handling in calculations"""
         # Test with mocked functions that raise exceptions
@@ -1197,7 +1197,7 @@ class TestErrorHandling:
         assert mol_to_smiles(None) == ""
         assert mol_to_smiles("") == ""
 
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", True):
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
             assert standardize_smiles("") is None
             assert standardize_smiles(None) is None
 
@@ -1208,15 +1208,15 @@ class TestErrorHandling:
 class TestPerformance:
     """Test performance aspects"""
 
-    @patch("utils.molecular_utils.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True)
     def test_batch_processing_performance(self):
         """Test batch processing with large molecule sets"""
         # Test processing of many molecules
         large_smiles_list = ["CCO"] * 100
 
         # Mock the expensive operations
-        with patch("utils.molecular_utils.Chem.MolFromSmiles", return_value=Mock()):
-            with patch("utils.molecular_utils.Chem.MolToSmiles", return_value="CCO"):
+        with patch("qemlflow.core.utils.molecular_utils.Chem.MolFromSmiles", return_value=Mock()):
+            with patch("qemlflow.core.utils.molecular_utils.Chem.MolToSmiles", return_value="CCO"):
                 with patch(
                     "utils.molecular_utils.MolecularDescriptors.calculate_basic_descriptors",
                     return_value={"mw": 46.07},
@@ -1239,7 +1239,7 @@ class TestPerformance:
         # Test similarity matrix calculation for multiple molecules
         molecules = ["CCO", "CC(C)O", "C1=CC=CC=C1", "CC(=O)O"] * 10  # 40 molecules
 
-        with patch("utils.molecular_utils.calculate_similarity", return_value=0.5):
+        with patch("qemlflow.core.utils.molecular_utils.calculate_similarity", return_value=0.5):
             similarities = []
             for i in range(len(molecules)):
                 for j in range(i + 1, len(molecules)):
@@ -1307,8 +1307,8 @@ class TestCrossModuleCompatibility:
         """Test pandas DataFrame integration"""
         # Test that functions return proper pandas DataFrames
 
-        with patch("utils.molecular_utils.RDKIT_AVAILABLE", True):
-            with patch("utils.molecular_utils.batch_process_molecules") as mock_batch:
+        with patch("qemlflow.core.utils.molecular_utils.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.utils.molecular_utils.batch_process_molecules") as mock_batch:
                 mock_df = pd.DataFrame({"smiles": ["CCO"], "mw": [46.07]})
                 mock_batch.return_value = mock_df
 

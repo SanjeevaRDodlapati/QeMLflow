@@ -18,14 +18,14 @@ try:
         predict_properties,
         train_property_model,
     )
-    from src.data_processing.feature_extraction import (
+    from qemlflow.core.preprocessing.feature_extraction import (
         extract_descriptors,
         generate_fingerprints,
     )
-    from src.data_processing.molecular_preprocessing import clean_data, normalize_data
+    from qemlflow.core.preprocessing.molecular_preprocessing import clean_data, normalize_data
     from src.models.classical_ml.regression_models import RegressionModels
-    from src.utils.io_utils import load_molecular_data, save_molecular_data
-    from src.utils.ml_utils import evaluate_model, normalize_features, split_data
+    from qemlflow.core.utils.io_utils import load_molecular_data, save_molecular_data
+    from qemlflow.core.utils.ml_utils import evaluate_model, normalize_features, split_data
 except ImportError as e:
     pytest.skip(f"Integration modules not available: {e}", allow_module_level=True)
 
@@ -296,7 +296,7 @@ class TestDataFlowIntegration:
         predictions = model.predict(X)
 
         # Analyze predictions
-        from src.utils.metrics import mean_squared_error, r_squared
+        from qemlflow.core.utils.metrics import mean_squared_error, r_squared
 
         analysis_mse = mean_squared_error(y, predictions)
         analysis_r2 = r_squared(y, predictions)
@@ -501,7 +501,7 @@ class TestNotebookIntegration:
                 predictions = model.predict(X)
 
                 # Simple analysis
-                from src.utils.metrics import accuracy, mean_squared_error
+                from qemlflow.core.utils.metrics import accuracy, mean_squared_error
 
                 if np.all(np.isin(y, [0, 1])):  # Binary classification
                     acc = accuracy(y, (predictions > 0.5).astype(int))

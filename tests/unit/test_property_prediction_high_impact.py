@@ -39,7 +39,7 @@ class TestPropertyPredictionHighImpact(unittest.TestCase):
                     # Force re-import to trigger the warning
                     import importlib
 
-                    import src.drug_design.property_prediction
+                    import qemlflow.research.drug_discovery.property_prediction
 
                     importlib.reload(src.drug_design.property_prediction)
                 except Exception:

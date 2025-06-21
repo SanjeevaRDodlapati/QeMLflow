@@ -12,7 +12,7 @@ import time
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 
-from src.qemlflow.observability.monitoring import (
+from qemlflow.observability.monitoring import (
     MetricData, PerformanceMetrics, AlertRule, Alert,
     MetricsCollector, PerformanceMonitor, get_performance_monitor,
     monitor_function, monitor_performance, HealthChecker

@@ -14,7 +14,7 @@ from unittest.mock import Mock, patch
 
 import pandas as pd
 
-from src.qemlflow.observability.dashboard import (
+from qemlflow.observability.dashboard import (
     DashboardWidget,
     DashboardLayout,
     ReportSchedule,

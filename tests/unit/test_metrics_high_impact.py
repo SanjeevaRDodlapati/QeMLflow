@@ -21,13 +21,13 @@ class TestMetricsHighImpact(unittest.TestCase):
         """Test lines 31-33: sklearn import warning."""
         # Test by mocking the import to fail
         with patch("builtins.__import__", side_effect=ImportError("sklearn not found")):
-            with patch("src.utils.metrics.logging.warning") as mock_warning:
+            with patch("qemlflow.core.utils.metrics.logging.warning") as mock_warning:
                 try:
                     # Force re-evaluation of sklearn import
                     import importlib
 
-                    import src.utils.metrics
-                    from src.utils.metrics import ClassificationMetrics
+                    import qemlflow.core.utils.metrics
+                    from qemlflow.core.utils.metrics import ClassificationMetrics
 
                     importlib.reload(src.utils.metrics)
                 except Exception:
@@ -39,7 +39,7 @@ class TestMetricsHighImpact(unittest.TestCase):
     def test_rdkit_import_warning(self):
         """Test lines 40-42: RDKit import warning."""
         # Test by checking if warning is properly issued
-        from src.utils.metrics import MolecularMetrics
+        from qemlflow.core.utils.metrics import MolecularMetrics
 
         # Call a method that would check RDKIT_AVAILABLE
         result = MolecularMetrics.tanimoto_similarity("CCO", "CCC")
@@ -47,7 +47,7 @@ class TestMetricsHighImpact(unittest.TestCase):
 
     def test_roc_auc_value_error_handling(self):
         """Test lines 84-85: ROC AUC ValueError handling."""
-        from src.utils.metrics import ClassificationMetrics
+        from qemlflow.core.utils.metrics import ClassificationMetrics
 
         # Create problematic data that could cause roc_auc_score to fail
         y_true = np.array([0, 0, 0, 1])  # Imbalanced
@@ -64,7 +64,7 @@ class TestMetricsHighImpact(unittest.TestCase):
 
     def test_enrichment_factor_edge_case(self):
         """Test line 269: Enrichment factor edge case."""
-        from src.utils.metrics import calculate_enrichment_factor
+        from qemlflow.core.utils.metrics import calculate_enrichment_factor
 
         # Test with very small dataset where top_k equals length
         scores = np.array([0.9, 0.7])
@@ -76,7 +76,7 @@ class TestMetricsHighImpact(unittest.TestCase):
 
     def test_diversity_metrics_empty_similarities(self):
         """Test line 269: Diversity metrics with no valid similarities."""
-        from src.utils.metrics import MolecularMetrics
+        from qemlflow.core.utils.metrics import MolecularMetrics
 
         # Test with molecules that would result in no valid similarities
         # This could happen with all invalid SMILES

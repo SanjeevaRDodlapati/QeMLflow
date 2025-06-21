@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from src.qemlflow.observability.code_health import (
+from qemlflow.observability.code_health import (
     TechnicalDebt,
     CodeQualityMetrics,
     ComplexityMetrics,

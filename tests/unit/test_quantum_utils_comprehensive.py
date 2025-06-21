@@ -35,7 +35,7 @@ class TestQuantumCircuitBuilder:
 
     def test_init_without_qiskit(self):
         """Test initialization when Qiskit is not available"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="Qiskit is required"):
                 QuantumCircuitBuilder()
 
@@ -47,8 +47,8 @@ class TestQuantumCircuitBuilder:
         builder = QuantumCircuitBuilder()
         assert builder is not None
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.SparsePauliOp")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.SparsePauliOp")
     def test_create_h2_hamiltonian(self, mock_sparse_pauli_op):
         """Test H2 Hamiltonian creation"""
         # Mock the SparsePauliOp.from_list method
@@ -71,8 +71,8 @@ class TestQuantumCircuitBuilder:
 
         assert result == mock_hamiltonian
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     @patch("qiskit.circuit.Parameter")
     def test_create_ansatz_circuit(self, mock_parameter, mock_quantum_circuit):
         """Test ansatz circuit creation"""
@@ -97,8 +97,8 @@ class TestQuantumCircuitBuilder:
         # Verify CNOT gates were added
         assert mock_circuit.cx.call_count == 2  # (num_qubits - 1) * depth
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     @patch("qiskit.circuit.Parameter")
     def test_create_hea_circuit(self, mock_parameter, mock_quantum_circuit):
         """Test Hardware Efficient Ansatz circuit creation"""
@@ -131,14 +131,14 @@ class TestVQEOptimizer:
 
     def test_init_without_qiskit(self):
         """Test initialization when Qiskit is not available"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="Qiskit is required"):
                 VQEOptimizer()
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.SPSA")
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.SPSA")
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
     def test_init_with_spsa_optimizer(self, mock_estimator, mock_aer, mock_spsa):
         """Test initialization with SPSA optimizer"""
         mock_optimizer = Mock()
@@ -160,10 +160,10 @@ class TestVQEOptimizer:
             # This is expected when Qiskit is not available
             pytest.skip("Qiskit components not available")
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.COBYLA")
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.COBYLA")
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
     def test_init_with_cobyla_optimizer(self, mock_estimator, mock_aer, mock_cobyla):
         """Test initialization with COBYLA optimizer"""
         mock_optimizer = Mock()
@@ -177,9 +177,9 @@ class TestVQEOptimizer:
         except ImportError:
             pytest.skip("Qiskit components not available")
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
     def test_init_with_unsupported_optimizer(self, mock_estimator, mock_aer):
         """Test initialization with unsupported optimizer"""
         try:
@@ -188,13 +188,13 @@ class TestVQEOptimizer:
         except ImportError:
             pytest.skip("Qiskit components not available")
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.VQE")
-    @patch("utils.quantum_utils.QuantumCircuitBuilder.create_h2_hamiltonian")
-    @patch("utils.quantum_utils.QuantumCircuitBuilder.create_ansatz_circuit")
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
-    @patch("utils.quantum_utils.SPSA")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.VQE")
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuitBuilder.create_h2_hamiltonian")
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuitBuilder.create_ansatz_circuit")
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.SPSA")
     def test_optimize_h2(
         self,
         mock_spsa,
@@ -240,10 +240,10 @@ class TestVQEOptimizer:
         assert result["ground_state_energy"] == -1.85
         assert result["bond_distance"] == 0.8
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
-    @patch("utils.quantum_utils.SPSA")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.SPSA")
     def test_scan_bond_distances(self, mock_spsa, mock_estimator, mock_aer):
         """Test bond distance scanning"""
         vqe_opt = VQEOptimizer()
@@ -268,10 +268,10 @@ class TestVQEOptimizer:
             vqe_opt.optimize_h2.assert_any_call(bond_distance=distance)
             assert results[i]["bond_distance"] == distance
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
-    @patch("utils.quantum_utils.SPSA")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.SPSA")
     def test_scan_bond_distances_with_errors(self, mock_spsa, mock_estimator, mock_aer):
         """Test bond distance scanning with errors"""
         vqe_opt = VQEOptimizer()
@@ -299,18 +299,18 @@ class TestMolecularHamiltonian:
 
     def test_init_without_qiskit(self):
         """Test initialization when Qiskit is not available"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             with pytest.raises(ImportError, match="Qiskit is required"):
                 MolecularHamiltonian()
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_init_with_qiskit(self):
         """Test initialization when Qiskit is available"""
         hamiltonian = MolecularHamiltonian()
         assert hamiltonian is not None
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.SparsePauliOp")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.SparsePauliOp")
     def test_h2_hamiltonian_parametric(self, mock_sparse_pauli_op):
         """Test parametric H2 Hamiltonian creation"""
         mock_hamiltonian = Mock()
@@ -330,8 +330,8 @@ class TestMolecularHamiltonian:
 
         assert result == mock_hamiltonian
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.SparsePauliOp")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.SparsePauliOp")
     def test_create_ising_hamiltonian(self, mock_sparse_pauli_op):
         """Test Ising Hamiltonian creation"""
         mock_hamiltonian = Mock()
@@ -372,12 +372,12 @@ class TestQuantumMachineLearning:
 
     def test_init_without_pennylane(self):
         """Test initialization when PennyLane is not available"""
-        with patch("utils.quantum_utils.PENNYLANE_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.PENNYLANE_AVAILABLE", False):
             with pytest.raises(ImportError, match="PennyLane is required"):
                 QuantumMachineLearning()
 
-    @patch("utils.quantum_utils.PENNYLANE_AVAILABLE", True)
-    @patch("utils.quantum_utils.qml")
+    @patch("qemlflow.core.utils.quantum_utils.PENNYLANE_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.qml")
     def test_init_with_pennylane(self, mock_qml):
         """Test initialization when PennyLane is available"""
         mock_device = Mock()
@@ -389,8 +389,8 @@ class TestQuantumMachineLearning:
         assert qml_instance.num_qubits == 4
         assert qml_instance.dev == mock_device
 
-    @patch("utils.quantum_utils.PENNYLANE_AVAILABLE", True)
-    @patch("utils.quantum_utils.qml")
+    @patch("qemlflow.core.utils.quantum_utils.PENNYLANE_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.qml")
     def test_create_variational_classifier(self, mock_qml):
         """Test variational classifier creation"""
         mock_device = Mock()
@@ -410,8 +410,8 @@ class TestQuantumMachineLearning:
 
         assert callable(circuit)
 
-    @patch("utils.quantum_utils.PENNYLANE_AVAILABLE", True)
-    @patch("utils.quantum_utils.qml")
+    @patch("qemlflow.core.utils.quantum_utils.PENNYLANE_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.qml")
     def test_create_quantum_embedding(self, mock_qml):
         """Test quantum embedding creation"""
         mock_device = Mock()
@@ -473,8 +473,8 @@ class TestStandaloneFunctions:
         # Should still be orthogonal after normalization
         assert distance == pytest.approx(1.0, abs=1e-10)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_create_quantum_feature_map_with_qiskit(self, mock_quantum_circuit):
         """Test quantum feature map creation with Qiskit"""
         mock_circuit = Mock()
@@ -496,14 +496,14 @@ class TestStandaloneFunctions:
 
     def test_create_quantum_feature_map_without_qiskit(self):
         """Test quantum feature map creation without Qiskit"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             features = np.array([0.5, -0.3])
 
             with pytest.raises(ImportError, match="Qiskit is required"):
                 create_quantum_feature_map(features)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_create_quantum_feature_map_default_qubits(self, mock_quantum_circuit):
         """Test quantum feature map with default number of qubits"""
         mock_circuit = Mock()
@@ -517,7 +517,7 @@ class TestStandaloneFunctions:
 
     def test_create_quantum_circuit_without_qiskit(self):
         """Test quantum circuit creation without Qiskit"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             circuit = create_quantum_circuit(n_qubits=2, n_classical=2)
 
             # Should return mock circuit
@@ -526,8 +526,8 @@ class TestStandaloneFunctions:
             assert circuit.num_qubits == 2
             assert circuit.num_clbits == 2
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_create_quantum_circuit_with_qiskit(self, mock_quantum_circuit):
         """Test quantum circuit creation with Qiskit"""
         mock_circuit = Mock()
@@ -538,8 +538,8 @@ class TestStandaloneFunctions:
         mock_quantum_circuit.assert_called_once_with(3, 3)
         assert result == mock_circuit
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_create_quantum_circuit_with_cbits_parameter(self, mock_quantum_circuit):
         """Test quantum circuit creation with n_cbits parameter"""
         mock_circuit = Mock()
@@ -549,8 +549,8 @@ class TestStandaloneFunctions:
 
         mock_quantum_circuit.assert_called_once_with(2, 2)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_create_quantum_circuit_default_classical(self, mock_quantum_circuit):
         """Test quantum circuit creation with default classical bits"""
         mock_circuit = Mock()
@@ -563,7 +563,7 @@ class TestStandaloneFunctions:
 
     def test_apply_quantum_gate_without_qiskit(self):
         """Test gate application without Qiskit"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             # Create mock circuit
             circuit = create_quantum_circuit(n_qubits=2)
 
@@ -574,7 +574,7 @@ class TestStandaloneFunctions:
             result = apply_quantum_gate(circuit, "cx", [0, 1])
             assert result == circuit
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_single_qubit_gates(self):
         """Test single-qubit gate application"""
         mock_circuit = Mock()
@@ -590,7 +590,7 @@ class TestStandaloneFunctions:
             # Verify the correct method was called
             getattr(mock_circuit, gate).assert_called_with(0)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_parametric_gates(self):
         """Test parametric gate application"""
         mock_circuit = Mock()
@@ -606,7 +606,7 @@ class TestStandaloneFunctions:
             # Verify the correct method was called with angle
             getattr(mock_circuit, gate).assert_called_with(angle, 0)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_cnot_with_list(self):
         """Test CNOT gate application with qubit list"""
         mock_circuit = Mock()
@@ -616,7 +616,7 @@ class TestStandaloneFunctions:
 
         mock_circuit.cx.assert_called_with(0, 1)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_cnot_with_single_qubit(self):
         """Test CNOT gate application with single qubit"""
         mock_circuit = Mock()
@@ -628,7 +628,7 @@ class TestStandaloneFunctions:
         # Should apply CNOT to qubit 1 and qubit 2
         mock_circuit.cx.assert_called_with(1, 2)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_unknown_gate(self):
         """Test unknown gate application"""
         mock_circuit = Mock()
@@ -636,7 +636,7 @@ class TestStandaloneFunctions:
         with pytest.raises(ValueError, match="Unknown gate type"):
             apply_quantum_gate(mock_circuit, "unknown_gate", 0)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_parametric_without_angle(self):
         """Test parametric gate without angle parameter"""
         mock_circuit = Mock()
@@ -646,7 +646,7 @@ class TestStandaloneFunctions:
 
     def test_measure_quantum_state_without_qiskit(self):
         """Test quantum state measurement without Qiskit"""
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             mock_circuit = Mock()
 
             result = measure_quantum_state(mock_circuit)
@@ -655,7 +655,7 @@ class TestStandaloneFunctions:
             assert "counts" in result
             assert result["counts"] == {"00": 512, "11": 512}
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_measure_quantum_state_with_qiskit(self):
         """Test quantum state measurement with Qiskit"""
         mock_circuit = Mock()
@@ -672,7 +672,7 @@ class TestStandaloneFunctions:
         # Should return mock results
         assert "counts" in result
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_measure_quantum_state_default_qubits(self):
         """Test quantum state measurement with default qubits"""
         mock_circuit = Mock()
@@ -686,7 +686,7 @@ class TestStandaloneFunctions:
         for i in range(3):
             mock_circuit.measure.assert_any_call(i, i)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_measure_quantum_state_with_simulation(self):
         """Test quantum state measurement with circuit simulation"""
         mock_circuit = Mock()
@@ -703,10 +703,10 @@ class TestStandaloneFunctions:
 class TestIntegrationScenarios:
     """Test integration scenarios combining multiple components"""
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.SPSA")
-    @patch("utils.quantum_utils.AerSimulator")
-    @patch("utils.quantum_utils.Estimator")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.SPSA")
+    @patch("qemlflow.core.utils.quantum_utils.AerSimulator")
+    @patch("qemlflow.core.utils.quantum_utils.Estimator")
     def test_complete_vqe_workflow(self, mock_estimator, mock_aer, mock_spsa):
         """Test complete VQE workflow"""
         # Test the full workflow from VQE setup to optimization
@@ -728,8 +728,8 @@ class TestIntegrationScenarios:
         assert len(result["optimal_parameters"]) > 0
         assert result["optimizer_evals"] > 0
 
-    @patch("utils.quantum_utils.PENNYLANE_AVAILABLE", True)
-    @patch("utils.quantum_utils.qml")
+    @patch("qemlflow.core.utils.quantum_utils.PENNYLANE_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.qml")
     def test_quantum_ml_pipeline(self, mock_qml):
         """Test quantum machine learning pipeline"""
         mock_device = Mock()
@@ -815,7 +815,7 @@ class TestErrorHandling:
         # Should handle complex states correctly
         assert distance == pytest.approx(1.0, abs=1e-10)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
     def test_apply_quantum_gate_edge_cases(self):
         """Test gate application edge cases"""
         mock_circuit = Mock()
@@ -832,12 +832,12 @@ class TestErrorHandling:
     def test_create_quantum_circuit_edge_cases(self):
         """Test quantum circuit creation edge cases"""
         # Test with zero qubits
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             circuit = create_quantum_circuit(n_qubits=0)
             assert circuit.num_qubits == 0
 
         # Test with mismatched parameters
-        with patch("utils.quantum_utils.QISKIT_AVAILABLE", False):
+        with patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", False):
             circuit = create_quantum_circuit(n_qubits=2, n_classical=3, n_cbits=4)
             # n_cbits should override n_classical
             assert circuit.num_clbits == 4
@@ -859,8 +859,8 @@ class TestPerformance:
         assert 0 <= distance <= 1
         assert isinstance(distance, float)
 
-    @patch("utils.quantum_utils.QISKIT_AVAILABLE", True)
-    @patch("utils.quantum_utils.QuantumCircuit")
+    @patch("qemlflow.core.utils.quantum_utils.QISKIT_AVAILABLE", True)
+    @patch("qemlflow.core.utils.quantum_utils.QuantumCircuit")
     def test_large_feature_map_creation(self, mock_quantum_circuit):
         """Test creation of feature maps with many features"""
         mock_circuit = Mock()
@@ -882,7 +882,7 @@ class TestCrossModuleCompatibility:
 
     def test_quantum_utils_imports(self):
         """Test that all expected functions are importable"""
-        from utils.quantum_utils import (
+        from qemlflow.core.utils.quantum_utils import (
             MolecularHamiltonian,
             QuantumCircuitBuilder,
             QuantumMachineLearning,
@@ -907,7 +907,7 @@ class TestCrossModuleCompatibility:
 
     def test_availability_flags(self):
         """Test quantum library availability flags"""
-        from utils.quantum_utils import PENNYLANE_AVAILABLE, QISKIT_AVAILABLE
+        from qemlflow.core.utils.quantum_utils import PENNYLANE_AVAILABLE, QISKIT_AVAILABLE
 
         # Flags should be boolean
         assert isinstance(QISKIT_AVAILABLE, bool)

@@ -92,8 +92,8 @@ class TestCleanData:
 class TestValidateSmilesColumn:
     """Test validate_smiles_column function"""
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_validate_smiles_with_rdkit(self, mock_chem):
         """Test SMILES validation with RDKit"""
         data = pd.DataFrame(
@@ -112,7 +112,7 @@ class TestValidateSmilesColumn:
             [call("CCO"), call("invalid"), call("C1CCCCC1")]
         )
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_validate_smiles_without_rdkit(
         self,
     ):
@@ -132,7 +132,7 @@ class TestValidateSmilesColumn:
         """Test SMILES validation with custom column name"""
         data = pd.DataFrame({"compound": ["CCO", "", "C1CCCCC1"], "value": [1, 2, 3]})
 
-        with patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False):
             result = validate_smiles_column(data, "compound")
 
         assert len(result) == 2
@@ -149,8 +149,8 @@ class TestValidateSmilesColumn:
 class TestStandardizeSmiles:
     """Test standardize_smiles function"""
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_standardize_smiles_with_rdkit(self, mock_chem):
         """Test SMILES standardization with RDKit"""
         smiles_list = ["CCO", "CC(=O)O"]
@@ -161,7 +161,7 @@ class TestStandardizeSmiles:
         mock_chem.MolFromSmiles.side_effect = [mock_mol1, mock_mol2]
         mock_chem.MolToSmiles.side_effect = ["CCO", "CC(=O)O"]
 
-        with patch("data_processing.molecular_preprocessing.SaltRemover") as mock_salt:
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.SaltRemover") as mock_salt:
             mock_salt_remover = Mock()
             mock_salt.SaltRemover.return_value = mock_salt_remover
             mock_salt_remover.StripMol.side_effect = [mock_mol1, mock_mol2]
@@ -171,7 +171,7 @@ class TestStandardizeSmiles:
             assert len(result) == 2
             assert result == ["CCO", "CC(=O)O"]
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_standardize_smiles_without_rdkit(self):
         """Test SMILES standardization without RDKit"""
         smiles_list = ["CCO", "CC(=O)O"]
@@ -191,8 +191,8 @@ class TestStandardizeSmiles:
         """Test standardization with invalid input"""
         smiles_list = ["CCO", "invalid_smiles"]
 
-        with patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True):
-            with patch("data_processing.molecular_preprocessing.Chem") as mock_chem:
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem") as mock_chem:
                 mock_mol1 = Mock()
                 mock_chem.MolFromSmiles.side_effect = [
                     mock_mol1,
@@ -200,7 +200,7 @@ class TestStandardizeSmiles:
                 ]  # Second is invalid
                 mock_chem.MolToSmiles.return_value = "CCO"
 
-                with patch("data_processing.molecular_preprocessing.SaltRemover"):
+                with patch("qemlflow.core.preprocessing.molecular_preprocessing.SaltRemover"):
                     result = standardize_smiles(smiles_list)
                     assert len(result) == 2
                     assert "invalid_smiles" in result  # Should keep original
@@ -216,8 +216,8 @@ class TestFilterByMolecularProperties:
         )
 
         # Filter by molecular weight (assuming CCO < 500, long chain > 500)
-        with patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True):
-            with patch("data_processing.molecular_preprocessing.Chem") as mock_chem:
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True):
+            with patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem") as mock_chem:
                 mock_mol1 = Mock()
                 mock_mol2 = Mock()
                 mock_chem.MolFromSmiles.side_effect = [mock_mol1, mock_mol2]
@@ -237,8 +237,8 @@ class TestFilterByMolecularProperties:
                         or result.iloc[0]["smiles"] != "CCCCCCCCCCCCCCCCCCCC"
                     )
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_filter_lipinski_rule(self, mock_chem):
         """Test Lipinski's rule of five filtering"""
         data = pd.DataFrame({"smiles": ["drug_like", "non_drug_like"], "value": [1, 2]})
@@ -268,7 +268,7 @@ class TestFilterByMolecularProperties:
             assert len(result) == 1
             assert result.iloc[0]["smiles"] == "drug_like"
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_filter_without_rdkit(self):
         """Test filtering without RDKit"""
         data = pd.DataFrame({"smiles": ["CCO", "CCCCCCCCCC"], "value": [1, 2]})
@@ -377,7 +377,7 @@ class TestNormalizeData:
 class TestPreprocessMolecularData:
     """Test preprocess_molecular_data function"""
 
-    @patch("data_processing.molecular_preprocessing.clean_molecular_data")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.clean_molecular_data")
     def test_preprocess_basic_functionality(self, mock_clean):
         """Test basic preprocessing functionality"""
         data = pd.DataFrame({"smiles": ["CCO", "CC(=O)O"], "value": [1, 2]})
@@ -409,8 +409,8 @@ class TestPreprocessMolecularData:
 class TestStandardizeMolecules:
     """Test standardize_molecules function"""
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_standardize_molecules_basic(self, mock_chem):
         """Test basic molecule standardization"""
         molecules = ["CCO", "CC(=O)O"]
@@ -425,7 +425,7 @@ class TestStandardizeMolecules:
         assert result == ["CCO", "CC(=O)O"]
         assert mock_chem.MolFromSmiles.call_count == 2
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_standardize_molecules_without_rdkit(self):
         """Test molecule standardization without RDKit"""
         molecules = ["CCO", "CC(=O)O"]
@@ -439,8 +439,8 @@ class TestStandardizeMolecules:
 class TestRemoveInvalidMolecules:
     """Test remove_invalid_molecules function"""
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_remove_invalid_molecules_with_rdkit(self, mock_chem):
         """Test removing invalid molecules with RDKit"""
         molecules = ["CCO", "invalid", "C1CCCCC1"]
@@ -453,7 +453,7 @@ class TestRemoveInvalidMolecules:
         assert result == ["CCO", "C1CCCCC1"]
         assert len(result) == 2
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_remove_invalid_molecules_without_rdkit(self):
         """Test removing invalid molecules without RDKit"""
         molecules = ["CCO", "", "C1CCCCC1", None]
@@ -473,8 +473,8 @@ class TestRemoveInvalidMolecules:
 class TestFilterByProperties:
     """Test filter_by_properties function (alias for filter_by_molecular_properties)"""
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
-    @patch("data_processing.molecular_preprocessing.Chem")
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem")
     def test_filter_by_properties_basic(self, mock_chem):
         """Test basic property filtering"""
         data = pd.DataFrame({"smiles": ["CCO", "CCCCCCCCCCCCCCCC"], "value": [1, 2]})
@@ -496,7 +496,7 @@ class TestFilterByProperties:
 
             assert len(result) <= 1  # Should filter out heavy molecule
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False)
     def test_filter_by_properties_without_rdkit(self):
         """Test property filtering without RDKit"""
         data = pd.DataFrame({"smiles": ["CCO", "CCCCCCCCCCCCCCCC"], "value": [1, 2]})
@@ -523,7 +523,7 @@ class TestIntegrationScenarios:
         )
 
         # Mock RDKit not available for this test
-        with patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", False):
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", False):
             # Step 1: Clean data
             _cleaned = clean_data(data.select_dtypes(include=[np.number]))
 
@@ -553,12 +553,12 @@ class TestIntegrationScenarios:
         result2 = normalize_data(empty_data)
         assert result2.empty
 
-    @patch("data_processing.molecular_preprocessing.RDKIT_AVAILABLE", True)
+    @patch("qemlflow.core.preprocessing.molecular_preprocessing.RDKIT_AVAILABLE", True)
     def test_rdkit_dependency_handling(self):
         """Test graceful handling when RDKit functions fail"""
         data = pd.DataFrame({"smiles": ["CCO", "CC(=O)O"], "value": [1, 2]})
 
-        with patch("data_processing.molecular_preprocessing.Chem") as mock_chem:
+        with patch("qemlflow.core.preprocessing.molecular_preprocessing.Chem") as mock_chem:
             # Simulate RDKit import error during function call
             def mock_side_effect(*args, **kwargs):
                 raise Exception("RDKit error")
