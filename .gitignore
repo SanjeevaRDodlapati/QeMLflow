@@ -145,5 +145,56 @@ reports/temp/
 
 # Generated documentation (use 'mkdocs build' to recreate)
 /site/
-\n# Automated maintenancedeployment_status_report.json
-temp_import_test.py
+
+# AGGRESSIVE LEAN CORE EXCLUSIONS - Prevent future bloat
+# Virtual environments (NEVER commit these!)
+venv/
+env/
+.venv/
+ENV/
+
+# All cache directories
+*cache*/
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# Data and analytics (keep in external systems)
+scalability_data/
+usage_analytics/
+validation_results/
+dashboard_data/
+dashboard_charts/
+integration_cache/
+alerts/
+audit_logs/
+maintenance/
+
+# Temporary artifacts
+*.tmp
+*.cache
+deployment_status_report.json
+CLEANUP_ANALYSIS.json
+
+# Backup directories (use git for version control)
+backups/
+backup_*/
+.archive/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Cache and build artifacts
+.mypy_cache/
+.artifacts/
+__pycache__/
+*.pyc
+
+# Data and analytics (external)
+data/analytics/
+reports/
+audit_logs/
+code_health/
+experiments/

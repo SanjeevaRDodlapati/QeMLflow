@@ -1,9 +1,0 @@
-{"timestamp": "2025-06-21T11:43:58.137192", "cpu_utilization": 50.0, "memory_utilization": 60.0, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:15.833800", "cpu_utilization": 50.0, "memory_utilization": 60.0, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:16.858760", "cpu_utilization": 85.0, "memory_utilization": 90.0, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:17.852496", "cpu_utilization": 19.7, "memory_utilization": 69.6, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:17.857503", "cpu_utilization": 19.7, "memory_utilization": 69.6, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:17.857788", "cpu_utilization": 19.7, "memory_utilization": 69.6, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:17.858035", "cpu_utilization": 19.7, "memory_utilization": 69.6, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:18.859221", "cpu_utilization": 85.0, "memory_utilization": 90.0, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 0}
-{"timestamp": "2025-06-21T13:10:20.880725", "cpu_utilization": 39.9, "memory_utilization": 69.5, "request_rate": 50.0, "response_time": 200.0, "error_rate": 1.0, "queue_length": 10, "instance_count": 3}
