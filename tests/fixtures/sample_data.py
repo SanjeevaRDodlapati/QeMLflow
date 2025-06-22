@@ -28,7 +28,6 @@ STANDARD_TEST_SMILES = [
     "C1=CC=C2C=CC=CC2=C1",  # naphthalene
 ]
 
-
 class TestDataGenerator:
     """Generator for test molecular datasets."""
 
@@ -132,7 +131,6 @@ class TestDataGenerator:
 
         return X, y
 
-
 def create_standard_molecular_dataset(n_samples: int = 50) -> pd.DataFrame:
     """Create a standard molecular dataset for testing.
 
@@ -143,7 +141,6 @@ def create_standard_molecular_dataset(n_samples: int = 50) -> pd.DataFrame:
         DataFrame with molecular data
     """
     return TestDataGenerator.generate_molecular_dataset(n_samples)
-
 
 def create_test_fingerprints(n_samples: int = 50, n_bits: int = 1024) -> np.ndarray:
     """Create test molecular fingerprints.
@@ -157,7 +154,6 @@ def create_test_fingerprints(n_samples: int = 50, n_bits: int = 1024) -> np.ndar
     """
     np.random.seed(42)
     return np.random.randint(0, 2, size=(n_samples, n_bits))
-
 
 def create_test_descriptors(
     n_samples: int = 50, n_descriptors: int = 20

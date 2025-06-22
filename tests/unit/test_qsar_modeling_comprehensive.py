@@ -38,7 +38,6 @@ except ImportError:
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
 
-
 class TestDescriptorCalculator(unittest.TestCase):
     """Test DescriptorCalculator class"""
 
@@ -229,7 +228,6 @@ class TestDescriptorCalculator(unittest.TestCase):
             result = calculator.calculate_descriptors_from_smiles(["CCO"])
 
             self.assertEqual(len(result), 0)
-
 
 class TestQSARModel(unittest.TestCase):
     """Test QSARModel class"""
@@ -446,7 +444,6 @@ class TestQSARModel(unittest.TestCase):
             finally:
                 os.unlink(tmp.name)
 
-
 class TestActivityPredictor(unittest.TestCase):
     """Test ActivityPredictor class"""
 
@@ -558,7 +555,6 @@ class TestActivityPredictor(unittest.TestCase):
 
         self.assertIn("predicted_toxicity", result.columns)
         self.assertTrue(result["predicted_toxicity"].isna().all())
-
 
 class TestStandaloneFunctions(unittest.TestCase):
     """Test standalone functions"""
@@ -848,7 +844,6 @@ class TestStandaloneFunctions(unittest.TestCase):
         self.assertIn("r2_score", metrics)
         self.assertIn("cv_scores", metrics)
 
-
 class TestTrainedQSARModel(unittest.TestCase):
     """Test TrainedQSARModel wrapper class"""
 
@@ -1005,7 +1000,6 @@ class TestTrainedQSARModel(unittest.TestCase):
 
         self.assertEqual(metrics, test_metrics)
 
-
 class TestIntegrationScenarios(unittest.TestCase):
     """Test integration scenarios"""
 
@@ -1107,7 +1101,6 @@ class TestIntegrationScenarios(unittest.TestCase):
         self.assertIn("predicted_solubility", results.columns)
         self.assertEqual(len(results), 2)
 
-
 class TestErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
 
@@ -1169,7 +1162,6 @@ class TestErrorHandling(unittest.TestCase):
 
         with self.assertRaises(KeyError):
             build_qsar_dataset(incomplete_data, activity_column="Activity")
-
 
 class TestPerformance(unittest.TestCase):
     """Test performance with larger datasets"""
@@ -1233,7 +1225,6 @@ class TestPerformance(unittest.TestCase):
         self.assertEqual(len(results), batch_size)
         self.assertIn("predicted_activity", results.columns)
 
-
 class TestCrossModuleCompatibility(unittest.TestCase):
     """Test compatibility with other modules"""
 
@@ -1278,7 +1269,6 @@ class TestCrossModuleCompatibility(unittest.TestCase):
 
         self.assertIsInstance(predictions, np.ndarray)
         self.assertEqual(len(predictions), 3)
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -55,7 +55,6 @@ try:
 except ImportError:
     pass
 
-
 class TestVisualization:
     """Test visualization utilities."""
 
@@ -154,7 +153,6 @@ class TestVisualization:
                 plot_feature_importance([0.5, 0.3], ["feature_1"])
         except NotImplementedError:
             pytest.skip("Plotting functions not implemented")
-
 
 class TestMetrics:
     """Test metric calculation functions."""
@@ -256,7 +254,6 @@ class TestMetrics:
         with pytest.raises((ValueError, ZeroDivisionError)):
             accuracy(np.array([]), np.array([]))
 
-
 class TestMolecularUtils:
     """Test molecular utility functions."""
 
@@ -319,7 +316,6 @@ class TestMolecularUtils:
             assert len(filtered) <= len(sample_molecules)
         except NotImplementedError:
             pytest.skip("Molecule filtering not implemented")
-
 
 class TestMLUtils:
     """Test machine learning utility functions."""
@@ -387,7 +383,6 @@ class TestMLUtils:
         except NotImplementedError:
             pytest.skip("Model evaluation not implemented")
 
-
 @skip_if_no_qiskit
 class TestQuantumUtils:
     """Test quantum computing utilities."""
@@ -432,7 +427,6 @@ class TestQuantumUtils:
             assert "counts" in result or "statevector" in result
         except NotImplementedError:
             pytest.skip("Quantum state measurement not implemented")
-
 
 class TestIOUtils:
     """Test input/output utility functions."""
@@ -510,7 +504,6 @@ class TestIOUtils:
         except NotImplementedError:
             pytest.skip("Molecular data saving not implemented")
 
-
 class TestUtilsIntegration:
     """Integration tests for utility functions."""
 
@@ -571,7 +564,6 @@ class TestUtilsIntegration:
             assert output_path.exists()
         except NotImplementedError:
             pytest.skip("ML workflow utilities not fully implemented")
-
 
 class TestPerformance:
     """Performance tests for utility functions."""

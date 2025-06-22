@@ -30,7 +30,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 # Suppress warnings for cleaner test output
 warnings.filterwarnings("ignore")
 
-
 class TestMolecularOptimization(unittest.TestCase):
     """Test molecular optimization module"""
 
@@ -94,7 +93,6 @@ class TestMolecularOptimization(unittest.TestCase):
         self.assertIsInstance(result, pd.DataFrame)
         self.assertEqual(len(result), len(molecules))
 
-
 class TestADMET(unittest.TestCase):
     """Test ADMET module"""
 
@@ -148,7 +146,6 @@ class TestADMET(unittest.TestCase):
         # Function returns a pandas DataFrame
         self.assertIsInstance(result, pd.DataFrame)
 
-
 class TestScreening(unittest.TestCase):
     """Test virtual screening module"""
 
@@ -182,7 +179,6 @@ class TestScreening(unittest.TestCase):
         screener = self.PharmacophoreScreener()
         self.assertIsNotNone(screener)
 
-
 class TestProperties(unittest.TestCase):
     """Test property prediction module"""
 
@@ -212,7 +208,6 @@ class TestProperties(unittest.TestCase):
         result = self.predict_properties(molecules)
 
         self.assertIsInstance(result, (dict, pd.DataFrame, list))
-
 
 class TestGeneration(unittest.TestCase):
     """Test molecular generation module"""
@@ -255,7 +250,6 @@ class TestGeneration(unittest.TestCase):
         """Test optimize_structure function"""
         result = self.optimize_structure("CCO")
         self.assertIsInstance(result, str)
-
 
 class TestQSAR(unittest.TestCase):
     """Test QSAR modeling module"""
@@ -311,7 +305,6 @@ class TestQSAR(unittest.TestCase):
         model = self.build_qsar_model(X, y, test_size=0.2)
         self.assertIsInstance(model, self.TrainedQSARModel)
 
-
 class TestModuleIntegration(unittest.TestCase):
     """Test integration between modules"""
 
@@ -356,7 +349,6 @@ class TestModuleIntegration(unittest.TestCase):
 
         except ImportError as e:
             self.fail(f"Backward compatibility import failed: {e}")
-
 
 def run_tests():
     """Run all tests and provide summary"""
@@ -413,7 +405,6 @@ def run_tests():
         print("\n⚠️  Some tests failed. Please review the failures above.")
 
     return result.wasSuccessful()
-
 
 if __name__ == "__main__":
     success = run_tests()

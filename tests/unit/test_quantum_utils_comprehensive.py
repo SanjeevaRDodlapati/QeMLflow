@@ -29,7 +29,6 @@ from qemlflow.core.utils.quantum_utils import (
     quantum_distance,
 )
 
-
 class TestQuantumCircuitBuilder:
     """Test QuantumCircuitBuilder class"""
 
@@ -124,7 +123,6 @@ class TestQuantumCircuitBuilder:
 
         # Verify entangling gates: (num_qubits - 1 + 1) * layers = 3 * 2 = 6
         assert mock_circuit.cx.call_count == 6
-
 
 class TestVQEOptimizer:
     """Test VQEOptimizer class"""
@@ -293,7 +291,6 @@ class TestVQEOptimizer:
         assert results[0]["bond_distance"] == 0.7
         assert results[1]["bond_distance"] == 0.9
 
-
 class TestMolecularHamiltonian:
     """Test MolecularHamiltonian class"""
 
@@ -366,7 +363,6 @@ class TestMolecularHamiltonian:
 
         assert result == mock_hamiltonian
 
-
 class TestQuantumMachineLearning:
     """Test QuantumMachineLearning class"""
 
@@ -430,7 +426,6 @@ class TestQuantumMachineLearning:
         embedding = qml_instance.create_quantum_embedding(data_reps=1)
 
         assert callable(embedding)
-
 
 class TestStandaloneFunctions:
     """Test standalone utility functions"""
@@ -699,7 +694,6 @@ class TestStandaloneFunctions:
         mock_circuit.simulate.assert_called_once()
         assert result == {"counts": {"01": 1024}}
 
-
 class TestIntegrationScenarios:
     """Test integration scenarios combining multiple components"""
 
@@ -787,7 +781,6 @@ class TestIntegrationScenarios:
         # |+⟩ and |-⟩ should be orthogonal (distance = 1)
         assert distance_matrix[2, 3] == pytest.approx(1.0, abs=1e-10)
 
-
 class TestErrorHandling:
     """Test error handling and edge cases"""
 
@@ -842,7 +835,6 @@ class TestErrorHandling:
             # n_cbits should override n_classical
             assert circuit.num_clbits == 4
 
-
 class TestPerformance:
     """Test performance aspects"""
 
@@ -875,7 +867,6 @@ class TestPerformance:
         mock_quantum_circuit.assert_called_once_with(100)
         assert mock_circuit.ry.call_count == 100
         assert mock_circuit.cx.call_count == 99
-
 
 class TestCrossModuleCompatibility:
     """Test compatibility with other modules"""
@@ -930,7 +921,6 @@ class TestCrossModuleCompatibility:
         distance = quantum_distance(state3, state4)
 
         assert distance == pytest.approx(1.0, abs=1e-6)
-
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

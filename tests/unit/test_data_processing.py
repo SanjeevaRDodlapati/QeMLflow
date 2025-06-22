@@ -35,7 +35,6 @@ try:
 except ImportError:
     pass
 
-
 class TestMolecularPreprocessing:
     """Test molecular preprocessing functions."""
 
@@ -110,7 +109,6 @@ class TestMolecularPreprocessing:
         )
 
         assert len(filtered) == 0
-
 
 class TestFeatureExtraction:
     """Test feature extraction functions."""
@@ -190,7 +188,6 @@ class TestFeatureExtraction:
         with pytest.raises((ValueError, TypeError)):
             generate_fingerprints("not_a_list")
 
-
 class TestDataProcessingIntegration:
     """Integration tests for data processing pipeline."""
 
@@ -237,7 +234,6 @@ class TestDataProcessingIntegration:
         # Should handle missing values appropriately
         assert not cleaned.isnull().any().any()
         assert np.isfinite(cleaned.select_dtypes(include=[np.number]).values).all()
-
 
 class TestPerformance:
     """Performance tests for data processing operations."""

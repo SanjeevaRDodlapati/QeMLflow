@@ -12,7 +12,6 @@ try:
 except ImportError:
     pass
 
-
 class TestPropertyPredictionHighImpact(unittest.TestCase):
     """Test cases targeting missing lines in property_prediction.py."""
 
@@ -47,7 +46,6 @@ class TestPropertyPredictionHighImpact(unittest.TestCase):
 
                 # Should have called the warning about RDKit
                 mock_warning.assert_called()
-
 
 if __name__ == "__main__":
     unittest.main()

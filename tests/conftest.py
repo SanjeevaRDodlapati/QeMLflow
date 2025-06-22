@@ -56,14 +56,12 @@ try:
 except ImportError:
     DEEPCHEM_AVAILABLE = False
 
-
 @pytest.fixture(scope="session")
 def test_data_dir():
     """Create a temporary directory for test data."""
     temp_dir = tempfile.mkdtemp(prefix="qemlflow_test_")
     yield Path(temp_dir)
     shutil.rmtree(temp_dir)
-
 
 @pytest.fixture
 def sample_smiles() -> List[str]:
@@ -76,7 +74,6 @@ def sample_smiles() -> List[str]:
         "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O",  # Ibuprofen
         "CC1=CC=C(C=C1)C2=CC(=NN2C3=CC=C(C=C3)S(=O)(=O)N)C(F)(F)F",  # Celecoxib
     ]
-
 
 @pytest.fixture
 def sample_molecular_data(sample_smiles) -> pd.DataFrame:
@@ -91,7 +88,6 @@ def sample_molecular_data(sample_smiles) -> pd.DataFrame:
     }
     return pd.DataFrame(data)
 
-
 @pytest.fixture
 def sample_molecules(sample_smiles):
     """Create RDKit molecule objects if available."""
@@ -104,7 +100,6 @@ def sample_molecules(sample_smiles):
         if mol is not None:
             molecules.append(mol)
     return molecules
-
 
 @pytest.fixture
 def sample_molecular_descriptors(sample_molecules):
@@ -126,7 +121,6 @@ def sample_molecular_descriptors(sample_molecules):
 
     return pd.DataFrame(descriptors)
 
-
 @pytest.fixture
 def sample_fingerprints(sample_molecules):
     """Generate molecular fingerprints for sample molecules."""
@@ -139,7 +133,6 @@ def sample_fingerprints(sample_molecules):
         fingerprints.append(np.array(fp))
 
     return np.array(fingerprints)
-
 
 @pytest.fixture
 def sample_regression_data():
@@ -155,7 +148,6 @@ def sample_regression_data():
 
     return X, y, true_coef
 
-
 @pytest.fixture
 def sample_classification_data():
     """Create sample classification dataset."""
@@ -168,7 +160,6 @@ def sample_classification_data():
     y = (X[:, 0] + X[:, 1] > 0).astype(int)
 
     return X, y
-
 
 @pytest.fixture
 def mock_deepchem_dataset():
@@ -185,7 +176,6 @@ def mock_deepchem_dataset():
 
     dataset = dc.data.NumpyDataset(X, y)
     return dataset
-
 
 @pytest.fixture
 def quantum_simulator_mock():
@@ -215,7 +205,6 @@ def quantum_simulator_mock():
 
     return MockQuantumSimulator()
 
-
 @pytest.fixture
 def temp_molecular_file(test_data_dir, sample_smiles):
     """Create temporary molecular file for I/O testing."""
@@ -226,12 +215,10 @@ def temp_molecular_file(test_data_dir, sample_smiles):
 
     return file_path
 
-
 @pytest.fixture(autouse=True)
 def reset_random_seeds():
     """Reset random seeds before each test for reproducibility."""
     np.random.seed(42)
-
 
 class MockModel:
     """Mock model class for testing model interfaces."""
@@ -263,18 +250,15 @@ class MockModel:
             raise ValueError("Model must be fitted before scoring")
         return np.random.random()
 
-
 @pytest.fixture
 def mock_regression_model():
     """Provide mock regression model."""
     return MockModel("regression")
 
-
 @pytest.fixture
 def mock_classification_model():
     """Provide mock classification model."""
     return MockModel("classification")
-
 
 # Performance testing utilities
 @pytest.fixture
@@ -300,7 +284,6 @@ def performance_timer():
             return self.end_time - self.start_time
 
     return Timer()
-
 
 # Skip conditions for optional dependencies
 skip_if_no_rdkit = pytest.mark.skipif(not RDKIT_AVAILABLE, reason="RDKit not available")
@@ -331,7 +314,6 @@ def auto_close_figures():
         plt.close('all')
     except ImportError:
         pass
-
 
 @pytest.fixture
 def figure_manager():

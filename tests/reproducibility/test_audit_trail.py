@@ -31,7 +31,6 @@ from qemlflow.reproducibility.audit_trail import (
     track_data_lineage
 )
 
-
 class TestAuditEvent(TestCase):
     """Test AuditEvent dataclass functionality."""
 
@@ -43,12 +42,12 @@ class TestAuditEvent(TestCase):
             resource="test_resource",
             resource_type="file"
         )
-        
+
         self.assertEqual(event.event_type, "test")
         self.assertEqual(event.action, "create")
         self.assertEqual(event.resource, "test_resource")
         self.assertEqual(event.resource_type, "file")
-        
+
         # Check auto-generated fields
         self.assertIsNotNone(event.event_id)
         self.assertIsNotNone(event.timestamp)
@@ -64,17 +63,17 @@ class TestAuditEvent(TestCase):
             resource_type="file",
             metadata={"key": "value"}
         )
-        
+
         # Convert to dict
         event_dict = event.to_dict()
         self.assertIsInstance(event_dict, dict)
         self.assertEqual(event_dict["event_type"], "test")
         self.assertEqual(event_dict["action"], "create")
-        
+
         # Convert to JSON using dict
         event_json = json.dumps(event_dict)
         self.assertIsInstance(event_json, str)
-        
+
         # Parse JSON back
         parsed = json.loads(event_json)
         self.assertEqual(parsed["event_type"], "test")
@@ -88,11 +87,10 @@ class TestAuditEvent(TestCase):
             resource="test_resource",
             resource_type="file"
         )
-        
+
         # Check that checksum is calculated
         self.assertIsNotNone(event.checksum)
         self.assertEqual(len(event.checksum), 64)  # SHA-256 hex length
-
 
 class TestDataLineage(TestCase):
     """Test DataLineage tracking functionality."""
@@ -104,7 +102,7 @@ class TestDataLineage(TestCase):
             name="Test Dataset",
             path="/path/to/data.csv"
         )
-        
+
         self.assertEqual(lineage.data_id, "test_data_001")
         self.assertEqual(lineage.name, "Test Dataset")
         self.assertEqual(lineage.path, "/path/to/data.csv")
@@ -115,16 +113,16 @@ class TestDataLineage(TestCase):
             data_id="parent_001",
             name="Parent Dataset"
         )
-        
+
         child = DataLineage(
             data_id="child_001",
             name="Child Dataset",
             transformation="data_processing"
         )
-        
+
         # Add parent relationship
         child.add_parent(parent.data_id)
-        
+
         self.assertIn(parent.data_id, child.parent_data)
         self.assertEqual(child.transformation, "data_processing")
 
@@ -135,13 +133,12 @@ class TestDataLineage(TestCase):
             name="Test Dataset",
             path="/path/to/data.csv"
         )
-        
+
         # Convert to dict
         lineage_dict = lineage.to_dict()
         self.assertIsInstance(lineage_dict, dict)
         self.assertEqual(lineage_dict["data_id"], "test_data_001")
         self.assertEqual(lineage_dict["name"], "Test Dataset")
-
 
 class TestWorkflowStep(TestCase):
     """Test WorkflowStep tracking functionality."""
@@ -152,7 +149,7 @@ class TestWorkflowStep(TestCase):
             step_id="step_001",
             name="Data Loading"
         )
-        
+
         self.assertEqual(step.step_id, "step_001")
         self.assertEqual(step.name, "Data Loading")
         self.assertEqual(step.status, "running")
@@ -163,10 +160,10 @@ class TestWorkflowStep(TestCase):
             step_id="step_001",
             name="Test Step"
         )
-        
+
         # Complete step
         step.complete(status="completed")
-        
+
         self.assertEqual(step.status, "completed")
         self.assertIsNotNone(step.completed_at)
         self.assertGreaterEqual(step.duration, 0)
@@ -177,11 +174,11 @@ class TestWorkflowStep(TestCase):
             step_id="step_001",
             name="Test Step"
         )
-        
+
         # Fail step
         error_message = "Test error"
         step.complete(status="failed", error_message=error_message)
-        
+
         self.assertEqual(step.status, "failed")
         self.assertEqual(step.error_message, error_message)
         self.assertIsNotNone(step.completed_at)
@@ -192,13 +189,12 @@ class TestWorkflowStep(TestCase):
             step_id="step_001",
             name="Test Step"
         )
-        
+
         # Convert to dict
         step_dict = step.to_dict()
         self.assertIsInstance(step_dict, dict)
         self.assertEqual(step_dict["step_id"], "step_001")
         self.assertEqual(step_dict["name"], "Test Step")
-
 
 class TestAuditTrailManager(TestCase):
     """Test AuditTrailManager functionality."""
@@ -228,7 +224,7 @@ class TestAuditTrailManager(TestCase):
             resource_type="test",
             metadata={"key": "value"}
         )
-        
+
         self.assertIsNotNone(event_id)
         # Check that event file was created
         events_dir = os.path.join(self.temp_dir, "events")
@@ -242,7 +238,7 @@ class TestAuditTrailManager(TestCase):
             name="Test Dataset",
             path="/path/to/data.csv"
         )
-        
+
         self.assertIsInstance(lineage, DataLineage)
         self.assertEqual(lineage.data_id, "test_data_001")
 
@@ -257,7 +253,7 @@ class TestAuditTrailManager(TestCase):
                 resource_type="test"
             )
             event_ids.append(event_id)
-        
+
         # Check all events were logged
         self.assertEqual(len(event_ids), 5)
         self.assertEqual(len(set(event_ids)), 5)  # All unique
@@ -265,7 +261,7 @@ class TestAuditTrailManager(TestCase):
     def test_concurrent_logging(self):
         """Test concurrent event logging."""
         event_ids = []
-        
+
         def log_events(thread_id, num_events=5):
             for i in range(num_events):
                 event_id = self.manager.log_event(
@@ -274,25 +270,24 @@ class TestAuditTrailManager(TestCase):
                     thread_id=thread_id
                 )
                 event_ids.append(event_id)
-        
+
         # Create multiple threads
         threads = []
         num_threads = 3
         events_per_thread = 5
-        
+
         for i in range(num_threads):
             thread = threading.Thread(target=log_events, args=(i, events_per_thread))
             threads.append(thread)
             thread.start()
-        
+
         # Wait for all threads to complete
         for thread in threads:
             thread.join()
-        
+
         # Verify all events were logged
         expected_total = num_threads * events_per_thread
         self.assertEqual(len(event_ids), expected_total)
-
 
 class TestAuditDecorators(TestCase):
     """Test audit trail decorators functionality."""
@@ -302,7 +297,7 @@ class TestAuditDecorators(TestCase):
         @audit_trail(action="test_function", resource_type="function")
         def test_function(x, y):
             return x + y
-        
+
         # Execute function
         result = test_function(2, 3)
         self.assertEqual(result, 5)
@@ -312,7 +307,7 @@ class TestAuditDecorators(TestCase):
         # Test workflow context usage
         with audit_workflow("test_workflow"):
             time.sleep(0.01)  # Simulate some work
-        
+
         # If no exception, context manager worked
         self.assertTrue(True)
 
@@ -321,11 +316,10 @@ class TestAuditDecorators(TestCase):
         @audit_trail(action="failing_function")
         def failing_function():
             raise ValueError("Test error")
-        
+
         # Execute function and expect error
         with self.assertRaises(ValueError):
             failing_function()
-
 
 class TestStandaloneAPI(TestCase):
     """Test standalone API functions."""
@@ -337,7 +331,7 @@ class TestStandaloneAPI(TestCase):
             resource="test_resource",
             metadata={"test": True}
         )
-        
+
         self.assertIsNotNone(event_id)
 
     def test_track_data_lineage_function(self):
@@ -346,7 +340,7 @@ class TestStandaloneAPI(TestCase):
             data_id="standalone_data_001",
             name="Standalone Test Data"
         )
-        
+
         self.assertIsInstance(lineage, DataLineage)
         self.assertEqual(lineage.data_id, "standalone_data_001")
 
@@ -355,24 +349,22 @@ class TestStandaloneAPI(TestCase):
         manager = get_audit_manager()
         self.assertIsInstance(manager, AuditTrailManager)
 
-
 class TestConfigurationIntegration(TestCase):
     """Test configuration file integration."""
 
     def test_configuration_file_exists(self):
         """Test that configuration file exists and is readable."""
         config_path = "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/config/audit_trail.yml"
-        
+
         if os.path.exists(config_path):
             # Try to read the config file
             with open(config_path, 'r') as f:
                 content = f.read()
-            
+
             self.assertGreater(len(content), 0)
             # Basic validation that it looks like YAML
             self.assertIn('storage:', content)
             self.assertIn('logging:', content)
-
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

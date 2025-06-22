@@ -40,7 +40,6 @@ except ImportError:
     sklearn = None
     SKLEARN_AVAILABLE = False
 
-
 class TestMolecularPropertyPredictorInit:
     """Test MolecularPropertyPredictor initialization"""
 
@@ -58,7 +57,6 @@ class TestMolecularPropertyPredictorInit:
         assert len(predictor.models) == 0
         assert len(predictor.scalers) == 0
         assert len(predictor.trained_properties) == 0
-
 
 class TestMolecularDescriptorCalculation:
     """Test molecular descriptor calculation"""
@@ -181,7 +179,6 @@ class TestMolecularDescriptorCalculation:
                     assert key in descriptors
                     assert descriptors[key] == 0.0
 
-
 class TestPhysicochemicalProperties:
     """Test physicochemical property prediction"""
 
@@ -287,7 +284,6 @@ class TestPhysicochemicalProperties:
                     assert key in properties
                     assert properties[key] == 0.0
 
-
 class TestPropertyModelTraining:
     """Test property model training"""
 
@@ -373,7 +369,6 @@ class TestPropertyModelTraining:
 
             with pytest.raises(ValueError, match="No valid SMILES/target pairs found"):
                 predictor.train_property_model(training_data, "solubility")
-
 
 class TestPropertyPrediction:
     """Test property prediction using trained models"""
@@ -465,7 +460,6 @@ class TestPropertyPrediction:
 
             assert np.isnan(prediction)
 
-
 class TestMultiplePropertyPrediction:
     """Test multiple property prediction"""
 
@@ -537,7 +531,6 @@ class TestMultiplePropertyPrediction:
             assert isinstance(results, pd.DataFrame)
             assert "predicted_solubility" in results.columns
             assert pd.isna(results["predicted_solubility"].iloc[0])
-
 
 class TestStandaloneFunctions:
     """Test standalone functions"""
@@ -674,7 +667,6 @@ class TestStandaloneFunctions:
         assert "MAE" in metrics
         assert "RMSE" in metrics
 
-
 class TestTrainedPropertyModel:
     """Test TrainedPropertyModel class"""
 
@@ -737,7 +729,6 @@ class TestTrainedPropertyModel:
         assert isinstance(metrics, dict)
         assert metrics == {"r2_score": 0.85, "rmse": 0.1, "mae": 0.05}
 
-
 class TestTrainPropertyModelFunction:
     """Test train_property_model standalone function"""
 
@@ -772,7 +763,6 @@ class TestTrainPropertyModelFunction:
         assert hasattr(result, "metrics")
         assert "accuracy" in result.metrics
 
-
 class TestEvaluatePropertyPredictions:
     """Test evaluate_property_predictions function"""
 
@@ -803,7 +793,6 @@ class TestEvaluatePropertyPredictions:
         assert "precision" in metrics
         assert "recall" in metrics
         assert "f1_score" in metrics
-
 
 class TestIntegrationScenarios:
     """Test integration scenarios and workflows"""
@@ -871,7 +860,6 @@ class TestIntegrationScenarios:
             assert isinstance(metrics1, dict)
             assert isinstance(metrics2, dict)
 
-
 class TestErrorHandling:
     """Test error handling and edge cases"""
 
@@ -911,7 +899,6 @@ class TestErrorHandling:
 
         with pytest.raises(KeyError):
             predictor.predict_property("CCO", "test_prop")
-
 
 class TestPerformance(unittest.TestCase):
     """Test performance and scalability"""
