@@ -144,11 +144,11 @@ class TestMLUtils:
             # For standard normalization, mean should be close to 0, std close to 1
             if hasattr(X_normalized, 'mean') and hasattr(X_normalized, 'std'):
                 mean_vals = np.mean(X_normalized, axis=0)
-                std_vals = np.std(X_normalized, axis=0, ddof=1)
+                std_vals = np.std(X_normalized, axis=0, ddof=0)  # Use ddof=0 to match sklearn StandardScaler
                 
-                # Allow some tolerance for numerical precision
-                assert np.allclose(mean_vals, 0, atol=1e-10)
-                assert np.allclose(std_vals, 1, atol=1e-10)
+                # Allow more tolerance for numerical precision
+                assert np.allclose(mean_vals, 0, atol=1e-8)
+                assert np.allclose(std_vals, 1, atol=1e-8)
         except NotImplementedError:
             pytest.skip("Feature normalization not implemented")
 

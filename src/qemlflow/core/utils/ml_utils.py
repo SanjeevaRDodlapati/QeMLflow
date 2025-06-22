@@ -410,7 +410,7 @@ def optimize_hyperparameters(
 
 
 def evaluate_model(
-    model, X: np.ndarray, y: np.ndarray, task_type: str = "classification"
+    model, X: np.ndarray, y: np.ndarray, task_type: str = "auto"
 ) -> Dict[str, float]:
     """
     Evaluate a trained model on given data.
@@ -419,12 +419,21 @@ def evaluate_model(
         model: Trained model with predict method
         X: Feature matrix
         y: True labels/values
-        task_type: Type of task ("classification" or "regression")
+        task_type: Type of task ("classification", "regression", or "auto")
 
     Returns:
         Dictionary of evaluation metrics
     """
     predictions = model.predict(X)
+    
+    # Auto-detect task type if not specified
+    if task_type == "auto":
+        # Check if y is continuous (regression) or discrete (classification)
+        unique_vals = np.unique(y)
+        if len(unique_vals) <= 10 and np.all(y == y.astype(int)):
+            task_type = "classification"
+        else:
+            task_type = "regression"
 
     if task_type.lower() == "classification":
         metrics = {
