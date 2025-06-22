@@ -104,6 +104,12 @@ Thumbs.db
 .env.test.local
 .env.production.local
 
+# API tokens and secrets
+.api_token
+*.token
+api_keys.txt
+secrets.json
+
 # Quantum computing
 *.qasm
 qiskit_*.log
