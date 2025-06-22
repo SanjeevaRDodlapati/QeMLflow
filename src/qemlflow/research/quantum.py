@@ -17,6 +17,14 @@ from typing import Dict, List, Optional, Union, Any, Tuple
 import numpy as np
 import pandas as pd
 
+# Import benchmarking capability
+try:
+    from .benchmarking import ScientificBenchmarker
+    HAS_BENCHMARKING = True
+except ImportError:
+    HAS_BENCHMARKING = False
+    ScientificBenchmarker = None
+
 try:
     from qiskit import ParameterVector, QuantumCircuit
     from qiskit.providers.aer import AerSimulator

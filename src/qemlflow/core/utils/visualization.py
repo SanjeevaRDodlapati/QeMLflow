@@ -1,3 +1,4 @@
+from typing import Any, Union
 """
 Comprehensive visualization utilities for QeMLflow.
 

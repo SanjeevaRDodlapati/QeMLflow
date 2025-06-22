@@ -44,6 +44,9 @@ def clean_data(
     if remove_duplicates:
         cleaned_data = cleaned_data.drop_duplicates()
 
+    # Replace infinite values with NaN first
+    cleaned_data = cleaned_data.replace([np.inf, -np.inf], np.nan)
+
     # Handle missing values
     if handle_missing == "drop":
         cleaned_data = cleaned_data.dropna()
