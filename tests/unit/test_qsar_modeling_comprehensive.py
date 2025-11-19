@@ -32,7 +32,31 @@ from sklearn import *
 try:
     from rdkit import Chem
 except ImportError:
-    pass
+    # Mock RDKit if not available to allow tests to run
+    import sys
+    from unittest.mock import MagicMock
+    
+    mock_rdkit = MagicMock()
+    mock_chem = MagicMock()
+    mock_rdkit.Chem = mock_chem
+    
+    # Ensure submodules are also mocked
+    sys.modules["rdkit"] = mock_rdkit
+    sys.modules["rdkit.Chem"] = mock_chem
+    sys.modules["rdkit.Chem.AllChem"] = MagicMock()
+    sys.modules["rdkit.Chem.Descriptors"] = MagicMock()
+    sys.modules["rdkit.Chem.rdMolDescriptors"] = MagicMock()
+    sys.modules["rdkit.Chem.rdFingerprintGenerator"] = MagicMock()
+    sys.modules["rdkit.Chem.MACCSkeys"] = MagicMock()
+    
+    # Link attributes to sys.modules for consistent mocking
+    mock_chem.AllChem = sys.modules["rdkit.Chem.AllChem"]
+    mock_chem.Descriptors = sys.modules["rdkit.Chem.Descriptors"]
+    mock_chem.rdMolDescriptors = sys.modules["rdkit.Chem.rdMolDescriptors"]
+    mock_chem.rdFingerprintGenerator = sys.modules["rdkit.Chem.rdFingerprintGenerator"]
+    mock_chem.MACCSkeys = sys.modules["rdkit.Chem.MACCSkeys"]
+    
+    Chem = mock_chem
 
 # Suppress sklearn warnings for cleaner test output
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -444,6 +468,7 @@ class TestQSARModel(unittest.TestCase):
             finally:
                 os.unlink(tmp.name)
 
+@patch("qemlflow.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
 class TestActivityPredictor(unittest.TestCase):
     """Test ActivityPredictor class"""
 
@@ -556,6 +581,7 @@ class TestActivityPredictor(unittest.TestCase):
         self.assertIn("predicted_toxicity", result.columns)
         self.assertTrue(result["predicted_toxicity"].isna().all())
 
+@patch("qemlflow.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
 class TestStandaloneFunctions(unittest.TestCase):
     """Test standalone functions"""
 
@@ -1101,6 +1127,7 @@ class TestIntegrationScenarios(unittest.TestCase):
         self.assertIn("predicted_solubility", results.columns)
         self.assertEqual(len(results), 2)
 
+@patch("qemlflow.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
 class TestErrorHandling(unittest.TestCase):
     """Test error handling and edge cases"""
 

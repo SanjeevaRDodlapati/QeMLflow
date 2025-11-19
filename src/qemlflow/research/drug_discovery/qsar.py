@@ -50,6 +50,7 @@ try:
 except ImportError:
     logging.warning("RDKit not available. Some QSAR features will not work.")
     RDKIT_AVAILABLE = False
+    RDKIT_AVAILABLE = False
     Chem = None
     Descriptors = None
     rdMolDescriptors = None
@@ -88,14 +89,14 @@ class DescriptorCalculator:
         if descriptor_set == "mordred":
             self.calc = Calculator(descriptors, ignore_3D=True)
 
-    def calculate_rdkit_descriptors(self, mol: Chem.Mol) -> Dict[str, float]:
+    def calculate_rdkit_descriptors(self, mol: "Chem.Mol") -> Dict[str, float]:
         """Calculate RDKit molecular descriptors"""
         descriptor_names = [name for name, _ in Descriptors._descList]
         descriptor_values = [func(mol) for name, func in Descriptors._descList]
 
         return dict(zip(descriptor_names, descriptor_values))
 
-    def calculate_mordred_descriptors(self, mol: Chem.Mol) -> Dict[str, float]:
+    def calculate_mordred_descriptors(self, mol: "Chem.Mol") -> Dict[str, float]:
         """Calculate Mordred molecular descriptors"""
         desc_dict = self.calc(mol)
 
@@ -112,7 +113,7 @@ class DescriptorCalculator:
         return filtered_desc
 
     def calculate_fingerprint_descriptors(
-        self, mol: Chem.Mol, fp_type: str = "morgan", n_bits: int = 2048
+        self, mol: "Chem.Mol", fp_type: str = "morgan", n_bits: int = 2048
     ) -> np.ndarray:
         """Calculate molecular fingerprints as descriptors"""
         if fp_type == "morgan":

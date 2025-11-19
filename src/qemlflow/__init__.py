@@ -139,7 +139,7 @@ try:
         IntelligentFeatureSelector,
         ModelAnalytics,
     )
-    from .enterprise.monitoring import (
+    from .ops.enterprise.monitoring import (
         AnalyticsDashboard,
         MetricsCollector,
         MonitoringDashboard,

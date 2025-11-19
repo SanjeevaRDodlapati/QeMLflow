@@ -14,7 +14,7 @@ Features:
 - Enterprise security features
 
 Usage:
-    from qemlflow.enterprise.monitoring import MonitoringDashboard, SystemMonitor
+    from qemlflow.ops.enterprise.monitoring import MonitoringDashboard, SystemMonitor
 
     monitor = SystemMonitor()
     dashboard = MonitoringDashboard()

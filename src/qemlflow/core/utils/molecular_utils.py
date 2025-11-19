@@ -89,7 +89,7 @@ class MolecularDescriptors:
 
     @staticmethod
     def calculate_morgan_fingerprint(
-        mol: Chem.Mol, radius: int = 2, n_bits: int = 2048
+        mol: Mol, radius: int = 2, n_bits: int = 2048
     ) -> np.ndarray:
         """Calculate Morgan fingerprint"""
         fp_gen = rdFingerprintGenerator.GetMorganGenerator(radius=radius, fpSize=n_bits)
@@ -105,7 +105,7 @@ class LipinskiFilter:
         if not RDKIT_AVAILABLE:
             raise ImportError("RDKit is required for LipinskiFilter")
 
-    def passes_lipinski(self, mol: Chem.Mol) -> bool:
+    def passes_lipinski(self, mol: Mol) -> bool:
         """Check if molecule passes Lipinski's Rule of Five"""
         descriptors = MolecularDescriptors.calculate_lipinski_descriptors(mol)
 
@@ -175,7 +175,7 @@ class SMILESProcessor:
             return False
 
     @staticmethod
-    def smiles_to_mol(smiles: str) -> Optional[Chem.Mol]:
+    def smiles_to_mol(smiles: str) -> Optional[Mol]:
         """Convert SMILES to RDKit Mol object"""
         try:
             return Chem.MolFromSmiles(smiles)
@@ -212,7 +212,7 @@ class MoleculeVisualizer:
             raise ImportError("RDKit is required for MoleculeVisualizer")
 
     @staticmethod
-    def view_2d(mol: Chem.Mol, size: Tuple[int, int] = (300, 300)) -> Any:
+    def view_2d(mol: Mol, size: Tuple[int, int] = (300, 300)) -> Any:
         """Display 2D structure of molecule"""
         from rdkit.Chem import Draw
 
@@ -252,7 +252,7 @@ class MoleculeVisualizer:
             return None
 
 
-def calculate_drug_likeness_score(mol: Chem.Mol) -> float:
+def calculate_drug_likeness_score(mol: Mol) -> float:
     """
     Calculate a simple drug-likeness score based on multiple criteria
 
@@ -554,7 +554,7 @@ def neutralize_molecule(smiles: str) -> str:
 
 
 def calculate_similarity(
-    mol1: Union[str, Chem.Mol], mol2: Union[str, Chem.Mol], method: str = "tanimoto"
+    mol1: Union[str, Mol], mol2: Union[str, Mol], method: str = "tanimoto"
 ) -> float:
     """
     Calculate molecular similarity between two molecules.
@@ -618,7 +618,7 @@ def calculate_similarity(
 
 
 def filter_molecules_by_properties(
-    molecules: List[Union[str, "Chem.Mol"]],
+    molecules: List[Union[str, "Mol"]],
     mw_range: Tuple[float, float] = (50, 900),
     logp_range: Tuple[float, float] = (-3, 7),
     molecular_weight_range: Tuple[float, float] = None,
@@ -751,7 +751,7 @@ def calculate_molecular_properties(smiles: str) -> Optional[Dict[str, float]]:
         return None
 
 
-def generate_conformers(smiles: str, num_conformers: int = 1) -> Optional[Chem.Mol]:
+def generate_conformers(smiles: str, num_conformers: int = 1) -> Optional[Mol]:
     """
     Generate 3D conformers for a molecule.
 
@@ -816,7 +816,7 @@ class StructuralAlerts:
         if not RDKIT_AVAILABLE:
             raise ImportError("RDKit is required for StructuralAlerts")
 
-    def check_pains_alerts(self, mol: Chem.Mol) -> List[str]:
+    def check_pains_alerts(self, mol: Mol) -> List[str]:
         """Check for PAINS (Pan Assay Interference Compounds) alerts."""
         # Simplified implementation - in practice would use FilterCatalog
         alerts = []
@@ -834,7 +834,7 @@ class StructuralAlerts:
 
         return alerts
 
-    def check_brenk_alerts(self, mol: Chem.Mol) -> List[str]:
+    def check_brenk_alerts(self, mol: Mol) -> List[str]:
         """Check for Brenk alerts (undesirable functional groups)."""
         alerts = []
         try:
@@ -887,7 +887,7 @@ class MolecularVisualization:
             raise ImportError("RDKit is required for MolecularVisualization")
 
     def draw_molecule_2d(
-        self, mol: Chem.Mol, size: Tuple[int, int] = (300, 300)
+        self, mol: Mol, size: Tuple[int, int] = (300, 300)
     ) -> Any:
         """Draw 2D representation of molecule."""
         if not RDKIT_AVAILABLE:
@@ -900,7 +900,7 @@ class MolecularVisualization:
         except Exception:
             return None
 
-    def draw_molecule_3d(self, mol: Chem.Mol) -> str:
+    def draw_molecule_3d(self, mol: Mol) -> str:
         """Draw 3D representation of molecule using py3Dmol."""
         if not PY3DMOL_AVAILABLE:
             return None

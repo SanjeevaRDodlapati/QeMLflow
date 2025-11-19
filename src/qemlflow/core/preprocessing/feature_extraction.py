@@ -141,7 +141,7 @@ def extract_features(
     return features_df
 
 
-def _extract_rdkit_descriptors(molecules: List[Union[str, Chem.Mol]]) -> pd.DataFrame:
+def _extract_rdkit_descriptors(molecules: List[Union[str, "Chem.Mol"]]) -> pd.DataFrame:
     """Extract RDKit descriptors."""
     data = []
     descriptor_names = [
@@ -325,7 +325,7 @@ def _extract_basic_fingerprints(molecules: List[str], n_bits: int) -> pd.DataFra
 
 
 def generate_fingerprints(
-    molecules: Union[str, List[Union[str, Chem.Mol]]],
+    molecules: Union[str, List[Union[str, "Chem.Mol"]]],
     fp_type: str = "morgan",
     n_bits: int = 1024,
     radius: int = 2,
@@ -375,7 +375,7 @@ def generate_fingerprints(
 
 
 def _calculate_single_fingerprint(
-    mol_input: Union[str, Chem.Mol], fp_type: str, n_bits: int, radius: int
+    mol_input: Union[str, "Chem.Mol"], fp_type: str, n_bits: int, radius: int
 ) -> np.ndarray:
     """Calculate fingerprint for a single molecule."""
     if not RDKIT_AVAILABLE:

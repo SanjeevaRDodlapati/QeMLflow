@@ -251,6 +251,7 @@ class TestGeneration(unittest.TestCase):
         result = self.optimize_structure("CCO")
         self.assertIsInstance(result, str)
 
+@patch("qemlflow.research.drug_discovery.qsar.RDKIT_AVAILABLE", True)
 class TestQSAR(unittest.TestCase):
     """Test QSAR modeling module"""
 

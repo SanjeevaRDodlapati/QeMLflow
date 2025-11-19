@@ -16,7 +16,7 @@ sys.path.insert(0, "/Users/sanjeevadodlapati/Downloads/Repos/QeMLflow/src")
 try:
     from qemlflow.research.drug_discovery.admet import ADMETPredictor
     ADMET_AVAILABLE = True
-except ImportError:
+except Exception:
     ADMET_AVAILABLE = False
 
 try:

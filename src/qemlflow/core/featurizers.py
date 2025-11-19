@@ -16,19 +16,25 @@ from typing import Any, Dict, List, Optional, Union
 
 import numpy as np
 import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import AllChem, Descriptors, Descriptors3D, rdMolDescriptors
-
-# Use the newest RDKit APIs to avoid deprecation warnings
 try:
-    # Try to use the new MorganGenerator (RDKit 2022.09+)
-    from rdkit.Chem.rdMolDescriptors import GetMorganGenerator
+    from rdkit import Chem
+    from rdkit.Chem import AllChem, Descriptors, Descriptors3D, rdMolDescriptors
+    
+    # Use the newest RDKit APIs to avoid deprecation warnings
+    try:
+        # Try to use the new MorganGenerator (RDKit 2022.09+)
+        from rdkit.Chem.rdMolDescriptors import GetMorganGenerator
 
-    HAS_MORGAN_GENERATOR = True
+        HAS_MORGAN_GENERATOR = True
+    except ImportError:
+        # Fallback to older API
+        from rdkit.Chem.rdMolDescriptors import GetMorganFingerprintAsBitVect
+
+        HAS_MORGAN_GENERATOR = False
+        
+    RDKIT_AVAILABLE = True
 except ImportError:
-    # Fallback to older API
-    from rdkit.Chem.rdMolDescriptors import GetMorganFingerprintAsBitVect
-
+    RDKIT_AVAILABLE = False
     HAS_MORGAN_GENERATOR = False
 
 
@@ -39,11 +45,11 @@ class BaseFeaturizer(ABC):
         self.kwargs = kwargs
 
     @abstractmethod
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """Convert molecules to feature vectors."""
         pass
 
-    def _smiles_to_mol(self, smiles: str) -> Optional[Chem.Mol]:
+    def _smiles_to_mol(self, smiles: str) -> Optional["Chem.Mol"]:
         """Convert SMILES to RDKit molecule object."""
         try:
             mol = Chem.MolFromSmiles(smiles)
@@ -77,7 +83,7 @@ class MorganFingerprint(BaseFeaturizer):
         self.n_bits = n_bits
         self.use_features = use_features
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """Generate Morgan fingerprints for molecules."""
         features = []
 
@@ -186,7 +192,7 @@ class DescriptorCalculator(BaseFeaturizer):
             "heavy_atoms": Descriptors.HeavyAtomCount,
         }
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """Calculate molecular descriptors for molecules."""
         features = []
 
@@ -240,7 +246,7 @@ class ECFPFingerprint(BaseFeaturizer):
         self.radius = radius
         self.n_bits = n_bits
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """Generate ECFP fingerprints for molecules."""
         # ECFP is essentially Morgan fingerprints
         morgan_generator = MorganFingerprint(radius=self.radius, n_bits=self.n_bits)
@@ -264,7 +270,7 @@ class CombinedFeaturizer(BaseFeaturizer):
         super().__init__()
         self.featurizers = featurizers
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """Generate combined features for molecules."""
         all_features = []
 
@@ -320,7 +326,7 @@ class CustomRDKitFeaturizer(BaseFeaturizer):
                 descriptor_list=descriptor_subset
             )
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """
         Featurize molecules using combined fingerprints and descriptors.
 
@@ -449,7 +455,7 @@ class HybridMolecularFeaturizer(BaseFeaturizer):
         else:
             self.has_deepchem = False
 
-    def featurize(self, molecules: List[Union[str, Chem.Mol]]) -> np.ndarray:
+    def featurize(self, molecules: List[Union[str, "Chem.Mol"]]) -> np.ndarray:
         """
         Featurize molecules using hybrid RDKit + DeepChem approach.
 

@@ -91,6 +91,7 @@ class TestMolecularPreprocessing:
         # All should be valid SMILES strings
         assert all(isinstance(smiles, str) for smiles in standardized)
 
+    @skip_if_no_rdkit
     def test_filter_by_properties(self, sample_molecular_data):
         """Test filtering molecules by properties."""
         # Filter by molecular weight
@@ -101,6 +102,7 @@ class TestMolecularPreprocessing:
         # Should only contain molecules in range
         assert all(50 <= mw <= 200 for mw in filtered["molecular_weight"])
 
+    @skip_if_no_rdkit
     def test_filter_by_properties_no_matches(self, sample_molecular_data):
         """Test filtering with criteria that match nothing."""
         filtered = filter_by_properties(

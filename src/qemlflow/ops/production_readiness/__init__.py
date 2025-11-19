@@ -233,7 +233,7 @@ class ProductionReadinessValidator:
     def _check_security_module(self) -> bool:
         """Check if security module is available."""
         try:
-            from qemlflow.security import SecurityScanner
+            from qemlflow.quality.security import SecurityScanner
             return True
         except ImportError:
             return False
@@ -259,7 +259,7 @@ class ProductionReadinessValidator:
     def _check_performance_tuning(self) -> bool:
         """Check performance tuning module."""
         try:
-            from qemlflow.production_tuning import ProductionPerformanceTuner
+            from qemlflow.ops.production_tuning import ProductionPerformanceTuner
             return True
         except ImportError:
             return False
@@ -281,7 +281,7 @@ class ProductionReadinessValidator:
     def _check_ha_module(self) -> bool:
         """Check high availability module."""
         try:
-            from qemlflow.high_availability import HighAvailabilityManager
+            from qemlflow.ops.high_availability import HighAvailabilityManager
             return True
         except ImportError:
             return False
